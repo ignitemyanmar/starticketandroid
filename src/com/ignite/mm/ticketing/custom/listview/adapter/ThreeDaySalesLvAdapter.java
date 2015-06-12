@@ -2,8 +2,8 @@ package com.ignite.mm.ticketing.custom.listview.adapter;
 
 import java.util.List;
 
-import com.ignite.mm.ticketing.callcenter.PDFBusActivity;
-import com.ignite.mm.ticketing.callcenter.R;
+import com.ignite.mm.ticketing.agent.PDFBusActivity;
+import com.ignite.mm.ticketing.agent.R;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 
 import android.app.Activity;

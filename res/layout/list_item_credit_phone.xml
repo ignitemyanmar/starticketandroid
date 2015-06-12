@@ -81,7 +81,7 @@
             android:layout_height="wrap_content" >
 
             <com.smk.custom.view.CustomTextView
-                android:id="@+id/CustomTextView03"
+                android:id="@+id/CustomTextView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content" >
 
             <com.smk.custom.view.CustomTextView
-                android:id="@+id/CustomTextView04"
+                android:id="@+id/CustomTextView09"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -179,6 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/golden_brown" />
+>>>>>>> 291e6a8d27b565013631816d8312463912175726
     </LinearLayout>
 
 </LinearLayout>

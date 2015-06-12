@@ -139,6 +139,7 @@
                             android:filterTouchesWhenObscured="true"
                             android:text=": -"
                             android:textSize="24dp" />
+>>>>>>> 291e6a8d27b565013631816d8312463912175726
                     </LinearLayout>
 
                     <LinearLayout

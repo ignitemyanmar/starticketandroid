@@ -1,6 +1,8 @@
 package com.ignite.mm.ticketing.application;
 
-import com.ignite.mm.ticketing.callcenter.R;
+import retrofit.Callback;
+
+import com.ignite.mm.ticketing.agent.R;
 
 import android.app.Dialog;
 import android.content.Context;

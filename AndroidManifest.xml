@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ignite.mm.ticketing.callcenter"
+    package="com.ignite.mm.ticketing.agent"
     android:versionCode="5"
     android:versionName="1.5" >
 
