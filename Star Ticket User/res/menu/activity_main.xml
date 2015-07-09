@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+        android:id="@+id/menu_logout"
+        android:title="Logout">
+    </item>
+    <item 
+        android:id="@+id/menu_hotline"
+        android:title="Hot Line:"
+        android:enabled="false">
+    </item>
+    <item 
+        android:id="@+id/menu_hotline2"
+        android:title="0931166772"
+        android:enabled="false">
+    </item>
+    <item 
+        android:id="@+id/menu_hotline3"
+        android:title="09971118511"
+        android:enabled="false">
+    </item>
+</menu>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="20dp"
+            android:text="မႏၱလာမင္း"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray_light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <RatingBar
+                android:id="@+id/rateBar_operator"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:rating="2.5"
+                android:stepSize="0.5" />
+            
+            <TextView
+                android:id="@+id/txt_rate_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service ေကာင္းတယ္"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light" />
+
+        <EditText
+            android:id="@+id/edt_customer_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:focusableInTouchMode="true"
+            android:gravity="top"
+            android:hint="သင့္ရဲ႕ ထင္ျမင္ခ်က္ေလး ေရးေပးခဲ့ပါ း)"
+            android:inputType="textMultiLine"
+            android:maxLines="50"
+            android:padding="5dp" >
+
+        </EditText>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light" />
+
+        <Button
+            android:id="@+id/btn_submit_review"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/golden_brown_light"
+            android:text="Submit လုပ္မည္"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

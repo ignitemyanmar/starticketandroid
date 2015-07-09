@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutAnimation="@anim/slide_left"
+    android:background="@drawable/app_background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/app_background"
+            android:orientation="vertical" >
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/txt_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/golden_brown"
+                android:padding="5dp"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/user_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_contact_picture_holo_light"
+                android:cropToPadding="true"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
+                android:scaleType="fitXY"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/gray"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="ဆက္သြယ္ရမည့္ အခ်က္အလက္"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_border_radius_"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView2"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="မွတ္ပံုတင္"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView01"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_nrc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView3"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="အီးေမး(လ္)"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView02"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView4"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="ဖုန္းနံပါတ္"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView03"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView5"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="လိပ္စာ"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView04"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/TextView06"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Points အခ်က္အလက္"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_border_radius_"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView04"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="ရရွိၿပီး Points "
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView05"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_history_points"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView07"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="အသံုးျပဳၿပီး Points"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView10"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_used_points"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1" >
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView06"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="လက္က်န္ Points"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView09"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_net_points"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center" >
+
+                <com.smk.custom.view.CustomButton
+                    android:id="@+id/btn_edit_info"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_gold"
+                    android:text="အခ်က္အလက္ ျပင္ရန္"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <com.smk.custom.view.CustomButton
+                    android:id="@+id/btn_order_history"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_gold"
+                    android:fadeScrollbars="true"
+                    android:text="Order စာရင္း >>"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/golden_brown"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="visible"
+         >
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_operator_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="ခရီးစဥ္၊ ရက္၊ အခ်ိန္ ေရြးပါ ~"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/golden_brown_dark"
+        android:visibility="visible"
+        android:layout_marginTop="50dp" />
+
+    <ScrollView
+        android:id="@+id/scroll_trip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="54dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="50"
+                    android:gravity="center_vertical"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="70"
+                        android:gravity="center_vertical"
+                        android:text="ခရီးစဥ္( မွ )"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <Spinner
+                        android:id="@+id/spn_from_trip"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="30" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="50"
+                    android:gravity="center_vertical"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/TextView03"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="70"
+                        android:gravity="center_vertical"
+                        android:text="ခရီးစဥ္( သုိ႔ )"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <Spinner
+                        android:id="@+id/spn_to_trip"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="30" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="50"
+                    android:gravity="center_vertical"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/TextView02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="70"
+                        android:gravity="center_vertical"
+                        android:text="ထြက္ခြာမည့္ ေန႔"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <Button
+                        android:id="@+id/btn_trip_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="30"
+                        android:background="@drawable/btn_border_radius_"
+                        android:text="Choose Date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="50"
+                    android:gravity="center_vertical"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="70"
+                        android:gravity="center_vertical"
+                        android:text="ထြက္ခြာမည့္ အခ်ိန္"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <Spinner
+                        android:id="@+id/spn_trip_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="30" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/btn_gold_light"
+                    android:gravity="center"
+                    android:text="ရွာမည္"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+           
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_tab"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical" >
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_promotion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@drawable/btn_golden_brown_light_rectangle"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingTop="5dp"
+            android:text="ပ႐ုိမုိရွင္း"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_review"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@drawable/btn_golden_brown_light_rectangle"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingTop="5dp"
+            android:text="ဘတ္(စ္)ကား Info"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_my_booking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@drawable/btn_golden_brown_light_rectangle"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingTop="5dp"
+            android:text="ဘုိကင္"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_me"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@drawable/btn_golden_brown_light_rectangle"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingTop="5dp"
+            android:text="ကုိယ္ပုိင္ စာမ်က္ႏွာ"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>
