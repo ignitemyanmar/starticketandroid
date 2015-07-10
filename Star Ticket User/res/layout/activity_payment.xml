@@ -10,9 +10,8 @@
     <LinearLayout
         android:id="@+id/LinearLayout01"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="@color/golden_brown"
-        android:gravity="center_vertical"
         android:orientation="vertical"
         android:visibility="visible" >
 
@@ -20,9 +19,8 @@
             android:id="@+id/CustomTextView04"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="Online Payment အတြက္ အခ်က္အလက္ ျဖည့္ပါ"
+            android:text="သင့္ကုိယ္ပုိင္ Points/Gift Money/Promotion Code မ်ားျဖင့္ ေငြေခ်ႏုိင္ပါသည္"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
             android:textSize="18dp" />
@@ -31,8 +29,8 @@
     <View
         android:id="@+id/view_cover"
         android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="@color/golden_brown" />
+        android:layout_height="4dp"
+        android:background="@color/golden_brown_dark" />
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -80,19 +78,18 @@
 
                         <TextView
                             android:id="@+id/txt_customer_ph"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="09123123"
                             android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/txt_nrc"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="12/bahana(n)0955555"
                             android:textColor="@color/black" />
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <View
@@ -112,13 +109,6 @@
                     android:padding="2dp" >
 
                     <TextView
-                        android:id="@+id/TextView06"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:text="သင္ ရရွိထားေသာ Points ႏွင့္ Gift Money မ်ားျဖင့္ လက္မွတ္ဖုိး က်သင့္ေငြ ကုိ ေပးေခ်ႏုိင္ပါသည္။" />
-
-                    <TextView
                         android:id="@+id/txt_one_point_amount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,11 +118,12 @@
                 <RelativeLayout
                     android:id="@+id/RelativeLayout01"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" >
 
                     <LinearLayout
                         android:id="@+id/layout_total_points"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -156,7 +147,7 @@
 
                     <LinearLayout
                         android:id="@+id/layout_total_gift_money"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_below="@id/layout_total_points"
@@ -187,7 +178,8 @@
                         android:gravity="center"
                         android:text="သံုးမည္"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:visibility="visible" />
                 </RelativeLayout>
 
                 <View
@@ -221,9 +213,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="(Amount you need to pay)"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                             />
-
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
                     </LinearLayout>
 
                     <TextView
@@ -235,7 +225,6 @@
                         android:gravity="right"
                         android:text="Ks 210000"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
                 </RelativeLayout>
 
                 <View
@@ -248,7 +237,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical"
+                    android:visibility="gone" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -305,10 +295,7 @@
                                 android:ems="10"
                                 android:hint="Cardholder name"
                                 android:inputType="textCapWords|textPersonName"
-                                android:padding="5dp"
-                                 >
-
-                            </EditText>
+                                android:padding="5dp" />
                         </LinearLayout>
 
                         <TextView
@@ -333,8 +320,7 @@
                                 android:ems="10"
                                 android:hint="000000000000000"
                                 android:inputType="number"
-                                android:padding="5dp" >
-                            </EditText>
+                                android:padding="5dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -399,14 +385,159 @@
                                 android:hint="123"
                                 android:inputType="number"
                                 android:padding="5dp" />
-
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/TextView11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="သံုးႏုိင္ေသာ Points စုစုေပါင္း"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/txt_points"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="- points"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/golden_brown_dark" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius"
+                        android:ems="10"
+                        android:hint="သံုးမည့္ Point အေရအတြက္ ကုိ ထည့္ပါ"
+                        android:inputType="number"
+                        android:padding="5dp"
+                        android:visibility="visible" >
+                    </EditText>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout04"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/TextView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="သံုးႏုိင္ေသာ Gift Money စုစုေပါင္း"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/txt_gift_money"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ks -"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/golden_brown_dark" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_gift_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius"
+                        android:ems="10"
+                        android:hint="သံုးမည့္ amount ကုိ ထည့္ပါ"
+                        android:inputType="number"
+                        android:padding="5dp"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/TextView13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Promotion Code"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_promo_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius"
+                        android:ems="10"
+                        android:hint="WSSSS"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/TextView14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="လ်ိဳ႕၀ွက္နံပါတ္ (PIN)"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_pin_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius"
+                        android:ems="10"
+                        android:hint="eg: Pxxxwxxd"
+                        android:inputType="textPassword"
+                        android:padding="5dp"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+            </LinearLayout>
+
             <com.smk.custom.view.CustomButton
-                android:id="@+id/btn_confirm"
+                android:id="@+id/btn_payment"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"

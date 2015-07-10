@@ -13,81 +13,145 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="90dp" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:background="@color/golden_brown"
-                android:gravity="center"
-                android:text="Promo"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white" />
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="90dp"
+            android:gravity="left"
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/txt_operator_promo"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView1"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:text="Mandalar Min"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:layout_marginRight="10dp"
+                    android:background="@color/golden_brown"
+                    android:gravity="center"
+                    android:text="Promo"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/txt_buy_amount"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/nex"
-                    android:text="ယခုလတြင္ ၁၀၀၀၀ က်ပ္ ဖုိး ၀ယ္ယူၿပီး ~" />
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txt_operator_promo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/txt_buy_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/nex"
+                        android:text=" ~" />
+                </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:gravity="center"
             android:orientation="vertical" >
 
             <LinearLayout
+                android:id="@+id/layout_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal" >
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal" >
+
+                    <TextView
+                        android:id="@+id/txt_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txt_promo_amount"
+                    android:id="@+id/TextView01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1000"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <TextView
-                    android:id="@+id/txt_currency"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Ks"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-
+                    android:gravity="center"
+                    android:text="Points ရယူပါ" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/txt_promo_type"
-                android:layout_width="wrap_content"
+                android:id="@+id/txt_plus"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Gift Money ရယူပါ" />
+                android:text="+"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/golden_brown_dark"
+                android:visibility="gone" />
 
+            <LinearLayout
+                android:id="@+id/layout_gift_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/txt_gift_money_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/txt_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Ks"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_promo_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Gift Money ရယူပါ" />
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_gift_parcel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@color/gray"
+        android:padding="5dp"
+        android:text="အထူး ေမတၱာလက္ေဆာင္ အေနျဖင့္ Coffee ခြပ္ႀကီး တစ္ခု ရရိွပါမည္။"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone" />
 
     <View
         android:id="@+id/view1"
@@ -96,6 +160,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="@color/gray_light" />
+        android:background="@color/gray" />
 
 </LinearLayout>

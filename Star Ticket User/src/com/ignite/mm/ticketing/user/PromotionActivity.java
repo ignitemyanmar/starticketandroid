@@ -1,6 +1,9 @@
 package com.ignite.mm.ticketing.user;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit.Callback;
@@ -9,6 +12,7 @@ import retrofit.client.Response;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -43,12 +47,11 @@ public class PromotionActivity extends BaseSherlockActivity{
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
-		actionBarTitle.setVisibility(View.GONE);
+		actionBarTitle.setText("ပ႐ုိမိုရွင္း");
 		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
-		actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2.setText("ပ႐ုိမိုရွင္း");
+		actionBarTitle2.setVisibility(View.GONE);
 		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
 				R.id.action_bar_back);
 		actionBarBack.setOnClickListener(new OnClickListener() {
@@ -100,5 +103,5 @@ public class PromotionActivity extends BaseSherlockActivity{
 				dialog.dismiss();
 			}
 		});
-	}
+	}	
 }

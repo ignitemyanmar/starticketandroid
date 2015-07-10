@@ -44,6 +44,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -54,6 +55,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseSherlockActivity;
@@ -66,9 +68,11 @@ import com.ignite.mm.ticketing.connection.detector.ConnectionDetector;
 import com.ignite.mm.ticketing.custom.listview.adapter.ExtraCityAdapter;
 import com.ignite.mm.ticketing.http.connection.HttpConnection;
 import com.ignite.mm.ticketing.sqlite.database.model.Agent;
+import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.ExtraCity;
 import com.ignite.mm.ticketing.sqlite.database.model.Saleitem;
+import com.ignite.mm.ticketing.sqlite.database.model.SelectSeat;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
@@ -84,8 +88,6 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	private AutoCompleteTextView edt_nrc_no;
 	private EditText edt_phone;
 	private ProgressDialog dialog;
-	private String SaleOrderNo;
-	private String SelectedSeatIndex;
 	private String[] selectedSeat;
 	private LinearLayout layout_ticket_no_container;
 	private String AgentID = "0";
@@ -139,6 +141,23 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	private String Nrc = "";
 	private Spinner spn_expire_month;
 	private Spinner spn_expire_year;
+	private RadioButton radio_onilnePayment;
+	private RadioButton radio_cashOnShop;
+	private RadioButton radio_cashOnDelivery;
+	private String FromCity;
+	private String ToCity;
+	private String Operator_Name;
+	private String from_to;
+	private String time;
+	private String classes;
+	private String date;
+	private String Price;
+	private String ConfirmDate;
+	private String ConfirmTime;
+	private BundleListObjSeats seat_List;
+	
+	private Integer isBooking = 0;
+	private String Selected_seats;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -162,6 +181,10 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		actionBarNoti = (TextView) actionBar.getCustomView().findViewById(R.id.txt_notify_booking);
 		actionBarNoti.setOnClickListener(clickListener);
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);		
+		
+		radio_onilnePayment = (RadioButton)findViewById(R.id.radio_onilnePayment);
+		radio_cashOnShop = (RadioButton)findViewById(R.id.radio_cashOnShop);
+		radio_cashOnDelivery = (RadioButton)findViewById(R.id.radio_cashOnDelivery);
 		
 		connectionDetector = new ConnectionDetector(this);
 		
@@ -189,16 +212,28 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		actionBarTitle.setText(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
 		Log.i("", "Date: "+bundle.getString("date"));
 		actionBarTitle2.setText(bundle.getString("date")+" ["+bundle.getString("time")+"] "+bundle.getString("classes"));
-		SelectedSeatIndex = bundle.getString("selected_seat");
 		
-		SaleOrderNo = bundle.getString("sale_order_no");
-		BusOccurence = bundle.getString("bus_occurence");
-		permit_operator_id = bundle.getString("permit_operator_id");
-		
-		permit_operator_group_id = bundle.getString("permit_operator_group_id");
-		Permit_agent_id = bundle.getString("permit_agent_id");
-		permit_access_token = bundle.getString("permit_access_token");
-		permit_ip = bundle.getString("permit_ip");
+		if (bundle != null) {
+			FromCity = bundle.getString("FromCity");
+			ToCity = bundle.getString("ToCity");
+			Operator_Name = bundle.getString("Operator_Name");
+			from_to = bundle.getString("from_to");
+			time = bundle.getString("time");
+			classes = bundle.getString("classes");
+			date = bundle.getString("date");
+			Price  = bundle.getString("Price");
+			ConfirmDate  = bundle.getString("ConfirmDate");
+			ConfirmTime  = bundle.getString("ConfirmTime");
+			seat_List  = new Gson().fromJson(bundle.getString("seat_List"), BundleListObjSeats.class);
+			BusOccurence = bundle.getString("bus_occurence");
+			
+			Selected_seats = bundle.getString("Selected_seats");
+			permit_operator_id = bundle.getString("permit_operator_id");
+			permit_operator_group_id = bundle.getString("permit_operator_group_id");
+			Permit_agent_id = bundle.getString("permit_agent_id");
+			permit_access_token = bundle.getString("permit_access_token");
+			permit_ip = bundle.getString("permit_ip");
+		}
 		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
 		
@@ -224,52 +259,6 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		layout_remark = (LinearLayout) findViewById(R.id.layout_remark);
 		sp_remark_type = (Spinner) findViewById(R.id.sp_remark_type);
 		edt_remark = (EditText) findViewById(R.id.edt_remark);
-		
-		spn_expire_month = (Spinner)findViewById(R.id.spn_expire_month);
-		spn_expire_year = (Spinner)findViewById(R.id.spn_expire_year);
-		
-		ArrayList<String> spinnerMonth = new ArrayList<String>();
-		spinnerMonth.add("1");
-		spinnerMonth.add("2");
-		spinnerMonth.add("3");
-		spinnerMonth.add("4");
-		spinnerMonth.add("5");
-		spinnerMonth.add("6");
-		spinnerMonth.add("7");
-		spinnerMonth.add("8");
-		spinnerMonth.add("9");
-		spinnerMonth.add("10");
-		spinnerMonth.add("11");
-		spinnerMonth.add("12");
-		
-		ArrayAdapter spinnerMonthAdapter = new ArrayAdapter(BusConfirmActivity.this
-				, android.R.layout.simple_spinner_dropdown_item
-				, spinnerMonth);
-		spn_expire_month.setAdapter(spinnerMonthAdapter);
-		
-		ArrayList<String> spinnerYear = new ArrayList<String>();
-		
-		//Current Year
-		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-		spinnerYear.add(currentYear+"");
-		spinnerYear.add((currentYear+1)+"");
-		spinnerYear.add((currentYear+2)+"");
-		spinnerYear.add((currentYear+3)+"");
-		spinnerYear.add((currentYear+4)+"");
-		spinnerYear.add((currentYear+5)+"");
-		spinnerYear.add((currentYear+6)+"");
-		spinnerYear.add((currentYear+7)+"");
-		spinnerYear.add((currentYear+8)+"");
-		spinnerYear.add((currentYear+9)+"");
-		spinnerYear.add((currentYear+10)+"");
-		
-		ArrayAdapter spinnerYearAdapter = new ArrayAdapter(BusConfirmActivity.this
-				, android.R.layout.simple_spinner_dropdown_item
-				, spinnerYear);
-		spn_expire_year.setAdapter(spinnerYearAdapter);
-		
-		//edt_buyer.setText(Name);
-		//edt_phone.setText(Phone);
 		
 		nrcFormat = new ArrayList<String>();
 		nrcFormat.add("14/Ba Ba La (N)");
@@ -613,128 +602,133 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		}else{
 			skDetector.showErrorMessage();
 		}
+		
 		btn_confirm.setOnClickListener(clickListener);
 		
 		LinearLayout.LayoutParams lps = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		lps.setMargins(0, 10, 0, 0);
-		selectedSeat = SelectedSeatIndex.split(",");
+		selectedSeat = Selected_seats.split(",");
 		Random random = new Random();
-		for (int i = 0; i < selectedSeat.length; i++) {
-			CustomTextView label = new CustomTextView(this);
-			label.setText("လက္ မွတ္ နံပါတ္ "+(i+1)+" [ Seat No."+ selectedSeat[i] +" ]");
-			label.setTextSize(18f);
-		   // forgot_pswrd.setOnTouchListener(this);
-			//LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		    //llp.setMargins(0, 10, 0, 0); // llp.setMargins(left, top, right, bottom);
-		   // label.setLayoutParams(lps);
-		    
-			layout_ticket_no_container.addView(label,lps);
-			
-			LinearLayout layout_checkbox = new LinearLayout(this);
-			layout_checkbox.setVisibility(View.GONE);
-			
-			CheckBox chk_free = new CheckBox(this);
-			chk_free.setText("Free Ticket");
-			lst_free_chk.add(chk_free);
-			//chk_free.setId(i+1 * 100);
-			//chk_free.setTag(i+1 * 150);
-			chk_free.setTag(i);
-			chk_free.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		
+		if (selectedSeat != null) {
+			for (int i = 0; i < selectedSeat.length; i++) {
+				CustomTextView label = new CustomTextView(this);
+				label.setText("လက္ မွတ္ နံပါတ္ "+(i+1)+" [ Seat No."+ selectedSeat[i] +" ]");
+				label.setTextSize(18f);
+			   // forgot_pswrd.setOnTouchListener(this);
+				//LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			    //llp.setMargins(0, 10, 0, 0); // llp.setMargins(left, top, right, bottom);
+			   // label.setLayoutParams(lps);
+			    
+				layout_ticket_no_container.addView(label,lps);
 				
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-					// TODO Auto-generated method stub
-						
-					Integer position = (Integer) buttonView.getTag();
-					if (isChecked)
-						lst_layout_free_ticket.get(position).setVisibility(
-								View.VISIBLE);
-					else
-						lst_layout_free_ticket.get(position).setVisibility(
-								View.GONE);
-				}
-			});
-			layout_checkbox.addView(chk_free);
-			//layout_ticket_no_container.addView(chk_free,lps);
-			
-			CheckBox chk_discount = new CheckBox(this);
-			chk_discount.setText("Discount   ");
-			// chk_discount.setId(i+1 * 300); // For discount check box of
-			// discount.
-			lst_discount_chk.add(chk_discount);
-			// chk_discount.setTag(i+1 * 400);// For edit text of discount
-			// amount.
-			chk_discount.setTag(i);
-			chk_discount
-					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-						public void onCheckedChanged(CompoundButton buttonView,
-								boolean isChecked) {
-							// TODO Auto-generated method stub
-							Integer position = (Integer) buttonView.getTag();
-							if (isChecked)
-								lst_discount_edt.get(position).setVisibility(
-										View.VISIBLE);
-							else
-								lst_discount_edt.get(position).setVisibility(
-										View.GONE);
-						}
-					});
-			layout_checkbox.addView(chk_discount);
-			layout_ticket_no_container.addView(layout_checkbox, lps);
-			
-			
-			LinearLayout layout_free_ticket = new LinearLayout(this);
-			//layout_free_ticket.setId(i+1 * 150);
-			lst_layout_free_ticket.add(layout_free_ticket);
-			layout_free_ticket.setVisibility(View.GONE);
-			
-			RadioButton rdo_free_pro = new RadioButton(this);
-			rdo_free_pro.setText("Promotion");
-			rdo_free_pro.setId(random.nextInt(100) + 1);
-			lst_rdo_free_pro.add(rdo_free_pro);
-			rdo_free_pro.setChecked(true);
-			RadioButton rdo_free_mnt = new RadioButton(this);
-			rdo_free_mnt.setText("Management");
-			rdo_free_mnt.setId(random.nextInt(100) + 2);
-			lst_rdo_free_mnt.add(rdo_free_mnt);
-			RadioButton rdo_free_10plus = new RadioButton(this);
-			rdo_free_10plus.setText("10+");
-			rdo_free_10plus.setId(random.nextInt(100) + 3);
-			lst_rdo_free_10plus.add(rdo_free_10plus);
-			RadioButton rdo_free_pilgrim = new RadioButton(this);
-			rdo_free_pilgrim.setText("Pilgrim");
-			rdo_free_pilgrim.setId(random.nextInt(100) + 4);
-			lst_rdo_free_pilgrim.add(rdo_free_pilgrim);
-			RadioButton rdo_free_spr = new RadioButton(this);
-			rdo_free_spr.setText("Sponsor");
-			rdo_free_spr.setId(random.nextInt(100) + 5);
-			lst_rdo_free_spr.add(rdo_free_spr);
-			RadioGroup rdo_gp_free = new RadioGroup(this);
-			lst_rdo_gp_free.add(rdo_gp_free);
-			rdo_gp_free.setOrientation(RadioGroup.HORIZONTAL);
-			rdo_gp_free.addView(rdo_free_pro);
-			rdo_gp_free.addView(rdo_free_mnt);
-			rdo_gp_free.addView(rdo_free_10plus);
-			rdo_gp_free.addView(rdo_free_pilgrim);
-			rdo_gp_free.addView(rdo_free_spr);
-			layout_free_ticket.addView(rdo_gp_free);
-			layout_ticket_no_container.addView(layout_free_ticket);
+				LinearLayout layout_checkbox = new LinearLayout(this);
+				layout_checkbox.setVisibility(View.GONE);
+				
+				CheckBox chk_free = new CheckBox(this);
+				chk_free.setText("Free Ticket");
+				lst_free_chk.add(chk_free);
+				//chk_free.setId(i+1 * 100);
+				//chk_free.setTag(i+1 * 150);
+				chk_free.setTag(i);
+				chk_free.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+					
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						// TODO Auto-generated method stub
+							
+						Integer position = (Integer) buttonView.getTag();
+						if (isChecked)
+							lst_layout_free_ticket.get(position).setVisibility(
+									View.VISIBLE);
+						else
+							lst_layout_free_ticket.get(position).setVisibility(
+									View.GONE);
+					}
+				});
+				layout_checkbox.addView(chk_free);
+				//layout_ticket_no_container.addView(chk_free,lps);
+				
+				CheckBox chk_discount = new CheckBox(this);
+				chk_discount.setText("Discount   ");
+				// chk_discount.setId(i+1 * 300); // For discount check box of
+				// discount.
+				lst_discount_chk.add(chk_discount);
+				// chk_discount.setTag(i+1 * 400);// For edit text of discount
+				// amount.
+				chk_discount.setTag(i);
+				chk_discount
+						.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+							public void onCheckedChanged(CompoundButton buttonView,
+									boolean isChecked) {
+								// TODO Auto-generated method stub
+								Integer position = (Integer) buttonView.getTag();
+								if (isChecked)
+									lst_discount_edt.get(position).setVisibility(
+											View.VISIBLE);
+								else
+									lst_discount_edt.get(position).setVisibility(
+											View.GONE);
+							}
+						});
+				layout_checkbox.addView(chk_discount);
+				layout_ticket_no_container.addView(layout_checkbox, lps);
+				
+				
+				LinearLayout layout_free_ticket = new LinearLayout(this);
+				//layout_free_ticket.setId(i+1 * 150);
+				lst_layout_free_ticket.add(layout_free_ticket);
+				layout_free_ticket.setVisibility(View.GONE);
+				
+				RadioButton rdo_free_pro = new RadioButton(this);
+				rdo_free_pro.setText("Promotion");
+				rdo_free_pro.setId(random.nextInt(100) + 1);
+				lst_rdo_free_pro.add(rdo_free_pro);
+				rdo_free_pro.setChecked(true);
+				RadioButton rdo_free_mnt = new RadioButton(this);
+				rdo_free_mnt.setText("Management");
+				rdo_free_mnt.setId(random.nextInt(100) + 2);
+				lst_rdo_free_mnt.add(rdo_free_mnt);
+				RadioButton rdo_free_10plus = new RadioButton(this);
+				rdo_free_10plus.setText("10+");
+				rdo_free_10plus.setId(random.nextInt(100) + 3);
+				lst_rdo_free_10plus.add(rdo_free_10plus);
+				RadioButton rdo_free_pilgrim = new RadioButton(this);
+				rdo_free_pilgrim.setText("Pilgrim");
+				rdo_free_pilgrim.setId(random.nextInt(100) + 4);
+				lst_rdo_free_pilgrim.add(rdo_free_pilgrim);
+				RadioButton rdo_free_spr = new RadioButton(this);
+				rdo_free_spr.setText("Sponsor");
+				rdo_free_spr.setId(random.nextInt(100) + 5);
+				lst_rdo_free_spr.add(rdo_free_spr);
+				RadioGroup rdo_gp_free = new RadioGroup(this);
+				lst_rdo_gp_free.add(rdo_gp_free);
+				rdo_gp_free.setOrientation(RadioGroup.HORIZONTAL);
+				rdo_gp_free.addView(rdo_free_pro);
+				rdo_gp_free.addView(rdo_free_mnt);
+				rdo_gp_free.addView(rdo_free_10plus);
+				rdo_gp_free.addView(rdo_free_pilgrim);
+				rdo_gp_free.addView(rdo_free_spr);
+				layout_free_ticket.addView(rdo_gp_free);
+				layout_ticket_no_container.addView(layout_free_ticket);
 
-			EditText edt_discount = new EditText(this);
-			edt_discount.setHint("Enter the discount amount.");
-			edt_discount.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-			// edt_discount.setId(i+1 * 400);
-			lst_discount_edt.add(edt_discount);
-			edt_discount.setVisibility(View.GONE);
-			layout_ticket_no_container.addView(edt_discount);
+				EditText edt_discount = new EditText(this);
+				edt_discount.setHint("Enter the discount amount.");
+				edt_discount.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+				// edt_discount.setId(i+1 * 400);
+				lst_discount_edt.add(edt_discount);
+				edt_discount.setVisibility(View.GONE);
+				layout_ticket_no_container.addView(edt_discount);
 
-			EditText ticket_no = new EditText(this);
-			ticket_no.setInputType(InputType.TYPE_CLASS_NUMBER);
-			// ticket_no.setId(i+1);
-			lst_ticket_no.add(ticket_no);
-			ticket_no.setSingleLine(true);
-			ticket_no.setBackgroundResource(R.drawable.apptheme_edit_text_holo_light);
-			layout_ticket_no_container.addView(ticket_no, lps);
+				EditText ticket_no = new EditText(this);
+				ticket_no.setInputType(InputType.TYPE_CLASS_NUMBER);
+				// ticket_no.setId(i+1);
+				lst_ticket_no.add(ticket_no);
+				ticket_no.setSingleLine(true);
+				ticket_no.setBackgroundResource(R.drawable.apptheme_edit_text_holo_light);
+				layout_ticket_no_container.addView(ticket_no, lps);
+			}
 		}
+
 		
 		if(selectedSeat.length > 1){
 			lst_ticket_no.get(0).addTextChangedListener(new TextWatcher() {
@@ -860,6 +854,8 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	};
 	protected String ticket_price = "0";
 	protected String total_amount;
+	protected String CustName;
+	protected String CustPhone;
 
 	private void comfirmOrder() {
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
@@ -907,7 +903,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		
 		Log.i("", "Param (Confirm) to encrypt: "
 				+"access: "+permit_access_token+
-				", SaleOrderNo: "+SaleOrderNo+
+				", SaleOrderNo: "+0+
 				", Reference no: "+edt_ref_invoice_no.getText().toString()+
 				", AgentID: "+Permit_agent_id+
 				", Agent Name: "+auto_txt_agent.getText().toString()+
@@ -927,7 +923,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		String param = MCrypt.getInstance()
 				.encrypt(
 				SecureParam.postSaleConfirmParam(permit_access_token
-				, SaleOrderNo, edt_ref_invoice_no.getText().toString()
+				, "0", edt_ref_invoice_no.getText().toString()
 				, Permit_agent_id, auto_txt_agent.getText().toString()
 				, edt_buyer.getText().toString()
 				, edt_phone.getText().toString(), edt_nrc_no.getText().toString()
@@ -994,7 +990,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 							//}
 							
 							//Store Sale on City Mart DB
-							postOnlineSale();
+							postOnlineSaleConfirm();
 						}
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -1016,16 +1012,16 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	}
 	
 	/**
-	 *  Store saled-data into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store sale (or) booking into Online Sale Database (test.starticketmyanmar.com)
 	 */
-	protected void postOnlineSale() {
+	protected void postOnlineSaleConfirm() {
 		// TODO Auto-generated method stub
-		Log.i("", "SaleOrderNo: "+SaleOrderNo+", Op-Id: "+permit_operator_id+", User code no: "+AppLoginUser.getCodeNo()
+		Log.i("", "SaleOrderNo: "+"0"+", Op-Id: "+permit_operator_id+", User code no: "+AppLoginUser.getCodeNo()
 				+", Token: "+AppLoginUser.getAccessToken());
 		
 		NetworkEngine.setIP("test.starticketmyanmar.com");
 		//NetworkEngine.setIP("128.199.255.246");
-		NetworkEngine.getInstance().postOnlineSaleDB(SaleOrderNo, permit_operator_id
+		NetworkEngine.getInstance().postOnlineSaleDB("0", permit_operator_id
 				, AppLoginUser.getCodeNo(), AppLoginUser.getAccessToken(), ExtraCityName, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
@@ -1154,6 +1150,8 @@ public class BusConfirmActivity extends BaseSherlockActivity {
     	return true;
    }
 	
+	private String fromPayment;
+	
 	private OnClickListener clickListener = new OnClickListener() {
 
 		public void onClick(View v) {
@@ -1175,14 +1173,27 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 				
 				if (checkFieldsAgent()) {
 					
-					Bundle bundle = new Bundle();
-					bundle.putString("from_to", bundle.getString("from_to"));
-					bundle.putString("Operator_Name", bundle.getString("Operator_Name"));
-					bundle.putString("date", bundle.getString("date"));
-					bundle.putString("time", bundle.getString("time"));
-					bundle.putString("classes", bundle.getString("classes"));
+					CustName = edt_buyer.getText().toString();
+					CustPhone = edt_phone.getText().toString();
 					
-					startActivity(new Intent(BusConfirmActivity.this, PaymentActivity.class).putExtras(bundle));
+					Bundle bundle = new Bundle();
+					bundle.putString("price", Price);
+					bundle.putString("seat_count", String.valueOf(selectedSeat.length));
+					bundle.putString("agentgroup_id", permit_operator_group_id);
+					bundle.putString("operator_id", permit_operator_id);
+					
+					if (radio_onilnePayment.isChecked()) {
+						startActivity(new Intent(BusConfirmActivity.this, PaymentActivity.class).putExtras(bundle));
+					}else if (radio_cashOnShop.isChecked()) {	//Booking (Pay @Store)
+						isBooking = 1;
+						fromPayment = "cashOnShop";
+						postSale();
+					}else {				//Booking (Pay On Delivery)
+						isBooking = 1;
+						fromPayment = "cashOnDelivery";
+						postSale();
+						
+					}
 					
 					if (skDetector.isConnectingToInternet()) {
 						Log.i("", "Enter here Agent confirm !!!!!!!!!!!!");
@@ -1191,26 +1202,203 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 						skDetector.showErrorMessage();
 					}
 				}
-				
-/*				if (user_type.equals("operator")) {
-					if (checkFieldsOperator()) {
-						if (skDetector.isConnectingToInternet()) {
-							Log.i("", "Enter here Operator confirm !!!!!!!!!!!!");
-							comfirmOrder();
-						}
-					}
-				}else {
-					if (checkFieldsAgent()) {
-						if (skDetector.isConnectingToInternet()) {
-							Log.i("", "Enter here Agent confirm !!!!!!!!!!!!");
-							comfirmOrder();
-						}
-					}
-				}*/
-
 			}
 		}
 	};
+	
+	public void postSale()
+	{
+		dialog = ProgressDialog.show(this, "", " Please wait...", true);
+        dialog.setCancelable(true);
+
+		//Do Encrypt of Params
+		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(permit_access_token
+					, permit_operator_id, Permit_agent_id, CustName, CustPhone, "0"
+					, "", permit_operator_group_id, MCrypt.getInstance()
+					.encrypt(seat_List.getSeatsList().toString()), BusOccurence, date, FromCity, ToCity, String.valueOf(AppLoginUser
+					.getId()), DeviceUtil.getInstance(this).getID(), isBooking.toString(),
+					String.valueOf(AppLoginUser.getId()),"true"));
+		
+		
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("param", param));       
+        
+		final Handler handler = new Handler() {
+
+			public void handleMessage(Message msg) {
+				
+				String jsonData = msg.getData().getString("data");
+				
+				Log.i("ans:","Server Response: "+jsonData);
+				
+				try {
+					
+					JSONObject jsonObject = null;
+					
+					if (jsonData != null) {
+						jsonObject = new JSONObject(jsonData);
+					}
+					String SeatLists = "";
+					
+					if (jsonObject != null) {
+						if(jsonObject.getString("status").equals("1")){
+							
+							if(jsonObject.getBoolean("can_buy") && jsonObject.getString("device_id").equals(DeviceUtil.getInstance(BusConfirmActivity.this).getID())){
+			        			
+								//Get Seats No. including (,)
+		        				JSONArray jsonArray = jsonObject.getJSONArray("tickets");	        					        			
+		        				
+		        				for(int i=0; i<jsonArray.length(); i++){
+		        					JSONObject obj = jsonArray.getJSONObject(i);
+		        					if (i == jsonArray.length() - 1) {
+		        						SeatLists += obj.getString("seat_no");
+									}else {
+										SeatLists += obj.getString("seat_no")+",";
+									}
+		        				}
+		        				
+		        				//Buy Ticket
+								if(isBooking == 0){
+									dialog.dismiss(); //finish can buy ticket
+			        				Intent nextScreen = new Intent(BusConfirmActivity.this, Payment2C2PActivity.class);
+			        				
+				    				/*Bundle bundle = new Bundle();
+				    				bundle.putString("from_intent", "checkout");
+				    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
+				    				bundle.putString("from_to", From+" => "+To);
+				    				bundle.putString("time", Time);
+				    				bundle.putString("classes", BusClasses);
+				    				bundle.putString("date", Date);
+				    				bundle.putString("selected_seat",  SeatLists);
+				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
+				    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
+				    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+			        				bundle.putString("ConfirmDate", todayDate);
+			        				bundle.putString("ConfirmTime", todayTime);
+			        				bundle.putString("CustomerName", AppLoginUser.getUserName());
+			        				//Get Seat Count
+			        				String[] seats = SeatLists.split(",");
+			        				bundle.putString("SeatCount", seats.length+"");
+				    				bundle.putString("permit_ip", permit_ip);
+				    				bundle.putString("permit_access_token", permit_access_token);
+				    				
+				    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
+									bundle.putString("permit_agent_id", permit_agent_id);
+									bundle.putString("permit_operator_id", permit_operator_id);
+									
+									//bundle.putString("client_operator_id", client_operator_id);
+				    				*/
+				    				//nextScreen.putExtras(bundle);
+				    				startActivity(nextScreen);
+			        			}else{ 
+			        				//Booking Finished!
+			        				isBooking = 0;
+			        				postOnlineSale(jsonObject.getString("sale_order_no"), SeatLists, jsonObject);
+			        			}
+
+			        		}else{
+			        			dialog.dismiss();
+			        			SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားေသာေၾကာင့္ သင္ မွာ ေသာ လက္ မွတ္ မ်ား မရ ႏုိင္ေတာ့ပါ။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
+			        			closeAllActivities();
+			        			startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+			        		}
+						}else{
+							isBooking = 0;
+							dialog.dismiss();
+							SKToastMessage.showMessage(BusConfirmActivity.this, "အခ်ိန္ ေနာက္ က် ေနသည့္ အတြက္ ၀ယ္ လုိ႔ မရပါ", SKToastMessage.ERROR);
+						}
+					}
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		HttpConnection lt = new HttpConnection(handler,"POST", "http://"+ permit_ip +"/sale", params);
+		lt.execute();
+		
+		Log.i("", "Post Sale: "+"http://"+ permit_ip +"/sale"+" , Params: "+params.toString());
+	}
+	
+	/**
+	 *  Store Booking (Orders) into Online Sale Database (test.starticketmyanmar.com)
+	 */
+	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject) {
+		// TODO Auto-generated method stub
+		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.getInstance().postOnlineSaleDB(
+				orderNo
+				, permit_operator_id
+				, AppLoginUser.getCodeNo()
+				, 1
+				, AppLoginUser.getAccessToken()
+				, new Callback<Response>() {
+			
+					public void failure(RetrofitError arg0) {
+						// TODO Auto-generated method stub
+						if (arg0.getResponse() != null) {
+							Log.i("", "Error: "+arg0.getResponse().getStatus());
+						}
+						dialog.dismiss();
+					}
+
+					public void success(Response arg0, Response arg1) {
+						// TODO Auto-generated method stub
+						if (arg1 != null) {
+							
+		    				try {
+/*		    					Bundle bundle = new Bundle();
+		        				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
+			    				bundle.putString("from_to", From+"-"+To);
+			    				bundle.putString("time", Time);
+			    				bundle.putString("classes", BusClasses);
+			    				bundle.putString("date", changeDateString(Date));
+			    				bundle.putString("selected_seat",  SeatLists);
+								bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
+								bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
+			    				bundle.putString("ticket_price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+		        				bundle.putString("ConfirmDate", todayDate);
+		        				bundle.putString("ConfirmTime", todayTime);
+		        				bundle.putString("CustomerName", AppLoginUser.getUserName());
+		        				bundle.putString("BuyerName",CustName);
+		        				bundle.putString("BuyerPhone",CustPhone);
+		        				bundle.putString("BuyerNRC","-");
+		        				//Get Seat Count
+		        				String[] seats = SeatLists.split(",");
+		        				bundle.putString("SeatCount", seats.length+"");
+			    				bundle.putString("permit_ip", permit_ip);
+			    				bundle.putString("permit_access_token", permit_access_token);
+			    				
+			    				Integer amount = BusSeats.get(0).getSeat_plan().get(0).getPrice() *  seats.length;
+			    				bundle.putString("total_amount", amount.toString());*/
+			    				//OrderDateTime = bundle.getString("order_date");
+			    				
+		        				//Show Voucher
+		        				//startActivity(new Intent(BusSelectSeatActivity.this, PDFBusActivity.class).putExtras(bundle));
+		    					
+		    					Log.i("", "Booking status: "+arg1.getStatus()+", reson: "+arg1.getReason());
+		    					
+		    					if (fromPayment.equals("cashOnShop")) {
+		    						SKToastMessage.showMessage(BusConfirmActivity.this, "Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။ သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။", SKToastMessage.SUCCESS);
+								}else if (fromPayment.equals("cashOnDelivery")) {
+									SKToastMessage.showMessage(BusConfirmActivity.this, "Booking မွာၿပီးပါၿပီ  ။   ဖုန္းနံပါတ္ "+AppLoginUser.getPhone()+" ကုိဆက္ၿပီး   (၂) နာရီ အတြင္း လာပုိ႔ေပးပါမည္။ ", SKToastMessage.SUCCESS);
+								}
+		    					
+								closeAllActivities();
+		    					startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
+		    					
+		    					dialog.dismiss();
+		    					
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}
+				});
+	}
 	
 	private void getAgent(){
 		
@@ -1259,8 +1447,10 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	
 	@Override
 	public void onBackPressed() {
+		
+		finish();
 		// TODO Auto-generated method stub
-		if (Intents.equals("booking")) {
+/*		if (Intents.equals("booking")) {
 			finish();
 		} else {
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
@@ -1276,10 +1466,10 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 									.isConnectingToInternet()) {
 								String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
 								
-								Log.i("", "Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(SaleOrderNo));
+								//Log.i("", "Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(SaleOrderNo));
 								
 								NetworkEngine.getInstance().deleteSaleOrder(
-										param, MCrypt.getInstance().encrypt(SaleOrderNo),
+										param, MCrypt.getInstance().encrypt(jso),
 										new Callback<Response>() {
 
 											public void success(
@@ -1309,7 +1499,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 
 			alertDialog.show();
 		}
-		// super.onBackPressed();
+		// super.onBackPressed(); */
 
 	}
 }

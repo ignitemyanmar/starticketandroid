@@ -1,5 +1,9 @@
 package com.ignite.mm.ticketing.custom.listview.adapter;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
@@ -7,10 +11,13 @@ import com.ignite.mm.ticketing.user.R;
 
 
 import android.app.Activity;
+import android.text.Html;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class PromotionAdapter extends BaseAdapter {
@@ -55,9 +62,14 @@ public class PromotionAdapter extends BaseAdapter {
 			
 			holder.txt_operator_promo = (TextView) convertView.findViewById(R.id.txt_operator_promo);
 			holder.txt_buy_amount = (TextView)convertView.findViewById(R.id.txt_buy_amount);
-			holder.txt_promo_amount = (TextView)convertView.findViewById(R.id.txt_promo_amount);
-			holder.txt_currency = (TextView)convertView.findViewById(R.id.txt_currency);
-			holder.txt_promo_type = (TextView)convertView.findViewById(R.id.txt_promo_type);
+			holder.txt_points = (TextView)convertView.findViewById(R.id.txt_points);
+			holder.txt_gift_money_amount = (TextView)convertView.findViewById(R.id.txt_gift_money_amount);
+			holder.txt_gift_parcel = (TextView)convertView.findViewById(R.id.txt_gift_parcel);
+			
+			holder.layout_points = (LinearLayout)convertView.findViewById(R.id.layout_points);
+			holder.layout_gift_money = (LinearLayout)convertView.findViewById(R.id.layout_gift_money);
+			
+			holder.txt_plus = (TextView)convertView.findViewById(R.id.txt_plus);
 			
 			convertView.setTag(holder);
 		}else {
@@ -65,18 +77,60 @@ public class PromotionAdapter extends BaseAdapter {
 			holder = (ViewHolder)convertView.getTag();
 		}
 		
-		holder.txt_operator_promo.setText(getItem(position).getOperatorName());
-		//holder.txt_buy_amount.setText("ယခုလတြင္ "+getItem(position).get);
-		holder.txt_promo_amount.setText(getItem(position).getOperatorName());
-		holder.txt_currency.setText(getItem(position).getOperatorName());
-		holder.txt_promo_type.setText(getItem(position).getOperatorName());
+		if (getItem(position).getOperatorName() == null) {
+			holder.txt_operator_promo.setText("မႏၱလာမင္း");
+		}else {
+			holder.txt_operator_promo.setText(getItem(position).getOperatorName());
+		}
+				
+		//Change (0,000,000) format
+		NumberFormat nf = NumberFormat.getInstance();
+		String startAmount = nf.format(Integer.valueOf(getItem(position).getStartAmount()));
+		String endAmount = nf.format(Integer.valueOf(getItem(position).getEndAmount()));
+				
+		holder.txt_buy_amount.setText(changeDateString(getItem(position).getStartDate())+"  မွ  "
+										+changeDateString(getItem(position).getEndDate())+" ရက္ေန႔ထိ (က်ပ္ "
+										+Html.fromHtml("<b>"+startAmount+"</b>")+" မွ က်ပ္ "
+										+Html.fromHtml("<b>"+endAmount+"</b>")+") ဖုိး ၀ယ္ယူၿပီး ~");
+		
+		if (getItem(position).getPoints() != null) {
+			holder.layout_points.setVisibility(View.VISIBLE);
+			holder.txt_points.setText(getItem(position).getPoints());
+		}
+		
+		if (getItem(position).getGiftMoney() != null) {
+			holder.layout_gift_money.setVisibility(View.VISIBLE);
+			holder.txt_gift_money_amount.setText(getItem(position).getGiftMoney());
+		}
+		
+		if (getItem(position).getGiftParcel() != null) {
+			holder.txt_gift_parcel.setVisibility(View.VISIBLE);
+			holder.txt_gift_parcel.setText("***"+getItem(position).getGiftParcel());
+		}
+		
+		if (getItem(position).getPoints() != null && getItem(position).getGiftMoney() != null) {
+			holder.txt_plus.setVisibility(View.VISIBLE);
+		}
 		
 		return convertView;
 	}
 	
 	static class ViewHolder {
 		
-		TextView txt_operator_promo, txt_buy_amount, txt_promo_amount, txt_currency, txt_promo_type;
+		TextView txt_operator_promo, txt_buy_amount, txt_points, txt_gift_money_amount, txt_gift_parcel, txt_plus;
+		LinearLayout layout_points, layout_gift_money;
+	}
+	
+	public static String changeDateString(String date){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date StartDate = null;
+		try {
+			StartDate = df.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return DateFormat.format("dd-MMMM-yyyy", StartDate).toString();
 	}
 }
 

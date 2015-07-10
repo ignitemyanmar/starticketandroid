@@ -13,6 +13,7 @@ import retrofit.http.Query;
 
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
+import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.ignite.mm.ticketing.sqlite.database.model.Operator;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
@@ -231,7 +232,17 @@ public interface INetworkEngine {
 			@Field("current_password") String current_password,
 			@Path("id") String id, Callback<LoginUser> callback);
 	
-	@GET("http://test.starticketmyanmar.com/promotion")
+	@GET("/promotion")
 	void GetPromotion(Callback<List<Promotion>> callback);
+	
+	@FormUrlEncoded
+	@POST("/loyalty/check")
+	void postLoyalty(
+			@Field("phone") String phone,
+			@Field("total_amount") String total_amount, 
+			@Field("payment_method_id") String payment_method_id,
+			@Field("agentgroup_id") String agentgroup_id,
+			@Field("operator_id") String operator_id,
+			Callback<Loyalty> callback);
 	
 }

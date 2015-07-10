@@ -48,6 +48,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.actionbarsherlock.app.ActionBar;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseSherlockActivity;
 import com.ignite.mm.ticketing.application.BookingDialog;
@@ -64,6 +65,7 @@ import com.ignite.mm.ticketing.custom.listview.adapter.GroupUserListAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.RemarkListAdapter;
 import com.ignite.mm.ticketing.http.connection.HttpConnection;
 import com.ignite.mm.ticketing.sqlite.database.model.Agent;
+import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.BusSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorGroupUser;
 import com.ignite.mm.ticketing.sqlite.database.model.Permission;
@@ -78,6 +80,8 @@ import com.smk.skalertmessage.SKToastMessage;
 @SuppressLint("SimpleDateFormat") public class BusSelectSeatActivity extends BaseSherlockActivity{
 	
 	public static List<BusSeat> Bus_Seat;
+	
+	
 	private ListView lvClass;
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -969,11 +973,57 @@ import com.smk.skalertmessage.SKToastMessage;
 				if(SelectedSeat.length() != 0){									
 					
 					if(connectionDetector.isConnectingToInternet()){
-						postSale();
+						
+						List<SelectSeat> seats = new ArrayList<SelectSeat>();
+				        
+				        String[] selectedSeat = SelectedSeat.split(",");
+				        
+						for (int i = 0; i < selectedSeat.length; i++) {
+							seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0)
+									.getId(), BusSeats.get(0).getSeat_plan().get(0)
+									.getSeat_list().get(Integer.valueOf(selectedSeat[i]))
+									.getSeat_no().toString()));
+						}
+						
+						final String FromCity = BusSeats.get(0).getSeat_plan().get(0).getFrom().toString();
+						final String ToCity = BusSeats.get(0).getSeat_plan().get(0).getTo().toString();
+						
+				        Log.i("","Hello From City: "+FromCity+" , To City : "+ToCity+" and Select Seat -> "+seats.toString());
+				        
+				        BundleListObjSeats seatsListObj = new BundleListObjSeats();
+				        seatsListObj.setSeatsList(seats);
+						
+						Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
+        				
+	    				Bundle bundle = new Bundle();
+	    				bundle.putString("from_intent", "checkout");
+	    				bundle.putString("FromCity", FromCity);
+	    				bundle.putString("ToCity", ToCity);
+	    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
+	    				bundle.putString("from_to", From+" => "+To);
+	    				bundle.putString("time", Time);
+	    				bundle.putString("classes", BusClasses);
+	    				bundle.putString("date", Date);
+	    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
+	    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+        				bundle.putString("ConfirmDate", todayDate);
+        				bundle.putString("ConfirmTime", todayTime);
+        				bundle.putString("CustomerName", AppLoginUser.getUserName());
+        				bundle.putString("Selected_seats", SelectedSeat);
+        				bundle.putString("seat_List", new Gson().toJson(seatsListObj));
+        				//Get Seat Count
+	    				bundle.putString("permit_ip", permit_ip);
+	    				bundle.putString("permit_access_token", permit_access_token);
+	    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
+						bundle.putString("permit_agent_id", permit_agent_id);
+						bundle.putString("permit_operator_id", permit_operator_id);
+	    				
+	    				nextScreen.putExtras(bundle);
+	    				startActivity(nextScreen);
+						//postSale();
 					}else{
 						connectionDetector.showErrorDialog();
 					}
-						
 				}else{
 					SKToastMessage.showMessage(BusSelectSeatActivity.this, "ခံု ေရြးပါ", SKToastMessage.ERROR);
 				}

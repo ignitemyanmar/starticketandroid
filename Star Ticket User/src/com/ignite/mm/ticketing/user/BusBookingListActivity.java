@@ -498,7 +498,10 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 		AlertDialog.Builder alert = new AlertDialog.Builder(BusBookingListActivity.this);
 		//alert.setIcon(R.drawable.attention_icon);
 		alert.setMessage(msg);
-		alert.show();
+		
+		if (alert != null) {
+			alert.show();
+		}
 	}
 	
 }

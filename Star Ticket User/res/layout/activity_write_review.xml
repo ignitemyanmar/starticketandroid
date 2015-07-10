@@ -65,6 +65,7 @@
             android:gravity="top"
             android:hint="သင့္ရဲ႕ ထင္ျမင္ခ်က္ေလး ေရးေပးခဲ့ပါ း)"
             android:inputType="textMultiLine"
+            android:minLines="10"
             android:maxLines="50"
             android:padding="5dp" >
 
