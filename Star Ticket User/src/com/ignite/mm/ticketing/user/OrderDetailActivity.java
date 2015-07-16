@@ -2,18 +2,18 @@ package com.ignite.mm.ticketing.user;
 
 import java.text.NumberFormat;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 
-public class OrderDetailActivity extends BaseSherlockActivity{
+public class OrderDetailActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -40,7 +40,7 @@ public class OrderDetailActivity extends BaseSherlockActivity{
 		
 		setContentView(R.layout.list_item_threeday_sales);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);

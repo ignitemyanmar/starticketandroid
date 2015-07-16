@@ -7,6 +7,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -23,13 +24,12 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.smk.skalertmessage.SKToastMessage;
 
-public class PaymentActivity extends BaseSherlockActivity{
+public class PaymentActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -63,7 +63,7 @@ public class PaymentActivity extends BaseSherlockActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(

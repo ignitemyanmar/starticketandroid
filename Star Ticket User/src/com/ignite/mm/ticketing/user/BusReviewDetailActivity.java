@@ -3,6 +3,7 @@ package com.ignite.mm.ticketing.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,10 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusReviewDetailAdapter;
 
-public class BusReviewDetailActivity extends BaseSherlockActivity{
+public class BusReviewDetailActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -31,7 +31,7 @@ public class BusReviewDetailActivity extends BaseSherlockActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(

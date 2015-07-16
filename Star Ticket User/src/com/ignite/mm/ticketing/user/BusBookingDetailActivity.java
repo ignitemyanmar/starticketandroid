@@ -8,6 +8,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -24,9 +25,8 @@ import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
@@ -38,7 +38,7 @@ import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class BusBookingDetailActivity extends BaseSherlockActivity {
+public class BusBookingDetailActivity extends BaseActivity {
 	private ListView lst_customer_ticket;
 	private List<BookingSearch> ticket_list;
 
@@ -59,14 +59,14 @@ public class BusBookingDetailActivity extends BaseSherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
 		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
 				R.id.action_bar_back);
 		actionBarBack.setOnClickListener(clickListener);
-		actionBarTitle.setText("�?ံု နံပါ�?္ မ်ား ဖ်က္ျ�?င္း");
+		actionBarTitle.setText("�?ံု နံပါ�?္ မ်ား ဖ်က္ျ�?င္း");
 		action_bar_title2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
 		action_bar_title2.setVisibility(View.GONE);

@@ -290,7 +290,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="50"
-                        android:background="@drawable/btn_green"
+                        android:background="@drawable/btn_gold_light"
                         android:padding="5dp"
                         android:text="လက္ မွတ္ မွာယူမည္"
                         android:textAppearance="?android:attr/textAppearanceMedium"

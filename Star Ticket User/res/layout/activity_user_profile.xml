@@ -9,7 +9,8 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@drawable/app_background" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -301,7 +302,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:gravity="center" >
+                android:gravity="center"
+                android:orientation="vertical" >
 
                 <com.smk.custom.view.CustomButton
                     android:id="@+id/btn_edit_info"
@@ -313,16 +315,35 @@
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
-                <com.smk.custom.view.CustomButton
-                    android:id="@+id/btn_order_history"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_gold"
-                    android:fadeScrollbars="true"
-                    android:text="Order စာရင္း >>"
-                    android:textColor="@color/white"
-                    android:textSize="18dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <com.smk.custom.view.CustomButton
+                        android:id="@+id/btn_my_booking"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/btn_gold"
+                        android:fadeScrollbars="true"
+                        android:text="ဘုိကင္မ်ား >>"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <com.smk.custom.view.CustomButton
+                        android:id="@+id/btn_order_history"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/btn_gold"
+                        android:fadeScrollbars="true"
+                        android:text="Order စာရင္း >>"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

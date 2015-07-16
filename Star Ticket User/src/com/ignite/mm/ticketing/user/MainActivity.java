@@ -1,18 +1,17 @@
 package com.ignite.mm.ticketing.user;
 
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.user.R;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 
-@SuppressLint("ShowToast") public class MainActivity extends SherlockActivity {
+@SuppressLint("ShowToast") public class MainActivity extends BaseActivity {
 	private Context ctx = this;
 	private ActionBar actionBar;
 	
@@ -31,8 +30,7 @@ import android.content.Intent;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		actionBar = getSupportActionBar();
-		
+		actionBar = getActionBar();
 		actionBar.hide();
 		//getActionBar().hide();
 		setContentView(R.layout.activity_main);
@@ -58,6 +56,5 @@ import android.content.Intent;
 		};
 
 		splashTread.start();
-
 	} 
 }

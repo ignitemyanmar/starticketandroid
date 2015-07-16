@@ -1,5 +1,6 @@
 package com.ignite.mm.ticketing.user;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,16 +11,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 
-public class UserProfileActivity extends BaseSherlockActivity{
+public class UserProfileActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
 	private Button btn_order_history;
+	private Button btn_my_booking;
 	private Button btn_edit_info;
 	private TextView txt_user_name;
 	private TextView txt_nrc;
@@ -35,7 +36,7 @@ public class UserProfileActivity extends BaseSherlockActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -67,8 +68,14 @@ public class UserProfileActivity extends BaseSherlockActivity{
 			if (v == btn_order_history) {
 				startActivity(new Intent(UserProfileActivity.this, ThreeDaySalesActivity.class));
 			}
+			if (v == btn_my_booking) {
+				Bundle bundle = new Bundle();
+				bundle.putString("from_intent", "reservationUser");
+				startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class).putExtras(bundle));
+			}
 		}
 	};
+	
 	
 	@Override
 	protected void onResume() {
@@ -100,8 +107,10 @@ public class UserProfileActivity extends BaseSherlockActivity{
 		
 		btn_edit_info = (Button)findViewById(R.id.btn_edit_info);
 		btn_order_history = (Button)findViewById(R.id.btn_order_history);
+		btn_my_booking = (Button)findViewById(R.id.btn_my_booking);
 		
 		btn_edit_info.setOnClickListener(clickListener);
 		btn_order_history.setOnClickListener(clickListener);
+		btn_my_booking.setOnClickListener(clickListener);
 	}
 }

@@ -1,15 +1,16 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,9 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
@@ -28,13 +27,13 @@ import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class UserLogin extends SherlockActivity {
+public class UserLogin extends BaseActivity {
 
 	private EditText txtEmail;
 	private EditText txtPassword;
 	
 	private Context ctx = this;
-	private Button[] buttons = new Button[3];
+	private FButton[] buttons = new FButton[3];
 	private ProgressDialog dialog;
 //	private String UserEmail, UserPassword;
 	private ActionBar actionBar;
@@ -48,7 +47,7 @@ public class UserLogin extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_login_phone);
-		
+         
 		//Check Screen Size
 /*		Configuration config = getResources().getConfiguration();
        
@@ -75,9 +74,19 @@ public class UserLogin extends SherlockActivity {
 		txtEmail = (EditText) this.findViewById(R.id.txt_login_email);
 		txtPassword = (EditText) this.findViewById(R.id.txt_login_password);
 
-		buttons[0] = (Button) findViewById(R.id.btn_login);
-		buttons[1] = (Button) findViewById(R.id.btn_skip_login);
-		buttons[2] = (Button) findViewById(R.id.btn_register);
+		buttons[0] = (FButton) findViewById(R.id.btn_login);
+		
+		//FButton fBtn = new FButton(getApplicationContext());
+		buttons[0].setButtonColor(getResources().getColor(R.color.golden_brown_light));
+		buttons[0].setShadowEnabled(true);
+		buttons[0].setShadowHeight(10);
+		buttons[0].setCornerRadius(7);
+		
+		buttons[1] = (FButton) findViewById(R.id.btn_skip_login);
+		buttons[2] = (FButton) findViewById(R.id.btn_register);
+		buttons[2].setShadowEnabled(true);
+		buttons[2].setShadowHeight(10);
+		buttons[2].setCornerRadius(7);
 
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i].setOnClickListener(clickListener);
@@ -86,7 +95,7 @@ public class UserLogin extends SherlockActivity {
 		connectionDetector = SKConnectionDetector.getInstance(this);
 		//connectionDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(!connectionDetector.isConnectingToInternet())
-			connectionDetector.showErrorMessage();
+			connectionDetector.showErrorDialog();
 		
 	}
 
@@ -200,7 +209,7 @@ public class UserLogin extends SherlockActivity {
 					}
 				}else{
 					
-					connectionDetector.showErrorMessage();
+					connectionDetector.showErrorDialog();
 					SharedPreferences sharedPreferences = ctx.getSharedPreferences("User",MODE_PRIVATE);
 					SharedPreferences.Editor editor = sharedPreferences.edit();
 					

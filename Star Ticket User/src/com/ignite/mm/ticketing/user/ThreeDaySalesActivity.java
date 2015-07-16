@@ -7,6 +7,7 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,11 +20,10 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.ThreeDaySalesLvAdapter;
@@ -35,7 +35,7 @@ import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.smk.sklistview.SKListView;
 import com.smk.sklistview.SKListView.Callbacks;
 
-public class ThreeDaySalesActivity extends BaseSherlockActivity{
+public class ThreeDaySalesActivity extends BaseActivity{
 
 	private String intents = "";
 	private ActionBar actionBar;
@@ -62,7 +62,7 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity{
 		
 		setContentView(R.layout.activity_threeday_sales);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -132,7 +132,8 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity{
 									+ arg0.getResponse()
 											.getStatus());
 					Log.e("", "Error URL: "+arg0.getUrl());
-					showAlert("Server တစ္ခုခု ခ်ိဳ႕ ယြင္း ေနပါသည္");
+					SKToastMessage.showMessage(ThreeDaySalesActivity.this, "Server တစ္ခုခု ခ်ိဳ႕ ယြင္း ေနပါသည္", SKToastMessage.ERROR);
+					//showAlert("Server တစ္ခုခု ခ်ိဳ႕ ယြင္း ေနပါသည္");
 				}
 				
 				dialog.dismiss();

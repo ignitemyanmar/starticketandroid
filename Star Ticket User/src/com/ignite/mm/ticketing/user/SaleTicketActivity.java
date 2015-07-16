@@ -11,6 +11,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,10 +26,9 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.FromCitiesAdapter;
@@ -41,7 +41,7 @@ import com.smk.calender.widget.SKCalender.Callbacks;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class SaleTicketActivity extends BaseSherlockActivity{
+public class SaleTicketActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -53,6 +53,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 	private Spinner spn_trip_time;
 	private Button btn_search;
 	private ArrayList<String> fromCities;
+	
 	private FromCitiesAdapter fromCitiesAdapter;
 	private String selectedFromCity;
 	private ProgressDialog dialog;
@@ -84,7 +85,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 			userRole = bundle.getString("userRole");
 		}
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -105,6 +106,9 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		
 		setContentView(R.layout.activity_sale_ticket);
+		
+		//Get Floating Menu from Base Activity
+		getFloatingMenu();
 		
 		spn_from_trip = (Spinner)findViewById(R.id.spn_from_trip);
 		spn_to_trip = (Spinner)findViewById(R.id.spn_to_trip);
@@ -141,7 +145,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 			getFromCities();
 			getToCities();
 		}else{
-			skDetector.showErrorMessage();
+			skDetector.showErrorDialog();
 		}
 		
 		spn_from_trip.setOnItemSelectedListener(fromCityClickListener);
@@ -304,7 +308,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 						if(skDetector.isConnectingToInternet()){
 							getTripTime();
 						}else{
-							skDetector.showErrorMessage();
+							skDetector.showErrorDialog();
 						}
 					}
 				}else {

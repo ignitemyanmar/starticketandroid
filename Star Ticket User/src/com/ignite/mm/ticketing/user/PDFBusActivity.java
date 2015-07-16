@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -24,6 +25,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
@@ -34,22 +37,16 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.ignite.barcode.GenerateBarcode;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.BluetoothDeviceDialog;
 import com.ignite.mm.ticketing.custom.listview.adapter.DeviceAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.PDFBusAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.AllBusObject;
 import com.ignite.mm.ticketing.sqlite.database.model.Device;
 import com.ignite.mm.ticketing.user.R;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.smk.skalertmessage.SKToastMessage;
 import com.zkc.helper.printer.BlueToothService;
 import com.zkc.helper.printer.PrintService;
@@ -57,7 +54,7 @@ import com.zkc.helper.printer.PrinterClass;
 import com.zkc.helper.printer.PrinterClassFactory;
 
 @SuppressLint({ "SdCardPath", "ShowToast" })
-public class PDFBusActivity extends BaseSherlockActivity {
+public class PDFBusActivity extends BaseActivity {
 	private final static String PDF_FILE_PATH = Environment.getExternalStorageDirectory()+"/IgniteEasyTicket/";
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -128,7 +125,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 		
 		setContentView(R.layout.bus_ticket_item);
 
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -295,7 +292,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 		return ret;
 	}
 
-	public void changePDF() {
+/*	public void changePDF() {
 		IfExistPDF("busticket.pdf");
 		Document document = new Document();
 
@@ -314,7 +311,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 		}
 		
 		goToMail("busticket.png");
-	}
+	}*/
 
 	private void goToMail(String pathName) {
 

@@ -1,20 +1,16 @@
 package com.ignite.mm.ticketing.user;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -22,13 +18,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.PromotionAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
 
-public class PromotionActivity extends BaseSherlockActivity{
+public class PromotionActivity extends BaseActivity{
 	private ListView lv_promotion;
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -42,7 +37,7 @@ public class PromotionActivity extends BaseSherlockActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(

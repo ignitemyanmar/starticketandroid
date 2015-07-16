@@ -60,7 +60,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:singleLine="true" >
 
@@ -80,7 +79,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:inputType="text"
                     android:singleLine="true" />
@@ -98,7 +96,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:inputType="number" />
 
@@ -155,7 +152,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:inputType="phone"
                     android:visibility="gone" />
@@ -202,7 +198,6 @@
                         android:id="@+id/edt_remark"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/apptheme_edit_text_holo_light"
                         android:ems="10"
                         android:inputType="textMultiLine"
                         android:minLines="3"

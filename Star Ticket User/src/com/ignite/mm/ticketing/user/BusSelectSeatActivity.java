@@ -17,14 +17,13 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -47,10 +46,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.BookingDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.application.DeviceUtil;
@@ -64,7 +62,6 @@ import com.ignite.mm.ticketing.custom.listview.adapter.BusSeatAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.GroupUserListAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.RemarkListAdapter;
 import com.ignite.mm.ticketing.http.connection.HttpConnection;
-import com.ignite.mm.ticketing.sqlite.database.model.Agent;
 import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.BusSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorGroupUser;
@@ -77,11 +74,9 @@ import com.ignite.mm.ticketing.user.R;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
 
-@SuppressLint("SimpleDateFormat") public class BusSelectSeatActivity extends BaseSherlockActivity{
+@SuppressLint("SimpleDateFormat") public class BusSelectSeatActivity extends BaseActivity{
 	
 	public static List<BusSeat> Bus_Seat;
-	
-	
 	private ListView lvClass;
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -152,7 +147,7 @@ import com.smk.skalertmessage.SKToastMessage;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bus_seat_list);
 
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);

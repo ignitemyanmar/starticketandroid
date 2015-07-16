@@ -7,6 +7,7 @@ import java.util.Date;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,22 +20,19 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.sqlite.database.model.Booking;
-import com.ignite.mm.ticketing.sqlite.database.model.BookingSearch;
-import com.ignite.mm.ticketing.sqlite.database.model.CreditOrder;
 import com.ignite.mm.ticketing.sqlite.database.model.Permission;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
+public class BusBookingConfirmDeleteActivity extends BaseActivity {
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private ImageButton actionBarBack;
@@ -60,7 +58,7 @@ public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -163,7 +161,7 @@ public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
 			if(connectionDetector.isConnectingToInternet()){
 				getPermission();
 			}else{
-				connectionDetector.showErrorMessage();
+				connectionDetector.showErrorDialog();
 			}
 		}
 	}

@@ -55,7 +55,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:hint="User Name"
                     android:inputType="textCapWords|textPersonName" />
@@ -73,7 +72,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:hint="Email"
                     android:inputType="textEmailAddress" />
@@ -91,7 +89,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:hint="Password"
                     android:inputType="textPassword" />
@@ -109,7 +106,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:hint="Confirm Password"
                     android:inputType="textPassword" />
@@ -128,7 +124,6 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:hint="Phone"
                     android:inputType="number" />
@@ -147,7 +142,6 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/apptheme_edit_text_holo_light"
                     android:ems="10"
                     android:hint="Address"
                     android:inputType="textMultiLine" />

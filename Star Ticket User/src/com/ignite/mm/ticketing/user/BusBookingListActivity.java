@@ -6,6 +6,7 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -23,10 +24,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.BookingFilterDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
@@ -41,7 +41,7 @@ import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class BusBookingListActivity extends BaseSherlockActivity {
+public class BusBookingListActivity extends BaseActivity {
 	private ListView lv_booking_list;
 	private List<CreditOrder> credit_list;
 	private ActionBar actionBar;
@@ -73,10 +73,11 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 			intents  =  bundle.getString("from_intent");
 		}
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
+		actionBarTitle.setText("Booking စာရင္း  ");
 		action_bar_title2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
 		action_bar_title2.setVisibility(View.GONE);
@@ -87,16 +88,16 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 		
 		//setContentView(R.layout.activity_busticketing_credit);
 		setContentView(R.layout.activity_bus_booking_list);
-		
+/*		
 		if (intents != null) {
 			if (intents.equals("reservation")) {
 				actionBarTitle.setText("Booking စာရင္း  (All)");
 			}else if (intents.equals("reservationUser")) {
-				actionBarTitle.setText("Booking စာရင္း  ("+AppLoginUser.getUserName()+")");
+				actionBarTitle.setText("Booking စာရင္း  ");
 			}else if (intents.equals("BusSelectSeat")) {
-				actionBarTitle.setText("Booking စာရင္း  ("+AppLoginUser.getUserName()+")");
+				actionBarTitle.setText("Booking စာရင္း  ");
 			}
-		}
+		}*/
 		
 		auto_txt_codeno = (EditText)findViewById(R.id.auto_txt_codeno);
 		btn_search_codeno = (Button)findViewById(R.id.btn_search_codeno);
@@ -116,35 +117,10 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 		
 		lv_booking_list = (ListView) findViewById(R.id.lv_booking_list);
 		credit_list = new ArrayList<CreditOrder>();
-		//lv_booking_list.setOnItemClickListener(itemClickListener);
-		//lv_booking_list.setClickable(true);
-		
-		//getTimeData();
-		//getCity();
-		
-	}
-	
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
 
 		connectionDetector = SKConnectionDetector.getInstance(this);
 		if(connectionDetector.isConnectingToInternet()){
-			
 			getBookingListByUser();
-			
-			if (intents != null) {
-				if (intents.equals("reservation")) {
-					//getBookingList();
-				}else if (intents.equals("reservationUser")) {
-					//getBookingListByUser();
-				}else if (intents.equals("BusSelectSeat")) {
-					//getBookingListByUser();
-				}
-			}else {
-				finish();
-			}
 		}else{
 			connectionDetector.showErrorMessage();
 		}
@@ -168,7 +144,9 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 					Log.i("", "Fail : "+arg0.getResponse().getStatus());
 				}
 				
-				dialog.dismiss();
+				if (dialog != null) {
+					dialog.dismiss();
+				}
 			}
 
 			public void success(Response arg0, Response arg1) {
@@ -189,14 +167,17 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 						lv_booking_list.setAdapter(new OrderListViewAdapter(BusBookingListActivity.this, bookingListByUser));
 						lv_booking_list.setDividerHeight(0);
 					}else {
-						showAlert("Booking မွာထားျခင္း မရွိေသးပါ");
+						//showAlert("Booking မွာထားျခင္း မရွိေသးပါ");
+						SKToastMessage.showMessage(BusBookingListActivity.this, "Booking မွာထားျခင္း မရွိေသးပါ", SKToastMessage.INFO);
 						layout_booking_cancel.setVisibility(View.GONE);
 						//view_cover.setVisibility(View.GONE);
 						lv_booking_list.setAdapter(null);
 					}
 				}
 				
-				dialog.dismiss();
+				if (dialog != null) {
+					dialog.dismiss();
+				}
 			}
 		});
 	}
@@ -233,8 +214,9 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 						
 						lv_booking_list.setAdapter(new OrderListViewAdapter(BusBookingListActivity.this, bookingListByUser));
 						lv_booking_list.setDividerHeight(0);
+						
 					}else {
-						showAlert("No Booking!");
+						//showAlert("No Booking!");
 						lv_booking_list.setAdapter(null);
 					}
 				}
@@ -261,7 +243,7 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 					if(connectionDetector.isConnectingToInternet()){
 						getBookingListByCodeNoPhone();
 					}else{
-						connectionDetector.showErrorMessage();
+						connectionDetector.showErrorDialog();
 					}
 				}
 			}

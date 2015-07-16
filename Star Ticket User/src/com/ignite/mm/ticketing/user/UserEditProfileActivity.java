@@ -3,6 +3,7 @@ package com.ignite.mm.ticketing.user;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -15,14 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class UserEditProfileActivity extends BaseSherlockActivity {
+public class UserEditProfileActivity extends BaseActivity {
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -51,7 +51,7 @@ public class UserEditProfileActivity extends BaseSherlockActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -115,7 +115,7 @@ public class UserEditProfileActivity extends BaseSherlockActivity {
 					if(skDetector.isConnectingToInternet()){
 						postEditProfile();
 					}else{
-						skDetector.showErrorMessage();
+						skDetector.showErrorDialog();
 					}
 				}
 			}

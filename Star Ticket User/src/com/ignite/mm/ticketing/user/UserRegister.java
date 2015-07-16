@@ -14,8 +14,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.user.R;
@@ -29,6 +28,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -43,7 +43,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class UserRegister extends SherlockActivity implements OnClickListener {
+public class UserRegister extends BaseActivity implements OnClickListener {
 	
 	private ProgressDialog dialog;
 	private ImageButton UserPhoto;
@@ -60,7 +60,7 @@ public class UserRegister extends SherlockActivity implements OnClickListener {
 	private String Splitphotoname = "default.png";
 	private String status;
 	int serverResponseCode = 0;
-	private com.actionbarsherlock.app.ActionBar actionBar;
+	private ActionBar actionBar;
 	//private static String http = "http://10.0.2.2/index.php/mobile";
 	private static String http = "http://www.mmjunction.com/index.php/mobile/";
     private static String user_register = http +"user";
@@ -104,7 +104,7 @@ public class UserRegister extends SherlockActivity implements OnClickListener {
         
         checkInternet = SKConnectionDetector.getInstance(this);
                 
-        actionBar = getSupportActionBar();
+        actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -226,7 +226,7 @@ public class UserRegister extends SherlockActivity implements OnClickListener {
 	    		}*/
 	    	}//End Check Fields
 		}else {
-			checkInternet.showErrorMessage();
+			checkInternet.showErrorDialog();
 		}
 	}
     

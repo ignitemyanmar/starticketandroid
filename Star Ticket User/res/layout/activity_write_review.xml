@@ -35,9 +35,9 @@
 
             <RatingBar
                 android:id="@+id/rateBar_operator"
-                style="@style/CustomRatingBar"
+                style="@style/RatingBarmy_theme"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:rating="2.5"
                 android:stepSize="0.5" />
             

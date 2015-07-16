@@ -1,10 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -17,15 +14,12 @@ import org.json.JSONObject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import android.R.drawable;
+import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -44,7 +38,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -54,11 +47,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.application.DeviceUtil;
 import com.ignite.mm.ticketing.application.MCrypt;
@@ -71,14 +62,12 @@ import com.ignite.mm.ticketing.sqlite.database.model.Agent;
 import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.ExtraCity;
-import com.ignite.mm.ticketing.sqlite.database.model.Saleitem;
-import com.ignite.mm.ticketing.sqlite.database.model.SelectSeat;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class BusConfirmActivity extends BaseSherlockActivity {
+public class BusConfirmActivity extends BaseActivity {
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -166,7 +155,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nrc_activity);
 
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
@@ -182,6 +171,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		actionBarNoti.setOnClickListener(clickListener);
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);		
 		
+		btn_confirm = (Button) findViewById(R.id.btn_confirm);
 		radio_onilnePayment = (RadioButton)findViewById(R.id.radio_onilnePayment);
 		radio_cashOnShop = (RadioButton)findViewById(R.id.radio_cashOnShop);
 		radio_cashOnDelivery = (RadioButton)findViewById(R.id.radio_cashOnDelivery);
@@ -582,7 +572,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		layout_ticket_no_container = (LinearLayout) findViewById(R.id.ticket_no_container);
 		layout_ticket_no_container.setVisibility(View.GONE);
 		
-		btn_confirm = (Button) findViewById(R.id.btn_confirm);
+		
 		
 		skDetector = new SKConnectionDetector(this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
@@ -600,7 +590,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 				auto_txt_agent.setVisibility(View.GONE);
 			//}
 		}else{
-			skDetector.showErrorMessage();
+			skDetector.showErrorDialog();
 		}
 		
 		btn_confirm.setOnClickListener(clickListener);
@@ -1192,14 +1182,13 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 						isBooking = 1;
 						fromPayment = "cashOnDelivery";
 						postSale();
-						
 					}
 					
 					if (skDetector.isConnectingToInternet()) {
 						Log.i("", "Enter here Agent confirm !!!!!!!!!!!!");
 						//comfirmOrder();
 					}else {
-						skDetector.showErrorMessage();
+						skDetector.showErrorDialog();
 					}
 				}
 			}

@@ -34,7 +34,7 @@
 
             <RatingBar
                 android:id="@+id/txt_show_rates"
-                style="@style/CustomRatingBarSmall"
+                style="@style/RatingBarSmallmy_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:layout_marginBottom="2dp"

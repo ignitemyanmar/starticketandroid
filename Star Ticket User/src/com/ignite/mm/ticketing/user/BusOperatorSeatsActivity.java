@@ -5,6 +5,7 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,9 +22,8 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.google.gson.reflect.TypeToken;
-import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.OperatorSeatsAdapter;
@@ -34,7 +34,7 @@ import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class BusOperatorSeatsActivity extends BaseSherlockActivity{
+public class BusOperatorSeatsActivity extends BaseActivity{
 	private String selectedFromCity = "";
 	private String selectedToCity = "";
 	private String selectedTripDate = "";
@@ -63,7 +63,7 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 			selectedTripTime = bundle.getString("trip_time");
 		}
 		
-		actionBar = getSupportActionBar();
+		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -107,7 +107,7 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 		if(skDetector.isConnectingToInternet()){
 			getOperatorSeats();
 		}else{
-			skDetector.showErrorMessage();
+			skDetector.showErrorDialog();
 		}
 	}
 

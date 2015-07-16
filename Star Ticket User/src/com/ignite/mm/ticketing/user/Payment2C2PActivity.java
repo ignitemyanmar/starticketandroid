@@ -1,5 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
+import com.ignite.mm.ticketing.application.BaseActivity;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-@SuppressLint("SetJavaScriptEnabled") public class Payment2C2PActivity extends Activity{
+@SuppressLint("SetJavaScriptEnabled") public class Payment2C2PActivity extends BaseActivity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
