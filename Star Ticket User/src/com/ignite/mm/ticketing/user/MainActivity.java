@@ -30,8 +30,8 @@ import android.content.Intent;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		actionBar = getActionBar();
-		actionBar.hide();
+		/*actionBar = getActionBar();
+		actionBar.hide();*/
 		//getActionBar().hide();
 		setContentView(R.layout.activity_main);
 		

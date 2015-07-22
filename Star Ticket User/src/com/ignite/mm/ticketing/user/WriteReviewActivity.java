@@ -1,7 +1,10 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,7 +26,7 @@ public class WriteReviewActivity extends BaseActivity{
 	private RatingBar rateBar_operator;
 	private TextView txt_rate_message;
 	private EditText edt_customer_comment;
-	private Button btn_submit_review;
+	private FButton btn_submit_review;
 	
 
 	@Override
@@ -31,29 +34,14 @@ public class WriteReviewActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setText("Review ေရးမည္");
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);	
-		
 		setContentView(R.layout.activity_write_review);
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Review ေရးမည္");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		txt_rate_message = (TextView)findViewById(R.id.txt_rate_message);
 		edt_customer_comment = (EditText)findViewById(R.id.edt_customer_comment);
@@ -87,7 +75,11 @@ public class WriteReviewActivity extends BaseActivity{
 			}
 		});
 		
-		btn_submit_review = (Button)findViewById(R.id.btn_submit_review);
+		btn_submit_review = (FButton)findViewById(R.id.btn_submit_review);
+		btn_submit_review.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_submit_review.setShadowEnabled(true);
+		btn_submit_review.setShadowHeight(3);
+		btn_submit_review.setCornerRadius(7);
 		
 		//addListenerOnRatingBar();
 		
@@ -106,6 +98,13 @@ public class WriteReviewActivity extends BaseActivity{
 				}
 			}
 		});
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 	
 	  public void addListenerOnRatingBar() {

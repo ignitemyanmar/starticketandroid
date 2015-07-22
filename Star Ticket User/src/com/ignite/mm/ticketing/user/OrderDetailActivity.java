@@ -3,7 +3,9 @@ package com.ignite.mm.ticketing.user;
 import java.text.NumberFormat;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -40,27 +42,6 @@ public class OrderDetailActivity extends BaseActivity{
 		
 		setContentView(R.layout.list_item_threeday_sales);
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBarTitle.setText("Order စာရင္း  အေသးစိတ္");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			orderString = extras.getString("order_detail");
@@ -68,7 +49,7 @@ public class OrderDetailActivity extends BaseActivity{
 		
 		orderDetailList = new Gson().fromJson(orderString, ThreeDaySale.class);
 		
-		 txt_order_no = (TextView)  findViewById(R.id.txt_order_no);
+		// txt_order_no = (TextView)  findViewById(R.id.txt_order_no);
 		 txt_buy_date = (TextView)  findViewById(R.id.txt_buy_date);
 		 txt_trip = (TextView)  findViewById(R.id.txt_trip);
 		 txt_trip_date_time = (TextView)  findViewById(R.id.txt_trip_date_time);
@@ -80,7 +61,15 @@ public class OrderDetailActivity extends BaseActivity{
 		 txt_amount = (TextView)  findViewById(R.id.txt_amount);
 		 txt_point = (TextView)  findViewById(R.id.txt_point);
 		 
-		txt_order_no.setText("Order နံပါတ္  : "+orderDetailList.getOrderId());
+		//txt_order_no.setText("Order နံပါတ္  : "+orderDetailList.getOrderId());
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Order နံပါတ္  : "+orderDetailList.getOrderId());
+            this.setSupportActionBar(toolbar);
+        }
+        
 		txt_buy_date.setText(orderDetailList.getDate());
 		txt_trip.setText(orderDetailList.getTrip());
 		txt_trip_date_time.setText(changeDate(orderDetailList.getDepartureDate())+" - "+orderDetailList.getTime());
@@ -98,5 +87,12 @@ public class OrderDetailActivity extends BaseActivity{
 		txt_seat_qty.setText(orderDetailList.getTicketQty()+"");
 		txt_amount.setText(amount+" Ks");
 		
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

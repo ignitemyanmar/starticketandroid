@@ -9,6 +9,7 @@ import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -53,7 +54,6 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_show_operator_seats);
-		
 		Bundle bundle = getIntent().getExtras();
 		
 		if (bundle != null) {
@@ -63,40 +63,25 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			selectedTripTime = bundle.getString("trip_time");
 		}
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBarTitle.setText(selectedFromCity+" - "+selectedToCity);
-		
-		if (selectedTripTime != null) {
-			if (!selectedTripDate.equals("") && selectedTripDate != null) {
-				if (!selectedTripTime.equals("") && selectedTripTime != null) {
-					actionBarTitle2.setText(changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
-				}else if (selectedTripTime.equals("") || selectedTripTime == null)
-				{
-					actionBarTitle2.setText(changeDate(selectedTripDate)+" [All Time]");
-				}
-			}else {
-				actionBarTitle2.setText("00/00/0000 [ 00:00:00 ]");
-			}
-		}
-		
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            
+    		if (selectedTripTime != null) {
+    			if (!selectedTripDate.equals("") && selectedTripDate != null) {
+    				if (!selectedTripTime.equals("") && selectedTripTime != null) {
+    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity+" "+changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
+    				}else if (selectedTripTime.equals("") || selectedTripTime == null)
+    				{
+    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity+" "+changeDate(selectedTripDate)+" [All Time]");
+    				}
+    			}else {
+    				toolbar.setTitle("00/00/0000 [ 00:00:00 ]");
+    			}
+    		}
+    		
+            this.setSupportActionBar(toolbar);
+        }
 		
 		lv_operator_seats = (ListView)findViewById(R.id.lv_operator_seats);
 		lv_operator_seats.setDividerHeight(0);
@@ -109,6 +94,13 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		}else{
 			skDetector.showErrorDialog();
 		}
+	}
+	
+	@Override
+	public Intent getParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getParentActivityIntent();
 	}
 
 	private void getOperatorSeats() {

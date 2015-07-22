@@ -1,5 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +25,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -34,12 +37,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -63,6 +64,8 @@ import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.ExtraCity;
 import com.ignite.mm.ticketing.user.R;
+import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
@@ -72,10 +75,10 @@ public class BusConfirmActivity extends BaseActivity {
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private ImageButton actionBarBack;
-	private Button btn_confirm;
-	private EditText edt_buyer;
-	private AutoCompleteTextView edt_nrc_no;
-	private EditText edt_phone;
+	private FButton btn_confirm;
+	private MaterialEditText edt_buyer;
+	private MaterialAutoCompleteTextView edt_nrc_no;
+	private MaterialEditText edt_phone;
 	private ProgressDialog dialog;
 	private String[] selectedSeat;
 	private LinearLayout layout_ticket_no_container;
@@ -84,10 +87,10 @@ public class BusConfirmActivity extends BaseActivity {
 	private TextView txt_agent;
 	private RadioButton rdo_cash_down;
 	private RadioButton rdo_credit;
-	private AutoCompleteTextView auto_txt_agent;
+	private MaterialAutoCompleteTextView auto_txt_agent;
 	private List<Agent> agentList;
 	private ArrayAdapter<Agent> agentListAdapter;
-	private EditText edt_ref_invoice_no;
+	private MaterialEditText edt_ref_invoice_no;
 	private RadioButton rdo_local;
 	private List<String> nrcFormat;
 	private ArrayAdapter<String> nrcListAdapter;
@@ -99,7 +102,7 @@ public class BusConfirmActivity extends BaseActivity {
 	protected String ExtraCityID = "0";
 	private Integer NotifyBooking;
 	private TextView actionBarNoti;
-	private EditText edt_remark;
+	private MaterialEditText edt_remark;
 	private Spinner sp_remark_type;
 	private Integer selectedRemarkType;
 	private LinearLayout layout_remark;
@@ -109,18 +112,18 @@ public class BusConfirmActivity extends BaseActivity {
 	private SKConnectionDetector skDetector;
 	private ConnectionDetector connectionDetector;
 	private String user_type;
-	private EditText ticket_no;
+	private MaterialEditText ticket_no;
 	private List<CheckBox> lst_free_chk = new ArrayList<CheckBox>();
 	private List<LinearLayout> lst_layout_free_ticket = new ArrayList<LinearLayout>();
 	private List<CheckBox> lst_discount_chk = new ArrayList<CheckBox>();
-	private List<EditText> lst_discount_edt = new ArrayList<EditText>();
+	private List<MaterialEditText> lst_discount_edt = new ArrayList<MaterialEditText>();
 	private List<RadioButton> lst_rdo_free_pro = new ArrayList<RadioButton>();
 	private List<RadioButton> lst_rdo_free_mnt = new ArrayList<RadioButton>();
 	private List<RadioButton> lst_rdo_free_10plus = new ArrayList<RadioButton>();
 	private List<RadioButton> lst_rdo_free_pilgrim = new ArrayList<RadioButton>();
 	private List<RadioButton> lst_rdo_free_spr = new ArrayList<RadioButton>();
 	private List<RadioGroup> lst_rdo_gp_free = new ArrayList<RadioGroup>();
-	private List<EditText> lst_ticket_no = new ArrayList<EditText>();
+	private List<MaterialEditText> lst_ticket_no = new ArrayList<MaterialEditText>();
 	private TextView actionBarTitle2;
 	private String Permit_agent_id;
 	private String permit_operator_group_id;
@@ -154,24 +157,13 @@ public class BusConfirmActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nrc_activity);
-
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
 		
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(clickListener);
-		actionBarNoti = (TextView) actionBar.getCustomView().findViewById(R.id.txt_notify_booking);
-		actionBarNoti.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);		
+		btn_confirm = (FButton) findViewById(R.id.btn_confirm);
+		btn_confirm.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_confirm.setShadowEnabled(true);
+		btn_confirm.setShadowHeight(3);
+		btn_confirm.setCornerRadius(7);
 		
-		btn_confirm = (Button) findViewById(R.id.btn_confirm);
 		radio_onilnePayment = (RadioButton)findViewById(R.id.radio_onilnePayment);
 		radio_cashOnShop = (RadioButton)findViewById(R.id.radio_cashOnShop);
 		radio_cashOnDelivery = (RadioButton)findViewById(R.id.radio_cashOnDelivery);
@@ -199,9 +191,14 @@ public class BusConfirmActivity extends BaseActivity {
 			}
 		}
 		
-		actionBarTitle.setText(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
-		Log.i("", "Date: "+bundle.getString("date"));
-		actionBarTitle2.setText(bundle.getString("date")+" ["+bundle.getString("time")+"] "+bundle.getString("classes"));
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"] "
+            				+bundle.getString("date")+" ["+bundle.getString("time")+"] "
+            				+bundle.getString("classes"));
+            this.setSupportActionBar(toolbar);
+        }
 		
 		if (bundle != null) {
 			FromCity = bundle.getString("FromCity");
@@ -227,20 +224,20 @@ public class BusConfirmActivity extends BaseActivity {
 		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
 		
-		edt_buyer = (EditText) findViewById(R.id.edt_buyer);	
+		edt_buyer = (MaterialEditText) findViewById(R.id.edt_buyer);	
 		if (Name != null) {
 			edt_buyer.setText(Name);
 		}
-		edt_nrc_no = (AutoCompleteTextView) findViewById(R.id.edt_nrc_no);
+		edt_nrc_no = (MaterialAutoCompleteTextView) findViewById(R.id.edt_nrc_no);
 		if (Nrc != null) {
 			edt_nrc_no.setText(Nrc);
 		}
-		edt_phone = (EditText) findViewById(R.id.edt_phone);
+		edt_phone = (MaterialEditText) findViewById(R.id.edt_phone);
 		if (Phone != null) {
 			edt_phone.setText(Phone);
 		}
 		txt_agent = (CustomTextView) findViewById(R.id.txt_seller);
-		edt_ref_invoice_no = (EditText) findViewById(R.id.edt_ref_invoice_no);
+		edt_ref_invoice_no = (MaterialEditText) findViewById(R.id.edt_ref_invoice_no);
 		rdo_cash_down = (RadioButton) findViewById(R.id.rdo_cash_down);
 		rdo_credit = (RadioButton) findViewById(R.id.rdo_credit);
 		rdo_local = (RadioButton) findViewById(R.id.rdo_local);
@@ -248,7 +245,7 @@ public class BusConfirmActivity extends BaseActivity {
 		sp_extra_city = (Spinner) findViewById(R.id.sp_extra_city);
 		layout_remark = (LinearLayout) findViewById(R.id.layout_remark);
 		sp_remark_type = (Spinner) findViewById(R.id.sp_remark_type);
-		edt_remark = (EditText) findViewById(R.id.edt_remark);
+		edt_remark = (MaterialEditText) findViewById(R.id.edt_remark);
 		
 		nrcFormat = new ArrayList<String>();
 		nrcFormat.add("14/Ba Ba La (N)");
@@ -565,7 +562,7 @@ public class BusConfirmActivity extends BaseActivity {
 		nrcListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, nrcFormat);
 		edt_nrc_no.setAdapter(nrcListAdapter);
 		
-		auto_txt_agent = (AutoCompleteTextView) findViewById(R.id.txt_agent);
+		auto_txt_agent = (MaterialAutoCompleteTextView) findViewById(R.id.txt_agent);
 		
 	    agentList = new ArrayList<Agent>();
 		
@@ -701,7 +698,7 @@ public class BusConfirmActivity extends BaseActivity {
 				layout_free_ticket.addView(rdo_gp_free);
 				layout_ticket_no_container.addView(layout_free_ticket);
 
-				EditText edt_discount = new EditText(this);
+				MaterialEditText edt_discount = new MaterialEditText(this);
 				edt_discount.setHint("Enter the discount amount.");
 				edt_discount.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 				// edt_discount.setId(i+1 * 400);
@@ -709,7 +706,7 @@ public class BusConfirmActivity extends BaseActivity {
 				edt_discount.setVisibility(View.GONE);
 				layout_ticket_no_container.addView(edt_discount);
 
-				EditText ticket_no = new EditText(this);
+				MaterialEditText ticket_no = new MaterialEditText(this);
 				ticket_no.setInputType(InputType.TYPE_CLASS_NUMBER);
 				// ticket_no.setId(i+1);
 				lst_ticket_no.add(ticket_no);
@@ -747,6 +744,13 @@ public class BusConfirmActivity extends BaseActivity {
 		extraCity = new ArrayList<ExtraCity>();
 		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select Extra City", "", ""));
 		
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 	
 	private OnItemSelectedListener remarkTypeSelectedListener = new OnItemSelectedListener() {
@@ -854,7 +858,7 @@ public class BusConfirmActivity extends BaseActivity {
 		List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
 		
 		for (int i = 0; i < selectedSeat.length; i++) {
-			//EditText ticket_no = (EditText)findViewById(i+1);
+			//MaterialEditText ticket_no = (MaterialEditText)findViewById(i+1);
 			//CheckBox free_ticket = (CheckBox) findViewById(i+1 * 100);
 			String free_ticket_remark = null;
 			if (lst_free_chk.get(i).isChecked()) {
@@ -866,7 +870,7 @@ public class BusConfirmActivity extends BaseActivity {
 			
 			String discount = "0";
 			if (lst_discount_chk.get(i).isChecked()) {
-				EditText edt_discount = lst_discount_edt.get(i);
+				MaterialEditText edt_discount = lst_discount_edt.get(i);
 				if (edt_discount.getText().toString().length() == 0) {
 					dialog.dismiss();
 					edt_discount.setError("Please enter the discount amount.");

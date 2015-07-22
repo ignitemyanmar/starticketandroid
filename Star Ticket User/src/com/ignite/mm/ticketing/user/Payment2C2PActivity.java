@@ -41,7 +41,7 @@ import android.widget.Toast;
 		   }
 		 });
 
-		 getWindow().requestFeature(Window.FEATURE_PROGRESS);
+		// getWindow().requestFeature(Window.FEATURE_PROGRESS);
 		 
 		 //webview.loadUrl("http://developer.android.com/");
 		 webview.loadUrl("https://demo2.2c2p.com/2C2PFrontEnd/RedirectV3/payment");

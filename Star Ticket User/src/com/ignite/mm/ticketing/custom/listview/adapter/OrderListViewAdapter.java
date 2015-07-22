@@ -66,12 +66,13 @@ public class OrderListViewAdapter extends BaseAdapter {
 		}
 		
 		holder.txt_order_no.setText("Order No :  "+getItem(position).getId());
-		holder.txt_customer.setText(getItem(position).getCustomerName()+" ["
-				+getItem(position).getCustomerPhone()+"]");
-		holder.txt_trip.setText(getItem(position).getTrip()+" ["+getItem(position).getOperator()+"]");
-		holder.txt_dept_info.setText("["+getItem(position).getDepartureDate()+" - "
-									+getItem(position).getTime()+"] "+getItem(position).getClass_()+" ["
-									+getItem(position).getPrice()+" Ks]");
+		
+		holder.txt_customer.setText(getItem(position).getCustomerName()+" ("
+				+getItem(position).getCustomerPhone()+")");
+		holder.txt_trip.setText(getItem(position).getTrip()+" "+getItem(position).getOperator());
+		holder.txt_dept_info.setText("("+getItem(position).getDepartureDate()+" - "
+									+getItem(position).getTime()+") "+getItem(position).getClass_()+" ("
+									+getItem(position).getPrice()+" Ks)");
 		holder.txt_seats.setText(getItem(position).getSeatNo());
 		holder.txt_order_date.setText(getItem(position).getDate());
 		holder.txt_amount.setText(getItem(position).getTotalAmount()+" Ks");

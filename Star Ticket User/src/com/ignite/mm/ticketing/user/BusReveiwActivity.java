@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -32,30 +33,15 @@ public class BusReveiwActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setText("ဘတ္ (စ္) ကား Info");
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);	
-		
 		setContentView(R.layout.activity_bus_review);
-        
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("ဘတ္ (စ္) ကား Info");
+            this.setSupportActionBar(toolbar);
+        }
+		
 		layout_bus_review = (LinearLayout)findViewById(R.id.layout_bus_review);
 		lv_bus_profile = (ListView)findViewById(R.id.lv_bus_profile);
 		
@@ -79,4 +65,10 @@ public class BusReveiwActivity extends BaseActivity{
 		});
 	}
 	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
+	}
 }

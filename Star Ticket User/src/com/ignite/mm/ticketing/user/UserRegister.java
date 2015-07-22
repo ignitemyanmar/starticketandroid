@@ -1,5 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -18,6 +20,7 @@ import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.user.R;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
@@ -34,11 +37,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,14 +50,14 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 	
 	private ProgressDialog dialog;
 	private ImageButton UserPhoto;
-	private EditText txtFirstname;
-	private EditText txtLastname;
-	private EditText txtNRC;
-	private EditText txtEmail;
-	private EditText txtPassword;
-	private EditText txtCPassword;
-	private EditText txtPhone;
-	private EditText txtAddress , txtBankAccNo;
+	private MaterialEditText txtFirstname;
+	private MaterialEditText txtLastname;
+	private MaterialEditText txtNRC;
+	private MaterialEditText txtEmail;
+	private MaterialEditText txtPassword;
+	private MaterialEditText txtCPassword;
+	private MaterialEditText txtPhone;
+	private MaterialEditText txtAddress , txtBankAccNo;
 	private Intent intent;
 	private String photoname;
 	private String Splitphotoname = "default.png";
@@ -92,7 +95,7 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 	private String TicketTypeID, BusDesID, BusDesName, Date, AgentID, AgentName, DepID, DepTime, SelectedSeatIndex;
 	private TextView actionBarTitle2;
 	private SKConnectionDetector checkInternet;
-	private EditText txtUserName;
+	private MaterialEditText txtUserName;
 	
     
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -102,34 +105,33 @@ public class UserRegister extends BaseActivity implements OnClickListener {
         
         setContentView(R.layout.activity_register);
         
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Register");
+            this.setSupportActionBar(toolbar);
+        }
+        
         checkInternet = SKConnectionDetector.getInstance(this);
                 
-        actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(clickListener);
-		actionBarTitle.setText("User's Register");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
         /*SharedPreferences pref = this.getApplicationContext().getSharedPreferences("User", Activity.MODE_PRIVATE);
 		userid = pref.getString("userid",null);*/
 		
         UserPhoto = (ImageButton) this.findViewById(R.id.user_photo);
-        txtUserName = (EditText) this.findViewById(R.id.txt_user_name);
-        txtEmail = (EditText) this.findViewById(R.id.txtUserEmail);
-        txtPassword = (EditText) this.findViewById(R.id.txtUserPassword);
-        txtCPassword = (EditText) this.findViewById(R.id.txtUserConfirmPassword);
-        //txtBankAccNo = (EditText) this.findViewById(R.id.txtBankAccNo);
-        txtPhone = (EditText)this.findViewById(R.id.txtPhone);
-        txtAddress = (EditText)this.findViewById(R.id.txtAddress);
+        txtUserName = (MaterialEditText) this.findViewById(R.id.txt_user_name);
+        txtEmail = (MaterialEditText) this.findViewById(R.id.txtUserEmail);
+        txtPassword = (MaterialEditText) this.findViewById(R.id.txtUserPassword);
+        txtCPassword = (MaterialEditText) this.findViewById(R.id.txtUserConfirmPassword);
+        //txtBankAccNo = (MaterialEditText) this.findViewById(R.id.txtBankAccNo);
+        txtPhone = (MaterialEditText)this.findViewById(R.id.txtPhone);
+        txtAddress = (MaterialEditText)this.findViewById(R.id.txtAddress);
         UserPhoto.setTag("nopic");
-        Button btnRegister =(Button)findViewById(R.id.btnRegister);
+        FButton btnRegister =(FButton)findViewById(R.id.btnRegister);
+        btnRegister.setButtonColor(getResources().getColor(R.color.yellow));
+        btnRegister.setShadowEnabled(true);
+        btnRegister.setShadowHeight(3);
+        btnRegister.setCornerRadius(7);
+        
         btnRegister.setOnClickListener(this);
        
         UserPhoto.setOnClickListener(new OnClickListener() {
@@ -144,6 +146,15 @@ public class UserRegister extends BaseActivity implements OnClickListener {
         });
    
     }    
+    
+    
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
+	}
+	
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
         	
@@ -162,6 +173,8 @@ public class UserRegister extends BaseActivity implements OnClickListener {
             }
         }
     }
+    
+    
     //This Method is to get the Image Path from Gallery
 	public String getPath(Uri uri) {
 		

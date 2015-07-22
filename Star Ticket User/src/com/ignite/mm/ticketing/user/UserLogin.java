@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,7 +48,14 @@ public class UserLogin extends BaseActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_login_phone);
-         
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Log In");
+            this.setSupportActionBar(toolbar);
+        }
+        
 		//Check Screen Size
 /*		Configuration config = getResources().getConfiguration();
        
@@ -58,19 +66,6 @@ public class UserLogin extends BaseActivity {
 			setContentView(R.layout.activity_login_phone);
 		}*/
 		
-/*		actionBar = getSupportActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(clickListener);
-		actionBarTitle.setText("Agent's Login");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
-		
 		txtEmail = (EditText) this.findViewById(R.id.txt_login_email);
 		txtPassword = (EditText) this.findViewById(R.id.txt_login_password);
 
@@ -79,13 +74,15 @@ public class UserLogin extends BaseActivity {
 		//FButton fBtn = new FButton(getApplicationContext());
 		buttons[0].setButtonColor(getResources().getColor(R.color.golden_brown_light));
 		buttons[0].setShadowEnabled(true);
-		buttons[0].setShadowHeight(10);
+		buttons[0].setShadowHeight(3);
 		buttons[0].setCornerRadius(7);
 		
 		buttons[1] = (FButton) findViewById(R.id.btn_skip_login);
+		
 		buttons[2] = (FButton) findViewById(R.id.btn_register);
+		buttons[2].setButtonColor(getResources().getColor(R.color.yellow));
 		buttons[2].setShadowEnabled(true);
-		buttons[2].setShadowHeight(10);
+		buttons[2].setShadowHeight(3);
 		buttons[2].setCornerRadius(7);
 
 		for (int i = 0; i < buttons.length; i++) {
@@ -174,6 +171,8 @@ public class UserLogin extends BaseActivity {
 									
 									Log.i("", "name : "+user.getUserName()+", role: "+user.getRole());
 									
+									//finish();
+									
 									Intent intent = new Intent(getApplicationContext(),	SaleTicketActivity.class).putExtras(bundle);
 									//Intent intent = new Intent(getApplicationContext(),	BusOperatorActivity.class);
 			   						startActivity(intent);
@@ -230,7 +229,7 @@ public class UserLogin extends BaseActivity {
 				}
 			}//End Log in button
 			
-			//for skip button
+/*			//for skip button
 			if(v == buttons[1])
 			{
 				SharedPreferences sharedPreferences = ctx.getSharedPreferences("User",MODE_PRIVATE);
@@ -243,11 +242,11 @@ public class UserLogin extends BaseActivity {
 				
 				editor.putString("useremail", null);
 				editor.commit();
-			}
+			}*/
 			
 			// for User Register
 			if (v == buttons[2]) {
-				startActivity(new Intent(ctx, UserRegister.class));
+				startActivity(new Intent(UserLogin.this, UserRegister.class));
 			}
 
 		}
@@ -296,4 +295,11 @@ public class UserLogin extends BaseActivity {
 		});
         alert.show();
     }
+    
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
+	}
 }

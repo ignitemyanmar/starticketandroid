@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -73,31 +74,14 @@ public class BusBookingListActivity extends BaseActivity {
 			intents  =  bundle.getString("from_intent");
 		}
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setText("Booking စာရင္း  ");
-		action_bar_title2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		action_bar_title2.setVisibility(View.GONE);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
-		//setContentView(R.layout.activity_busticketing_credit);
 		setContentView(R.layout.activity_bus_booking_list);
-/*		
-		if (intents != null) {
-			if (intents.equals("reservation")) {
-				actionBarTitle.setText("Booking စာရင္း  (All)");
-			}else if (intents.equals("reservationUser")) {
-				actionBarTitle.setText("Booking စာရင္း  ");
-			}else if (intents.equals("BusSelectSeat")) {
-				actionBarTitle.setText("Booking စာရင္း  ");
-			}
-		}*/
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Booking စာရင္း  ");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		auto_txt_codeno = (EditText)findViewById(R.id.auto_txt_codeno);
 		btn_search_codeno = (Button)findViewById(R.id.btn_search_codeno);
@@ -124,6 +108,13 @@ public class BusBookingListActivity extends BaseActivity {
 		}else{
 			connectionDetector.showErrorMessage();
 		}
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 	
 	/**

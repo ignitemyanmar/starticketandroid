@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,29 +32,17 @@ public class BusReviewDetailActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setText("Reviews");
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);	
-		
 		setContentView(R.layout.activity_bus_review_detail);
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Reviews");
+            /*toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"] "
+            					+bundle.getString("date")+" ["+bundle.getString("time")+"] "
+            					+bundle.getString("classes"));*/
+            this.setSupportActionBar(toolbar);
+        }
 		
 		//rateBar_operator = (RatingBar)findViewById(R.id.rateBar_operator);
 		btn_write_review = (Button)findViewById(R.id.btn_write_review);
@@ -78,5 +67,12 @@ public class BusReviewDetailActivity extends BaseActivity{
 				startActivity(new Intent(BusReviewDetailActivity.this, WriteReviewActivity.class));
 			}
 		});
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

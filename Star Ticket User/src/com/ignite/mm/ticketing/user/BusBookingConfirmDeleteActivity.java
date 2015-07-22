@@ -58,7 +58,7 @@ public class BusBookingConfirmDeleteActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		actionBar = getActionBar();
+/*		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -69,9 +69,12 @@ public class BusBookingConfirmDeleteActivity extends BaseActivity {
 		action_bar_title2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
 		action_bar_title2.setVisibility(View.GONE);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 		
 		setContentView(R.layout.activity_pay_delete);
+		
+		//Get Floating Menu from Base Activity
+		getFloatingMenu();
 		
 		btn_pay = (Button) findViewById(R.id.btn_pay);
 		btn_cancel_order = (Button) findViewById(R.id.btn_cancel);

@@ -11,6 +11,7 @@ import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,26 +63,12 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		
 		setContentView(R.layout.activity_threeday_sales);
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBarTitle.setText("Order စာရင္း ");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Order စာရင္း ");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		lv_threeday_sales = (SKListView)findViewById(R.id.lst_threeday_sales);	
 		lv_threeday_sales.setOnItemClickListener(clickListener);
@@ -109,6 +96,13 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		threeDaySalesLvAdapter = new ThreeDaySalesLvAdapter(this, lst_threeday_sale);
 		lv_threeday_sales.setAdapter(threeDaySalesLvAdapter);
 		lv_threeday_sales.setDividerHeight(0);
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 
 	/**

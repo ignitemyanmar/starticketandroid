@@ -1,5 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +54,7 @@ public class SaleTicketActivity extends BaseActivity{
 	private Spinner spn_to_trip;
 	private Spinner spn_trip_date;
 	private Spinner spn_trip_time;
-	private Button btn_search;
+	private FButton btn_search;
 	private ArrayList<String> fromCities;
 	
 	private FromCitiesAdapter fromCitiesAdapter;
@@ -78,34 +81,21 @@ public class SaleTicketActivity extends BaseActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			login_name = bundle.getString("login_name");
 			userRole = bundle.getString("userRole");
 		}
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle.setText("၀ယ္ မည္ (သုိ႔) Booking");
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
 		setContentView(R.layout.activity_sale_ticket);
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("ခရီးစဥ္၊ ရက္၊ အခ်ိန္ ေရြးပါ ~");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		//Get Floating Menu from Base Activity
 		getFloatingMenu();
@@ -114,7 +104,11 @@ public class SaleTicketActivity extends BaseActivity{
 		spn_to_trip = (Spinner)findViewById(R.id.spn_to_trip);
 		btn_trip_date = (Button)findViewById(R.id.btn_trip_date);
 		spn_trip_time = (Spinner)findViewById(R.id.spn_trip_time);
-		btn_search = (Button)findViewById(R.id.btn_search);
+		btn_search = (FButton)findViewById(R.id.btn_search);
+		btn_search.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_search.setShadowEnabled(true);
+		btn_search.setShadowHeight(3);
+		btn_search.setCornerRadius(7);
 		
 		txt_promotion = (TextView)findViewById(R.id.txt_promotion);
 		txt_review = (TextView)findViewById(R.id.txt_review);
@@ -154,6 +148,13 @@ public class SaleTicketActivity extends BaseActivity{
 		
 		btn_trip_date.setOnClickListener(clickListener);
 		btn_search.setOnClickListener(clickListener);
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 
 	private void getFromCities() {

@@ -124,8 +124,11 @@ public class PDFBusActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.bus_ticket_item);
+		
+		//Get Floating Menu from Base Activity
+		getFloatingMenu();	
 
-		actionBar = getActionBar();
+	/*	actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -139,7 +142,7 @@ public class PDFBusActivity extends BaseActivity {
 		img_print.setVisibility(View.VISIBLE);
 		img_print.setOnClickListener(clickListener);
 		actionBarBack.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 
 		//deviceList = new ArrayList<Device>();
 		

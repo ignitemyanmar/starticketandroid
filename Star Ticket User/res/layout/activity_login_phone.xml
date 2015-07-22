@@ -1,146 +1,137 @@
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/LinearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/app_background"
-        android:gravity="center"
-        android:orientation="vertical" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
 
-        <ScrollView
-            android:id="@+id/scrollView1"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarStyle="outsideOverlay" >
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:minWidth="320dp"
+                android:orientation="vertical"
+                android:padding="5dp" >
 
-                <LinearLayout
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txt_login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/border_radius"
-                    android:gravity="center_vertical"
-                    android:minWidth="320dp"
-                    android:orientation="vertical"
-                    android:padding="20dp" >
+                    android:drawableLeft="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:ems="30"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:maxWidth="300dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" >
 
-                    <EditText
-                        android:id="@+id/txt_login_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:drawablePadding="10dp"
-                        android:ems="30"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress"
-                        android:maxWidth="300dp"
-                        android:paddingLeft="5dp"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" >
+                    <requestFocus />
+                </com.rengwuxian.materialedittext.MaterialEditText>
 
-                        <requestFocus />
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txt_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_password"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxWidth="300dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown"
+                     />
+            </LinearLayout>
 
-                    </EditText>
-
-
-                    <EditText
-                        android:id="@+id/txt_login_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:ems="10"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:maxWidth="300dp"
-                        android:paddingLeft="5dp"
-                        android:typeface="normal"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
-
-                    <info.hoang8f.widget.FButton
-                        android:id="@+id/btn_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:minHeight="@dimen/button_min_height"
-                		android:minWidth="@dimen/button_min_width"
-                        android:background="@drawable/btn_gold"
-                        android:text="LOGIN"
-                        android:textColor="@color/white"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        />
-
-                    <TextView
-                        android:id="@+id/txt_notrip"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Account မရွိေသးလွ်င္ Register ကုိ ႏွိပ္ပါ"
-                        android:textColor="@color/golden_brown"
-                        android:textSize="14dp"
-                        android:visibility="visible" />
-
-                    <info.hoang8f.widget.FButton
-                        android:id="@+id/btn_register"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/border_radius_orange"
-                        android:minHeight="@dimen/button_min_height"
-                		android:minWidth="@dimen/button_min_width"
-                        android:text="Register"
-                        android:textColor="@color/black"
-                        android:visibility="visible"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-                </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
                 <info.hoang8f.widget.FButton
-                    android:id="@+id/btn_skip_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/ticketing_background"
-                    android:gravity="bottom|center_horizontal"
-                    android:shadowColor="#E2E2E2"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="5"
-                    android:text="SKIP LOGIN?"
-                    android:textColor="#2073D3"
-                    android:visibility="gone" />
-
-
-                <Button
-                    android:id="@+id/cmd_to_register"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/ticketing_background"
-                    android:gravity="bottom|center_horizontal"
-                    android:shadowColor="#E2E2E2"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="5"
-                    android:text="DON&apos;T HAVE AN ACCOUNT?"
-                    android:textColor="#2073D3"
-                    android:visibility="gone" />
+                    android:background="@drawable/btn_gold"
+                    android:minHeight="@dimen/button_min_height"
+                    android:minWidth="@dimen/button_min_width"
+                    android:text="Log in "
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/white" />
 
+                <TextView
+                    android:id="@+id/txt_notrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Account မရွိေသးလွ်င္ Register ကုိ ႏွိပ္ပါ"
+                    android:textColor="@color/golden_brown"
+                    android:textSize="14dp"
+                    android:visibility="visible" />
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:minHeight="@dimen/button_min_height"
+                    android:minWidth="@dimen/button_min_width"
+                    android:text="Register"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
             </LinearLayout>
 
-        </ScrollView>
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_skip_login"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
-    
-    
-

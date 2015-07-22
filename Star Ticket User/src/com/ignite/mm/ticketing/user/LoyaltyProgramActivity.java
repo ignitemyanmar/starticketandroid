@@ -22,7 +22,7 @@ public class LoyaltyProgramActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getActionBar();
+/*		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
@@ -42,7 +42,7 @@ public class LoyaltyProgramActivity extends BaseActivity{
 				finish();
 			}
 		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);	
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);	*/
 		
 		setContentView(R.layout.activity_use_loyalty);
 	}

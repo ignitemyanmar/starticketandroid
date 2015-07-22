@@ -1,5 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -12,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.util.Log;
 import android.util.TypedValue;
@@ -42,7 +45,7 @@ public class PaymentActivity extends BaseActivity{
 	private EditText edt_card_no;
 	private EditText edt_security_code;
 	private TextView txt_use_points;
-	private Button btn_payment;
+	private FButton btn_payment;
 	private TextView txt_one_point_amount;
 	private TextView txt_total_amount;
 	private EditText edt_points;
@@ -56,34 +59,14 @@ public class PaymentActivity extends BaseActivity{
 	private String operator_id;
 	private TextView txt_total_points;
 	private TextView txt_total_gift_money;
+	protected Integer totalPoints;
+	protected Integer totalGiftMoney;
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setText("Loyalty Program");
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);	
 		
 		bundle = getIntent().getExtras();	
 		
@@ -94,11 +77,17 @@ public class PaymentActivity extends BaseActivity{
 			operator_id = bundle.getString("operator_id");
 		}
 		
-		/*actionBarTitle.setText(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
-		Log.i("", "Date: "+bundle.getString("date"));
-		actionBarTitle2.setText(bundle.getString("date")+" ["+bundle.getString("time")+"] "+bundle.getString("classes"));*/
-		
 		setContentView(R.layout.activity_payment);
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Loyalty Program");
+            /*toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"] "
+            					+bundle.getString("date")+" ["+bundle.getString("time")+"] "
+            					+bundle.getString("classes"));*/
+            this.setSupportActionBar(toolbar);
+        }
 		
 		txt_one_point_amount = (TextView)findViewById(R.id.txt_one_point_amount);
 		txt_total_amount = (TextView)findViewById(R.id.txt_total_amount);
@@ -106,7 +95,11 @@ public class PaymentActivity extends BaseActivity{
 		edt_gift_money = (EditText)findViewById(R.id.edt_gift_money);
 		edt_promo_code = (EditText)findViewById(R.id.edt_promo_code);
 		edt_pin_code = (EditText)findViewById(R.id.edt_pin_code);
-		btn_payment = (Button)findViewById(R.id.btn_payment);
+		btn_payment = (FButton)findViewById(R.id.btn_payment);
+		btn_payment.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_payment.setShadowEnabled(true);
+		btn_payment.setShadowHeight(3);
+		btn_payment.setCornerRadius(7);
 		
 		txt_total_points = (TextView)findViewById(R.id.txt_points);
 		txt_total_gift_money = (TextView)findViewById(R.id.txt_gift_money);
@@ -172,6 +165,13 @@ public class PaymentActivity extends BaseActivity{
 		postLoytalty();
 	}
 	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
+	}
+	
 	private void postLoytalty() {
 		// TODO Auto-generated method stub
 		dialog = ProgressDialog.show(PaymentActivity.this, "", " Please wait...", true);
@@ -195,6 +195,9 @@ public class PaymentActivity extends BaseActivity{
 				// TODO Auto-generated method stub
 				
 				if (arg0 != null) {
+					
+					totalPoints = arg0.getPoints();
+					totalGiftMoney = arg0.getGiftMoney();
 					
 					Log.i("", "Loyalty Obj: "+arg0.toString());
 					//txt_one_point_amount.setText("မွတ္ခ်က္-    1 point = "+10 Ks");
@@ -229,12 +232,16 @@ public class PaymentActivity extends BaseActivity{
 			}
 			if (v == btn_payment) {
 				
-				points_toUse = edt_points.getText().toString();
-				giftMoney_toUse = edt_gift_money.getText().toString();
-				promoCode = edt_promo_code.getText().toString();
-				pinNo = edt_pin_code.getText().toString();
+				if (checkField()) {
+					
+					points_toUse = edt_points.getText().toString();
+					giftMoney_toUse = edt_gift_money.getText().toString();
+					promoCode = edt_promo_code.getText().toString();
+					pinNo = edt_pin_code.getText().toString();
+					
+					startActivity(new Intent(PaymentActivity.this, Payment2C2PActivity.class));
+				}
 				
-				startActivity(new Intent(PaymentActivity.this, Payment2C2PActivity.class));
 				
 			}
 		}
@@ -246,8 +253,16 @@ public class PaymentActivity extends BaseActivity{
 			edt_points.setError("Enter Points Quantity to use");
 			return false;
 		}
+		if (Integer.valueOf(edt_points.getText().toString()) > totalPoints) {
+			edt_points.setError("Check your total points!");
+			return false;
+		}
 		if (edt_gift_money.getText().toString().length() == 0) {
 			edt_gift_money.setError("Enter Gift Money Amount to use");
+			return false;
+		}
+		if (Integer.valueOf(edt_gift_money.getText().toString()) > totalGiftMoney) {
+			edt_gift_money.setError("Check your total Gift Money!");
 			return false;
 		}
 		if (edt_promo_code.getText().toString().length() == 0) {

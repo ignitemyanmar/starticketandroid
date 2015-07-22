@@ -5,32 +5,16 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true" >
+    android:focusableInTouchMode="true" xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/LinearLayout01"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/golden_brown"
-        android:orientation="vertical"
-        android:visibility="visible" >
-
-        <com.smk.custom.view.CustomTextView
-            android:id="@+id/CustomTextView04"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:text="သင့္ကုိယ္ပုိင္ Points/Gift Money/Promotion Code မ်ားျဖင့္ ေငြေခ်ႏုိင္ပါသည္"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view_cover"
-        android:layout_width="wrap_content"
-        android:layout_height="4dp"
-        android:background="@color/golden_brown_dark" />
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -224,7 +208,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="right"
                         android:text="Ks 210000"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
                 </RelativeLayout>
 
                 <View
@@ -412,33 +396,39 @@
 
                         <TextView
                             android:id="@+id/TextView11"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="သံုးႏုိင္ေသာ Points စုစုေပါင္း"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/txt_points"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="- points"
+                            android:text=" - points"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/golden_brown_dark" />
                     </LinearLayout>
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/edt_points"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/border_radius"
                         android:ems="10"
                         android:hint="သံုးမည့္ Point အေရအတြက္ ကုိ ထည့္ပါ"
                         android:inputType="number"
                         android:padding="5dp"
-                        android:visibility="visible" >
-                    </EditText>
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:typeface="normal"
+                        android:visibility="visible"
+                        app:met_errorColor="@color/golden_brown"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/golden_brown" >
+                    </com.rengwuxian.materialedittext.MaterialEditText>
 
                     <LinearLayout
                         android:id="@+id/LinearLayout04"
@@ -448,25 +438,25 @@
 
                         <TextView
                             android:id="@+id/TextView10"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="သံုးႏုိင္ေသာ Gift Money စုစုေပါင္း"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/txt_gift_money"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ks -"
+                            android:text=" Ks -"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/golden_brown_dark" />
                     </LinearLayout>
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/edt_gift_money"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_radius"
@@ -474,35 +464,39 @@
                         android:hint="သံုးမည့္ amount ကုိ ထည့္ပါ"
                         android:inputType="number"
                         android:padding="5dp"
-                        android:visibility="visible" />
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:typeface="normal"
+                        android:visibility="visible"
+                        app:met_errorColor="@color/golden_brown"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/golden_brown" />
 
                     <LinearLayout
                         android:id="@+id/LinearLayout02"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/TextView13"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Promotion Code"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </LinearLayout>
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/edt_promo_code"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_radius"
                         android:ems="10"
-                        android:hint="WSSSS"
+                        android:hint="Promotion Code"
                         android:inputType="text"
                         android:padding="5dp"
-                        android:visibility="visible" />
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:typeface="normal"
+                        android:visibility="visible"
+                        app:met_errorColor="@color/golden_brown"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/golden_brown" />
 
                     <LinearLayout
                         android:id="@+id/LinearLayout02"
@@ -510,39 +504,40 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/TextView14"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="လ်ိဳ႕၀ွက္နံပါတ္ (PIN)"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </LinearLayout>
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/edt_pin_code"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_radius"
                         android:ems="10"
-                        android:hint="eg: Pxxxwxxd"
+                        android:hint="လ်ိဳ႕၀ွက္နံပါတ္ (PIN)"
                         android:inputType="textPassword"
                         android:padding="5dp"
-                        android:visibility="visible" />
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:typeface="normal"
+                        android:visibility="visible"
+                        app:met_errorColor="@color/golden_brown"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/golden_brown" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <com.smk.custom.view.CustomButton
+            <info.hoang8f.widget.FButton
                 android:id="@+id/btn_payment"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:autoLink="web"
                 android:background="@drawable/btn_gold_light"
+                android:minHeight="@dimen/button_min_height"
+                android:minWidth="@dimen/button_min_width"
                 android:text="လက္မွတ္ျဖတ္မည္"
                 android:textColor="@color/white"
                 android:textSize="20dp"

@@ -1,5 +1,7 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -112,7 +115,7 @@ import com.smk.skalertmessage.SKToastMessage;
 	private Integer isBooking = 0;
 	private Integer NotifyBooking;
 	private TextView actionBarNoti;
-	private Button btn_check_out;
+	private FButton btn_check_out;
 	private String Classes;
 	protected BookingDialog bookingDialog;
 	private List<Seat_list> remarkSeats;
@@ -147,22 +150,6 @@ import com.smk.skalertmessage.SKToastMessage;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bus_seat_list);
 
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		
-		actionBarBack.setOnClickListener(clickListener);
-		actionBarNoti = (TextView) actionBar.getCustomView().findViewById(R.id.txt_notify_booking);
-		actionBarNoti.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
 		//Get Data from past clicks
 		Bundle bundle = getIntent().getExtras();
 		
@@ -245,9 +232,14 @@ import com.smk.skalertmessage.SKToastMessage;
 			actionBarNoti.setText(NotifyBooking.toString());
 		}
 		
-		actionBarTitle.setText(From+" - "+To+" ["+operator_name+"]");
-		actionBarTitle2.setText(changeDate(Date)+" ["+Time+"]");
-		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle(From+" - "+To+" ["+operator_name+"] "+changeDate(Date)+" ["+Time+"]");
+           // toolbar.setTitle("Choose Trip/Date/Time");
+            this.setSupportActionBar(toolbar);
+        }
+        
 		SelectedSeat 	= "";
 		btn_booking		= (Button) findViewById(R.id.btn_booking);
 		btn_now_booking = (Button) findViewById(R.id.btn_now_booking);
@@ -259,7 +251,12 @@ import com.smk.skalertmessage.SKToastMessage;
 			//btn_now_booking.setVisibility(View.GONE);
 		}
 		
-		btn_check_out = (Button) findViewById(R.id.btn_check_out);
+		btn_check_out = (FButton) findViewById(R.id.btn_check_out);
+		btn_check_out.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_check_out.setShadowEnabled(true);
+		btn_check_out.setShadowHeight(3);
+		btn_check_out.setCornerRadius(7);
+		
 		mLoadingView = (LinearLayout) findViewById(R.id.ly_loading);
 		mNoConnection = (LinearLayout) findViewById(R.id.no_internet);
 		txt_operator = (CustomTextView) findViewById(R.id.txt_operator);
@@ -273,6 +270,13 @@ import com.smk.skalertmessage.SKToastMessage;
 		btn_booking.setOnClickListener(clickListener);
 		btn_now_booking.setOnClickListener(clickListener);
 		btn_check_out.setOnClickListener(clickListener);
+	}
+	
+	@Override
+	public Intent getParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getParentActivityIntent();
 	}
 	
 	@Override

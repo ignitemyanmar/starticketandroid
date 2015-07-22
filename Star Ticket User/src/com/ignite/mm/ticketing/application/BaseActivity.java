@@ -15,9 +15,6 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -27,6 +24,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
@@ -35,7 +34,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-public class BaseActivity extends Activity{
+public class BaseActivity extends ActionBarActivity{
 
 	public LoginUser AppLoginUser;
 	public PermissionGlobal AppPermission;
@@ -68,7 +67,7 @@ public class BaseActivity extends Activity{
 	} 
 	
 	protected void closeAllActivities(){
-		//sendBroadcast(new Intent(FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION));
+		sendBroadcast(new Intent(FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION));
 	}
 	
 	@Override
@@ -121,14 +120,15 @@ public class BaseActivity extends Activity{
         return true;
     }
 	public boolean onOptionsItemSelected(MenuItem item) {
+		return false;
 
-		if (item.getItemId() == R.id.menu_logout) {
+		/*if (item.getItemId() == R.id.menu_logout) {
 			AppLoginUser.logout();
         	closeAllActivities();
         	return true;
 		}else {
 			return false;  
-		}
+		}*/
 		
 	    /*switch(item.getItemId()) {
 	        case R.id.menu_logout:
@@ -259,6 +259,7 @@ public class BaseActivity extends Activity{
         ImageView fabIconStar = new ImageView(this);
         fabIconStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
 
+        //Menu 
         FloatingActionButton.LayoutParams starParams = new FloatingActionButton.LayoutParams(redActionButtonSize, redActionButtonSize);
         starParams.setMargins(redActionButtonMargin,
                               redActionButtonMargin,
@@ -266,6 +267,7 @@ public class BaseActivity extends Activity{
                               redActionButtonMargin);
         fabIconStar.setLayoutParams(starParams);
 
+        //Menu
         FloatingActionButton.LayoutParams fabIconStarParams = new FloatingActionButton.LayoutParams(redActionButtonContentSize, redActionButtonContentSize);
         fabIconStarParams.setMargins(redActionButtonContentMargin,
                                     redActionButtonContentMargin,
@@ -280,16 +282,19 @@ public class BaseActivity extends Activity{
                                                 .build();
 
         // Set up customized SubActionButtons for the right center menu
+        //Menu
         SubActionButton.Builder lCSubBuilder = new SubActionButton.Builder(this);
         lCSubBuilder.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_action_blue_selector));
 
+        //Sub Menu Content Margin
         FrameLayout.LayoutParams blueContentParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         blueContentParams.setMargins(blueSubActionButtonContentMargin,
                           blueSubActionButtonContentMargin,
                           blueSubActionButtonContentMargin,
                           blueSubActionButtonContentMargin);
         lCSubBuilder.setLayoutParams(blueContentParams);
-        // Set custom layout params
+        
+        // Set Sub Menu Button Size
         FrameLayout.LayoutParams blueParams = new FrameLayout.LayoutParams(blueSubActionButtonSize, blueSubActionButtonSize);
         lCSubBuilder.setLayoutParams(blueParams);
 
@@ -316,7 +321,13 @@ public class BaseActivity extends Activity{
                 .addSubActionView(ic_booking)
                 .addSubActionView(ic_me)
                 .attachTo(leftCenterButton)
-                .build();                
+                .build();  
+        
+        /*.setRadius(redActionMenuRadius)
+        .setStartAngle(70)
+        .setEndAngle(-70)
+        .attachTo(leftCenterButton)
+        .build();*/
         
         ic_bus.setOnClickListener(new View.OnClickListener() {
 			

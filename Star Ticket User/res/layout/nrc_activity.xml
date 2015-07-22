@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/ly_title"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/golden_brown"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:visibility="visible" >
-
-        <com.smk.custom.view.CustomTextView
-            android:id="@+id/txt_operator_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:padding="5dp"
-            android:text="ခရီးသြားမည့္သူ၏ အခ်က္အလက္ ျဖည့္ပါ ~"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view_cover"
-        android:layout_width="wrap_content"
-        android:layout_height="4dp"
-        android:background="@color/golden_brown_dark" />
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -55,16 +39,25 @@
                     android:text="ခရီးသည္ အမည္"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/edt_buyer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:singleLine="true" >
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelTextColor="#8805ad"
+                    app:met_helperTextColor="@color/golden_brown"
+                    app:met_primaryColor="@color/golden_brown"
+                    app:met_textColorHint="@color/gray" >
 
                     <requestFocus />
-                </com.smk.custom.view.CustomEditText>
+                </com.rengwuxian.materialedittext.MaterialEditText>
 
                 <com.smk.custom.view.CustomTextView
                     android:id="@+id/textView3"
@@ -74,14 +67,23 @@
                     android:text="မွတ္ပံုတင္ အမွတ္"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.smk.custom.view.CustomAutocompleteTextView
+                <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
                     android:id="@+id/edt_nrc_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:singleLine="true" />
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelTextColor="#8805ad"
+                    app:met_helperTextColor="@color/golden_brown"
+                    app:met_primaryColor="@color/golden_brown"
+                    app:met_textColorHint="@color/gray" />
 
                 <com.smk.custom.view.CustomTextView
                     android:id="@+id/CustomTextView03"
@@ -91,13 +93,22 @@
                     android:text="ဖုန္းနံပါတ္"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/edt_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelTextColor="#8805ad"
+                    app:met_helperTextColor="@color/golden_brown"
+                    app:met_primaryColor="@color/golden_brown"
+                    app:met_textColorHint="@color/gray" />
 
                 <com.smk.custom.view.CustomTextView
                     android:id="@+id/txt_seller"
@@ -107,19 +118,28 @@
                     android:text="ေရာင္းသူ"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.smk.custom.view.CustomAutocompleteTextView
+                <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
                     android:id="@+id/txt_agent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelTextColor="#8805ad"
+                    app:met_helperTextColor="@color/golden_brown"
+                    app:met_primaryColor="@color/golden_brown"
+                    app:met_textColorHint="@color/gray" />
 
                 <LinearLayout
                     android:id="@+id/extra_city_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone" >
+                    android:visibility="visible" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView02"
@@ -133,7 +153,7 @@
                     <Spinner
                         android:id="@+id/sp_extra_city"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:visibility="visible" />
                 </LinearLayout>
@@ -147,7 +167,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:visibility="gone" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/edt_ref_invoice_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -194,7 +214,7 @@
                         android:text="မွတ္ခ်က္ (Remark)"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <com.smk.custom.view.CustomEditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/edt_remark"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -276,12 +296,14 @@
                         android:id="@+id/CustomTextView04"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/gray"
                         android:gravity="center_vertical"
                         android:padding="5dp"
                         android:text="ေငြေပးေခ်မည့္ ပံုစံ ~"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/white"
-                        android:textSize="18dp" />
+                        android:textColor="@color/black"
+                         />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -303,21 +325,22 @@
 
                             <RadioButton
                                 android:id="@+id/radio_onilnePayment"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:checked="true"
-                                android:text="Online မွ ေပးေခ်မည္" />
+                                android:text="Online မွ ေပးေခ်မည္"
+                                />
 
                             <RadioButton
                                 android:id="@+id/radio_cashOnShop"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="ဆုိင္တြင္ေပးမည္" />
 
                             <RadioButton
                                 android:id="@+id/radio_cashOnDelivery"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="အိမ္ အေရာက္ပုိ႔ေပးပါ" />
                         </RadioGroup>
@@ -325,15 +348,18 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <com.smk.custom.view.CustomButton
+            <info.hoang8f.widget.FButton
                 android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/btn_gold_light"
+                android:minHeight="@dimen/button_min_height"
+                android:minWidth="@dimen/button_min_width"
                 android:text="လက္ မွတ္ ျဖတ္ မည္"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/layout_seat_plan"
@@ -14,11 +14,48 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical" >
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimaryDark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/ly_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal|center_vertical"
+            android:padding="2dp"
+            android:visibility="visible" >
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/action_bar_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Please wait loading ..."
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#AAA"
+                android:textSize="12dp"
+                android:typeface="sans" />
+        </LinearLayout>
+
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/View01" >
+            android:layout_below="@id/ly_loading" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -283,19 +320,20 @@
                         android:textStyle="bold"
                         android:visibility="gone" />
 
-                    <com.smk.custom.view.CustomButton
+                    <info.hoang8f.widget.FButton
                         android:id="@+id/btn_check_out"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="50"
                         android:background="@drawable/btn_gold_light"
+                        android:minHeight="@dimen/button_min_height"
+                        android:minWidth="@dimen/button_min_width"
                         android:padding="5dp"
-                        android:text="လက္ မွတ္ မွာယူမည္"
+                        android:text="ခရီးသည္ အခ်က္အလက္ ျဖည့္ရန္ =>"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/white"
-                        android:textStyle="bold"
                         android:visibility="visible" />
 
                 </LinearLayout>
@@ -309,61 +347,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/ly_loading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:gravity="center_horizontal|center_vertical"
-            android:padding="2dp"
-            android:visibility="visible"
-            android:layout_below="@+id/View01" >
-
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/action_bar_title2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Please wait loading ..."
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#AAA"
-                android:textSize="12dp"
-                android:typeface="sans" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ly_title"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/golden_brown"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="visible" >
-
-            <com.smk.custom.view.CustomTextView
-                android:id="@+id/txt_operator_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="ထုိင္ခံုေရြးပါ ~"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-        </LinearLayout>
-
-        <View
-            android:id="@+id/View01"
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@color/golden_brown_dark"
-            android:visibility="visible"
-            android:layout_below="@+id/ly_title" />
     </RelativeLayout>
 
 </LinearLayout>

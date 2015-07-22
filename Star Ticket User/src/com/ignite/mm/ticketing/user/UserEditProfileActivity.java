@@ -1,13 +1,16 @@
 package com.ignite.mm.ticketing.user;
 
+import info.hoang8f.widget.FButton;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,7 +31,7 @@ public class UserEditProfileActivity extends BaseActivity {
 	private TextView actionBarTitle;
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
-	private Button btn_cancel;
+	private FButton btn_cancel;
 	private EditText editTxt_name;
 	private EditText editTxt_nrc;
 	private EditText editTxt_email;
@@ -37,7 +40,7 @@ public class UserEditProfileActivity extends BaseActivity {
 	private EditText editTxt_mobile;
 	private EditText editTxt_homePh;
 	private EditText editTxt_address;
-	private Button btn_done;
+	private FButton btn_done;
 	private SKConnectionDetector skDetector;
 	private ProgressDialog dialog;
 	protected String Name = "";
@@ -51,27 +54,14 @@ public class UserEditProfileActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		//actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBarTitle.setText("ကုိယ္ပုိင္ အခ်က္အလက္ ျပင္ရန္");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
 		setContentView(R.layout.activity_user_profile_edit);
+		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("ကုိယ္ပုိင္ အခ်က္အလက္ ျပင္ရန္");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		editTxt_name = (EditText)findViewById(R.id.editTxt_name);
 		editTxt_nrc = (EditText)findViewById(R.id.editTxt_nrc);
@@ -85,14 +75,30 @@ public class UserEditProfileActivity extends BaseActivity {
 		editTxt_mobile.setText(AppLoginUser.getPhone());
 		editTxt_address.setText(AppLoginUser.getAddress());
 		
-		btn_cancel = (Button)findViewById(R.id.btn_cancel);
-		btn_done = (Button)findViewById(R.id.btn_done);
+		btn_cancel = (FButton)findViewById(R.id.btn_cancel);
+		btn_cancel.setButtonColor(getResources().getColor(R.color.gray));
+		btn_cancel.setShadowEnabled(true);
+		btn_cancel.setShadowHeight(3);
+		btn_cancel.setCornerRadius(7);
+		
+		btn_done = (FButton)findViewById(R.id.btn_done);
+		btn_done.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_done.setShadowEnabled(true);
+		btn_done.setShadowHeight(3);
+		btn_done.setCornerRadius(7);
 		
 		btn_cancel.setOnClickListener(clickListener);
 		btn_done.setOnClickListener(clickListener);
 		
 		skDetector = SKConnectionDetector.getInstance(this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
+	}
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 	
 	private OnClickListener clickListener = new OnClickListener() {
@@ -204,19 +210,10 @@ public class UserEditProfileActivity extends BaseActivity {
 			editTxt_name.setFocusable(true);
 			return false;
 		}
-		if (editTxt_new_password.getText().toString().length() == 0) {
-			editTxt_new_password.setError("Enter New Password");
-			editTxt_new_password.setFocusable(true);
-			return false;
-		}
-		if (editTxt_new_password.getText().toString().length() < 6) {
-			editTxt_new_password.setError("Enter minimun six charactors!");
-			editTxt_new_password.setFocusable(true);
-			return false;
-		}
 		if(editTxt_mobile.getText().toString().length() == 0){
 			editTxt_mobile.setError("Enter Phone No");
 			editTxt_mobile.setFocusable(true);
+			
 			return false;
 		}
 		if(editTxt_mobile.getText().toString().length() < 6)

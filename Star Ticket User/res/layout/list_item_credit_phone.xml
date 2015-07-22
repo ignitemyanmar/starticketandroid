@@ -22,13 +22,12 @@
                 android:id="@+id/txt_order_no"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/golden_brown_light"
+                android:background="@color/yellow"
                 android:gravity="left|center_vertical"
                 android:padding="3dp"
                 android:text="Order No : -"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -44,23 +43,26 @@
                 android:text="Order Date"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_order_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="0"
-                android:text="- "
+                android:gravity="center_vertical|right"
+                android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/gray_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,23 +77,26 @@
                 android:text="Name"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/TextView01"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_customer_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="0"
+                android:gravity="center_vertical|right"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/gray_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,23 +111,26 @@
                 android:text="Trip"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/TextView02"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_trip_operator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="0"
+                android:gravity="center_vertical|right"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/gray_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,24 +146,26 @@
                 android:text="Dept Info"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/TextView03"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_date_time_class_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="0"
+                android:gravity="center_vertical|right"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/gray_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,24 +181,26 @@
                 android:text="Seats"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/TextView04"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_seat_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="0"
+                android:gravity="center_vertical|right"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/gray_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -204,21 +216,16 @@
                 android:text="Amount"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/TextView05"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="0"
+                android:gravity="center_vertical|right"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
@@ -228,7 +235,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
->>>>>>> 291e6a8d27b565013631816d8312463912175726
     </LinearLayout>
 
 </LinearLayout>

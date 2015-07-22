@@ -59,7 +59,7 @@ public class BusBookingDetailActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		actionBar = getActionBar();
+/*		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -70,9 +70,10 @@ public class BusBookingDetailActivity extends BaseActivity {
 		action_bar_title2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
 		action_bar_title2.setVisibility(View.GONE);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 		
 		setContentView(R.layout.activity_busticketing_customer_ticket);
+				
 		lst_customer_ticket = (ListView) findViewById(R.id.lst_customer_ticket);
 		txt_customer_name = (TextView) findViewById(R.id.txt_customer_name);
 		txt_phone = (TextView) findViewById(R.id.txt_phone);

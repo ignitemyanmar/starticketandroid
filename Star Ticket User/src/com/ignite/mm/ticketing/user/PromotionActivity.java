@@ -37,7 +37,7 @@ public class PromotionActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		actionBar = getActionBar();
+/*		actionBar = getActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
@@ -56,9 +56,12 @@ public class PromotionActivity extends BaseActivity{
 				finish();
 			}
 		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 		
 		setContentView(R.layout.activity_promotion);
+		
+		//Get Floating Menu from Base Activity
+		getFloatingMenu();	
 		
 		dialog = ProgressDialog.show(PromotionActivity.this, "", "Please wait ...", true);
 		

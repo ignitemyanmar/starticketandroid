@@ -2,7 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +44,7 @@
 
             <RatingBar
                 android:id="@+id/rateBar_operator"
-                style="@style/RatingBarmy_theme"
+                style="@style/CustomRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:rating="2.5"
@@ -77,7 +86,7 @@
             android:layout_height="1dp"
             android:background="@color/gray_light" />
 
-        <Button
+        <info.hoang8f.widget.FButton
             android:id="@+id/btn_submit_review"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="150dp"

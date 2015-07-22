@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ticketing_background"
     android:orientation="vertical" >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -48,16 +59,27 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txt_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:ems="10"
                     android:hint="User Name"
-                    android:inputType="textCapWords|textPersonName" />
+                    android:inputType="textCapWords|textPersonName"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" >
+
+                    <requestFocus />
+                </com.rengwuxian.materialedittext.MaterialEditText>
 
                 <View
                     android:id="@+id/View07"
@@ -65,16 +87,24 @@
                     android:layout_height="1dp"
                     android:background="@color/gray_light" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txtUserEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:ems="10"
                     android:hint="Email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
 
                 <View
                     android:id="@+id/View06"
@@ -82,16 +112,24 @@
                     android:layout_height="1dp"
                     android:background="@color/gray_light" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txtUserPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:ems="10"
                     android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
 
                 <View
                     android:id="@+id/View05"
@@ -99,16 +137,24 @@
                     android:layout_height="1dp"
                     android:background="@color/gray_light" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txtUserConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:ems="10"
                     android:hint="Confirm Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
 
                 <View
                     android:id="@+id/View03"
@@ -116,17 +162,25 @@
                     android:layout_height="1dp"
                     android:background="@color/gray_light" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txtPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Phone"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
 
                 <View
                     android:id="@+id/View02"
@@ -134,24 +188,34 @@
                     android:layout_height="1dp"
                     android:background="@color/gray_light" />
 
-                <com.smk.custom.view.CustomEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txtAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Address"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
 
-                <com.smk.custom.view.CustomButton
+                <info.hoang8f.widget.FButton
                     android:id="@+id/btnRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/btn_gold_light"
+                    android:minHeight="@dimen/button_min_height"
+                    android:minWidth="@dimen/button_min_width"
                     android:text="Submit"
                     android:textColor="@color/white" />
             </LinearLayout>

@@ -3,12 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/golden_brown_light2"
+        android:background="@color/gray"
         android:gravity="center_vertical"
         android:padding="3dp" >
 
@@ -23,7 +32,7 @@
             android:text="Order နံပါတ္"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/txt_order_date"
@@ -35,7 +44,7 @@
             android:text="၀ယ္သည့္ေန႔"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            />
 
         <TextView
             android:id="@+id/txt_order_amount"
@@ -47,7 +56,7 @@
             android:text="ပမာဏ (က်ပ္)"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            />
 
         <TextView
             android:id="@+id/txt_point"
@@ -58,14 +67,8 @@
             android:text="ရရွိသည့္ Point မ်ား"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+             />
     </LinearLayout>
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/golden_brown_light" />
 
     <com.smk.sklistview.SKListView
         android:id="@+id/lst_threeday_sales"
@@ -98,6 +101,7 @@
                 android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -108,6 +112,7 @@
                 android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -118,6 +123,7 @@
                 android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -134,7 +140,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="စုစုေပါင္း(လက္မွတ္)"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/TextView03"
@@ -144,7 +150,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="စုစုေပါင္းေငြ(က်ပ္)"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/TextView01"
@@ -154,7 +160,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="စုစုေပါင္း(Points)"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </LinearLayout>
