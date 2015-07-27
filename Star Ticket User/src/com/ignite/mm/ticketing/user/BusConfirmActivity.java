@@ -69,6 +69,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class BusConfirmActivity extends BaseActivity {
 
@@ -79,7 +80,7 @@ public class BusConfirmActivity extends BaseActivity {
 	private MaterialEditText edt_buyer;
 	private MaterialAutoCompleteTextView edt_nrc_no;
 	private MaterialEditText edt_phone;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	private String[] selectedSeat;
 	private LinearLayout layout_ticket_no_container;
 	private String AgentID = "0";
@@ -776,8 +777,8 @@ public class BusConfirmActivity extends BaseActivity {
 	
 	private void getExtraDestination(){
 		
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-		dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusConfirmActivity.this);
+		dialog.show();
 		
 		param = MCrypt.getInstance().encrypt(SecureParam.getExtraDestinationParam(permit_access_token));
 		
@@ -807,7 +808,7 @@ public class BusConfirmActivity extends BaseActivity {
 							}
 						}
 						
-						dialog.dismiss();
+						dialog.dismissWithSuccess();
 					}
 
 					public void failure(RetrofitError arg0) {
@@ -816,7 +817,7 @@ public class BusConfirmActivity extends BaseActivity {
 							Log.i("", "Extra city error: "+arg0.getResponse().getStatus());
 						}
 						
-						dialog.dismiss();
+						dialog.dismissWithFailure();
 					}
 				});
 	}
@@ -852,8 +853,8 @@ public class BusConfirmActivity extends BaseActivity {
 	protected String CustPhone;
 
 	private void comfirmOrder() {
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-		dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusConfirmActivity.this);
+		dialog.show();
 		
 		List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
 		
@@ -974,7 +975,7 @@ public class BusConfirmActivity extends BaseActivity {
 						
 						if(!jsonObj.getBoolean("status") && jsonObj.getString("device_id").equals(DeviceUtil.getInstance(BusConfirmActivity.this).getID())){
 							SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားေသာေၾကာင့္ သင္ မွာ ေသာ လက္ မွတ္ မ်ား မရ ႏုိင္ေတာ့ပါ။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
-							dialog.dismiss();
+							dialog.dismissWithFailure();
 						}else{
 							//Store Sale Data into Online Sale Database
 							JSONArray arr = orderObj.getJSONArray("saleitems");
@@ -992,7 +993,7 @@ public class BusConfirmActivity extends BaseActivity {
 					}
 				}else {
 					Log.i("", "Response confirm is null!");
-					dialog.dismiss();
+					dialog.dismissWithFailure();
 				}
 			}
 		};
@@ -1024,7 +1025,7 @@ public class BusConfirmActivity extends BaseActivity {
 							Log.i("", "Error: "+arg0.getResponse().getStatus());
 
 						}
-						dialog.dismiss();
+						dialog.dismissWithFailure();
 					}
 
 					public void success(Response arg0, Response arg1) {
@@ -1044,7 +1045,7 @@ public class BusConfirmActivity extends BaseActivity {
 							bundle.putString("total_amount", total_amount);
 							
 							//startActivity(new Intent(BusConfirmActivity.this, PDFBusActivity.class).putExtras(bundle));
-							dialog.dismiss();
+							dialog.dismissWithSuccess();
 							finish();
 							
 							Log.i("", "Server Response1: "+arg0.getStatus()+", "+arg0.getReason()+", "+arg0.getBody());
@@ -1201,8 +1202,8 @@ public class BusConfirmActivity extends BaseActivity {
 	
 	public void postSale()
 	{
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-        dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusConfirmActivity.this);
+		dialog.show();
 
 		//Do Encrypt of Params
 		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(permit_access_token
@@ -1252,7 +1253,7 @@ public class BusConfirmActivity extends BaseActivity {
 		        				
 		        				//Buy Ticket
 								if(isBooking == 0){
-									dialog.dismiss(); //finish can buy ticket
+									dialog.dismissWithSuccess(); //finish can buy ticket
 			        				Intent nextScreen = new Intent(BusConfirmActivity.this, Payment2C2PActivity.class);
 			        				
 				    				/*Bundle bundle = new Bundle();
@@ -1290,14 +1291,14 @@ public class BusConfirmActivity extends BaseActivity {
 			        			}
 
 			        		}else{
-			        			dialog.dismiss();
+			        			dialog.dismissWithFailure();
 			        			SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားေသာေၾကာင့္ သင္ မွာ ေသာ လက္ မွတ္ မ်ား မရ ႏုိင္ေတာ့ပါ။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 			        			closeAllActivities();
 			        			startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
 			        		}
 						}else{
 							isBooking = 0;
-							dialog.dismiss();
+							dialog.dismissWithFailure();
 							SKToastMessage.showMessage(BusConfirmActivity.this, "အခ်ိန္ ေနာက္ က် ေနသည့္ အတြက္ ၀ယ္ လုိ႔ မရပါ", SKToastMessage.ERROR);
 						}
 					}
@@ -1334,7 +1335,7 @@ public class BusConfirmActivity extends BaseActivity {
 						if (arg0.getResponse() != null) {
 							Log.i("", "Error: "+arg0.getResponse().getStatus());
 						}
-						dialog.dismiss();
+						dialog.dismissWithFailure();
 					}
 
 					public void success(Response arg0, Response arg1) {
@@ -1382,7 +1383,7 @@ public class BusConfirmActivity extends BaseActivity {
 								closeAllActivities();
 		    					startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
 		    					
-		    					dialog.dismiss();
+		    					dialog.dismissWithSuccess();
 		    					
 							} catch (Exception e) {
 								// TODO Auto-generated catch block

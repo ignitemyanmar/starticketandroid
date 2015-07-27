@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.ignite.mm.ticketing.sqlite.database.model.PermissionGlobal;
 import com.ignite.mm.ticketing.user.BusBookingListActivity;
 import com.ignite.mm.ticketing.user.BusReveiwActivity;
@@ -16,6 +17,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -33,6 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class BaseActivity extends ActionBarActivity{
 
@@ -78,7 +81,7 @@ public class BaseActivity extends ActionBarActivity{
 		AppLoginUser = new LoginUser(this);
 		AppPermission = new PermissionGlobal(this);
 	}
-
+    
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -169,31 +172,35 @@ public class BaseActivity extends ActionBarActivity{
 	
 	public void showAlert(String message) {
 		// TODO Auto-generated method stub
+		
+/*			final MaterialDialog mMaterialDialog = new MaterialDialog(this))
+		   // .setTitle("MaterialDialog")
+		   // .setMessage("Hello world!")
+		    .setPositiveButton("OK", new View.OnClickListener() {
+		        public void onClick(View v) {
+		            mMaterialDialog.dismiss();
+		        }
+		    })
+		    .setNegativeButton("CANCEL", new View.OnClickListener() {
+		        public void onClick(View v) {
+		            mMaterialDialog.dismiss();
+		        }
+		    });
+	
+		mMaterialDialog.show();
+	
+		// You can change the message anytime. before show
+		//mMaterialDialog.setTitle(message);
+		mMaterialDialog.show();
+		// You can change the message anytime. after show
+		mMaterialDialog.setMessage(message);*/
+	
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		//alert.setIcon(R.drawable.attention_icon);
 		//alert.setTitle("Warning");
 		alert.setMessage(message);
+		
 		alert.show();
-	}
-	
-	protected void alertDialog(String MSG, OnClickListener YES, OnClickListener NO){
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-		alertDialog.setMessage(MSG);
-		if(YES != null){
-			alertDialog.setButton(Dialog.BUTTON_POSITIVE, "YES", YES);
-		}else{
-			alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new OnClickListener() {
-				
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					dialog.dismiss();
-				}
-			});
-		}
-		if(NO != null){
-			alertDialog.setButton(Dialog.BUTTON_NEGATIVE, "NO", NO);
-		}
-		alertDialog.show();
 	}
 	
 	protected void getFloatingMenu() {
@@ -362,4 +369,31 @@ public class BaseActivity extends ActionBarActivity{
 		});
         
     }
+	
+	protected void alertDialog(String MSG, OnClickListener YES, OnClickListener NO){
+		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
+		alertDialog.setMessage(MSG);
+		
+		alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
+		if(YES != null){
+			alertDialog.setPositiveButton("YES", YES);
+		}else{
+			alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+	            public void onClick(DialogInterface dialog, int which) {
+	                dialog.dismiss();
+	            }
+	        });
+		}
+		if(NO != null){
+			alertDialog.setNegativeButton("NO", NO);
+		}
+		alertDialog.show();
+	}
 }

@@ -76,6 +76,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.SelectSeat;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 @SuppressLint("SimpleDateFormat") public class BusSelectSeatActivity extends BaseActivity{
 	
@@ -87,7 +88,7 @@ import com.smk.skalertmessage.SKToastMessage;
 	private GridView mSeat;
 	public static String SelectedSeat;
 	protected ArrayList<Seat> Seat;
-	protected ProgressDialog dialog;
+	protected ZProgressHUD dialog;
 	private ConnectionDetector connectionDetector;
 	private LinearLayout mLoadingView;
 	private LinearLayout mNoConnection;
@@ -456,8 +457,8 @@ import com.smk.skalertmessage.SKToastMessage;
 	
 	public void postSale()
 	{
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-        dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusSelectSeatActivity.this);
+		dialog.show();
         
         List<SelectSeat> seats = new ArrayList<SelectSeat>();
         
@@ -530,7 +531,7 @@ import com.smk.skalertmessage.SKToastMessage;
 		        				
 		        				//Buy Ticket
 								if(isBooking == 0){
-									dialog.dismiss(); //finish can buy ticket
+									dialog.dismissWithSuccess(); //finish can buy ticket
 			        				Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
 			        				
 				    				Bundle bundle = new Bundle();
@@ -569,14 +570,14 @@ import com.smk.skalertmessage.SKToastMessage;
 			        			}
 
 			        		}else{
-			        			dialog.dismiss();
+			        			dialog.dismissWithFailure();
 			        			SKToastMessage.showMessage(BusSelectSeatActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားေသာေၾကာင့္ သင္ မွာ ေသာ လက္ မွတ္ မ်ား မရ ႏုိင္ေတာ့ပါ။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 			        			//Get permission & Seat Plan 
 			        			getPermission();		
 			        		}
 						}else{
 							isBooking = 0;
-							dialog.dismiss();
+							dialog.dismissWithFailure();
 							SKToastMessage.showMessage(BusSelectSeatActivity.this, "အခ်ိန္ ေနာက္ က် ေနသည့္ အတြက္ ၀ယ္ လုိ႔ မရပါ", SKToastMessage.ERROR);
 						}
 					}
@@ -612,7 +613,7 @@ import com.smk.skalertmessage.SKToastMessage;
 						if (arg0.getResponse() != null) {
 							Log.i("", "Error: "+arg0.getResponse().getStatus());
 						}
-						dialog.dismiss();
+						dialog.dismissWithFailure();
 					}
 
 					public void success(Response arg0, Response arg1) {
@@ -656,7 +657,7 @@ import com.smk.skalertmessage.SKToastMessage;
 		    					startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
 		    					
 		    					//showAlert("Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။ သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။");
-		    					dialog.dismiss();
+		    					dialog.dismissWithSuccess();
 		    					
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
@@ -781,8 +782,8 @@ import com.smk.skalertmessage.SKToastMessage;
 				private ProgressDialog dialog1;
 
 				public void onEdit() {
-					dialog = ProgressDialog.show(BusSelectSeatActivity.this, "", " Please wait...", true);
-			        dialog.setCancelable(true);
+					dialog = new ZProgressHUD(BusSelectSeatActivity.this);
+					dialog.show();
 					// TODO Auto-generated method stub
 			        String param = MCrypt.getInstance().encrypt(SecureParam.editSeatInfoParam(
 			        		permit_access_token, 
@@ -826,7 +827,7 @@ import com.smk.skalertmessage.SKToastMessage;
 														Response arg1) {
 													// TODO Auto-generated method stub
 													onResume();
-													dialog.dismiss();
+													dialog.dismissWithSuccess();
 													editSeatDialog.dismiss();
 													SKToastMessage.showMessage(BusSelectSeatActivity.this, "Successfully Updated.", SKToastMessage.SUCCESS);
 												}

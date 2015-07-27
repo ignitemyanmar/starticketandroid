@@ -11,8 +11,25 @@
         android:background="?attr/colorPrimaryDark"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
-
     </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/Rlayout_noInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_background"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="သင္ ရွာေဖြ ေသာ ခရီးစဥ္ သည္ လက္ မွတ္ မ်ား ကုန္ သြား ပါသျဖင့္ အျခားေန႔ ေရြးၿပီး ရွာ ႏုိင္ ပါသည္။"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/golden_brown_light2" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ly_loading"

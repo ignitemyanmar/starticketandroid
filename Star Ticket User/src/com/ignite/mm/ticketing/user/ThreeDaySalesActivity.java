@@ -35,6 +35,7 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.smk.sklistview.SKListView;
 import com.smk.sklistview.SKListView.Callbacks;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class ThreeDaySalesActivity extends BaseActivity{
 
@@ -44,7 +45,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
 	private SKListView lv_threeday_sales;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	private List<ThreeDaySale> lst_threeday_sale;
 	private SKConnectionDetector skDetector;
 	private TextView txt_total_tickets;
@@ -83,8 +84,8 @@ public class ThreeDaySalesActivity extends BaseActivity{
 			
 			offset = 1;
 			
-			dialog = ProgressDialog.show(ThreeDaySalesActivity.this, "", "Please wait ...", true);
-			dialog.setCancelable(true);
+			dialog = new ZProgressHUD(ThreeDaySalesActivity.this);
+			dialog.show();
 			
 			getThreeDaySales();
 		}else{
@@ -130,7 +131,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 					//showAlert("Server တစ္ခုခု ခ်ိဳ႕ ယြင္း ေနပါသည္");
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithFailure();
 			}
 
 			public void success(List<ThreeDaySale> arg0, Response arg1) {
@@ -164,11 +165,11 @@ public class ThreeDaySalesActivity extends BaseActivity{
 						}
 						
 				}else {
-					SKToastMessage.showMessage(ThreeDaySalesActivity.this, "No more list", SKToastMessage.INFO);
+					SKToastMessage.showMessage(ThreeDaySalesActivity.this, "No list", SKToastMessage.INFO);
 					lv_threeday_sales.setNextPage(false);
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithSuccess();
 			}
 		});		
 	}

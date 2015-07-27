@@ -41,6 +41,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.To;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class BusBookingListActivity extends BaseActivity {
 	private ListView lv_booking_list;
@@ -122,8 +123,8 @@ public class BusBookingListActivity extends BaseActivity {
 	 */
 	private void getBookingListByUser() {
 		// TODO Auto-generated method stub
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-        dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusBookingListActivity.this);
+		dialog.show();
         
         NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingListByUser(AppLoginUser.getAccessToken(), ""
@@ -136,7 +137,7 @@ public class BusBookingListActivity extends BaseActivity {
 				}
 				
 				if (dialog != null) {
-					dialog.dismiss();
+					dialog.dismissWithFailure();
 				}
 			}
 
@@ -167,7 +168,7 @@ public class BusBookingListActivity extends BaseActivity {
 				}
 				
 				if (dialog != null) {
-					dialog.dismiss();
+					dialog.dismissWithSuccess();
 				}
 			}
 		});
@@ -175,8 +176,8 @@ public class BusBookingListActivity extends BaseActivity {
 
 	private void getBookingList() {
 		// TODO Auto-generated method stub
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-        dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusBookingListActivity.this);
+		dialog.show();
         
         NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingListAll(AppLoginUser.getAccessToken(), new Callback<Response>() {
@@ -187,7 +188,7 @@ public class BusBookingListActivity extends BaseActivity {
 					Log.i("", "Fail : "+arg0.getResponse().getStatus());
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithFailure();
 			}
 
 			public void success(Response arg0, Response arg1) {
@@ -212,7 +213,7 @@ public class BusBookingListActivity extends BaseActivity {
 					}
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithSuccess();
 			}
 		});
 	}
@@ -287,7 +288,7 @@ public class BusBookingListActivity extends BaseActivity {
 			
 		}
 	};
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	protected List<From> fromCities;
 	protected List<To> toCities;
 	protected List<TimesbyOperator> Times;
@@ -423,8 +424,8 @@ public class BusBookingListActivity extends BaseActivity {
 	
 	private void getBookingListByCodeNoPhone() {
 		// TODO Auto-generated method stub
-		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-        dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusBookingListActivity.this);
+		dialog.show();
         
         NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingByCodeNoPhone(AppLoginUser.getAccessToken(), book_code, new Callback<Response>() {
@@ -436,7 +437,7 @@ public class BusBookingListActivity extends BaseActivity {
 					Log.i("", "Book code: "+book_code);
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithFailure();
 			}
 
 			public void success(Response arg0, Response arg1) {
@@ -460,7 +461,7 @@ public class BusBookingListActivity extends BaseActivity {
 					}
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithSuccess();
 			}
 		});
 	}

@@ -31,6 +31,7 @@ import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.smk.skalertmessage.SKToastMessage;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class PaymentActivity extends BaseActivity{
 
@@ -52,7 +53,7 @@ public class PaymentActivity extends BaseActivity{
 	private EditText edt_gift_money;
 	private EditText edt_promo_code;
 	private EditText edt_pin_code;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	private String price;
 	private String seat_count;
 	private String agentgroup_id;
@@ -174,7 +175,8 @@ public class PaymentActivity extends BaseActivity{
 	
 	private void postLoytalty() {
 		// TODO Auto-generated method stub
-		dialog = ProgressDialog.show(PaymentActivity.this, "", " Please wait...", true);
+		dialog = new ZProgressHUD(PaymentActivity.this);
+		dialog.show();
 		
 		Integer total_amount = Integer.valueOf(price) * Integer.valueOf(seat_count);
 		txt_total_amount.setText("Ks "+total_amount.toString());
@@ -206,14 +208,14 @@ public class PaymentActivity extends BaseActivity{
 					txt_total_gift_money.setText("Ks "+arg0.getGiftMoney());
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithSuccess();
 			}
 			
 			public void failure(RetrofitError arg0) {
 				// TODO Auto-generated method stub
 				Log.i("", "Error");
 				
-				dialog.dismiss();
+				dialog.dismissWithFailure();
 			}
 		});
 	}

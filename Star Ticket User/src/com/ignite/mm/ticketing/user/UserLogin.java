@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.MaterialDialog.Builder;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
@@ -27,6 +30,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class UserLogin extends BaseActivity {
 
@@ -35,7 +39,7 @@ public class UserLogin extends BaseActivity {
 	
 	private Context ctx = this;
 	private FButton[] buttons = new FButton[3];
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 //	private String UserEmail, UserPassword;
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -111,8 +115,8 @@ public class UserLogin extends BaseActivity {
 					
 					if(checkFields()){
 						
-						dialog = ProgressDialog.show(ctx, ""," Please wait...", true);
-		    			dialog.setCancelable(true);
+						dialog = new ZProgressHUD(UserLogin.this);
+		    			dialog.show();
 		    			
 		    			if(txtEmail.getText().toString().contains("@")){		    				
 		    				userEmail = txtEmail.getText().toString();
@@ -130,7 +134,7 @@ public class UserLogin extends BaseActivity {
 
 							public void success(AccessToken arg0, Response arg1) {
 								// TODO Auto-generated method stub
-								dialog.dismiss();
+								dialog.dismissWithSuccess();
 								
 								Log.i("", "Log in Success: "+arg0.toString());
 		   						
@@ -187,7 +191,7 @@ public class UserLogin extends BaseActivity {
 
 								//SKToastMessage.showMessage(UserLogin.this, "သင္�?? Login Email �?ွင့္ Password မွားေနပါသည္", SKToastMessage.ERROR);
 								
-								dialog.dismiss();
+								dialog.dismissWithFailure();
 								
 								if(arg0.getResponse() != null){
 									Log.i("", "Log in Fail resp: "+arg0.getResponse().getStatus());
@@ -270,7 +274,21 @@ public class UserLogin extends BaseActivity {
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		//super.onBackPressed();
-		yesNoAlert();
+		//yesNoAlert();
+		alertDialog("Are you sure you want to exit the app?"
+		, new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		}, new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
 	}
 	
     protected void yesNoAlert() {

@@ -23,6 +23,7 @@ import com.ignite.mm.ticketing.user.R;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 
 import android.net.Uri;
@@ -48,7 +49,7 @@ import android.widget.Toast;
 
 public class UserRegister extends BaseActivity implements OnClickListener {
 	
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	private ImageButton UserPhoto;
 	private MaterialEditText txtFirstname;
 	private MaterialEditText txtLastname;
@@ -194,8 +195,8 @@ public class UserRegister extends BaseActivity implements OnClickListener {
     		
 	    	if(checkField()){
 	    		
-	    		dialog = ProgressDialog.show(this, "", " Please wait...", true);
-		        dialog.setCancelable(true);	
+	    		dialog = new ZProgressHUD(UserRegister.this);
+	    		dialog.show();
 		        
 	    		UserName = txtUserName.getText().toString();
 	    		UserEmail = txtEmail.getText().toString();
@@ -334,7 +335,7 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 						SKToastMessage.showMessage(UserRegister.this, "သင္၏ Email (သုိ႔) ဖုန္းနံပါတ္ သည္ ရွိၿပီးသားျဖစ္ေနပါသည္! တျခား Email (သုိ႔) ဖုန္းနံပါတ္ ျဖင့္ 'မွတ္ ပံု တင္' ျပဳလုပ္ ပါ!", SKToastMessage.ERROR);
 					}
 					
-					dialog.dismiss();
+					dialog.dismissWithSuccess();
 				}
 				
 				public void failure(RetrofitError arg0) {
@@ -347,7 +348,7 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 							SKToastMessage.showMessage(UserRegister.this, "Something is wrong in server!", SKToastMessage.ERROR);
 						}
 					}
-					dialog.dismiss();
+					dialog.dismissWithFailure();
 				}
 			});
 

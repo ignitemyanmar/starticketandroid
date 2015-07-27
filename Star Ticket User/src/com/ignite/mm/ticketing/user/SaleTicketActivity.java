@@ -2,7 +2,6 @@ package com.ignite.mm.ticketing.user;
 
 import info.hoang8f.widget.FButton;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,9 +12,14 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
@@ -26,12 +30,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
+import com.ignite.mm.ticketing.application.CalendarDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.FromCitiesAdapter;
@@ -39,12 +45,13 @@ import com.ignite.mm.ticketing.custom.listview.adapter.ToCitiesAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.TripTimeAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.Times;
 import com.ignite.mm.ticketing.user.R;
-import com.smk.calender.widget.SKCalender;
-import com.smk.calender.widget.SKCalender.Callbacks;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.squareup.timessquare.CalendarPickerView;
+import com.squareup.timessquare.CalendarPickerView.SelectionMode;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
-public class SaleTicketActivity extends BaseActivity{
+@SuppressLint("SimpleDateFormat") public class SaleTicketActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -59,7 +66,7 @@ public class SaleTicketActivity extends BaseActivity{
 	
 	private FromCitiesAdapter fromCitiesAdapter;
 	private String selectedFromCity;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	private ArrayList<String> toCities;
 	private ToCitiesAdapter toCitiesAdapter;
 	private String selectedToCity;
@@ -76,6 +83,13 @@ public class SaleTicketActivity extends BaseActivity{
 	private String userRole;
 	private TextView txt_promotion;
 	private TextView txt_review;
+	private ImageView img_promotion_ads;
+	private LinearLayout layout_trip_time;
+	private View view_trip_time;
+	
+	private CalendarPickerView calendar;
+	private AlertDialog theDialog;
+	private CalendarPickerView dialogView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,15 +124,10 @@ public class SaleTicketActivity extends BaseActivity{
 		btn_search.setShadowHeight(3);
 		btn_search.setCornerRadius(7);
 		
-		txt_promotion = (TextView)findViewById(R.id.txt_promotion);
-		txt_review = (TextView)findViewById(R.id.txt_review);
-		txt_me = (TextView)findViewById(R.id.txt_me);
-		txt_my_booking = (TextView) findViewById(R.id.txt_my_booking);
+		img_promotion_ads = (ImageView)findViewById(R.id.img_promotion_ads);
 		
-		txt_promotion.setOnClickListener(clickListener);
-		txt_review.setOnClickListener(clickListener);
-		txt_me.setOnClickListener(clickListener);
-		txt_my_booking.setOnClickListener(clickListener);
+		layout_trip_time = (LinearLayout)findViewById(R.id.layout_trip_time);
+		view_trip_time = (View)findViewById(R.id.view_trip_time);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
@@ -133,8 +142,8 @@ public class SaleTicketActivity extends BaseActivity{
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
 			
-			dialog = ProgressDialog.show(SaleTicketActivity.this, "", "Please wait ...", true);
-			dialog.setCancelable(true);
+			dialog = new ZProgressHUD(SaleTicketActivity.this);
+			dialog.show();
 			
 			getFromCities();
 			getToCities();
@@ -146,8 +155,9 @@ public class SaleTicketActivity extends BaseActivity{
 		spn_to_trip.setOnItemSelectedListener(toCityClickListener);
 		spn_trip_time.setOnItemSelectedListener(tripTimeClickListener);
 		
-		btn_trip_date.setOnClickListener(clickListener);
 		btn_search.setOnClickListener(clickListener);
+		img_promotion_ads.setOnClickListener(clickListener);
+	    btn_trip_date.setOnClickListener(clickListener);	    
 	}
 	
 	@Override
@@ -214,8 +224,9 @@ public class SaleTicketActivity extends BaseActivity{
 				}
 				
 				if (dialog != null) {
-					dialog.dismiss();
+					dialog.dismissWithSuccess();
 				}
+				
 			}
 			
 			public void failure(RetrofitError arg0) {
@@ -225,7 +236,7 @@ public class SaleTicketActivity extends BaseActivity{
 				}
 				
 				if (dialog != null) {
-					dialog.dismiss();
+					dialog.dismissWithFailure();
 				}
 			}
 		});
@@ -234,8 +245,8 @@ public class SaleTicketActivity extends BaseActivity{
 	private void getTripTime() {
 		// TODO Auto-generated method stub
 
-			dialog = ProgressDialog.show(SaleTicketActivity.this, "", "Please wait ...", true);
-			dialog.setCancelable(true);
+			dialog = new ZProgressHUD(SaleTicketActivity.this);
+			dialog.show();
 			
 			tripTimes = new ArrayList<Times>();
 			
@@ -258,9 +269,12 @@ public class SaleTicketActivity extends BaseActivity{
 							tripTimeAdapter = new TripTimeAdapter(SaleTicketActivity.this, tripTimes);
 							spn_trip_time.setAdapter(tripTimeAdapter);						
 						}
+						
+						layout_trip_time.setVisibility(View.VISIBLE);
+						view_trip_time.setVisibility(View.VISIBLE);
 					}
 					
-					dialog.dismiss();
+					dialog.dismissWithSuccess();					
 				}
 				
 				public void failure(RetrofitError arg0) {
@@ -270,7 +284,7 @@ public class SaleTicketActivity extends BaseActivity{
 					}
 					
 					if (dialog != null) {
-						dialog.dismiss();
+						dialog.dismissWithFailure();
 					}
 				}
 			});
@@ -303,7 +317,7 @@ public class SaleTicketActivity extends BaseActivity{
 			// TODO Auto-generated method stub
 				if (position > 0) {
 					selectedToCity = toCities.get(position);
-					if (selectedFromCity.equals("Choose - From City") || selectedToCity.equals("Choose - To City")) {
+					if (selectedFromCity.equals("Choose - From City") && selectedToCity.equals("Choose - To City")) {
 						SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္  ေရြးပါ", SKToastMessage.WARNING);
 					}else {
 						if(skDetector.isConnectingToInternet()){
@@ -347,37 +361,45 @@ public class SaleTicketActivity extends BaseActivity{
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			if (v == btn_trip_date) {
-				
-				final SKCalender skCalender = new SKCalender(SaleTicketActivity.this);
-				skCalender.setCallbacks(new Callbacks() {
-
+		        final CalendarDialog calendarDialog = new CalendarDialog(SaleTicketActivity.this);
+				calendarDialog.setOnCallbacksListener(new CalendarDialog.Callbacks() {
+					
 					private Date today;
-
-					public void onChooseDate(String chooseDate) {
-
-			        	Date formatedDate = null;
+					public void choose(String chooseDate) {
+						// TODO Auto-generated method stub
+						
+						SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+						Date fDate = null;
+						
 						try {
 							Log.i("","Hello Choose Date : "+ chooseDate);
-							formatedDate = new SimpleDateFormat("dd-MMM-yyyy").parse(chooseDate);
+							fDate = new SimpleDateFormat("yyyy-MM-dd").parse(chooseDate);
 							today = new SimpleDateFormat("yyyy-MM-dd").parse(getToday());
-						} catch (ParseException e) {
+							
+							Log.i("", "FormatedDate : "+fDate+", Today: "+today);
+							
+						} catch (java.text.ParseException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						int compare = formatedDate.compareTo(today);
-						Log.i("","Hello Compare : "+ compare);
-						if(compare >= 0){
-							selectedTripDate = DateFormat.format("yyyy-MM-dd",formatedDate).toString();
-							btn_trip_date.setText(selectedTripDate);
-				        	skCalender.dismiss();
-						}else {
-
-							SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose today or grater than today!", SKToastMessage.WARNING);
+						
+						if (fDate != null && today != null) {
+							int compare = fDate.compareTo(today);
+							
+							Log.i("","Hello Compare : "+ compare);
+							if(compare >= 0){
+								selectedTripDate = DateFormat.format("yyyy-MM-dd",fDate).toString();
+								btn_trip_date.setText(selectedTripDate);
+								
+								calendarDialog.dismiss();
+							}else {
+								SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose today or grater than today!", SKToastMessage.ERROR);
+							}
 						}
 					}
 				});
 				
-				skCalender.show();
+				calendarDialog.show();
 			}
 			if (v == btn_search) {
 				
@@ -391,7 +413,7 @@ public class SaleTicketActivity extends BaseActivity{
 					startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
 				}
 			}
-			if (v == txt_promotion) {
+/*			if (v == txt_promotion) {
 				startActivity(new Intent(SaleTicketActivity.this, PromotionActivity.class));
 			}
 			if (v == txt_review) {
@@ -404,22 +426,26 @@ public class SaleTicketActivity extends BaseActivity{
 				Bundle bundle = new Bundle();
 				bundle.putString("from_intent", "reservationUser");
 				startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class).putExtras(bundle));
+			}*/
+			if (v == img_promotion_ads) {
+				startActivity(new Intent(SaleTicketActivity.this, PromotionActivity.class));
 			}
 		}
 	};
-	public boolean checkFields() {
-		
-		// TODO Auto-generated method stub
-		if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
-
-			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
-			return false;
+	  
+		public boolean checkFields() {
+			
+			// TODO Auto-generated method stub
+			if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
+	
+				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+				return false;
+			}
+			if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
+				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+				return false;
+			}		
+			
+			return true;
 		}
-		if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
-			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
-			return false;
-		}		
-		
-		return true;
-	}
 }

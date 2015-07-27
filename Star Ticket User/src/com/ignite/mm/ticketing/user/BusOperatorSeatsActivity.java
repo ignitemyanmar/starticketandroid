@@ -1,7 +1,6 @@
 package com.ignite.mm.ticketing.user;
 
 import java.util.List;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -11,10 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -22,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
@@ -34,6 +32,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.Trip;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class BusOperatorSeatsActivity extends BaseActivity{
 	private String selectedFromCity = "";
@@ -45,7 +44,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
 	private ListView lv_operator_seats;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	private List<OperatorSeat> OperatorSeats;
 
 	@Override
@@ -90,6 +89,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		SKConnectionDetector skDetector = SKConnectionDetector.getInstance(this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
+			
 			getOperatorSeats();
 		}else{
 			skDetector.showErrorDialog();
@@ -105,8 +105,8 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 
 	private void getOperatorSeats() {
 		// TODO Auto-generated method stub
-		dialog = ProgressDialog.show(BusOperatorSeatsActivity.this, "", "Please wait ...", true);
-		dialog.setCancelable(true);
+		dialog = new ZProgressHUD(BusOperatorSeatsActivity.this);
+		dialog.show();
 		
 		NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().postSearch(selectedFromCity, selectedToCity, selectedTripDate
@@ -122,11 +122,32 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 						lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats));
 						setListViewHeightBasedOnChildren(lv_operator_seats);
 					}else {
+						/*final MaterialDialog mMaterialDialog = new MaterialDialog(BusOperatorSeatsActivity.this)						
+					    .setTitle("MaterialDialog")
+					    .setMessage("Hello world!")
+					    .setPositiveButton("OK", new View.OnClickListener() {
+					        public void onClick(View v) {
+					           // mMaterialDialog.dismiss();
+					        }
+					    })
+					    .setNegativeButton("CANCEL", new View.OnClickListener() {
+					        public void onClick(View v) {
+					           // mMaterialDialog.dismiss();
+					        }
+					    });
+
+					mMaterialDialog.show();
+
+					// You can change the message anytime. before show
+					mMaterialDialog.setTitle("提示");
+					mMaterialDialog.show();
+					// You can change the message anytime. after show
+					mMaterialDialog.setMessage("你好，世界~");*/
 						showAlert("သင္ ရွာေဖြ ေသာ ခရီးစဥ္ သည္ လက္ မွတ္ မ်ား ကုန္ သြား ပါသျဖင့္ အျခားေန႔ ေရြးၿပီး ရွာ ႏုိင္ ပါသည္။");
 					}
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithSuccess();
 			}
 			
 			public void failure(RetrofitError arg0) {
@@ -135,7 +156,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					Log.i("", "Error: "+arg0.getResponse().getStatus());
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithFailure();
 			}
 		});
 	}
@@ -177,5 +198,5 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 				+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
 		listView.setLayoutParams(params);
 		listView.requestLayout();
-	}
+	}	
 }

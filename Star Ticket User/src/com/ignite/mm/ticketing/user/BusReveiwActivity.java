@@ -25,7 +25,6 @@ public class BusReveiwActivity extends BaseActivity{
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private TextView actionBarTitle2;
-	
 	private ImageButton actionBarBack;
 	private LinearLayout layout_bus_review;
 	@Override

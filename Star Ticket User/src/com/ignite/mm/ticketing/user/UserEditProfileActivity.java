@@ -24,6 +24,7 @@ import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class UserEditProfileActivity extends BaseActivity {
 
@@ -42,7 +43,7 @@ public class UserEditProfileActivity extends BaseActivity {
 	private EditText editTxt_address;
 	private FButton btn_done;
 	private SKConnectionDetector skDetector;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 	protected String Name = "";
 	protected String CurrentPassword = "";
 	protected String NewPassword = "";
@@ -131,7 +132,8 @@ public class UserEditProfileActivity extends BaseActivity {
 
 	private void postEditProfile() {
 		// TODO Auto-generated method stub
-		dialog = ProgressDialog.show(UserEditProfileActivity.this, "", "Please wait ...", true);
+		dialog = new ZProgressHUD(UserEditProfileActivity.this);
+		dialog.show();
 		
 		NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().postEditProfile(Name
@@ -168,12 +170,12 @@ public class UserEditProfileActivity extends BaseActivity {
 								finish();
 							}
 							
-							if(arg1.getStatus() == 400){
+							/*if(arg1.getStatus() == 400){
 								SKToastMessage.showMessage(UserEditProfileActivity.this, "သင္ ႐ုိက္ ထည့္ ေသာ Password အ ေဟာင္း မွားေနပါသည္", SKToastMessage.ERROR);
-							}
+							}*/
 						}
 						
-						dialog.dismiss();
+						dialog.dismissWithSuccess();
 					}
 					
 					public void failure(RetrofitError arg0) {
@@ -184,15 +186,15 @@ public class UserEditProfileActivity extends BaseActivity {
 									+arg0.getResponse().getStatus());
 							
 							if(arg0.getResponse().getStatus() == 400){
-								SKToastMessage.showMessage(UserEditProfileActivity.this, "သင္ ႐ုိက္ ထည့္ ေသာ Password အ ေဟာင္း မွားေနပါသည္", SKToastMessage.ERROR);
+								SKToastMessage.showMessage(UserEditProfileActivity.this, "Check your password or phone no.", SKToastMessage.ERROR);
 							}else if(arg0.getResponse().getStatus() == 500){
 								SKToastMessage.showMessage(UserEditProfileActivity.this, "Server တစ္ခုခု ခ်ိဳ႕ ယြင္း ေနပါသည္", SKToastMessage.ERROR);
 							}else {
-								SKToastMessage.showMessage(UserEditProfileActivity.this, "ဖုန္းနံပါတ္ မွာ  တျခား  User ႏွင့္ တူေနပါသည္။ တျခား ဖုန္းနံပါတ္ ေျပာင္း ထည့္ပါ", SKToastMessage.ERROR);
+								SKToastMessage.showMessage(UserEditProfileActivity.this, "Check your password or phone no.", SKToastMessage.ERROR);
 							}
 						}
 						
-						dialog.dismiss();
+						dialog.dismissWithFailure();
 					}
 				});
 	}

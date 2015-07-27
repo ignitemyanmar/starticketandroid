@@ -9,7 +9,9 @@ import retrofit.client.Response;
 
 import android.app.ActionBar;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,31 +39,14 @@ public class PromotionActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-/*		actionBar = getActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setText("ပ႐ုိမိုရွင္း");
-		//actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setVisibility(View.GONE);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		actionBarBack.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
-		
 		setContentView(R.layout.activity_promotion);
 		
-		//Get Floating Menu from Base Activity
-		getFloatingMenu();	
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("ပ႐ုိမိုရွင္း");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		dialog = ProgressDialog.show(PromotionActivity.this, "", "Please wait ...", true);
 		
@@ -102,4 +87,11 @@ public class PromotionActivity extends BaseActivity{
 			}
 		});
 	}	
+	
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
+	}
 }
