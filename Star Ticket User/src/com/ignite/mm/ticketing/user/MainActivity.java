@@ -49,7 +49,7 @@ import android.content.Intent;
 					finish();
 
 					//startActivity(new Intent(ctx, UserLogin.class));
-					startActivity(new Intent(ctx, UserLogin.class));
+					startActivity(new Intent(ctx, SaleTicketActivity.class));
 					
 				}
 			}

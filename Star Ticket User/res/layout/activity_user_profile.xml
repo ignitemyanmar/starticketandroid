@@ -301,7 +301,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="horizontal" >
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_log_out"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_gray"
+                    android:text="Log out ထြက္မည္"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
                 <info.hoang8f.widget.FButton
                     android:id="@+id/btn_edit_info"

@@ -150,7 +150,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bus_seat_list);
-
+		connectionDetector = new ConnectionDetector(this);
+		
 		//Get Data from past clicks
 		Bundle bundle = getIntent().getExtras();
 		
@@ -173,12 +174,40 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			tripId = bundle.getString("tripId");
 		}
 		
-		//Log.i("", "(Bus Select Seat) Permit_operator_group_id : "+permit_operator_group_id+", Permit_agent_id : "+permit_agent_id);
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle(From+" - "+To);
+            toolbar.setSubtitle("["+operator_name+"] "+changeDate(Date)+" ["+Time+"]");
+           // toolbar.setTitle("Choose Trip/Date/Time");
+            this.setSupportActionBar(toolbar);
+        }
+        
+        
 		
 		mSeat = (GridView) findViewById(R.id.grid_seat);
 		lst_group_user = (ListView) findViewById(R.id.lst_group_user);
 		layout_remark = (LinearLayout) findViewById(R.id.layout_remark);
-		connectionDetector = new ConnectionDetector(this);
+		
+		btn_check_out = (FButton) findViewById(R.id.btn_check_out);
+		btn_check_out.setButtonColor(getResources().getColor(R.color.yellow));
+		btn_check_out.setShadowEnabled(true);
+		btn_check_out.setShadowHeight(3);
+		btn_check_out.setCornerRadius(7);
+		
+		//mLoadingView = (LinearLayout) findViewById(R.id.ly_loading);
+		mNoConnection = (LinearLayout) findViewById(R.id.no_internet);
+		txt_operator = (CustomTextView) findViewById(R.id.txt_operator);
+		txt_classes = (CustomTextView) findViewById(R.id.txt_classes);
+		txt_price = (CustomTextView) findViewById(R.id.txt_price);
+		txt_dept_date = (CustomTextView) findViewById(R.id.txt_departure_date);
+		txt_dept_time = (CustomTextView) findViewById(R.id.txt_departure_time);
+		txt_dept_date.setText("ထြက္ ခြာ မည့္ ေန႔ရက္ : "+ Date);
+		txt_dept_time.setText("ထြက္ ခြာ မည့္ အခ်ိန္ : "+ Time);
+		
+	//	btn_booking.setOnClickListener(clickListener);
+	//	btn_now_booking.setOnClickListener(clickListener);
+		btn_check_out.setOnClickListener(clickListener);
 		
 		//Get TodayDate
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -233,44 +262,18 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			actionBarNoti.setText(NotifyBooking.toString());
 		}
 		
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle(From+" - "+To+" ["+operator_name+"] "+changeDate(Date)+" ["+Time+"]");
-           // toolbar.setTitle("Choose Trip/Date/Time");
-            this.setSupportActionBar(toolbar);
-        }
-        
 		SelectedSeat 	= "";
 		btn_booking		= (Button) findViewById(R.id.btn_booking);
 		btn_now_booking = (Button) findViewById(R.id.btn_now_booking);
 		
 		Log.i("", "");
 		
-		if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
+		/*if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
 			//btn_booking.setVisibility(View.GONE);
 			//btn_now_booking.setVisibility(View.GONE);
 		}
+		*/
 		
-		btn_check_out = (FButton) findViewById(R.id.btn_check_out);
-		btn_check_out.setButtonColor(getResources().getColor(R.color.yellow));
-		btn_check_out.setShadowEnabled(true);
-		btn_check_out.setShadowHeight(3);
-		btn_check_out.setCornerRadius(7);
-		
-		mLoadingView = (LinearLayout) findViewById(R.id.ly_loading);
-		mNoConnection = (LinearLayout) findViewById(R.id.no_internet);
-		txt_operator = (CustomTextView) findViewById(R.id.txt_operator);
-		txt_classes = (CustomTextView) findViewById(R.id.txt_classes);
-		txt_price = (CustomTextView) findViewById(R.id.txt_price);
-		txt_dept_date = (CustomTextView) findViewById(R.id.txt_departure_date);
-		txt_dept_time = (CustomTextView) findViewById(R.id.txt_departure_time);
-		txt_dept_date.setText("ထြက္ ခြာ မည့္ ေန႔ရက္ : "+ Date);
-		txt_dept_time.setText("ထြက္ ခြာ မည့္ အခ်ိန္ : "+ Time);
-		
-		btn_booking.setOnClickListener(clickListener);
-		btn_now_booking.setOnClickListener(clickListener);
-		btn_check_out.setOnClickListener(clickListener);
 	}
 	
 	@Override
@@ -284,21 +287,17 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		if(SelectedSeat.length() != 0)
-			finish();
+		//if(SelectedSeat.length() != 0)
+			//finish();
 		if(connectionDetector.isConnectingToInternet())
-		{ 	mLoadingView.setVisibility(View.VISIBLE);
-			mLoadingView.startAnimation(topInAnimaiton());
-			//getOperatorGroupUser();
+		{ 	
+			dialog = new ZProgressHUD(BusSelectSeatActivity.this);
+			dialog.show();
 			
 			//Get permission & Get seat plan 
 			getPermission();
-			
-			//getAgent();
 		}else {
 			connectionDetector.showErrorDialog();
-			/*mNoConnection.setVisibility(View.VISIBLE);
-			mNoConnection.startAnimation(topInAnimaiton());*/
 		}
 	}
 	
@@ -373,11 +372,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				CustPhone = custPhone;
 				RemarkType = remarkType;
 				Remark = remark;
-				postSale();
+			//	postSale();
 			}
 		});	
 		bookingDialog.show();
-		
 	}
 
 	
@@ -439,15 +437,17 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					BusSeats = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<BusSeat>>() {}.getType());
 					
 					if (BusSeats != null && BusSeats.size() > 0) {
+						
 						getData();
-						mLoadingView.setVisibility(View.GONE);
-						mLoadingView.startAnimation(topOutAnimaiton());
+					}else {
+						dialog.dismissWithFailure();
 					}
 				}
 			}
 			
 			public void failure(RetrofitError arg0) {
 				// TODO Auto-generated method stub
+				dialog.dismissWithFailure();
 				Log.i("","Hello Seat Error: "+ arg0.getCause());
 				//Log.i("","Hello Seat Error: "+ arg0.getResponse().getBody());
 				//Log.i("","Hello Seat Error: "+ arg0.getResponse().getHeaders().toString());
@@ -529,39 +529,49 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 									}
 		        				}
 		        				
-		        				//Buy Ticket
-								if(isBooking == 0){
-									dialog.dismissWithSuccess(); //finish can buy ticket
-			        				Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
-			        				
-				    				Bundle bundle = new Bundle();
-				    				bundle.putString("from_intent", "checkout");
-				    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
-				    				bundle.putString("from_to", From+" => "+To);
-				    				bundle.putString("time", Time);
-				    				bundle.putString("classes", BusClasses);
-				    				bundle.putString("date", Date);
-				    				bundle.putString("selected_seat",  SeatLists);
-				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-				    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-				    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
-			        				bundle.putString("ConfirmDate", todayDate);
-			        				bundle.putString("ConfirmTime", todayTime);
-			        				bundle.putString("CustomerName", AppLoginUser.getUserName());
-			        				//Get Seat Count
-			        				String[] seats = SeatLists.split(",");
-			        				bundle.putString("SeatCount", seats.length+"");
-				    				bundle.putString("permit_ip", permit_ip);
-				    				bundle.putString("permit_access_token", permit_access_token);
-				    				
-				    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
-									bundle.putString("permit_agent_id", permit_agent_id);
-									bundle.putString("permit_operator_id", permit_operator_id);
+		        				//Buy Ticket 
+								if(isBooking == 0){		//can buy
+									//check log in already (or) not yet? 
+									Log.i("", "User Id: "+AppLoginUser.getId());
 									
-									//bundle.putString("client_operator_id", client_operator_id);
-				    				
-				    				nextScreen.putExtras(bundle);
-				    				startActivity(nextScreen);
+									if (Integer.valueOf(AppLoginUser.getId()) != 0) {
+										dialog.dismissWithSuccess(); //finish can buy ticket
+				        				Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
+				        				
+					    				Bundle bundle = new Bundle();
+					    				bundle.putString("from_intent", "checkout");
+					    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
+					    				bundle.putString("from_to", From+" => "+To);
+					    				bundle.putString("time", Time);
+					    				bundle.putString("classes", BusClasses);
+					    				bundle.putString("date", Date);
+					    				bundle.putString("selected_seat",  SeatLists);
+					    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
+					    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
+					    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+				        				bundle.putString("ConfirmDate", todayDate);
+				        				bundle.putString("ConfirmTime", todayTime);
+				        				bundle.putString("CustomerName", AppLoginUser.getUserName());
+				        				//Get Seat Count
+				        				String[] seats = SeatLists.split(",");
+				        				bundle.putString("SeatCount", seats.length+"");
+					    				bundle.putString("permit_ip", permit_ip);
+					    				bundle.putString("permit_access_token", permit_access_token);
+					    				
+					    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
+										bundle.putString("permit_agent_id", permit_agent_id);
+										bundle.putString("permit_operator_id", permit_operator_id);
+										
+										//bundle.putString("client_operator_id", client_operator_id);
+					    				
+					    				nextScreen.putExtras(bundle);
+					    				startActivity(nextScreen);
+									}else {
+										finish();
+										dialog.dismissWithSuccess(); 
+										startActivity(new Intent(getApplicationContext(), UserLogin.class));
+									}
+									
 			        			}else{ //Booking Finished!
 			        				
 			        				isBooking = 0;
@@ -604,8 +614,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				orderNo
 				, permit_operator_id
 				, AppLoginUser.getCodeNo()
-				, 1
-				, AppLoginUser.getAccessToken()
+				, AppLoginUser.getAccessToken(), "", "0931247515"
+				, "Saw Maine K", "No.50, Lanthit Street, Lanmadaw Tsp, Yangon", "Lanmadaw Tsp"
+				, "10", "0", "", "", "", "1"
 				, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
@@ -726,8 +737,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			lvClass = (ListView)findViewById(R.id.lvBusClass);
 			lvClass.setAdapter(new BusClassAdapter(this, BusSeats.get(0).getSeat_plan()));
 			lvClass.setOnItemClickListener(itemClickListener);
+			
+			dialog.dismissWithSuccess();
+			
 		}else{
-			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+			/*AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 			alertDialog.setMessage("There is no bus yet.");
 			alertDialog.setCancelable(false);
 			alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -737,7 +751,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					finish();
 				}
 			});
-			alertDialog.show();
+			alertDialog.show();*/
+			
+			dialog.dismissWithFailure("No bus yet");
 		}
 	}
 	
@@ -840,7 +856,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				public void onCancel() {
 					
 					// TODO Auto-generated method stub
-					alertDialog("Are you sure, you want to delete?", new DialogInterface.OnClickListener() {
+					alertDialog("Are you sure, you want to delete?", "Yes", "No", new DialogInterface.OnClickListener() {
 						
 								public void onClick(DialogInterface dialog,
 										int which) {
@@ -973,54 +989,63 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				if(SelectedSeat.length() != 0){									
 					
 					if(connectionDetector.isConnectingToInternet()){
+						//Check Log in already or not?
+						Log.i("", "User's Id(check out): "+AppLoginUser.getId());
 						
-						List<SelectSeat> seats = new ArrayList<SelectSeat>();
-				        
-				        String[] selectedSeat = SelectedSeat.split(",");
-				        
-						for (int i = 0; i < selectedSeat.length; i++) {
-							seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0)
-									.getId(), BusSeats.get(0).getSeat_plan().get(0)
-									.getSeat_list().get(Integer.valueOf(selectedSeat[i]))
-									.getSeat_no().toString()));
+						if (AppLoginUser.getId() != null && !AppLoginUser.getId().equals("0")) {
+							List<SelectSeat> seats = new ArrayList<SelectSeat>();
+					        
+					        String[] selectedSeat = SelectedSeat.split(",");
+					        
+							for (int i = 0; i < selectedSeat.length; i++) {
+								seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0)
+										.getId(), BusSeats.get(0).getSeat_plan().get(0)
+										.getSeat_list().get(Integer.valueOf(selectedSeat[i]))
+										.getSeat_no().toString()));
+							}
+							
+							final String FromCity = BusSeats.get(0).getSeat_plan().get(0).getFrom().toString();
+							final String ToCity = BusSeats.get(0).getSeat_plan().get(0).getTo().toString();
+							
+					        Log.i("","Hello From City: "+FromCity+" , To City : "+ToCity+" and Select Seat -> "+seats.toString());
+					        
+					        BundleListObjSeats seatsListObj = new BundleListObjSeats();
+					        seatsListObj.setSeatsList(seats);
+							
+							Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
+	        				
+		    				Bundle bundle = new Bundle();
+		    				bundle.putString("from_intent", "checkout");
+		    				bundle.putString("FromCity", FromCity);
+		    				bundle.putString("ToCity", ToCity);
+		    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
+		    				bundle.putString("from_to", From+" => "+To);
+		    				bundle.putString("time", Time);
+		    				bundle.putString("classes", BusClasses);
+		    				bundle.putString("date", Date);
+		    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
+		    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+	        				bundle.putString("ConfirmDate", todayDate);
+	        				bundle.putString("ConfirmTime", todayTime);
+	        				bundle.putString("CustomerName", AppLoginUser.getUserName());
+	        				bundle.putString("Selected_seats", SelectedSeat);
+	        				bundle.putString("seat_List", new Gson().toJson(seatsListObj));
+	        				//Get Seat Count
+		    				bundle.putString("permit_ip", permit_ip);
+		    				bundle.putString("permit_access_token", permit_access_token);
+		    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
+							bundle.putString("permit_agent_id", permit_agent_id);
+							bundle.putString("permit_operator_id", permit_operator_id);
+		    				
+		    				nextScreen.putExtras(bundle);
+		    				startActivity(nextScreen);
+		    				
+		    				dialog.dismissWithSuccess();
+						}else {  
+							//finish();
+							dialog.dismissWithSuccess();
+							startActivity(new Intent(BusSelectSeatActivity.this, UserLogin.class));
 						}
-						
-						final String FromCity = BusSeats.get(0).getSeat_plan().get(0).getFrom().toString();
-						final String ToCity = BusSeats.get(0).getSeat_plan().get(0).getTo().toString();
-						
-				        Log.i("","Hello From City: "+FromCity+" , To City : "+ToCity+" and Select Seat -> "+seats.toString());
-				        
-				        BundleListObjSeats seatsListObj = new BundleListObjSeats();
-				        seatsListObj.setSeatsList(seats);
-						
-						Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
-        				
-	    				Bundle bundle = new Bundle();
-	    				bundle.putString("from_intent", "checkout");
-	    				bundle.putString("FromCity", FromCity);
-	    				bundle.putString("ToCity", ToCity);
-	    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
-	    				bundle.putString("from_to", From+" => "+To);
-	    				bundle.putString("time", Time);
-	    				bundle.putString("classes", BusClasses);
-	    				bundle.putString("date", Date);
-	    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-	    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
-        				bundle.putString("ConfirmDate", todayDate);
-        				bundle.putString("ConfirmTime", todayTime);
-        				bundle.putString("CustomerName", AppLoginUser.getUserName());
-        				bundle.putString("Selected_seats", SelectedSeat);
-        				bundle.putString("seat_List", new Gson().toJson(seatsListObj));
-        				//Get Seat Count
-	    				bundle.putString("permit_ip", permit_ip);
-	    				bundle.putString("permit_access_token", permit_access_token);
-	    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
-						bundle.putString("permit_agent_id", permit_agent_id);
-						bundle.putString("permit_operator_id", permit_operator_id);
-	    				
-	    				nextScreen.putExtras(bundle);
-	    				startActivity(nextScreen);
-						//postSale();
 					}else{
 						connectionDetector.showErrorDialog();
 					}
@@ -1107,12 +1132,12 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
         listView.requestLayout();
     }
 	
-	@Override
+/*	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		RelativeLayout focuslayout = (RelativeLayout) findViewById(R.id.layout_seat_plan);
 		focuslayout.requestFocus();
 		super.onStart();
-	}
+	}*/
 }
 

@@ -137,6 +137,16 @@ public interface INetworkEngine {
 			@Field("user_code_no") String user_code_no,
 			@Field("access_token") String access_token, 
 			@Field("extra_name") String extra_name,
+			@Field("loyalty_phone") String loyalty_phone,
+			@Field("loyalty_name") String loyalty_name,
+			@Field("loyalty_address") String loyalty_address,
+			@Field("loyalty_township") String loyalty_township,
+			@Field("use_points") String use_points,
+			@Field("use_gift_money") String use_gift_money,
+			@Field("promotion_code") String promotion_code,
+			@Field("payment") String payment,
+			@Field("agentgroup_id") String agentgroup_id,
+			@Field("sale_booking") String sale_booking,
 			Callback<Response> callback);
 	
 	@FormUrlEncoded

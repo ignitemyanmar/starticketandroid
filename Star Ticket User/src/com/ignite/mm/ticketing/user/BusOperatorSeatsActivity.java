@@ -6,6 +6,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -69,10 +70,12 @@ public class BusOperatorSeatsActivity extends BaseActivity{
     		if (selectedTripTime != null) {
     			if (!selectedTripDate.equals("") && selectedTripDate != null) {
     				if (!selectedTripTime.equals("") && selectedTripTime != null) {
-    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity+" "+changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
+    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity);
+    					toolbar.setSubtitle(changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
     				}else if (selectedTripTime.equals("") || selectedTripTime == null)
     				{
-    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity+" "+changeDate(selectedTripDate)+" [All Time]");
+    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity);
+    					toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
     				}
     			}else {
     				toolbar.setTitle("00/00/0000 [ 00:00:00 ]");
@@ -108,9 +111,14 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		dialog = new ZProgressHUD(BusOperatorSeatsActivity.this);
 		dialog.show();
 		
+		Log.i("", "Search Operator: "+selectedFromCity+", "
+						+selectedToCity+", "
+						+selectedTripDate+", "
+						+selectedTripTime+", access: "+AppLoginUser.getAccessToken());
+		
 		NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().postSearch(selectedFromCity, selectedToCity, selectedTripDate
-				, selectedTripTime, AppLoginUser.getAccessToken(), new Callback<Response>() {
+				, selectedTripTime, "", new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
@@ -122,28 +130,20 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 						lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats));
 						setListViewHeightBasedOnChildren(lv_operator_seats);
 					}else {
-						/*final MaterialDialog mMaterialDialog = new MaterialDialog(BusOperatorSeatsActivity.this)						
-					    .setTitle("MaterialDialog")
-					    .setMessage("Hello world!")
-					    .setPositiveButton("OK", new View.OnClickListener() {
-					        public void onClick(View v) {
-					           // mMaterialDialog.dismiss();
-					        }
-					    })
-					    .setNegativeButton("CANCEL", new View.OnClickListener() {
-					        public void onClick(View v) {
-					           // mMaterialDialog.dismiss();
-					        }
-					    });
-
-					mMaterialDialog.show();
-
-					// You can change the message anytime. before show
-					mMaterialDialog.setTitle("提示");
-					mMaterialDialog.show();
-					// You can change the message anytime. after show
-					mMaterialDialog.setMessage("你好，世界~");*/
-						showAlert("သင္ ရွာေဖြ ေသာ ခရီးစဥ္ သည္ လက္ မွတ္ မ်ား ကုန္ သြား ပါသျဖင့္ အျခားေန႔ ေရြးၿပီး ရွာ ႏုိင္ ပါသည္။");
+						alertDialog("သင္ ရွာေဖြ ေသာ ခရီးစဥ္ သည္ လက္ မွတ္ မ်ား ကုန္ သြား ပါသျဖင့္ အျခားေန႔ ေရြးၿပီး ရွာ ႏုိင္ ပါသည္။"
+								, "Back", "", new DialogInterface.OnClickListener() {
+									
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										finish();
+									}
+								}, new DialogInterface.OnClickListener() {
+									
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										//dialog.dismiss();
+									}
+								});
 					}
 				}
 				

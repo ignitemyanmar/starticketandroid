@@ -11,10 +11,12 @@ import com.ignite.mm.ticketing.user.BusBookingListActivity;
 import com.ignite.mm.ticketing.user.BusReveiwActivity;
 import com.ignite.mm.ticketing.user.R;
 import com.ignite.mm.ticketing.user.ThreeDaySalesActivity;
+import com.ignite.mm.ticketing.user.UserLogin;
 import com.ignite.mm.ticketing.user.UserProfileActivity;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+import com.smk.skalertmessage.SKToastMessage;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -25,6 +27,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -85,10 +88,14 @@ public class BaseActivity extends ActionBarActivity{
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-/*		if(AppLoginUser.isExpires()){
+		AppLoginUser = new LoginUser(this);
+		Log.i("", "Username(Resume): "+AppLoginUser.getId());
+		
+		/*if(AppLoginUser.isExpires()){
 			closeAllActivities();
 		}*/
 		super.onResume();
+		
 	}
 	
 	protected String getToday(){
@@ -122,26 +129,34 @@ public class BaseActivity extends ActionBarActivity{
 		getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+	
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return false;
-
-		/*if (item.getItemId() == R.id.menu_logout) {
-			AppLoginUser.logout();
-        	closeAllActivities();
-        	return true;
-		}else {
-			return false;  
-		}*/
-		
-	    /*switch(item.getItemId()) {
-	        case R.id.menu_logout:
-	        	AppLoginUser.logout();
-	        	closeAllActivities();
+	      
+	    switch(item.getItemId()) {
+	        case R.id.menu_hotLine:
+	        	callHotLine("0931166772");
+	        	return true;
+	        case R.id.menu_hotline2:
+	        	callHotLine(item.getTitle().toString());
+	        	return true;
+	        case R.id.menu_hotline3:
+	        	callHotLine(item.getTitle().toString());
 	        	return true;
    	   	}
-		return false; */ 
-		
+		return false;
 	 }
+	
+	private void callHotLine(String phoneNo) {
+		// TODO Auto-generated method stub
+		  String hotPh = "tel:" + phoneNo.trim() ;
+		  Intent in = new Intent(Intent.ACTION_DIAL, Uri.parse(hotPh));
+	      try{
+	         startActivity(in);
+	      }
+	      catch (android.content.ActivityNotFoundException ex){
+	         Toast.makeText(getApplicationContext(),"Not founded",Toast.LENGTH_SHORT).show();
+	      }
+	}
 	
 	public static String changeDate(String date){
 		Log.i("", "to change date: "+date);
@@ -348,7 +363,11 @@ public class BaseActivity extends ActionBarActivity{
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(), ThreeDaySalesActivity.class));
+				if (AppLoginUser.getId() != null && !AppLoginUser.getId().equals("0")) {
+					startActivity(new Intent(getApplicationContext(), ThreeDaySalesActivity.class));
+				}else {
+					startActivity(new Intent(getApplicationContext(), UserLogin.class));
+				}
 			}
 		});
         
@@ -356,7 +375,12 @@ public class BaseActivity extends ActionBarActivity{
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class));
+				if (AppLoginUser.getId() != null && !AppLoginUser.getId().equals("0")) {
+					startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class));
+				}else {
+					startActivity(new Intent(getApplicationContext(), UserLogin.class));
+				}
+				
 			}
 		});
         
@@ -364,17 +388,22 @@ public class BaseActivity extends ActionBarActivity{
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+				if (AppLoginUser.getId() != null && !AppLoginUser.getId().equals("0")) {
+					startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+				}else {
+					startActivity(new Intent(getApplicationContext(), UserLogin.class));
+				}
+				
 			}
 		});
         
     }
 	
-	protected void alertDialog(String MSG, OnClickListener YES, OnClickListener NO){
+	protected void alertDialog(String MSG, String ok, String cancel, OnClickListener YES, OnClickListener NO){
 		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
 		alertDialog.setMessage(MSG);
 		
-		alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+		alertDialog.setPositiveButton(ok, new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
@@ -383,17 +412,21 @@ public class BaseActivity extends ActionBarActivity{
 		});
 	
 		if(YES != null){
-			alertDialog.setPositiveButton("YES", YES);
+			alertDialog.setPositiveButton(ok, YES);
 		}else{
-			alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+			alertDialog.setNegativeButton(cancel, new DialogInterface.OnClickListener() {
 	            public void onClick(DialogInterface dialog, int which) {
 	                dialog.dismiss();
 	            }
 	        });
 		}
+		
 		if(NO != null){
-			alertDialog.setNegativeButton("NO", NO);
+			alertDialog.setNegativeButton(cancel, NO);
 		}
+		
+		alertDialog.setCancelable(false);
 		alertDialog.show();
+		
 	}
 }

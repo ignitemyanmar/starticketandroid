@@ -53,16 +53,13 @@ public class UserProfileActivity extends BaseActivity{
 			if (v == btn_edit_info) {
 				startActivity(new Intent(UserProfileActivity.this, UserEditProfileActivity.class));
 			}
-			if (v == btn_order_history) {
-				startActivity(new Intent(UserProfileActivity.this, ThreeDaySalesActivity.class));
-			}
-			if (v == btn_my_booking) {
-				Bundle bundle = new Bundle();
-				bundle.putString("from_intent", "reservationUser");
-				startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class).putExtras(bundle));
+			if (v == btn_log_out) {
+				AppLoginUser.logout();
+				finish();
 			}
 		}
 	};
+	private FButton btn_log_out;
 	
 	@Override
 	protected void onResume() {
@@ -105,11 +102,13 @@ public class UserProfileActivity extends BaseActivity{
 		btn_edit_info.setShadowHeight(3);
 		btn_edit_info.setCornerRadius(7);
 		
-		btn_order_history = (Button)findViewById(R.id.btn_order_history);
-		btn_my_booking = (Button)findViewById(R.id.btn_my_booking);
+		btn_log_out = (FButton)findViewById(R.id.btn_log_out);
+		btn_log_out.setButtonColor(getResources().getColor(R.color.gray));
+		btn_log_out.setShadowEnabled(true);
+		btn_log_out.setShadowHeight(3);
+		btn_log_out.setCornerRadius(7);
 		
 		btn_edit_info.setOnClickListener(clickListener);
-		btn_order_history.setOnClickListener(clickListener);
-		btn_my_booking.setOnClickListener(clickListener);
+		btn_log_out.setOnClickListener(clickListener);
 	}
 }

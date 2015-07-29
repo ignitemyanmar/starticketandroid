@@ -23,39 +23,11 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
         </android.support.v7.widget.Toolbar>
 
-        <LinearLayout
-            android:id="@+id/ly_loading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
-            android:background="@android:color/transparent"
-            android:gravity="center_horizontal|center_vertical"
-            android:padding="2dp"
-            android:visibility="visible" >
-
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/action_bar_title2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Please wait loading ..."
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#AAA"
-                android:textSize="12dp"
-                android:typeface="sans" />
-        </LinearLayout>
-
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ly_loading" >
+            android:layout_below="@id/toolbar" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -331,7 +303,7 @@
                         android:minHeight="@dimen/button_min_height"
                         android:minWidth="@dimen/button_min_width"
                         android:padding="5dp"
-                        android:text="ခရီးသည္ အခ်က္အလက္ ျဖည့္ရန္ =>"
+                        android:text="ခရီးသည္ အခ်က္အလက္ ျဖည့္ရန္"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/white"
                         android:visibility="visible" />

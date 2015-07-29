@@ -27,7 +27,7 @@ public class BusSeatAdapter extends BaseAdapter{
 	 private final Context _context;
 	    private final List<Seat_list> list;
 		private Callbacks mCallbacks;
-		private String userRole;
+		//private String userRole;
 	    
 	  	
 	    public BusSeatAdapter(Activity atx, List<Seat_list> seat_list, String userRole)
@@ -35,7 +35,7 @@ public class BusSeatAdapter extends BaseAdapter{
 	        super();
 	        this._context = atx;
 	        this.list = seat_list;
-	        this.userRole = userRole;
+	       // this.userRole = userRole;
 	       
 	    }
 		public int getCount() {
@@ -98,7 +98,9 @@ public class BusSeatAdapter extends BaseAdapter{
 					else
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_3_1);
 					break;
-				case 4: //Online Sale
+				case 5: //Online Sale
+					
+					Log.i("", "Online Sale .. Enter here!!!!!!!!!!!");
 					
 					if(list.get(position).getBooking() == 0)
 					{
@@ -112,12 +114,12 @@ public class BusSeatAdapter extends BaseAdapter{
 					//Get Selected Seats of Online Sales
 	            	holder.layout_customer_info.setVisibility(View.INVISIBLE);
 	            	
-	            	//if Agent
+	            	/*//if Agent
 	            	if (Integer.valueOf(this.userRole) <= 3) {
 	            		holder.cover.setVisibility(View.INVISIBLE);
 					}else {
 						//holder.cover.setVisibility(View.INVISIBLE);
-					}
+					}*/
 	            	
 					holder.seat_no.setVisibility(View.INVISIBLE);
 	            	
@@ -125,7 +127,7 @@ public class BusSeatAdapter extends BaseAdapter{
 	            	holder.seat.setEnabled(true);
 	            	holder.seat.setTag(position);	
 	            	
-	            	//if Agent
+	            	/*//if Agent
 	            	if (Integer.valueOf(this.userRole) <= 3) {
 	            		holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 							
@@ -165,7 +167,7 @@ public class BusSeatAdapter extends BaseAdapter{
 						});
 					}else {
 						//do nothing
-					}
+					}*/
 					break;
 				default:
 					if(list.get(position).getBooking() == 0)
@@ -179,12 +181,12 @@ public class BusSeatAdapter extends BaseAdapter{
 					
 					holder.layout_customer_info.setVisibility(View.INVISIBLE);
 
-					//if Agent
+					/*//if Agent
 					if (Integer.valueOf(this.userRole) <= 3) {
 						holder.cover.setVisibility(View.VISIBLE);
 					}else{
 						//holder.cover.setVisibility(View.VISIBLE);
-					}
+					}*/
 					
 					holder.seat_no.setVisibility(View.VISIBLE);
 					holder.seat_no.setText(list.get(position).getSeat_no());
@@ -220,7 +222,19 @@ public class BusSeatAdapter extends BaseAdapter{
             	}
             	holder.layout_customer_info.setTag(list.get(position));
             	
-            	if (Integer.valueOf(userRole) > 3) {
+            	holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
+					
+					public boolean onLongClick(View v) {
+						// TODO Auto-generated method stub
+						if(mCallbacks != null){
+							Seat_list list = (Seat_list) v.getTag();
+							mCallbacks.onClickEdit(list);
+						}
+						return false;
+					}
+				});
+            	
+            	/*if (Integer.valueOf(userRole) > 3) {
             		holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
     					
     					public boolean onLongClick(View v) {
@@ -234,7 +248,7 @@ public class BusSeatAdapter extends BaseAdapter{
     				});
 				}else{
 					//do nothing
-				}
+				}*/
             }
             
             if(list.get(position).getStatus() == 3){
@@ -249,48 +263,50 @@ public class BusSeatAdapter extends BaseAdapter{
             	holder.seat.setEnabled(true);
             	holder.seat.setTag(position);
             	
-            	if (Integer.valueOf(this.userRole) > 3) {
-                	holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-    					
-    					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-    						if(isChecked){
-    							//If checked the seat.
-    							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
-    							if(!BusSelectSeatActivity.SelectedSeat.isEmpty()){
-    								boolean isExisted = false;
-    								for (int i = 0; i < seleted.length; i++) {
-    									if(seleted[i].equals(buttonView.getTag().toString())){
-    										isExisted = true;
-    									}
-    								}
-    								
-    								if(!isExisted){
-    									BusSelectSeatActivity.SelectedSeat += buttonView.getTag()+",";
-    								}
-    							}else{
-    								BusSelectSeatActivity.SelectedSeat += buttonView.getTag()+",";
-    							}
-    							
-    							
-    						}else{
-    							//If unchecked the seat.
-    							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
-    							if(!BusSelectSeatActivity.SelectedSeat.isEmpty()){
-    								BusSelectSeatActivity.SelectedSeat = "";
-    								for (int i = 0; i < seleted.length; i++) {
-    									if(!seleted[i].equals(buttonView.getTag().toString())){
-    										BusSelectSeatActivity.SelectedSeat += seleted[i]+",";
-    									}
-    								}
-    								
-    							}
-    						}
-    						
-    					}
-    				});
+            	holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+					
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						if(isChecked){
+							//If checked the seat.
+							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
+							if(!BusSelectSeatActivity.SelectedSeat.isEmpty()){
+								boolean isExisted = false;
+								for (int i = 0; i < seleted.length; i++) {
+									if(seleted[i].equals(buttonView.getTag().toString())){
+										isExisted = true;
+									}
+								}
+								
+								if(!isExisted){
+									BusSelectSeatActivity.SelectedSeat += buttonView.getTag()+",";
+								}
+							}else{
+								BusSelectSeatActivity.SelectedSeat += buttonView.getTag()+",";
+							}
+							
+							
+						}else{
+							//If unchecked the seat.
+							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
+							if(!BusSelectSeatActivity.SelectedSeat.isEmpty()){
+								BusSelectSeatActivity.SelectedSeat = "";
+								for (int i = 0; i < seleted.length; i++) {
+									if(!seleted[i].equals(buttonView.getTag().toString())){
+										BusSelectSeatActivity.SelectedSeat += seleted[i]+",";
+									}
+								}
+								
+							}
+						}
+						
+					}
+				});
+            	
+            	/*if (Integer.valueOf(this.userRole) > 3) {
+
 				}else{
 					//Do nothing
-				}
+				}*/
             }
             
             if(list.get(position).getStatus() == 0){
@@ -311,7 +327,7 @@ public class BusSeatAdapter extends BaseAdapter{
 			public void onClickEdit(Seat_list list);
 		}
 		
-		private int getColor(int Id){
+/*		private int getColor(int Id){
 			int color = 0;
 			for(OperatorGroupUser groupUser: BusSelectSeatActivity.groupUser){
 				Log.i("", "Group User's Id: "+groupUser.getId()+", Seat Plan's OperatorGroupId: "+Id);
@@ -324,7 +340,7 @@ public class BusSeatAdapter extends BaseAdapter{
 			Log.i("", "OperatorGroupUser's Color status: "+color);
 			
 			return color;
-		}
+		}*/
 		
 		 static class ViewHolder {
 				CheckBox seat;

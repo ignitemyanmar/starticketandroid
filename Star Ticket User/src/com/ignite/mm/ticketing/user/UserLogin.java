@@ -118,17 +118,17 @@ public class UserLogin extends BaseActivity {
 						dialog = new ZProgressHUD(UserLogin.this);
 		    			dialog.show();
 		    			
-		    			if(txtEmail.getText().toString().contains("@")){		    				
+		    			/*if(txtEmail.getText().toString().contains("@")){		    				
 		    				userEmail = txtEmail.getText().toString();
 		    			}else{
 		    				userEmail = txtEmail.getText().toString()+"@gmail.com";
-		    			}
+		    			}*/
 		    			
 		    			Log.i("", "Enter here..... log in");
 		    			//Check Email & Password on Server
 		    			
 		    			NetworkEngine.setIP("test.starticketmyanmar.com");
-						NetworkEngine.getInstance().getAccessToken("password", "clientID22222", "scrt123321098765432", userEmail, txtPassword.getText().toString(), "", "", new Callback<AccessToken>() {
+						NetworkEngine.getInstance().getAccessToken("password", "clientID22222", "scrt123321098765432", txtEmail.getText().toString(), txtPassword.getText().toString(), "", "", new Callback<AccessToken>() {
 							
 							private String userName;
 
@@ -168,18 +168,18 @@ public class UserLogin extends BaseActivity {
 									//startActivity(intent);
 								}else{
 									Log.i("", "Enter here.... home act:");
-									LoginUser user = new LoginUser(UserLogin.this);
+									/*LoginUser user = new LoginUser(UserLogin.this);
 									Bundle bundle = new Bundle();
 									bundle.putString("login_name", user.getUserName());
 									bundle.putString("userRole", user.getRole());
 									
-									Log.i("", "name : "+user.getUserName()+", role: "+user.getRole());
+									Log.i("", "name : "+user.getUserName()+", role: "+user.getRole());*/
 									
-									//finish();
+									finish();
 									
-									Intent intent = new Intent(getApplicationContext(),	SaleTicketActivity.class).putExtras(bundle);
+									/*Intent intent = new Intent(getApplicationContext(),	SaleTicketActivity.class).putExtras(bundle);
 									//Intent intent = new Intent(getApplicationContext(),	BusOperatorActivity.class);
-			   						startActivity(intent);
+			   						startActivity(intent);*/
 			   						//finish();
 								}
 							}
@@ -188,24 +188,19 @@ public class UserLogin extends BaseActivity {
 								// TODO Auto-generated method stub
 								Log.i("", "Enter here... log in fail: "+arg0.getCause());
 								
-
-								//SKToastMessage.showMessage(UserLogin.this, "သင္�?? Login Email �?ွင့္ Password မွားေနပါသည္", SKToastMessage.ERROR);
-								
 								dialog.dismissWithFailure();
 								
 								if(arg0.getResponse() != null){
 									Log.i("", "Log in Fail resp: "+arg0.getResponse().getStatus());
 									if(arg0.getResponse().getStatus() == 400){
-										SKToastMessage.showMessage(UserLogin.this, "သင္၏ Login Email ႏွင့္ Password မွား ေနပါသည္", SKToastMessage.ERROR);
+										SKToastMessage.showMessage(UserLogin.this, "Check your Email, Phone (or) Password", SKToastMessage.ERROR);
+									}else if(arg0.getResponse().getStatus() == 401){
+										SKToastMessage.showMessage(UserLogin.this, "Check your Email, Phone (or) Password", SKToastMessage.ERROR);
+									}else if(arg0.getResponse().getStatus() == 403){
+										SKToastMessage.showMessage(UserLogin.this, "Check your Email, Phone (or) Password", SKToastMessage.ERROR);
+									}else{
+										SKToastMessage.showMessage(UserLogin.this, "Check your Email, Phone (or) Password", SKToastMessage.ERROR);
 									}
-									
-									if(arg0.getResponse().getStatus() == 403){
-										SKToastMessage.showMessage(UserLogin.this, "သင္၏ Login Email ႏွင့္ Password မွား ေနပါသည္", SKToastMessage.ERROR);
-									}
-									
-									/*if(arg0.getResponse().getStatus() == 200){
-										SKToastMessage.showMessage(UserLogin.this, "သင္�?? Login Email �?ွင့္ Password မွားေနပါသည္", SKToastMessage.ERROR);
-									}*/
 								}
 							}
 						});
@@ -270,27 +265,7 @@ public class UserLogin extends BaseActivity {
 
 	}
 	
-	@Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
-		//super.onBackPressed();
-		//yesNoAlert();
-		alertDialog("Are you sure you want to exit the app?"
-		, new DialogInterface.OnClickListener() {
-			
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		}, new DialogInterface.OnClickListener() {
-			
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				dialog.dismiss();
-			}
-		});
-	}
-	
+
     protected void yesNoAlert() {
     	
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

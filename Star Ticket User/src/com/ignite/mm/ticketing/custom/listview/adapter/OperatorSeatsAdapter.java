@@ -7,6 +7,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.OperatorSeat;
 import com.ignite.mm.ticketing.user.R;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class OperatorSeatsAdapter extends BaseAdapter {
         	holder.total_seat = (TextView)convertView.findViewById(R.id.txt_total_seat);
         	holder.txt_price = (TextView)convertView.findViewById(R.id.txt_price);
         	holder.txt_operator_name = (TextView)convertView.findViewById(R.id.txt_operator_name);
+        	holder.txt_total_seaters = (TextView)convertView.findViewById(R.id.txt_total_seaters);
         	
         	convertView.setTag(holder);
 		}else{
@@ -57,32 +59,42 @@ public class OperatorSeatsAdapter extends BaseAdapter {
 		
 		holder.txt_operator_name.setText(getItem(position).getOperator());
 		holder.classes.setText(getItem(position).getClass_());
+		holder.txt_total_seaters.setText("("+getItem(position).getTotalSeat()+")");
+		
 		if(getItem(position).getTime().toLowerCase().contains("am")){
 			
 			//holder.trip_time.setBackgroundColor(aty.getResources().getColor(R.color.golden_brown_light));
-			holder.trip_time.setTextColor(aty.getResources().getColor(R.color.golden_brown_dark));
+			holder.trip_time.setTextColor(aty.getResources().getColor(R.color.yellow));
 			//convertView.setBackgroundResource(R.drawable.bg_gold_light2);
 		}else{
 			//holder.trip_time.setBackgroundColor(aty.getResources().getColor(R.color.dark_blue));
-			holder.trip_time.setTextColor(aty.getResources().getColor(R.color.dark_blue));
+			holder.trip_time.setTextColor(aty.getResources().getColor(R.color.golden_brown_dark));
 			//convertView.setBackgroundResource(R.drawable.bg_gold_light);
 		}
 		
 		holder.trip_time.setText(getItem(position).getTime());
-		holder.total_seat.setText("Seats : "+(getItem(position).getPermitseatTotal() - getItem(position).getPermitseatSoldtotal()));
+		
+		Integer available_seat = getItem(position).getPermitseatTotal() - getItem(position).getPermitseatSoldtotal();
+		
+		Log.i("", "Permit seat total: "+getItem(position).getPermitseatTotal()
+				+", Sold total: "+getItem(position).getPermitseatSoldtotal()
+				+", avaiable: "+available_seat);
+		
+		holder.total_seat.setText(""+available_seat);
+		
 		if (holder.txt_price != null) {
 			//Change (0,000,000) format
 			NumberFormat nf = NumberFormat.getInstance();
 			String price = nf.format(Integer.valueOf(getItem(position).getPrice()));
 			
-			holder.txt_price.setText(price+" Ks");
+			holder.txt_price.setText(price);
 		}
 		
 		return convertView;
 	}
 	
 	static class ViewHolder {
-		TextView trip_time, classes, sold_seat, total_seat, txt_price, txt_operator_name;
+		TextView trip_time, classes, sold_seat, total_seat, txt_price, txt_operator_name, txt_total_seaters;
 		View Line;
 	}
 }

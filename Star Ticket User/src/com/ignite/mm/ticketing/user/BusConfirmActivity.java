@@ -195,9 +195,9 @@ public class BusConfirmActivity extends BaseActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"] "
-            				+bundle.getString("date")+" ["+bundle.getString("time")+"] "
-            				+bundle.getString("classes"));
+            toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
+            toolbar.setSubtitle(bundle.getString("date")+" ["+bundle.getString("time")+"] "
+    				+bundle.getString("classes"));
             this.setSupportActionBar(toolbar);
         }
 		
@@ -570,8 +570,6 @@ public class BusConfirmActivity extends BaseActivity {
 		layout_ticket_no_container = (LinearLayout) findViewById(R.id.ticket_no_container);
 		layout_ticket_no_container.setVisibility(View.GONE);
 		
-		
-		
 		skDetector = new SKConnectionDetector(this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
@@ -717,7 +715,6 @@ public class BusConfirmActivity extends BaseActivity {
 			}
 		}
 
-		
 		if(selectedSeat.length > 1){
 			lst_ticket_no.get(0).addTextChangedListener(new TextWatcher() {
 
@@ -744,7 +741,6 @@ public class BusConfirmActivity extends BaseActivity {
 		
 		extraCity = new ArrayList<ExtraCity>();
 		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select Extra City", "", ""));
-		
 	}
 	
 	@Override
@@ -853,8 +849,8 @@ public class BusConfirmActivity extends BaseActivity {
 	protected String CustPhone;
 
 	private void comfirmOrder() {
-		dialog = new ZProgressHUD(BusConfirmActivity.this);
-		dialog.show();
+		/*dialog = new ZProgressHUD(BusConfirmActivity.this);
+		dialog.show();*/
 		
 		List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
 		
@@ -1007,7 +1003,7 @@ public class BusConfirmActivity extends BaseActivity {
 	}
 	
 	/**
-	 *  Store sale (or) booking into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store sales into Online Sale Database (test.starticketmyanmar.com)
 	 */
 	protected void postOnlineSaleConfirm() {
 		// TODO Auto-generated method stub
@@ -1016,12 +1012,15 @@ public class BusConfirmActivity extends BaseActivity {
 		
 		NetworkEngine.setIP("test.starticketmyanmar.com");
 		//NetworkEngine.setIP("128.199.255.246");
-		NetworkEngine.getInstance().postOnlineSaleDB("0", permit_operator_id
-				, AppLoginUser.getCodeNo(), AppLoginUser.getAccessToken(), ExtraCityName, new Callback<Response>() {
+		NetworkEngine.getInstance().postOnlineSaleDB("0", permit_operator_id, AppLoginUser.getCodeNo()
+				, AppLoginUser.getAccessToken(), ExtraCityName, "0931247515"
+				, "Saw Maine K", "No.50, Lanthit Street, Lanmadaw Tsp, Yangon", "Lanmadaw Tsp"
+				, "10", "0", "", "", "", "", new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
 						if (arg0.getResponse() != null) {
+							
 							Log.i("", "Error: "+arg0.getResponse().getStatus());
 
 						}
@@ -1168,30 +1167,45 @@ public class BusConfirmActivity extends BaseActivity {
 				
 				if (checkFieldsAgent()) {
 					
-					CustName = edt_buyer.getText().toString();
-					CustPhone = edt_phone.getText().toString();
-					
-					Bundle bundle = new Bundle();
-					bundle.putString("price", Price);
-					bundle.putString("seat_count", String.valueOf(selectedSeat.length));
-					bundle.putString("agentgroup_id", permit_operator_group_id);
-					bundle.putString("operator_id", permit_operator_id);
-					
-					if (radio_onilnePayment.isChecked()) {
-						startActivity(new Intent(BusConfirmActivity.this, PaymentActivity.class).putExtras(bundle));
-					}else if (radio_cashOnShop.isChecked()) {	//Booking (Pay @Store)
-						isBooking = 1;
-						fromPayment = "cashOnShop";
-						postSale();
-					}else {				//Booking (Pay On Delivery)
-						isBooking = 1;
-						fromPayment = "cashOnDelivery";
-						postSale();
-					}
-					
 					if (skDetector.isConnectingToInternet()) {
-						Log.i("", "Enter here Agent confirm !!!!!!!!!!!!");
-						//comfirmOrder();
+						
+						CustName = edt_buyer.getText().toString();
+						CustPhone = edt_phone.getText().toString();
+						
+						Bundle bundle = new Bundle();
+						bundle.putString("price", Price);
+						bundle.putString("seat_count", String.valueOf(selectedSeat.length));
+						bundle.putString("agentgroup_id", permit_operator_group_id);
+						bundle.putString("operator_id", permit_operator_id);
+						
+						/*bundle.putString("selectedSeats", Selected_seats);
+						bundle.putString("busOccurence", BusOccurence);
+						bundle.putString("permit_access_token", permit_access_token);
+						bundle.putString("Permit_agent_id", Permit_agent_id);
+						bundle.putString("permit_ip", permit_ip);
+						bundle.putString("BuyerName", edt_buyer.getText().toString());
+						bundle.putString("BuyerPhone", edt_phone.getText().toString());
+						bundle.putString("BuyerNRC", edt_nrc_no.getText().toString());
+						
+						bundle.putString("FromCity", FromCity);
+						bundle.putString("ToCity", ToCity);
+						bundle.putString("Operator_Name", Operator_Name);
+						bundle.putString("from_to", from_to);
+						bundle.putString("time", time);
+						bundle.putString("classes", classes);
+						bundle.putString("date", date);
+						bundle.putString("ConfirmDate", ConfirmDate);
+						bundle.putString("ConfirmTime", ConfirmTime);
+						*/
+						if (radio_onilnePayment.isChecked()) {
+							startActivity(new Intent(BusConfirmActivity.this, PaymentActivity.class).putExtras(bundle));
+						}else if (radio_cashOnShop.isChecked()) {	//Booking (Pay @Store)
+							isBooking = 1;
+							fromPayment = "cashOnShop";
+							postSale();
+						}else {				//Booking (Pay On Delivery)
+							postSale();
+						}
 					}else {
 						skDetector.showErrorDialog();
 					}
@@ -1253,36 +1267,39 @@ public class BusConfirmActivity extends BaseActivity {
 		        				
 		        				//Buy Ticket
 								if(isBooking == 0){
-									dialog.dismissWithSuccess(); //finish can buy ticket
-			        				Intent nextScreen = new Intent(BusConfirmActivity.this, Payment2C2PActivity.class);
+			        				Intent nextScreen = new Intent(BusConfirmActivity.this, PaymentActivity.class);
 			        				
-				    				/*Bundle bundle = new Bundle();
-				    				bundle.putString("from_intent", "checkout");
-				    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
-				    				bundle.putString("from_to", From+" => "+To);
-				    				bundle.putString("time", Time);
-				    				bundle.putString("classes", BusClasses);
-				    				bundle.putString("date", Date);
-				    				bundle.putString("selected_seat",  SeatLists);
+				    				Bundle bundle = new Bundle();
 				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-				    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-				    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
-			        				bundle.putString("ConfirmDate", todayDate);
-			        				bundle.putString("ConfirmTime", todayTime);
-			        				bundle.putString("CustomerName", AppLoginUser.getUserName());
-			        				//Get Seat Count
-			        				String[] seats = SeatLists.split(",");
-			        				bundle.putString("SeatCount", seats.length+"");
-				    				bundle.putString("permit_ip", permit_ip);
-				    				bundle.putString("permit_access_token", permit_access_token);
 				    				
-				    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
-									bundle.putString("permit_agent_id", permit_agent_id);
-									bundle.putString("permit_operator_id", permit_operator_id);
+									bundle.putString("price", Price);
+									bundle.putString("seat_count", String.valueOf(selectedSeat.length));
+									bundle.putString("agentgroup_id", permit_operator_group_id);
+									bundle.putString("operator_id", permit_operator_id);
 									
-									//bundle.putString("client_operator_id", client_operator_id);
-				    				*/
-				    				//nextScreen.putExtras(bundle);
+									bundle.putString("selectedSeats", Selected_seats);
+									bundle.putString("busOccurence", BusOccurence);
+									bundle.putString("permit_access_token", permit_access_token);
+									bundle.putString("Permit_agent_id", Permit_agent_id);
+									bundle.putString("permit_ip", permit_ip);
+									bundle.putString("BuyerName", edt_buyer.getText().toString());
+									bundle.putString("BuyerPhone", edt_phone.getText().toString());
+									bundle.putString("BuyerNRC", edt_nrc_no.getText().toString());
+									
+									bundle.putString("FromCity", FromCity);
+									bundle.putString("ToCity", ToCity);
+									bundle.putString("Operator_Name", Operator_Name);
+									bundle.putString("from_to", from_to);
+									bundle.putString("time", time);
+									bundle.putString("classes", classes);
+									bundle.putString("date", date);
+									bundle.putString("ConfirmDate", ConfirmDate);
+									bundle.putString("ConfirmTime", ConfirmTime);
+									
+									bundle.putString("ExtraCityID", ExtraCityID);
+									bundle.putString("ExtraCityName", ExtraCityName);
+				    				
+				    				nextScreen.putExtras(bundle);
 				    				startActivity(nextScreen);
 			        			}else{ 
 			        				//Booking Finished!
@@ -1326,8 +1343,9 @@ public class BusConfirmActivity extends BaseActivity {
 				orderNo
 				, permit_operator_id
 				, AppLoginUser.getCodeNo()
-				, 1
-				, AppLoginUser.getAccessToken()
+				, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
+				, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
+				, "0", "0", "", "", "", "1"
 				, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {

@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.ParseException;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -95,7 +96,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
+		
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			login_name = bundle.getString("login_name");
@@ -106,8 +107,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
-            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle("ခရီးစဥ္၊ ရက္၊ အခ်ိန္ ေရြးပါ ~");
+            toolbar.setLogo(R.drawable.ic_launcher);
+            toolbar.setLogoDescription("Star Ticket - Online Bus Ticket");
+            toolbar.setTitle("Star Ticket");
             this.setSupportActionBar(toolbar);
         }
 		
@@ -159,13 +161,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		img_promotion_ads.setOnClickListener(clickListener);
 	    btn_trip_date.setOnClickListener(clickListener);	    
 	}
-	
-	@Override
-	public Intent getSupportParentActivityIntent() {
-		// TODO Auto-generated method stub
-		finish();
-		return super.getSupportParentActivityIntent();
-	}
 
 	private void getFromCities() {
 		// TODO Auto-generated method stub
@@ -173,7 +168,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		fromCities = new ArrayList<String>();
 		fromCities.add("Choose - From City");
 		NetworkEngine.setIP("test.starticketmyanmar.com");
-		NetworkEngine.getInstance().getFromCities(AppLoginUser.getAccessToken(), new Callback<Response>() {
+		NetworkEngine.getInstance().getFromCities("", new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
@@ -206,7 +201,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		toCities = new ArrayList<String>();
 		toCities.add("Choose - To City");
 		NetworkEngine.setIP("test.starticketmyanmar.com");
-		NetworkEngine.getInstance().getToCities(AppLoginUser.getAccessToken(), new Callback<Response>() {
+		NetworkEngine.getInstance().getToCities("", new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
@@ -251,7 +246,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			tripTimes = new ArrayList<Times>();
 			
 			NetworkEngine.setIP("test.starticketmyanmar.com");
-			NetworkEngine.getInstance().getTimesByTrip(AppLoginUser.getAccessToken(), selectedFromCity, selectedToCity, new Callback<Response>() {
+			NetworkEngine.getInstance().getTimesByTrip("", selectedFromCity, selectedToCity, new Callback<Response>() {
 				
 				public void success(Response arg0, Response arg1) {
 					// TODO Auto-generated method stub
@@ -343,11 +338,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO Auto-generated method stub
+			if (tripTimes != null && tripTimes.size() > 0) {
 				if (position > 0) {
 					selectedTripTime = tripTimes.get(position).getTime();
 				}else {
 					selectedTripTime = "";
 				}
+			}
 		}
 
 		public void onNothingSelected(AdapterView<?> parent) {
@@ -433,19 +430,41 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	};
 	  
-		public boolean checkFields() {
-			
-			// TODO Auto-generated method stub
-			if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
-	
-				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
-				return false;
-			}
-			if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
-				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
-				return false;
-			}		
-			
-			return true;
+	public boolean checkFields() {
+		
+		// TODO Auto-generated method stub
+		if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
+
+			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+			return false;
 		}
+		if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
+			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+			return false;
+		}		
+		
+		return true;
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		//super.onBackPressed();
+		//yesNoAlert();
+		alertDialog("Are you sure you want to exit the app?"
+		, "Yes", "No", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		}, new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
+	}
+	
 }

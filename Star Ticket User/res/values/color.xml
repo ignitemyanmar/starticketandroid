@@ -31,6 +31,7 @@
     <color name="gray_light">#E1E1E1</color>
     <color name="DarkActionBarColor">#333333</color>
     <color name="yellow">#FFA000</color>
+    <color name="yellow_light">#ffd998</color>
     <color name="accent">#00783B</color>   
     <color name="accent_dark">#F4B33D</color> 
     <color name="primary">#BF4017</color>
