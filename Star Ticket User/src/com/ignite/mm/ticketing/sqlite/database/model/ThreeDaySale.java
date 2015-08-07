@@ -72,6 +72,9 @@ public class ThreeDaySale {
     private Seller seller;
     @Expose
     private String passengers;
+    @Expose
+    private String discount_amount;
+    
 
     /**
      * 
@@ -513,6 +516,16 @@ public class ThreeDaySale {
 	public void setPassengers(String passengers) {
 		this.passengers = passengers;
 	}
+	
+	
+
+	public String getDiscount_amount() {
+		return discount_amount;
+	}
+
+	public void setDiscount_amount(String discount_amount) {
+		this.discount_amount = discount_amount;
+	}
 
 	@Override
 	public String toString() {
@@ -527,8 +540,10 @@ public class ThreeDaySale {
 				+ customerPhone + ", ticketNo=" + ticketNo + ", seatNo="
 				+ seatNo + ", price=" + price + ", ticketQty=" + ticketQty
 				+ ", totalAmount=" + totalAmount + ", sellerId=" + sellerId
-				+ ", seller=" + seller + ", passengers=" + passengers + "]";
+				+ ", seller=" + seller + ", passengers=" + passengers
+				+ ", discount_amount=" + discount_amount + "]";
 	}
 
+	
 
 }

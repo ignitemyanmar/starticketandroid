@@ -81,6 +81,12 @@ public class LoginUser {
 	private String Phone;
 	@Expose
 	private String AgentGroupName;
+	@Expose
+	private String points;
+	@Expose
+	private String gift_moneys;
+	private String total_points;
+	private String total_giftMoney;
 	
 
 	public LoginUser(Context ctx){
@@ -111,7 +117,9 @@ public class LoginUser {
 		UpdateAt = pref.getString("update_at", null);
 		Phone = pref.getString("phone", null);
 		AgentGroupName = pref.getString("agent_group_name", null);
-        
+		total_points = pref.getString("total_points", null);
+		total_giftMoney = pref.getString("total_giftMoney", null);
+		
 		Log.d("","Today ---> "+" Long is "+TodayLong +" and "+ convertTime(TodayLong));
 		Log.d("","Expires ---> "+" Long is "+Expires +" and "+ convertServerTime(Expires));
 	}
@@ -152,6 +160,8 @@ public class LoginUser {
 		editor.putString("phone", getPhone());
 		editor.putString("address", getAddress());
 		editor.putString("agent_group_name", getAgentGroupName());
+		editor.putString("total_points", getPoints());
+		editor.putString("total_giftMoney", getGift_moneys());
 		
 		editor.commit();
 	}
@@ -427,6 +437,41 @@ public class LoginUser {
 	public void setAgentGroupName(String agentGroupName) {
 		AgentGroupName = agentGroupName;
 	}
+	
+
+	public String getPoints() {
+		return points;
+	}
+
+	public void setPoints(String points) {
+		this.points = points;
+	}
+
+	public String getGift_moneys() {
+		return gift_moneys;
+	}
+
+	public void setGift_moneys(String gift_moneys) {
+		this.gift_moneys = gift_moneys;
+	}
+	
+	
+
+	public String getTotal_points() {
+		return total_points;
+	}
+
+	public void setTotal_points(String total_points) {
+		this.total_points = total_points;
+	}
+
+	public String getTotal_giftMoney() {
+		return total_giftMoney;
+	}
+
+	public void setTotal_giftMoney(String total_giftMoney) {
+		this.total_giftMoney = total_giftMoney;
+	}
 
 	@Override
 	public String toString() {
@@ -443,31 +488,10 @@ public class LoginUser {
 				+ AgentGroupId + ", GroupBranch=" + GroupBranch + ", CreateAt="
 				+ CreateAt + ", UpdateAt=" + UpdateAt + ", message=" + message
 				+ ", user=" + user + ", Message=" + Message + ", Phone="
-				+ Phone + ", AgentGroupName=" + AgentGroupName
-				+ ", isExpires()=" + isExpires() + ", getTodayString()="
-				+ getTodayString() + ", getTodayDate()=" + getTodayDate()
-				+ ", getAccessToken()=" + getAccessToken()
-				+ ", getTokenType()=" + getTokenType() + ", getExpires()="
-				+ getExpires() + ", getExpiresIn()=" + getExpiresIn()
-				+ ", getRefreshToken()=" + getRefreshToken() + ", getUserID()="
-				+ getUserID() + ", getUserGroupID()=" + getUserGroupID()
-				+ ", getLoginUserID()=" + getLoginUserID() + ", getUserName()="
-				+ getUserName() + ", getUserType()=" + getUserType()
-				+ ", getTodayLong()=" + getTodayLong() + ", getEmail()="
-				+ getEmail() + ", getNRC()=" + getNRC() + ", getAddress()="
-				+ getAddress() + ", getCtx()=" + getCtx() + ", getId()="
-				+ getId() + ", getName()=" + getName() + ", getCodeNo()="
-				+ getCodeNo() + ", getRole()=" + getRole()
-				+ ", getAgentGroupId()=" + getAgentGroupId()
-				+ ", getGroupBranch()=" + getGroupBranch() + ", getCreateAt()="
-				+ getCreateAt() + ", getUpdateAt()=" + getUpdateAt()
-				+ ", getMessage()=" + getMessage() + ", getUser()=" + getUser()
-				+ ", getPhone()=" + getPhone() + ", getAgentGroupName()="
-				+ getAgentGroupName() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+				+ Phone + ", AgentGroupName=" + AgentGroupName + ", points="
+				+ points + ", gift_moneys=" + gift_moneys + ", total_points="
+				+ total_points + ", total_giftMoney=" + total_giftMoney + "]";
 	}
 
-	
 	
 }

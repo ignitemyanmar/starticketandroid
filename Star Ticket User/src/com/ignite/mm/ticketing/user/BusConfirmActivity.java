@@ -2,7 +2,11 @@ package com.ignite.mm.ticketing.user;
 
 import info.hoang8f.widget.FButton;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +20,7 @@ import org.json.JSONObject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -29,6 +34,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
+import android.text.format.DateUtils;
+import android.text.format.Time;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -71,7 +79,7 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-public class BusConfirmActivity extends BaseActivity {
+@SuppressLint("SimpleDateFormat") public class BusConfirmActivity extends BaseActivity {
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -221,6 +229,62 @@ public class BusConfirmActivity extends BaseActivity {
 			Permit_agent_id = bundle.getString("permit_agent_id");
 			permit_access_token = bundle.getString("permit_access_token");
 			permit_ip = bundle.getString("permit_ip");
+		}
+		
+		//Get only 06:00 AM format
+		String timeformat = null;
+		try {
+			if (time.length() == 8) {
+				timeformat = time;
+			}else if (time.length() < 8) {
+				timeformat = "0"+time;
+			}else if (time.length() > 8) {
+				timeformat = time.substring(0, 8);
+			}
+		} catch (StringIndexOutOfBoundsException e) {
+			// TODO: handle exception
+			Log.i("", "Time Out Of Bound Exception: "+e);
+		}
+		
+		SimpleDateFormat serverFormat = new SimpleDateFormat("hh:mm aa");
+		Date timeTochange = null;
+		try {
+			if (timeformat != null) {
+				timeTochange = serverFormat.parse(timeformat);
+				Log.i("", "Server Time Format: "+serverFormat.format(timeTochange));
+			}
+			
+		} catch (ParseException e2) {
+			// TODO Auto-generated catch block
+			Log.i("", "Server Time Exception: "+e2);
+			e2.printStackTrace();
+		}
+		
+		//Show/Hide of Cash on Delivery & Cash on Shop
+		String deptTime = date+" "+serverFormat.format(timeTochange);
+		
+		//Today+24hr
+		SimpleDateFormat nowFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, 1);
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+		Date deptDateTime = null;
+		try {
+			deptDateTime = formatter.parse(deptTime);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Log.i("", "Dept date time: "+deptDateTime+", today+24hr: "+nowFormat.format(cal.getTime()));
+		
+		if (cal.getTime().compareTo(deptDateTime) >= 0) {
+			radio_cashOnDelivery.setVisibility(View.GONE);
+			radio_cashOnShop.setVisibility(View.GONE);
+		}else {
+			radio_cashOnDelivery.setVisibility(View.VISIBLE);
+			radio_cashOnShop.setVisibility(View.VISIBLE);
 		}
 		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
@@ -593,7 +657,11 @@ public class BusConfirmActivity extends BaseActivity {
 		
 		LinearLayout.LayoutParams lps = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		lps.setMargins(0, 10, 0, 0);
-		selectedSeat = Selected_seats.split(",");
+		
+		if (Selected_seats != null) {
+			selectedSeat = Selected_seats.split(",");
+		}
+		
 		Random random = new Random();
 		
 		if (selectedSeat != null) {
@@ -1015,7 +1083,7 @@ public class BusConfirmActivity extends BaseActivity {
 		NetworkEngine.getInstance().postOnlineSaleDB("0", permit_operator_id, AppLoginUser.getCodeNo()
 				, AppLoginUser.getAccessToken(), ExtraCityName, "0931247515"
 				, "Saw Maine K", "No.50, Lanthit Street, Lanmadaw Tsp, Yangon", "Lanmadaw Tsp"
-				, "10", "0", "", "", "", "", new Callback<Response>() {
+				, "10", "0", "", "", "", "", "", new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
@@ -1198,13 +1266,15 @@ public class BusConfirmActivity extends BaseActivity {
 						bundle.putString("ConfirmTime", ConfirmTime);
 						*/
 						if (radio_onilnePayment.isChecked()) {
-							startActivity(new Intent(BusConfirmActivity.this, PaymentActivity.class).putExtras(bundle));
+							fromPayment = "Pay with Online";
+							postSale(fromPayment);
 						}else if (radio_cashOnShop.isChecked()) {	//Booking (Pay @Store)
 							isBooking = 1;
-							fromPayment = "cashOnShop";
-							postSale();
+							fromPayment = "Cash on Shop";
+							postSale(fromPayment);
 						}else {				//Booking (Pay On Delivery)
-							postSale();
+							fromPayment = "Cash on Delivery";
+							postSale(fromPayment);
 						}
 					}else {
 						skDetector.showErrorDialog();
@@ -1214,7 +1284,7 @@ public class BusConfirmActivity extends BaseActivity {
 		}
 	};
 	
-	public void postSale()
+	public void postSale(final String fromPayment)
 	{
 		dialog = new ZProgressHUD(BusConfirmActivity.this);
 		dialog.show();
@@ -1270,14 +1340,13 @@ public class BusConfirmActivity extends BaseActivity {
 			        				Intent nextScreen = new Intent(BusConfirmActivity.this, PaymentActivity.class);
 			        				
 				    				Bundle bundle = new Bundle();
+				    				bundle.putString("from_payment", fromPayment);
 				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-				    				
 									bundle.putString("price", Price);
 									bundle.putString("seat_count", String.valueOf(selectedSeat.length));
 									bundle.putString("agentgroup_id", permit_operator_group_id);
 									bundle.putString("operator_id", permit_operator_id);
-									
-									bundle.putString("selectedSeats", Selected_seats);
+									bundle.putString("Selected_seats", SeatLists);
 									bundle.putString("busOccurence", BusOccurence);
 									bundle.putString("permit_access_token", permit_access_token);
 									bundle.putString("Permit_agent_id", Permit_agent_id);
@@ -1285,7 +1354,6 @@ public class BusConfirmActivity extends BaseActivity {
 									bundle.putString("BuyerName", edt_buyer.getText().toString());
 									bundle.putString("BuyerPhone", edt_phone.getText().toString());
 									bundle.putString("BuyerNRC", edt_nrc_no.getText().toString());
-									
 									bundle.putString("FromCity", FromCity);
 									bundle.putString("ToCity", ToCity);
 									bundle.putString("Operator_Name", Operator_Name);
@@ -1295,7 +1363,6 @@ public class BusConfirmActivity extends BaseActivity {
 									bundle.putString("date", date);
 									bundle.putString("ConfirmDate", ConfirmDate);
 									bundle.putString("ConfirmTime", ConfirmTime);
-									
 									bundle.putString("ExtraCityID", ExtraCityID);
 									bundle.putString("ExtraCityName", ExtraCityName);
 				    				
@@ -1304,7 +1371,7 @@ public class BusConfirmActivity extends BaseActivity {
 			        			}else{ 
 			        				//Booking Finished!
 			        				isBooking = 0;
-			        				postOnlineSale(jsonObject.getString("sale_order_no"), SeatLists, jsonObject);
+			        				postOnlineSale(jsonObject.getString("sale_order_no"), SeatLists, jsonObject, fromPayment);
 			        			}
 
 			        		}else{
@@ -1334,9 +1401,9 @@ public class BusConfirmActivity extends BaseActivity {
 	}
 	
 	/**
-	 *  Store Booking (Orders) into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store Booking into Online Sale Database (test.starticketmyanmar.com)
 	 */
-	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject) {
+	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject, String paymentType) {
 		// TODO Auto-generated method stub
 		NetworkEngine.setIP("test.starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(
@@ -1346,7 +1413,7 @@ public class BusConfirmActivity extends BaseActivity {
 				, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
 				, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
 				, "0", "0", "", "", "", "1"
-				, new Callback<Response>() {
+				, paymentType, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
@@ -1392,11 +1459,7 @@ public class BusConfirmActivity extends BaseActivity {
 		    					
 		    					Log.i("", "Booking status: "+arg1.getStatus()+", reson: "+arg1.getReason());
 		    					
-		    					if (fromPayment.equals("cashOnShop")) {
-		    						SKToastMessage.showMessage(BusConfirmActivity.this, "Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။ သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။", SKToastMessage.SUCCESS);
-								}else if (fromPayment.equals("cashOnDelivery")) {
-									SKToastMessage.showMessage(BusConfirmActivity.this, "Booking မွာၿပီးပါၿပီ  ။   ဖုန္းနံပါတ္ "+AppLoginUser.getPhone()+" ကုိဆက္ၿပီး   (၂) နာရီ အတြင္း လာပုိ႔ေပးပါမည္။ ", SKToastMessage.SUCCESS);
-								}
+		    					SKToastMessage.showMessage(BusConfirmActivity.this, "Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။ သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။", SKToastMessage.SUCCESS);
 		    					
 								closeAllActivities();
 		    					startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
@@ -1455,63 +1518,5 @@ public class BusConfirmActivity extends BaseActivity {
 				}
 			}
 		});
-	}
-	
-	@Override
-	public void onBackPressed() {
-		
-		finish();
-		// TODO Auto-generated method stub
-/*		if (Intents.equals("booking")) {
-			finish();
-		} else {
-			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-			alertDialog.setMessage("Are you sure to exit?");
-
-			alertDialog.setPositiveButton("YES",
-					new DialogInterface.OnClickListener() {
-
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							if (SKConnectionDetector.getInstance(
-									BusConfirmActivity.this)
-									.isConnectingToInternet()) {
-								String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
-								
-								//Log.i("", "Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(SaleOrderNo));
-								
-								NetworkEngine.getInstance().deleteSaleOrder(
-										param, MCrypt.getInstance().encrypt(jso),
-										new Callback<Response>() {
-
-											public void success(
-													Response arg0,
-													Response arg1) {
-												
-											}
-
-											public void failure(
-													RetrofitError arg0) {
-												// TODO Auto-generated method
-												// stub
-											}
-										});
-							}
-							finish();
-						}
-					});
-
-			alertDialog.setNegativeButton("NO",
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.cancel();
-							return;
-						}
-					});
-
-			alertDialog.show();
-		}
-		// super.onBackPressed(); */
-
 	}
 }

@@ -65,7 +65,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="မွတ္ပံုတင္ အမွတ္"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:visibility="gone" />
 
                 <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
                     android:id="@+id/edt_nrc_no"
@@ -78,6 +79,7 @@
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:typeface="normal"
+                    android:visibility="gone"
                     app:met_errorColor="@color/golden_brown"
                     app:met_floatingLabel="normal"
                     app:met_floatingLabelTextColor="#8805ad"

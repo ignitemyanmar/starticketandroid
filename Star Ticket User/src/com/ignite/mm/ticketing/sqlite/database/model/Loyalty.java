@@ -42,7 +42,10 @@ private String giftParcel;
 private int checkStatus;
 @Expose
 private String message;
-
+@Expose
+private String current_points;
+@Expose
+private String current_gift_money;
 
 
 public Loyalty(String id, String name, String email, String password,
@@ -356,6 +359,24 @@ public void setMessage(String message) {
 this.message = message;
 }
 
+
+
+public String getCurrent_points() {
+	return current_points;
+}
+
+public void setCurrent_points(String current_points) {
+	this.current_points = current_points;
+}
+
+public String getCurrent_gift_money() {
+	return current_gift_money;
+}
+
+public void setCurrent_gift_money(String current_gift_money) {
+	this.current_gift_money = current_gift_money;
+}
+
 @Override
 public String toString() {
 	return "Loyalty [id=" + id + ", name=" + name + ", email=" + email
@@ -364,7 +385,9 @@ public String toString() {
 			+ ", preAmount=" + preAmount + ", usedAmount=" + usedAmount
 			+ ", points=" + points + ", giftMoney=" + giftMoney + ", times="
 			+ times + ", giftParcel=" + giftParcel + ", checkStatus="
-			+ checkStatus + ", message=" + message + "]";
+			+ checkStatus + ", message=" + message + ", current_points="
+			+ current_points + ", current_gift_money=" + current_gift_money
+			+ "]";
 }
 
 

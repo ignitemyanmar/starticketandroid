@@ -377,7 +377,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		});	
 		bookingDialog.show();
 	}
-
 	
 	private void getPermission() {
 		// TODO Auto-generated method stub
@@ -617,7 +616,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				, AppLoginUser.getAccessToken(), "", "0931247515"
 				, "Saw Maine K", "No.50, Lanthit Street, Lanmadaw Tsp, Yangon", "Lanmadaw Tsp"
 				, "10", "0", "", "", "", "1"
-				, new Callback<Response>() {
+				, "", new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
@@ -1028,6 +1027,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	        				bundle.putString("ConfirmDate", todayDate);
 	        				bundle.putString("ConfirmTime", todayTime);
 	        				bundle.putString("CustomerName", AppLoginUser.getUserName());
+	        				
 	        				bundle.putString("Selected_seats", SelectedSeat);
 	        				bundle.putString("seat_List", new Gson().toJson(seatsListObj));
 	        				//Get Seat Count
@@ -1132,12 +1132,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
         listView.requestLayout();
     }
 	
-/*	@Override
-	protected void onStart() {
-		// TODO Auto-generated method stub
-		RelativeLayout focuslayout = (RelativeLayout) findViewById(R.id.layout_seat_plan);
-		focuslayout.requestFocus();
-		super.onStart();
-	}*/
+
 }
 

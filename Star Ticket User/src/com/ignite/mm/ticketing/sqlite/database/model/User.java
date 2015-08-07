@@ -35,6 +35,10 @@ private int agentgroupId;
 @SerializedName("agentgroup_name")
 @Expose
 private String agentgroupName;
+@Expose
+private String points;
+@Expose
+private String gift_moneys;
 
 /**
 * 
@@ -252,13 +256,32 @@ public void setAgentgroupName(String agentgroupName) {
 this.agentgroupName = agentgroupName;
 }
 
+
+
+public String getPoints() {
+	return points;
+}
+
+public void setPoints(String points) {
+	this.points = points;
+}
+
+public String getGift_moneys() {
+	return gift_moneys;
+}
+
+public void setGift_moneys(String gift_moneys) {
+	this.gift_moneys = gift_moneys;
+}
+
 @Override
 public String toString() {
 	return "User [name=" + name + ", email=" + email + ", phone=" + phone
 			+ ", address=" + address + ", codeNo=" + codeNo + ", role=" + role
 			+ ", groupBranch=" + groupBranch + ", updatedAt=" + updatedAt
 			+ ", createdAt=" + createdAt + ", id=" + id + ", agentgroupId="
-			+ agentgroupId + ", agentgroupName=" + agentgroupName + "]";
+			+ agentgroupId + ", agentgroupName=" + agentgroupName + ", points="
+			+ points + ", gift_moneys=" + gift_moneys + "]";
 }
 
 

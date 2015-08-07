@@ -114,21 +114,14 @@ public class BusSeatAdapter extends BaseAdapter{
 					//Get Selected Seats of Online Sales
 	            	holder.layout_customer_info.setVisibility(View.INVISIBLE);
 	            	
-	            	/*//if Agent
-	            	if (Integer.valueOf(this.userRole) <= 3) {
-	            		holder.cover.setVisibility(View.INVISIBLE);
-					}else {
-						//holder.cover.setVisibility(View.INVISIBLE);
-					}*/
-	            	
 					holder.seat_no.setVisibility(View.INVISIBLE);
 	            	
 	            	holder.seatNo.setText(list.get(position).getSeat_no());
 	            	holder.seat.setEnabled(true);
 	            	holder.seat.setTag(position);	
 	            	
-	            	/*//if Agent
-	            	if (Integer.valueOf(this.userRole) <= 3) {
+	            	//if Agent
+	            	//if (Integer.valueOf(this.userRole) <= 3) {
 	            		holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 							
 							public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -165,7 +158,7 @@ public class BusSeatAdapter extends BaseAdapter{
 							}
 
 						});
-					}else {
+					/*}else {
 						//do nothing
 					}*/
 					break;
@@ -181,18 +174,14 @@ public class BusSeatAdapter extends BaseAdapter{
 					
 					holder.layout_customer_info.setVisibility(View.INVISIBLE);
 
-					/*//if Agent
-					if (Integer.valueOf(this.userRole) <= 3) {
-						holder.cover.setVisibility(View.VISIBLE);
-					}else{
-						//holder.cover.setVisibility(View.VISIBLE);
-					}*/
+					//Gray color (Not allow to click)
+					holder.cover.setVisibility(View.VISIBLE);
 					
 					holder.seat_no.setVisibility(View.VISIBLE);
 					holder.seat_no.setText(list.get(position).getSeat_no());
 					
-					holder.layout_customer_info.setTag(list.get(position));
-	            	holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
+					//holder.layout_customer_info.setTag(list.get(position));
+	            	/*holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
 						
 						public boolean onLongClick(View v) {
 							// TODO Auto-generated method stub
@@ -202,7 +191,7 @@ public class BusSeatAdapter extends BaseAdapter{
 							}
 							return false;
 						}
-					});
+					});*/
 			}
 			
 			//Already Purchase or Booking
@@ -222,7 +211,7 @@ public class BusSeatAdapter extends BaseAdapter{
             	}
             	holder.layout_customer_info.setTag(list.get(position));
             	
-            	holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
+            	/*holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
 					
 					public boolean onLongClick(View v) {
 						// TODO Auto-generated method stub
@@ -232,7 +221,7 @@ public class BusSeatAdapter extends BaseAdapter{
 						}
 						return false;
 					}
-				});
+				});*/
             	
             	/*if (Integer.valueOf(userRole) > 3) {
             		holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
@@ -263,7 +252,7 @@ public class BusSeatAdapter extends BaseAdapter{
             	holder.seat.setEnabled(true);
             	holder.seat.setTag(position);
             	
-            	holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+/*            	holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 						if(isChecked){
@@ -300,7 +289,7 @@ public class BusSeatAdapter extends BaseAdapter{
 						}
 						
 					}
-				});
+				});*/
             	
             	/*if (Integer.valueOf(this.userRole) > 3) {
 

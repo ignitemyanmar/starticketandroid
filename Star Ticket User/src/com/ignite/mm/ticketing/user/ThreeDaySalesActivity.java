@@ -213,12 +213,19 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		Integer total_ticket = 0;
 		Integer total_amount = 0;
+		Integer total_point = 0;
 		
 		if (lst_threeday_sale != null && lst_threeday_sale.size() > 0) {
 			for (int i = 0; i < lst_threeday_sale.size(); i++) {
 				total_ticket += lst_threeday_sale.get(i).getTicketQty(); 
-				total_amount += Integer.valueOf(lst_threeday_sale.get(i).getTotalAmount());
-				//total_point += lst_threeday_sale.get(i).ge;
+				
+				if (lst_threeday_sale.get(i).getTotalAmount() != null && !lst_threeday_sale.get(i).getTotalAmount().equals("")) {
+					total_amount += Integer.valueOf(lst_threeday_sale.get(i).getTotalAmount());
+				}
+				
+				if (lst_threeday_sale.get(i).getDiscount_amount() != null && !lst_threeday_sale.get(i).getDiscount_amount().equals("")) {
+					total_point += Integer.valueOf(lst_threeday_sale.get(i).getDiscount_amount());
+				}
 			}
 		}
 		
@@ -228,5 +235,6 @@ public class ThreeDaySalesActivity extends BaseActivity{
 				
 		txt_total_tickets.setText(total_ticket+"");
 		txt_total_amount.setText(amount+"");
+		txt_total_points.setText(nf.format(total_point)+"");
 	}
 }

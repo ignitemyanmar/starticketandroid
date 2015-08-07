@@ -28,17 +28,34 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/pussian_blue"
+                android:gravity="center" >
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/txt_order_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/yellow"
+                    android:gravity="left|center_vertical"
+                    android:padding="3dp"
+                    android:text="Order No : -"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp" >
+                android:paddingRight="10dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView15"
@@ -49,27 +66,29 @@
                         android:text="၀ယ္သည့္ ေန႔"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView09"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_buy_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
                     android:visibility="gone" >
 
                     <com.smk.custom.view.CustomTextView
@@ -81,19 +100,14 @@
                         android:text="Name"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_customer_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginTop="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
@@ -101,7 +115,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView02"
@@ -112,27 +126,28 @@
                         android:text="ခရီးစဥ္"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView01"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_trip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/View01"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView03"
@@ -142,27 +157,28 @@
                         android:text="သြားမည့္ရက္"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView02"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_trip_date_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/View02"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView07"
@@ -173,27 +189,28 @@
                         android:text="ကားဂိတ္"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView05"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_operator"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/View03"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView08"
@@ -204,85 +221,59 @@
                         android:text="အမ်ိဳးအစား"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView06"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_bus_class"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/View04"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView04"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="ခံုမ်ား"
+                        android:text="ခံုနံပါတ္"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/TextView03"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text=":" />
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_seats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="-"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
 
-                <LinearLayout
+                <View
+                    android:id="@+id/View05"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
-
-                    <com.smk.custom.view.CustomTextView
-                        android:id="@+id/CustomTextView13"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="ေစ်းႏႈန္း"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/TextView08"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text=":" />
-
-                    <com.smk.custom.view.CustomTextView
-                        android:id="@+id/txt_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="-"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-                </LinearLayout>
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView11"
@@ -292,80 +283,149 @@
                         android:text="ခံုအေရအတြက္"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView07"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_seat_qty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="-"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
+
+                <View
+                    android:id="@+id/View06"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/CustomTextView13"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="ေစ်းႏႈန္း(က်ပ္)"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/txt_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/View07"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView05"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="စုစုေပါင္း"
+                        android:text="ပမာဏ (က်ပ္)"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/TextView04"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text=":" />
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_amount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="-"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
+
+                <View
+                    android:id="@+id/View08"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp" >
+                    android:gravity="center_vertical" >
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView06"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="ရရွိသည့္ Point"
+                        android:text="Discount(က်ပ္)"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/TextView10"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text=":" />
-
                     <com.smk.custom.view.CustomTextView
-                        android:id="@+id/txt_point"
+                        android:id="@+id/txt_discount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
                         android:text="0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
+
+                <View
+                    android:id="@+id/View09"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/CustomTextView09"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="ေပးေခ်ရန္ေငြ (က်ပ္)"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/txt_amount_needToPay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/View10"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
             </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

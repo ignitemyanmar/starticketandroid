@@ -60,7 +60,7 @@ public class UserEditProfileActivity extends BaseActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle("ကုိယ္ပုိင္ အခ်က္အလက္ ျပင္ရန္");
+            toolbar.setTitle("အခ်က္အလက္ ျပင္ရန္");
             this.setSupportActionBar(toolbar);
         }
 		
@@ -164,10 +164,14 @@ public class UserEditProfileActivity extends BaseActivity {
 								editor.putString("phone", arg0.getUser().getPhone());
 								editor.putString("address", arg0.getUser().getAddress());
 								editor.putString("agentGroupName", arg0.getUser().getAgentgroupName());
+								editor.putString("total_points", arg0.getUser().getPoints());
+								editor.putString("total_giftMoney", arg0.getUser().getGift_moneys());
 								editor.commit();
 								
 								SKToastMessage.showMessage(UserEditProfileActivity.this, "Updated", SKToastMessage.SUCCESS);
-								finish();
+								AppLoginUser.logout();
+								closeAllActivities();
+								startActivity(new Intent(UserEditProfileActivity.this, SaleTicketActivity.class));
 							}
 							
 							/*if(arg1.getStatus() == 400){

@@ -147,6 +147,7 @@ public interface INetworkEngine {
 			@Field("payment") String payment,
 			@Field("agentgroup_id") String agentgroup_id,
 			@Field("sale_booking") String sale_booking,
+			@Field("payment_type") String payment_type, /*Cash on Shop | Pay with Online | Cash on Delivery */
 			Callback<Response> callback);
 	
 	@FormUrlEncoded

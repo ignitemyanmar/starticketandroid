@@ -61,9 +61,9 @@
             android:layout_height="match_parent"
             android:layout_weight="25"
             android:gravity="center_horizontal|center_vertical"
-            android:text="ရရွိသည့္ Point မ်ား"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-             />
+            android:text="Discount (က်ပ္)"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
     </LinearLayout>
 
     <com.smk.sklistview.SKListView
@@ -91,7 +91,7 @@
 
             <TextView
                 android:id="@+id/txt_total_tickets"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="33"
                 android:gravity="center"
@@ -102,7 +102,7 @@
 
             <TextView
                 android:id="@+id/txt_total_amount"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="33"
                 android:gravity="center"
@@ -113,7 +113,7 @@
 
             <TextView
                 android:id="@+id/txt_total_points"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="33"
                 android:gravity="center"
@@ -154,7 +154,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="33"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="စုစုေပါင္း(Points)"
+                android:text="စုစုေပါင္း(Discount)"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/black" />
         </LinearLayout>

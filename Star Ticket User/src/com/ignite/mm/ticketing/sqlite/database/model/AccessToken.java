@@ -38,6 +38,10 @@ private String phone;
 private String address;
 @Expose
 private String agentgroup_name;
+@Expose
+private String points;
+@Expose
+private String gift_moneys;
 
 	/**
 	* 
@@ -245,6 +249,24 @@ private String agentgroup_name;
 	public void setAgentgroup_name(String agentgroup_name) {
 		this.agentgroup_name = agentgroup_name;
 	}
+	
+	
+
+	public String getPoints() {
+		return points;
+	}
+
+	public void setPoints(String points) {
+		this.points = points;
+	}
+
+	public String getGift_moneys() {
+		return gift_moneys;
+	}
+
+	public void setGift_moneys(String gift_moneys) {
+		this.gift_moneys = gift_moneys;
+	}
 
 	@Override
 	public String toString() {
@@ -254,7 +276,8 @@ private String agentgroup_name;
 				+ ", accessToken=" + accessToken + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + ", phone=" + phone
 				+ ", address=" + address + ", agentgroup_name="
-				+ agentgroup_name + "]";
+				+ agentgroup_name + ", points=" + points + ", gift_moneys="
+				+ gift_moneys + "]";
 	}
 
 	

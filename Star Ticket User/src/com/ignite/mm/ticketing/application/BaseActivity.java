@@ -18,6 +18,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.smk.skalertmessage.SKToastMessage;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -27,20 +28,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class BaseActivity extends ActionBarActivity{
+@SuppressLint("ResourceAsColor") public class BaseActivity extends ActionBarActivity{
 
 	public LoginUser AppLoginUser;
 	public PermissionGlobal AppPermission;
@@ -320,17 +325,46 @@ public class BaseActivity extends ActionBarActivity{
         FrameLayout.LayoutParams blueParams = new FrameLayout.LayoutParams(blueSubActionButtonSize, blueSubActionButtonSize);
         lCSubBuilder.setLayoutParams(blueParams);
 
-        ImageView lcIcon1 = new ImageView(this);
+       /* ImageView lcIcon1 = new ImageView(this);
         ImageView lcIcon2 = new ImageView(this);
         ImageView lcIcon3 = new ImageView(this);
         ImageView lcIcon4 = new ImageView(this);
-        ImageView lcIcon5 = new ImageView(this);
+        ImageView lcIcon5 = new ImageView(this);*/
+        
+        TextView lcIcon1 = new TextView(this);
+        TextView lcIcon2 = new TextView(this);
+        TextView lcIcon3 = new TextView(this);
+        TextView lcIcon4 = new TextView(this);
+        
+        lcIcon1.setText("bus review");
+        lcIcon1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.f);
+        lcIcon1.setTextColor(Color.WHITE);
+        lcIcon1.setGravity(Gravity.CENTER_HORIZONTAL);
+        lcIcon1.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.bus, 0, 0);
+        
+        lcIcon2.setText("Order");
+        lcIcon2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.f);
+        lcIcon2.setTextColor(Color.WHITE);
+        lcIcon2.setGravity(Gravity.CENTER_HORIZONTAL);
+        lcIcon2.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_my_order, 0, 0);
+        
+        lcIcon3.setText("Booking");
+        lcIcon3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.f);
+        lcIcon3.setTextColor(Color.WHITE);
+        lcIcon3.setGravity(Gravity.CENTER_HORIZONTAL);
+        lcIcon3.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_my_booking, 0, 0);
+        
+        lcIcon4.setText("Me");
+        lcIcon4.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.f);
+        lcIcon4.setTextColor(Color.WHITE);
+        lcIcon4.setGravity(Gravity.CENTER_HORIZONTAL);
+        lcIcon4.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.me, 0, 0);
 
-        lcIcon1.setImageDrawable(getResources().getDrawable(R.drawable.bus));
+       /* lcIcon1.setImageDrawable(getResources().getDrawable(R.drawable.bus));
         lcIcon2.setImageDrawable(getResources().getDrawable(R.drawable.ic_my_order));
         lcIcon3.setImageDrawable(getResources().getDrawable(R.drawable.ic_my_booking));
         lcIcon4.setImageDrawable(getResources().getDrawable(R.drawable.me));
-
+*/
         SubActionButton ic_bus = lCSubBuilder.setContentView(lcIcon1, blueContentParams).build();
         SubActionButton ic_order = lCSubBuilder.setContentView(lcIcon2, blueContentParams).build();
         SubActionButton ic_booking =  lCSubBuilder.setContentView(lcIcon3, blueContentParams).build();
@@ -338,7 +372,6 @@ public class BaseActivity extends ActionBarActivity{
         
         // Build another menu with custom options
         final FloatingActionMenu leftCenterMenu = new FloatingActionMenu.Builder(this)
-                .addSubActionView(ic_bus)
                 .addSubActionView(ic_order)
                 .addSubActionView(ic_booking)
                 .addSubActionView(ic_me)

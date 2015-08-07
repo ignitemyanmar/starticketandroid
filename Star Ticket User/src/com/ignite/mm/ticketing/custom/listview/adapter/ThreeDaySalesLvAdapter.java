@@ -57,7 +57,7 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 			holder.txt_order_no = (TextView) convertView.findViewById(R.id.txt_order_no);
 			holder.txt_order_date = (TextView)convertView.findViewById(R.id.txt_order_date);
 			holder.txt_order_amount = (TextView)convertView.findViewById(R.id.txt_order_amount);
-			holder.txt_point = (TextView)convertView.findViewById(R.id.txt_point);
+			holder.txt_discount = (TextView)convertView.findViewById(R.id.txt_discount);
 			
         	/*holder.txt_sale_date = (TextView) convertView.findViewById(R.id.txt_sale_date);
         	holder.txt_customer_name = (TextView) convertView.findViewById(R.id.txt_customer_name);
@@ -81,7 +81,13 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 		String amount = nf.format(Integer.valueOf(getItem(position).getTotalAmount()));
 		
 		holder.txt_order_amount.setText(amount+"");
-		//holder.txt_point.setText(getItem(position).get);
+		
+		if (getItem(position).getDiscount_amount() != null && !getItem(position).getDiscount_amount().equals("")) {
+			String discount = nf.format(Integer.valueOf(getItem(position).getDiscount_amount()));
+			holder.txt_discount.setText(discount);
+		}else {
+			holder.txt_discount.setText("0");
+		}
 		
 /*		holder.txt_sale_date.setText("၀ယ္သည့္ ေန႔    :  "+getItem(position).getDate());
 		holder.txt_customer_name.setText(getItem(position).getCustomerName()+" ["+getItem(position).getCustomerPhone()+"]");
@@ -127,8 +133,6 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 	}
 	
 	static class ViewHolder {
-		TextView txt_order_no, txt_order_date, txt_order_amount, txt_point;
-		/*TextView txt_sale_date, txt_customer_name, txt_trip_operator, txt_trip_date_time_class, txt_seats, txt_price, txt_amount;
-		Button btn_print;*/
+		TextView txt_order_no, txt_order_date, txt_order_amount, txt_discount;
 	}
 }

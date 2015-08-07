@@ -286,48 +286,34 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 					// TODO Auto-generated method stub
 					if(arg1.getStatus() == 200){
 						
-						Log.i("", "Success .............................. ");
-						
-						SharedPreferences sharedPreferences = getSharedPreferences("User", Activity.MODE_PRIVATE);
-						SharedPreferences.Editor editor = sharedPreferences.edit();
-						
-						editor.clear();
-						editor.commit();
-						/*editor.putString("access_token", arg0.getAccessToken());
-						editor.putString("token_type", arg0.getTokenType());
-						editor.putLong("expires", arg0.getExpires());
-						editor.putLong("expires_in", arg0.getExpiresIn());
-						editor.putString("refresh_token", arg0.getRefreshToken());
-						editor.putString("user_id", arg0.getUserID());
-						editor.putString("usergroup_id", arg0.getUserGroupID());
-						editor.putString("login_user_id", arg0.getLoginUserID());
-						editor.putString("user_name", arg0.getUserName());
-						editor.putString("user_type", arg0.getUserType());
-						editor.putString("email", arg0.getEmail());
-						editor.putString("NRC", arg0.getNRC());
-						editor.putString("Address", arg0.getAddress());*/
-						
-						editor.putString("message", arg0.getMessage());
-						editor.putString("user_id", String.valueOf(arg0.getUser().getId()));
-						editor.putString("user_name", arg0.getUser().getName());
-						editor.putString("email", arg0.getUser().getEmail());
-						editor.putString("code_no", arg0.getUser().getCodeNo());
-						editor.putString("role", String.valueOf(arg0.getUser().getRole()));
-						editor.putString("agent_group_id", String.valueOf(arg0.getUser().getAgentgroupId()));
-						editor.putString("group_branch", String.valueOf(arg0.getUser().getGroupBranch()));
-						editor.putString("create_at", arg0.getUser().getCreatedAt());
-						editor.putString("update_at", arg0.getUser().getUpdatedAt());
-						editor.putString("phone", arg0.getUser().getPhone());
-						editor.putString("address", arg0.getUser().getAddress());
-						editor.putString("agentGroupName", arg0.getUser().getAgentgroupName());
-						editor.commit();
-						
-						finish();
-						
-						//SKToastMessage.showMessage(UserRegister.this, "Register Successful!", SKToastMessage.SUCCESS);
-						SKToastMessage.showMessage(UserRegister.this, "သင္၏ Account ကုိ 'မွတ္ ပံု တင္' ၿပီးပါၿပီ", SKToastMessage.SUCCESS);
-						
-						//startActivity(new Intent(getApplicationContext(), BusOperatorActivity.class));
+						if (arg0 != null) {
+							Log.i("", "Success .............................. "+arg0.toString());
+							
+							SharedPreferences sharedPreferences = getSharedPreferences("User", Activity.MODE_PRIVATE);
+							SharedPreferences.Editor editor = sharedPreferences.edit();
+							
+							editor.clear();
+							editor.commit();
+							
+							editor.putString("message", arg0.getMessage());
+							editor.putString("user_id", String.valueOf(arg0.getUser().getId()));
+							editor.putString("user_name", arg0.getUser().getName());
+							editor.putString("email", arg0.getUser().getEmail());
+							editor.putString("code_no", arg0.getUser().getCodeNo());
+							editor.putString("role", String.valueOf(arg0.getUser().getRole()));
+							editor.putString("agent_group_id", String.valueOf(arg0.getUser().getAgentgroupId()));
+							editor.putString("group_branch", String.valueOf(arg0.getUser().getGroupBranch()));
+							editor.putString("create_at", arg0.getUser().getCreatedAt());
+							editor.putString("update_at", arg0.getUser().getUpdatedAt());
+							editor.putString("phone", arg0.getUser().getPhone());
+							editor.putString("address", arg0.getUser().getAddress());
+							editor.putString("agentGroupName", arg0.getUser().getAgentgroupName());
+							editor.commit();
+							
+							finish();
+							
+							SKToastMessage.showMessage(UserRegister.this, "သင္၏ Account ကုိ 'မွတ္ ပံု တင္' ၿပီးပါၿပီ", SKToastMessage.SUCCESS);
+						}
 					}
 					
 					if(arg1.getStatus() == 400){

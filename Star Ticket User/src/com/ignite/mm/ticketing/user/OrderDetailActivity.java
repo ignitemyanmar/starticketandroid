@@ -33,7 +33,8 @@ public class OrderDetailActivity extends BaseActivity{
 	private TextView txt_price;
 	private TextView txt_seat_qty;
 	private TextView txt_amount;
-	private TextView txt_point;
+	private TextView txt_discount;
+	private TextView txt_amount_needToPay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,6 @@ public class OrderDetailActivity extends BaseActivity{
 		
 		orderDetailList = new Gson().fromJson(orderString, ThreeDaySale.class);
 		
-		// txt_order_no = (TextView)  findViewById(R.id.txt_order_no);
 		 txt_buy_date = (TextView)  findViewById(R.id.txt_buy_date);
 		 txt_trip = (TextView)  findViewById(R.id.txt_trip);
 		 txt_trip_date_time = (TextView)  findViewById(R.id.txt_trip_date_time);
@@ -59,34 +59,57 @@ public class OrderDetailActivity extends BaseActivity{
 		 txt_price = (TextView)  findViewById(R.id.txt_price);
 		 txt_seat_qty = (TextView)  findViewById(R.id.txt_seat_qty);
 		 txt_amount = (TextView)  findViewById(R.id.txt_amount);
-		 txt_point = (TextView)  findViewById(R.id.txt_point);
-		 
-		//txt_order_no.setText("Order နံပါတ္  : "+orderDetailList.getOrderId());
+		 txt_discount = (TextView)  findViewById(R.id.txt_discount);
+		 txt_order_no = (TextView)  findViewById(R.id.txt_order_no);
+		 txt_amount_needToPay = (TextView)  findViewById(R.id.txt_amount_needToPay);
 		
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle("Order နံပါတ္  : "+orderDetailList.getOrderId());
+            toolbar.setTitle("Order လက္ မွတ္ ");
             this.setSupportActionBar(toolbar);
         }
         
+        txt_order_no.setText("Order နံပါတ္  : "+orderDetailList.getOrderId());
 		txt_buy_date.setText(orderDetailList.getDate());
 		txt_trip.setText(orderDetailList.getTrip());
 		txt_trip_date_time.setText(changeDate(orderDetailList.getDepartureDate())+" - "+orderDetailList.getTime());
 		txt_operator.setText(orderDetailList.getOperator());
 		txt_bus_class.setText(orderDetailList.getClass_());
 		txt_seats.setText(orderDetailList.getSeatNo());
-		//txt_point.setText(text);
+		
 		
 		//Change (0,000,000) format
 			NumberFormat nf = NumberFormat.getInstance();
-			String price = nf.format(Integer.valueOf(orderDetailList.getPrice()));
-			String amount = nf.format(Integer.valueOf(orderDetailList.getTotalAmount()));
-				
-		txt_price.setText(price+" Ks");
+			
+			Integer price_Int = 0;
+			Integer amount_Int = 0;
+			Integer discount_Int = 0;
+			
+			if (orderDetailList.getPrice() != null && !orderDetailList.getPrice().equals("")) {
+				price_Int = Integer.valueOf(orderDetailList.getPrice());
+			}
+			
+			if (orderDetailList.getTotalAmount() != null && !orderDetailList.getTotalAmount().equals("")) {
+				amount_Int = Integer.valueOf(orderDetailList.getTotalAmount());
+			}
+			
+			if (orderDetailList.getDiscount_amount() != null && !orderDetailList.getDiscount_amount().equals("")) {
+				discount_Int = Integer.valueOf(orderDetailList.getDiscount_amount());
+			}
+			
+			String price  = nf.format(price_Int);
+			String amount  = nf.format(amount_Int);
+			String discount = nf.format(discount_Int);
+			
+			Integer total = amount_Int - discount_Int;
+			String total_needToPay = nf.format(total);
+			
 		txt_seat_qty.setText(orderDetailList.getTicketQty()+"");
-		txt_amount.setText(amount+" Ks");
-		
+		txt_price.setText(price+"");
+		txt_amount.setText(amount+"");
+		txt_discount.setText(discount+"");
+		txt_amount_needToPay.setText(total_needToPay+"");
 	}
 	
 	@Override

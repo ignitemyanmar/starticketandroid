@@ -154,6 +154,8 @@ public class UserLogin extends BaseActivity {
 										user.setAccessToken(arg0.getAccessToken());
 										user.setCreateAt(arg0.getCreatedAt());
 										user.setUpdateAt(arg0.getUpdatedAt());
+										user.setPoints(arg0.getPoints());
+										user.setGift_moneys(arg0.getGift_moneys());
 										user.login();
 									}
 									

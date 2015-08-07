@@ -14,7 +14,7 @@
     <!-- Space between menu and sub menus -->
     <dimen name="red_action_menu_radius">100dp</dimen>
     
-    <dimen name="blue_sub_action_button_size">60dp</dimen>
+    <dimen name="blue_sub_action_button_size">75dp</dimen>
     <dimen name="blue_sub_action_button_content_margin">18dp</dimen>
 
     <dimen name="radius_large">120dp</dimen>
