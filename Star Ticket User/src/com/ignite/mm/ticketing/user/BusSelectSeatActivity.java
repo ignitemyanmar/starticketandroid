@@ -76,6 +76,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.SelectSeat;
 import com.ignite.mm.ticketing.user.R;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
+import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
 @SuppressLint("SimpleDateFormat") public class BusSelectSeatActivity extends BaseActivity{
@@ -89,7 +90,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	public static String SelectedSeat;
 	protected ArrayList<Seat> Seat;
 	protected ZProgressHUD dialog;
-	private ConnectionDetector connectionDetector;
+	private SKConnectionDetector connectionDetector;
 	private LinearLayout mLoadingView;
 	private LinearLayout mNoConnection;
 	protected ReturnComfrim returnComfirm;
@@ -150,7 +151,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bus_seat_list);
-		connectionDetector = new ConnectionDetector(this);
+		connectionDetector = new SKConnectionDetector(this);
 		
 		//Get Data from past clicks
 		Bundle bundle = getIntent().getExtras();
@@ -178,7 +179,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
             toolbar.setTitle(From+" - "+To);
-            toolbar.setSubtitle("["+operator_name+"] "+changeDate(Date)+" ["+Time+"]");
+            toolbar.setSubtitle(changeDate(Date)+" ["+Time+"]");
            // toolbar.setTitle("Choose Trip/Date/Time");
             this.setSupportActionBar(toolbar);
         }
@@ -297,7 +298,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			//Get permission & Get seat plan 
 			getPermission();
 		}else {
-			connectionDetector.showErrorDialog();
+			connectionDetector.showErrorMessage();
 		}
 	}
 	
@@ -381,7 +382,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	private void getPermission() {
 		// TODO Auto-generated method stub
 		//1. Get Permission
-        NetworkEngine.setIP("test.starticketmyanmar.com");
+        NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getPermission(AppLoginUser.getAccessToken(), OperatorID, new Callback<Response>() {
 
 			public void failure(RetrofitError arg0) {
@@ -604,11 +605,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 	
 	/**
-	 *  Store saled-data into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store saled-data into Online Sale Database (starticketmyanmar.com)
 	 */
 	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject) {
 		// TODO Auto-generated method stub
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(
 				orderNo
 				, permit_operator_id
@@ -820,7 +821,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 								public void success(Response arg0,
 										Response arg1) {
 									// TODO Auto-generated method stub
-									NetworkEngine.setIP("test.starticketmyanmar.com");
+									NetworkEngine.setIP("starticketmyanmar.com");
 									NetworkEngine.getInstance().editSeatInfo(
 											AppLoginUser.getAccessToken(),
 											BusSeats.get(0).getSeat_plan().get(0).getId().toString(), 
@@ -878,7 +879,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 														Response arg1) {
 													// TODO Auto-generated
 													// method stub
-													NetworkEngine.setIP("test.starticketmyanmar.com");
+													NetworkEngine.setIP("starticketmyanmar.com");
 													NetworkEngine.getInstance().deleteSeat(
 															AppLoginUser.getAccessToken(), 
 															BusSeats.get(0).getSeat_plan().get(0).getId().toString(), 
@@ -968,7 +969,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			        	startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class).putExtras(bundle));
 
 					}else{
-						connectionDetector.showErrorDialog();
+						connectionDetector.showErrorMessage();
 					}
 			}
 			
@@ -977,7 +978,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					if(connectionDetector.isConnectingToInternet()){
 						setupBooking();
 					}else{
-						connectionDetector.showErrorDialog();
+						connectionDetector.showErrorMessage();
 					}
 				}else{
 					SKToastMessage.showMessage(BusSelectSeatActivity.this, "ခံု ေရြးပါ", SKToastMessage.ERROR);
@@ -1047,7 +1048,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 							startActivity(new Intent(BusSelectSeatActivity.this, UserLogin.class));
 						}
 					}else{
-						connectionDetector.showErrorDialog();
+						connectionDetector.showErrorMessage();
 					}
 				}else{
 					SKToastMessage.showMessage(BusSelectSeatActivity.this, "ခံု ေရြးပါ", SKToastMessage.ERROR);

@@ -150,9 +150,9 @@ public class UserProfileActivity extends BaseActivity{
 				+", Payment method: "+1
 				);
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postLoyalty(AppLoginUser.getPhone(), "0"
-							, "1", ""
+							, "0", ""
 							, "", new Callback<Loyalty>() {
 			
 			private int totalPoints = 0;
@@ -162,6 +162,15 @@ public class UserProfileActivity extends BaseActivity{
 				// TODO Auto-generated method stub
 				
 				if (arg0 != null) {
+					
+					/*Integer current_points = 0;
+					
+					if (arg0.getCurrent_points() == null) {
+						totalPoints = arg0.getPoints();
+					}else {
+						current_points = Integer.valueOf(arg0.getCurrent_points());
+						totalPoints = arg0.getPoints() + current_points;
+					}*/
 					
 					txt_net_points.setText(arg0.getPoints()+"");
 					txt_usable_gift_money.setText(arg0.getGiftMoney()+" Ks");

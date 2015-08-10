@@ -140,7 +140,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		tomorrowDate = sdf.format(cal.getTime());
 		btn_trip_date.setText(tomorrowDate);
 		
-		skDetector = SKConnectionDetector.getInstance(this);
+		skDetector = SKConnectionDetector.getInstance(SaleTicketActivity.this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
 			
@@ -150,7 +150,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			getFromCities();
 			getToCities();
 		}else{
-			skDetector.showErrorDialog();
+			skDetector.showErrorMessage();
 		}
 		
 		spn_from_trip.setOnItemSelectedListener(fromCityClickListener);
@@ -166,8 +166,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		// TODO Auto-generated method stub
 		
 		fromCities = new ArrayList<String>();
-		fromCities.add("Choose - From City");
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		//fromCities.add("Choose - From City");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getFromCities("", new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
@@ -177,11 +177,20 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					List<String> fromCityList = new ArrayList<String>();
 					fromCityList = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<String>>(){}.getType());
 					
-					fromCities.addAll(fromCityList);
+					if (fromCityList != null && fromCityList.size() > 0) {
+						fromCities.addAll(fromCityList);
+					}
 					
 					if (fromCities != null && fromCities.size() > 0) {
 						fromCitiesAdapter = new FromCitiesAdapter(SaleTicketActivity.this, fromCities);
-						spn_from_trip.setAdapter(fromCitiesAdapter);						
+						spn_from_trip.setAdapter(fromCitiesAdapter);	
+						
+						for (int i = 0; i < fromCities.size(); i++) {
+							if (fromCities.get(i).contains("Yangon")) {
+								spn_from_trip.setSelection(i);	
+								//selectedFromCity = 
+							}
+						}
 					}
 				}
 			}
@@ -200,7 +209,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 
 		toCities = new ArrayList<String>();
 		toCities.add("Choose - To City");
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getToCities("", new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
@@ -210,7 +219,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					List<String> toCityList = new ArrayList<String>();
 					toCityList = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<String>>(){}.getType());
 					
-					toCities.addAll(toCityList);
+					if (toCityList != null && toCityList.size() > 0) {
+						toCities.addAll(toCityList);
+					}
 					
 					if (toCities != null && toCities.size() > 0) {
 						toCitiesAdapter = new ToCitiesAdapter(SaleTicketActivity.this, toCities);
@@ -245,7 +256,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			
 			tripTimes = new ArrayList<Times>();
 			
-			NetworkEngine.setIP("test.starticketmyanmar.com");
+			NetworkEngine.setIP("starticketmyanmar.com");
 			NetworkEngine.getInstance().getTimesByTrip("", selectedFromCity, selectedToCity, new Callback<Response>() {
 				
 				public void success(Response arg0, Response arg1) {
@@ -292,11 +303,12 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO Auto-generated method stub
-				if (position > 0) {
+			selectedFromCity = fromCities.get(position);
+				/*if (position > 0) {
 					selectedFromCity = fromCities.get(position);
 				}else {
 					selectedFromCity = "";
-				}
+				}*/
 		}
 
 		public void onNothingSelected(AdapterView<?> parent) {
@@ -318,7 +330,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 						if(skDetector.isConnectingToInternet()){
 							getTripTime();
 						}else{
-							skDetector.showErrorDialog();
+							skDetector.showErrorMessage();
 						}
 					}
 				}else {
@@ -433,15 +445,26 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	public boolean checkFields() {
 		
 		// TODO Auto-generated method stub
-		if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
+		if (spn_from_trip.getSelectedItem() != null) {
+			if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
 
+				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+				return false;
+			}
+		}else {
 			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
 			return false;
 		}
-		if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
+		
+		if (spn_to_trip.getSelectedItem() != null) {
+			if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
+				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+				return false;
+			}	
+		}else {
 			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
 			return false;
-		}		
+		}
 		
 		return true;
 	}

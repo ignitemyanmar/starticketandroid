@@ -44,8 +44,10 @@ public class UserLogin extends BaseActivity {
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private ImageButton actionBarBack;
+	
 	private SKConnectionDetector connectionDetector;
 	private TextView actionBarTitle2;
+	private TextView txt_forget_password;
 	public static boolean isSkip = false;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,15 @@ public class UserLogin extends BaseActivity {
 		
 		txtEmail = (EditText) this.findViewById(R.id.txt_login_email);
 		txtPassword = (EditText) this.findViewById(R.id.txt_login_password);
+		
+		txt_forget_password = (TextView)this.findViewById(R.id.txt_forget_password);
+		txt_forget_password.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(UserLogin.this, ForgetPasswordActivity.class));
+			}
+		});
 
 		buttons[0] = (FButton) findViewById(R.id.btn_login);
 		
@@ -96,7 +107,7 @@ public class UserLogin extends BaseActivity {
 		connectionDetector = SKConnectionDetector.getInstance(this);
 		//connectionDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(!connectionDetector.isConnectingToInternet())
-			connectionDetector.showErrorDialog();
+			connectionDetector.showErrorMessage();
 		
 	}
 
@@ -127,7 +138,7 @@ public class UserLogin extends BaseActivity {
 		    			Log.i("", "Enter here..... log in");
 		    			//Check Email & Password on Server
 		    			
-		    			NetworkEngine.setIP("test.starticketmyanmar.com");
+		    			NetworkEngine.setIP("starticketmyanmar.com");
 						NetworkEngine.getInstance().getAccessToken("password", "clientID22222", "scrt123321098765432", txtEmail.getText().toString(), txtPassword.getText().toString(), "", "", new Callback<AccessToken>() {
 							
 							private String userName;
@@ -209,7 +220,7 @@ public class UserLogin extends BaseActivity {
 					}
 				}else{
 					
-					connectionDetector.showErrorDialog();
+					connectionDetector.showErrorMessage();
 					SharedPreferences sharedPreferences = ctx.getSharedPreferences("User",MODE_PRIVATE);
 					SharedPreferences.Editor editor = sharedPreferences.edit();
 					

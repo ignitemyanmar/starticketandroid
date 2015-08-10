@@ -279,12 +279,21 @@ import android.widget.Toast;
         int redActionButtonMargin = getResources().getDimensionPixelOffset(R.dimen.action_button_margin);
         int redActionButtonContentSize = getResources().getDimensionPixelSize(R.dimen.red_action_button_content_size);
         int redActionButtonContentMargin = getResources().getDimensionPixelSize(R.dimen.red_action_button_content_margin);
-        int redActionMenuRadius = getResources().getDimensionPixelSize(R.dimen.red_action_menu_radius);
+      //  int redActionMenuRadius = getResources().getDimensionPixelSize(R.dimen.red_action_menu_radius);
         int blueSubActionButtonSize = getResources().getDimensionPixelSize(R.dimen.blue_sub_action_button_size);
         int blueSubActionButtonContentMargin = getResources().getDimensionPixelSize(R.dimen.blue_sub_action_button_content_margin);
             
         ImageView fabIconStar = new ImageView(this);
         fabIconStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+        
+       /* TextView fabIconStar = new TextView(this);
+        
+        fabIconStar.setText("Menu");
+        fabIconStar.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12.f);
+        fabIconStar.setTextColor(Color.GRAY);
+        fabIconStar.setGravity(Gravity.CENTER_HORIZONTAL);
+        fabIconStar.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+        fabIconStar.setCompoundDrawablePadding(0);*/
 
         //Menu 
         FloatingActionButton.LayoutParams starParams = new FloatingActionButton.LayoutParams(redActionButtonSize, redActionButtonSize);

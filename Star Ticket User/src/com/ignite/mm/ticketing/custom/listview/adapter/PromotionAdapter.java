@@ -103,7 +103,7 @@ public class PromotionAdapter extends BaseAdapter {
 			holder.txt_gift_money_amount.setText(getItem(position).getGiftMoney());
 		}
 		
-		if (getItem(position).getGiftParcel() != null) {
+		if (getItem(position).getGiftParcel() != null && !getItem(position).getGiftParcel().equals("")) {
 			holder.txt_gift_parcel.setVisibility(View.VISIBLE);
 			holder.txt_gift_parcel.setText("***"+getItem(position).getGiftParcel());
 		}

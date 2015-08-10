@@ -280,11 +280,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		Log.i("", "Dept date time: "+deptDateTime+", today+24hr: "+nowFormat.format(cal.getTime()));
 		
 		if (cal.getTime().compareTo(deptDateTime) >= 0) {
-			radio_cashOnDelivery.setVisibility(View.GONE);
-			radio_cashOnShop.setVisibility(View.GONE);
+			radio_cashOnDelivery.setEnabled(false);
+			radio_cashOnShop.setEnabled(false);
 		}else {
-			radio_cashOnDelivery.setVisibility(View.VISIBLE);
-			radio_cashOnShop.setVisibility(View.VISIBLE);
+			radio_cashOnDelivery.setEnabled(true);
+			radio_cashOnShop.setEnabled(true);
 		}
 		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
@@ -650,7 +650,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				auto_txt_agent.setVisibility(View.GONE);
 			//}
 		}else{
-			skDetector.showErrorDialog();
+			skDetector.showErrorMessage();
 		}
 		
 		btn_confirm.setOnClickListener(clickListener);
@@ -808,7 +808,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 		
 		extraCity = new ArrayList<ExtraCity>();
-		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select Extra City", "", ""));
+		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select City", "", ""));
 	}
 	
 	@Override
@@ -838,6 +838,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	};
 	String param;
 	protected String ExtraCityName;
+	protected String ExtraCityPrice = "0";
 	
 	private void getExtraDestination(){
 		
@@ -891,19 +892,19 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			// TODO Auto-generated method stub
-			if (arg2 > 0) {
 				
 				if (arg2 > 0) {
 					ExtraCityID = extraCity.get(arg2).getId();
 					ExtraCityName = extraCity.get(arg2).getCity_name();
+					ExtraCityPrice  = extraCity.get(arg2).getLocal_price();
 					sp_remark_type.setSelection(7);				
 					edt_remark.setText(extraCity.get(arg2).getCity_name());
 				}else {
 					ExtraCityID = "0";
 					ExtraCityName = "";
+					ExtraCityPrice = "0";
 				}
 				
-			}
 		}
 
 		public void onNothingSelected(AdapterView<?> arg0) {
@@ -1041,7 +1042,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 							SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားေသာေၾကာင့္ သင္ မွာ ေသာ လက္ မွတ္ မ်ား မရ ႏုိင္ေတာ့ပါ။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 							dialog.dismissWithFailure();
 						}else{
-							//Store Sale Data into Online Sale Database
+							//Store Data into Online Sale Database
 							JSONArray arr = orderObj.getJSONArray("saleitems");
 							//for (int i = 0; i < arr.length(); i++) {
 								JSONObject obj = arr.getJSONObject(0);
@@ -1071,14 +1072,14 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 	
 	/**
-	 *  Store sales into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store data into Online Sale Database (starticketmyanmar.com)
 	 */
 	protected void postOnlineSaleConfirm() {
 		// TODO Auto-generated method stub
 		Log.i("", "SaleOrderNo: "+"0"+", Op-Id: "+permit_operator_id+", User code no: "+AppLoginUser.getCodeNo()
 				+", Token: "+AppLoginUser.getAccessToken());
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		//NetworkEngine.setIP("128.199.255.246");
 		NetworkEngine.getInstance().postOnlineSaleDB("0", permit_operator_id, AppLoginUser.getCodeNo()
 				, AppLoginUser.getAccessToken(), ExtraCityName, "0931247515"
@@ -1277,7 +1278,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 							postSale(fromPayment);
 						}
 					}else {
-						skDetector.showErrorDialog();
+						skDetector.showErrorMessage();
 					}
 				}
 			}
@@ -1365,6 +1366,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 									bundle.putString("ConfirmTime", ConfirmTime);
 									bundle.putString("ExtraCityID", ExtraCityID);
 									bundle.putString("ExtraCityName", ExtraCityName);
+									bundle.putString("ExtraCityPrice", ExtraCityPrice);
 				    				
 				    				nextScreen.putExtras(bundle);
 				    				startActivity(nextScreen);
@@ -1401,11 +1403,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 	
 	/**
-	 *  Store Booking into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store Booking into Online Sale Database (starticketmyanmar.com)
 	 */
 	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject, String paymentType) {
 		// TODO Auto-generated method stub
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(
 				orderNo
 				, permit_operator_id
@@ -1459,10 +1461,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		    					
 		    					Log.i("", "Booking status: "+arg1.getStatus()+", reson: "+arg1.getReason());
 		    					
-		    					SKToastMessage.showMessage(BusConfirmActivity.this, "Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။ သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။", SKToastMessage.SUCCESS);
+		    					Bundle bundle = new Bundle();
+		        				bundle.putString("payment_type", "Cash on Shop");
 		    					
-								closeAllActivities();
-		    					startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
+		    					startActivity(new Intent(BusConfirmActivity.this, ThankYouActivity.class).putExtras(bundle));
 		    					
 		    					dialog.dismissWithSuccess();
 		    					

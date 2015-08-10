@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -47,6 +48,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 	private ListView lv_operator_seats;
 	private ZProgressHUD dialog;
 	private List<OperatorSeat> OperatorSeats;
+	private RelativeLayout Rlayout_noInfo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +91,15 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		lv_operator_seats.setDividerHeight(0);
 		lv_operator_seats.setOnItemClickListener(clickListener);
 		
+		Rlayout_noInfo = (RelativeLayout)findViewById(R.id.Rlayout_noInfo);
+		
 		SKConnectionDetector skDetector = SKConnectionDetector.getInstance(this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
 			
 			getOperatorSeats();
 		}else{
-			skDetector.showErrorDialog();
+			skDetector.showErrorMessage();
 		}
 	}
 	
@@ -116,7 +120,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 						+selectedTripDate+", "
 						+selectedTripTime+", access: "+AppLoginUser.getAccessToken());
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postSearch(selectedFromCity, selectedToCity, selectedTripDate
 				, selectedTripTime, "", new Callback<Response>() {
 			
@@ -130,7 +134,9 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 						lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats));
 						setListViewHeightBasedOnChildren(lv_operator_seats);
 					}else {
-						alertDialog("သင္ ရွာေဖြ ေသာ ခရီးစဥ္ သည္ လက္ မွတ္ မ်ား ကုန္ သြား ပါသျဖင့္ အျခားေန႔ ေရြးၿပီး ရွာ ႏုိင္ ပါသည္။"
+						
+						Rlayout_noInfo.setVisibility(View.VISIBLE);
+						/*alertDialog("သင္ ရွာေဖြ ေသာ ခရီးစဥ္ သည္ လက္ မွတ္ မ်ား ကုန္ သြား ပါသျဖင့္ အျခားေန႔ ေရြးၿပီး ရွာ ႏုိင္ ပါသည္။"
 								, "Back", "", new DialogInterface.OnClickListener() {
 									
 									public void onClick(DialogInterface dialog, int which) {
@@ -143,7 +149,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 										// TODO Auto-generated method stub
 										//dialog.dismiss();
 									}
-								});
+								});*/
 					}
 				}
 				

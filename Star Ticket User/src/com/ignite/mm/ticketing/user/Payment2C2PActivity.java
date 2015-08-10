@@ -168,7 +168,7 @@ import android.widget.Toast;
 					 	+", encrypt: "+MCrypt.getInstance().encrypt(paymentRequest)
 					 	+", access: "+AppLoginUser.getAccessToken());
 			 
-			 webView.loadUrl("http://test.starticketmyanmar.com/api/payment/2c2p/"
+			 webView.loadUrl("http://starticketmyanmar.com/api/payment/2c2p/"
 					 			+MCrypt.getInstance().encrypt(paymentRequest)+"?access_token="
 					 			+AppLoginUser.getAccessToken());
 			 
@@ -320,14 +320,14 @@ import android.widget.Toast;
 	
 
 /**
- *  Store sales into Online Sale Database (test.starticketmyanmar.com)
+ *  Store sales into Online Sale Database (starticketmyanmar.com)
  */
 protected void postOnlineSaleConfirm(final String paymentType) {
 	// TODO Auto-generated method stub
 	Log.i("", "SaleOrderNo: "+sale_order_no+", Op-Id: "+operator_id+", User code no: "+AppLoginUser.getCodeNo()
 			+", Token: "+AppLoginUser.getAccessToken()+", paymentType: "+paymentType+", totalGiftMoney: "+total_giftMoney);
 	
-	NetworkEngine.setIP("test.starticketmyanmar.com");
+	NetworkEngine.setIP("starticketmyanmar.com");
 	NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no, operator_id, AppLoginUser.getCodeNo()
 			, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
 			, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""

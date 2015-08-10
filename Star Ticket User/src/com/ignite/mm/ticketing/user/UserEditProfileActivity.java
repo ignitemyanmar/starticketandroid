@@ -122,7 +122,7 @@ public class UserEditProfileActivity extends BaseActivity {
 					if(skDetector.isConnectingToInternet()){
 						postEditProfile();
 					}else{
-						skDetector.showErrorDialog();
+						skDetector.showErrorMessage();
 					}
 				}
 			}
@@ -135,7 +135,7 @@ public class UserEditProfileActivity extends BaseActivity {
 		dialog = new ZProgressHUD(UserEditProfileActivity.this);
 		dialog.show();
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postEditProfile(Name
 				, AppLoginUser.getEmail(), NewPassword, Phone, Address, AppLoginUser.getAccessToken()
 				, CurrentPassword, AppLoginUser.getId(), new Callback<LoginUser>() {

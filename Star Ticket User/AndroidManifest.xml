@@ -239,6 +239,15 @@
         <activity android:name=".SampleActivity"
             android:screenOrientation="portrait"
             ></activity>
+        <activity android:name=".ThankYouActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".ForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

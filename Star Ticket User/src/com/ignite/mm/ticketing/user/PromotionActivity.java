@@ -24,6 +24,7 @@ import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.PromotionAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class PromotionActivity extends BaseActivity{
 	private ListView lv_promotion;
@@ -32,7 +33,7 @@ public class PromotionActivity extends BaseActivity{
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
 	private RelativeLayout layout_noPromotion;
-	private ProgressDialog dialog;
+	private ZProgressHUD dialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,6 @@ public class PromotionActivity extends BaseActivity{
             this.setSupportActionBar(toolbar);
         }
 		
-		dialog = ProgressDialog.show(PromotionActivity.this, "", "Please wait ...", true);
-		
 		layout_noPromotion = (RelativeLayout)findViewById(R.id.layout_noPromotion);
 		lv_promotion = (ListView)findViewById(R.id.lv_promotion);
 		lv_promotion.setDividerHeight(0);
@@ -63,6 +62,15 @@ public class PromotionActivity extends BaseActivity{
 		listOperatorPromo.add("အာကာသ");
 		listOperatorPromo.add("တုိးရတနာ");*/
 		
+		getPromo();
+	}	
+	
+	private void getPromo() {
+		// TODO Auto-generated method stub
+		
+		dialog = new ZProgressHUD(PromotionActivity.this);
+		dialog.show();
+		
 		NetworkEngine.getInstance().GetPromotion(new Callback<List<Promotion>>() {
 			
 			public void success(List<Promotion> arg0, Response arg1) {
@@ -74,7 +82,7 @@ public class PromotionActivity extends BaseActivity{
 					lv_promotion.setAdapter(null);
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithSuccess();
 			}
 			
 			public void failure(RetrofitError arg0) {
@@ -83,10 +91,10 @@ public class PromotionActivity extends BaseActivity{
 					Log.i("", "Promo Error: "+arg0.getResponse().getStatus());
 				}
 				
-				dialog.dismiss();
+				dialog.dismissWithFailure();
 			}
 		});
-	}	
+	}
 	
 	@Override
 	public Intent getSupportParentActivityIntent() {

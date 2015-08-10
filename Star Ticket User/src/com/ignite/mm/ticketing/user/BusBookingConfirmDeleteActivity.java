@@ -106,7 +106,7 @@ public class BusBookingConfirmDeleteActivity extends BaseActivity {
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
         dialog.setCancelable(true);
         
-        NetworkEngine.setIP("test.starticketmyanmar.com");
+        NetworkEngine.setIP("starticketmyanmar.com");
         NetworkEngine.getInstance().getPermission(AppLoginUser.getAccessToken(), creditOrder.getAppOperatorId(), new Callback<Response>() {
 
 
@@ -164,7 +164,7 @@ public class BusBookingConfirmDeleteActivity extends BaseActivity {
 			if(connectionDetector.isConnectingToInternet()){
 				getPermission();
 			}else{
-				connectionDetector.showErrorDialog();
+				connectionDetector.showErrorMessage();
 			}
 		}
 	}
@@ -227,7 +227,7 @@ public class BusBookingConfirmDeleteActivity extends BaseActivity {
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
         dialog.setCancelable(true);
         
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingDeleteByOrderID(AppLoginUser.getAccessToken(), creditOrder.getId(), new Callback<Response>() {
 
 			public void failure(RetrofitError arg0) {

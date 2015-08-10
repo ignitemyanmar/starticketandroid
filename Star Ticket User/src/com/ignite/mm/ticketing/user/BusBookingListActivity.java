@@ -126,7 +126,7 @@ public class BusBookingListActivity extends BaseActivity {
 		dialog = new ZProgressHUD(BusBookingListActivity.this);
 		dialog.show();
         
-        NetworkEngine.setIP("test.starticketmyanmar.com");
+        NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingListByUser(AppLoginUser.getAccessToken(), ""
 				, tripId, AppLoginUser.getId(), new Callback<Response>() {
 
@@ -147,6 +147,8 @@ public class BusBookingListActivity extends BaseActivity {
 					bookingListByUser = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<Booking>>(){}.getType());
 					
 					if (bookingListByUser != null && bookingListByUser.size() > 0) {
+						
+						Log.i("", "Booking list by user: "+bookingListByUser.toString());
 						
 						for (int i = 0; i < bookingListByUser.size(); i++) {
 							String changeDate = changeDateString(bookingListByUser.get(i).getDate());
@@ -179,7 +181,7 @@ public class BusBookingListActivity extends BaseActivity {
 		dialog = new ZProgressHUD(BusBookingListActivity.this);
 		dialog.show();
         
-        NetworkEngine.setIP("test.starticketmyanmar.com");
+        NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingListAll(AppLoginUser.getAccessToken(), new Callback<Response>() {
 
 			public void failure(RetrofitError arg0) {
@@ -235,7 +237,7 @@ public class BusBookingListActivity extends BaseActivity {
 					if(connectionDetector.isConnectingToInternet()){
 						getBookingListByCodeNoPhone();
 					}else{
-						connectionDetector.showErrorDialog();
+						connectionDetector.showErrorMessage();
 					}
 				}
 			}
@@ -329,7 +331,7 @@ public class BusBookingListActivity extends BaseActivity {
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
         dialog.setCancelable(true);
 
-        NetworkEngine.setIP("test.starticketmyanmar.com");
+        NetworkEngine.setIP("starticketmyanmar.com");
         NetworkEngine.getInstance().getPermission(AppLoginUser.getAccessToken(), operatorId, new Callback<Response>() {
 			
 			public void failure(RetrofitError arg0) {
@@ -427,7 +429,7 @@ public class BusBookingListActivity extends BaseActivity {
 		dialog = new ZProgressHUD(BusBookingListActivity.this);
 		dialog.show();
         
-        NetworkEngine.setIP("test.starticketmyanmar.com");
+        NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getBookingByCodeNoPhone(AppLoginUser.getAccessToken(), book_code, new Callback<Response>() {
 
 			public void failure(RetrofitError arg0) {

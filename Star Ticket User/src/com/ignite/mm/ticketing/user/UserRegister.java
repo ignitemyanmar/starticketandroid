@@ -240,7 +240,7 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 	    		}*/
 	    	}//End Check Fields
 		}else {
-			checkInternet.showErrorDialog();
+			checkInternet.showErrorMessage();
 		}
 	}
     
@@ -296,18 +296,24 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 							editor.commit();
 							
 							editor.putString("message", arg0.getMessage());
-							editor.putString("user_id", String.valueOf(arg0.getUser().getId()));
-							editor.putString("user_name", arg0.getUser().getName());
-							editor.putString("email", arg0.getUser().getEmail());
-							editor.putString("code_no", arg0.getUser().getCodeNo());
-							editor.putString("role", String.valueOf(arg0.getUser().getRole()));
-							editor.putString("agent_group_id", String.valueOf(arg0.getUser().getAgentgroupId()));
-							editor.putString("group_branch", String.valueOf(arg0.getUser().getGroupBranch()));
-							editor.putString("create_at", arg0.getUser().getCreatedAt());
-							editor.putString("update_at", arg0.getUser().getUpdatedAt());
-							editor.putString("phone", arg0.getUser().getPhone());
-							editor.putString("address", arg0.getUser().getAddress());
-							editor.putString("agentGroupName", arg0.getUser().getAgentgroupName());
+							
+							if (arg0.getUser() != null) {
+								editor.putString("user_id", String.valueOf(arg0.getUser().getId()));
+								editor.putString("user_name", arg0.getUser().getName());
+								editor.putString("email", arg0.getUser().getEmail());
+								editor.putString("code_no", arg0.getUser().getCodeNo());
+								editor.putString("role", String.valueOf(arg0.getUser().getRole()));
+								editor.putString("agent_group_id", String.valueOf(arg0.getUser().getAgentgroupId()));
+								editor.putString("group_branch", String.valueOf(arg0.getUser().getGroupBranch()));
+								editor.putString("create_at", arg0.getUser().getCreatedAt());
+								editor.putString("update_at", arg0.getUser().getUpdatedAt());
+								editor.putString("phone", arg0.getUser().getPhone());
+								editor.putString("address", arg0.getUser().getAddress());
+								editor.putString("agentGroupName", arg0.getUser().getAgentgroupName());
+							}else {
+								Log.i("", "User is NUll!!!");
+							}
+						
 							editor.commit();
 							
 							finish();
@@ -347,16 +353,13 @@ public class UserRegister extends BaseActivity implements OnClickListener {
     		txtUserName.setError("Enter User Name");
     		return false;
     	}
-    	if(txtEmail.getText().toString().length() == 0){
-			txtEmail.setError("Enter Email");
-			return false;
-		}
+    	
     	if(txtPassword.getText().toString().length() == 0){
 			txtPassword.setError("Enter Password");
 			return false;
 		}
 		if (txtPassword.getText().toString().length() < 6) {
-			txtPassword.setError("Enter minimun six charactors!");
+			txtPassword.setError("Enter minimum six characters!");
 			return false;
 		}
     	if(txtCPassword.getText().toString().length() == 0){

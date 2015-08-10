@@ -115,7 +115,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		
 		Log.i("", "Access Token: "+AppLoginUser.getAccessToken()+"Code No: "+AppLoginUser.getCodeNo());
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getThreeDaySales(AppLoginUser.getAccessToken(), AppLoginUser.getCodeNo(), String.valueOf(offset)
 				, String.valueOf(limit), new Callback<List<ThreeDaySale>>() {
 

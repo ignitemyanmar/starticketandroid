@@ -117,6 +117,7 @@ public class PaymentActivity extends BaseActivity{
 	private Integer total_amount = 0;
 	private String price;
 	private String seat_count;
+	private String ExtraCityPrice = "0";
 	
 	final static int REQ_CODE = 1;
 	
@@ -160,6 +161,10 @@ public class PaymentActivity extends BaseActivity{
 			
 			ExtraCityID = bundle.getString("ExtraCityID");
 			ExtraCityName = bundle.getString("ExtraCityName");
+			
+			if (!bundle.getString("ExtraCityPrice").equals("0") && bundle.getString("ExtraCityPrice") != null) {
+				ExtraCityPrice  = bundle.getString("ExtraCityPrice");
+			}
 		}
 		
 		setContentView(R.layout.activity_payment);
@@ -258,9 +263,18 @@ public class PaymentActivity extends BaseActivity{
 		if (price != null && seat_count != null) {
 			priceInt = Integer.valueOf(price);
 			seat_countInt = Integer.valueOf(seat_count);
-			total_amount = priceInt * seat_countInt;
+			
+			if (!ExtraCityPrice.equals("0") && ExtraCityPrice != null) {
+				total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
+			}else {
+				total_amount = priceInt * seat_countInt;
+			}
 		}else {
-			total_amount = priceInt * seat_countInt;
+			if (!ExtraCityPrice.equals("0") && ExtraCityPrice != null) {
+				total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
+			}else {
+				total_amount = priceInt * seat_countInt;
+			}
 		}
 		
 		//Get Usable Points & Gift Money
@@ -308,10 +322,20 @@ public class PaymentActivity extends BaseActivity{
 				+", Operator id: "+operator_id
 				);
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
-		NetworkEngine.getInstance().postLoyalty(AppLoginUser.getPhone(), String.valueOf(total_amount)
-							, "1", agentgroup_id
-							, operator_id, new Callback<Loyalty>() {
+		String payment_method = "0";
+		
+		if (from_payment.equals("Pay with Online")) {
+			payment_method = "2";
+		}else if (from_payment.equals("Cash on Shop")) {
+			payment_method = "3";
+		}else if (from_payment.equals("Cash on Delivery")) {
+			payment_method = "4";
+		}
+		
+		NetworkEngine.setIP("starticketmyanmar.com");
+		NetworkEngine.getInstance().postLoyalty(AppLoginUser.getPhone(), total_amount.toString()
+							, payment_method, ""
+							, "", new Callback<Loyalty>() {
 			
 			public void success(Loyalty arg0, Response arg1) {
 				// TODO Auto-generated method stub
@@ -390,55 +414,63 @@ public class PaymentActivity extends BaseActivity{
 							}
 							
 							//Integer total_need_to_pay = total_amount - ((points_to_use * 10) + giftMoney_to_use);
-							Integer total_need_to_pay = total_amount - totalGiftMoney;
 							
-							Bundle bundle = new Bundle();
-							bundle.putString("order_no", sale_order_no);
-							bundle.putString("order_amount", total_need_to_pay.toString());
-							bundle.putString("points_toUse", points_toUse);
-							bundle.putString("giftMoney_toUse", giftMoney_toUse);
-							bundle.putString("total_giftMoney", totalGiftMoney.toString());
-							
-							bundle.putString("from_payment", from_payment);
-							bundle.putString("price", price);
-							bundle.putString("seat_count", seat_count);
-							bundle.putString("agentgroup_id", agentgroup_id);
-							bundle.putString("operator_id", operator_id);
-							bundle.putString("sale_order_no", sale_order_no);
-							bundle.putString("selectedSeats", selectedSeats);
-							bundle.putString("busOccurence", busOccurence);
-							bundle.putString("permit_access_token", permit_access_token);
-							bundle.putString("Permit_agent_id", Permit_agent_id);
-							bundle.putString("permit_ip", permit_ip);
-							bundle.putString("BuyerName", BuyerName);
-							
-							bundle.putString("BuyerPhone", BuyerPhone);
-							bundle.putString("BuyerNRC", BuyerNRC);
-							bundle.putString("FromCity", FromCity);
-							bundle.putString("ToCity", ToCity);
-							bundle.putString("Operator_Name", Operator_Name);
-							bundle.putString("from_to", from_to);
-							bundle.putString("time", time);
-							
-							bundle.putString("classes", classes);
-							bundle.putString("date", date);
-							bundle.putString("ConfirmDate", ConfirmDate);
-							bundle.putString("ConfirmTime", ConfirmTime);
-							bundle.putString("ExtraCityID", ExtraCityID);
-							bundle.putString("ExtraCityName", ExtraCityName);
-							
-							Intent intent = new Intent(PaymentActivity.this, Payment2C2PActivity.class).putExtras(bundle);
-							startActivityForResult(intent, REQ_CODE);
-							
+							if (total_amount >= totalGiftMoney) {
+								Integer total_need_to_pay = total_amount - totalGiftMoney;
+								
+								Bundle bundle = new Bundle();
+								bundle.putString("order_no", sale_order_no);
+								bundle.putString("order_amount", total_need_to_pay.toString());
+								bundle.putString("points_toUse", points_toUse);
+								bundle.putString("giftMoney_toUse", giftMoney_toUse);
+								bundle.putString("total_giftMoney", totalGiftMoney.toString());
+								
+								bundle.putString("from_payment", from_payment);
+								bundle.putString("price", price);
+								bundle.putString("seat_count", seat_count);
+								bundle.putString("agentgroup_id", agentgroup_id);
+								bundle.putString("operator_id", operator_id);
+								bundle.putString("sale_order_no", sale_order_no);
+								bundle.putString("selectedSeats", selectedSeats);
+								bundle.putString("busOccurence", busOccurence);
+								bundle.putString("permit_access_token", permit_access_token);
+								bundle.putString("Permit_agent_id", Permit_agent_id);
+								bundle.putString("permit_ip", permit_ip);
+								bundle.putString("BuyerName", BuyerName);
+								
+								bundle.putString("BuyerPhone", BuyerPhone);
+								bundle.putString("BuyerNRC", BuyerNRC);
+								bundle.putString("FromCity", FromCity);
+								bundle.putString("ToCity", ToCity);
+								bundle.putString("Operator_Name", Operator_Name);
+								bundle.putString("from_to", from_to);
+								bundle.putString("time", time);
+								
+								bundle.putString("classes", classes);
+								bundle.putString("date", date);
+								bundle.putString("ConfirmDate", ConfirmDate);
+								bundle.putString("ConfirmTime", ConfirmTime);
+								bundle.putString("ExtraCityID", ExtraCityID);
+								bundle.putString("ExtraCityName", ExtraCityName);
+								
+								Intent intent = new Intent(PaymentActivity.this, Payment2C2PActivity.class).putExtras(bundle);
+								startActivityForResult(intent, REQ_CODE);
+							}else {
+								dialog.dismissWithFailure();
+							}
 						}else if (from_payment.equals("Cash on Delivery")){
 							
 							dialog = new ZProgressHUD(PaymentActivity.this);
 							dialog.show();
 							
-							confirmOrder(from_payment);
+							if (total_amount >= totalGiftMoney) {
+								confirmOrder(from_payment);
+							}else {
+								dialog.dismissWithFailure();
+							}
 						}
 					}else {
-						skDetector.showErrorDialog();
+						skDetector.showErrorMessage();
 					}
 				}
 			}
@@ -549,18 +581,18 @@ public class PaymentActivity extends BaseActivity{
 	}
 	
 	/**
-	 *  Store sales into Online Sale Database (test.starticketmyanmar.com)
+	 *  Store sales into Online Sale Database (starticketmyanmar.com)
 	 */
 	protected void postOnlineSaleConfirm(final String paymentType) {
 		// TODO Auto-generated method stub
 		Log.i("", "SaleOrderNo: "+sale_order_no+", Op-Id: "+operator_id+", User code no: "+AppLoginUser.getCodeNo()
-				+", Token: "+AppLoginUser.getAccessToken()+", paymentType: "+paymentType);
+				+", Token: "+AppLoginUser.getAccessToken()+", paymentType: "+paymentType+", total GiftMoney: "+totalGiftMoney);
 		
-		NetworkEngine.setIP("test.starticketmyanmar.com");
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no, operator_id, AppLoginUser.getCodeNo()
 				, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
 				, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
-				, points_toUse, totalGiftMoney.toString(), "", "", agentgroup_id, ""
+				, "0", totalGiftMoney.toString(), "", "", agentgroup_id, ""
 				, paymentType, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
@@ -579,13 +611,22 @@ public class PaymentActivity extends BaseActivity{
 							dialog.dismissWithSuccess();
 							
 							if (paymentType.equals("Pay with Online")) {
-								SKToastMessage.showMessage(PaymentActivity.this, AppLoginUser.getPhone()+"လက္ မွတ္ ျဖတ္ ၿပီး ပါ ၿပီ။", SKToastMessage.SUCCESS);
+								
+								Bundle bundle = new Bundle();
+		        				bundle.putString("payment_type", "Pay with Online");
+		        				startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
+								//SKToastMessage.showMessage(PaymentActivity.this, AppLoginUser.getPhone()+"လက္ မွတ္ ျဖတ္ ၿပီး ပါ ၿပီ။", SKToastMessage.SUCCESS);
 							}else if (paymentType.equals("Cash on Delivery")) {
-								SKToastMessage.showMessage(PaymentActivity.this, AppLoginUser.getPhone()+" သုိ႔ ဖုန္းဆက္ၿပီး လာပုိ႔ေပးပါမည္", SKToastMessage.SUCCESS);
+								
+								Bundle bundle = new Bundle();
+		        				bundle.putString("payment_type", "Cash on Delivery");
+		        				startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
+		        				
+								//SKToastMessage.showMessage(PaymentActivity.this, AppLoginUser.getPhone()+" သုိ႔ ဖုန္းဆက္ၿပီး လာပုိ႔ေပးပါမည္", SKToastMessage.SUCCESS);
 							}
 							
-							closeAllActivities();
-							startActivity(new Intent(PaymentActivity.this, SaleTicketActivity.class));
+							//closeAllActivities();
+							//startActivity(new Intent(PaymentActivity.this, SaleTicketActivity.class));
 						}
 					}
 				});
@@ -665,7 +706,7 @@ public class PaymentActivity extends BaseActivity{
 										}
 									});
 						}else {
-							SKConnectionDetector.getInstance(PaymentActivity.this).showErrorDialog();
+							SKConnectionDetector.getInstance(PaymentActivity.this).showErrorMessage();
 						}
 					}
 				});

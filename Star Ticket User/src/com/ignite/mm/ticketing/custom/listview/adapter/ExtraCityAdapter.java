@@ -18,6 +18,7 @@ public class ExtraCityAdapter extends BaseAdapter {
 	private TextView txtTitle;
 	private List<ExtraCity> timeby_agent;
 	private Activity aty;
+	private TextView txtPrice;
 	
 	public ExtraCityAdapter(Activity aty, List<ExtraCity> times_by_agent) {
 		super();
@@ -48,8 +49,11 @@ public class ExtraCityAdapter extends BaseAdapter {
 	            convertView = mInflater.inflate(R.layout.spiner_item_list, null);
 	        }
 	        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);
+	        txtPrice = (TextView) convertView.findViewById(R.id.txtPrice);
 	        txtTitle.setText(timeby_agent.get(position).getCity_name());
+	        txtPrice.setText(timeby_agent.get(position).getLocal_price());
 	        txtTitle.setSingleLine(true);
+	        txtPrice.setSingleLine(true);
 		return convertView;
 	}
 
@@ -59,10 +63,14 @@ public class ExtraCityAdapter extends BaseAdapter {
 		if (convertView == null) {
         	LayoutInflater mInflater = (LayoutInflater)
                     aty.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.spiner_sub_item_list, null);
+            convertView = mInflater.inflate(R.layout.spiner_item_list, null);
         }
-        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);        
+        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);      
+        txtPrice = (TextView) convertView.findViewById(R.id.txtPrice);
         txtTitle.setText(timeby_agent.get(position).getCity_name());
+        txtPrice.setText(timeby_agent.get(position).getLocal_price());
+        txtTitle.setSingleLine(true);
+        txtPrice.setSingleLine(true);
 		return convertView;
 	}
 

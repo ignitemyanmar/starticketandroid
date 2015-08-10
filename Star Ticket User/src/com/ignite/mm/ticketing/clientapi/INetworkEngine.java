@@ -13,6 +13,7 @@ import retrofit.http.Query;
 
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
+import com.ignite.mm.ticketing.sqlite.database.model.ForgotPassword;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.ignite.mm.ticketing.sqlite.database.model.Operator;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
@@ -160,7 +161,7 @@ public interface INetworkEngine {
 			@Field("access_token") String access_token, 
 			Callback<Response> callback);
 	
-	@GET("/api/from_cities")
+	@GET("/api/from_city")
 	void getFromCities(@Query("access_token") String access_token, Callback<Response> callback);
 	
 	@GET("/api/to_cities")
@@ -245,6 +246,16 @@ public interface INetworkEngine {
 	
 	@GET("/promotion")
 	void GetPromotion(Callback<List<Promotion>> callback);
+	
+	@GET("/api/forgotpassword")
+	void GetForgotPassword(
+			@Query("email") String email, Callback<ForgotPassword> callback);
+	
+	@GET("/api/resetpassword")
+	void GetResetPassword(
+			@Query("email") String email,
+			@Query("code") String code,
+			@Query("password") String password, Callback<ForgotPassword> callback);
 	
 	@FormUrlEncoded
 	@POST("/loyalty/check")
