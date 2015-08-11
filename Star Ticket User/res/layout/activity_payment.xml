@@ -233,7 +233,8 @@
                         android:layout_marginRight="3dp"
                         android:layout_weight="29"
                         android:gravity="center"
-                        android:orientation="vertical" >
+                        android:orientation="vertical"
+                        android:visibility="gone" >
 
                         <TextView
                             android:id="@+id/textView4"
@@ -457,8 +458,9 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="65dp"
                         android:background="@color/yellow_light"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="5dp" >
 
@@ -470,7 +472,8 @@
                             android:layout_weight="50"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingLeft="5dp" >
+                            android:paddingLeft="5dp"
+                            android:visibility="gone" >
 
                             <TextView
                                 android:id="@+id/TextView06"
@@ -504,7 +507,7 @@
                                 android:id="@+id/TextView11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total Points"
+                                android:text="Existing Points"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
@@ -555,7 +558,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="65dp"
                         android:background="@color/yellow_light"
                         android:orientation="horizontal"
                         android:padding="5dp" >

@@ -1345,7 +1345,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
 									bundle.putString("price", Price);
 									bundle.putString("seat_count", String.valueOf(selectedSeat.length));
-									bundle.putString("agentgroup_id", permit_operator_group_id);
+									bundle.putString("agentgroup_id", AppLoginUser.getAgentGroupId());
 									bundle.putString("operator_id", permit_operator_id);
 									bundle.putString("Selected_seats", SeatLists);
 									bundle.putString("busOccurence", BusOccurence);

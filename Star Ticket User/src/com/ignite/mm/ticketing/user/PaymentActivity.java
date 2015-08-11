@@ -315,7 +315,7 @@ public class PaymentActivity extends BaseActivity{
 		
 		txt_total_amount.setText(total_amount.toString());
 		
-		Log.i("", "Loyalty Ph: "+AppLoginUser.getPhone()
+		Log.i("", "Loyalty User Id: "+AppLoginUser.getId()+", Loyalty Ph: "+AppLoginUser.getPhone()
 				+", total amount: "+String.valueOf(total_amount)
 				+", Payment method: "+1
 				+", Agent group id: "+agentgroup_id
@@ -333,16 +333,16 @@ public class PaymentActivity extends BaseActivity{
 		}
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().postLoyalty(AppLoginUser.getPhone(), total_amount.toString()
-							, payment_method, ""
-							, "", new Callback<Loyalty>() {
+		NetworkEngine.getInstance().getLoyaltyByUser(AppLoginUser.getId(), new Callback<Loyalty>() {
 			
 			public void success(Loyalty arg0, Response arg1) {
 				// TODO Auto-generated method stub
 				
 				if (arg0 != null) {
 					
-					Integer current_points = 0;
+					Log.i("", "Loyalty: "+arg0.toString());
+					
+/*					Integer current_points = 0;
 					Integer current_giftMoneys = 0;
 					
 					if (arg0.getCurrent_points() == null) {
@@ -357,14 +357,15 @@ public class PaymentActivity extends BaseActivity{
 					}else {
 						current_giftMoneys = Integer.valueOf(arg0.getCurrent_gift_money());
 						totalGiftMoney = arg0.getGiftMoney() + current_giftMoneys;
-					}
+					}*/
 					
-					Log.i("", "Loyalty Obj: "+arg0.toString());
+					//txt_current_points.setText(current_points+"");
+					//txt_current_gift_money.setText(current_giftMoneys+" Ks");
+					//txt_old_points.setText(arg0.getPoints()+"");
+					//txt_old_gift_money.setText(arg0.getGiftMoney()+" Ks");
 					
-					txt_current_points.setText(current_points+"");
-					txt_current_gift_money.setText(current_giftMoneys+" Ks");
-					txt_old_points.setText(arg0.getPoints()+"");
-					txt_old_gift_money.setText(arg0.getGiftMoney()+" Ks");
+					totalPoints = arg0.getPoints();
+					totalGiftMoney = arg0.getGiftMoney();
 					
 					txt_total_points.setText(totalPoints+"");
 					txt_total_gift_money.setText(totalGiftMoney+" Ks");
@@ -375,6 +376,9 @@ public class PaymentActivity extends BaseActivity{
 			
 			public void failure(RetrofitError arg0) {
 				// TODO Auto-generated method stub
+				if (arg0.getResponse() != null) {
+					Log.i("", "loyalty error: "+arg0.getResponse().getStatus()+", status: "+arg0.getResponse().getReason());
+				}
 				Log.i("", "Error");
 				
 				dialog.dismissWithFailure();
@@ -585,15 +589,30 @@ public class PaymentActivity extends BaseActivity{
 	 */
 	protected void postOnlineSaleConfirm(final String paymentType) {
 		// TODO Auto-generated method stub
-		Log.i("", "SaleOrderNo: "+sale_order_no+", Op-Id: "+operator_id+", User code no: "+AppLoginUser.getCodeNo()
-				+", Token: "+AppLoginUser.getAccessToken()+", paymentType: "+paymentType+", total GiftMoney: "+totalGiftMoney);
+		Log.i("", "SaleOrderNo: "+sale_order_no+", Permit Operator Id: "
+				+operator_id+", User code no: "+AppLoginUser.getCodeNo()
+				+", Token: "+AppLoginUser.getAccessToken()
+				+", Extra City Name: "+ExtraCityName
+				+", paymentType: "+paymentType
+				+", User Phone: "+AppLoginUser.getPhone()
+				+", User Name: "+AppLoginUser.getUserName()
+				+", User Address: "+AppLoginUser.getAddress()
+				+", total GiftMoney: "+totalGiftMoney
+				+",	User Agent Group Id: "+agentgroup_id);
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no, operator_id, AppLoginUser.getCodeNo()
-				, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
-				, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
-				, "0", totalGiftMoney.toString(), "", "", agentgroup_id, ""
-				, paymentType, new Callback<Response>() {
+		NetworkEngine.getInstance().postOnlineSaleDB(
+				sale_order_no, 
+				operator_id, 
+				AppLoginUser.getCodeNo(), 
+				AppLoginUser.getAccessToken(), 
+				ExtraCityName, 
+				AppLoginUser.getPhone(), 
+				AppLoginUser.getUserName(), 
+				AppLoginUser.getAddress(), 
+				"", "0", 
+				totalGiftMoney.toString(), "", "", 
+				agentgroup_id, "", paymentType, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
@@ -665,7 +684,7 @@ public class PaymentActivity extends BaseActivity{
 	private void deleteSeats() {
 		// TODO Auto-generated method stub
 		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
-		alertDialog.setMessage("You want to cancel Seats?");
+		alertDialog.setMessage("Are you sure you want to cancel Seats?");
 
 		alertDialog.setPositiveButton("YES",
 				new DialogInterface.OnClickListener() {

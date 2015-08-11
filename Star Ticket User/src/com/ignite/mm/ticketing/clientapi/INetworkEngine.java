@@ -267,4 +267,8 @@ public interface INetworkEngine {
 			@Field("operator_id") String operator_id,
 			Callback<Loyalty> callback);
 	
+	@GET("/loyalty/{id}")
+	void getLoyaltyByUser(
+			@Path("id") String id, Callback<Loyalty> callback);
+	
 }

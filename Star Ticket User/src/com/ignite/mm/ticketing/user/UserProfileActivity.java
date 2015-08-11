@@ -151,9 +151,7 @@ public class UserProfileActivity extends BaseActivity{
 				);
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().postLoyalty(AppLoginUser.getPhone(), "0"
-							, "0", ""
-							, "", new Callback<Loyalty>() {
+		NetworkEngine.getInstance().getLoyaltyByUser(AppLoginUser.getId(), new Callback<Loyalty>() {
 			
 			private int totalPoints = 0;
 			private int totalGiftMoney = 0;
@@ -173,7 +171,7 @@ public class UserProfileActivity extends BaseActivity{
 					}*/
 					
 					txt_net_points.setText(arg0.getPoints()+"");
-					txt_usable_gift_money.setText(arg0.getGiftMoney()+" Ks");
+					//txt_usable_gift_money.setText(arg0.getGiftMoney()+" Ks");
 					
 					dialog.dismissWithSuccess();
 				}

@@ -10,12 +10,24 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+
 import org.json.JSONObject;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import com.facebook.AppEventsLogger;
+import com.facebook.FacebookException;
+import com.facebook.Request;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.GraphUser;
+import com.facebook.widget.LoginButton;
+import com.facebook.widget.LoginButton.OnErrorListener;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
@@ -35,12 +47,20 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -98,7 +118,10 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 	private SKConnectionDetector checkInternet;
 	private MaterialEditText txtUserName;
 	
-    
+	private String FB_NAME;
+	private String FB_EMAIL;
+	private String FB_PASSWORD;
+	
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,10 +168,112 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 
               }
         });
-   
+        
+        callFacebookLogout(this);
+		loginWithFB();
     }    
     
     
+	private void loginWithFB() {
+		// TODO Auto-generated method stub
+		printHashKey();
+		
+		LoginButton fb_login = (LoginButton)findViewById(R.id.fb_login);
+		fb_login.setOnErrorListener(new OnErrorListener() {
+
+            public void onError(FacebookException error) {
+                Log.e("Tag", "Error " + error.getMessage());
+            }
+        });
+        
+        // set permission list, Don't forget to add email
+		fb_login.setReadPermissions(Arrays.asList("basic_info", "email" ,"user_birthday"));
+        
+    	// session state call back event
+		fb_login.setSessionStatusCallback(new Session.StatusCallback() {
+			
+			@SuppressWarnings("deprecation")
+			public void call(Session session, SessionState state, Exception exception) {
+				// TODO Auto-generated method stub
+	    		if (session.isOpened()) {
+	    			
+	    			dialog = new ZProgressHUD(UserRegister.this); 
+	    			dialog.setSpinnerType(2);
+	    			dialog.setMessage("Pls Wait ...");
+	    			dialog.show();
+	    			dialog.setCancelable(true);
+	    			
+	                Log.i("Token", "Permission : " + session.getPermissions());
+	                Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
+
+						public void onCompleted(GraphUser user,
+								com.facebook.Response response) {
+							// TODO Auto-generated method stub
+							if (user != null) {
+								
+	                            Log.i("","FB User ID = "+user.getId().toString()+" , User Name = "+user.getName()+", GrapUserObj: "+user.toString());  
+	                            
+	                            SharedPreferences sharedPreferences = UserRegister.this.getSharedPreferences("FBUser",MODE_PRIVATE);
+	    						SharedPreferences.Editor editor = sharedPreferences.edit();
+	    						editor.clear();
+	    						editor.commit();
+	    						editor.putString("userid", user.getId().toString());
+	    						editor.commit();
+	    						
+	    						FB_NAME = user.getName();
+	    						FB_EMAIL = user.asMap().get("email").toString();
+	    						FB_PASSWORD = user.getId();
+	    						
+	    						txtEmail.setText(FB_EMAIL);
+	    						txtUserName.setText(FB_NAME);
+	    						
+	    						dialog.dismiss();
+	                         }
+						}
+	                });
+	               }
+			}
+		});
+	}
+	
+	/**
+	 * Logout From Facebook 
+	 */
+	public void callFacebookLogout(Context context) {
+	    Session session = Session.getActiveSession();
+	    if (session != null) {
+
+	        if (!session.isClosed()) {
+	            session.closeAndClearTokenInformation();
+	        }
+	    } 	 
+	    Session.setActiveSession(null);
+	    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("FBUser",MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.clear();
+		editor.commit();
+	}
+	
+	public void printHashKey() {
+		// Add code to print out the key hash
+    	try {
+    		
+    		PackageInfo info = getPackageManager().getPackageInfo("com.ignite.mm.ticketing.user",PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+            	
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.i("TEMPTAGHASH KEY:","FB HashKey : "+Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                
+            }
+        } catch (NameNotFoundException e) {
+        	e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+    }
+
+
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -156,7 +281,7 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 		return super.getSupportParentActivityIntent();
 	}
 	
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+/*    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
         	
             if (requestCode == SELECT_PICTURE) {
@@ -173,7 +298,7 @@ public class UserRegister extends BaseActivity implements OnClickListener {
            	 	
             }
         }
-    }
+    }*/
     
     
     //This Method is to get the Image Path from Gallery
@@ -345,6 +470,22 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 			});
 
 		}
+	}
+	
+   @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+      super.onActivityResult(requestCode, resultCode, data);
+      Log.i("", "FB result: "+resultCode+", req: "+requestCode+", data: "+data);
+      if (resultCode > 0) {
+    	  Session.getActiveSession().onActivityResult(UserRegister.this, requestCode, resultCode, data);
+	}
+    }
+   
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		// TODO Auto-generated method stub
+		super.onCreateContextMenu(menu, v, menuInfo);
 	}
 	
     private boolean checkField(){
@@ -547,14 +688,23 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 	 	          
 	 	          return serverResponseMessage;
 	           }
-	           
-	          
-	          
          } 
         // End else block 
        } 
-   
     
+    @Override
+    protected void onResume() {
+      super.onResume();
+
+      // Logs 'install' and 'app activate' App Events.
+      AppEventsLogger.activateApp(this);
+    }
+    
+    @Override
+    protected void onPause() { 
+      super.onPause(); 
+      //AppEventsLogger.deactivateApp(this);
+    }
 }
 
 
