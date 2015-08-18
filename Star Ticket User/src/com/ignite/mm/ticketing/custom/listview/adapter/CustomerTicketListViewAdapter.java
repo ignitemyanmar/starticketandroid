@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ignite.mm.ticketing.sqlite.database.model.BookingSearch;
 import com.ignite.mm.ticketing.sqlite.database.model.Saleitem;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

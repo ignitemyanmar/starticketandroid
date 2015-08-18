@@ -3,7 +3,7 @@ package com.ignite.mm.ticketing.custom.listview.adapter;
 import java.util.List;
 
 import com.ignite.mm.ticketing.sqlite.database.model.Booking;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -59,6 +59,7 @@ public class OrderListViewAdapter extends BaseAdapter {
         	holder.txt_amount = (TextView) convertView.findViewById(R.id.txt_amount);
         	holder.txt_order_no = (TextView) convertView.findViewById(R.id.txt_order_no);
         	holder.txt_customer = (TextView)convertView.findViewById(R.id.txt_customer_name);
+        	holder.txt_expire_time = (TextView)convertView.findViewById(R.id.txt_expire_time);
         	
         	convertView.setTag(holder);
 		}else{
@@ -77,9 +78,12 @@ public class OrderListViewAdapter extends BaseAdapter {
 		holder.txt_order_date.setText(getItem(position).getDate());
 		holder.txt_amount.setText(getItem(position).getTotalAmount()+" Ks");
 		
+		holder.txt_expire_time.setText("** Booking Expire Time: "+getItem(position).getBookingExpired());
+		
 		return convertView;
 	}
 	static class ViewHolder {
 		TextView txt_trip, txt_dept_info, txt_seats, txt_order_date, txt_amount, txt_order_no, txt_customer;
+		TextView txt_expire_time;
 	}
 }

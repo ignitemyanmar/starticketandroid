@@ -24,20 +24,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            
             android:orientation="vertical" >
 
-            <com.facebook.widget.LoginButton
+            <com.facebook.login.widget.LoginButton
                 android:id="@+id/fb_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp"
-                android:shadowColor="#E2E2E2"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="5"
-                android:text="OR REGISTER WITH FACEBOOK"
-                android:textColor="#2073D3" />
+                android:textColor="@color/white"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,7 +69,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:hint="User Name"
+                    android:hint="Full Name * "
                     android:inputType="textCapWords|textPersonName"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -94,6 +90,31 @@
                     android:background="@color/gray_light" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txt_userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="User Name * "
+                    android:inputType="text"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
+
+                <View
+                    android:id="@+id/View01"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/txtUserEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,7 +122,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:hint="Email"
+                    android:hint="Email "
                     android:inputType="textEmailAddress"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -126,7 +147,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:hint="Password"
+                    android:hint="Password * "
                     android:inputType="textPassword"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -151,7 +172,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
-                    android:hint="Confirm Password"
+                    android:hint="Confirm Password * "
                     android:inputType="textPassword"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -177,7 +198,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Phone"
+                    android:hint="Phone *"
                     android:inputType="number"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"

@@ -140,7 +140,7 @@
                     android:visibility="visible" />
 
                 <LinearLayout
-                    android:id="@+id/LinearLayout02"
+                    android:id="@+id/layout_total_need_to_pay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

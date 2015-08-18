@@ -109,10 +109,38 @@
                         android:layout_weight="1" >
 
                         <com.smk.custom.view.CustomTextView
+                            android:id="@+id/CustomTextView01"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="User Name"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/TextView08"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <com.smk.custom.view.CustomTextView
+                            android:id="@+id/txt_userName_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1" >
+
+                        <com.smk.custom.view.CustomTextView
                             android:id="@+id/CustomTextView3"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:text="အီးေမး(လ္)"
+                            android:text="Email"
                             android:textSize="18dp" />
 
                         <TextView
@@ -140,7 +168,7 @@
                             android:id="@+id/CustomTextView4"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:text="ဖုန္းနံပါတ္"
+                            android:text="Phone No"
                             android:textSize="18dp" />
 
                         <TextView
@@ -168,7 +196,7 @@
                             android:id="@+id/CustomTextView5"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:text="လိပ္စာ"
+                            android:text="Address"
                             android:textSize="18dp" />
 
                         <TextView

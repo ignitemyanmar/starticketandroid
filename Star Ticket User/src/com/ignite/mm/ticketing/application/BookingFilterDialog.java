@@ -7,7 +7,7 @@ import java.util.List;
 import com.ignite.mm.ticketing.sqlite.database.model.From;
 import com.ignite.mm.ticketing.sqlite.database.model.TimesbyOperator;
 import com.ignite.mm.ticketing.sqlite.database.model.To;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 import com.smk.calender.widget.SKCalender;
 import com.smk.calender.widget.SKCalender.Callbacks;
 import android.app.Activity;

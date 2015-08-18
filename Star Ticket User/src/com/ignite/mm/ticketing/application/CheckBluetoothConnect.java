@@ -10,7 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.ignite.mm.ticketing.sqlite.database.model.Device;
-import com.ignite.mm.ticketing.user.PDFBusActivity;
+import com.ignite.mm.ticketing.starticket.PDFBusActivity;
 import com.zkc.helper.printer.PrintService;
 import com.zkc.helper.printer.PrinterClass;
 import com.zkc.helper.printer.PrinterClassFactory;

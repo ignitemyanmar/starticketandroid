@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 
 import android.app.Activity;

@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.squareup.timessquare.CalendarPickerView;

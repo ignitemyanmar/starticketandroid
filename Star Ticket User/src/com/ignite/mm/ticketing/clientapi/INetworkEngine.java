@@ -13,6 +13,7 @@ import retrofit.http.Query;
 
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
+import com.ignite.mm.ticketing.sqlite.database.model.Currency;
 import com.ignite.mm.ticketing.sqlite.database.model.ForgotPassword;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.ignite.mm.ticketing.sqlite.database.model.Operator;
@@ -149,6 +150,7 @@ public interface INetworkEngine {
 			@Field("agentgroup_id") String agentgroup_id,
 			@Field("sale_booking") String sale_booking,
 			@Field("payment_type") String payment_type, /*Cash on Shop | Pay with Online | Cash on Delivery */
+			@Field("starticket_no") String starticket_no,
 			Callback<Response> callback);
 	
 	@FormUrlEncoded
@@ -230,6 +232,7 @@ public interface INetworkEngine {
 			@Field("password") String password,
 			@Field("phone") String phone,
 			@Field("address") String address,
+			@Field("username") String username,
 			Callback<LoginUser> callback);
 	
 	@FormUrlEncoded
@@ -242,6 +245,7 @@ public interface INetworkEngine {
 			@Field("address") String address, 
 			@Field("access_token") String access_token,
 			@Field("current_password") String current_password,
+			@Field("username") String username,
 			@Path("id") String id, Callback<LoginUser> callback);
 	
 	@GET("/promotion")
@@ -270,5 +274,8 @@ public interface INetworkEngine {
 	@GET("/loyalty/{id}")
 	void getLoyaltyByUser(
 			@Path("id") String id, Callback<Loyalty> callback);
+	
+	@GET("/api/currencyrate/USD")
+	void getCurrencyRate(Callback<Double> callback);
 	
 }

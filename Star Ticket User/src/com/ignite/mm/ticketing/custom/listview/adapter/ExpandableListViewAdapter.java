@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.ignite.mm.ticketing.sqlite.database.model.MovieCinema;
 import com.ignite.mm.ticketing.sqlite.database.model.MovieDate;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

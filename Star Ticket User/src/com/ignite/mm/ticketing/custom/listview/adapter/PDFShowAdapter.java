@@ -7,7 +7,7 @@ import com.google.zxing.WriterException;
 import com.ignite.barcode.GenerateBarcode;
 import com.ignite.mm.ticketing.sqlite.database.model.AllBusObject;
 import com.ignite.mm.ticketing.sqlite.database.model.AllShowObject;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

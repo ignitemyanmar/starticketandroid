@@ -66,10 +66,10 @@
 
                             <com.smk.custom.view.CustomTextView
                                 android:id="@+id/CustomTextView1"
-                                android:layout_width="70dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
-                                android:text="အမည္"
+                                android:text="Full Name"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -85,14 +85,46 @@
                                 android:textSize="18dp"
                                 android:typeface="normal"
                                 android:visibility="visible"
-                                app:met_errorColor="@color/golden_brown" >
-
-                                <requestFocus />
-                            </com.rengwuxian.materialedittext.MaterialEditText>
+                                app:met_errorColor="@color/golden_brown" />
                         </LinearLayout>
 
                         <View
                             android:id="@+id/View05"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray" />
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:padding="10dp" >
+
+                            <com.smk.custom.view.CustomTextView
+                                android:id="@+id/CustomTextView06"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:text="User Name"
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
+
+                            <com.rengwuxian.materialedittext.MaterialEditText
+                                android:id="@+id/editTxt_UserNameLogin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/border_radius"
+                                android:ems="10"
+                                android:inputType="text"
+                                android:paddingLeft="5dp"
+                                android:textColor="@color/black"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/View07"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="@color/gray" />
@@ -140,14 +172,14 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:padding="10dp"
-                            android:visibility="gone" >
+                            android:visibility="visible" >
 
                             <com.smk.custom.view.CustomTextView
                                 android:id="@+id/CustomTextView3"
-                                android:layout_width="70dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
-                                android:text="အီးေမး(လ္)"
+                                android:text="Email"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -169,7 +201,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="@color/gray"
-                            android:visibility="gone" />
+                            android:visibility="visible" />
 
                         <LinearLayout
                             android:id="@+id/LinearLayout04"
@@ -180,10 +212,10 @@
 
                             <com.smk.custom.view.CustomTextView
                                 android:id="@+id/CustomTextView02"
-                                android:layout_width="70dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:gravity="left"
-                                android:text="Password အေဟာင္း"
+                                android:text="Old Password *"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -215,11 +247,11 @@
 
                             <com.smk.custom.view.CustomTextView
                                 android:id="@+id/CustomTextView01"
-                                android:layout_width="70dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
                                 android:gravity="left"
-                                android:text="Password အသစ္"
+                                android:text="New Password"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -243,7 +275,7 @@
                             android:background="@color/gray" />
 
                         <LinearLayout
-                            android:id="@+id/LinearLayout02"
+                            android:id="@+id/layout_total_need_to_pay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -251,10 +283,10 @@
 
                             <com.smk.custom.view.CustomTextView
                                 android:id="@+id/CustomTextView04"
-                                android:layout_width="70dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
-                                android:text="ဖုန္း"
+                                android:text="Phone No"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -284,9 +316,9 @@
 
                             <com.smk.custom.view.CustomTextView
                                 android:id="@+id/CustomTextView10"
-                                android:layout_width="70dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
-                                android:text="လိပ္စာ"
+                                android:text="Address"
                                 android:textStyle="bold" />
 
                             <com.rengwuxian.materialedittext.MaterialEditText

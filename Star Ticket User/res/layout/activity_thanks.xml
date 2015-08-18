@@ -74,10 +74,10 @@
                         android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="** You will receive an email shortly which contains the details of your orders. "
+                        android:text="** You will receive an email shortly which contains the details of your order."
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView02"
@@ -110,7 +110,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Technical : 09-262556363, 09-421009090"
-                        android:textSize="14dp" />
+                        android:textSize="14dp"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView2"

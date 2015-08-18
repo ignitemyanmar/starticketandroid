@@ -42,6 +42,9 @@ private String agentgroup_name;
 private String points;
 @Expose
 private String gift_moneys;
+@Expose
+private String username;
+
 
 	/**
 	* 
@@ -267,6 +270,16 @@ private String gift_moneys;
 	public void setGift_moneys(String gift_moneys) {
 		this.gift_moneys = gift_moneys;
 	}
+	
+	
+
+	public String getusername() {
+		return username;
+	}
+
+	public void setusername(String username) {
+		this.username = username;
+	}
 
 	@Override
 	public String toString() {
@@ -277,7 +290,7 @@ private String gift_moneys;
 				+ ", updatedAt=" + updatedAt + ", phone=" + phone
 				+ ", address=" + address + ", agentgroup_name="
 				+ agentgroup_name + ", points=" + points + ", gift_moneys="
-				+ gift_moneys + "]";
+				+ gift_moneys + ", username=" + username + "]";
 	}
 
 	

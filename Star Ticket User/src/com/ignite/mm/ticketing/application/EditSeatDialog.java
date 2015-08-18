@@ -2,7 +2,7 @@ package com.ignite.mm.ticketing.application;
 
 import retrofit.Callback;
 
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 import android.app.Dialog;
 import android.content.Context;

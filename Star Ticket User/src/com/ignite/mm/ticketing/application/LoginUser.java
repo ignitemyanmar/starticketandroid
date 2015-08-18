@@ -85,8 +85,14 @@ public class LoginUser {
 	private String points;
 	@Expose
 	private String gift_moneys;
+	@Expose
 	private String total_points;
+	@Expose
 	private String total_giftMoney;
+	@Expose
+	private String userName_login;
+	@Expose
+	private String UserNameLogin;
 	
 
 	public LoginUser(Context ctx){
@@ -119,6 +125,7 @@ public class LoginUser {
 		AgentGroupName = pref.getString("agent_group_name", null);
 		total_points = pref.getString("total_points", null);
 		total_giftMoney = pref.getString("total_giftMoney", null);
+		UserNameLogin = pref.getString("userName_login", null);
 		
 		Log.d("","Today ---> "+" Long is "+TodayLong +" and "+ convertTime(TodayLong));
 		Log.d("","Expires ---> "+" Long is "+Expires +" and "+ convertServerTime(Expires));
@@ -162,6 +169,7 @@ public class LoginUser {
 		editor.putString("agent_group_name", getAgentGroupName());
 		editor.putString("total_points", getPoints());
 		editor.putString("total_giftMoney", getGift_moneys());
+		editor.putString("userName_login", getUserName_login());
 		
 		editor.commit();
 	}
@@ -472,6 +480,24 @@ public class LoginUser {
 	public void setTotal_giftMoney(String total_giftMoney) {
 		this.total_giftMoney = total_giftMoney;
 	}
+	
+	
+
+	public String getUserName_login() {
+		return userName_login;
+	}
+
+	public void setUserName_login(String userName_login) {
+		this.userName_login = userName_login;
+	}
+
+	public String getUserNameLogin() {
+		return UserNameLogin;
+	}
+
+	public void setUserNameLogin(String userNameLogin) {
+		UserNameLogin = userNameLogin;
+	}
 
 	@Override
 	public String toString() {
@@ -490,8 +516,13 @@ public class LoginUser {
 				+ ", user=" + user + ", Message=" + Message + ", Phone="
 				+ Phone + ", AgentGroupName=" + AgentGroupName + ", points="
 				+ points + ", gift_moneys=" + gift_moneys + ", total_points="
-				+ total_points + ", total_giftMoney=" + total_giftMoney + "]";
+				+ total_points + ", total_giftMoney=" + total_giftMoney
+				+ ", userName_login=" + userName_login + ", UserNameLogin="
+				+ UserNameLogin + "]";
 	}
+	
+	
 
+	
 	
 }

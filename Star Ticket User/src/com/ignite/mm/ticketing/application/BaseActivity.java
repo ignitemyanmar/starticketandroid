@@ -7,12 +7,12 @@ import java.util.Date;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.ignite.mm.ticketing.sqlite.database.model.PermissionGlobal;
-import com.ignite.mm.ticketing.user.BusBookingListActivity;
-import com.ignite.mm.ticketing.user.BusReveiwActivity;
-import com.ignite.mm.ticketing.user.R;
-import com.ignite.mm.ticketing.user.ThreeDaySalesActivity;
-import com.ignite.mm.ticketing.user.UserLogin;
-import com.ignite.mm.ticketing.user.UserProfileActivity;
+import com.ignite.mm.ticketing.starticket.BusBookingListActivity;
+import com.ignite.mm.ticketing.starticket.BusReveiwActivity;
+import com.ignite.mm.ticketing.starticket.R;
+import com.ignite.mm.ticketing.starticket.ThreeDaySalesActivity;
+import com.ignite.mm.ticketing.starticket.UserLogin;
+import com.ignite.mm.ticketing.starticket.UserProfileActivity;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;

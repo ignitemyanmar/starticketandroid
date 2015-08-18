@@ -191,12 +191,18 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical" >
 
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/golden_brown" />
+
         <ImageView
             android:id="@+id/img_promotion_ads"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ads1" />
+            android:layout_height="70dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/star_ticket_banner" />
 
     </LinearLayout>
 

@@ -4,7 +4,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import com.ignite.mm.ticketing.sqlite.database.model.AllBusObject;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.R;
 
 import android.app.Activity;
 import android.content.Context;

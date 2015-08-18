@@ -3,7 +3,7 @@
 
     <string name="WebLink"><a href="www.google.com">Go to Google</a></string>
     <string name="str_webLink">https://www.google.co.uk</string>
-    <string name="app_name_client">Star Ticket User</string>
+    <string name="app_name_client">Star Ticket</string>
     <string name="app_name_agent">Star Ticket</string>
     <string name="hello_world">Ticketing</string>
     <string name="menu_settings">Settings</string>
@@ -53,5 +53,12 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="fb_app_id">527420320741756</string>
+    <string name="str_bus_info">ဘတ္(စ္)ကား Info</string>
+    <string name="str_mandalarmin">မႏၲလာမင္း</string>
+    <string name="str_shwemandalar">ေရႊမႏၲလာမင္း</string>
+    <string name="str_moekaungkin">မုိးေကာင္းကင္</string>
+    <string name="str_arkartha">အာကာသ</string>
+    <string name="str_toeyadanar">တုိးရတနာ</string>
 
 </resources>

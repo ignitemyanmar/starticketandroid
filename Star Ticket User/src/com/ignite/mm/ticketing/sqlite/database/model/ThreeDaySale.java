@@ -74,6 +74,14 @@ public class ThreeDaySale {
     private String passengers;
     @Expose
     private String discount_amount;
+    @Expose
+    private String payment_type;
+    @Expose
+    private String delivery;
+    @Expose
+    private String Total_USD;
+    @Expose
+    private String exchange_rate;
     
 
     /**
@@ -526,6 +534,48 @@ public class ThreeDaySale {
 	public void setDiscount_amount(String discount_amount) {
 		this.discount_amount = discount_amount;
 	}
+	
+	
+
+	public String get_class() {
+		return _class;
+	}
+
+	public void set_class(String _class) {
+		this._class = _class;
+	}
+
+	public String getPayment_type() {
+		return payment_type;
+	}
+
+	public void setPayment_type(String payment_type) {
+		this.payment_type = payment_type;
+	}
+
+	public String getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
+
+	public String getTotal_USD() {
+		return Total_USD;
+	}
+
+	public void setTotal_USD(String total_USD) {
+		Total_USD = total_USD;
+	}
+
+	public String getExchange_rate() {
+		return exchange_rate;
+	}
+
+	public void setExchange_rate(String exchange_rate) {
+		this.exchange_rate = exchange_rate;
+	}
 
 	@Override
 	public String toString() {
@@ -541,7 +591,9 @@ public class ThreeDaySale {
 				+ seatNo + ", price=" + price + ", ticketQty=" + ticketQty
 				+ ", totalAmount=" + totalAmount + ", sellerId=" + sellerId
 				+ ", seller=" + seller + ", passengers=" + passengers
-				+ ", discount_amount=" + discount_amount + "]";
+				+ ", discount_amount=" + discount_amount + ", payment_type="
+				+ payment_type + ", delivery=" + delivery + ", Total_USD="
+				+ Total_USD + ", exchange_rate=" + exchange_rate + "]";
 	}
 
 	

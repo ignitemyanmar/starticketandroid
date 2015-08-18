@@ -2,6 +2,8 @@ package com.ignite.mm.ticketing.custom.listview.adapter;
 
 import java.util.List;
 
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -20,8 +22,8 @@ import android.widget.TextView;
 
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorGroupUser;
 import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
-import com.ignite.mm.ticketing.user.BusSelectSeatActivity;
-import com.ignite.mm.ticketing.user.R;
+import com.ignite.mm.ticketing.starticket.BusSelectSeatActivity;
+import com.ignite.mm.ticketing.starticket.R;
 
 public class BusSeatAdapter extends BaseAdapter{
 	 private final Context _context;
@@ -234,15 +236,26 @@ public class BusSeatAdapter extends BaseAdapter{
 	        	holder.seat.setEnabled(true);
 	        	holder.seat.setTag(position);	
 	        	
+	        	/*for(int i=0; i<jsonArray.length(); i++){
+					JSONObject obj = jsonArray.getJSONObject(i);
+					if (i == jsonArray.length() - 1) {
+						SeatLists += obj.getString("seat_no");
+					}else {
+						SeatLists += obj.getString("seat_no")+",";
+					}
+				}*/
+	        	
 	    		holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 						if(isChecked){
 							//If checked the seat.
 							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
+							
 							if(BusSelectSeatActivity.SelectedSeat.length() > 0){
 								boolean isExisted = false;
-								for (int i = 0; i < seleted.length; i++) {
+								int i = 0;
+								for (i = 0; i < seleted.length; i++) {
 									if(seleted[i].equals(buttonView.getTag().toString())){
 										isExisted = true;
 									}

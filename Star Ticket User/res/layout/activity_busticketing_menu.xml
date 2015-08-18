@@ -170,7 +170,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/LinearLayout02"
+                    android:id="@+id/layout_total_need_to_pay"
                     android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
