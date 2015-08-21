@@ -98,7 +98,7 @@
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:hint="User Name * "
-                    android:inputType="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:textColor="@color/black"

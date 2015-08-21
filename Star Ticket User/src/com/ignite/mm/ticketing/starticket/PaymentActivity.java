@@ -146,6 +146,8 @@ public class PaymentActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+		Log.i("", "ExtraCityPrice : "+ExtraCityPrice);
+		
 		skDetector = new SKConnectionDetector(PaymentActivity.this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		
@@ -375,7 +377,8 @@ public class PaymentActivity extends BaseActivity{
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
-		deleteSeats();
+		finish();
+		//deleteSeats();
 		return super.getSupportParentActivityIntent();
 	}
 	
@@ -827,7 +830,8 @@ public class PaymentActivity extends BaseActivity{
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		deleteSeats();
+		finish();
+		//deleteSeats();
 	}
 	
 	private void deleteSeats() {

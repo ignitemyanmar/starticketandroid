@@ -1,7 +1,6 @@
 package com.ignite.mm.ticketing.starticket;
 
 import info.hoang8f.widget.FButton;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,8 +9,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,11 +24,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -45,7 +39,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -54,17 +47,14 @@ import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.BookingDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
-import com.ignite.mm.ticketing.application.DeviceUtil;
 import com.ignite.mm.ticketing.application.EditSeatDialog;
 import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
-import com.ignite.mm.ticketing.connection.detector.ConnectionDetector;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusClassAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusSeatAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.GroupUserListAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.RemarkListAdapter;
-import com.ignite.mm.ticketing.http.connection.HttpConnection;
 import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.BusSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorGroupUser;
@@ -167,11 +157,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			Classes = bundle.getString("class_id");
 			Time = bundle.getString("trip_time");
 			Date = bundle.getString("trip_date");
-			//permit_ip = bundle.getString("permit_ip");
 			operator_name = bundle.getString("operator_name");
-			//permit_operator_group_id = bundle.getString("permit_operator_grou/p_id");
-			//permit_agent_id = bundle.getString("permit_agent_id");
-			//client_operator_id = bundle.getString("client_operator_id");
 			tripId = bundle.getString("tripId");
 		}
 		
@@ -180,12 +166,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
             toolbar.setTitle(From+" - "+To);
             toolbar.setSubtitle(changeDate(Date)+" ["+Time+"]");
-           // toolbar.setTitle("Choose Trip/Date/Time");
             this.setSupportActionBar(toolbar);
         }
         
-        
-		
 		mSeat = (GridView) findViewById(R.id.grid_seat);
 		lst_group_user = (ListView) findViewById(R.id.lst_group_user);
 		layout_remark = (LinearLayout) findViewById(R.id.layout_remark);
@@ -196,7 +179,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		btn_check_out.setShadowHeight(3);
 		btn_check_out.setCornerRadius(7);
 		
-		//mLoadingView = (LinearLayout) findViewById(R.id.ly_loading);
 		mNoConnection = (LinearLayout) findViewById(R.id.no_internet);
 		txt_operator = (CustomTextView) findViewById(R.id.txt_operator);
 		txt_classes = (CustomTextView) findViewById(R.id.txt_classes);
@@ -206,8 +188,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		txt_dept_date.setText("ထြက္ ခြာ မည့္ ေန႔ရက္  : "+ Date);
 		txt_dept_time.setText("ထြက္ ခြာ မည့္ အခ်ိန္ : "+ Time);
 		
-	//	btn_booking.setOnClickListener(clickListener);
-	//	btn_now_booking.setOnClickListener(clickListener);
 		btn_check_out.setOnClickListener(clickListener);
 		
 		//Get TodayDate
@@ -268,13 +248,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		btn_now_booking = (Button) findViewById(R.id.btn_now_booking);
 		
 		Log.i("", "");
-		
-		/*if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
-			//btn_booking.setVisibility(View.GONE);
-			//btn_now_booking.setVisibility(View.GONE);
-		}
-		*/
-		
 	}
 	
 	@Override
@@ -288,8 +261,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		//if(SelectedSeat.length() != 0)
-			//finish();
+		if(SelectedSeat.length() != 0)
+			finish();
 		if(connectionDetector.isConnectingToInternet())
 		{ 	
 			dialog = new ZProgressHUD(BusSelectSeatActivity.this);
@@ -302,59 +275,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	}
 	
-	private void getOperatorGroupUser(){
-		
-		Log.i("", "Enter Operator Gourp User!!!!!!!!!!!!!!! "+ permit_access_token+" "+AppLoginUser.getId());
-		
-		String param = MCrypt.getInstance().encrypt(SecureParam.getOperatorGroupUserParam(permit_access_token, OperatorID));
-		
-		Log.i("", "Param Operator g: "+param);
-		
-		NetworkEngine.getInstance().getOperatorGroupUser(param, new Callback<Response>() {
-
-			public void failure(RetrofitError arg0) {
-				// TODO Auto-generated method stub
-				if (arg0 != null) {
-					Log.i("", "Error Operator Group: "+arg0.getResponse().getStatus());	
-					Log.i("", "Permit A Token: "+permit_access_token+", user id: "+AppLoginUser.getId());			
-				}
-			}
-
-			public void success(Response arg0, Response arg1) {
-				// TODO Auto-generated method stub
-				
-				Log.i("", "Operator Group User (Response): "+arg0.toString());
-				
-				if (arg0 != null) {
-					groupUser = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<OperatorGroupUser>>() {}.getType());
-					
-					if (groupUser != null && groupUser.size() > 0) {
-						
-						Log.i("","Hello Group User(size): "+ groupUser.size()+"Group User: "+groupUser.toString());
-						
-						lst_group_user.setAdapter(new GroupUserListAdapter(BusSelectSeatActivity.this, groupUser));
-						setListViewHeightBasedOnChildren(lst_group_user);
-					}
-				}
-			}
-		});
-	}
-	
-	private Animation topInAnimaiton() {
-		Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),
-				R.anim.top_in);
-		anim.reset();
-		return anim;
-
-	}
-
-	private Animation topOutAnimaiton() {
-		Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),
-				R.anim.top_out);
-		anim.reset();
-		return anim;
-
-	}
 	private void setupBooking(){
 		bookingDialog = new BookingDialog(BusSelectSeatActivity.this, null);
 		bookingDialog.setCallbackListener(new BookingDialog.Callback() {
@@ -454,252 +374,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			}
 		});
 	}
-	
-	public void postSale()
-	{
-		dialog = new ZProgressHUD(BusSelectSeatActivity.this);
-		dialog.show();
-        
-        List<SelectSeat> seats = new ArrayList<SelectSeat>();
-        
-        String[] selectedSeat = SelectedSeat.split(",");
-        
-		for (int i = 0; i < selectedSeat.length; i++) {
-			seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0)
-					.getId(), BusSeats.get(0).getSeat_plan().get(0)
-					.getSeat_list().get(Integer.valueOf(selectedSeat[i]))
-					.getSeat_no().toString()));
-		}
 		
-		final String FromCity = BusSeats.get(0).getSeat_plan().get(0).getFrom().toString();
-		final String ToCity = BusSeats.get(0).getSeat_plan().get(0).getTo().toString();
-		
-        Log.i("","Hello From City: "+FromCity+" , To City : "+ToCity+" and Select Seat -> "+seats.toString());
-        
-		//if (AppLoginUser.getUserType().equals("agent")) {
-			AgentID = String.valueOf(AppLoginUser.getId());
-		//} else if (AgentID.length() == 0) {
-			//AgentID = "0";
-		//}
-
-		//Do Encrypt of Params
-		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(permit_access_token
-					, permit_operator_id, permit_agent_id, CustName, CustPhone, String
-					.valueOf(RemarkType), Remark, permit_operator_group_id, MCrypt.getInstance()
-					.encrypt(seats.toString()), BusSeats.get(0).getSeat_plan()
-					.get(0).getId().toString(), Date, FromCity, ToCity, String.valueOf(AppLoginUser
-					.getId()), DeviceUtil.getInstance(this).getID(), isBooking.toString(),
-					String.valueOf(AppLoginUser.getId()),"true"));
-		
-		
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("param", param));       
-        
-		final Handler handler = new Handler() {
-
-			public void handleMessage(Message msg) {
-				
-				String jsonData = msg.getData().getString("data");
-				
-				Log.i("ans:","Server Response: "+jsonData);
-				
-				try {
-					
-					JSONObject jsonObject = null;
-					
-					if (jsonData != null) {
-						jsonObject = new JSONObject(jsonData);
-					}
-					String SeatLists = "";
-					
-					if (jsonObject != null) {
-						if(jsonObject.getString("status").equals("1")){
-							
-							if(jsonObject.getBoolean("can_buy") && jsonObject.getString("device_id").equals(DeviceUtil.getInstance(BusSelectSeatActivity.this).getID())){
-			        			
-								//Get Seats No. including (,)
-		        				JSONArray jsonArray = jsonObject.getJSONArray("tickets");	        					        			
-		        				
-		        				for(int i=0; i<jsonArray.length(); i++){
-		        					JSONObject obj = jsonArray.getJSONObject(i);
-		        					if (i == jsonArray.length() - 1) {
-		        						SeatLists += obj.getString("seat_no");
-									}else {
-										SeatLists += obj.getString("seat_no")+",";
-									}
-		        				}
-		        				
-		        				//Buy Ticket 
-								if(isBooking == 0){		//can buy
-									//check log in already (or) not yet? 
-									Log.i("", "User Id: "+AppLoginUser.getId());
-				    				
-									if (Integer.valueOf(AppLoginUser.getId()) != 0) {
-										dialog.dismissWithSuccess(); //finish can buy ticket
-										
-										Bundle bundle = new Bundle();
-					    				bundle.putString("from_intent", "checkout");
-					    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
-					    				bundle.putString("from_to", From+" => "+To);
-					    				bundle.putString("time", Time);
-					    				bundle.putString("classes", BusClasses);
-					    				bundle.putString("date", Date);
-					    				bundle.putString("selected_seat",  SeatLists);
-					    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-					    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-					    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
-				        				bundle.putString("ConfirmDate", todayDate);
-				        				bundle.putString("ConfirmTime", todayTime);
-				        				bundle.putString("CustomerName", AppLoginUser.getUserName());
-				        				//Get Seat Count
-				        				String[] seats = SeatLists.split(",");
-				        				bundle.putString("SeatCount", seats.length+"");
-					    				bundle.putString("permit_ip", permit_ip);
-					    				bundle.putString("permit_access_token", permit_access_token);
-					    				
-					    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
-										bundle.putString("permit_agent_id", permit_agent_id);
-										bundle.putString("permit_operator_id", permit_operator_id);
-										
-										startActivity(new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class).putExtras(bundle));
-									}else {
-										dialog.dismissWithSuccess(); 
-										
-										Bundle bundle = new Bundle();
-					    				bundle.putString("from_intent", "checkout");
-					    				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
-					    				bundle.putString("from_to", From+" => "+To);
-					    				bundle.putString("time", Time);
-					    				bundle.putString("classes", BusClasses);
-					    				bundle.putString("date", Date);
-					    				bundle.putString("selected_seat",  SeatLists);
-					    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-					    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-					    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
-				        				bundle.putString("ConfirmDate", todayDate);
-				        				bundle.putString("ConfirmTime", todayTime);
-				        				bundle.putString("CustomerName", AppLoginUser.getUserName());
-				        				//Get Seat Count
-				        				String[] seats = SeatLists.split(",");
-				        				bundle.putString("SeatCount", seats.length+"");
-					    				bundle.putString("permit_ip", permit_ip);
-					    				bundle.putString("permit_access_token", permit_access_token);
-					    				
-					    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
-										bundle.putString("permit_agent_id", permit_agent_id);
-										bundle.putString("permit_operator_id", permit_operator_id);
-										
-										//startActivity(new Intent(BusSelectSeatActivity.this, UserLogin.class).putExtras(bundle));
-									}
-									
-			        			}else{ //Booking Finished!
-			        				
-			        				isBooking = 0;
-			        				postOnlineSale(jsonObject.getString("sale_order_no"), SeatLists, jsonObject);
-			        				
-			        			}
-
-			        		}else{
-			        			dialog.dismissWithFailure();
-			        			SKToastMessage.showMessage(BusSelectSeatActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
-			        			//Get permission & Seat Plan 
-			        			getPermission();		
-			        		}
-						}else{
-							isBooking = 0;
-							dialog.dismissWithFailure();
-							SKToastMessage.showMessage(BusSelectSeatActivity.this, "အခ်ိန္ ေနာက္ က် ေနသည့္ အတြက္ ၀ယ္ လုိ႔ မရပါ", SKToastMessage.ERROR);
-						}
-					}
-
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		};
-		
-		HttpConnection lt = new HttpConnection(handler,"POST", "http://"+ permit_ip +"/sale", params);
-		lt.execute();
-		
-	}
-	
 	/**
-	 *  Store saled-data into Online Sale Database (starticketmyanmar.com)
+	 * Get Seat Plan's Price Information
 	 */
-	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject) {
-		// TODO Auto-generated method stub
-		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().postOnlineSaleDB(
-				orderNo
-				, permit_operator_id
-				, AppLoginUser.getCodeNo()
-				, AppLoginUser.getAccessToken(), "", "0931247515"
-				, "Saw Maine K", "No.50, Lanthit Street, Lanmadaw Tsp, Yangon", "Lanmadaw Tsp"
-				, "10", "0", "", "", "", "1"
-				, "", "",new Callback<Response>() {
-			
-					public void failure(RetrofitError arg0) {
-						// TODO Auto-generated method stub
-						if (arg0.getResponse() != null) {
-							Log.i("", "Error: "+arg0.getResponse().getStatus());
-						}
-						dialog.dismissWithFailure();
-					}
-
-					public void success(Response arg0, Response arg1) {
-						// TODO Auto-generated method stub
-						if (arg1 != null) {
-							
-		    				try {
-/*		    					Bundle bundle = new Bundle();
-		        				bundle.putString("Operator_Name", BusSeats.get(0).getOperator());			    				
-			    				bundle.putString("from_to", From+"-"+To);
-			    				bundle.putString("time", Time);
-			    				bundle.putString("classes", BusClasses);
-			    				bundle.putString("date", changeDateString(Date));
-			    				bundle.putString("selected_seat",  SeatLists);
-								bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-								bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-			    				bundle.putString("ticket_price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
-		        				bundle.putString("ConfirmDate", todayDate);
-		        				bundle.putString("ConfirmTime", todayTime);
-		        				bundle.putString("CustomerName", AppLoginUser.getUserName());
-		        				bundle.putString("BuyerName",CustName);
-		        				bundle.putString("BuyerPhone",CustPhone);
-		        				bundle.putString("BuyerNRC","-");
-		        				//Get Seat Count
-		        				String[] seats = SeatLists.split(",");
-		        				bundle.putString("SeatCount", seats.length+"");
-			    				bundle.putString("permit_ip", permit_ip);
-			    				bundle.putString("permit_access_token", permit_access_token);
-			    				
-			    				Integer amount = BusSeats.get(0).getSeat_plan().get(0).getPrice() *  seats.length;
-			    				bundle.putString("total_amount", amount.toString());*/
-			    				//OrderDateTime = bundle.getString("order_date");
-			    				
-		        				//Show Voucher
-		        				//startActivity(new Intent(BusSelectSeatActivity.this, PDFBusActivity.class).putExtras(bundle));
-		    					
-		    					Log.i("", "Booking status: "+arg1.getStatus()+", reson: "+arg1.getReason());
-		    					//SKToastMessage.showMessage(BusSelectSeatActivity.this, "Booking မွာ�?�ပီးပါ�?�ပီ  �?� (�?�) နာရီ အ�?ြင္း  နီးစပ္ရာ Convenience Store �?ြင္ ေငြေပးေ�?်ပါ�?� သုိ႔မဟု�?္ပါက သင္�?? booking ပ်က္သြားပါလိမ့္မည္�?�", SKToastMessage.SUCCESS);
-		        				
-		    					closeAllActivities();
-		    					startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
-		    					
-		    					//showAlert("Booking မွာ�?�ပီးပါ�?�ပီ  �?� (�?�) နာရီ အ�?ြင္း  နီးစပ္ရာ Convenience Store �?ြင္ ေငြေပးေ�?်ပါ�?� သုိ႔မဟု�?္ပါက သင္�?? booking ပ်က္သြားပါလိမ့္မည္�?�");
-		    					dialog.dismissWithSuccess();
-		    					
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-					}
-				});
-	}
-	
-		
 	private void getData() {
 		
 		if(BusSeats.size() > 0){
@@ -762,17 +440,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			dialog.dismissWithSuccess();
 			
 		}else{
-			/*AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-			alertDialog.setMessage("There is no bus yet.");
-			alertDialog.setCancelable(false);
-			alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-				
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					finish();
-				}
-			});
-			alertDialog.show();*/
 			
 			dialog.dismissWithFailure("No bus yet");
 		}
@@ -1008,7 +675,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			
 			if(v == btn_check_out){
 				if(SelectedSeat.length() != 0){									
-					
 					if(connectionDetector.isConnectingToInternet()){
 						//Check Log in already or not?
 						Log.i("", "User's Id(check out): "+AppLoginUser.getId());
@@ -1035,19 +701,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					        
 					        seatsListObj.setSeatsList(seats);
 					        
-/*					        String selectedSeatNos = "-";
-					        
-					        for (int j = 0; j < seats.size(); j++) {
-					        	selectedSeatNos = seats.get(j).getSeat_no()+",";
-					        	if (j == seats.size() - 1) {
-					        		selectedSeatNos += seats.get(j).getSeat_no();
-								}else {
-									selectedSeatNos += seats.get(j).getSeat_no()+",";
-								}
-							}*/
-					        
 						if (AppLoginUser.getId() != null && !AppLoginUser.getId().equals("0")) {
-							
+							//If already log in ..
 							Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
 	        				
 		    				Bundle bundle = new Bundle();
@@ -1082,8 +737,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		    				
 		    				dialog.dismissWithSuccess();
 						}else {  
-							//finish();
-							
+							//If Log in not yet ?  
 							Bundle bundle = new Bundle();
 		    				bundle.putString("from_intent", "checkout");
 		    				bundle.putString("FromCity", FromCity);
@@ -1198,7 +852,5 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
         listView.setLayoutParams(params);
         listView.requestLayout();
     }
-	
-
 }
 

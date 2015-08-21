@@ -248,7 +248,10 @@
         <activity android:name=".ChangePasswordActivity"
             android:screenOrientation="portrait"
             ></activity>
-         <activity
+        <activity
+            android:name=".PaymentTypeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges=
                  "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -256,8 +259,8 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/fb_app_id" />    
-            
+            android:value="@string/fb_app_id" />  
+              
     </application>
 
 </manifest>
