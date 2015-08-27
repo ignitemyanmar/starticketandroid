@@ -501,19 +501,32 @@ public class PaymentActivity extends BaseActivity{
 						txt_total_amount.setText(total_amount+"");
 					}
 					
+					//If Gift Money got !!
 					if (arg0.getGiftMoney() > 0) {
 						
 						layout_giftMoney.setVisibility(View.VISIBLE);
 						
 						if (from_payment.equals("Pay with VISA/MASTER")) {
 							txt_total_gift_money.setText(str_totalGiftMoneyUSD+" USD");
-							txt_total_need_to_pay.setText(str_finalTotalUSD+" USD");
+							
+							if (Double.valueOf(str_finalTotalUSD) >= 0) {
+								txt_total_need_to_pay.setText(str_finalTotalUSD+" USD");
+							}else {
+								txt_total_need_to_pay.setText(0.0+" USD");
+							}
+							
 						}else {
 							txt_total_gift_money.setText(totalGiftMoney+" Ks");
 							Double netAmount = total_amount - totalGiftMoney;
-							txt_total_need_to_pay.setText(netAmount+" Ks");
+							
+							if (netAmount >= 0) {
+								txt_total_need_to_pay.setText(netAmount+" Ks");
+							}else {
+								txt_total_need_to_pay.setText(0.0+" Ks");
+							}
+							
 						}
-					}else {
+					}else {			//If Gift Money Not get...
 						layout_giftMoney.setVisibility(View.GONE);
 						
 						if (from_payment.equals("Pay with VISA/MASTER")) {
@@ -739,16 +752,17 @@ public class PaymentActivity extends BaseActivity{
 	 */
 	protected void postOnlineSaleConfirm(final String paymentType) {
 		// TODO Auto-generated method stub
-		Log.i("", "SaleOrderNo: "+sale_order_no+", Permit Operator Id: "
-				+operator_id+", User code no: "+AppLoginUser.getCodeNo()
-				+", Token: "+AppLoginUser.getAccessToken()
-				+", Extra City Name: "+ExtraCityName
-				+", paymentType: "+paymentType
-				+", User Phone: "+AppLoginUser.getPhone()
-				+", User Name: "+AppLoginUser.getUserName()
-				+", User Address: "+AppLoginUser.getAddress()
-				+", total GiftMoney: "+totalGiftMoney
-				+",	User Agent Group Id: "+agentgroup_id);
+		Log.i("", "sale_order_no: "+sale_order_no+", operator_id: "
+				+operator_id+", user_code_no: "+AppLoginUser.getCodeNo()
+				+", access_token: "+AppLoginUser.getAccessToken()
+				+", extra_name: "+ExtraCityName
+				+", payment_type: "+paymentType
+				+", loyalty_phone: "+AppLoginUser.getPhone()
+				+", loyalty_name: "+AppLoginUser.getUserName()
+				+", loyalty_address: "+AppLoginUser.getAddress()
+				+", use_gift_money: "+String.valueOf(totalGiftMoney)
+				+", starticket_no: "+ticketNos
+				+",	agentgroup_id: "+agentgroup_id);
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(

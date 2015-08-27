@@ -19,11 +19,13 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.PromotionAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
+import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class PromotionActivity extends BaseActivity{
@@ -34,6 +36,7 @@ public class PromotionActivity extends BaseActivity{
 	private ImageButton actionBarBack;
 	private RelativeLayout layout_noPromotion;
 	private ZProgressHUD dialog;
+	private SKConnectionDetector connectionDetector;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class PromotionActivity extends BaseActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle("ပ႐ုိမုိးရွင္း");
+            toolbar.setTitle("Promotion");
             this.setSupportActionBar(toolbar);
         }
 		
@@ -62,7 +65,13 @@ public class PromotionActivity extends BaseActivity{
 		listOperatorPromo.add("အာကာသ");
 		listOperatorPromo.add("�?ုိးရ�?နာ");*/
 		
-		getPromo();
+		connectionDetector = SKConnectionDetector.getInstance(this);
+		if(connectionDetector.isConnectingToInternet()){
+			getPromo();
+		}else{
+			Toast.makeText(PromotionActivity.this, "No Internet connection!", Toast.LENGTH_SHORT).show();
+		}
+		
 	}	
 	
 	private void getPromo() {
@@ -71,6 +80,7 @@ public class PromotionActivity extends BaseActivity{
 		dialog = new ZProgressHUD(PromotionActivity.this);
 		dialog.show();
 		
+		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().GetPromotion(new Callback<List<Promotion>>() {
 			
 			public void success(List<Promotion> arg0, Response arg1) {

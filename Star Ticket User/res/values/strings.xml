@@ -60,5 +60,36 @@
     <string name="str_moekaungkin">မုိးေကာင္းကင္</string>
     <string name="str_arkartha">အာကာသ</string>
     <string name="str_toeyadanar">တုိးရတနာ</string>
+    <string name="str_calendar_title">ထြက္ခြာမည့္ ေန႔ ေရြးပါ</string>
+    <string name="str_calendar_return_title">ျပန္လာမည့္ ေန႔ ေရြးပါ</string>
+    <string name="str_choose_go_trip">အသြားခရီးစဥ္ ေရြးပါ</string>
+    <string name="str_choose_go_seat">အသြားခရီးအတြက္ ခံု ေရြးပါ</string>
+    <string name="str_choose_return_trip">အျပန္ခရီးစဥ္ ေရြးပါ</string>
+    <string name="str_choose_return_seat">အျပန္ခရီးအတြက္ ခံု ေရြးပါ</string>
+    
+    <string-array name="custom_weekdays">
+        <item>Su</item>
+        <item>M</item>
+        <item>Tu</item>
+        <item>W</item>
+        <item>Th</item>
+        <item>F</item>
+        <item>Sa</item>
+    </string-array>
+
+    <string-array name="custom_months">
+        <item>JAN</item>
+        <item>Feb</item>
+        <item>MARCH</item>
+        <item>April</item>
+        <item>MAY</item>
+        <item>June</item>
+        <item>JULY</item>
+        <item>Aug</item>
+        <item>SEPT</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>DEC</item>
+    </string-array>
 
 </resources>

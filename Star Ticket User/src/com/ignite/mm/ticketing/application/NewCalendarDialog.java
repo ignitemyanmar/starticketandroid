@@ -1,29 +1,32 @@
+
 package com.ignite.mm.ticketing.application;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ignite.mm.ticketing.starticket.R;
-import com.orhanobut.dialogplus.DialogPlus;
-import com.orhanobut.dialogplus.ViewHolder;
-import com.squareup.timessquare.CalendarPickerView;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 
-public class CalendarDialog extends Dialog{
+public class NewCalendarDialog extends Dialog{
 	//private MaterialDialog dialog;
 	protected String selectedDate;
 	private Callbacks mCallback;
+	public static TextView txt_calendar_title;
+	public static TextView selected_date;
+	public static MaterialCalendarView calendar;
 
-	public CalendarDialog(Context context){
+	public NewCalendarDialog(Context context){
 		super(context);
 		//View view = View.inflate(context, R.layout.dialog_calender, null);
 		
@@ -31,30 +34,22 @@ public class CalendarDialog extends Dialog{
 		
 		setContentView(R.layout.dialog_calendar);
 		
+		txt_calendar_title = (TextView)findViewById(R.id.txt_calendar_title);
+		calendar = (MaterialCalendarView) findViewById(R.id.calendarView);
+		//selected_date = (TextView)findViewById(R.id.selected_date);
 		
-		Calendar nextYear = Calendar.getInstance();
-		nextYear.add(Calendar.YEAR, 1);
-		
-		final Calendar lastYear = Calendar.getInstance();
-	    lastYear.add(Calendar.YEAR, -1);
-
-		CalendarPickerView calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
-		Date today = new Date();
-		calendar.init(lastYear.getTime(), nextYear.getTime())
-		    .withSelectedDate(today);
-		calendar.setCellClickInterceptor(new CalendarPickerView.CellClickInterceptor() {
+		calendar.setOnDateChangedListener(new OnDateChangedListener() {
 			
-			public boolean onCellClicked(Date date) {
+			public void onDateChanged(@NonNull MaterialCalendarView widget,
+					@Nullable CalendarDay date) {
 				// TODO Auto-generated method stub
-				selectedDate = DateFormat.format("yyyy-MM-dd",date).toString();
+				selectedDate = DateFormat.format("yyyy-MM-dd",date.getDate()).toString();
 				if(mCallback != null){
 					mCallback.choose(selectedDate);
 				}
-				//dialog.dismiss();
-				return false;
+				return;
 			}
 		});
-		
 		
 		/*dialog = new MaterialDialog.Builder(context)
         .title("Choose Depature Date")

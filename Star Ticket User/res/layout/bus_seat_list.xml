@@ -23,11 +23,33 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
         </android.support.v7.widget.Toolbar>
 
+        <LinearLayout
+            android:id="@+id/layout_round_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:background="@color/golden_brown"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/txt_round_trip_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar" >
+            android:layout_below="@id/layout_round_info" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,15 +85,16 @@
                     android:id="@+id/txt_notrip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="left"
                     android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/screen_bg"
                     android:gravity="center_vertical|center_horizontal"
                     android:singleLine="true"
                     android:text="Driver"
-                    android:textColor="#FFF"
-                     />
+                    android:textColor="#FFF" />
 
                 <GridView
                     android:id="@+id/grid_seat"
@@ -303,7 +326,7 @@
                         android:minHeight="@dimen/button_min_height"
                         android:minWidth="@dimen/button_min_width"
                         android:padding="5dp"
-                        android:text="ခရီးသည္ အခ်က္အလက္ ျဖည့္ရန္"
+                        android:text="Continue"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/white"
                         android:visibility="visible" />

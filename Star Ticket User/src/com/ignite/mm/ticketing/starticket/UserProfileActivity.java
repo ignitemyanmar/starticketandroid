@@ -177,7 +177,12 @@ public class UserProfileActivity extends BaseActivity{
 						totalPoints = arg0.getPoints() + current_points;
 					}*/
 					
-					txt_net_points.setText(arg0.getPoints()+"");
+					if (arg0.getPoints() >= 0) {
+						txt_net_points.setText(arg0.getPoints()+"");
+					}else {
+						txt_net_points.setText("0");
+					}
+					
 					//txt_usable_gift_money.setText(arg0.getGiftMoney()+" Ks");
 					
 					dialog.dismissWithSuccess();

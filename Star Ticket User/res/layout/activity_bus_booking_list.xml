@@ -19,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="visible" >
 
         <RelativeLayout
             android:id="@+id/RelativeLayout2"
@@ -90,5 +91,34 @@
              >
         </ListView>
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_noBooking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_centerInParent="true"
+        android:background="@drawable/app_background"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+             >
+
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="No Booking"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

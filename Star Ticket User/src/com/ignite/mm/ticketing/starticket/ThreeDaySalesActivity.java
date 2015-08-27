@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
@@ -55,6 +56,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 	private int limit = 12;
 	protected boolean isLoading = false;
 	private ThreeDaySalesLvAdapter threeDaySalesLvAdapter;
+	private RelativeLayout layout_noOrder;
 
 	
 	@Override
@@ -70,6 +72,8 @@ public class ThreeDaySalesActivity extends BaseActivity{
             toolbar.setTitle("Order စာရင္း ");
             this.setSupportActionBar(toolbar);
         }
+        
+        layout_noOrder = (RelativeLayout)findViewById(R.id.layout_noOrder);
 		
 		lv_threeday_sales = (SKListView)findViewById(R.id.lst_threeday_sales);	
 		lv_threeday_sales.setOnItemClickListener(clickListener);
@@ -164,7 +168,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 						}
 						
 				}else {
-					SKToastMessage.showMessage(ThreeDaySalesActivity.this, "No list", SKToastMessage.INFO);
+					layout_noOrder.setVisibility(View.VISIBLE);
 					lv_threeday_sales.setNextPage(false);
 				}
 				

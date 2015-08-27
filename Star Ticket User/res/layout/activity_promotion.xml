@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="gone" >
 
             <TextView
                 android:id="@+id/TextView02"
@@ -36,7 +37,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="Promotion မ်ား မရွိေသးပါ"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/golden_brown_light2" />
+                 />
 
             <TextView
                 android:id="@+id/TextView01"

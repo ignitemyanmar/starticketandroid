@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -64,6 +65,7 @@ public class BusBookingListActivity extends BaseActivity {
 	private LinearLayout layout_booking_cancel;
 	private View view_cover;
 	private TextView txt_expire_time;
+	private RelativeLayout layout_noBooking;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,8 @@ public class BusBookingListActivity extends BaseActivity {
             toolbar.setTitle("Booking စာရင္း  ");
             this.setSupportActionBar(toolbar);
         }
+        
+        layout_noBooking = (RelativeLayout)findViewById(R.id.layout_noBooking);
         
 		auto_txt_codeno = (EditText)findViewById(R.id.auto_txt_codeno);
 		btn_search_codeno = (Button)findViewById(R.id.btn_search_codeno);
@@ -162,12 +166,12 @@ public class BusBookingListActivity extends BaseActivity {
 						lv_booking_list.setAdapter(new OrderListViewAdapter(BusBookingListActivity.this, bookingListByUser));
 						lv_booking_list.setDividerHeight(0);
 					}else {
-						//showAlert("Booking မွာထားျ�?င္း မရွိေသးပါ");
-						SKToastMessage.showMessage(BusBookingListActivity.this, "Booking မွာထားျခင္း မရွိေသးပါ", SKToastMessage.INFO);
-						layout_booking_cancel.setVisibility(View.GONE);
-						//view_cover.setVisibility(View.GONE);
+						layout_noBooking.setVisibility(View.VISIBLE);
 						lv_booking_list.setAdapter(null);
 					}
+				}else {
+					layout_noBooking.setVisibility(View.VISIBLE);
+					lv_booking_list.setAdapter(null);
 				}
 				
 				if (dialog != null) {

@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txt_calendar_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:background="@color/golden_brown"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Choose Departure Date"
+        android:text="Choose Date"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
-    
-	<com.squareup.timessquare.CalendarPickerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:textColor="@color/white" />
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/calendar_view"
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
-        android:scrollbarStyle="outsideOverlay"
-        android:clipToPadding="false"
-        android:background="@color/transparent"
-        app:dayBackground="@drawable/custom_calendar_bg_selector"
-        app:dayTextColor="@color/custom_calendar_text_selector"
-        app:dividerColor="@color/transparent"
-        app:titleTextColor="@color/custom_calendar_text_selector"
-        app:headerTextColor="@color/custom_header_text"
-        />
-    
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/selected_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone" />
+
 </LinearLayout>

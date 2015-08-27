@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -49,6 +50,11 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 	private ZProgressHUD dialog;
 	private List<OperatorSeat> OperatorSeats;
 	private RelativeLayout Rlayout_noInfo;
+	private int selectedTripType;
+	private String selectedReturnDate;
+	private LinearLayout layout_round_trip_info;
+	private TextView txt_round_trip_info;
+	private String from_intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,37 +62,54 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_show_operator_seats);
+		
 		Bundle bundle = getIntent().getExtras();
 		
 		if (bundle != null) {
 			selectedFromCity = bundle.getString("from_city");
 			selectedToCity = bundle.getString("to_city");
 			selectedTripDate = bundle.getString("trip_date");
-			selectedTripTime = bundle.getString("trip_time");
+			selectedTripType = bundle.getInt("trip_type");
+			
+			if (selectedTripType == 1) {
+				selectedTripTime = bundle.getString("trip_time");
+			}
+			
+			selectedReturnDate = bundle.getString("return_date");
+			from_intent = bundle.getString("from_intent");
 		}
+		
+		txt_round_trip_info = (TextView)findViewById(R.id.txt_round_trip_info);
 		
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitleTextAppearance(BusOperatorSeatsActivity.this, R.style.CustomToolbarTextAppearance);
+            toolbar.setSubtitleTextAppearance(BusOperatorSeatsActivity.this, R.style.CustomToolbarSubTextAppearance);
             
-    		if (selectedTripTime != null) {
-    			if (!selectedTripDate.equals("") && selectedTripDate != null) {
-    				if (!selectedTripTime.equals("") && selectedTripTime != null) {
-    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity);
-    					toolbar.setSubtitle(changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
-    				}else if (selectedTripTime.equals("") || selectedTripTime == null)
-    				{
-    					toolbar.setTitle(selectedFromCity+" - "+selectedToCity);
-    					toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
-    				}
-    			}else {
-    				toolbar.setTitle("00/00/0000 [ 00:00:00 ]");
-    			}
-    		}
+            toolbar.setTitle(selectedFromCity+" - "+selectedToCity);
+            
+			if (!selectedTripDate.equals("") && selectedTripDate != null) {
+				if (!selectedTripTime.equals("") && selectedTripTime != null) {
+					toolbar.setSubtitle(changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
+					txt_round_trip_info.setText("One Way");
+				}else if (selectedTripTime.equals("") || selectedTripTime == null)
+				{
+					if (selectedTripType == 1) {
+						toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
+						txt_round_trip_info.setText("One Way");
+					}else if (selectedTripType == 2){
+						toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
+						txt_round_trip_info.setText(R.string.str_choose_go_trip);
+					}
+				}
+			}else {
+				toolbar.setTitle("00/00/0000 [ 00:00:00 ]");
+			}
     		
             this.setSupportActionBar(toolbar);
         }
-		
+        
 		lv_operator_seats = (ListView)findViewById(R.id.lv_operator_seats);
 		lv_operator_seats.setDividerHeight(0);
 		lv_operator_seats.setOnItemClickListener(clickListener);
@@ -96,7 +119,6 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		SKConnectionDetector skDetector = SKConnectionDetector.getInstance(this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
-			
 			getOperatorSeats();
 		}else{
 			skDetector.showErrorMessage();
@@ -136,7 +158,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					}else {
 						
 						Rlayout_noInfo.setVisibility(View.VISIBLE);
-						/*alertDialog("သင္ ရွာေဖြ ေသာ �?ရီးစဥ္ သည္ လက္ မွ�?္ မ်ား ကုန္ သြား ပါသျဖင့္ အျ�?ားေန႔ ေရြး�?�ပီး ရွာ �?ုိင္ ပါသည္�?�"
+						/*alertDialog("သင္ ရွာေဖြ ေသာ �?ရီးစဥ္ သည္ လက္ မွ�?္ မ်ား ကုန္ သြား ပါသျဖင့္ အျ�?ားေန႔ ေရြး�?�ပီး ရွာ �?ုိင္ ပါသည္�?�"
 								, "Back", "", new DialogInterface.OnClickListener() {
 									
 									public void onClick(DialogInterface dialog, int which) {
@@ -180,6 +202,8 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			bundle.putString("to_city", OperatorSeats.get(position).getToName());
 			bundle.putString("trip_date", selectedTripDate);
 			bundle.putString("trip_time", OperatorSeats.get(position).getTime());
+			bundle.putString("trip_time", OperatorSeats.get(position).getTime());
+			bundle.putInt("trip_type", selectedTripType);
 			
 			startActivity(new Intent(BusOperatorSeatsActivity.this, BusSelectSeatActivity.class).putExtras(bundle));
 		}

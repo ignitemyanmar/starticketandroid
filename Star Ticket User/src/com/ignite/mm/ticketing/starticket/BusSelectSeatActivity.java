@@ -135,6 +135,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	private Permission permission;
 	private String permit_operator_id = "0";
 	private BusSeatAdapter seatAdapter;
+	private int trip_type;
+	private TextView txt_round_trip_info;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -159,15 +161,28 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			Date = bundle.getString("trip_date");
 			operator_name = bundle.getString("operator_name");
 			tripId = bundle.getString("tripId");
+			trip_type = bundle.getInt("trip_type");
 		}
 		
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitleTextAppearance(BusSelectSeatActivity.this, R.style.CustomToolbarTextAppearance);
+            toolbar.setSubtitleTextAppearance(BusSelectSeatActivity.this, R.style.CustomToolbarSubTextAppearance);
+            
             toolbar.setTitle(From+" - "+To);
             toolbar.setSubtitle(changeDate(Date)+" ["+Time+"]");
             this.setSupportActionBar(toolbar);
         }
+        
+        txt_round_trip_info = (TextView)findViewById(R.id.txt_round_trip_info);
+        
+        if (trip_type == 1) {
+        	txt_round_trip_info.setText("One Way");
+		}else {
+			txt_round_trip_info.setText(R.string.str_choose_go_seat);
+		}
+        
         
 		mSeat = (GridView) findViewById(R.id.grid_seat);
 		lst_group_user = (ListView) findViewById(R.id.lst_group_user);
