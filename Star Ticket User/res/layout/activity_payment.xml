@@ -88,13 +88,13 @@
                     android:visibility="visible" >
 
                     <com.smk.custom.view.CustomTextView
-                        android:id="@+id/CustomTextView05"
+                        android:id="@+id/txt_trip_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/gray"
                         android:gravity="center_vertical"
                         android:padding="5dp"
-                        android:text="Trip Info"
+                        android:text="Trip Info (အသြား)"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -227,13 +227,172 @@
                             android:text="0 Ks"
                             android:textColor="@color/black" />
                     </LinearLayout>
+                </LinearLayout>
 
-                    <View
-                        android:id="@+id/view3"
+                <LinearLayout
+                    android:id="@+id/layout_return_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/golden_brown"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/txt_trip_info_return"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@color/gray_light" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"
+                        android:gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="Trip Info (အျပန္)"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_return_trip_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout07"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible" >
+
+                        <TextView
+                            android:id="@+id/TextView29"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Return Trip:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_to_from_return"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/TextView32"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Return Date:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_return_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/TextView33"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Return Time:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_return_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/txt_return"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Seat No(s):"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_return_seatNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/TextView36"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Bus Class:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_return_bus_class"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/TextView28"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Price:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_return_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0 Ks"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -396,7 +555,6 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/white"
                         android:visibility="visible" />
-
                 </RelativeLayout>
 
                 <View

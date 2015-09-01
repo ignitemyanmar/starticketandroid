@@ -557,7 +557,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				
 				Log.i("","Hello Compare : "+ compare);
 				if(compare < 0){
-					SKToastMessage.showMessage(SaleTicketActivity.this, "Depart Date can't be grater than Return Date!", SKToastMessage.WARNING);
+					SKToastMessage.showMessage(SaleTicketActivity.this, "Departure Date can't be grater than Return Date!", SKToastMessage.WARNING);
 					return false;
 				}
 			}

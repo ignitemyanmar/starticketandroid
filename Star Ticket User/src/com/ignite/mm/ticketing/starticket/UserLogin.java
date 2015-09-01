@@ -71,6 +71,10 @@ public class UserLogin extends BaseActivity {
 	private String from_intent = "";
 	private String sale_order_no;
 	private String SeatCount;
+	private int trip_type;
+	private String return_date;
+	private String FromName;
+	private String ToName;
 	public static boolean isSkip = false;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +98,8 @@ public class UserLogin extends BaseActivity {
 			ToCity = bundle.getString("ToCity");
 			Operator_Name = bundle.getString("Operator_Name");
 			from_to = bundle.getString("from_to");
+			FromName = bundle.getString("FromName");
+			ToName = bundle.getString("ToName");
 			time = bundle.getString("time");
 			classes = bundle.getString("classes");
 			date = bundle.getString("date");
@@ -111,6 +117,9 @@ public class UserLogin extends BaseActivity {
 			permit_ip = bundle.getString("permit_ip");
 			
 			SeatCount = bundle.getString("SeatCount");
+			
+			trip_type = bundle.getInt("trip_type");
+			return_date = bundle.getString("return_date");
 			
 			Log.i("", "from intent: "+from_intent+", from city: "+FromCity+", tocity: "+ToCity);
 		}else {
@@ -262,6 +271,12 @@ public class UserLogin extends BaseActivity {
 				    				bundle.putString("permit_operator_group_id", permit_operator_group_id);
 									bundle.putString("permit_agent_id", Permit_agent_id);
 									bundle.putString("permit_operator_id", permit_operator_id);
+									
+									bundle.putInt("trip_type", trip_type);
+									bundle.putString("return_date", return_date);
+									
+									bundle.putString("FromName", FromName);
+				    				bundle.putString("ToName", ToName);
 				    				
 				    				nextScreen.putExtras(bundle);
 				    				startActivity(nextScreen);

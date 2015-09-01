@@ -20,6 +20,7 @@ import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.http.connection.HttpConnection;
 import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
+import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
 import com.ignite.mm.ticketing.sqlite.database.model.PaymentRequest;
 import com.smk.skalertmessage.SKToastMessage;
 import com.thuongnh.zprogresshud.ZProgressHUD;
@@ -81,6 +82,11 @@ import android.widget.Toast;
 	private String giftMoney_toUse = "0";
 	private String total_giftMoney = "0";
 	private String ticketNos;
+	private String return_date;
+	private String from_intent;
+	private int trip_type;
+	private String goTripInfo_str;
+	private GoTripInfo goTripInfo_obj;
 	
 
 /*	 @Override  
@@ -145,8 +151,14 @@ import android.widget.Toast;
 			
 			ticketNos = bundle.getString("ticketNos");
 			
+			return_date = bundle.getString("ReturnDate");
+			from_intent = bundle.getString("from_intent");
+			trip_type = bundle.getInt("trip_type");
+			goTripInfo_str = bundle.getString("GoTripInfo");
+			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
+			
 			dialog = new ZProgressHUD(Payment2C2PActivity.this);
-			dialog.setMessage("Plz Wait...");
+			dialog.setMessage("Pls Wait...");
 			
 			try {
 				dialog.show();
@@ -220,7 +232,20 @@ import android.widget.Toast;
 				Intent i = new Intent();
 				setResult(RESULT_OK, i);
 				
-				confirmOrder(from_payment);
+				//If One Way
+				if (trip_type == 1) {
+					confirmOrder(from_payment, selectedSeats, ticketNos
+							, busOccurence, BuyerName, BuyerNRC, permit_access_token
+							, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
+				}else if (trip_type == 2) {
+					//If Round Trip
+					//Confirm for Go Trip
+					confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
+							, goTripInfo_obj.getBusOccurence(), goTripInfo_obj.getBuyerName()
+							, goTripInfo_obj.getBuyerNRC(), goTripInfo_obj.getPermit_access_token()
+							, goTripInfo_obj.getSale_order_no(), goTripInfo_obj.getPermit_agent_id()
+							, goTripInfo_obj.getExtraCityID(), goTripInfo_obj.getConfirmDate(), "");
+				}
 				
 				Bundle bundle = new Bundle();
 				bundle.putString("payment_type", "Pay with Online");
@@ -265,13 +290,18 @@ import android.widget.Toast;
 		}
 	}
 	
-	private void confirmOrder(final String paymentType) {
+	private void confirmOrder(final String paymentType, String selectedSeats, final String ticketNos
+			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
+			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
+			, String from_go_trip_success) {
 		
 			dialog.setMessage("please wait ...");
 			dialog.show();
 			
 			Log.i("", "Ticket list: "+ticketNos);
-			Log.i("", "buyer nrc: "+BuyerNRC);
+			Log.i("", "buyer nrc: "+buyerNRC);
+			
+			final String from_goTrip_success = from_go_trip_success;
 			
 			List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
 			
@@ -283,7 +313,7 @@ import android.widget.Toast;
 			
 			for (int j = 0; j < selectedSeat.length; j++) {
 				seats.add(new ConfirmSeat(busOccurence, selectedSeat[j].toString(),
-						BuyerName, BuyerNRC, ticketNos, false,
+						buyerName, buyerNRC, ticketNos, false,
 						"blah", 0));
 			}
 			
@@ -306,17 +336,17 @@ import android.widget.Toast;
 			//Do Encrypt of Params				
 			String param = MCrypt.getInstance()
 					.encrypt(
-					SecureParam.postSaleConfirmParam(permit_access_token
-					, sale_order_no, "0"
-					, Permit_agent_id, ""
+					SecureParam.postSaleConfirmParam(permitAccessToken
+					, saleOrderNo, "0"
+					, permitAgentId, ""
 					, AppLoginUser.getUserName()
-					, AppLoginUser.getPhone(), BuyerNRC
+					, AppLoginUser.getPhone(), buyerNRC
 					, "0", ""
-					, ExtraCityID,  MCrypt.getInstance()
+					, ExtraCityId,  MCrypt.getInstance()
 					.encrypt(seats.toString())
 					, "1"
 					, "local"
-					, ConfirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())));
+					, confirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())));
 					
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			params.add(new BasicNameValuePair("param", param));
@@ -343,8 +373,30 @@ import android.widget.Toast;
 								SKToastMessage.showMessage(Payment2C2PActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 								dialog.dismissWithFailure();
 							}else{
-								//Store Sale on City Mart DB
-								postOnlineSaleConfirm(paymentType);
+								//If One Way
+								if (trip_type == 1) {
+									
+									postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
+														, operator_id, ExtraCityName, agentgroup_id
+														, ticketNos, total_giftMoney);
+									
+								}else if (trip_type == 2) {
+									//If Round Trip
+			        				if (!from_goTrip_success.equals("from_go_trip_success")) {
+			        					
+			        					//Confirm for Go Trip
+										postOnlineSaleConfirm(paymentType, from_goTrip_success, goTripInfo_obj.getSale_order_no()
+												, goTripInfo_obj.getOperator_id(), goTripInfo_obj.getExtraCityName()
+												, goTripInfo_obj.getAgentgroup_id()
+												, goTripInfo_obj.getTicket_nos(), total_giftMoney);
+										
+									}else {
+										//Confirm for Return Trip
+			        					postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
+												, operator_id, ExtraCityName, agentgroup_id
+												, ticketNos, "0");
+									}
+								}
 							}
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
@@ -369,17 +421,28 @@ import android.widget.Toast;
 /**
  *  Store sales into Online Sale Database (starticketmyanmar.com)
  */
-protected void postOnlineSaleConfirm(final String paymentType) {
+protected void postOnlineSaleConfirm(final String paymentType, final String from_goTrip_success, String sale_order_no2
+		, String operator_id2, String extraCityName2, String agentgroup_id2, String ticketNos2, String totalGiftMoney) {
 	// TODO Auto-generated method stub
-	Log.i("", "SaleOrderNo: "+sale_order_no+", Op-Id: "+operator_id+", User code no: "+AppLoginUser.getCodeNo()
-			+", Token: "+AppLoginUser.getAccessToken()+", paymentType: "+paymentType+", totalGiftMoney: "+total_giftMoney);
+	
+	Log.i("", "sale_order_no: "+sale_order_no2+", operator_id: "
+			+operator_id2+", user_code_no: "+AppLoginUser.getCodeNo()
+			+", access_token: "+AppLoginUser.getAccessToken()
+			+", extra_name: "+extraCityName2
+			+", payment_type: "+paymentType
+			+", loyalty_phone: "+AppLoginUser.getPhone()
+			+", loyalty_name: "+AppLoginUser.getUserName()
+			+", loyalty_address: "+AppLoginUser.getAddress()
+			+", use_gift_money: "+totalGiftMoney
+			+", starticket_no: "+ticketNos2
+			+",	agentgroup_id: "+agentgroup_id2);
 	
 	NetworkEngine.setIP("starticketmyanmar.com");
-	NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no, operator_id, AppLoginUser.getCodeNo()
-			, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
+	NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no2, operator_id2, AppLoginUser.getCodeNo()
+			, AppLoginUser.getAccessToken(), extraCityName2, AppLoginUser.getPhone()
 			, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
-			, "0", total_giftMoney, "", "", agentgroup_id, ""
-			, paymentType, ticketNos, new Callback<Response>() {
+			, "0", totalGiftMoney, "", "", agentgroup_id2, ""
+			, paymentType, ticketNos2, new Callback<Response>() {
 		
 				public void failure(RetrofitError arg0) {
 					// TODO Auto-generated method stub
@@ -394,16 +457,29 @@ protected void postOnlineSaleConfirm(final String paymentType) {
 					// TODO Auto-generated method stub
 					if (arg1 != null) {
 						
-						dialog.dismissWithSuccess();
-						
-						//SKToastMessage.showMessage(Payment2C2PActivity.this, "လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ", SKToastMessage.SUCCESS);
 						Bundle bundle = new Bundle();
         				bundle.putString("payment_type", "Pay with Online");
         				bundle.putString("payment_type", "Pay with MPU");
         				bundle.putString("payment_type", "Pay with VISA/MASTER");
-        				startActivity(new Intent(Payment2C2PActivity.this, ThankYouActivity.class).putExtras(bundle));
 						
-						closeAllActivities();
+						if (trip_type == 1) {
+							//If one way
+							startActivity(new Intent(Payment2C2PActivity.this, ThankYouActivity.class).putExtras(bundle));
+							dialog.dismissWithSuccess();
+						}else if (trip_type == 2) {
+							//If round trip
+	        				if (!from_goTrip_success.equals("from_go_trip_success")) {
+	        					//If return trip not success yet, .......
+	        					//Confirm for Return Trip
+	        					confirmOrder(from_payment, selectedSeats, ticketNos
+	        							, busOccurence, BuyerName, BuyerNRC, permit_access_token
+	        							, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "from_go_trip_success");
+							}else {
+								//If return trip success, Go to thank you page
+								startActivity(new Intent(Payment2C2PActivity.this, ThankYouActivity.class).putExtras(bundle));
+								dialog.dismissWithSuccess();
+							}
+						}
 						//startActivity(new Intent(Payment2C2PActivity.this, SaleTicketActivity.class));
 					}
 				}

@@ -156,8 +156,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_weight="30"
-                        android:background="@drawable/btn_border_radius_"
+                        android:background="@color/white"
                         android:text="Choose Date" />
+
                 </LinearLayout>
 
                 <View
@@ -191,8 +192,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_weight="30"
-                        android:background="@drawable/btn_border_radius_"
+                        android:background="@color/white"
                         android:text="Choose Date" />
+
                 </LinearLayout>
 
                 <View

@@ -10,6 +10,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.PermissionGlobal;
 import com.ignite.mm.ticketing.starticket.BusBookingListActivity;
 import com.ignite.mm.ticketing.starticket.BusReveiwActivity;
 import com.ignite.mm.ticketing.starticket.R;
+import com.ignite.mm.ticketing.starticket.SaleTicketActivity;
 import com.ignite.mm.ticketing.starticket.ThreeDaySalesActivity;
 import com.ignite.mm.ticketing.starticket.UserLogin;
 import com.ignite.mm.ticketing.starticket.UserProfileActivity;
@@ -45,7 +46,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("ResourceAsColor") public class BaseActivity extends ActionBarActivity{
+@SuppressLint({ "ResourceAsColor", "SimpleDateFormat" }) public class BaseActivity extends ActionBarActivity{
 
 	public LoginUser AppLoginUser;
 	public PermissionGlobal AppPermission;

@@ -62,10 +62,10 @@
     <string name="str_toeyadanar">တုိးရတနာ</string>
     <string name="str_calendar_title">ထြက္ခြာမည့္ ေန႔ ေရြးပါ</string>
     <string name="str_calendar_return_title">ျပန္လာမည့္ ေန႔ ေရြးပါ</string>
-    <string name="str_choose_go_trip">အသြားခရီးစဥ္ ေရြးပါ</string>
-    <string name="str_choose_go_seat">အသြားခရီးအတြက္ ခံု ေရြးပါ</string>
-    <string name="str_choose_return_trip">အျပန္ခရီးစဥ္ ေရြးပါ</string>
-    <string name="str_choose_return_seat">အျပန္ခရီးအတြက္ ခံု ေရြးပါ</string>
+    <string name="str_choose_go_trip">အသြားခရီးအတြက္ အခ်ိန္၊ ကားဂိတ္ ေရြးပါ ~</string>
+    <string name="str_choose_go_seat">အသြားခရီးအတြက္ ခံု ေရြးပါ ~</string>
+    <string name="str_choose_return_trip">အျပန္ခရီးအတြက္ အခ်ိန္၊ ကားဂိတ္ ေရြးပါ ~</string>
+    <string name="str_choose_return_seat">အျပန္ခရီးအတြက္ ခံု ေရြးပါ ~</string>
     
     <string-array name="custom_weekdays">
         <item>Su</item>

@@ -71,6 +71,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.Agent;
 import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.ExtraCity;
+import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
 import com.ignite.mm.ticketing.starticket.R;
 import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -171,6 +172,23 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	private TextView txt_price;
 	private TextView txt_total_amount;
 	private String SeatCount = "0";
+	private int trip_type;
+	public static String return_date;
+	private String FromName;
+	private String ToName;
+	private TextView txt_trip_info;
+	private String goTripInfo_str;
+	private GoTripInfo goTripInfo_obj;
+	private TextView txt_trip_info_return;
+	private TextView txt_to_from_return;
+	private TextView txt_return_date;
+	private TextView txt_return_time;
+	private TextView txt_return_seatNo;
+	private TextView txt_return_bus_class;
+	private TextView txt_return_price;
+	private LinearLayout layout_return_title;
+	private LinearLayout layout_return_trip_info;
+	private Integer go_seat_count;
 	public static Date deptDateTime;
 	public static Calendar cal;
 	public static String selectedSeatNos = "";
@@ -185,12 +203,25 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nrc_activity);
 		
+		txt_trip_info = (TextView)findViewById(R.id.txt_trip_info);
 		txt_from_to = (TextView)findViewById(R.id.txt_from_to);
 		txt_dept_date = (TextView)findViewById(R.id.txt_dept_date);
 		txt_dept_time = (TextView)findViewById(R.id.txt_dept_time);
 		txt_seats = (TextView)findViewById(R.id.txt_seats);
 		txt_bus_class = (TextView)findViewById(R.id.txt_bus_class);
 		txt_price = (TextView)findViewById(R.id.txt_price);
+		
+		//Return Trip
+		layout_return_title = (LinearLayout)findViewById(R.id.layout_return_title);
+		layout_return_trip_info = (LinearLayout)findViewById(R.id.layout_return_trip_info);
+		txt_trip_info_return = (TextView)findViewById(R.id.txt_trip_info_return);
+		txt_to_from_return = (TextView)findViewById(R.id.txt_to_from_return);
+		txt_return_date = (TextView)findViewById(R.id.txt_return_date);
+		txt_return_time = (TextView)findViewById(R.id.txt_return_time);
+		txt_return_seatNo = (TextView)findViewById(R.id.txt_return_seatNo);
+		txt_return_bus_class = (TextView)findViewById(R.id.txt_return_bus_class);
+		txt_return_price = (TextView)findViewById(R.id.txt_return_price);
+		
 		txt_total_amount = (TextView)findViewById(R.id.txt_total_amount);
 		
 		txt_booking_fee = (TextView)findViewById(R.id.txt_booking_fee);
@@ -236,6 +267,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			Log.i("", "Bundle to confirm: "+bundle.toString());
 			
 			Intents = bundle.getString("from_intent");
+			
 			if(Intents.equals("booking")){
 				AgentID = bundle.getString("agent_id");
 				Name = bundle.getString("name");
@@ -247,9 +279,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
-            toolbar.setSubtitle(bundle.getString("date")+" ["+bundle.getString("time")+"] "
-    				+bundle.getString("classes"));
+            toolbar.setTitle("Passenger Info");
+           
             this.setSupportActionBar(toolbar);
         }
 		
@@ -278,9 +309,25 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			permit_access_token = bundle.getString("permit_access_token");
 			permit_ip = bundle.getString("permit_ip");
 			
+			Log.i("", "Permit IP (bus confirm): "+BusConfirmActivity.permit_ip);
+			
 			if (bundle.getString("SeatCount") != null && !bundle.getString("SeatCount").equals("")) {
 				SeatCount = bundle.getString("SeatCount");
 			}
+			
+			trip_type = bundle.getInt("trip_type");
+			return_date = bundle.getString("return_date");
+			
+			FromName = bundle.getString("FromName");
+			ToName = bundle.getString("ToName");
+			
+			goTripInfo_str = bundle.getString("GoTripInfo");
+			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
+		}
+		
+		if (goTripInfo_obj != null) {
+			Log.i("", "Go Trip Info(Return): "+goTripInfo_obj.toString());
+			
 		}
 		
 		Log.i("", "FromCity: "+FromCity
@@ -315,22 +362,77 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			}
 		}
 		
-		txt_from_to.setText(from_to+" ["+Operator_Name+"]");
-		txt_dept_date.setText(changeDate(date));
-		txt_dept_time .setText(time);
-		txt_seats.setText(selectedSeatNos);
-		txt_bus_class.setText(classes);
-		txt_price.setText(Price+" Ks");
-		
-		if (selectedSeatNos != null && !selectedSeatNos.equals("")) {
-			String[] seat_string = selectedSeatNos.split(",");
-			seat_count = seat_string.length;
+        //Trip Info Title
+        if (trip_type == 1) 
+        	txt_trip_info.setText("Trip Info (one way)");
+        
+        //Trip Info
+		if (Intents.equals("SaleTicket")) {
+			//If One Way (or) After Go Trip...
+			layout_return_title.setVisibility(View.GONE);
+			layout_return_trip_info.setVisibility(View.GONE);
+			
+			txt_from_to.setText(from_to+" ["+Operator_Name+"]");
+			txt_dept_date.setText(changeDate(date));
+			txt_dept_time .setText(time);
+			txt_seats.setText(selectedSeatNos);
+			txt_bus_class.setText(classes);
+			txt_price.setText(Price+" Ks");
+			
+			if (selectedSeatNos != null && !selectedSeatNos.equals("")) {
+				String[] seat_string = selectedSeatNos.split(",");
+				seat_count = seat_string.length;
+			}
+			
+			Integer totalAmount = seat_count * Integer.valueOf(Price);
+			txt_total_amount.setText("Total Amount: "+totalAmount+" Ks");
+			
+		}else if (Intents.equals("BusConfirm")) {
+			//After Return Choose
+			layout_return_title.setVisibility(View.VISIBLE);
+			layout_return_trip_info.setVisibility(View.VISIBLE);
+			
+			//Show Go Trip Info (again)
+			txt_from_to.setText(goTripInfo_obj.getFrom_to()+" ["+goTripInfo_obj.getOperator_Name()+"]");
+			txt_dept_date.setText(changeDate(goTripInfo_obj.getDate()));
+			txt_dept_time .setText(goTripInfo_obj.getTime());
+			txt_seats.setText(goTripInfo_obj.getSelected_seats());
+			txt_bus_class.setText(goTripInfo_obj.getClasses());
+			txt_price.setText(goTripInfo_obj.getPrice()+" Ks");
+			
+			//Show Return Trip Info
+			txt_to_from_return.setText(from_to+" ["+Operator_Name+"]");
+			txt_return_date.setText(changeDate(return_date));
+			txt_return_time.setText(time);
+			txt_return_seatNo.setText(selectedSeatNos);
+			txt_return_bus_class.setText(classes);
+			txt_return_price.setText(Price+" Ks");
+			
+			Integer go_totalAmount = 0;
+			
+			//Go Total
+			if (goTripInfo_obj.getSelected_seats() != null && !goTripInfo_obj.getSelected_seats().equals("")) {
+				String[] seat_string = goTripInfo_obj.getSelected_seats().split(",");
+				go_seat_count = seat_string.length;
+			}
+			if (goTripInfo_obj.getPrice() != null && !goTripInfo_obj.getPrice().equals("")) {
+				int goPrice = Integer.valueOf(goTripInfo_obj.getPrice());
+				go_totalAmount = go_seat_count * goPrice;
+			}
+			
+			//Return total
+			if (selectedSeatNos != null && !selectedSeatNos.equals("")) {
+				String[] seat_string = selectedSeatNos.split(",");
+				seat_count = seat_string.length;
+			}
+			Integer totalAmount = seat_count * Integer.valueOf(Price);
+			
+			Integer roundTotal = totalAmount + go_totalAmount;
+			txt_total_amount.setText("Total Amount : "+roundTotal+" Ks");
 		}
+
 		
-		Integer totalAmount = seat_count * Integer.valueOf(Price);
-		txt_total_amount.setText("Total Amount: "+totalAmount+" Ks");
-		
-		//Get only 06:00 AM format
+/*		//Get only 06:00 AM format
 		String timeformat = null;
 		try {
 			if (time.length() == 8) {
@@ -376,18 +478,18 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			e.printStackTrace();
 		}
 		
-		Log.i("", "Dept date time: "+deptDateTime+", today+24hr: "+nowFormat.format(cal.getTime()));
+		Log.i("", "Dept date time: "+deptDateTime+", today+24hr: "+nowFormat.format(cal.getTime()));*/
 		
 		//Not Allow Click for Cash On Delivery, Cash On Shop (during 1 day before Departure Date)
 		//Because we want users make booking + purchasing (1 day in advance) 
 		//except Online Payment
-		if (cal.getTime().compareTo(deptDateTime) >= 0) {
+/*		if (cal.getTime().compareTo(deptDateTime) >= 0) {
 			radio_cashOnDelivery.setEnabled(false);
 			radio_cashOnShop.setEnabled(false);
 		}else {
 			radio_cashOnDelivery.setEnabled(true);
 			radio_cashOnShop.setEnabled(true);
-		}
+		}*/
 		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
 		
@@ -1175,31 +1277,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 						CustPhone = edt_phone.getText().toString();
 						
 						//Take selected seats into Database
-						postSale();
+						if (Intents.equals("SaleTicket")) {
+							postSale(date);
+						}else {
+							postSale(return_date);
+						}
 						
-						/*Bundle bundle = new Bundle();
-						bundle.putString("price", Price);
-						bundle.putString("seat_count", String.valueOf(selectedSeat.length));
-						bundle.putString("agentgroup_id", permit_operator_group_id);
-						bundle.putString("operator_id", permit_operator_id);*/
 						
-/*						if (radio_onilnePayment.isChecked()) {
-							fromPayment = "Pay with Online";
-							postSale(fromPayment);
-						}else if (radio_payWithMPU.isChecked()) {	
-							fromPayment = "Pay with MPU";
-							postSale(fromPayment);
-						}else if (radio_payWithVisaMaster.isChecked()) {	
-							fromPayment = "Pay with VISA/MASTER";
-							postSale(fromPayment);
-						}else if (radio_cashOnShop.isChecked()) {	//Booking (Pay @Store)
-							isBooking = 1;
-							fromPayment = "Cash on Shop";
-							postSale(fromPayment);
-						}else {				//Booking (Pay On Delivery)
-							fromPayment = "Cash on Delivery";
-							postSale(fromPayment);
-						}*/
 					}else {
 						skDetector.showErrorMessage();
 					}
@@ -1212,12 +1296,14 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	public static String SeatLists = "";
 	public static String TicketLists = "";
 	
-	public void postSale()
+	/**
+	 * Khone kar (Save Selected Seats in Operators Database
+	 */
+	public void postSale(final String date)
 	{
 		dialog = new ZProgressHUD(BusConfirmActivity.this);
 		dialog.show();
 
-		//isBooking = 1;
 		//Do Encrypt of Params
 		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(permit_access_token
 					, permit_operator_id, Permit_agent_id, CustName, CustPhone, "0"
@@ -1288,54 +1374,62 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		        				Log.i("", "Ticket No: "+TicketLists);
 		        				
 								if(isBooking == 0){
-									Log.i("", "Khone Kar finished ...........");
 									
-									startActivity(new Intent(BusConfirmActivity.this, PaymentTypeActivity.class));
-									
-			        				/*Intent nextScreen = new Intent(BusConfirmActivity.this, PaymentActivity.class);
-			        				
-				    				Bundle bundle = new Bundle();
-				    				bundle.putString("from_payment", fromPayment);
-				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
-									bundle.putString("price", Price);
-									bundle.putString("seat_count", seat_count+"");
-									bundle.putString("agentgroup_id", AppLoginUser.getAgentGroupId());
-									bundle.putString("operator_id", permit_operator_id);
-									bundle.putString("Selected_seats", SeatLists);
-									bundle.putString("ticket_nos", TicketLists);
-									bundle.putString("busOccurence", BusOccurence);
-									bundle.putString("permit_access_token", permit_access_token);
-									bundle.putString("Permit_agent_id", Permit_agent_id);
-									bundle.putString("permit_ip", permit_ip);
-									bundle.putString("BuyerName", edt_buyer.getText().toString());
-									bundle.putString("BuyerPhone", edt_phone.getText().toString());
-									bundle.putString("BuyerNRC", edt_nrc_no.getText().toString());
-									bundle.putString("FromCity", FromCity);
-									bundle.putString("ToCity", ToCity);
-									bundle.putString("Operator_Name", Operator_Name);
-									bundle.putString("from_to", from_to);
-									bundle.putString("time", time);
-									bundle.putString("classes", classes);
-									bundle.putString("date", date);
-									bundle.putString("ConfirmDate", ConfirmDate);
-									bundle.putString("ConfirmTime", ConfirmTime);
-									bundle.putString("ExtraCityID", ExtraCityID);
-									bundle.putString("ExtraCityName", ExtraCityName);
-									bundle.putString("ExtraCityPrice", ExtraCityPrice);
-				    				
-				    				nextScreen.putExtras(bundle);
-				    				startActivity(nextScreen);*/
+									if (trip_type == 1) {
+										//If one way 
+										Bundle bundle = new Bundle();
+										bundle.putInt("trip_type", trip_type);
+										bundle.putString("from_intent", Intents);
+										startActivity(new Intent(BusConfirmActivity.this, PaymentTypeActivity.class).putExtras(bundle));
+									}else if (trip_type == 2){	
+										//If Round Trip
+										//For Return Trip, Choose (Operator, Time, Class) again 
+										if (Intents.equals("SaleTicket")) {
+											Bundle bundle = new Bundle();
+											bundle.putString("from_intent", "BusConfirm");
+											bundle.putInt("trip_type", trip_type);
+											bundle.putString("return_date", return_date);
+											bundle.putString("FromName", FromName);
+											bundle.putString("ToName", ToName);
+											bundle.putString("GoTripInfo", new Gson().toJson(new GoTripInfo(sale_order_no, Price, String.valueOf(seat_count)
+													, AppLoginUser.getAgentGroupId(), permit_operator_id, selectedSeatNos, TicketLists
+													, BusOccurence, permit_access_token, Permit_agent_id, permit_ip, CustName, CustPhone
+													, "", FromCity, ToCity, Operator_Name, from_to, time, classes, date, ConfirmDate
+													, ConfirmTime, ExtraCityID, ExtraCityName, ExtraCityPrice, return_date, ""
+													, TicketLists, permit_operator_id)));
+											
+											//Not Allow to choose for Go Trip again
+											closeAllActivities();
+											
+											startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+										}else if (Intents.equals("BusConfirm")){
+											//After Return Info Choose, Go to Pay
+											Bundle bundle = new Bundle();
+											bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
+											
+											Log.i("", "permit ip(bus confirm): "+goTripInfo_obj.getPermit_ip());
+											
+											bundle.putInt("trip_type", trip_type);
+											bundle.putString("from_intent", Intents);
+											startActivity(new Intent(BusConfirmActivity.this, PaymentTypeActivity.class).putExtras(bundle));
+										}
+									}
 			        			}else{ 
-			        				Log.i("", "Khone Kar (unfinished) ...........");
 			        				isBooking = 0;
 			        			}
 			        		}else{
-			        			Log.i("", "Khone Kar unfinished (can't buy) ...........");
 			        			isBooking = 0;
 			        			dialog.dismissWithFailure();
 			        			SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 			        			closeAllActivities();
-			        			startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+			        			//If Round Trip, Go Choose Time Again 
+			        			if (return_date != null) {
+									if (!return_date.equals("")) {
+										startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class));
+									}
+								}else {
+									startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+								}
 			        		}
 						}else{
 							Log.i("", "Khone Kar unfinished(status '0') ...........");
@@ -1343,7 +1437,14 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 							dialog.dismissWithFailure();
 							SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 							closeAllActivities();
-		        			startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+							//If Round Trip, Go Choose Time Again 
+							if (return_date != null) {
+								if (!return_date.equals("")) {
+									startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class));
+								}
+							}else {
+								startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+							}
 						}
 					}
 

@@ -13,6 +13,36 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
     </android.support.v7.widget.Toolbar>
 
+    <LinearLayout
+        android:id="@+id/layout_round_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_round_trip_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Choose Time &amp; Operator"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <com.smk.custom.view.CustomTextView
+            android:id="@+id/txt_change_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:text="Change Date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/golden_brown" />
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/Rlayout_noInfo"
         android:layout_width="match_parent"
@@ -34,7 +64,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="No Trip! "
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/golden_brown_light2" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -88,28 +118,6 @@
             android:typeface="sans" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_round_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/golden_brown"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:visibility="visible" >
-
-        <com.smk.custom.view.CustomTextView
-            android:id="@+id/txt_round_trip_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/gray"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="-"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-             />
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
@@ -120,18 +128,16 @@
             android:id="@+id/lymain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-             >
+            android:orientation="vertical" >
 
             <ListView
                 android:id="@+id/lv_operator_seats"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:choiceMode="singleChoice" >
-
             </ListView>
-
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

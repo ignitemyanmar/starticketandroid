@@ -44,6 +44,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DeviceUtil;
 import com.ignite.mm.ticketing.application.MCrypt;
@@ -52,6 +53,7 @@ import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.http.connection.HttpConnection;
 import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.Currency;
+import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.smk.skalertmessage.SKToastMessage;
@@ -117,7 +119,8 @@ public class PaymentActivity extends BaseActivity{
 	private TextView txt_old_gift_money;
 	private String from_payment;
 	private double total_amount = 0.0;
-	private String price;
+	private double go_total_amount = 0.0;
+	private String price = "0";
 	private String seat_count;
 	private String ExtraCityPrice = "0";
 	private LinearLayout layout_giftMoney;
@@ -137,6 +140,21 @@ public class PaymentActivity extends BaseActivity{
 	private TextView txt_passenger_name;
 	private TextView txt_passenger_phone;
 	private TextView txt_payment_type;
+	private String from_intent;
+	private String return_date;
+	private int trip_type;
+	private String goTripInfo_str;
+	private GoTripInfo goTripInfo_obj;
+	private TextView txt_trip_info;
+	private LinearLayout layout_return_title;
+	private LinearLayout layout_return_trip_info;
+	private TextView txt_trip_info_return;
+	private TextView txt_to_from_return;
+	private TextView txt_return_date;
+	private TextView txt_return_time;
+	private TextView txt_return_seatNo;
+	private TextView txt_return_bus_class;
+	private TextView txt_return_price;
 	
 	final static int REQ_CODE = 1;
 	
@@ -187,6 +205,20 @@ public class PaymentActivity extends BaseActivity{
 			if (!bundle.getString("ExtraCityPrice").equals("0") && bundle.getString("ExtraCityPrice") != null) {
 				ExtraCityPrice  = bundle.getString("ExtraCityPrice");
 			}
+			
+			return_date = bundle.getString("ReturnDate");
+			from_intent = bundle.getString("from_intent");
+			trip_type = bundle.getInt("trip_type");
+			goTripInfo_str = bundle.getString("GoTripInfo");
+			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
+			
+			if (goTripInfo_obj != null) {
+				if (goTripInfo_obj.getExtraCityPrice() != null) {
+					if (!goTripInfo_obj.getExtraCityPrice().equals("0")) {
+						ExtraCityPrice  = goTripInfo_obj.getExtraCityPrice();
+					}
+				}
+			}
 		}
 		
 		setContentView(R.layout.activity_payment);
@@ -195,9 +227,6 @@ public class PaymentActivity extends BaseActivity{
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
             toolbar.setTitle("Loyalty Program");
-            /*toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"] "
-            					+bundle.getString("date")+" ["+bundle.getString("time")+"] "
-            					+bundle.getString("classes"));*/
             this.setSupportActionBar(toolbar);
         }
         
@@ -212,12 +241,25 @@ public class PaymentActivity extends BaseActivity{
 		}*/
         
 		//Trip info
+        txt_trip_info = (TextView)findViewById(R.id.txt_trip_info);
 		txt_from_to = (TextView)findViewById(R.id.txt_from_to);
 		txt_dept_date = (TextView)findViewById(R.id.txt_dept_date);
 		txt_dept_time = (TextView)findViewById(R.id.txt_dept_time);
 		txt_seats = (TextView)findViewById(R.id.txt_seats);
 		txt_bus_class = (TextView)findViewById(R.id.txt_bus_class);
 		txt_price = (TextView)findViewById(R.id.txt_price);
+		
+		//Return Trip
+		layout_return_title = (LinearLayout)findViewById(R.id.layout_return_title);
+		layout_return_trip_info = (LinearLayout)findViewById(R.id.layout_return_trip_info);
+		txt_trip_info_return = (TextView)findViewById(R.id.txt_trip_info_return);
+		txt_to_from_return = (TextView)findViewById(R.id.txt_to_from_return);
+		txt_return_date = (TextView)findViewById(R.id.txt_return_date);
+		txt_return_time = (TextView)findViewById(R.id.txt_return_time);
+		txt_return_seatNo = (TextView)findViewById(R.id.txt_return_seatNo);
+		txt_return_bus_class = (TextView)findViewById(R.id.txt_return_bus_class);
+		txt_return_price = (TextView)findViewById(R.id.txt_return_price);
+		
 		txt_total_amount = (TextView)findViewById(R.id.txt_total_amount);
 		
 		txt_passenger_name = (TextView)findViewById(R.id.txt_passenger_name);
@@ -227,7 +269,6 @@ public class PaymentActivity extends BaseActivity{
 		layout_total_info = (LinearLayout)findViewById(R.id.layout_total_info);
         layout_giftMoney = (LinearLayout)findViewById(R.id.layout_giftMoney);
 		txt_one_point_amount = (TextView)findViewById(R.id.txt_one_point_amount);
-		txt_total_amount = (TextView)findViewById(R.id.txt_total_amount);
 		edt_points = (EditText)findViewById(R.id.edt_points);
 		edt_gift_money = (EditText)findViewById(R.id.edt_gift_money);
 		edt_promo_code = (EditText)findViewById(R.id.edt_promo_code);
@@ -265,20 +306,57 @@ public class PaymentActivity extends BaseActivity{
 		spn_expire_month = (Spinner)findViewById(R.id.spn_expire_month);
 		spn_expire_year = (Spinner)findViewById(R.id.spn_expire_year);
 		
-		txt_from_to.setText(from_to+" ["+Operator_Name+"]");
-		txt_dept_date.setText(changeDate(date));
-		txt_dept_time .setText(time);
-		txt_seats.setText(selectedSeats);
-		txt_bus_class.setText(classes);
-		
-		if (Integer.valueOf(ExtraCityPrice) > 0) {
-			txt_price.setText(ExtraCityPrice+" Ks");
-			//txt_total_amount.setText("Total Amount: "+Integer.valueOf(seat_count) * Integer.valueOf(ExtraCityPrice)+" Ks");
-		}else {
-			txt_price.setText(price+" Ks");
-			//txt_total_amount.setText("Total Amount: "+Integer.valueOf(seat_count) * Integer.valueOf(price)+" Ks");
+        //Trip Info Title
+        if (trip_type == 1) 
+        	txt_trip_info.setText("Trip Info (one way)");
+        
+        //Trip Info (One Way)
+		if (trip_type == 1) {
+			layout_return_title.setVisibility(View.GONE);
+			layout_return_trip_info.setVisibility(View.GONE);
+			
+			txt_from_to.setText(from_to+" ["+Operator_Name+"]");
+			txt_dept_date.setText(changeDate(date));
+			txt_dept_time.setText(time);
+			txt_seats.setText(selectedSeats);
+			txt_bus_class.setText(classes);
+			
+			if (Integer.valueOf(ExtraCityPrice) > 0) {
+				txt_price.setText(ExtraCityPrice+" Ks");
+			}else {
+				txt_price.setText(price+" Ks");
+			}
+			
+		}else if (trip_type == 2) {
+			//Trip Info (Round Trip)
+			layout_return_title.setVisibility(View.VISIBLE);
+			layout_return_trip_info.setVisibility(View.VISIBLE);
+			
+			//Show Go Trip Info 
+			txt_from_to.setText(goTripInfo_obj.getFrom_to()+" ["+goTripInfo_obj.getOperator_Name()+"]");
+			txt_dept_date.setText(changeDate(goTripInfo_obj.getDate()));
+			txt_dept_time .setText(goTripInfo_obj.getTime());
+			txt_seats.setText(goTripInfo_obj.getSelected_seats());
+			txt_bus_class.setText(goTripInfo_obj.getClasses());
+			
+			//Already assign ExtraCityPrice from goTripInfo_obj on create !!!!!!!!!
+			if (Integer.valueOf(ExtraCityPrice) > 0) {
+				txt_price.setText(ExtraCityPrice+" Ks");
+			}else {
+				txt_price.setText(goTripInfo_obj.getPrice()+" Ks");
+			}
+			
+			//Show Return Trip Info
+			txt_to_from_return.setText(from_to+" ["+Operator_Name+"]");
+			txt_return_date.setText(changeDate(return_date));
+			txt_return_time.setText(time);
+			txt_return_seatNo.setText(selectedSeats);
+			txt_return_bus_class.setText(classes);
+			txt_return_price.setText(price+" Ks");
+			
 		}
 		
+		//Customer Information
 		txt_passenger_name.setText(BuyerName);
 		txt_passenger_phone.setText(BuyerPhone);
 		txt_payment_type.setText(from_payment);
@@ -328,15 +406,18 @@ public class PaymentActivity extends BaseActivity{
 		txt_use_points.setOnClickListener(clickListener);
 		btn_payment.setOnClickListener(clickListener);
 		
+		//One Way and Return 
 		Integer priceInt = 0;
 		Integer seat_countInt = 0;
 		
 		Log.i("", "price: "+price+", seat count: "+seat_count);
 		
 		if (price != null && seat_count != null) {
+			
 			priceInt = Integer.valueOf(price);
 			seat_countInt = Integer.valueOf(seat_count);
 			
+			//If Extra City Choose, .. 
 			if (!ExtraCityPrice.equals("0") && ExtraCityPrice != null) {
 				total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
 			}else {
@@ -349,7 +430,38 @@ public class PaymentActivity extends BaseActivity{
 			}else {
 				total_amount = priceInt * seat_countInt;
 			}
+		}
+		
+		//If Round Trip
+		Integer go_priceInt = 0;
+		Integer go_seat_countInt = 0;
+		
+		//If Round Trip, .. 
+		if (trip_type == 2) {
 			
+			Log.i("", "price: "+goTripInfo_obj.getPrice()+", seat count: "+goTripInfo_obj.getSeat_count());
+			
+			if (goTripInfo_obj.getPrice() != null && goTripInfo_obj.getSeat_count() != null) {
+				go_priceInt = Integer.valueOf(goTripInfo_obj.getPrice());
+				go_seat_countInt = Integer.valueOf(goTripInfo_obj.getSeat_count());
+				
+				if (!goTripInfo_obj.getExtraCityPrice().equals("0") && goTripInfo_obj.getExtraCityPrice() != null) {
+					go_total_amount = Integer.valueOf(goTripInfo_obj.getExtraCityPrice())  * go_seat_countInt;
+				}else {
+					go_total_amount = go_priceInt * go_seat_countInt;
+				}
+				
+			}else {
+				if (!goTripInfo_obj.getExtraCityPrice().equals("0") && goTripInfo_obj.getExtraCityPrice() != null) {
+					go_total_amount = Integer.valueOf(goTripInfo_obj.getExtraCityPrice())  * go_seat_countInt;
+				}else {
+					go_total_amount = go_priceInt * go_seat_countInt;
+				}
+				
+			}
+			
+			//return total + go total (Round Trip Total)
+			total_amount = total_amount + go_total_amount;
 		}
 		
 		//Get Usable Points & Gift Money
@@ -378,7 +490,6 @@ public class PaymentActivity extends BaseActivity{
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
 		finish();
-		//deleteSeats();
 		return super.getSupportParentActivityIntent();
 	}
 	
@@ -434,28 +545,6 @@ public class PaymentActivity extends BaseActivity{
 				if (arg0 != null) {
 					
 					Log.i("", "Loyalty: "+arg0.toString());
-					
-/*					Integer current_points = 0;
-					Integer current_giftMoneys = 0;
-					
-					if (arg0.getCurrent_points() == null) {
-						totalPoints = arg0.getPoints() + current_points;
-					}else {
-						current_points = Integer.valueOf(arg0.getCurrent_points());
-						totalPoints = arg0.getPoints() + current_points;
-					}
-					
-					if (arg0.getCurrent_gift_money() == null) {
-						totalGiftMoney = arg0.getGiftMoney() + current_giftMoneys;
-					}else {
-						current_giftMoneys = Integer.valueOf(arg0.getCurrent_gift_money());
-						totalGiftMoney = arg0.getGiftMoney() + current_giftMoneys;
-					}*/
-					
-					//txt_current_points.setText(current_points+"");
-					//txt_current_gift_money.setText(current_giftMoneys+" Ks");
-					//txt_old_points.setText(arg0.getPoints()+"");
-					//txt_old_gift_money.setText(arg0.getGiftMoney()+" Ks");
 					
 					
 					if (arg0.getPoints() >= 0) {
@@ -573,7 +662,7 @@ public class PaymentActivity extends BaseActivity{
 					
 					if(skDetector.isConnectingToInternet()){
 						
-						if (from_payment.equals("Pay with Online") || from_payment.equals("Pay with MPU") || from_payment.equals("Pay with VISA/MASTER")) {
+						if (from_payment.equals("Pay with MPU") || from_payment.equals("Pay with VISA/MASTER")) {
 							
 							/*if (points_toUse != null && !points_toUse.equals("")) {
 								points_to_use = Integer.valueOf(points_toUse);
@@ -621,14 +710,35 @@ public class PaymentActivity extends BaseActivity{
 								
 								bundle.putString("ticketNos", ticketNos);
 								
+								bundle.putString("ReturnDate", return_date);
+								bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
+								bundle.putInt("trip_type", trip_type);
+								bundle.putString("from_intent", from_intent);
+								
 								Intent intent = new Intent(PaymentActivity.this, Payment2C2PActivity.class).putExtras(bundle);
 								startActivityForResult(intent, REQ_CODE);
+								
 						}else if (from_payment.equals("Cash on Delivery")){
 							
 							dialog = new ZProgressHUD(PaymentActivity.this);
+							dialog.setMessage("Pls wait...");
 							dialog.show();
+							dialog.setCancelable(false);
 							
-							confirmOrder(from_payment);
+							//If One Way
+							if (trip_type == 1) {
+								confirmOrder(from_payment, selectedSeats, ticketNos
+										, busOccurence, BuyerName, BuyerNRC, permit_access_token
+										, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
+							}else if (trip_type == 2) {
+								//If Round Trip
+								//Confirm for Go Trip
+								confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
+										, goTripInfo_obj.getBusOccurence(), goTripInfo_obj.getBuyerName()
+										, goTripInfo_obj.getBuyerNRC(), goTripInfo_obj.getPermit_access_token()
+										, goTripInfo_obj.getSale_order_no(), goTripInfo_obj.getPermit_agent_id()
+										, goTripInfo_obj.getExtraCityID(), goTripInfo_obj.getConfirmDate(), "");
+							}
 						}
 					}else {
 						skDetector.showErrorMessage();
@@ -646,10 +756,15 @@ public class PaymentActivity extends BaseActivity{
 	private String use_points;
 	private String use_gift_money;
 	
-	private void confirmOrder(final String paymentType) {
+	private void confirmOrder(final String paymentType, String selectedSeats, final String ticketNos
+			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
+			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
+			, String from_go_trip_success) {
 		
 		Log.i("", "Ticket list: "+ticketNos);
-		Log.i("", "buyer nrc: "+BuyerNRC);
+		Log.i("", "buyer nrc: "+buyerNRC);
+		
+		final String from_goTrip_success = from_go_trip_success;
 		
 		List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
 		
@@ -665,7 +780,7 @@ public class PaymentActivity extends BaseActivity{
 		
 		for (int j = 0; j < selectedSeat.length; j++) {
 			seats.add(new ConfirmSeat(busOccurence, selectedSeat[j].toString(),
-					BuyerName, BuyerNRC, ticketNoArray[j].toString(), false,
+					buyerName, buyerNRC, ticketNoArray[j].toString(), false,
 					"blah", 0));
 		}
 		
@@ -688,17 +803,17 @@ public class PaymentActivity extends BaseActivity{
 		//Do Encrypt of Params				
 		String param = MCrypt.getInstance()
 				.encrypt(
-				SecureParam.postSaleConfirmParam(permit_access_token
-				, sale_order_no, "0"
-				, Permit_agent_id, ""
+				SecureParam.postSaleConfirmParam(permitAccessToken
+				, saleOrderNo, "0"
+				, permitAgentId, ""
 				, AppLoginUser.getUserName()
-				, AppLoginUser.getPhone(), BuyerNRC
+				, AppLoginUser.getPhone(), buyerNRC
 				, "0", ""
-				, ExtraCityID,  MCrypt.getInstance()
+				, ExtraCityId,  MCrypt.getInstance()
 				.encrypt(seats.toString())
 				, "1"
 				, "local"
-				, ConfirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())));
+				, confirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())));
 				
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("param", param));
@@ -725,8 +840,31 @@ public class PaymentActivity extends BaseActivity{
 							SKToastMessage.showMessage(PaymentActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 							dialog.dismissWithFailure();
 						}else{
-							//Store Sale on City Mart DB
-							postOnlineSaleConfirm(paymentType);
+							//Save into Online Database
+							if (trip_type == 1) {
+								//If One Way
+								postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
+													, operator_id, ExtraCityName, agentgroup_id
+													, ticketNos, String.valueOf(totalGiftMoney));
+								
+							}else if (trip_type == 2) {
+								//If Round Trip
+		        				if (!from_goTrip_success.equals("from_go_trip_success")) {
+		        					
+		        					//Online Confirm for Go Trip
+									postOnlineSaleConfirm(paymentType, from_goTrip_success, goTripInfo_obj.getSale_order_no()
+											, goTripInfo_obj.getOperator_id(), goTripInfo_obj.getExtraCityName()
+											, goTripInfo_obj.getAgentgroup_id()
+											, goTripInfo_obj.getTicket_nos()
+											, String.valueOf(totalGiftMoney));
+									
+								}else {
+									//Online Confirm for Return Trip
+		        					postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
+											, operator_id, ExtraCityName, agentgroup_id
+											, ticketNos, "0");
+								}
+							}
 						}
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -749,34 +887,40 @@ public class PaymentActivity extends BaseActivity{
 	
 	/**
 	 *  Store sales into Online Sale Database (starticketmyanmar.com)
+	 * @param ticketNos2 Star Ticket No(s)
+	 * @param agentgroup_id2 Agent Group Id
+	 * @param extraCityName2  Extra City Name
+	 * @param operator_id2 Operator Id
+	 * @param sale_order_no2 Order No
 	 */
-	protected void postOnlineSaleConfirm(final String paymentType) {
+	protected void postOnlineSaleConfirm(final String paymentType, final String from_goTrip_success, String sale_order_no2
+			, String operator_id2, String extraCityName2, String agentgroup_id2, String ticketNos2, String totalGiftMoney) {
 		// TODO Auto-generated method stub
-		Log.i("", "sale_order_no: "+sale_order_no+", operator_id: "
-				+operator_id+", user_code_no: "+AppLoginUser.getCodeNo()
+		Log.i("", "sale_order_no: "+sale_order_no2+", operator_id: "
+				+operator_id2+", user_code_no: "+AppLoginUser.getCodeNo()
 				+", access_token: "+AppLoginUser.getAccessToken()
-				+", extra_name: "+ExtraCityName
+				+", extra_name: "+extraCityName2
 				+", payment_type: "+paymentType
 				+", loyalty_phone: "+AppLoginUser.getPhone()
 				+", loyalty_name: "+AppLoginUser.getUserName()
 				+", loyalty_address: "+AppLoginUser.getAddress()
-				+", use_gift_money: "+String.valueOf(totalGiftMoney)
-				+", starticket_no: "+ticketNos
-				+",	agentgroup_id: "+agentgroup_id);
+				+", use_gift_money: "+totalGiftMoney
+				+", starticket_no: "+ticketNos2
+				+",	agentgroup_id: "+agentgroup_id2);
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(
-				sale_order_no, 
-				operator_id, 
+				sale_order_no2, 
+				operator_id2, 
 				AppLoginUser.getCodeNo(), 
 				AppLoginUser.getAccessToken(), 
-				ExtraCityName, 
+				extraCityName2, 
 				AppLoginUser.getPhone(), 
 				AppLoginUser.getUserName(), 
 				AppLoginUser.getAddress(), 
 				"", "0", 
-				String.valueOf(totalGiftMoney), "", "", 
-				agentgroup_id, "", paymentType, ticketNos, new Callback<Response>() {
+				totalGiftMoney, "", "", 
+				agentgroup_id2, "", paymentType, ticketNos2, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
@@ -784,14 +928,12 @@ public class PaymentActivity extends BaseActivity{
 							Log.i("", "Error: "+arg0.getResponse().getStatus());
 						}
 						
-						dialog.dismissWithFailure("Sorry, Can't Confirm!");
+						dialog.dismissWithFailure();
 					}
 
 					public void success(Response arg0, Response arg1) {
 						// TODO Auto-generated method stub
 						if (arg1 != null) {
-							
-							dialog.dismissWithSuccess();
 							
 							if (paymentType.equals("Pay with Online") && paymentType.equals("Pay with MPU") && paymentType.equals("Pay with VISA/MASTER")) {
 								
@@ -800,18 +942,39 @@ public class PaymentActivity extends BaseActivity{
 		        				bundle.putString("payment_type", "Pay with MPU");
 		        				bundle.putString("payment_type", "Pay with VISA/MASTER");
 		        				startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
-								//SKToastMessage.showMessage(PaymentActivity.this, AppLoginUser.getPhone()+"လက္ မွ�?္ ျဖ�?္ �?�ပီး ပါ �?�ပီ�?�", SKToastMessage.SUCCESS);
+		        				
+		        				dialog.dismissWithSuccess();
+		        				
 							}else if (paymentType.equals("Cash on Delivery")) {
 								
 								Bundle bundle = new Bundle();
 		        				bundle.putString("payment_type", "Cash on Delivery");
-		        				startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
-		        				
-								//SKToastMessage.showMessage(PaymentActivity.this, AppLoginUser.getPhone()+" သုိ႔ ဖုန္းဆက္�?�ပီး လာပုိ႔ေပးပါမည္", SKToastMessage.SUCCESS);
+								
+								if (trip_type == 1) {
+									//If one way
+			        				startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
+			        				dialog.dismissWithSuccess();
+								}else if (trip_type == 2) {
+									//If round trip
+			        				if (!from_goTrip_success.equals("from_go_trip_success")) {
+			        					
+			        					Log.i("", "go trip success: "+from_goTrip_success);
+			        					
+			        					//If return trip not success yet, .......
+			        					//Confirm for Return Trip
+			        					confirmOrder(from_payment, selectedSeats, ticketNos
+												, busOccurence, BuyerName, BuyerNRC, permit_access_token
+												, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "from_go_trip_success");
+									}else {
+										
+										Log.i("", "return success: "+from_goTrip_success);
+										
+										//If return trip success, Go to thank you page
+										startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
+										dialog.dismissWithSuccess();
+									}
+								}
 							}
-							
-							//closeAllActivities();
-							//startActivity(new Intent(PaymentActivity.this, SaleTicketActivity.class));
 						}
 					}
 				});
@@ -845,66 +1008,5 @@ public class PaymentActivity extends BaseActivity{
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		finish();
-		//deleteSeats();
-	}
-	
-	private void deleteSeats() {
-		// TODO Auto-generated method stub
-		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
-		alertDialog.setMessage("Are you sure you want to cancel Seats?");
-
-		alertDialog.setPositiveButton("YES",
-				new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						if (SKConnectionDetector.getInstance(
-								PaymentActivity.this)
-								.isConnectingToInternet()) {
-							
-							String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
-							
-							Log.i("", "Permit IP: "+permit_ip+", Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(sale_order_no));
-							
-							progress = new ZProgressHUD(PaymentActivity.this);
-							progress.show();
-							
-							NetworkEngine.setIP(permit_ip);
-							NetworkEngine.getInstance().deleteSaleOrder(
-									param, MCrypt.getInstance().encrypt(sale_order_no),
-									new Callback<Response>() {
-
-										public void success(
-												Response arg0,
-												Response arg1) {
-											
-											closeAllActivities();
-					    					startActivity(new Intent(PaymentActivity.this, SaleTicketActivity.class));
-					    					
-					    					progress.dismiss();
-										}
-
-										public void failure(
-												RetrofitError arg0) {
-											// TODO Auto-generated method
-											progress.dismiss();
-											Log.i("", "Can't delete!");
-										}
-									});
-						}else {
-							SKConnectionDetector.getInstance(PaymentActivity.this).showErrorMessage();
-						}
-					}
-				});
-
-		alertDialog.setNegativeButton("NO",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-						return;
-					}
-				});
-
-		alertDialog.show();
 	}
 }

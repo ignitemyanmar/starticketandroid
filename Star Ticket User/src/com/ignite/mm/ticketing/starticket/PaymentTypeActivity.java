@@ -12,6 +12,7 @@ import info.hoang8f.widget.FButton;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.hardware.camera2.TotalCaptureResult;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -25,10 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
+import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
@@ -50,6 +53,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	private ZProgressHUD progress;
 	private Calendar cal;
 	private Date deptDateTime;
+	private String from_intent;
+	private String deptTime;
+	private String goTripInfo_str;
+	private GoTripInfo goTripInfo_obj;
+	private int trip_type;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,16 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_payment_type);
+		
+		Bundle bundle = getIntent().getExtras();
+		if (bundle != null) {
+			from_intent = bundle.getString("from_intent");
+			goTripInfo_str = bundle.getString("GoTripInfo");
+			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
+			trip_type = bundle.getInt("trip_type");
+		}
+		
+		Log.i("", "Permit IP at Busconfirmact: "+BusConfirmActivity.permit_ip);
 		
 		 Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
 		 toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -66,32 +84,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	     skDetector = new SKConnectionDetector(this);
          
 	     txt_booking_fee = (TextView)findViewById(R.id.txt_booking_fee);
-	     
-
-	     
-/*	     radioGroup = (RadioGroup) findViewById(R.id.radioGroup_payment);        
-			radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-		    {
-		        public void onCheckedChanged(RadioGroup group, int checkedId) {
-		            // checkedId is the RadioButton selected
-		        	
-		        	Log.i("", "Radio Id: "+checkedId+", Group id: "+group.getId());
-		        	
-		        	radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-		                public void onCheckedChanged(RadioGroup group, int checkedId) { 
-		                  //  RadioButton radioButton = (RadioButton) findViewById(checkedId);
-		                    
-		                    Toast.makeText(getApplicationContext(), checkedId+"", Toast.LENGTH_SHORT).show();
-		                    
-		                    if (checkedId == 2131296842) {
-						txt_booking_fee.setVisibility(View.VISIBLE);
-					}else {
-						txt_booking_fee.setVisibility(View.GONE);
-					}
-		                }
-		    });
-		        }
-		    });*/
 			
         radio_payWithMPU = (RadioButton)findViewById(R.id.radio_payWithMPU);
  		radio_payWithVisaMaster = (RadioButton)findViewById(R.id.radio_payWithVisaMaster);
@@ -160,7 +152,12 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 		
  		//Show/Hide of Cash on Delivery & Cash on Shop
-		String deptTime = BusConfirmActivity.date+" "+serverFormat.format(timeTochange);
+		if (from_intent.equals("SaleTicket")) {
+			deptTime = BusConfirmActivity.date+" "+serverFormat.format(timeTochange);
+		}else if (from_intent.equals("BusConfirm")){
+			deptTime = BusConfirmActivity.return_date+" "+serverFormat.format(timeTochange);
+		}
+		
 		
 		//Today+24hr
 		SimpleDateFormat nowFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
@@ -231,128 +228,67 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		dialog = new ZProgressHUD(PaymentTypeActivity.this);
 		dialog.show();
 
-		//Do Encrypt of Params
-/*		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(BusConfirmActivity.permit_access_token
-					, BusConfirmActivity.permit_operator_id, BusConfirmActivity.Permit_agent_id, BusConfirmActivity.CustName
-					, BusConfirmActivity.CustPhone, "0"
-					, "", BusConfirmActivity.permit_operator_group_id, MCrypt.getInstance()
-					.encrypt(BusConfirmActivity.seat_List.getSeatsList().toString()), BusConfirmActivity.BusOccurence
-					, BusConfirmActivity.date, BusConfirmActivity.FromCity, BusConfirmActivity.ToCity
-					, String.valueOf(AppLoginUser.getId()), DeviceUtil.getInstance(this).getID(), isBooking.toString(),
-					String.valueOf(AppLoginUser.getId()),"true"));
-		
-		
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("param", param)); */      
-        
-		//final Handler handler = new Handler() {
-
-			//public void handleMessage(Message msg) {
+		//Buy Ticket
+		if(isBooking == 0){
+			
+			Log.i("", "Seat List(to payment): "+BusConfirmActivity.selectedSeatNos);
+			
+			Intent nextScreen = new Intent(PaymentTypeActivity.this, PaymentActivity.class);
+			
+			Bundle bundle = new Bundle();
+			bundle.putString("from_payment", fromPayment);
+			bundle.putString("sale_order_no", BusConfirmActivity.sale_order_no);
+			bundle.putString("price", BusConfirmActivity.Price);
+			bundle.putString("seat_count", BusConfirmActivity.seat_count+"");
+			bundle.putString("agentgroup_id", AppLoginUser.getAgentGroupId());
+			bundle.putString("operator_id", BusConfirmActivity.permit_operator_id);
+			bundle.putString("Selected_seats", BusConfirmActivity.selectedSeatNos);
+			bundle.putString("ticket_nos", BusConfirmActivity.TicketLists);
+			bundle.putString("busOccurence", BusConfirmActivity.BusOccurence);
+			bundle.putString("permit_access_token", BusConfirmActivity.permit_access_token);
+			bundle.putString("Permit_agent_id", BusConfirmActivity.Permit_agent_id);
+			bundle.putString("permit_ip", BusConfirmActivity.permit_ip);
+			bundle.putString("BuyerName", BusConfirmActivity.CustName);
+			bundle.putString("BuyerPhone", BusConfirmActivity.CustPhone);
+			bundle.putString("BuyerNRC", "");
+			bundle.putString("FromCity", BusConfirmActivity.FromCity);
+			bundle.putString("ToCity", BusConfirmActivity.ToCity);
+			bundle.putString("Operator_Name", BusConfirmActivity.Operator_Name);
+			bundle.putString("from_to", BusConfirmActivity.from_to);
+			bundle.putString("time", BusConfirmActivity.time);
+			bundle.putString("classes", BusConfirmActivity.classes);
+			bundle.putString("date", BusConfirmActivity.date);
+			bundle.putString("ConfirmDate", BusConfirmActivity.ConfirmDate);
+			bundle.putString("ConfirmTime", BusConfirmActivity.ConfirmTime);
+			bundle.putString("ExtraCityID", BusConfirmActivity.ExtraCityID);
+			bundle.putString("ExtraCityName", BusConfirmActivity.ExtraCityName);
+			bundle.putString("ExtraCityPrice", BusConfirmActivity.ExtraCityPrice);
+			bundle.putString("ReturnDate", BusConfirmActivity.return_date);
+			bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
+			bundle.putInt("trip_type", trip_type);
+			bundle.putString("from_intent", from_intent);
+			
+			nextScreen.putExtras(bundle);
+			startActivity(nextScreen);
+			dialog.dismiss();
+		}else{ 
+			//Booking Finished!
+			Log.i("", "Seat List(to booking): "+BusConfirmActivity.selectedSeatNos);
+			
+			isBooking = 0;
+			
+			//If One Way
+			if (trip_type == 1) {
+				postOnlineSale(BusConfirmActivity.sale_order_no, fromPayment, BusConfirmActivity.TicketLists);
+			}else if (trip_type == 2) {
+				//If Round Trip
+				//Book for Go Trip
+				postOnlineSale(goTripInfo_obj.getSale_order_no(), fromPayment, goTripInfo_obj.getTicket_nos());
 				
-				//String jsonData = msg.getData().getString("data");
-				
-				//Log.i("ans:","Server Response: "+jsonData);
-				
-				//try {
-					
-					//JSONObject jsonObject = null;
-					
-					//if (jsonData != null) {
-				//		jsonObject = new JSONObject(jsonData);
-					//}
-		
-					//String SeatLists = "";
-					//String TicketLists = "";
-					
-					//if (BusConfirmActivity.jsonObject != null) {
-						
-						//JSONObject jsonObject = BusConfirmActivity.jsonObject;
-						
-						//if(jsonObject.getString("status").equals("1")){
-							
-							//if(jsonObject.getBoolean("can_buy") && jsonObject.getString("device_id").equals(DeviceUtil.getInstance(PaymentTypeActivity.this).getID())){
-								
-								/*//Get Seats No. including (,)
-		        				JSONArray jsonArray = jsonObject.getJSONArray("tickets");	        					        			
-		        				
-		        				for(int i=0; i<jsonArray.length(); i++){
-		        					JSONObject obj = jsonArray.getJSONObject(i);
-		        					if (i == jsonArray.length() - 1) {
-		        						SeatLists += obj.getString("seat_no");
-									}else {
-										SeatLists += obj.getString("seat_no")+",";
-									}
-		        				}*/
-		        				
-/*		        				for(int i=0; i<jsonArray.length(); i++){
-		        					JSONObject obj = jsonArray.getJSONObject(i);
-		        					if (obj.has("ticket_no")) {
-		        						if (i == jsonArray.length() - 1) {
-			        						TicketLists += obj.getString("ticket_no");
-										}else {
-											TicketLists += obj.getString("ticket_no")+",";
-										}
-									}else {
-										if (i == jsonArray.length() - 1) {
-			        						TicketLists += "-";
-										}else {
-											TicketLists += "-,";
-										}
-									}
-		        				}*/
-		        				
-		        				//Buy Ticket
-								if(isBooking == 0){
-									
-									Log.i("", "Seat List(to payment): "+BusConfirmActivity.selectedSeatNos);
-									
-			        				Intent nextScreen = new Intent(PaymentTypeActivity.this, PaymentActivity.class);
-			        				
-				    				Bundle bundle = new Bundle();
-				    				bundle.putString("from_payment", fromPayment);
-				    				bundle.putString("sale_order_no", BusConfirmActivity.sale_order_no);
-									bundle.putString("price", BusConfirmActivity.Price);
-									bundle.putString("seat_count", BusConfirmActivity.seat_count+"");
-									bundle.putString("agentgroup_id", AppLoginUser.getAgentGroupId());
-									bundle.putString("operator_id", BusConfirmActivity.permit_operator_id);
-									bundle.putString("Selected_seats", BusConfirmActivity.selectedSeatNos);
-									bundle.putString("ticket_nos", BusConfirmActivity.TicketLists);
-									bundle.putString("busOccurence", BusConfirmActivity.BusOccurence);
-									bundle.putString("permit_access_token", BusConfirmActivity.permit_access_token);
-									bundle.putString("Permit_agent_id", BusConfirmActivity.Permit_agent_id);
-									bundle.putString("permit_ip", BusConfirmActivity.permit_ip);
-									bundle.putString("BuyerName", BusConfirmActivity.CustName);
-									bundle.putString("BuyerPhone", BusConfirmActivity.CustPhone);
-									bundle.putString("BuyerNRC", "");
-									bundle.putString("FromCity", BusConfirmActivity.FromCity);
-									bundle.putString("ToCity", BusConfirmActivity.ToCity);
-									bundle.putString("Operator_Name", BusConfirmActivity.Operator_Name);
-									bundle.putString("from_to", BusConfirmActivity.from_to);
-									bundle.putString("time", BusConfirmActivity.time);
-									bundle.putString("classes", BusConfirmActivity.classes);
-									bundle.putString("date", BusConfirmActivity.date);
-									bundle.putString("ConfirmDate", BusConfirmActivity.ConfirmDate);
-									bundle.putString("ConfirmTime", BusConfirmActivity.ConfirmTime);
-									bundle.putString("ExtraCityID", BusConfirmActivity.ExtraCityID);
-									bundle.putString("ExtraCityName", BusConfirmActivity.ExtraCityName);
-									bundle.putString("ExtraCityPrice", BusConfirmActivity.ExtraCityPrice);
-				    				
-				    				nextScreen.putExtras(bundle);
-				    				startActivity(nextScreen);
-				    				dialog.dismiss();
-			        			}else{ 
-			        				//Booking Finished!
-			        				Log.i("", "Seat List(to booking): "+BusConfirmActivity.selectedSeatNos);
-			        				
-			        				isBooking = 0;
-			        				postOnlineSale(BusConfirmActivity.sale_order_no, fromPayment, BusConfirmActivity.TicketLists);
-			        			}
-
-			        		//}
-						//}
-					//}
-			//}
-		//};
+				//Book for Return Trip
+				postOnlineSale(BusConfirmActivity.sale_order_no, fromPayment, BusConfirmActivity.TicketLists);
+			}
+		}
 	}
 
 	/**
@@ -416,20 +352,43 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
-		deleteSeats();
+		if (trip_type == 1) {
+			//If one way 
+			deleteSeats("", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token, BusConfirmActivity.sale_order_no);
+		}else if (trip_type == 2) {
+			//If Round Trip
+			//delete Go selected seats first.... 
+			deleteSeats("", goTripInfo_obj.getPermit_ip(), goTripInfo_obj.getPermit_access_token(), goTripInfo_obj.getSale_order_no());
+		} 
+		
 		return super.getSupportParentActivityIntent();
 	}
 	
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		deleteSeats();
+		if (trip_type == 1) {
+			//If one way 
+			deleteSeats("", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token, BusConfirmActivity.sale_order_no);
+		}else if (trip_type == 2) {
+			//If Round Trip
+			//delete Go selected seats first.... 
+			deleteSeats("", goTripInfo_obj.getPermit_ip(), goTripInfo_obj.getPermit_access_token(), goTripInfo_obj.getSale_order_no());
+		} 
+		
 	}
 	
-	private void deleteSeats() {
+	private void deleteSeats(final String from_go_delete_success, final String permit_ip, final String permit_access_token, final String sale_order_no) {
 		// TODO Auto-generated method stub
 		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
-		alertDialog.setMessage("Are you sure You want to cancel selected Seats?");
+		
+		if (!from_go_delete_success.equals("from_go_delete_success")) {
+			//Delete Return Selected Seats
+			
+			alertDialog.setMessage("Are you sure You want to cancel (Departure) selected Seats?");
+		}else {
+			alertDialog.setMessage("Are you sure You want to cancel (Return) selected Seats?");
+		}
 
 		alertDialog.setPositiveButton("YES",
 				new DialogInterface.OnClickListener() {
@@ -440,26 +399,32 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 								PaymentTypeActivity.this)
 								.isConnectingToInternet()) {
 							
-							String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(BusConfirmActivity.permit_access_token));
+							String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
 							
-							Log.i("", "Permit IP: "+BusConfirmActivity.permit_ip+", Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(BusConfirmActivity.sale_order_no));
+							Log.i("", "Permit IP: "+permit_ip+", Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(sale_order_no));
 							
 							progress = new ZProgressHUD(PaymentTypeActivity.this);
 							progress.show();
 							
-							NetworkEngine.setIP(BusConfirmActivity.permit_ip);
+							NetworkEngine.setIP(permit_ip);
 							NetworkEngine.getInstance().deleteSaleOrder(
-									param, MCrypt.getInstance().encrypt(BusConfirmActivity.sale_order_no),
+									param, MCrypt.getInstance().encrypt(sale_order_no),
 									new Callback<Response>() {
 
 										public void success(
 												Response arg0,
 												Response arg1) {
 											
-											closeAllActivities();
-					    					startActivity(new Intent(PaymentTypeActivity.this, SaleTicketActivity.class));
-					    					
-					    					progress.dismiss();
+											if (!from_go_delete_success.equals("from_go_delete_success")) {
+												//Delete Return Selected Seats
+												
+												deleteSeats("from_go_delete_success", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token
+														, BusConfirmActivity.sale_order_no);
+											}else {
+												closeAllActivities();
+						    					startActivity(new Intent(PaymentTypeActivity.this, SaleTicketActivity.class));
+						    					progress.dismiss();
+											}
 										}
 
 										public void failure(
@@ -478,7 +443,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		alertDialog.setNegativeButton("NO",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
+						if (dialog != null) {
+							dialog.cancel();
+						}
+						progress.dismiss();
 						return;
 					}
 				});

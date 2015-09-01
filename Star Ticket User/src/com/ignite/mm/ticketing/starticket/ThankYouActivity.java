@@ -35,7 +35,7 @@ public class ThankYouActivity extends BaseActivity{
 		}else if (payment_type.equals("Pay with Online") && payment_type.equals("Pay with MPU") && payment_type.equals("Pay with VISA/MASTER")) {
 			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ ");
 		}else if (payment_type.equals("Cash on Delivery")) {
-			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ  ");
+			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ! "+AppLoginUser.getPhone()+" သုိ႔  ဖုန္းဆက္ၿပီး လာပုိ႔ ေပးပါမည္ ။");
 		}
 		
 		btn_continue_buy.setOnClickListener(new OnClickListener() {
