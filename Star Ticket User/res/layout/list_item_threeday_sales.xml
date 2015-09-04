@@ -311,7 +311,7 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="ေစ်းႏႈန္း(က်ပ္)"
+                        android:text="ေစ်းႏႈန္း"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <com.smk.custom.view.CustomTextView
@@ -342,7 +342,7 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="ပမာဏ (က်ပ္)"
+                        android:text="ပမာဏ"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <com.smk.custom.view.CustomTextView
@@ -373,7 +373,7 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Discount(က်ပ္)"
+                        android:text="Discount"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <com.smk.custom.view.CustomTextView
@@ -404,7 +404,7 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="ေပးေခ်ရန္ေငြ (က်ပ္)"
+                        android:text="ေပးေခ်ရန္ေငြ"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <com.smk.custom.view.CustomTextView

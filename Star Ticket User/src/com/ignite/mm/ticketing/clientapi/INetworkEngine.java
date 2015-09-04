@@ -164,10 +164,15 @@ public interface INetworkEngine {
 			Callback<Response> callback);
 	
 	@GET("/api/from_city")
-	void getFromCities(@Query("access_token") String access_token, Callback<Response> callback);
+	void getFromCities(
+			@Query("access_token") String access_token,
+			@Query("user_app") String user_app, Callback<Response> callback);
 	
 	@GET("/api/to_cities")
-	void getToCities(@Query("access_token") String access_token, Callback<Response> callback);
+	void getToCities(
+			@Query("access_token") String access_token,
+			@Query("from") String from,
+			@Query("round_trip") String round_trip, Callback<Response> callback);
 	
 	@GET("/api/times")
 	void getTimes(@Query("access_token") String access_token, Callback<Response> callback);
@@ -183,7 +188,8 @@ public interface INetworkEngine {
 			@Field("to") String to, 
 			@Field("date") String date,
 			@Field("time") String time,
-			@Field("access_token") String access_token, Callback<Response> callback);
+			@Field("access_token") String access_token, 
+			@Field("round_trip") String round_trip, Callback<Response> callback);
 	
 	@GET("/api/bookingsearch")
 	void getBookingByCodeNoPhone(@Query("access_token") String access_token,

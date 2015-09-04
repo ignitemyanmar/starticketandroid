@@ -35,13 +35,25 @@
             android:id="@+id/txt_change_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/gray"
             android:drawablePadding="10dp"
             android:gravity="center"
             android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:text="Change Date"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/golden_brown" />
+
     </LinearLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light" />
 
     <RelativeLayout
         android:id="@+id/Rlayout_noInfo"

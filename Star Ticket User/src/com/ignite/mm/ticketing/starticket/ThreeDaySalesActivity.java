@@ -168,11 +168,12 @@ public class ThreeDaySalesActivity extends BaseActivity{
 						}
 						
 				}else {
-					layout_noOrder.setVisibility(View.VISIBLE);
+					//layout_noOrder.setVisibility(View.VISIBLE);
+					Toast.makeText(ThreeDaySalesActivity.this, "No order!", Toast.LENGTH_SHORT).show();
 					lv_threeday_sales.setNextPage(false);
 				}
 				
-				dialog.dismissWithSuccess();
+				dialog.dismiss();
 			}
 		});		
 	}
@@ -191,6 +192,8 @@ public class ThreeDaySalesActivity extends BaseActivity{
 					//Toast.makeText(ThreeDaySalesActivity.this, "Next Request", Toast.LENGTH_LONG).show();
 					getThreeDaySales();
 				}
+			}else {
+				Toast.makeText(ThreeDaySalesActivity.this, "No Network Connection", Toast.LENGTH_SHORT).show();
 			}
 		}
 

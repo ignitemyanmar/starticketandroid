@@ -352,43 +352,24 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
-		if (trip_type == 1) {
-			//If one way 
-			deleteSeats("", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token, BusConfirmActivity.sale_order_no);
-		}else if (trip_type == 2) {
-			//If Round Trip
-			//delete Go selected seats first.... 
-			deleteSeats("", goTripInfo_obj.getPermit_ip(), goTripInfo_obj.getPermit_access_token(), goTripInfo_obj.getSale_order_no());
-		} 
-		
+		deleteSeats();		
 		return super.getSupportParentActivityIntent();
 	}
 	
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		if (trip_type == 1) {
-			//If one way 
-			deleteSeats("", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token, BusConfirmActivity.sale_order_no);
-		}else if (trip_type == 2) {
-			//If Round Trip
-			//delete Go selected seats first.... 
-			deleteSeats("", goTripInfo_obj.getPermit_ip(), goTripInfo_obj.getPermit_access_token(), goTripInfo_obj.getSale_order_no());
-		} 
-		
+		deleteSeats();		
 	}
 	
-	private void deleteSeats(final String from_go_delete_success, final String permit_ip, final String permit_access_token, final String sale_order_no) {
+	/**
+	 * Delete Selected Seats from Operator Database
+	 */
+	private void deleteSeats() {
 		// TODO Auto-generated method stub
 		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
 		
-		if (!from_go_delete_success.equals("from_go_delete_success")) {
-			//Delete Return Selected Seats
-			
-			alertDialog.setMessage("Are you sure You want to cancel (Departure) selected Seats?");
-		}else {
-			alertDialog.setMessage("Are you sure You want to cancel (Return) selected Seats?");
-		}
+		alertDialog.setMessage("Are you sure You want to cancel Selected Seats?");
 
 		alertDialog.setPositiveButton("YES",
 				new DialogInterface.OnClickListener() {
@@ -399,41 +380,14 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 								PaymentTypeActivity.this)
 								.isConnectingToInternet()) {
 							
-							String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
-							
-							Log.i("", "Permit IP: "+permit_ip+", Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(sale_order_no));
-							
-							progress = new ZProgressHUD(PaymentTypeActivity.this);
-							progress.show();
-							
-							NetworkEngine.setIP(permit_ip);
-							NetworkEngine.getInstance().deleteSaleOrder(
-									param, MCrypt.getInstance().encrypt(sale_order_no),
-									new Callback<Response>() {
-
-										public void success(
-												Response arg0,
-												Response arg1) {
-											
-											if (!from_go_delete_success.equals("from_go_delete_success")) {
-												//Delete Return Selected Seats
-												
-												deleteSeats("from_go_delete_success", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token
-														, BusConfirmActivity.sale_order_no);
-											}else {
-												closeAllActivities();
-						    					startActivity(new Intent(PaymentTypeActivity.this, SaleTicketActivity.class));
-						    					progress.dismiss();
-											}
-										}
-
-										public void failure(
-												RetrofitError arg0) {
-											// TODO Auto-generated method
-											progress.dismiss();
-											Log.i("", "Can't delete!");
-										}
-									});
+							if (trip_type == 1) {
+								//If one way 
+								deleteSelectedSeats("", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token, BusConfirmActivity.sale_order_no);
+							}else if (trip_type == 2) {
+								//If Round Trip
+								//delete Go selected seats first.... 
+								deleteSelectedSeats("", goTripInfo_obj.getPermit_ip(), goTripInfo_obj.getPermit_access_token(), goTripInfo_obj.getSale_order_no());
+							}
 						}else {
 							SKConnectionDetector.getInstance(PaymentTypeActivity.this).showErrorMessage();
 						}
@@ -452,5 +406,52 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				});
 
 		alertDialog.show();
+	}
+	
+	/**
+	 * Delete Selected Seats from Operator Database
+	 * @param from_go_delete_success
+	 * @param permit_ip
+	 * @param permit_access_token
+	 * @param sale_order_no
+	 */
+	private void deleteSelectedSeats(final String from_go_delete_success, final String permit_ip, final String permit_access_token, final String sale_order_no) {
+		// TODO Auto-generated method stub
+		
+		String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
+		
+		Log.i("", "Permit IP: "+permit_ip+", Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(sale_order_no));
+		
+		progress = new ZProgressHUD(PaymentTypeActivity.this);
+		progress.show();
+		
+		NetworkEngine.setIP(permit_ip);
+		NetworkEngine.getInstance().deleteSaleOrder(
+				param, MCrypt.getInstance().encrypt(sale_order_no),
+				new Callback<Response>() {
+
+					public void success(
+							Response arg0,
+							Response arg1) {
+						
+						if (!from_go_delete_success.equals("from_go_delete_success")) {
+							//Delete Return Selected Seats
+							
+							deleteSelectedSeats("from_go_delete_success", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token
+									, BusConfirmActivity.sale_order_no);
+						}else {
+							closeAllActivities();
+	    					startActivity(new Intent(PaymentTypeActivity.this, SaleTicketActivity.class));
+	    					progress.dismiss();
+						}
+					}
+
+					public void failure(
+							RetrofitError arg0) {
+						// TODO Auto-generated method
+						progress.dismiss();
+						Log.i("", "Can't delete!");
+					}
+				});
 	}
 }

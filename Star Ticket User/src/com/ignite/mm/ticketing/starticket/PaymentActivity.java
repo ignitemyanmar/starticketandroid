@@ -478,7 +478,6 @@ public class PaymentActivity extends BaseActivity{
 					
 
 				}else if(resultCode == RESULT_CANCELED){
-
 					
 					Log.i("", "Payment Cancel ................... :(");
 					Toast.makeText(PaymentActivity.this, "You cancel Payment!", Toast.LENGTH_LONG).show();
@@ -664,16 +663,6 @@ public class PaymentActivity extends BaseActivity{
 						
 						if (from_payment.equals("Pay with MPU") || from_payment.equals("Pay with VISA/MASTER")) {
 							
-							/*if (points_toUse != null && !points_toUse.equals("")) {
-								points_to_use = Integer.valueOf(points_toUse);
-							}
-							
-							if (giftMoney_toUse != null && !giftMoney_toUse.equals("")) {
-								giftMoney_to_use  = Integer.valueOf(giftMoney_toUse);
-							}*/
-							
-							//Integer total_need_to_pay = total_amount - ((points_to_use * 10) + giftMoney_to_use);
-								
 								Bundle bundle = new Bundle();
 								bundle.putString("from_payment", from_payment);
 								bundle.putString("order_no", sale_order_no);
@@ -685,7 +674,6 @@ public class PaymentActivity extends BaseActivity{
 								bundle.putString("seat_count", seat_count);
 								bundle.putString("agentgroup_id", agentgroup_id);
 								bundle.putString("operator_id", operator_id);
-								bundle.putString("sale_order_no", sale_order_no);
 								bundle.putString("selectedSeats", selectedSeats);
 								bundle.putString("busOccurence", busOccurence);
 								bundle.putString("permit_access_token", permit_access_token);
@@ -837,8 +825,8 @@ public class PaymentActivity extends BaseActivity{
 						//total_amount = orderObj.getString("total_amount");
 						
 						if(!jsonObj.getBoolean("status") && jsonObj.getString("device_id").equals(DeviceUtil.getInstance(PaymentActivity.this).getID())){
-							SKToastMessage.showMessage(PaymentActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 							dialog.dismissWithFailure();
+							SKToastMessage.showMessage(PaymentActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 						}else{
 							//Save into Online Database
 							if (trip_type == 1) {
@@ -965,6 +953,7 @@ public class PaymentActivity extends BaseActivity{
 			        					confirmOrder(from_payment, selectedSeats, ticketNos
 												, busOccurence, BuyerName, BuyerNRC, permit_access_token
 												, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "from_go_trip_success");
+			        					
 									}else {
 										
 										Log.i("", "return success: "+from_goTrip_success);

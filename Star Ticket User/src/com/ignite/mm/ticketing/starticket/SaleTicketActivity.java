@@ -2,11 +2,14 @@ package com.ignite.mm.ticketing.starticket;
 
 import info.hoang8f.widget.FButton;
 
+import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.http.conn.ConnectTimeoutException;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -19,7 +22,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -154,11 +156,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		btn_return_date.setText(tomorrowDate);
 		
 		skDetector = SKConnectionDetector.getInstance(SaleTicketActivity.this);
-		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
+		
 		if(skDetector.isConnectingToInternet()){
 			getFromCities();
 		}else{
-			Toast.makeText(SaleTicketActivity.this, "No Internet connection!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(SaleTicketActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
 		}
 		
 		spn_from_trip.setOnItemSelectedListener(fromCityClickListener);
@@ -181,63 +183,71 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		
 		fromCities = new ArrayList<String>();
 		//fromCities.add("Choose - From City");
-		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().getFromCities("", new Callback<Response>() {
-			
-			public void success(Response arg0, Response arg1) {
-				// TODO Auto-generated method stub
+		
+			NetworkEngine.setIP("starticketmyanmar.com");
+			NetworkEngine.getInstance().getFromCities("", "1", new Callback<Response>() {
+				
+				public void success(Response arg0, Response arg1) {
+					// TODO Auto-generated method stub
 
-				if (arg0 != null) {
-					List<String> fromCityList = new ArrayList<String>();
-					fromCityList = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<String>>(){}.getType());
-					
-					if (fromCityList != null && fromCityList.size() > 0) {
-						fromCities.addAll(fromCityList);
-					}
-					
-					if (fromCities != null && fromCities.size() > 0) {
-						fromCitiesAdapter = new FromCitiesAdapter(SaleTicketActivity.this, fromCities);
-						spn_from_trip.setAdapter(fromCitiesAdapter);	
+					if (arg0 != null) {
+						List<String> fromCityList = new ArrayList<String>();
+						fromCityList = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<String>>(){}.getType());
 						
-						for (int i = 0; i < fromCities.size(); i++) {
-							if (fromCities.get(i).contains("Yangon")) {
-								spn_from_trip.setSelection(i);	
-								//selectedFromCity = 
+						if (fromCityList != null && fromCityList.size() > 0) {
+							fromCities.addAll(fromCityList);
+						}
+						
+						if (fromCities != null && fromCities.size() > 0) {
+							fromCitiesAdapter = new FromCitiesAdapter(SaleTicketActivity.this, fromCities);
+							spn_from_trip.setAdapter(fromCitiesAdapter);	
+							
+							for (int i = 0; i < fromCities.size(); i++) {
+								if (fromCities.get(i).contains("Yangon")) {
+									spn_from_trip.setSelection(i);	
+								}
 							}
 						}
 					}
+					
+					Log.i("", "From City (to): "+spn_from_trip.getSelectedItem().toString());
+					
+					dialog.dismiss();
+					
+					/*if(skDetector.isConnectingToInternet()){
+						getToCities(spn_from_trip.getSelectedItem().toString());
+					}else{
+						Toast.makeText(SaleTicketActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
+					}*/
 				}
 				
-				if(skDetector.isConnectingToInternet()){
-					getToCities();
-				}else{
-					Toast.makeText(SaleTicketActivity.this, "No Internet connection!", Toast.LENGTH_SHORT).show();
+				public void failure(RetrofitError arg0) {
+					// TODO Auto-generated method stub
+					if (arg0.getResponse() != null) {
+						Log.i("", "Error: "+arg0.getResponse().getStatus());
+					}
+					
+					dialog.dismissWithFailure("Time Out");
 				}
-			}
-			
-			public void failure(RetrofitError arg0) {
-				// TODO Auto-generated method stub
-				if (arg0.getResponse() != null) {
-					Log.i("", "Error: "+arg0.getResponse().getStatus());
-				}
-				
-				dialog.dismissWithFailure();
-			}
-		});
+			});
 	}
 
-	private void getToCities() {
+	private void getToCities(String fromCity, String round_trip) {
 		// TODO Auto-generated method stub
 
+		dialog = new ZProgressHUD(SaleTicketActivity.this);
+		dialog.show();
+		
 		toCities = new ArrayList<String>();
 		toCities.add("Choose - To City");
 		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().getToCities("", new Callback<Response>() {
+		NetworkEngine.getInstance().getToCities("", fromCity, round_trip, new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
 
 				if (arg0 != null) {
+					
 					List<String> toCityList = new ArrayList<String>();
 					toCityList = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<String>>(){}.getType());
 					
@@ -251,10 +261,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					}
 				}
 				
-				if (dialog != null) {
-					dialog.dismissWithSuccess();
-				}
+				Log.i("", "enter to city");
 				
+				dialog.dismiss();
 			}
 			
 			public void failure(RetrofitError arg0) {
@@ -263,9 +272,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					Log.i("", "Error: "+arg0.getResponse().getStatus());
 				}
 				
-				if (dialog != null) {
-					dialog.dismissWithFailure();
-				}
+				dialog.dismissWithFailure("Time Out");
 			}
 		});
 	}
@@ -299,7 +306,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 						}
 					}
 					
-					dialog.dismissWithSuccess();					
+					dialog.dismiss();				
 				}
 				
 				public void failure(RetrofitError arg0) {
@@ -318,16 +325,24 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	//----------------------------------------- Click Listener ---------------------------------------------------------------------
 
 	private OnItemSelectedListener fromCityClickListener = new OnItemSelectedListener() {
-
+		
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO Auto-generated method stub
 			selectedFromCity = fromCities.get(position);
-				/*if (position > 0) {
-					selectedFromCity = fromCities.get(position);
+			
+			if(skDetector.isConnectingToInternet()){
+				if (radio_one_way.isChecked()) {
+					//if one way
+					getToCities(selectedFromCity, "0");
 				}else {
-					selectedFromCity = "";
-				}*/
+					//if round trip
+					getToCities(selectedFromCity, "1");
+				}
+				
+			}else{
+				Toast.makeText(SaleTicketActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
+			}
 		}
 
 		public void onNothingSelected(AdapterView<?> parent) {
@@ -395,12 +410,26 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			if (v == radio_one_way) {
 				layout_return_date.setVisibility(View.GONE);
 				view_return_date.setVisibility(View.GONE);
+				
+				//one way (show all khone pine cities)
+				if(skDetector.isConnectingToInternet()){
+					getToCities(selectedFromCity, "0");
+				}else{
+					Toast.makeText(SaleTicketActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
+				}
 			}
 			if (v == radio_round_trip) {
 				layout_return_date.setVisibility(View.VISIBLE);
 				view_return_date.setVisibility(View.VISIBLE);
 				layout_trip_time.setVisibility(View.GONE);
 				view_trip_time.setVisibility(View.GONE);
+				
+				//round trip (show only (depart+return) cities)
+				if(skDetector.isConnectingToInternet()){
+					getToCities(selectedFromCity, "1");
+				}else{
+					Toast.makeText(SaleTicketActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
+				}
 			}
 			if (v == btn_trip_date) {
 				
@@ -477,6 +506,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				
 				if (checkFields()) {
 
+				    //One Way (or) Round Trip check
+					if (radio_one_way.isChecked()) {
+						trip_type = 1;
+					}else {
+						trip_type = 2;
+					}
+					
 					Bundle bundle = new Bundle();
 					bundle.putString("from_city", selectedFromCity);
 					bundle.putString("to_city", selectedToCity);
@@ -484,16 +520,17 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					bundle.putString("trip_time", selectedTripTime);
 					bundle.putString("return_date", btn_return_date.getText().toString());
 					bundle.putString("from_intent", "SaleTicket");
-					
-					if (radio_one_way.isChecked()) {
-						trip_type = 1;
-					}else {
-						trip_type = 2;
-					}
-					
 					bundle.putInt("trip_type", trip_type);
 					
-					startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+					if (trip_type == 1) {
+						//if one way
+						startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+						
+					}else if (trip_type == 2) {
+						//if round trip 
+						//check if return trip is available or not 
+						getOperatorSeats(selectedFromCity, selectedToCity, btn_trip_date.getText().toString(), selectedTripTime, "1");
+					}
 				}
 			}
 /*			if (v == txt_promotion) {
@@ -515,6 +552,61 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			}
 		}
 	};
+	
+	/**
+	 *  Check if return trip is available or not 
+	 * @param fromCity From City Name
+	 * @param toCity To City Name
+	 * @param tripDate Trip Date
+	 * @param tripTime Trip Time (Optional)
+	 * @param round_trip_status 1 (for round trip, to check if return trip is available or not), 0 (for one way)
+	 */
+	private void getOperatorSeats(final String fromCity, final String toCity, final String tripDate, final String tripTime, String round_trip_status){
+		
+		dialog = new ZProgressHUD(SaleTicketActivity.this);
+		dialog.setMessage("Searching...");
+		dialog.show();
+		
+		Log.i("", "Search Operator: "+fromCity+", "
+						+toCity+", "
+						+tripDate+", "
+						+tripTime+", access: "+AppLoginUser.getAccessToken());
+		
+		NetworkEngine.setIP("starticketmyanmar.com");
+		NetworkEngine.getInstance().postSearch(fromCity, toCity, tripDate, tripTime, "", round_trip_status, new Callback<Response>() {
+
+			public void failure(RetrofitError arg0) {
+				// TODO Auto-generated method stub
+				if (arg0.getResponse() != null) {
+					Log.i("", "Error: "+arg0.getResponse().getStatus());
+				}
+				
+				dialog.dismissWithFailure();
+			}
+
+			public void success(Response arg0, Response arg1) {
+				// TODO Auto-generated method stub
+				if (arg0 != null) {
+					if (arg0.getStatus() == 206) {
+						Toast.makeText(SaleTicketActivity.this, R.string.str_no_return_trip, Toast.LENGTH_SHORT).show();
+					}else {
+						Bundle bundle = new Bundle();
+						bundle.putString("from_city", fromCity);
+						bundle.putString("to_city", toCity);
+						bundle.putString("trip_date", tripDate);
+						bundle.putString("trip_time", tripTime);
+						bundle.putString("return_date", btn_return_date.getText().toString());
+						bundle.putString("from_intent", "SaleTicket");
+						bundle.putInt("trip_type", trip_type);
+						
+						startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+					}
+				}
+				
+				dialog.dismiss();
+			}
+		});
+	}
 	  
 	public boolean checkFields() {
 		
@@ -557,7 +649,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				
 				Log.i("","Hello Compare : "+ compare);
 				if(compare < 0){
-					SKToastMessage.showMessage(SaleTicketActivity.this, "Departure Date can't be grater than Return Date!", SKToastMessage.WARNING);
+					Toast.makeText(SaleTicketActivity.this, R.string.str_choose_departure_date, Toast.LENGTH_SHORT).show();
 					return false;
 				}
 			}

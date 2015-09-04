@@ -66,6 +66,8 @@
     <string name="str_choose_go_seat">အသြားခရီးအတြက္ ခံု ေရြးပါ ~</string>
     <string name="str_choose_return_trip">အျပန္ခရီးအတြက္ အခ်ိန္၊ ကားဂိတ္ ေရြးပါ ~</string>
     <string name="str_choose_return_seat">အျပန္ခရီးအတြက္ ခံု ေရြးပါ ~</string>
+    <string name="str_choose_departure_date">ထြက္ခြာမည့္ ေန႔ ျပန္ေရြးေပးပါ </string>
+    <string name="str_no_return_trip">အျပန္ ခရီးစဥ္ မရွိသျဖင့္ One Way ကိုေရြးပါ </string>
     
     <string-array name="custom_weekdays">
         <item>Su</item>

@@ -175,7 +175,7 @@ public class BusBookingListActivity extends BaseActivity {
 				}
 				
 				if (dialog != null) {
-					dialog.dismissWithSuccess();
+					dialog.dismiss();
 				}
 			}
 		});

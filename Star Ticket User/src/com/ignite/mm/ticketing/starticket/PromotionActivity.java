@@ -85,6 +85,8 @@ public class PromotionActivity extends BaseActivity{
 			
 			public void success(List<Promotion> arg0, Response arg1) {
 				// TODO Auto-generated method stub
+				Log.i("", "promo data: "+arg0.toString());
+				
 				if (arg0 != null && arg0.size() > 0) {
 					lv_promotion.setAdapter(new PromotionAdapter(PromotionActivity.this, arg0));
 				}else {

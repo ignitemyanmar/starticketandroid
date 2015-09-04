@@ -1028,7 +1028,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="ယခုရရွိေသာ Gift Money !"
+                                android:text="သင္ သံုးစြဲ ႏုိင္ေသာ Gift Money !"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:textColor="@color/black" />
 

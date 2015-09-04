@@ -790,8 +790,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 									
 									bundle.putInt("trip_type", trip_type);
 									bundle.putString("return_date", return_date);
-									
-									//bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
 				    				
 				    				nextScreen.putExtras(bundle);
 				    				startActivity(nextScreen);

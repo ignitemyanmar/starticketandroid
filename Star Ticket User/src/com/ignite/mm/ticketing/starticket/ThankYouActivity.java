@@ -2,6 +2,7 @@ package com.ignite.mm.ticketing.starticket;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -26,13 +27,15 @@ public class ThankYouActivity extends BaseActivity{
 			payment_type = bundle.getString("payment_type");
 		}
 		
+		Log.i("", "Payment Type (thank you): "+payment_type);
+		
 		txt_thankYou = (TextView)findViewById(R.id.txt_thankyou);
 		txt_email_send = (TextView)findViewById(R.id.txt_email_send);
 		btn_continue_buy = (TextView)findViewById(R.id.btn_continue_buy);
 		
 		if (payment_type.equals("Cash on Shop")) {
 			txt_thankYou.setText("Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။  သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။");
-		}else if (payment_type.equals("Pay with Online") && payment_type.equals("Pay with MPU") && payment_type.equals("Pay with VISA/MASTER")) {
+		}else if (payment_type.equals("Pay with MPU") && payment_type.equals("Pay with VISA/MASTER")) {
 			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ ");
 		}else if (payment_type.equals("Cash on Delivery")) {
 			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ! "+AppLoginUser.getPhone()+" သုိ႔  ဖုန္းဆက္ၿပီး လာပုိ႔ ေပးပါမည္ ။");

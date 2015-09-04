@@ -1372,9 +1372,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		        				}
 		        				
 		        				Log.i("", "Ticket No: "+TicketLists);
-		        				
 								if(isBooking == 0){
-									
 									if (trip_type == 1) {
 										//If one way 
 										Bundle bundle = new Bundle();
@@ -1421,14 +1419,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			        			isBooking = 0;
 			        			dialog.dismissWithFailure();
 			        			SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
-			        			closeAllActivities();
-			        			//If Round Trip, Go Choose Time Again 
-			        			if (return_date != null) {
-									if (!return_date.equals("")) {
-										startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class));
-									}
-								}else {
-									startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+			        			//If Round Trip, Departure Choose Time Again 
+			        			if (trip_type == 1) {
+									//If one way
+			        				closeAllActivities();
+			        				startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
 								}
 			        		}
 						}else{
@@ -1436,14 +1431,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 							isBooking = 0;
 							dialog.dismissWithFailure();
 							SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
-							closeAllActivities();
-							//If Round Trip, Go Choose Time Again 
-							if (return_date != null) {
-								if (!return_date.equals("")) {
-									startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class));
-								}
-							}else {
-								startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+							
+							if (trip_type == 1) {
+								//If one way
+		        				closeAllActivities();
+		        				startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
 							}
 						}
 					}

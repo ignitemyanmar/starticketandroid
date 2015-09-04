@@ -155,7 +155,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
     						//If Round Trip 
     						toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
     						txt_round_trip_info.setText(R.string.str_choose_go_trip);
-    						txt_change_date.setText("Change 'Go' Date");
+    						txt_change_date.setText("Change 'Departure' Date");
     					}
     				}
     			}else {
@@ -182,7 +182,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					 String tripDate = selectedTripDate;
 					 String tripTime = selectedTripTime;
 					 
-					 getOperatorSeats(fromCity, toCity, tripDate, tripTime);
+					 getOperatorSeats(fromCity, toCity, tripDate, tripTime, "0");
 					 
 				}else if (from_intent.equals("BusConfirm")) {
 				//Return Trip 
@@ -191,13 +191,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					 String tripDate = selectedReturnDate;
 					 String tripTime = "";
 					 
-					 getOperatorSeats(fromCity, toCity, tripDate, tripTime);
-					 
+					 getOperatorSeats(fromCity, toCity, tripDate, tripTime, "0");
 				}
-			 
-			
 		}else{
-			Toast.makeText(BusOperatorSeatsActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(BusOperatorSeatsActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
 		}
 		
 		layout_round_info.setOnClickListener(new OnClickListener() {
@@ -207,7 +204,12 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 				// TODO Auto-generated method stub
 				final NewCalendarDialog calendarDialog = new NewCalendarDialog(BusOperatorSeatsActivity.this);
 		        
-		        calendarDialog.txt_calendar_title.setText(R.string.str_calendar_title);
+				if (from_intent.equals("SaleTicket")) {
+					calendarDialog.txt_calendar_title.setText(R.string.str_calendar_title);
+				}else if (from_intent.equals("BusConfirm")) {
+					calendarDialog.txt_calendar_title.setText(R.string.str_calendar_return_title);
+				}
+		        
 		        calendarDialog.calendar.setShowOtherDates(true);
 		        calendarDialog.calendar.setLeftArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_back));
 		        calendarDialog.calendar.setRightArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_forward));
@@ -239,7 +241,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
    								 String fromCity = selectedFromCity;
    								 String toCity = selectedToCity;
    								 
-   								 getOperatorSeats(fromCity, toCity, selectedTripDate, "");
+   								 getOperatorSeats(fromCity, toCity, selectedTripDate, "", "0");
    								 
    							}else if (from_intent.equals("BusConfirm")) {
    								
@@ -250,10 +252,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
    								 String fromCity = selectedToCity;
    								 String toCity = selectedFromCity;
    								 
-   								 getOperatorSeats(fromCity, toCity, selectedReturnDate, "");
+   								 getOperatorSeats(fromCity, toCity, selectedReturnDate, "", "0");
    							}
    					}else{
-   						Toast.makeText(BusOperatorSeatsActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+   						Toast.makeText(BusOperatorSeatsActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
    					}
 					}
 				});
@@ -282,7 +284,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 	 * @param tripDate Dept Date
 	 * @param tripTime Dept Time
 	 */
-	private void getOperatorSeats(String fromCity, String toCity, String tripDate, String tripTime) {
+	private void getOperatorSeats(String fromCity, String toCity, String tripDate, String tripTime, String round_trip_status) {
 		// TODO Auto-generated method stub
 		lv_operator_seats.setAdapter(null);
 		
@@ -296,7 +298,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postSearch(fromCity, toCity, tripDate
-				, tripTime, "", new Callback<Response>() {
+				, tripTime, "", round_trip_status, new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
@@ -415,7 +417,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
 					
 					if (goTripInfo_obj.getDate() != null && !goTripInfo_obj.getDate().equals("")) {
-						alertDialog.setMessage("Departure Date can't be grater than Return Date! Your Chosen Departure Date is : "+changeDateString(goTripInfo_obj.getDate()));
+						alertDialog.setMessage("Change Your Return Date again! Your Chosen Departure Date is ("+changeDateString(goTripInfo_obj.getDate())+")");
 					}
 					
 					alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {

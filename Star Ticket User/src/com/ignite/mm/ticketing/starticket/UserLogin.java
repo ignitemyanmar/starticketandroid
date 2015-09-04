@@ -238,14 +238,14 @@ public class UserLogin extends BaseActivity {
 								
 								Log.i("", "from intent (login): "+from_intent);
 								
-								if (from_intent.equals("checkout")) {
+								if (from_intent.equals("SaleTicket")) {
 									
 									Log.i("", "From Select Seat !!!!!!!!!!!!!");
 									
 									Intent nextScreen = new Intent(UserLogin.this, BusConfirmActivity.class);
 			        				
 				    				Bundle bundle = new Bundle();
-				    				bundle.putString("from_intent", "checkout");
+				    				bundle.putString("from_intent", "SaleTicket");
 				    				bundle.putString("FromCity", FromCity);
 				    				bundle.putString("ToCity", ToCity);
 				    				bundle.putString("Operator_Name", Operator_Name);			    				
