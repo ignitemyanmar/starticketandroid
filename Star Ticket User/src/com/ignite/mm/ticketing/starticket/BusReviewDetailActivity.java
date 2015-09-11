@@ -18,6 +18,17 @@ import android.widget.TextView;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusReviewDetailAdapter;
 
+/**
+ * {@link #BusReviewDetailActivity} is not included in v1.0
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class BusReviewDetailActivity extends BaseActivity{
 
 	private ActionBar actionBar;

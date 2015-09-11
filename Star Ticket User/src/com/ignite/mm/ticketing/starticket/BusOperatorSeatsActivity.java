@@ -8,7 +8,6 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
@@ -39,15 +37,31 @@ import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.OperatorSeatsAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorSeat;
-import com.ignite.mm.ticketing.sqlite.database.model.SearchOperatorSeat;
-import com.ignite.mm.ticketing.sqlite.database.model.Trip;
 import com.ignite.mm.ticketing.starticket.R;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
-import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #BusOperatorSeatsActivity} is the class to choose Operator, Time, Class, Price, Seat available
+ * <p>
+ * Private methods
+ * (1) {@link #getParentActivityIntent()}
+ * (2) {@link #getOperatorSeats(String, String, String, String, String)}
+ * (3) {@link #clickListener}
+ * (4) {@link #setListViewHeightBasedOnChildren(ListView)}
+ * (5) {@link #checkGoDate()}
+ * (6) {@link #onBackPressed()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class BusOperatorSeatsActivity extends BaseActivity{
 	private String selectedFromCity = "";
 	private String selectedToCity = "";
@@ -78,8 +92,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+		//Show View for available Operator Names, Times, Bus classes, Prices, seats(available)
 		setContentView(R.layout.activity_show_operator_seats);
 		
+		//Data from SaleTicketActivity
 		Bundle bundle = getIntent().getExtras();
 		
 		if (bundle != null) {
@@ -112,6 +128,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		txt_round_trip_info = (TextView)findViewById(R.id.txt_round_trip_info);
 		txt_change_date = (TextView)findViewById(R.id.txt_change_date);
 		
+		//Title
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             
@@ -176,7 +193,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		if(skDetector.isConnectingToInternet()){
 			
 			 if (from_intent.equals("SaleTicket")) {
-				//Go Trip
+				//Departure Trip
 					 String fromCity = selectedFromCity;
 					 String toCity = selectedToCity;
 					 String tripDate = selectedTripDate;
@@ -197,9 +214,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			Toast.makeText(BusOperatorSeatsActivity.this, "No Network Connection!", Toast.LENGTH_SHORT).show();
 		}
 		
+		//If changeTripDate clicked, show Calendar
+		//after choose date again, show New Operators 
 		layout_round_info.setOnClickListener(new OnClickListener() {
 			
-			@SuppressWarnings("static-access")
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				final NewCalendarDialog calendarDialog = new NewCalendarDialog(BusOperatorSeatsActivity.this);
@@ -237,7 +255,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
    							selectedTripDate = chooseDate;
    	    					toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
    	    					
-   							//Go Trip
+   							//Departure Trip
    								 String fromCity = selectedFromCity;
    								 String toCity = selectedToCity;
    								 
@@ -265,6 +283,11 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		});
 	}
 	
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 * If it shows return info, not allow to click back
+	 */
 	@Override
 	public Intent getParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -272,7 +295,6 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			//disable back pressed
 		}else {
 			finish();
-			
 		}
 		return super.getParentActivityIntent();
 	}
@@ -331,6 +353,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		});
 	}
 	
+	/**
+	 * Time clicked: if one way (or) departure trip, go another activity {@link BusSelectSeatActivity}. 
+	 * If return trip, check return date with departure date and go another activity {@link BusSelectSeatActivity}. 
+	 */
 	private OnItemClickListener clickListener = new OnItemClickListener() {
 
 		public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -338,7 +364,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			// TODO Auto-generated method stub
 			
 			if (from_intent.equals("BusConfirm")) {
-				//Check go date is grater than return date
+				//if departure date is less than return date
 				if (checkGoDate()) {
 					Bundle bundle = new Bundle();
 					bundle.putString("operator_id", OperatorSeats.get(position).getOperatorId());
@@ -374,7 +400,11 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		}
 	};
 	
-	public void setListViewHeightBasedOnChildren(ListView listView) {
+	/**
+	 * Balance the height of List Items
+	 * @param listView ListView 
+	 */
+	private void setListViewHeightBasedOnChildren(ListView listView) {
 		ListAdapter listAdapter = listView.getAdapter();
 		if (listAdapter == null) {
 			// pre-condition
@@ -395,6 +425,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		listView.requestLayout();
 	}	
 	
+	/**
+	 * @return If Departure date is grater than Return date, return false. 
+	 * If not, return true.
+	 */
 	private boolean checkGoDate() {
 		// TODO Auto-generated method stub
 			Date goDate = null;
@@ -438,6 +472,10 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		return true;
 	}
 	
+	/**
+	 * If press back button of phone system, close {@link #BusOperatorSeatsActivity()}. 
+	 * If current page is return trip, not allow to go back
+	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub

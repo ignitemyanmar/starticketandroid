@@ -20,6 +20,17 @@ import com.ignite.mm.ticketing.sqlite.database.model.Operator;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 
+/**
+ * {@link #INetworkEngine} is the interface to make methods for API's route and parameters
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public interface INetworkEngine {
 	
 	@GET("/seatplan")

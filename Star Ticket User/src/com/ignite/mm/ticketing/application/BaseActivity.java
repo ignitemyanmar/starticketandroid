@@ -4,25 +4,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.afollestad.materialdialogs.AlertDialogWrapper;
-import com.ignite.mm.ticketing.sqlite.database.model.PermissionGlobal;
 import com.ignite.mm.ticketing.starticket.BusBookingListActivity;
 import com.ignite.mm.ticketing.starticket.BusReveiwActivity;
 import com.ignite.mm.ticketing.starticket.R;
-import com.ignite.mm.ticketing.starticket.SaleTicketActivity;
 import com.ignite.mm.ticketing.starticket.ThreeDaySalesActivity;
 import com.ignite.mm.ticketing.starticket.UserLogin;
 import com.ignite.mm.ticketing.starticket.UserProfileActivity;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
-import com.smk.skalertmessage.SKToastMessage;
-
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,7 +25,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.TypedValue;
@@ -46,29 +37,64 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint({ "ResourceAsColor", "SimpleDateFormat" }) public class BaseActivity extends ActionBarActivity{
+/**
+ * {@link #BaseActivity} is base class(parent activity) that can be called from other activities. 
+ * Usable methods 
+ * (1) {@link #closeAllActivities()} 
+ * (2) {@link #getToday()} 
+ * (3) {@link #getTodayTime()}
+ * (4) {@link #callHotLine(String)}  
+ * (5) {@link #changeDate(String)}
+ * (6) {@link #changeDateString(String)}
+ * (7) {@link #showAlert(String)}
+ * (8) {@link #getFloatingMenu()}
+ * (8) {@link #alertDialog(String, String, String, OnClickListener, OnClickListener)}     
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class BaseActivity extends ActionBarActivity{
 
 	public LoginUser AppLoginUser;
-	public PermissionGlobal AppPermission;
 	
 	public static final String FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION = "com.ignite.FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION";
 	private BaseActivityReceiver baseActivityReceiver = new BaseActivityReceiver();
 	public static final IntentFilter INTENT_FILTER = createIntentFilter();
 	
+	/**
+	 *  To filter activities to register
+	 * @return IntentFilter
+	 */
 	private static IntentFilter createIntentFilter(){
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION);
 		return filter;
 	}
 	
+	/**
+	 * Register activities that extends this base class.
+	 * If so, it includes to close, when we call {@link #closeAllActivities()}.
+	 */
 	protected void registerBaseActivityReceiver() {
 		registerReceiver(baseActivityReceiver, INTENT_FILTER);
 	}
 	
+	/**
+	 * UnRegister activities that extends this base class.
+	 */
 	protected void unRegisterBaseActivityReceiver() {
 		unregisterReceiver(baseActivityReceiver);
 	}
 	
+	/**
+	 * Finish (or) close the activities that register 
+	 *
+	 */
 	public class BaseActivityReceiver extends BroadcastReceiver{
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -78,19 +104,32 @@ import android.widget.Toast;
 		}
 	} 
 	
+	/**
+	 * Close all activities that extend this base class
+	 */
 	protected void closeAllActivities(){
 		sendBroadcast(new Intent(FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION));
 	}
 	
+	/**
+	 * {@link #onCreate} works when an activity starts to load.
+	 * 1) {@link #registerBaseActivityReceiver}
+	 * 2) create {@link LoginUser} object only one time in base class 
+	 * to get User's Information
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		registerBaseActivityReceiver();
 		AppLoginUser = new LoginUser(this);
-		AppPermission = new PermissionGlobal(this);
 	}
     
+	/**
+	 * {@link #onResume} works when the activity is come back again
+	 * 1) create {@link LoginUser} object again
+	 * to get User's Information
+	 */
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -101,9 +140,12 @@ import android.widget.Toast;
 			closeAllActivities();
 		}*/
 		super.onResume();
-		
 	}
 	
+	/**
+	 * Get Today Date eg. 2015-09-10
+	 * @return return today date (String)
+	 */
 	protected String getToday(){
 		Calendar c = Calendar.getInstance();
 		System.out.println("Current time => " + c.getTime());
@@ -114,6 +156,10 @@ import android.widget.Toast;
 		return formattedDate;
 	}
 	
+	/**
+	 * Get Current Time eg. 03:00 PM
+	 * @return return current time (String)
+	 */
 	protected String getTodayTime(){
 		
 		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
@@ -131,11 +177,19 @@ import android.widget.Toast;
 		return todayTime;
 	}
 	
+	/**
+	 * Create Menu upper right corner of all activities 
+	 * to get Star Ticket's CallCenter Phones and About
+	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
 	
+	/**
+	 * When menu items are clicked (upper right corner of all activities), 
+	 * call star ticket's Call Center Phones and check About Info
+	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 	      
 	    switch(item.getItemId()) {
@@ -152,7 +206,11 @@ import android.widget.Toast;
 		return false;
 	 }
 	
-	private void callHotLine(String phoneNo) {
+	/**
+	 *  Call Star Ticke't HotLines when {@code phoneNo} is clicked.
+	 * @param phoneNo Phone No (String) to make call
+	 */
+	protected void callHotLine(String phoneNo) {
 		// TODO Auto-generated method stub
 		  String hotPh = "tel:" + phoneNo.trim() ;
 		  Intent in = new Intent(Intent.ACTION_DIAL, Uri.parse(hotPh));
@@ -164,7 +222,12 @@ import android.widget.Toast;
 	      }
 	}
 	
-	public static String changeDate(String date){
+	/**
+	 * Change Date Format from yyyy-MM-dd to dd-MM-yyyy
+	 * @param date Date(String) 2015-09-10
+	 * @return Date(String) 10-09-2015
+	 */
+	protected static String changeDate(String date){
 		Log.i("", "to change date: "+date);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date StartDate = null;
@@ -179,7 +242,12 @@ import android.widget.Toast;
 		return DateFormat.format("dd-MM-yyyy", StartDate).toString();
 	}
 	
-	public static String changeDateString(String date){
+	/**
+	 * Change Date Format from yyyy-MM-dd to dd-MMMM-yyyy
+	 * @param date Date(String) 2015-09-10
+	 * @return Date(String) 10-Sept-2015
+	 */
+	protected static String changeDateString(String date){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date StartDate = null;
 		try {
@@ -191,7 +259,11 @@ import android.widget.Toast;
 		return DateFormat.format("dd-MMMM-yyyy", StartDate).toString();
 	}
 	
-	public void showAlert(String message) {
+	/**
+	 * Show Alert Dialog 
+	 * @param message Message to show in Alert Dialog
+	 */
+	protected void showAlert(String message) {
 		// TODO Auto-generated method stub
 		
 /*			final MaterialDialog mMaterialDialog = new MaterialDialog(this))
@@ -224,6 +296,9 @@ import android.widget.Toast;
 		alert.show();
 	}
 	
+	/**
+	 *  Get floating Menu (Me,Booking,Order)
+	 */
 	protected void getFloatingMenu() {
 		// TODO Auto-generated method stub
 		 // Set up the white button on the lower right corner
@@ -442,6 +517,14 @@ import android.widget.Toast;
         
     }
 	
+	/**
+	 * Show alert dialog with yes and no (buttons)
+	 * @param MSG message to show in dialog
+	 * @param ok custom text to show in Yes button
+	 * @param cancel custom text to show in No button
+	 * @param YES Yes button if you agree
+	 * @param NO No button if you disagree
+	 */
 	protected void alertDialog(String MSG, String ok, String cancel, OnClickListener YES, OnClickListener NO){
 		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
 		alertDialog.setMessage(MSG);

@@ -103,7 +103,7 @@ using namespace std;
  * Method:    postSaleParam
  * Signature: ()Ljava/lang/String;
  */
- JNIEXPORT jstring JNICALL Java_com_ignite_mm_ticketing_application_SecureParam_postSaleParam(JNIEnv * env, jobject pObj, jstring token, jstring op_id, jstring ag_id, jstring name, jstring ph, jstring rmk_type, jstring rmk, jstring gp_op_id, jstring lst_seat,jstring trip_id, jstring date, jstring f_c, jstring t_c, jstring usr_id, jstring dev, jstring bking, jstring bking_usr_id, jstring is_online){
+ JNIEXPORT jstring JNICALL Java_com_ignite_mm_ticketing_application_SecureParam_postSaleParam(JNIEnv * env, jobject pObj, jstring token, jstring op_id, jstring ag_id, jstring name, jstring ph, jstring rmk_type, jstring rmk, jstring gp_op_id, jstring lst_seat,jstring trip_id, jstring date, jstring f_c, jstring t_c, jstring usr_id, jstring dev, jstring bking, jstring bking_usr_id, jstring is_online, jstring extra_city_id){
   		
 	stringstream stream;
 
@@ -125,9 +125,10 @@ using namespace std;
 	const char *booking = env->GetStringUTFChars(bking, JNI_FALSE);
 	const char *booking_user_id = env->GetStringUTFChars(bking_usr_id, JNI_FALSE);
 	const char *online_agent = env->GetStringUTFChars(is_online, JNI_FALSE);
+	const char *extra_id = env->GetStringUTFChars(extra_city_id, JNI_FALSE);
 	
-
-	stream << "{\"access_token\":\""<<access_token<<"\",\"operator_id\":\""<<operator_id<<"\",\"agent_id\":\""<<agent_id<<"\",\"name\":\""<<username<<"\",\"phone\":\""<<phone<<"\",\"remark_type\":\""<<remark_type<<"\",\"remark\":\""<<remark<<"\",\"group_operator_id\":\""<<group_operator_id<<"\",\"seat_list\":\""<<seat_list<<"\",\"trip_id\":\""<<t_id<<"\",\"trip_date\":\""<<trip_date<<"\",\"from_city\":\""<<from_city<<"\",\"to_city\":\""<<to_city<<"\",\"user_id\":\""<<user_id<<"\",\"device_id\":\""<<device_id<<"\",\"booking\":\""<<booking<<"\",\"booking_user_id\":\""<<booking_user_id<<"\",\"online_agent\":\""<<online_agent<<"\"}";
+	//to change extra_id from api
+	stream << "{\"access_token\":\""<<access_token<<"\",\"operator_id\":\""<<operator_id<<"\",\"agent_id\":\""<<agent_id<<"\",\"name\":\""<<username<<"\",\"phone\":\""<<phone<<"\",\"remark_type\":\""<<remark_type<<"\",\"remark\":\""<<remark<<"\",\"group_operator_id\":\""<<group_operator_id<<"\",\"seat_list\":\""<<seat_list<<"\",\"trip_id\":\""<<t_id<<"\",\"trip_date\":\""<<trip_date<<"\",\"from_city\":\""<<from_city<<"\",\"to_city\":\""<<to_city<<"\",\"user_id\":\""<<user_id<<"\",\"device_id\":\""<<device_id<<"\",\"booking\":\""<<booking<<"\",\"booking_user_id\":\""<<booking_user_id<<"\",\"online_agent\":\""<<online_agent<<"\",\"extra_city_id\":\""<<extra_id<<"\"}";
 
 	string result = stream.str();
 

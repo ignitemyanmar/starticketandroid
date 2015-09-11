@@ -9,6 +9,19 @@ import android.widget.TextView;
 
 import com.ignite.mm.ticketing.application.BaseActivity;
 
+/**
+ * {@link #ThankYouActivity} is the class to show Thank You page after order (or) booking success
+ * <p>
+ * (1) {@link #onBackPressed()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class ThankYouActivity extends BaseActivity{
 	private TextView txt_thankYou;
 	private TextView txt_email_send;
@@ -52,6 +65,9 @@ public class ThankYouActivity extends BaseActivity{
 		//txt_email_send.setVisibility(View.VISIBLE);
 	}
 	
+	/**
+	 * If back arrow button clicked, close All Activities and go back {@link SaleTicketActivity}
+	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub

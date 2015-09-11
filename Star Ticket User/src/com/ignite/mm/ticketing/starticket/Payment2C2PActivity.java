@@ -44,7 +44,24 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-@SuppressLint("SetJavaScriptEnabled") public class Payment2C2PActivity extends BaseActivity{
+/**
+ * {@link #Payment2C2PActivity} is the class to get Online Payment Webview 
+ * to set User Card Info
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #confirmOrder(String, String, String, String, String, String, String, String, String, String, String, String)}
+ * (3) {@link #postOnlineSaleConfirm(String, String, String, String, String, String, String, String)}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class Payment2C2PActivity extends BaseActivity{
 
 	private String order_no;
 	private String order_amount;
@@ -288,6 +305,20 @@ import android.widget.Toast;
 		}
 	}
 	
+	/**
+	 * Confirm and save order into Operator Database and online DB, after online payment success
+	 * @param paymentType Payment Type
+	 * @param selectedSeats Selected Seats
+	 * @param ticketNos Ticket Nos
+	 * @param busOccurence BusOccurance
+	 * @param buyerName Buyer Name
+	 * @param permitAccessToken Permit AccessToken
+	 * @param saleOrderNo Order No
+	 * @param permitAgentId Permit Agent ID
+	 * @param ExtraCityId Extra City Id
+	 * @param confirmDate Confirm Date
+	 * @param from_go_trip_success status
+	 */
 	private void confirmOrder(final String paymentType, String selectedSeats, final String ticketNos
 			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
 			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
@@ -426,10 +457,19 @@ import android.widget.Toast;
 		}
 	
 
-/**
- *  Store sales into Online Sale Database (starticketmyanmar.com)
- */
-protected void postOnlineSaleConfirm(final String paymentType, final String from_goTrip_success, String sale_order_no2
+	/**
+	 *  Store orders into Online Sale Database after saving in operator DB. 
+	 *  If success save, show {@link ThankYouActivity}
+	 * @param paymentType Payment Type
+	 * @param from_goTrip_success from_goTrip_success
+	 * @param ticketNos2 Star Ticket No(s)
+	 * @param agentgroup_id2 Agent Group Id
+	 * @param extraCityName2  Extra City Name
+	 * @param operator_id2 Operator Id
+	 * @param sale_order_no2 Order No
+	 * @param totalGiftMoney Total GiftMoney
+	 */
+	private void postOnlineSaleConfirm(final String paymentType, final String from_goTrip_success, String sale_order_no2
 		, String operator_id2, String extraCityName2, String agentgroup_id2, String ticketNos2, String totalGiftMoney) {
 	// TODO Auto-generated method stub
 	
@@ -491,24 +531,13 @@ protected void postOnlineSaleConfirm(final String paymentType, final String from
 				}
 			});
 }
+	
+	/**
+	 * If back arrow button clicked, close the activity
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
-    	//test confirm 
-		//If One Way
-		if (trip_type == 1) {
-			confirmOrder(from_payment, selectedSeats, ticketNos
-					, busOccurence, BuyerName, BuyerNRC, permit_access_token
-					, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
-		}else if (trip_type == 2) {
-			//If Round Trip
-			//Confirm for Go Trip
-			confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
-					, goTripInfo_obj.getBusOccurence(), goTripInfo_obj.getBuyerName()
-					, goTripInfo_obj.getBuyerNRC(), goTripInfo_obj.getPermit_access_token()
-					, goTripInfo_obj.getSale_order_no(), goTripInfo_obj.getPermit_agent_id()
-					, goTripInfo_obj.getExtraCityID(), goTripInfo_obj.getConfirmDate(), "");
-		}
 		
 		finish();
 		return super.getSupportParentActivityIntent();

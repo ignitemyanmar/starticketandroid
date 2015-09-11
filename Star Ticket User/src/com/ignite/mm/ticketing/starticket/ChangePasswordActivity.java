@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.ignite.mm.ticketing.application.BaseActivity;
@@ -20,6 +21,22 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #ChangePasswordActivity} is the class to change Password 
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (1) {@link #getResetPassword()}
+ * (1) {@link #checkFields()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class ChangePasswordActivity extends BaseActivity{
 	private TextView txt_login_email;
 	private FButton btn_continue;
@@ -99,6 +116,9 @@ public class ChangePasswordActivity extends BaseActivity{
 		});
 	}
 	
+	/**
+	 *  Get code from Gmail and input (the code, new password and email) to change new password
+	 */
 	private void getResetPassword() {
 		// TODO Auto-generated method stub
 		dialog = new ZProgressHUD(ChangePasswordActivity.this);
@@ -133,7 +153,11 @@ public class ChangePasswordActivity extends BaseActivity{
 		});
 	}
 
-	public boolean checkFields() {
+	/**
+	 * @return If code, password, confirm password is null, return false. 
+	 * If password is less than 6 char, return false
+	 */
+	private boolean checkFields() {
 		if (txt_code.getText().toString().length() == 0) {
 			txt_code.setError("Enter the code we've sent to your email");
 			return false;
@@ -159,6 +183,9 @@ public class ChangePasswordActivity extends BaseActivity{
 
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub

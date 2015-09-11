@@ -31,7 +31,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.ignite.mm.ticketing.application.BaseActivity;
@@ -71,10 +70,26 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * {@link #UserRegister} is the class to register to be the member of Star Ticket
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #ResgisterUser()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class UserRegister extends BaseActivity implements OnClickListener {
 	
 	private ZProgressHUD dialog;
@@ -329,7 +344,9 @@ public class UserRegister extends BaseActivity implements OnClickListener {
         }
     }
 
-
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -437,7 +454,9 @@ public class UserRegister extends BaseActivity implements OnClickListener {
 	};
 
 
-    //(Register) Submit Button Click
+	/**
+	 *  Do register to be the member of Star Ticket
+	 */
 	private void ResgisterUser() {
 		
 		if(UserLogin.isSkip){

@@ -18,8 +18,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.MaterialDialog.Builder;
@@ -34,19 +36,33 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #UserLogin} is the class to log in for buying tickets
+ * <p>
+ * Private methods
+ * (1) {@link #clickListener}
+ * (2) Forgot password (button) clicked, go next activity {@link ForgetPasswordActivity}
+ * (3) {@link #checkFields()}
+ * (4) {@link #getSupportParentActivityIntent()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class UserLogin extends BaseActivity {
 
 	private EditText txtEmail;
 	private EditText txtPassword;
-	
 	private Context ctx = this;
 	private FButton[] buttons = new FButton[3];
 	private ZProgressHUD dialog;
-//	private String UserEmail, UserPassword;
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private ImageButton actionBarBack;
-	
 	private SKConnectionDetector connectionDetector;
 	private TextView actionBarTitle2;
 	private TextView txt_forget_password;
@@ -80,8 +96,10 @@ public class UserLogin extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		//Show view for User Log in (Email/UserName/Phone), Password, forgot password and Register
 		setContentView(R.layout.activity_login_phone);
 		
+		//Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -140,6 +158,7 @@ public class UserLogin extends BaseActivity {
 		txtPassword = (EditText) this.findViewById(R.id.txt_login_password);
 		
 		txt_forget_password = (TextView)this.findViewById(R.id.txt_forget_password);
+		
 		txt_forget_password.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
@@ -171,10 +190,21 @@ public class UserLogin extends BaseActivity {
 		connectionDetector = SKConnectionDetector.getInstance(this);
 		//connectionDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(!connectionDetector.isConnectingToInternet())
-			connectionDetector.showErrorMessage();
+			Toast.makeText(UserLogin.this, "No Network connection", Toast.LENGTH_SHORT).show();
 		
 	}
 
+	/**
+	 * (1) Log in button clicked: if username/email/phone is valid, 
+	 * get accesstoken + user's info and save in {@link BaseActivity} to call user's info anytime. 
+	 * <p>
+	 * And logIn activity is from {@link UserLogin}, {@link BusBookingListActivity}, {@link ThreeDaySalesActivity}, 
+	 * just close the activity after log in success. 
+	 * <p>
+	 * But logIn activity is from {@link BusSelectSeatActivity}, go next activity {@link BusConfirmActivity} after log in success. 
+	 * <p>
+	 * (2) Register button clicked: go next activity {@link UserRegister}.
+	 */
 	private OnClickListener clickListener = new OnClickListener() {
 
 		private String userEmail;
@@ -311,7 +341,8 @@ public class UserLogin extends BaseActivity {
 					}
 				}else{
 					
-					connectionDetector.showErrorMessage();
+					Toast.makeText(UserLogin.this, "No Network connection", Toast.LENGTH_SHORT).show();
+					
 					SharedPreferences sharedPreferences = ctx.getSharedPreferences("User",MODE_PRIVATE);
 					SharedPreferences.Editor editor = sharedPreferences.edit();
 					
@@ -355,7 +386,10 @@ public class UserLogin extends BaseActivity {
 		}
 	};
 	
-	public boolean checkFields() {
+	/**
+	 * @return If email and password is null, return false. If not, return true.
+	 */
+	private boolean checkFields() {
 		if (txtEmail.getText().toString().length() == 0) {
 			txtEmail.setError("Enter Your Email");
 			return false;
@@ -369,30 +403,9 @@ public class UserLogin extends BaseActivity {
 
 	}
 	
-
-    protected void yesNoAlert() {
-    	
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        
-        alert.setMessage("Are you sure you want to exit the app?");
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-			
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
-       
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-			
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				dialog.dismiss();
-			}
-		});
-        alert.show();
-    }
-    
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub

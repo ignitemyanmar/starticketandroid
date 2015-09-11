@@ -28,6 +28,21 @@ import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #PromotionActivity} is the class to look Promotion Advertisement
+ * <p>
+ * Private methods
+ * (1) {@link #getPromo()}
+ * (2) {@link #getSupportParentActivityIntent()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class PromotionActivity extends BaseActivity{
 	private ListView lv_promotion;
 	private ActionBar actionBar;
@@ -43,8 +58,10 @@ public class PromotionActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+		//Show View for Promotion Ads.
 		setContentView(R.layout.activity_promotion);
 		
+		//Title
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -60,10 +77,6 @@ public class PromotionActivity extends BaseActivity{
 		listOperatorPromo.add(R.string.str_mandalarmin+"");
 		listOperatorPromo.add("Elite");
 		listOperatorPromo.add(R.string.str_shwemandalar+"");
-		/*listOperatorPromo.add("မုိးေကာင္းကင္");
-		listOperatorPromo.add("Asia Express ");
-		listOperatorPromo.add("အာကာသ");
-		listOperatorPromo.add("�?ုိးရ�?နာ");*/
 		
 		connectionDetector = SKConnectionDetector.getInstance(this);
 		if(connectionDetector.isConnectingToInternet()){
@@ -74,6 +87,9 @@ public class PromotionActivity extends BaseActivity{
 		
 	}	
 	
+	/**
+	 *  Get Promotion Advertisement Info
+	 */
 	private void getPromo() {
 		// TODO Auto-generated method stub
 		
@@ -108,6 +124,9 @@ public class PromotionActivity extends BaseActivity{
 		});
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub

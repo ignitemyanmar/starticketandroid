@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.GridLayout.Alignment;
+import android.widget.GridView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -28,6 +29,21 @@ import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #UserProfileActivity} is the class to show User's Info and Points Info
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #postLoytalty()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class UserProfileActivity extends BaseActivity{
 
 	private ActionBar actionBar;
@@ -52,6 +68,9 @@ public class UserProfileActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -148,6 +167,9 @@ public class UserProfileActivity extends BaseActivity{
 		btn_log_out.setOnClickListener(clickListener);
 	}
 	
+	/**
+	 *  Get User's Points INfo
+	 */
 	private void postLoytalty() {
 		// TODO Auto-generated method stub
 		dialog = new ZProgressHUD(UserProfileActivity.this);

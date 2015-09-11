@@ -36,9 +36,29 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-@SuppressLint("SimpleDateFormat") public class PaymentTypeActivity extends BaseActivity{
+/**
+ * {@link #PaymentTypeActivity} is the class 
+ * to choose payment type(Pay with MPU, Pay with Visa/Master, 
+ * Cash on Shop(City Express,ABC,G&G,Sein Gay Har - parami), Cash on Delivery
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #onBackPressed()}
+ * (3) {@link #deleteSeats()}
+ * (4) {@link #deleteSelectedSeats(String, String, String, String)}
+ * (5) {@link #postSale(String)}
+ * (6) {@link #postOnlineSale(String, String, String)}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class PaymentTypeActivity extends BaseActivity{
 
-	
 	private RadioButton radio_payWithMPU;
 	private RadioButton radio_payWithVisaMaster;
 	private RadioButton radio_cashOnShop;
@@ -176,7 +196,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		Log.i("", "Dept date time: "+deptDateTime+", today+24hr: "+nowFormat.format(cal.getTime()));
  				
  		//Show(or)Hide
-		//Not Allow Click for Cash On Delivery, Cash On Shop (during 1 day before Departure Date)
+		//Disable Click for Cash On Delivery, Cash On Shop (during 1 day before Departure Date)
 		//Because we want users make booking + purchasing (1 day in advance) 
 		//except Online Payment
 		if (cal.getTime().compareTo(deptDateTime) >= 0) {
@@ -220,15 +240,17 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 	
 	/**
-	 * Save Booking (or) Sale into Database
+	 * If booking is 0 , call {@link #postOnlineSale(String, String, String)}.
+	 * <p> 
+	 * If booking is 1, go next activity {@link PaymentActivity} (Loyalty Program)
 	 * @param fromPayment Payment Type
 	 */
-	public void postSale(final String fromPayment)
+	private void postSale(final String fromPayment)
 	{
 		dialog = new ZProgressHUD(PaymentTypeActivity.this);
 		dialog.show();
 
-		//Buy Ticket
+		//If buy ticket
 		if(isBooking == 0){
 			
 			Log.i("", "Seat List(to payment): "+BusConfirmActivity.selectedSeatNos);
@@ -272,7 +294,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			startActivity(nextScreen);
 			dialog.dismiss();
 		}else{ 
-			//Booking Finished!
+			//If booking .....
 			Log.i("", "Seat List(to booking): "+BusConfirmActivity.selectedSeatNos);
 			
 			isBooking = 0;
@@ -282,7 +304,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				postOnlineSale(BusConfirmActivity.sale_order_no, fromPayment, BusConfirmActivity.TicketLists);
 			}else if (trip_type == 2) {
 				//If Round Trip
-				//Book for Go Trip
+				//Book for Departure Trip
 				postOnlineSale(goTripInfo_obj.getSale_order_no(), fromPayment, goTripInfo_obj.getTicket_nos());
 				
 				//Book for Return Trip
@@ -292,7 +314,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 
 	/**
-	 *  Store only Booking into Online Sale Database (starticketmyanmar.com)
+	 * Store only Booking into Online Database.  
+	 * Note: booking live time is only 2 hour. 
+	 * @param orderNo Order No
+	 * @param paymentType Payment Type
+	 * @param ticketList Ticket No(s)
 	 */
 	private void postOnlineSale(String orderNo, String paymentType, String ticketList) {
 		// TODO Auto-generated method stub
@@ -349,6 +375,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				});
 	}
 
+	/**
+	 * If back arrow button clicked, call {@link #deleteSeats()}
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -356,6 +385,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		return super.getSupportParentActivityIntent();
 	}
 	
+	/**
+	 * If back arrow button clicked, call {@link #deleteSeats()}
+	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
@@ -363,7 +395,8 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 	
 	/**
-	 * Delete Selected Seats from Operator Database
+	 * Show Dialog to delete selected seats. 
+	 * If Yes click, work {@link #deleteSelectedSeats(String, String, String, String)}
 	 */
 	private void deleteSeats() {
 		// TODO Auto-generated method stub
@@ -400,7 +433,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 						if (dialog != null) {
 							dialog.cancel();
 						}
-						progress.dismiss();
+						//progress.dismiss();
 						return;
 					}
 				});
@@ -410,10 +443,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	
 	/**
 	 * Delete Selected Seats from Operator Database
-	 * @param from_go_delete_success
-	 * @param permit_ip
-	 * @param permit_access_token
-	 * @param sale_order_no
+	 * @param from_go_delete_success from_go_delete_success(status string)
+	 * @param permit_ip Permit IP
+	 * @param permit_access_token Permit Access Token
+	 * @param sale_order_no Order No
 	 */
 	private void deleteSelectedSeats(final String from_go_delete_success, final String permit_ip, final String permit_access_token, final String sale_order_no) {
 		// TODO Auto-generated method stub

@@ -60,6 +60,26 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #PaymentActivity} is the class for Loyalty Program ( for discount )
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #getCurrency()}
+ * (3) {@link #getLoytalty()}
+ * (4) {@link #clickListener}
+ * (5) {@link #confirmOrder(String, String, String, String, String, String, String, String, String, String, String, String)}
+ * (6) {@link #postOnlineSaleConfirm(String, String, String, String, String, String, String, String)}
+ * (7) {@link #onBackPressed()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class PaymentActivity extends BaseActivity{
 
 	private ActionBar actionBar;
@@ -229,16 +249,6 @@ public class PaymentActivity extends BaseActivity{
             toolbar.setTitle("Loyalty Program");
             this.setSupportActionBar(toolbar);
         }
-        
-/*		String payment_method = "0";
-		
-		if (from_payment.equals("Pay with Online")) {
-			payment_method = "2";
-		}else if (from_payment.equals("Cash on Shop")) {
-			payment_method = "3";
-		}else if (from_payment.equals("Cash on Delivery")) {
-			payment_method = "4";
-		}*/
         
 		//Trip info
         txt_trip_info = (TextView)findViewById(R.id.txt_trip_info);
@@ -485,6 +495,9 @@ public class PaymentActivity extends BaseActivity{
 			}
 	}
 	
+	/**
+	 * If back arrow button clicked, call {@link #deleteSeats()}
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -492,6 +505,9 @@ public class PaymentActivity extends BaseActivity{
 		return super.getSupportParentActivityIntent();
 	}
 	
+	/**
+	 * Get current (USD) Exchange Rate from Server
+	 */
 	private void getCurrency() {
 		// TODO Auto-generated method stub
 		dialog = new ZProgressHUD(PaymentActivity.this);
@@ -525,6 +541,9 @@ public class PaymentActivity extends BaseActivity{
 		});
 	}
 	
+	/**
+	 * Get Loyalty Program's Gift Money
+	 */
 	private void getLoytalty() {
 		// TODO Auto-generated method stub
 		
@@ -640,6 +659,12 @@ public class PaymentActivity extends BaseActivity{
 		});
 	}
 
+	/**
+	 * {@code btn_payment} clicked: If payment type is Visa/Master, 
+	 * go next activity {@link Payment2C2PActivity}. 
+	 * <p>
+	 * If payment type is Cash on Delivery, call {@link #confirmOrder(String, String, String, String, String, String, String, String, String, String, String, String)}
+	 */
 	private OnClickListener clickListener = new OnClickListener() {
 
 		private Integer points_to_use = 0;
@@ -744,6 +769,20 @@ public class PaymentActivity extends BaseActivity{
 	private String use_points;
 	private String use_gift_money;
 	
+	/**
+	 * Confirm and save order into Operator Database and online DB
+	 * @param paymentType Payment Type
+	 * @param selectedSeats Selected Seats
+	 * @param ticketNos Ticket Nos
+	 * @param busOccurence BusOccurance
+	 * @param buyerName Buyer Name
+	 * @param buyerNRC Buyer NRC
+	 * @param saleOrderNo Order No
+	 * @param permitAgentId Permit Agent ID
+	 * @param ExtraCityId Extra City Id
+	 * @param confirmDate Confirm Date
+	 * @param from_go_trip_success status
+	 */
 	private void confirmOrder(final String paymentType, String selectedSeats, final String ticketNos
 			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
 			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
@@ -874,14 +913,14 @@ public class PaymentActivity extends BaseActivity{
 	}
 	
 	/**
-	 *  Store sales into Online Sale Database (starticketmyanmar.com)
+	 *  Store orders into Online Sale Database
 	 * @param ticketNos2 Star Ticket No(s)
 	 * @param agentgroup_id2 Agent Group Id
 	 * @param extraCityName2  Extra City Name
 	 * @param operator_id2 Operator Id
 	 * @param sale_order_no2 Order No
 	 */
-	protected void postOnlineSaleConfirm(final String paymentType, final String from_goTrip_success, String sale_order_no2
+	private void postOnlineSaleConfirm(final String paymentType, final String from_goTrip_success, String sale_order_no2
 			, String operator_id2, String extraCityName2, String agentgroup_id2, String ticketNos2, String totalGiftMoney) {
 		// TODO Auto-generated method stub
 		Log.i("", "sale_order_no: "+sale_order_no2+", operator_id: "
@@ -968,7 +1007,7 @@ public class PaymentActivity extends BaseActivity{
 					}
 				});
 	}
-
+	
 	protected boolean checkField() {
 		// TODO Auto-generated method stub
 		use_points = "0";
@@ -993,6 +1032,9 @@ public class PaymentActivity extends BaseActivity{
 		return true;
 	}
 	
+	/**
+	 * close the activity 
+	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub

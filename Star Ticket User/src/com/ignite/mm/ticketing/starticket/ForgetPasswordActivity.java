@@ -1,6 +1,5 @@
 package com.ignite.mm.ticketing.starticket;
 
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -20,6 +19,22 @@ import com.ignite.mm.ticketing.sqlite.database.model.ForgotPassword;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #ForgetPasswordActivity} is the class to get the reset code  
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (1) {@link #getForgotPassword()}
+ * (1) {@link #checkFields()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class ForgetPasswordActivity extends BaseActivity{
 	private EditText txt_login_email;
 	private FButton btn_search_email;
@@ -82,6 +97,9 @@ public class ForgetPasswordActivity extends BaseActivity{
 		});
 	}
 	
+	/**
+	 *  Get reset code for forget password
+	 */
 	private void getForgotPassword() {
 		// TODO Auto-generated method stub
 		dialog = new ZProgressHUD(ForgetPasswordActivity.this);
@@ -113,6 +131,10 @@ public class ForgetPasswordActivity extends BaseActivity{
 		});
 	}
 
+	/**
+	 * 
+	 * @return If email is null, return false
+	 */
 	public boolean checkFields() {
 		if (txt_login_email.getText().toString().length() == 0) {
 			txt_login_email.setError("Enter Your Email");
@@ -127,6 +149,9 @@ public class ForgetPasswordActivity extends BaseActivity{
 
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub

@@ -6,33 +6,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -40,21 +26,16 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.BookingDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
-import com.ignite.mm.ticketing.application.EditSeatDialog;
 import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusClassAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusSeatAdapter;
-import com.ignite.mm.ticketing.custom.listview.adapter.GroupUserListAdapter;
-import com.ignite.mm.ticketing.custom.listview.adapter.RemarkListAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.BundleListObjSeats;
 import com.ignite.mm.ticketing.sqlite.database.model.BusSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
@@ -70,7 +51,26 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-@SuppressLint("SimpleDateFormat") public class BusSelectSeatActivity extends BaseActivity{
+/**
+ * {@link #BusSelectSeatActivity} is the class to choose the seats 
+ * <p>
+ * Private methods
+ * (1) {@link #getParentActivityIntent()}
+ * (2) {@link #getPermission()}
+ * (3) {@link #getSeatPlan(String)}
+ * (4) {@link #getData()}
+ * (5) {@link #clickListener}
+ * (6) {@link #setGridViewHeightBasedOnChildren(GridView, int)}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class BusSelectSeatActivity extends BaseActivity{
 	
 	public static List<BusSeat> Bus_Seat;
 	private ListView lvClass;
@@ -150,7 +150,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		setContentView(R.layout.bus_seat_list);
 		connectionDetector = new SKConnectionDetector(this);
 		
-		//Get Data from past clicks
+		//Get Data from BusOperatorSeatsActivity
 		Bundle bundle = getIntent().getExtras();
 		
 		if (bundle != null) {
@@ -173,6 +173,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			from_intent = bundle.getString("from_intent");
 		}
 		
+		//Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -283,12 +284,12 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			e2.printStackTrace();
 		}				
 				
-		SharedPreferences notify = getSharedPreferences("NotifyBooking", Context.MODE_PRIVATE);
+/*		SharedPreferences notify = getSharedPreferences("NotifyBooking", Context.MODE_PRIVATE);
 		NotifyBooking = notify.getInt("count", 0);
 		if(NotifyBooking > 0){
 			actionBarNoti.setVisibility(View.GONE);
 			actionBarNoti.setText(NotifyBooking.toString());
-		}
+		}*/
 		
 		SelectedSeat 	= "";
 		btn_booking		= (Button) findViewById(R.id.btn_booking);
@@ -297,6 +298,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		Log.i("", "");
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -304,6 +308,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		return super.getParentActivityIntent();
 	}
 	
+	/**
+	 *  If this activity is come back, get Permission from Operator, and get Seat Plan.
+	 */
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -322,30 +329,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	}
 	
-	private void setupBooking(){
-		bookingDialog = new BookingDialog(BusSelectSeatActivity.this, null);
-		bookingDialog.setCallbackListener(new BookingDialog.Callback() {
-
-			public void onCancel() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void onSave(String agentId, String custName,
-					String custPhone, int remarkType, String remark) {
-				// TODO Auto-generated method stub
-				isBooking = 1;
-				AgentID = "0";
-				CustName = custName;
-				CustPhone = custPhone;
-				RemarkType = remarkType;
-				Remark = remark;
-			//	postSale();
-			}
-		});	
-		bookingDialog.show();
-	}
-	
+	/**
+	 *  Get Permission from selected Operator to get Seat Plan
+	 */
 	private void getPermission() {
 		// TODO Auto-generated method stub
 		//1. Get Permission
@@ -383,6 +369,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		});
 	}
 	
+	/**
+	 *  Get Seat Plan from permit operator
+	 * @param date Date (departure date) or (return date)
+	 */
 	private void getSeatPlan(String date) {
 		
 		String param = MCrypt.getInstance().encrypt(SecureParam.getSeatPlanParam(permit_access_token, permit_operator_id, tripId, "", "", "", date, ""));
@@ -408,7 +398,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					BusSeats = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<BusSeat>>() {}.getType());
 					
 					if (BusSeats != null && BusSeats.size() > 0) {
-						
 						getData();
 					}else {
 						dialog.dismissWithFailure();
@@ -427,7 +416,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	}
 		
 	/**
-	 * Get Seat Plan's Price Information
+	 * Get Seat Plan's seats and price information
 	 */
 	private void getData() {
 		
@@ -444,7 +433,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			BusClasses = BusSeats.get(0).getSeat_plan().get(0).getClasses();
 			remarkSeats = new ArrayList<Seat_list>();
 			
-			Map<Integer, List<Seat_list>> map = new HashMap<Integer, List<Seat_list>>();
+/*			Map<Integer, List<Seat_list>> map = new HashMap<Integer, List<Seat_list>>();
 			for (Seat_list remarkSeat : BusSeats.get(0).getSeat_plan().get(0).getSeat_list()) {
 				if(remarkSeat.getRemark_type() != 0){
 					Integer key  = remarkSeat.getRemark_type();
@@ -471,7 +460,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				Log.i("","Hello = "+ entry.getValue());
 				layout_remark.addView(lst_remark);
 				setListViewHeightBasedOnChildren(lst_remark);
-			}
+			}*/
 			
 			//Set Seat List in Grid
 			mSeat.setNumColumns(BusSeats.get(0).getSeat_plan().get(0).getColumn());
@@ -479,199 +468,25 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			Log.i("", "Seat List (mseat): "+BusSeats.get(0).getSeat_plan().get(0).getSeat_list());
 			
 			seatAdapter = new BusSeatAdapter(this, BusSeats.get(0).getSeat_plan().get(0).getSeat_list(), AppLoginUser.getRole());
-			seatAdapter.setCallbacks(callbacks);
+			//seatAdapter.setCallbacks(callbacks);
 			mSeat.setAdapter(seatAdapter);	
 			
 			setGridViewHeightBasedOnChildren(mSeat , Integer.valueOf(BusSeats.get(0).getSeat_plan().get(0).getColumn()));
 			
 			lvClass = (ListView)findViewById(R.id.lvBusClass);
 			lvClass.setAdapter(new BusClassAdapter(this, BusSeats.get(0).getSeat_plan()));
-			lvClass.setOnItemClickListener(itemClickListener);
 			
 			dialog.dismissWithSuccess();
 			
 		}else{
-			
 			dialog.dismissWithFailure("No bus yet");
 		}
 	}
 	
-	private String getRemarkType(int remarkType){
-		List<String> remarkTypes = new ArrayList<String>();
-		remarkTypes.add("မွတ္ ခ်က္ အမ်ိဳးအစား  ေရြးရန္");
-		remarkTypes.add("လမ္းၾကိဳ");
-		remarkTypes.add("ေတာင္းရန္");
-		remarkTypes.add("ခံု ေရႊ႕ ရန္");
-		remarkTypes.add("Date Change ရန္");
-		remarkTypes.add("စီးျဖတ္");
-		remarkTypes.add("ေတာင္းေရာင္း");
-		remarkTypes.add("ဆက္သြား");
-		return remarkTypes.get(remarkType).toString();
-	}
-	
-	private OnItemClickListener itemClickListener = new OnItemClickListener() {
-
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			txt_operator.setText("ကားဂိတ္ :   "+ BusSeats.get(0).getOperator());
-			txt_classes.setText("ယာဥ္ အမ်ိဳးအစား :   "+ BusSeats.get(0).getSeat_plan().get(position).getClasses());
-			txt_price.setText("ေစ်း ႏႈန္း :  "+ BusSeats.get(0).getSeat_plan().get(position).getPrice()+" Ks");
-			mSeat.setNumColumns(BusSeats.get(0).getSeat_plan().get(position).getColumn());
-			//mSeat.setAdapter(new BusSeatAdapter(BusSelectSeatActivity.this, BusSeats.get(0).getSeat_plan().get(position).getSeat_list()));	
-			setGridViewHeightBasedOnChildren(mSeat , Integer.valueOf(BusSeats.get(0).getSeat_plan().get(position).getColumn()));
-		}
-	};
-	
-	protected EditSeatDialog editSeatDialog;
-	private BusSeatAdapter.Callbacks callbacks = new BusSeatAdapter.Callbacks() {
-		
-		public void onClickEdit(final Seat_list list) {
-			// TODO Auto-generated method stub
-			editSeatDialog = new EditSeatDialog(BusSelectSeatActivity.this);
-			editSeatDialog.setName(list.getCustomerInfo().getName());
-			editSeatDialog.setPhone(list.getCustomerInfo().getPhone());
-			editSeatDialog.setNRC(list.getCustomerInfo().getNrcNo());
-			editSeatDialog.setTicketNo(list.getCustomerInfo().getTicketNo());
-			editSeatDialog.setCallbackListener(new EditSeatDialog.Callback() {
-				
-				private ProgressDialog dialog1;
-
-				public void onEdit() {
-					dialog = new ZProgressHUD(BusSelectSeatActivity.this);
-					dialog.show();
-					// TODO Auto-generated method stub
-			        String param = MCrypt.getInstance().encrypt(SecureParam.editSeatInfoParam(
-			        		permit_access_token, 
-			        		BusSeats.get(0).getSeat_plan().get(0).getId().toString(), 
-			        		Date, 
-			        		list.getSeat_no(), 
-			        		editSeatDialog.getName(), 
-			        		editSeatDialog.getPhone(), 
-			        		editSeatDialog.getNRC(), 
-			        		editSeatDialog.getTicketNo()));
-			        NetworkEngine.setIP(permit_ip);
-					NetworkEngine.getInstance().editSeatInfo(param,
-							new Callback<Response>() {
-
-								public void failure(RetrofitError arg0) {
-									// TODO Auto-generated method stub
-								}
-
-								public void success(Response arg0,
-										Response arg1) {
-									// TODO Auto-generated method stub
-									NetworkEngine.setIP("starticketmyanmar.com");
-									NetworkEngine.getInstance().editSeatInfo(
-											AppLoginUser.getAccessToken(),
-											BusSeats.get(0).getSeat_plan().get(0).getId().toString(), 
-											Date,
-											editSeatDialog.getName(), 
-											editSeatDialog.getPhone(), 
-											editSeatDialog.getNRC(), 
-											editSeatDialog.getTicketNo(), 
-											list.getSeat_no(), new Callback<Response>() {
-
-												public void failure(
-														RetrofitError arg0) {
-													// TODO Auto-generated method stub
-													
-												}
-
-												public void success(
-														Response arg0,
-														Response arg1) {
-													// TODO Auto-generated method stub
-													onResume();
-													dialog.dismissWithSuccess();
-													editSeatDialog.dismiss();
-													SKToastMessage.showMessage(BusSelectSeatActivity.this, "Successfully Updated.", SKToastMessage.SUCCESS);
-												}
-											});
-									
-								}
-							});
-				}
-				
-				public void onCancel() {
-					
-					// TODO Auto-generated method stub
-					alertDialog("Are you sure, you want to delete?", "Yes", "No", new DialogInterface.OnClickListener() {
-						
-								public void onClick(DialogInterface dialog,
-										int which) {
-									// TODO Auto-generated method stub
-									dialog.dismiss();
-									dialog1 = ProgressDialog.show(BusSelectSeatActivity.this, "", " Please wait...", true);
-							        dialog1.setCancelable(true);
-							        String param = MCrypt.getInstance().encrypt(SecureParam.deleteTicketParam(
-							        		permit_access_token, 
-							        		BusSeats.get(0).getSeat_plan().get(0).getId().toString(), 
-							        		Date, 
-							        		list.getSeat_no(), 
-							        		AppLoginUser.getId()));
-							        NetworkEngine.setIP(permit_ip);
-									NetworkEngine.getInstance().deleteTicket(param,
-											new Callback<Response>() {
-
-												public void success(
-														Response arg0,
-														Response arg1) {
-													// TODO Auto-generated
-													// method stub
-													NetworkEngine.setIP("starticketmyanmar.com");
-													NetworkEngine.getInstance().deleteSeat(
-															AppLoginUser.getAccessToken(), 
-															BusSeats.get(0).getSeat_plan().get(0).getId().toString(), 
-															Date, 
-															list.getSeat_no(), 
-															new Callback<Response>() {
-
-																public void failure(
-																		RetrofitError arg0) {
-																	// TODO Auto-generated method stub
-																	
-																}
-
-																public void success(
-																		Response arg0,
-																		Response arg1) {
-																	// TODO Auto-generated method stub
-																	onResume();
-																	dialog1.dismiss();
-																	SKToastMessage
-																			.showMessage(
-																					BusSelectSeatActivity.this,
-																					"Successfully Deleted.",
-																					SKToastMessage.SUCCESS);
-																	editSeatDialog.dismiss();
-																}
-															});
-													
-													
-												}
-
-												public void failure(
-														RetrofitError arg0) {
-													// TODO Auto-generated
-													// method stub
-													dialog1.dismiss();
-												}
-											});
-								}
-					}, new DialogInterface.OnClickListener() {
-						
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							dialog.dismiss();
-						}
-					});
-					
-				}
-			});
-			editSeatDialog.show();
-		}
-	};
-	
+	/**
+	 * {@code btn_check_out} clicked: if user not login yet, go activity {@link UserLogin}. 
+	 * If user already log in, go activity {@link BusConfirmActivity}
+	 */
 	private OnClickListener clickListener = new OnClickListener() {
 
 		public void onClick(View v) {
@@ -715,7 +530,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			if(v == btn_now_booking){
 				if(SelectedSeat.length() != 0){
 					if(connectionDetector.isConnectingToInternet()){
-						setupBooking();
+						//setupBooking();
 					}else{
 						connectionDetector.showErrorMessage();
 					}
@@ -887,36 +702,12 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	};
 	
-	public void showDialog(String msg){
-		LayoutInflater factory = LayoutInflater.from(this);
-	    final View msgDialogView = factory.inflate(R.layout.custom_msg_dialog, null);
-	    final AlertDialog msgDialog = new AlertDialog.Builder(this).create();
-	    msgDialog.setView(msgDialogView);
-	    LinearLayout msgContainer = (LinearLayout)msgDialogView.findViewById(R.id.dialog_container);
-	    try {
-			JSONObject data = new JSONObject(msg);
-			JSONArray arr = data.getJSONArray("Seat");
-			for (int i = 0; i < arr.length(); i++) {
-				JSONObject obj = arr.getJSONObject(i);
-				TextView txtMsg = new TextView(this);
-				txtMsg.setText(obj.getString("seatNo")+" is "+obj.getString("seatStatus"));
-				msgContainer.addView(txtMsg);
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    msgDialogView.findViewById(R.id.btnOK).setOnClickListener(new OnClickListener() {
-
-	        public void onClick(View v) {
-	            //your business logic 
-	            msgDialog.dismiss();
-	        }
-	    });
-	    msgDialog.show();
-	}
-	
-	public void setGridViewHeightBasedOnChildren(GridView gridView, int columns) {
+	/**
+	 * Balance Grid View's Height
+	 * @param gridView GridView
+	 * @param columns number of column
+	 */
+	private void setGridViewHeightBasedOnChildren(GridView gridView, int columns) {
 		ListAdapter listAdapter = gridView.getAdapter();
 		if (listAdapter == null) {
 			// pre-condition
@@ -941,26 +732,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		ViewGroup.LayoutParams params = gridView.getLayoutParams();
 		params.height = totalHeight;
 		gridView.setLayoutParams(params);
-
 	}
-	public static void setListViewHeightBasedOnChildren(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter(); 
-        if (listAdapter == null) {
-            // pre-condition
-            return;
-        }
-
-        int totalHeight = 0;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            View listItem = listAdapter.getView(i, null, listView);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
-        }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
-        listView.requestLayout();
-    }
 }
 

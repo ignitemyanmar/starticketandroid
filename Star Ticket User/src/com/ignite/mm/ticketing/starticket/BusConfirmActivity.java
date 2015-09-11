@@ -56,6 +56,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
@@ -80,7 +82,26 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-@SuppressLint("SimpleDateFormat") public class BusConfirmActivity extends BaseActivity {
+/**
+ * {@link #BusConfirmActivity} is the class to set customer information
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #getExtraDestination()}
+ * (3) {@link #itemSelectedListener}
+ * (4) {@link #checkFieldsAgent()}
+ * (5) {@link #clickListener}
+ * (5) {@link #postSale(String)}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class BusConfirmActivity extends BaseActivity {
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -201,6 +222,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		//Show View 
+		//Trip Information + to set customer info
 		setContentView(R.layout.nrc_activity);
 		
 		txt_trip_info = (TextView)findViewById(R.id.txt_trip_info);
@@ -232,7 +256,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		btn_confirm.setCornerRadius(7);
 		
 		radioGroup = (RadioGroup) findViewById(R.id.radioGroup_payment);        
-		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+/*		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
 	    {
 	        public void onCheckedChanged(RadioGroup group, int checkedId) {
 	            // checkedId is the RadioButton selected
@@ -244,22 +268,22 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					txt_booking_fee.setVisibility(View.GONE);
 				}
 	        }
-	    });
+	    });*/
 	    
-		radio_payWithMPU = (RadioButton)findViewById(R.id.radio_payWithMPU);
+/*		radio_payWithMPU = (RadioButton)findViewById(R.id.radio_payWithMPU);
 		radio_payWithVisaMaster = (RadioButton)findViewById(R.id.radio_payWithVisaMaster);
 		radio_onilnePayment = (RadioButton)findViewById(R.id.radio_onilnePayment);
 		radio_cashOnShop = (RadioButton)findViewById(R.id.radio_cashOnShop);
-		radio_cashOnDelivery = (RadioButton)findViewById(R.id.radio_cashOnDelivery);
+		radio_cashOnDelivery = (RadioButton)findViewById(R.id.radio_cashOnDelivery);*/
 		
 		connectionDetector = new ConnectionDetector(this);
 		
-		SharedPreferences notify = getSharedPreferences("NotifyBooking", Context.MODE_PRIVATE);
+/*		SharedPreferences notify = getSharedPreferences("NotifyBooking", Context.MODE_PRIVATE);
 		NotifyBooking = notify.getInt("count", 0);
 		if(NotifyBooking > 0){
 			actionBarNoti.setVisibility(View.GONE);
 			actionBarNoti.setText(NotifyBooking.toString());
-		}
+		}*/
 		
 		bundle = getIntent().getExtras();		
 		
@@ -276,6 +300,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			}
 		}
 		
+		//Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -368,7 +393,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
         
         //Trip Info
 		if (Intents.equals("SaleTicket")) {
-			//If One Way (or) After Go Trip...
+			//If One Way (or) After Departure Trip...
 			layout_return_title.setVisibility(View.GONE);
 			layout_return_trip_info.setVisibility(View.GONE);
 			
@@ -388,11 +413,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			txt_total_amount.setText("Total Amount: "+totalAmount+" Ks");
 			
 		}else if (Intents.equals("BusConfirm")) {
-			//After Return Choose
+			//After Return Trip chosen
 			layout_return_title.setVisibility(View.VISIBLE);
 			layout_return_trip_info.setVisibility(View.VISIBLE);
 			
-			//Show Go Trip Info (again)
+			//Show Departure Trip Info (again)
 			txt_from_to.setText(goTripInfo_obj.getFrom_to()+" ["+goTripInfo_obj.getOperator_Name()+"]");
 			txt_dept_date.setText(changeDate(goTripInfo_obj.getDate()));
 			txt_dept_time .setText(goTripInfo_obj.getTime());
@@ -410,7 +435,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			
 			Integer go_totalAmount = 0;
 			
-			//Go Total
+			//Departure Total
 			if (goTripInfo_obj.getSelected_seats() != null && !goTripInfo_obj.getSelected_seats().equals("")) {
 				String[] seat_string = goTripInfo_obj.getSelected_seats().split(",");
 				go_seat_count = seat_string.length;
@@ -427,86 +452,22 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			}
 			Integer totalAmount = seat_count * Integer.valueOf(Price);
 			
+			//Round Trip Total
 			Integer roundTotal = totalAmount + go_totalAmount;
 			txt_total_amount.setText("Total Amount : "+roundTotal+" Ks");
 		}
 
-		
-/*		//Get only 06:00 AM format
-		String timeformat = null;
-		try {
-			if (time.length() == 8) {
-				timeformat = time;
-			}else if (time.length() < 8) {
-				timeformat = "0"+time;
-			}else if (time.length() > 8) {
-				timeformat = time.substring(0, 8);
-			}
-		} catch (StringIndexOutOfBoundsException e) {
-			// TODO: handle exception
-			Log.i("", "Time Out Of Bound Exception: "+e);
-		}
-		
-		SimpleDateFormat serverFormat = new SimpleDateFormat("hh:mm aa");
-		Date timeTochange = null;
-		try {
-			if (timeformat != null) {
-				timeTochange = serverFormat.parse(timeformat);
-				Log.i("", "Server Time Format: "+serverFormat.format(timeTochange));
-			}
-			
-		} catch (ParseException e2) {
-			// TODO Auto-generated catch block
-			Log.i("", "Server Time Exception: "+e2);
-			e2.printStackTrace();
-		}
-		
-		//Show/Hide of Cash on Delivery & Cash on Shop
-		String deptTime = date+" "+serverFormat.format(timeTochange);
-		
-		//Today+24hr
-		SimpleDateFormat nowFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
-		cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 1);
-
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
-		deptDateTime = null;
-		try {
-			deptDateTime = formatter.parse(deptTime);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Log.i("", "Dept date time: "+deptDateTime+", today+24hr: "+nowFormat.format(cal.getTime()));*/
-		
-		//Not Allow Click for Cash On Delivery, Cash On Shop (during 1 day before Departure Date)
-		//Because we want users make booking + purchasing (1 day in advance) 
-		//except Online Payment
-/*		if (cal.getTime().compareTo(deptDateTime) >= 0) {
-			radio_cashOnDelivery.setEnabled(false);
-			radio_cashOnShop.setEnabled(false);
-		}else {
-			radio_cashOnDelivery.setEnabled(true);
-			radio_cashOnShop.setEnabled(true);
-		}*/
-		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
 		
 		edt_buyer = (MaterialEditText) findViewById(R.id.edt_buyer);	
-		/*if (Name != null) {
-			edt_buyer.setText(Name);
-		}*/
 		edt_buyer.setText(AppLoginUser.getUserName());
 		edt_nrc_no = (MaterialAutoCompleteTextView) findViewById(R.id.edt_nrc_no);
+		
 		if (Nrc != null) {
 			edt_nrc_no.setText(Nrc);
 		}
 		edt_phone = (MaterialEditText) findViewById(R.id.edt_phone);
 		edt_phone.setText(AppLoginUser.getPhone());
-		/*if (Phone != null) {
-			edt_phone.setText(Phone);
-		}*/
 		txt_agent = (CustomTextView) findViewById(R.id.txt_seller);
 		edt_ref_invoice_no = (MaterialEditText) findViewById(R.id.edt_ref_invoice_no);
 		rdo_cash_down = (RadioButton) findViewById(R.id.rdo_cash_down);
@@ -518,6 +479,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		sp_remark_type = (Spinner) findViewById(R.id.sp_remark_type);
 		edt_remark = (MaterialEditText) findViewById(R.id.edt_remark);
 		
+		//pre-input NRC info
 		nrcFormat = new ArrayList<String>();
 		nrcFormat.add("14/Ba Ba La (N)");
 		nrcFormat.add("14/Da Na Pha (N)");
@@ -816,7 +778,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		nrcFormat.add("13/Pa La Na (N)");
 		nrcFormat.add("13/Ta Ka Ma (N)");
 		
-		List<String> remarkTypes = new ArrayList<String>();
+/*		List<String> remarkTypes = new ArrayList<String>();
 		remarkTypes.add("မွတ္ ခ်က္ အမ်ိဳးအစား  ေရြးရန္");
 		remarkTypes.add("လမ္းၾကိဳ");
 		remarkTypes.add("ေတာင္းရန္");
@@ -824,11 +786,11 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		remarkTypes.add("Date Change ရန္");
 		remarkTypes.add("စီးျဖတ္");
 		remarkTypes.add("ေတာင္းေရာင္း");
-		remarkTypes.add("ဆက္သြား");
+		remarkTypes.add("ဆက္သြား");*/
 		
-		ArrayAdapter<String> remarkAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, remarkTypes);
+/*		ArrayAdapter<String> remarkAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, remarkTypes);
 		sp_remark_type.setAdapter(remarkAdapter);
-		sp_remark_type.setOnItemSelectedListener(remarkTypeSelectedListener);
+		sp_remark_type.setOnItemSelectedListener(remarkTypeSelectedListener);*/
 		
 		nrcListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, nrcFormat);
 		edt_nrc_no.setAdapter(nrcListAdapter);
@@ -856,7 +818,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				auto_txt_agent.setVisibility(View.GONE);
 			//}
 		}else{
-			skDetector.showErrorMessage();
+			Toast.makeText(BusConfirmActivity.this, "No Network Connection", Toast.LENGTH_SHORT).show();
 		}
 		
 		btn_confirm.setOnClickListener(clickListener);
@@ -868,7 +830,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			selectedSeat = Selected_seats.split(",");
 		}
 		
-		Random random = new Random();
+		//Random random = new Random();
 		
 		if (selectedSeat != null) {
 			for (int i = 0; i < selectedSeat.length; i++) {
@@ -885,7 +847,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				LinearLayout layout_checkbox = new LinearLayout(this);
 				layout_checkbox.setVisibility(View.GONE);
 				
-				CheckBox chk_free = new CheckBox(this);
+/*				CheckBox chk_free = new CheckBox(this);
 				chk_free.setText("Free Ticket");
 				lst_free_chk.add(chk_free);
 				//chk_free.setId(i+1 * 100);
@@ -930,16 +892,16 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 											View.GONE);
 							}
 						});
-				layout_checkbox.addView(chk_discount);
-				layout_ticket_no_container.addView(layout_checkbox, lps);
+				layout_checkbox.addView(chk_discount);*/
 				
+				layout_ticket_no_container.addView(layout_checkbox, lps);
 				
 				LinearLayout layout_free_ticket = new LinearLayout(this);
 				//layout_free_ticket.setId(i+1 * 150);
 				lst_layout_free_ticket.add(layout_free_ticket);
 				layout_free_ticket.setVisibility(View.GONE);
 				
-				RadioButton rdo_free_pro = new RadioButton(this);
+/*				RadioButton rdo_free_pro = new RadioButton(this);
 				rdo_free_pro.setText("Promotion");
 				rdo_free_pro.setId(random.nextInt(100) + 1);
 				lst_rdo_free_pro.add(rdo_free_pro);
@@ -969,15 +931,15 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				rdo_gp_free.addView(rdo_free_pilgrim);
 				rdo_gp_free.addView(rdo_free_spr);
 				layout_free_ticket.addView(rdo_gp_free);
-				layout_ticket_no_container.addView(layout_free_ticket);
+				layout_ticket_no_container.addView(layout_free_ticket);*/
 
-				MaterialEditText edt_discount = new MaterialEditText(this);
+				/*MaterialEditText edt_discount = new MaterialEditText(this);
 				edt_discount.setHint("Enter the discount amount.");
 				edt_discount.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 				// edt_discount.setId(i+1 * 400);
 				lst_discount_edt.add(edt_discount);
 				edt_discount.setVisibility(View.GONE);
-				layout_ticket_no_container.addView(edt_discount);
+				layout_ticket_no_container.addView(edt_discount);*/
 
 				MaterialEditText ticket_no = new MaterialEditText(this);
 				ticket_no.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -1019,6 +981,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select City", "", ""));
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -1026,7 +991,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		return super.getSupportParentActivityIntent();
 	}
 	
-	private OnItemSelectedListener remarkTypeSelectedListener = new OnItemSelectedListener() {
+/*	private OnItemSelectedListener remarkTypeSelectedListener = new OnItemSelectedListener() {
 
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
@@ -1043,12 +1008,15 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			// TODO Auto-generated method stub
 			
 		}
-	};
+	};*/
 	
 	String param;
 	public static String ExtraCityName;
 	public static String ExtraCityPrice = "0";
 	
+	/**
+	 *  Get Extra Destination Cities and Prices
+	 */
 	private void getExtraDestination(){
 		
 		dialog = new ZProgressHUD(BusConfirmActivity.this);
@@ -1096,6 +1064,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				});
 	}
 	
+	/**
+	 *  If Extra City chosen, get Extra city's info
+	 */
 	private OnItemSelectedListener itemSelectedListener = new OnItemSelectedListener() {
 
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
@@ -1130,58 +1101,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	public static String CustPhone;
 	
 	/**
-	 *  Store data into Online Sale Database (starticketmyanmar.com)
+	 * @return If customer name, phone no is null, return false. 
+	 * If phone no is less than 6 characters and not starts with 09 or 01, return false. 
 	 */
-	protected void postOnlineSaleConfirm() {
-		// TODO Auto-generated method stub
-		Log.i("", "SaleOrderNo: "+"0"+", Op-Id: "+permit_operator_id+", User code no: "+AppLoginUser.getCodeNo()
-				+", Token: "+AppLoginUser.getAccessToken());
-		
-		NetworkEngine.setIP("starticketmyanmar.com");
-		//NetworkEngine.setIP("128.199.255.246");
-		NetworkEngine.getInstance().postOnlineSaleDB("0", permit_operator_id, AppLoginUser.getCodeNo()
-				, AppLoginUser.getAccessToken(), ExtraCityName, "0931247515"
-				, "Saw Maine K", "No.50, Lanthit Street, Lanmadaw Tsp, Yangon", "Lanmadaw Tsp"
-				, "10", "0", "", "", "", "", "", "", new Callback<Response>() {
-			
-					public void failure(RetrofitError arg0) {
-						// TODO Auto-generated method stub
-						if (arg0.getResponse() != null) {
-							
-							Log.i("", "Error: "+arg0.getResponse().getStatus());
-
-						}
-						dialog.dismissWithFailure();
-					}
-
-					public void success(Response arg0, Response arg1) {
-						// TODO Auto-generated method stub
-						if (arg1 != null) {
-							
-							SKToastMessage.showMessage(BusConfirmActivity.this, "လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ !", SKToastMessage.SUCCESS);
-							closeAllActivities();
-							startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class).putExtras(bundle));
-							//Show Voucher		
-							if(Intents.equals("booking")){
-								bundle.putString("from_intent", "booking");								
-							}
-							
-							bundle.putString("extra_city", ExtraCityName);
-							bundle.putString("ticket_price", ticket_price);
-							bundle.putString("total_amount", total_amount);
-							
-							//startActivity(new Intent(BusConfirmActivity.this, PDFBusActivity.class).putExtras(bundle));
-							dialog.dismissWithSuccess();
-							finish();
-							
-							Log.i("", "Server Response1: "+arg0.getStatus()+", "+arg0.getReason()+", "+arg0.getBody());
-							Log.i("", "Server Response: "+arg1.getStatus()+", "+arg1.getReason()+", "+arg1.getBody());
-						}
-					}
-				});
-	}
-
-	public boolean checkFieldsAgent()
+	private boolean checkFieldsAgent()
     {
     	if(edt_buyer.getText().toString().length() == 0){
     		edt_buyer.setError("Enter Buyer Name");
@@ -1208,7 +1131,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
     	return true;
    }
 	
-	public static Set<String> findDuplicates(List<String> listTicket) {
+/*	public static Set<String> findDuplicates(List<String> listTicket) {
 	 
 	final Set<String> duplicate = new HashSet<String>();
 	final Set<String> set1 = new HashSet<String>();
@@ -1219,9 +1142,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	}
 	return duplicate;
-}
+}*/
 	
-	public boolean checkFieldsOperator()
+/*	public boolean checkFieldsOperator()
     {
     	if(edt_buyer.getText().toString().length() == 0){
     		edt_buyer.setError("Enter Buyer Name");
@@ -1246,10 +1169,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
     	}
     	
     	return true;
-   }
+   }*/
 	
 	private String fromPayment;
 	
+	/**
+	 *  {@code btn_confirm} clicked: {@link #postSale(String)}
+	 */
 	private OnClickListener clickListener = new OnClickListener() {
 
 		public void onClick(View v) {
@@ -1297,9 +1223,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	public static String TicketLists = "";
 	
 	/**
-	 * Khone kar (Save Selected Seats in Operators Database
+	 * Save Selected Seats in Operators Database. 
+	 * If one way, go next activity {@link PaymentTypeActivity}. 
+	 * If round trip, if return trip not choose yet, go next activity {@link BusOperatorSeatsActivity}, 
+	 * if return trip choose finish, go next activity {@link PaymentTypeActivity}.
+	 * @param date Date (departure date) or (return date)
 	 */
-	public void postSale(final String date)
+	private void postSale(final String date)
 	{
 		dialog = new ZProgressHUD(BusConfirmActivity.this);
 		dialog.show();
@@ -1310,7 +1240,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 					, "", permit_operator_group_id, MCrypt.getInstance()
 					.encrypt(seat_List.getSeatsList().toString()), BusOccurence, date, FromCity, ToCity, String.valueOf(AppLoginUser
 					.getId()), DeviceUtil.getInstance(this).getID(), "1",
-					String.valueOf(AppLoginUser.getId()),"true"));
+					String.valueOf(AppLoginUser.getId()),"true",ExtraCityID));
 		
 		
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -1451,55 +1381,5 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		lt.execute();
 		
 		Log.i("", "Post Sale: "+"http://"+ permit_ip +"/sale"+" , Params: "+params.toString());
-	}
-	
-	/**
-	 *  Store Booking into Online Sale Database (starticketmyanmar.com)
-	 */
-	private void postOnlineSale(String orderNo, final String SeatLists, final JSONObject jsonObject, String paymentType, String ticketList) {
-		// TODO Auto-generated method stub
-		
-		Log.i("", "Ticket list: "+ticketList);
-		
-		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().postOnlineSaleDB(
-				orderNo
-				, permit_operator_id
-				, AppLoginUser.getCodeNo()
-				, AppLoginUser.getAccessToken(), ExtraCityName, AppLoginUser.getPhone()
-				, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
-				, "0", "0", "", "", "", "1"
-				, paymentType, "", new Callback<Response>() {
-			
-					public void failure(RetrofitError arg0) {
-						// TODO Auto-generated method stub
-						if (arg0.getResponse() != null) {
-							Log.i("", "Error: "+arg0.getResponse().getStatus());
-						}
-						dialog.dismissWithFailure();
-					}
-
-					public void success(Response arg0, Response arg1) {
-						// TODO Auto-generated method stub
-						if (arg1 != null) {
-							
-		    				try {
-		    					
-		    					Log.i("", "Booking status: "+arg1.getStatus()+", reson: "+arg1.getReason());
-		    					
-		    					Bundle bundle = new Bundle();
-		        				bundle.putString("payment_type", "Cash on Shop");
-		    					
-		    					startActivity(new Intent(BusConfirmActivity.this, ThankYouActivity.class).putExtras(bundle));
-		    					
-		    					dialog.dismissWithSuccess();
-		    					
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-					}
-				});
 	}
 }

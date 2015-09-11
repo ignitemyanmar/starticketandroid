@@ -38,6 +38,22 @@ import com.smk.sklistview.SKListView;
 import com.smk.sklistview.SKListView.Callbacks;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #ThreeDaySalesActivity} is the class to show Order List (Brief Info). 
+ * Note: show 12 info at one time
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #getThreeDaySales()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class ThreeDaySalesActivity extends BaseActivity{
 
 	private String intents = "";
@@ -103,6 +119,9 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		lv_threeday_sales.setDividerHeight(0);
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -111,7 +130,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 	}
 
 	/**
-	 *  Get Sales Reports for 3 days
+	 *  Get Order List for 3 days
 	 */
 	private void getThreeDaySales() {
 		// TODO Auto-generated method stub

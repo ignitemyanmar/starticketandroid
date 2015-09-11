@@ -1,21 +1,14 @@
 package com.ignite.mm.ticketing.starticket;
 
 import info.hoang8f.widget.FButton;
-
-import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.apache.http.conn.ConnectTimeoutException;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-
-import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -36,7 +29,6 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
@@ -54,12 +46,39 @@ import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.squareup.timessquare.CalendarPickerView;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-@SuppressLint("SimpleDateFormat") public class SaleTicketActivity extends BaseActivity{
+/**
+ * {@link #SaleTicketActivity} is the class to search Trips by Date (one way) or (round trip).
+ * <p>
+ * Private methods
+ * (1) {@link #getFloatingMenu()}
+ * (2) {@link #getFromCities()}     
+ * (3) {@link #getToCities(String, String)}
+ * (4) {@link #getTripTime()}   
+ * (5) {@link #fromCityClickListener}
+ * (6) {@link #toCityClickListener}
+ * (7) {@link #tripTimeClickListener}  
+ * (8) {@link #clickListener}
+ * (9) {@link #getOperatorSeats(String, String, String, String, String)}, if return status is 206, no available for return trip.
+ * (10) {@link #checkFields()}
+ * <p>
+ * Public method
+ * (1) {@link #onBackPressed()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class SaleTicketActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
+	
 	private Spinner spn_from_trip;
 	private Spinner spn_to_trip;
 	private Spinner spn_trip_date;
@@ -111,8 +130,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			userRole = bundle.getString("userRole");
 		}
 		
+		//Show View to search for FromCity Names, ToCity Names, Trip Times, Trip Date by (one way) or (round trip) 
 		setContentView(R.layout.activity_sale_ticket);
 		
+		//Title Toolbar
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setLogo(R.drawable.ic_launcher);
@@ -133,6 +154,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		btn_trip_date = (Button)findViewById(R.id.btn_trip_date);
 		btn_return_date = (Button)findViewById(R.id.btn_return_date);
 		spn_trip_time = (Spinner)findViewById(R.id.spn_trip_time);
+		
 		btn_search = (FButton)findViewById(R.id.btn_search);
 		btn_search.setButtonColor(getResources().getColor(R.color.yellow));
 		btn_search.setShadowEnabled(true);
@@ -157,6 +179,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		
 		skDetector = SKConnectionDetector.getInstance(SaleTicketActivity.this);
 		
+		//If network connection available, get From Cities
 		if(skDetector.isConnectingToInternet()){
 			getFromCities();
 		}else{
@@ -175,6 +198,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	    radio_round_trip.setOnClickListener(clickListener);
 	}
 
+	/**
+	 *  Get FromCity names
+	 */
 	private void getFromCities() {
 		// TODO Auto-generated method stub
 		
@@ -182,6 +208,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		dialog.show();
 		
 		fromCities = new ArrayList<String>();
+		
 		//fromCities.add("Choose - From City");
 		
 			NetworkEngine.setIP("starticketmyanmar.com");
@@ -232,6 +259,14 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			});
 	}
 
+	/**
+	 *  Get ToCity names. 
+	 *  If one way, show all cities that have own seats. 
+	 *  If round trip, 
+	 *  show only cities that available for both (departure + return).
+	 * @param fromCity Selected From City Name
+	 * @param round_trip if round trip 1 , if one way 0
+	 */
 	private void getToCities(String fromCity, String round_trip) {
 		// TODO Auto-generated method stub
 
@@ -277,6 +312,10 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		});
 	}
 	
+	/**
+	 *  Get available Trip Times by selectedFromCity and selectedToCity
+	 *  for only one way
+	 */
 	private void getTripTime() {
 		// TODO Auto-generated method stub
 
@@ -324,6 +363,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	
 	//----------------------------------------- Click Listener ---------------------------------------------------------------------
 
+	/**
+	 * if fromCity is clicked, show toCities for one way (or) round trip
+	 */
 	private OnItemSelectedListener fromCityClickListener = new OnItemSelectedListener() {
 		
 		public void onItemSelected(AdapterView<?> parent, View view,
@@ -351,6 +393,9 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	}; 
 	
+	/**
+	 * ToCity click, if one way, show trip Time. If round trip, hide trip time
+	 */
 	private OnItemSelectedListener toCityClickListener = new OnItemSelectedListener() {
 
 		public void onItemSelected(AdapterView<?> parent, View view,
@@ -380,8 +425,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			
 		}
 	};
-	protected String selectedTripTime; 
 	
+	protected String selectedTripTime;
+	
+	/**
+	 * Trip Time click, get selected time
+	 */
+	 
 	private OnItemSelectedListener tripTimeClickListener = new OnItemSelectedListener() {
 
 		public void onItemSelected(AdapterView<?> parent, View view,
@@ -402,6 +452,14 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		}
 	};
 	
+	/**
+	 * (1) If {@code radio_one_way} checked, hide return date, show all of own seat cities
+	 * (2) If {@code radio_round_trip} checked, show returnDate and hide tripTime, show only (depart+return) cities
+	 * (3) If {@code btn_trip_date} clicked, show Calendar
+	 * (4) If {@code btn_return_date} clicked, show Calendar for Return
+	 * (5) If {@code btn_search} clicked, Go another activity {@link BusOperatorSeatsActivity} 
+	 * (6) If {@code img_promotion_ads} clicked, Go another activity {@link PromotionActivity}
+	 */
 	private OnClickListener clickListener = new OnClickListener() {
 		
 		@SuppressWarnings("static-access")
@@ -411,7 +469,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 				layout_return_date.setVisibility(View.GONE);
 				view_return_date.setVisibility(View.GONE);
 				
-				//one way (show all khone pine cities)
+				//one way (show all of own seat cities)
 				if(skDetector.isConnectingToInternet()){
 					getToCities(selectedFromCity, "0");
 				}else{
@@ -564,7 +622,6 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 	private void getOperatorSeats(final String fromCity, final String toCity, final String tripDate, final String tripTime, String round_trip_status){
 		
 		dialog = new ZProgressHUD(SaleTicketActivity.this);
-		dialog.setMessage("Searching...");
 		dialog.show();
 		
 		Log.i("", "Search Operator: "+fromCity+", "
@@ -608,7 +665,13 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		});
 	}
 	  
-	public boolean checkFields() {
+	/**
+	 *  (1) If {@code spn_from_trip} is null, return false
+	 *  (2) If {@code spn_to_trip} is null, return false 
+	 *  (3) If {@code radio_round_trip} is checked, if return date is less than departure date, return false
+	 * @return If all above is ok, return true
+	 */
+	private boolean checkFields() {
 		
 		// TODO Auto-generated method stub
 		if (spn_from_trip.getSelectedItem() != null) {
@@ -658,11 +721,15 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 		return true;
 	}
 	
+	/**
+	 * If press back button of phone system, 
+	 * show alert asking "Are you sure you want to exit the app?", 
+	 * if yes click, exist the app, if no click, dismiss the dialog
+	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		//super.onBackPressed();
-		//yesNoAlert();
 		alertDialog("Are you sure you want to exit the app?"
 		, "Yes", "No", new DialogInterface.OnClickListener() {
 			
@@ -678,5 +745,4 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 			}
 		});
 	}
-	
 }

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,6 +27,21 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+/**
+ * {@link #UserEditProfileActivity} is the class to edit User's Info
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * (2) {@link #postEditProfile()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
 public class UserEditProfileActivity extends BaseActivity {
 
 	private ActionBar actionBar;
@@ -104,6 +120,9 @@ public class UserEditProfileActivity extends BaseActivity {
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -141,6 +160,9 @@ public class UserEditProfileActivity extends BaseActivity {
 		}
 	};
 
+	/**
+	 *  Send update info into server, If success, log out automatically
+	 */
 	private void postEditProfile() {
 		// TODO Auto-generated method stub
 		dialog = new ZProgressHUD(UserEditProfileActivity.this);

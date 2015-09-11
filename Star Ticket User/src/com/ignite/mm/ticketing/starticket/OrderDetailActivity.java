@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,7 +17,21 @@ import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 
-@SuppressLint("DefaultLocale") public class OrderDetailActivity extends BaseActivity{
+/**
+ * {@link #OrderDetailActivity} is the class to show Order Confirm Detail Info
+ * <p>
+ * Private methods
+ * (1) {@link #getSupportParentActivityIntent()}
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class OrderDetailActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -140,6 +155,9 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 		}
 	}
 	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub

@@ -1,39 +1,31 @@
 package com.ignite.mm.ticketing.starticket;
 
-
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.starticket.R;
-
 import android.os.Bundle;
-import android.os.Handler;
-import android.widget.TextView;
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 
-@SuppressLint("ShowToast") public class MainActivity extends BaseActivity {
+/**
+ * {@link #MainActivity} is Main class(first activity).
+ * (1) Splash Screen Show for 1000 milliseconds (1 second)
+ * (2) Start another activity {@link #SaleTicketActivity} that show Trip Search By Date
+ * <p>
+ * ** Star Ticket App is used to purchase bus tickets via online. 
+ * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
+ * Pay via (MPU, Visa, Master) 
+ * @author Su Wai Phyo (Ignite Software Solutions), 
+ * Last Modified : 04/Sept/2015, 
+ * Last ModifiedBy : Su Wai Phyo
+ * @version 1.0 
+ */
+public class MainActivity extends BaseActivity {
 	private Context ctx = this;
-	private ActionBar actionBar;
-	
-	//Check Device connected
-	public static boolean checkState = true;
-	private Thread tv_update;
-	TextView textView_state;
-	public static final int MESSAGE_STATE_CHANGE = 1;
-	public static final int MESSAGE_READ = 2;
-	public static final int MESSAGE_WRITE = 3;
-	public static final int MESSAGE_DEVICE_NAME = 4;
-	public static final int MESSAGE_TOAST = 5;
-	Handler mhandler=null;
-	Handler handler = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/*actionBar = getActionBar();
-		actionBar.hide();*/
-		//getActionBar().hide();
+		
 		setContentView(R.layout.activity_main);
 		
 		Thread splashTread = new Thread() {
@@ -41,21 +33,20 @@ import android.content.Intent;
 			@Override
 			public void run() {
 				try {
-					
 					sleep(1000);
-					
 				} catch (InterruptedException e) {
 					// do nothing
 				} finally {
+					//close the main activity
 					finish();
-
-					//startActivity(new Intent(ctx, UserLogin.class));
-					startActivity(new Intent(ctx, SaleTicketActivity.class));
 					
+					//Start another activity #SaleTicketActivity that show Trip Search
+					startActivity(new Intent(ctx, SaleTicketActivity.class));
 				}
 			}
 		};
 
+		//Splash Screen Show for 1000 milliseconds before #SaleTicketActivity
 		splashTread.start();
 	} 
 }
