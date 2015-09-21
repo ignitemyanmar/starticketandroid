@@ -1,13 +1,17 @@
+
 package com.ignite.mm.ticketing.sqlite.database.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ThreeDaySale {
+public class Transaction {
 
 @SerializedName("order_id")
 @Expose
 private String orderId;
+@SerializedName("transaction_id")
+@Expose
+private String transactionId;
 @Expose
 private String date;
 @SerializedName("departure_date")
@@ -65,16 +69,16 @@ private String seatNo;
 @Expose
 private String passengers;
 @Expose
-private int price;
+private String price;
 @SerializedName("ticket_qty")
 @Expose
 private int ticketQty;
 @SerializedName("discount_amount")
 @Expose
-private int discountAmount;
+private String discountAmount;
 @SerializedName("total_amount")
 @Expose
-private int totalAmount;
+private String totalAmount;
 @SerializedName("payment_type")
 @Expose
 private String paymentType;
@@ -82,16 +86,10 @@ private String paymentType;
 private String delivery;
 @SerializedName("Total_USD")
 @Expose
-private double TotalUSD;
+private int TotalUSD;
 @SerializedName("exchange_rate")
 @Expose
-private double exchangeRate;
-@SerializedName("transaction_id")
-@Expose
-private String transactionId;
-@SerializedName("round_trip")
-@Expose
-private String roundTrip;
+private int exchangeRate;
 @SerializedName("seller_id")
 @Expose
 private String sellerId;
@@ -114,6 +112,24 @@ return orderId;
 */
 public void setOrderId(String orderId) {
 this.orderId = orderId;
+}
+
+/**
+* 
+* @return
+* The transactionId
+*/
+public String getTransactionId() {
+return transactionId;
+}
+
+/**
+* 
+* @param transactionId
+* The transaction_id
+*/
+public void setTransactionId(String transactionId) {
+this.transactionId = transactionId;
 }
 
 /**
@@ -499,7 +515,7 @@ this.passengers = passengers;
 * @return
 * The price
 */
-public int getPrice() {
+public String getPrice() {
 return price;
 }
 
@@ -508,7 +524,7 @@ return price;
 * @param price
 * The price
 */
-public void setPrice(int price) {
+public void setPrice(String price) {
 this.price = price;
 }
 
@@ -535,7 +551,7 @@ this.ticketQty = ticketQty;
 * @return
 * The discountAmount
 */
-public int getDiscountAmount() {
+public String getDiscountAmount() {
 return discountAmount;
 }
 
@@ -544,7 +560,7 @@ return discountAmount;
 * @param discountAmount
 * The discount_amount
 */
-public void setDiscountAmount(int discountAmount) {
+public void setDiscountAmount(String discountAmount) {
 this.discountAmount = discountAmount;
 }
 
@@ -553,7 +569,7 @@ this.discountAmount = discountAmount;
 * @return
 * The totalAmount
 */
-public int getTotalAmount() {
+public String getTotalAmount() {
 return totalAmount;
 }
 
@@ -562,7 +578,7 @@ return totalAmount;
 * @param totalAmount
 * The total_amount
 */
-public void setTotalAmount(int totalAmount) {
+public void setTotalAmount(String totalAmount) {
 this.totalAmount = totalAmount;
 }
 
@@ -607,7 +623,7 @@ this.delivery = delivery;
 * @return
 * The TotalUSD
 */
-public double getTotalUSD() {
+public int getTotalUSD() {
 return TotalUSD;
 }
 
@@ -616,7 +632,7 @@ return TotalUSD;
 * @param TotalUSD
 * The Total_USD
 */
-public void setTotalUSD(double TotalUSD) {
+public void setTotalUSD(int TotalUSD) {
 this.TotalUSD = TotalUSD;
 }
 
@@ -625,7 +641,7 @@ this.TotalUSD = TotalUSD;
 * @return
 * The exchangeRate
 */
-public double getExchangeRate() {
+public int getExchangeRate() {
 return exchangeRate;
 }
 
@@ -634,44 +650,8 @@ return exchangeRate;
 * @param exchangeRate
 * The exchange_rate
 */
-public void setExchangeRate(double exchangeRate) {
+public void setExchangeRate(int exchangeRate) {
 this.exchangeRate = exchangeRate;
-}
-
-/**
-* 
-* @return
-* The transactionId
-*/
-public String getTransactionId() {
-return transactionId;
-}
-
-/**
-* 
-* @param transactionId
-* The transaction_id
-*/
-public void setTransactionId(String transactionId) {
-this.transactionId = transactionId;
-}
-
-/**
-* 
-* @return
-* The roundTrip
-*/
-public String getRoundTrip() {
-return roundTrip;
-}
-
-/**
-* 
-* @param roundTrip
-* The round_trip
-*/
-public void setRoundTrip(String roundTrip) {
-this.roundTrip = roundTrip;
 }
 
 /**
@@ -709,28 +689,5 @@ return seller;
 public void setSeller(Seller seller) {
 this.seller = seller;
 }
-
-@Override
-public String toString() {
-	return "ThreeDaySale [orderId=" + orderId + ", date=" + date
-			+ ", departureDate=" + departureDate + ", tripId=" + tripId
-			+ ", from=" + from + ", to=" + to + ", extraDestinationId="
-			+ extraDestinationId + ", trip=" + trip + ", time=" + time
-			+ ", _class=" + _class + ", agentId=" + agentId + ", agentCodeNo="
-			+ agentCodeNo + ", agentgroupName=" + agentgroupName
-			+ ", operatorId=" + operatorId + ", operator=" + operator
-			+ ", operatorPhone=" + operatorPhone + ", customerName="
-			+ customerName + ", customerNrc=" + customerNrc
-			+ ", customerPhone=" + customerPhone + ", ticketNo=" + ticketNo
-			+ ", seatNo=" + seatNo + ", passengers=" + passengers + ", price="
-			+ price + ", ticketQty=" + ticketQty + ", discountAmount="
-			+ discountAmount + ", totalAmount=" + totalAmount
-			+ ", paymentType=" + paymentType + ", delivery=" + delivery
-			+ ", TotalUSD=" + TotalUSD + ", exchangeRate=" + exchangeRate
-			+ ", transactionId=" + transactionId + ", roundTrip=" + roundTrip
-			+ ", sellerId=" + sellerId + ", seller=" + seller + "]";
-}
-
-
 
 }

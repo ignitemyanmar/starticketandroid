@@ -1284,14 +1284,19 @@ public class BusConfirmActivity extends BaseActivity {
 		        				
 		        				Log.i("", "Seat List(bus confirm): "+SeatLists);*/
 		        				
+		        				if (TicketLists != null) {
+		        					TicketLists = "";
+								}
+		        				
 		        				for(int i=0; i<jsonArray.length(); i++){
 		        					JSONObject obj = jsonArray.getJSONObject(i);
 		        					if (obj.has("ticket_no")) {
-		        						if (i == jsonArray.length() - 1) {
+										if (i == jsonArray.length() - 1) {
 			        						TicketLists += obj.getString("ticket_no");
 										}else {
 											TicketLists += obj.getString("ticket_no")+",";
 										}
+		        						
 									}else {
 										if (i == jsonArray.length() - 1) {
 			        						TicketLists += "-";
@@ -1301,7 +1306,8 @@ public class BusConfirmActivity extends BaseActivity {
 									}
 		        				}
 		        				
-		        				Log.i("", "Ticket No: "+TicketLists);
+		        				
+		        				Log.i("", "Ticket No(bus confirm): "+TicketLists);
 								if(isBooking == 0){
 									if (trip_type == 1) {
 										//If one way 

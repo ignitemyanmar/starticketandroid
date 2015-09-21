@@ -16,6 +16,17 @@
             android:gravity="center_vertical"
             android:padding="3dp" >
 
+            <TextView
+                android:id="@+id/txt_order_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:text="#"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/black" />
+
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_order_no"
                 android:layout_width="match_parent"
@@ -24,17 +35,6 @@
                 android:layout_weight="25"
                 android:gravity="left|center_vertical"
                 android:padding="3dp"
-                android:text="-"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/txt_order_date"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_weight="25"
-                android:gravity="center_vertical"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/black" />
@@ -86,7 +86,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="50"
                 android:gravity="center_vertical|right"
-                android:text="-"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </LinearLayout>

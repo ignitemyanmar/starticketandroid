@@ -68,40 +68,49 @@ import android.widget.TextView;
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
-		holder.txt_order_no.setText(getItem(position).getOrderId());		
-		holder.txt_order_date.setText(getItem(position).getDate());
+		holder.txt_order_no.setText(getItem(position).getOrderId());	
+		
+		if (getItem(position).getTransactionId().equals("0")) 
+		{
+			holder.txt_order_date.setText("#");
+		}else {
+			holder.txt_order_date.setText(getItem(position).getTransactionId());
+		}
+			
 		
 		//Change (0,000,000) format
 		NumberFormat nf = NumberFormat.getInstance();
 		
 		//If visa/master payment, ....
 		//Show Total Amount
-		if (getItem(position).getPayment_type().equals("pay with master/visa")) {
-			holder.txt_order_amount.setText("$ "+getItem(position).getTotal_USD());
+		if (getItem(position).getPaymentType().equals("pay with master/visa")) {
+				if (getItem(position).getRoundTrip().equals("0")) {
+					//one way
+					//add +4USD for booking fee
+					holder.txt_order_amount.setText("$ "+String.format("%.2f", (getItem(position).getTotalUSD() + 4)));
+				}else if (getItem(position).getRoundTrip().equals("1")) {
+					//round trip 
+					//add +2USD for booking fee
+					holder.txt_order_amount.setText("$ "+String.format("%.2f", (getItem(position).getTotalUSD() + 2)));
+				}
 		}else {
-			if (getItem(position).getTotalAmount() != null && !getItem(position).getTotalAmount().equals("")) {
 				String amount = nf.format(Integer.valueOf(getItem(position).getTotalAmount()));
 				holder.txt_order_amount.setText(amount+"");
-			}
 		}
 		
 		double discountUSD = 0.0;
 		
 		//Show Discount amount
-		if (getItem(position).getDiscount_amount() != null && !getItem(position).getDiscount_amount().equals("")) {
-			if (getItem(position).getExchange_rate() != null && !getItem(position).getExchange_rate().equals("")) {
-				if (Double.valueOf(getItem(position).getExchange_rate()) > 0) {
-					discountUSD = Double.valueOf(getItem(position).getDiscount_amount()) / Double.valueOf(getItem(position).getExchange_rate());
-				}
-			}
+		if (Double.valueOf(getItem(position).getExchangeRate()) > 0) {
+			discountUSD = Double.valueOf(getItem(position).getDiscountAmount()) / Double.valueOf(getItem(position).getExchangeRate());
 		}
 		
 		//Show Discount amount
-		if (getItem(position).getDiscount_amount() != null && !getItem(position).getDiscount_amount().equals("")) {
-			if (getItem(position).getPayment_type().equals("pay with master/visa")) {
+		if (getItem(position).getDiscountAmount() > 0) {
+			if (getItem(position).getPaymentType().equals("pay with master/visa")) {
 				holder.txt_discount.setText("$ "+String.format("%.2f", discountUSD));
 			}else {
-				String discount = nf.format(Integer.valueOf(getItem(position).getDiscount_amount()));
+				String discount = nf.format(Integer.valueOf(getItem(position).getDiscountAmount()));
 				holder.txt_discount.setText(discount);
 			}
 		}else {
@@ -109,14 +118,11 @@ import android.widget.TextView;
 		}
 		
 		//Show payment type
-		if (getItem(position).getPayment_type().toLowerCase().equals("pay with master/visa")) {
+		if (getItem(position).getPaymentType().toLowerCase().equals("pay with master/visa")) {
 			holder.txt_payment_type.setText("Pay with VISA/MASTER");
 		}else {
-			holder.txt_payment_type.setText(getItem(position).getPayment_type());
+			holder.txt_payment_type.setText(getItem(position).getPaymentType());
 		}
-		
-		
-		Log.i("", "Delivery Status: "+getItem(position).getDelivery());
 		
 		//Show Delivery Status (pending or complete)
 		if (getItem(position).getDelivery().equals("1")) {

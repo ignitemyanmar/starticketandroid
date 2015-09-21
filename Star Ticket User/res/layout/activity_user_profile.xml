@@ -222,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="My Points"
+                android:text="My Points/Gift Money"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
 
@@ -330,13 +330,13 @@
                         android:layout_height="match_parent"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="1"
-                        android:visibility="gone" >
+                        android:visibility="visible" >
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/CustomTextView02"
                             android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:text="သံုးႏုိင္ေသာ Gift Money"
+                            android:text="Total Gift Money"
                             android:textSize="18dp" />
 
                         <TextView

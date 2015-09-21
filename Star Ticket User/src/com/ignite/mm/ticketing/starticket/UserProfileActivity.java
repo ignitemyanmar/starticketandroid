@@ -199,13 +199,20 @@ public class UserProfileActivity extends BaseActivity{
 						totalPoints = arg0.getPoints() + current_points;
 					}*/
 					
+					Log.i("", "Loyalty: "+arg0.toString());
+					
 					if (arg0.getPoints() >= 0) {
 						txt_net_points.setText(arg0.getPoints()+"");
 					}else {
 						txt_net_points.setText("0");
 					}
 					
-					//txt_usable_gift_money.setText(arg0.getGiftMoney()+" Ks");
+					if (arg0.getGiftMoney() >= 0) {
+						txt_usable_gift_money.setText(arg0.getGiftMoney()+" Ks");
+					}else {
+						txt_usable_gift_money.setText("0 Ks");
+					}
+					
 					
 					dialog.dismissWithSuccess();
 				}

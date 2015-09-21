@@ -935,6 +935,16 @@ public class PaymentActivity extends BaseActivity{
 				+", starticket_no: "+ticketNos2
 				+",	agentgroup_id: "+agentgroup_id2);
 		
+		Integer tripTypeOnline = 0;
+		
+		if (trip_type == 1) {
+			//If one way 
+			tripTypeOnline = 0;
+		}else if (trip_type == 2) {
+			//If round trip
+			tripTypeOnline = 1;
+		}
+		
 		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postOnlineSaleDB(
 				sale_order_no2, 
@@ -947,7 +957,7 @@ public class PaymentActivity extends BaseActivity{
 				AppLoginUser.getAddress(), 
 				"", "0", 
 				totalGiftMoney, "", "", 
-				agentgroup_id2, "", paymentType, ticketNos2, new Callback<Response>() {
+				agentgroup_id2, "", paymentType, ticketNos2, tripTypeOnline.toString(), new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub

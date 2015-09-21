@@ -305,6 +305,8 @@ public class Payment2C2PActivity extends BaseActivity{
 		}
 	}
 	
+	private String[] ticketNoArray;
+	
 	/**
 	 * Confirm and save order into Operator Database and online DB, after online payment success
 	 * @param paymentType Payment Type
@@ -338,11 +340,15 @@ public class Payment2C2PActivity extends BaseActivity{
 				selectedSeat = selectedSeats.split(",");
 			}
 			
+			if (ticketNos != null && !ticketNos.equals("")) {
+				ticketNoArray = ticketNos.split(",");
+			}
+			
 			Log.i("", "Selected Seats(Payment) : "+selectedSeats);
 			
 			for (int j = 0; j < selectedSeat.length; j++) {
 				seats.add(new ConfirmSeat(busOccurence, selectedSeat[j].toString(),
-						buyerName, buyerNRC, ticketNos, false,
+						buyerName, buyerNRC, ticketNoArray[j].toString(), false,
 						"blah", 0));
 			}
 			
@@ -485,12 +491,22 @@ public class Payment2C2PActivity extends BaseActivity{
 			+", starticket_no: "+ticketNos2
 			+",	agentgroup_id: "+agentgroup_id2);
 	
+	Integer tripTypeOnline = 0;
+	
+	if (trip_type == 1) {
+		//If one way 
+		tripTypeOnline = 0;
+	}else if (trip_type == 2) {
+		//If round trip
+		tripTypeOnline = 1;
+	}
+	
 	NetworkEngine.setIP("starticketmyanmar.com");
 	NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no2, operator_id2, AppLoginUser.getCodeNo()
 			, AppLoginUser.getAccessToken(), extraCityName2, AppLoginUser.getPhone()
 			, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
 			, "0", totalGiftMoney, "", "", agentgroup_id2, ""
-			, paymentType, ticketNos2, new Callback<Response>() {
+			, paymentType, ticketNos2, String.valueOf(tripTypeOnline), new Callback<Response>() {
 		
 				public void failure(RetrofitError arg0) {
 					// TODO Auto-generated method stub
@@ -538,6 +554,22 @@ public class Payment2C2PActivity extends BaseActivity{
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
+		
+		//Test Confirm 
+		//If One Way
+		if (trip_type == 1) {
+			confirmOrder(from_payment, selectedSeats, ticketNos
+					, busOccurence, BuyerName, BuyerNRC, permit_access_token
+					, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
+		}else if (trip_type == 2) {
+			//If Round Trip
+			//Confirm for Go Trip
+			confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
+					, goTripInfo_obj.getBusOccurence(), goTripInfo_obj.getBuyerName()
+					, goTripInfo_obj.getBuyerNRC(), goTripInfo_obj.getPermit_access_token()
+					, goTripInfo_obj.getSale_order_no(), goTripInfo_obj.getPermit_agent_id()
+					, goTripInfo_obj.getExtraCityID(), goTripInfo_obj.getConfirmDate(), "");
+		}
 		
 		finish();
 		return super.getSupportParentActivityIntent();

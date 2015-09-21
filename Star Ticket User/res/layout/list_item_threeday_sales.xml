@@ -264,6 +264,37 @@
                 </LinearLayout>
 
                 <View
+                    android:id="@+id/View11"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/CustomTextView12"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="လက္မွတ္နံပါတ္"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/txt_ticket_nos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="-"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+                <View
                     android:id="@+id/View05"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

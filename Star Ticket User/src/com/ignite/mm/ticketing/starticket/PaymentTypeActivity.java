@@ -95,6 +95,7 @@ public class PaymentTypeActivity extends BaseActivity{
 		}
 		
 		Log.i("", "Permit IP at Busconfirmact: "+BusConfirmActivity.permit_ip);
+		Log.i("", "Ticket nos(paymenttype) :"+BusConfirmActivity.TicketLists); 
 		
 		 Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
 		 toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -341,7 +342,7 @@ public class PaymentTypeActivity extends BaseActivity{
 				, AppLoginUser.getAccessToken(), BusConfirmActivity.ExtraCityName, AppLoginUser.getPhone()
 				, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
 				, "0", "0", "", "", "", "1"
-				, paymentType, "", new Callback<Response>() {
+				, paymentType, "", "", new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub

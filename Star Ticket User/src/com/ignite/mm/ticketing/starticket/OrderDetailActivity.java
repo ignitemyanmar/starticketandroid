@@ -51,6 +51,7 @@ public class OrderDetailActivity extends BaseActivity{
 	private TextView txt_amount;
 	private TextView txt_discount;
 	private TextView txt_amount_needToPay;
+	private TextView txt_ticket_nos;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,7 @@ public class OrderDetailActivity extends BaseActivity{
 		 txt_operator = (TextView)  findViewById(R.id.txt_operator);
 		 txt_bus_class = (TextView)  findViewById(R.id.txt_bus_class);
 		 txt_seats = (TextView)  findViewById(R.id.txt_seats);
+		 txt_ticket_nos = (TextView) findViewById(R.id.txt_ticket_nos);
 		 txt_price = (TextView)  findViewById(R.id.txt_price);
 		 txt_seat_qty = (TextView)  findViewById(R.id.txt_seat_qty);
 		 txt_amount = (TextView)  findViewById(R.id.txt_amount);
@@ -93,6 +95,7 @@ public class OrderDetailActivity extends BaseActivity{
 		txt_operator.setText(orderDetailList.getOperator());
 		txt_bus_class.setText(orderDetailList.getClass_());
 		txt_seats.setText(orderDetailList.getSeatNo());
+		txt_ticket_nos.setText(orderDetailList.getTicketNo());
 		
 		
 		//Change (0,000,000) format
@@ -106,34 +109,30 @@ public class OrderDetailActivity extends BaseActivity{
 			//double ticket_qty = 0.0;
 			
 			//Get Exchange Rate
-			if (orderDetailList.getExchange_rate() != null && !orderDetailList.getExchange_rate().equals("")) {
-				exchange_rate = Double.valueOf(orderDetailList.getExchange_rate());
+			if (orderDetailList.getExchangeRate() > 0) {
+				exchange_rate = Double.valueOf(orderDetailList.getExchangeRate());
 			}
 			
-			/*if (orderDetailList.getTicketQty() > 0) {
-				ticket_qty = orderDetailList.getTicketQty();
-			}*/
-			
-			if (orderDetailList.getPrice() != null && !orderDetailList.getPrice().equals("")) {
+			if (orderDetailList.getPrice() > 0) {
 				price_Int = Double.valueOf(orderDetailList.getPrice());
 			}
 			
-			if (orderDetailList.getTotalAmount() != null && !orderDetailList.getTotalAmount().equals("")) {
+			if (orderDetailList.getTotalAmount() > 0) {
 				amount_Int = Double.valueOf(orderDetailList.getTotalAmount());
 			}
 			
-			if (orderDetailList.getTotal_USD() != null && !orderDetailList.getTotal_USD().equals("")) {
-				amount_USD = Double.valueOf(orderDetailList.getTotal_USD());
+			if (orderDetailList.getTotalUSD() > 0) {
+				amount_USD = Double.valueOf(orderDetailList.getTotalUSD());
 			}
 			
 			//Show Discount
-			if (orderDetailList.getDiscount_amount() != null && !orderDetailList.getDiscount_amount().equals("")) {
-				if (orderDetailList.getPayment_type().toLowerCase().equals("pay with master/visa")) {
+			if (orderDetailList.getDiscountAmount() > 0) {
+				if (orderDetailList.getPaymentType().toLowerCase().equals("pay with master/visa")) {
 					if (exchange_rate > 0) {
-						discount_Int = Double.valueOf(orderDetailList.getDiscount_amount()) / exchange_rate;
+						discount_Int = Double.valueOf(orderDetailList.getDiscountAmount()) / exchange_rate;
 					}
 				}else {
-					discount_Int = Double.valueOf(orderDetailList.getDiscount_amount());
+					discount_Int = Double.valueOf(orderDetailList.getDiscountAmount());
 				}
 			}
 			
@@ -143,11 +142,24 @@ public class OrderDetailActivity extends BaseActivity{
 		txt_seat_qty.setText(orderDetailList.getTicketQty()+"");
 		txt_price.setText(price+" Ks");
 		
+		Double totalUSD = 0.0;
+		 
 		//Show Total amount
-		if (orderDetailList.getPayment_type().toLowerCase().equals("pay with master/visa")) {
-			txt_amount.setText("US$ "+String.format("%.2f", amount_USD)+"");
+		if (orderDetailList.getPaymentType().toLowerCase().equals("pay with master/visa")) {
+			if (orderDetailList.getRoundTrip().equals("0")) {
+				//one way
+				//add +4USD for booking fee
+				totalUSD = amount_USD + 4;
+				txt_amount.setText("US$ "+String.format("%.2f", totalUSD)+"");
+			}else if (orderDetailList.getRoundTrip().equals("1")) {
+				//round trip 
+				//add +2USD for booking fee
+				totalUSD = amount_USD + 2;
+				txt_amount.setText("US$ "+String.format("%.2f", totalUSD)+"");
+			}
+			
 			txt_discount.setText("US$ "+String.format("%.2f", discount_Int));
-			txt_amount_needToPay.setText("US$ "+String.format("%.2f", (amount_USD - discount_Int)));
+			txt_amount_needToPay.setText("US$ "+String.format("%.2f", (totalUSD - discount_Int)));
 		}else {
 			txt_amount.setText(amount+" Ks");
 			txt_discount.setText(nf.format(discount_Int)+" Ks");

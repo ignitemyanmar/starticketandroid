@@ -8,13 +8,11 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -23,13 +21,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
-import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.ThreeDaySalesLvAdapter;
-import com.ignite.mm.ticketing.sqlite.database.model.Operator;
+import com.ignite.mm.ticketing.sqlite.database.model.MyOrder;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 import com.ignite.mm.ticketing.starticket.R;
 import com.smk.skalertmessage.SKToastMessage;
@@ -45,6 +40,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
  * Private methods
  * (1) {@link #getSupportParentActivityIntent()}
  * (2) {@link #getThreeDaySales()}
+ * (3) {@link #totalValues()}
  * <p>
  * ** Star Ticket App is used to purchase bus tickets via online. 
  * Pay @Convenient Stores(City Express, ABC, G&G, Sein Gay Har-parami, etc.) in Myanmar or
@@ -73,6 +69,9 @@ public class ThreeDaySalesActivity extends BaseActivity{
 	protected boolean isLoading = false;
 	private ThreeDaySalesLvAdapter threeDaySalesLvAdapter;
 	private RelativeLayout layout_noOrder;
+	private Integer total_ticket = 0;
+	private Integer total_amount = 0;
+	private Integer total_point = 0;
 
 	
 	@Override
@@ -149,7 +148,7 @@ public class ThreeDaySalesActivity extends BaseActivity{
 							"Item Request Error : Response Code = "
 									+ arg0.getResponse()
 											.getStatus());
-					Log.e("", "Error URL: "+arg0.getUrl());
+					Log.e("", "Error URL: "+arg0.getCause());
 					SKToastMessage.showMessage(ThreeDaySalesActivity.this, "Something is wrong with Server", SKToastMessage.ERROR);
 				}
 				
@@ -167,12 +166,14 @@ public class ThreeDaySalesActivity extends BaseActivity{
 					
 					lst_threeday_sale.addAll(arg0);
 						
-						Log.i("", "Three Day Sale List: "+lst_threeday_sale.toString());
-						
-						threeDaySalesLvAdapter.notifyDataSetChanged();
-						
-						totalValues();
-						
+					Log.i("", "Three Day Sale List: "+lst_threeday_sale.toString());
+					
+					totalValues();
+					
+					Log.i("", "Total amount: "+total_amount+", discount: "+total_point);
+					
+					threeDaySalesLvAdapter.notifyDataSetChanged();
+					
 						if(arg0.size() == limit){
 							
 							Log.i("", "enter here : loading false! "+arg0.size());
@@ -234,6 +235,9 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		}
 	};
 	
+	/**
+	 * Get Total Values for user's all order list
+	 */
 	private void totalValues() {
 		// TODO Auto-generated method stub
 		Integer total_ticket = 0;
@@ -244,22 +248,21 @@ public class ThreeDaySalesActivity extends BaseActivity{
 			for (int i = 0; i < lst_threeday_sale.size(); i++) {
 				total_ticket += lst_threeday_sale.get(i).getTicketQty(); 
 				
-				if (lst_threeday_sale.get(i).getTotalAmount() != null && !lst_threeday_sale.get(i).getTotalAmount().equals("")) {
-					total_amount += Integer.valueOf(lst_threeday_sale.get(i).getTotalAmount());
+				if (lst_threeday_sale.get(i).getTotalAmount() > 0) {
+					total_amount += lst_threeday_sale.get(i).getTotalAmount();
 				}
 				
-				if (lst_threeday_sale.get(i).getDiscount_amount() != null && !lst_threeday_sale.get(i).getDiscount_amount().equals("")) {
-					total_point += Integer.valueOf(lst_threeday_sale.get(i).getDiscount_amount());
+				if (lst_threeday_sale.get(i).getDiscountAmount() > 0) {
+					total_point += lst_threeday_sale.get(i).getDiscountAmount();
 				}
 			}
 		}
 		
 		//Change (0,000,000) format
 		NumberFormat nf = NumberFormat.getInstance();
-		String amount = nf.format(total_amount);
 				
 		txt_total_tickets.setText(total_ticket+"");
-		txt_total_amount.setText(amount+"");
+		txt_total_amount.setText(nf.format(total_amount)+"");
 		txt_total_points.setText(nf.format(total_point)+"");
 	}
 }

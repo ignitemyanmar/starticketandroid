@@ -43,7 +43,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="62dp"
         android:background="@color/gray"
         android:gravity="center_vertical"
         android:padding="3dp"
@@ -54,12 +54,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="2dp"
-            android:layout_weight="25"
+            android:layout_weight="21"
             android:gravity="center_vertical"
             android:padding="3dp"
-            android:text="Order နံပါတ္"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-             />
+            android:text="Transaction နံပါတ္"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/txt_order_date"
@@ -68,9 +67,8 @@
             android:layout_marginRight="2dp"
             android:layout_weight="25"
             android:gravity="center_vertical"
-            android:text="၀ယ္သည့္ေန႔"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            />
+            android:text="Order နံပါတ္"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/txt_order_amount"
@@ -79,9 +77,8 @@
             android:layout_marginRight="2dp"
             android:layout_weight="25"
             android:gravity="center_horizontal|center_vertical"
-            android:text="ပမာဏ (က်ပ္)"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            />
+            android:text="ပမာဏ"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/txt_point"
@@ -89,7 +86,7 @@
             android:layout_height="match_parent"
             android:layout_weight="25"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Discount (က်ပ္)"
+            android:text="ေလွ်ာ့ေငြ"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
@@ -106,7 +103,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="62dp"
         android:background="@color/golden_brown_light2"
         android:gravity="center_vertical"
         android:orientation="vertical"
@@ -182,7 +179,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="33"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="စုစုေပါင္း(Discount)"
+                android:text="စုစုေပါင္း(ေလွ်ာ့ေငြ)"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/black" />
         </LinearLayout>

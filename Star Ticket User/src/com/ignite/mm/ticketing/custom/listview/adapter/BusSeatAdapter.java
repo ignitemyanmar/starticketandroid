@@ -248,6 +248,10 @@ public class BusSeatAdapter extends BaseAdapter{
 	    		holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						
+						//If checked the seat,
+						//If no seats is selected yet, put in SelectedSeat
+						//If any selected seats already, plus in SelectedSeats
 						if(isChecked){
 							//If checked the seat.
 							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
@@ -269,6 +273,8 @@ public class BusSeatAdapter extends BaseAdapter{
 							}
 						}else{
 							//If unchecked the seat.
+							//If any selected seats already, clear SelectedSeat
+							//If unchecked seats is not included in selected, do not add. 
 							String[] seleted = BusSelectSeatActivity.SelectedSeat.split(",");
 							if(!BusSelectSeatActivity.SelectedSeat.isEmpty()){
 								BusSelectSeatActivity.SelectedSeat = "";

@@ -13,9 +13,9 @@ import retrofit.http.Query;
 
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
-import com.ignite.mm.ticketing.sqlite.database.model.Currency;
 import com.ignite.mm.ticketing.sqlite.database.model.ForgotPassword;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
+import com.ignite.mm.ticketing.sqlite.database.model.MyOrder;
 import com.ignite.mm.ticketing.sqlite.database.model.Operator;
 import com.ignite.mm.ticketing.sqlite.database.model.Promotion;
 import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
@@ -142,6 +142,12 @@ public interface INetworkEngine {
 			@Query("offset") String offset,
 			@Query("limit") String limit, Callback<List<ThreeDaySale>> callback);
 	
+/*	@GET("/api/myorderlist")
+	void getMyOrders(@Query("access_token") String token, 
+			@Query("code_no") String code_no, 
+			@Query("offset") String offset,
+			@Query("limit") String limit, Callback<List<MyOrder>> callback);*/
+	
 	@FormUrlEncoded
 	@POST("/api/salecomfirm")
 	void postOnlineSaleDB(
@@ -162,6 +168,7 @@ public interface INetworkEngine {
 			@Field("sale_booking") String sale_booking,
 			@Field("payment_type") String payment_type, /*Cash on Shop | Pay with Online | Cash on Delivery */
 			@Field("starticket_no") String starticket_no,
+			@Field("round_trip") String round_trip,
 			Callback<Response> callback);
 	
 	@FormUrlEncoded
