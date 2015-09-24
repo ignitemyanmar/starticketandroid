@@ -351,8 +351,7 @@ public class BusConfirmActivity extends BaseActivity {
 		}
 		
 		if (goTripInfo_obj != null) {
-			Log.i("", "Go Trip Info(Return): "+goTripInfo_obj.toString());
-			
+			Log.i("", "Go Trip Info(busconfirm): "+goTripInfo_obj.toString());
 		}
 		
 		Log.i("", "FromCity: "+FromCity
@@ -1203,13 +1202,16 @@ public class BusConfirmActivity extends BaseActivity {
 						CustPhone = edt_phone.getText().toString();
 						
 						//Take selected seats into Database
+						//If one way
 						if (Intents.equals("SaleTicket")) {
-							postSale(date);
-						}else {
+							if (trip_type == 1) {
+								//if one way
+								postSale(date);
+							}
+						}else{
+							//if return trip
 							postSale(return_date);
 						}
-						
-						
 					}else {
 						skDetector.showErrorMessage();
 					}
@@ -1318,8 +1320,8 @@ public class BusConfirmActivity extends BaseActivity {
 									}else if (trip_type == 2){	
 										//If Round Trip
 										//For Return Trip, Choose (Operator, Time, Class) again 
-										if (Intents.equals("SaleTicket")) {
-											Bundle bundle = new Bundle();
+										//if (Intents.equals("SaleTicket")) {
+											/*Bundle bundle = new Bundle();
 											bundle.putString("from_intent", "BusConfirm");
 											bundle.putInt("trip_type", trip_type);
 											bundle.putString("return_date", return_date);
@@ -1335,13 +1337,15 @@ public class BusConfirmActivity extends BaseActivity {
 											//Not Allow to choose for Go Trip again
 											closeAllActivities();
 											
-											startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
-										}else if (Intents.equals("BusConfirm")){
-											//After Return Info Choose, Go to Pay
+											startActivity(new Intent(BusConfirmActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));*/
+										//}else 
+											
+										if (Intents.equals("BusConfirm")){
+											//After Return Info Choose, next is to Pay
 											Bundle bundle = new Bundle();
 											bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
 											
-											Log.i("", "permit ip(bus confirm): "+goTripInfo_obj.getPermit_ip());
+											Log.i("", "Go Trip Info(busconfirm): "+goTripInfo_obj.toString());
 											
 											bundle.putInt("trip_type", trip_type);
 											bundle.putString("from_intent", Intents);

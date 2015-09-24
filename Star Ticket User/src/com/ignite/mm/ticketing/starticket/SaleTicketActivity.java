@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -137,7 +139,7 @@ public class SaleTicketActivity extends BaseActivity{
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setLogo(R.drawable.ic_launcher);
-            toolbar.setLogoDescription("Star Ticket - Online Bus Ticket");
+            toolbar.setLogoDescription("Star Ticket - Myanmar Online Bus Ticket");
             toolbar.setTitle("Star Ticket");
             this.setSupportActionBar(toolbar);
         }
@@ -197,7 +199,7 @@ public class SaleTicketActivity extends BaseActivity{
 	    radio_one_way.setOnClickListener(clickListener);
 	    radio_round_trip.setOnClickListener(clickListener);
 	}
-
+	
 	/**
 	 *  Get FromCity names
 	 */
@@ -511,11 +513,30 @@ public class SaleTicketActivity extends BaseActivity{
 		        //calendarDialog.calendar.setSelectedDate(calendar.getTime());
 		        calendarDialog.calendar.setMinimumDate(calendar.getTime());
 		        
+		      //Allow only 15 days to buy in advance for users 
+		        //If not log in yet
+		        Log.i("", "Log in id: "+AppLoginUser.getId());
+		        
+		        if (AppLoginUser.getId() == null || AppLoginUser.getId().equals("")) {
+		        	//Add 14 days to current date time
+			        calendar.add(Calendar.DATE, 14);
+			        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+				}else {
+					if (AppLoginUser.getRole() != null && !AppLoginUser.getRole().equals("")) {
+			        	 if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
+					        	//Add 14 days to current date time
+						        calendar.add(Calendar.DATE, 14);
+						        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+							}
+					}
+				}
+		        
 				calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
 					
 					private Date today;
 					public void choose(String chooseDate) {
 						// TODO Auto-generated method stub
+						
 						
 						btn_trip_date.setText(chooseDate);
 						calendarDialog.dismiss();
@@ -546,6 +567,22 @@ public class SaleTicketActivity extends BaseActivity{
 		        Calendar calendar = Calendar.getInstance();
 		        //calendarDialog.calendar.setSelectedDate(calendar.getTime());
 		        calendarDialog.calendar.setMinimumDate(calendar.getTime());
+		        
+			      //Allow only 15 days to buy in advance for users 
+		        //If not log in yet
+		        if (AppLoginUser.getId() == null || AppLoginUser.getId().equals("")) {
+		        	//Add 14 days to current date time
+			        calendar.add(Calendar.DATE, 14);
+			        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+				}else {
+					if (AppLoginUser.getRole() != null && !AppLoginUser.getRole().equals("")) {
+			        	 if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
+					        	//Add 14 days to current date time
+						        calendar.add(Calendar.DATE, 14);
+						        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+							}
+					}
+				}
 		        
 				calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
 					

@@ -147,7 +147,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:background="@color/gray"
+        android:background="@color/yellow_light"
         android:padding="5dp"
         android:text="အထူး ေမတၱာလက္ေဆာင္ အေနျဖင့္ Coffee ခြပ္ႀကီး တစ္ခု ရရိွပါမည္။"
         android:textAppearance="?android:attr/textAppearanceMedium"

@@ -3,18 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.toolbar.MainActivity" >
 
+    <item
+	    android:id="@+id/menu_refresh"
+	    android:orderInCategory="100"
+	    android:icon="@drawable/ic_refresh_white"
+	    android:title="Refresh"
+	    />
+        
     <item android:id="@+id/menu_hotLine"
           android:icon="@drawable/ic_phone"
           android:title="Call Hot Line Star Tikcet"
-          app:showAsAction="ifRoom"
           android:orderInCategory="100" 
           android:menuCategory="secondary"/>
      
-    <item 
-        android:id="@+id/menu_about"
-	    android:title="About Us"
-	    >
-    </item>
     <item 
 	    android:title="Hot Lines(Star Tikcet):"
 	    android:enabled="false"

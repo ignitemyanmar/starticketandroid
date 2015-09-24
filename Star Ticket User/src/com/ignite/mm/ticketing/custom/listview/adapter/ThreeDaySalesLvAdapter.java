@@ -83,7 +83,8 @@ import android.widget.TextView;
 		
 		//If visa/master payment, ....
 		//Show Total Amount
-		if (getItem(position).getPaymentType().equals("pay with master/visa")) {
+		if (getItem(position).getPaymentType() != null) {
+			if (getItem(position).getPaymentType().equals("pay with master/visa")) {
 				if (getItem(position).getRoundTrip().equals("0")) {
 					//one way
 					//add +4USD for booking fee
@@ -97,6 +98,8 @@ import android.widget.TextView;
 				String amount = nf.format(Integer.valueOf(getItem(position).getTotalAmount()));
 				holder.txt_order_amount.setText(amount+"");
 		}
+		}
+
 		
 		double discountUSD = 0.0;
 		
@@ -107,21 +110,25 @@ import android.widget.TextView;
 		
 		//Show Discount amount
 		if (getItem(position).getDiscountAmount() > 0) {
-			if (getItem(position).getPaymentType().equals("pay with master/visa")) {
-				holder.txt_discount.setText("$ "+String.format("%.2f", discountUSD));
-			}else {
-				String discount = nf.format(Integer.valueOf(getItem(position).getDiscountAmount()));
-				holder.txt_discount.setText(discount);
+			if (getItem(position).getPaymentType() != null) {
+				if (getItem(position).getPaymentType().equals("pay with master/visa")) {
+					holder.txt_discount.setText("$ "+String.format("%.2f", discountUSD));
+				}else {
+					String discount = nf.format(Integer.valueOf(getItem(position).getDiscountAmount()));
+					holder.txt_discount.setText(discount);
+				}
 			}
 		}else {
 			holder.txt_discount.setText("0");
 		}
 		
 		//Show payment type
-		if (getItem(position).getPaymentType().toLowerCase().equals("pay with master/visa")) {
-			holder.txt_payment_type.setText("Pay with VISA/MASTER");
-		}else {
-			holder.txt_payment_type.setText(getItem(position).getPaymentType());
+		if (getItem(position).getPaymentType() != null) {
+			if (getItem(position).getPaymentType().toLowerCase().equals("pay with master/visa")) {
+				holder.txt_payment_type.setText("Pay with VISA/MASTER");
+			}else {
+				holder.txt_payment_type.setText(getItem(position).getPaymentType());
+			}
 		}
 		
 		//Show Delivery Status (pending or complete)

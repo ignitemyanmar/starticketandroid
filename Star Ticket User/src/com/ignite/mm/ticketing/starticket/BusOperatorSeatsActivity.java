@@ -124,6 +124,11 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			}
 		}
 		
+		if (goTripInfo_obj != null) {
+			Log.i("", "goObj(busoperator): "+goTripInfo_obj.toString());
+		}
+		
+		
 		layout_round_info = (LinearLayout)findViewById(R.id.layout_round_info);
 		txt_round_trip_info = (TextView)findViewById(R.id.txt_round_trip_info);
 		txt_change_date = (TextView)findViewById(R.id.txt_change_date);
@@ -142,6 +147,9 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			}else if (from_intent.equals("BusConfirm")) {
 				//Set Return title + sub-title
 				toolbar.setTitle(selectedToCity+" - "+selectedFromCity);
+				
+				Log.i("", "selected return date: "+selectedReturnDate);
+				
 				if (!selectedReturnDate.equals("") && selectedReturnDate != null) {
 					toolbar.setSubtitle(changeDate(selectedReturnDate)+" [All Time]");
 				}
@@ -241,6 +249,22 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		        
 		        Calendar calendar = Calendar.getInstance();
 		        calendarDialog.calendar.setMinimumDate(calendar.getTime());
+		        
+			    //Allow only 15 days to buy in advance for users
+		        //If not log in yet
+		        if (AppLoginUser.getId() == null || AppLoginUser.getId().equals("")) {
+		        	//Add 14 days to current date time
+			        calendar.add(Calendar.DATE, 14);
+			        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+				}else {
+					if (AppLoginUser.getRole() != null && !AppLoginUser.getRole().equals("")) {
+			        	 if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
+					        	//Add 14 days to current date time
+						        calendar.add(Calendar.DATE, 14);
+						        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+							}
+					}
+				}
 		        
 				calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
 					

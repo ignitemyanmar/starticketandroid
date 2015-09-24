@@ -555,22 +555,6 @@ public class Payment2C2PActivity extends BaseActivity{
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
 		
-		//Test Confirm 
-		//If One Way
-		if (trip_type == 1) {
-			confirmOrder(from_payment, selectedSeats, ticketNos
-					, busOccurence, BuyerName, BuyerNRC, permit_access_token
-					, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
-		}else if (trip_type == 2) {
-			//If Round Trip
-			//Confirm for Go Trip
-			confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
-					, goTripInfo_obj.getBusOccurence(), goTripInfo_obj.getBuyerName()
-					, goTripInfo_obj.getBuyerNRC(), goTripInfo_obj.getPermit_access_token()
-					, goTripInfo_obj.getSale_order_no(), goTripInfo_obj.getPermit_agent_id()
-					, goTripInfo_obj.getExtraCityID(), goTripInfo_obj.getConfirmDate(), "");
-		}
-		
 		finish();
 		return super.getSupportParentActivityIntent();
 	}

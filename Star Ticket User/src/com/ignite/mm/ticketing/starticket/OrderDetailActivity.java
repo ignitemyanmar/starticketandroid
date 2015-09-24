@@ -127,12 +127,14 @@ public class OrderDetailActivity extends BaseActivity{
 			
 			//Show Discount
 			if (orderDetailList.getDiscountAmount() > 0) {
-				if (orderDetailList.getPaymentType().toLowerCase().equals("pay with master/visa")) {
-					if (exchange_rate > 0) {
-						discount_Int = Double.valueOf(orderDetailList.getDiscountAmount()) / exchange_rate;
+				if (orderDetailList.getPaymentType() != null) {
+					if (orderDetailList.getPaymentType().toLowerCase().equals("pay with master/visa")) {
+						if (exchange_rate > 0) {
+							discount_Int = Double.valueOf(orderDetailList.getDiscountAmount()) / exchange_rate;
+						}
+					}else {
+						discount_Int = Double.valueOf(orderDetailList.getDiscountAmount());
 					}
-				}else {
-					discount_Int = Double.valueOf(orderDetailList.getDiscountAmount());
 				}
 			}
 			
@@ -145,26 +147,29 @@ public class OrderDetailActivity extends BaseActivity{
 		Double totalUSD = 0.0;
 		 
 		//Show Total amount
-		if (orderDetailList.getPaymentType().toLowerCase().equals("pay with master/visa")) {
-			if (orderDetailList.getRoundTrip().equals("0")) {
-				//one way
-				//add +4USD for booking fee
-				totalUSD = amount_USD + 4;
-				txt_amount.setText("US$ "+String.format("%.2f", totalUSD)+"");
-			}else if (orderDetailList.getRoundTrip().equals("1")) {
-				//round trip 
-				//add +2USD for booking fee
-				totalUSD = amount_USD + 2;
-				txt_amount.setText("US$ "+String.format("%.2f", totalUSD)+"");
+		if (orderDetailList.getPaymentType() != null) {
+			if (orderDetailList.getPaymentType().toLowerCase().equals("pay with master/visa")) {
+				if (orderDetailList.getRoundTrip().equals("0")) {
+					//one way
+					//add +4USD for booking fee
+					totalUSD = amount_USD + 4;
+					txt_amount.setText("US$ "+String.format("%.2f", totalUSD)+"");
+				}else if (orderDetailList.getRoundTrip().equals("1")) {
+					//round trip 
+					//add +2USD for booking fee
+					totalUSD = amount_USD + 2;
+					txt_amount.setText("US$ "+String.format("%.2f", totalUSD)+"");
+				}
+				
+				txt_discount.setText("US$ "+String.format("%.2f", discount_Int));
+				txt_amount_needToPay.setText("US$ "+String.format("%.2f", (totalUSD - discount_Int)));
+			}else {
+				txt_amount.setText(amount+" Ks");
+				txt_discount.setText(nf.format(discount_Int)+" Ks");
+				txt_amount_needToPay.setText(nf.format(amount_Int - discount_Int)+" Ks");
 			}
-			
-			txt_discount.setText("US$ "+String.format("%.2f", discount_Int));
-			txt_amount_needToPay.setText("US$ "+String.format("%.2f", (totalUSD - discount_Int)));
-		}else {
-			txt_amount.setText(amount+" Ks");
-			txt_discount.setText(nf.format(discount_Int)+" Ks");
-			txt_amount_needToPay.setText(nf.format(amount_Int - discount_Int)+" Ks");
 		}
+
 	}
 	
 	/**

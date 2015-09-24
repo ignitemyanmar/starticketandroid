@@ -91,25 +91,41 @@ public class PromotionAdapter extends BaseAdapter {
 		holder.txt_buy_amount.setText(changeDateString(getItem(position).getStartDate())+"  မွ  "
 										+changeDateString(getItem(position).getEndDate())+" ရက္ေန႔ထိ (က်ပ္ "
 										+Html.fromHtml("<b>"+startAmount+"</b>")+" မွ က်ပ္ "
-										+Html.fromHtml("<b>"+endAmount+"</b>")+") ဖုိး ၀ယ္ယူၿပီး ~");
+										+Html.fromHtml("<b>"+endAmount+"</b>")+") ဖုိး ၀ယ္ယူ လွ်င္ ~");
 		
-		if (getItem(position).getPoints() != null) {
-			holder.layout_points.setVisibility(View.VISIBLE);
-			holder.txt_points.setText(getItem(position).getPoints());
+		if (getItem(position).getPoints() != null && !getItem(position).getPoints().equals("")) {
+			if (Integer.valueOf(getItem(position).getPoints()) > 0) {
+				holder.layout_points.setVisibility(View.VISIBLE);
+				holder.txt_points.setText(getItem(position).getPoints());
+			}else {
+				holder.layout_points.setVisibility(View.GONE);
+			}
 		}
 		
-		if (getItem(position).getGiftMoney() != null) {
-			holder.layout_gift_money.setVisibility(View.VISIBLE);
-			holder.txt_gift_money_amount.setText(getItem(position).getGiftMoney());
+		if (getItem(position).getGiftMoney() != null && !getItem(position).getGiftMoney().equals("")) {
+			if (Integer.valueOf(getItem(position).getGiftMoney()) > 0) {
+				holder.layout_gift_money.setVisibility(View.VISIBLE);
+				holder.txt_gift_money_amount.setText(getItem(position).getGiftMoney());
+			}else {
+				holder.layout_gift_money.setVisibility(View.GONE);
+			}
 		}
 		
 		if (getItem(position).getGiftParcel() != null && !getItem(position).getGiftParcel().equals("")) {
 			holder.txt_gift_parcel.setVisibility(View.VISIBLE);
 			holder.txt_gift_parcel.setText("***"+getItem(position).getGiftParcel());
+		}else {
+			holder.txt_gift_parcel.setVisibility(View.GONE);
 		}
 		
 		if (getItem(position).getPoints() != null && getItem(position).getGiftMoney() != null) {
-			holder.txt_plus.setVisibility(View.VISIBLE);
+			if (!getItem(position).getPoints().equals("") && !getItem(position).getGiftMoney().equals("")) {
+				if (Integer.valueOf(getItem(position).getPoints()) > 0 && Integer.valueOf(getItem(position).getGiftMoney()) > 0) {
+					holder.txt_plus.setVisibility(View.VISIBLE);
+				}else {
+					holder.txt_plus.setVisibility(View.GONE);
+				}
+			}
 		}
 		
 		return convertView;

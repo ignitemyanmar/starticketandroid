@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.ignite.mm.ticketing.starticket.AboutActivity;
 import com.ignite.mm.ticketing.starticket.BusBookingListActivity;
 import com.ignite.mm.ticketing.starticket.BusReveiwActivity;
 import com.ignite.mm.ticketing.starticket.R;
@@ -193,6 +194,9 @@ public class BaseActivity extends ActionBarActivity{
 	public boolean onOptionsItemSelected(MenuItem item) {
 	      
 	    switch(item.getItemId()) {
+	        case R.id.menu_about:
+	        	startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+	        	return true;
 	        case R.id.menu_hotLine:
 	        	callHotLine("0931166772");
 	        	return true;

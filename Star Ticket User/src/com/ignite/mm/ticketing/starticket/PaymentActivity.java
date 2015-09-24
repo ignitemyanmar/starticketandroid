@@ -175,6 +175,7 @@ public class PaymentActivity extends BaseActivity{
 	private TextView txt_return_seatNo;
 	private TextView txt_return_bus_class;
 	private TextView txt_return_price;
+	private String go_seat_count;
 	
 	final static int REQ_CODE = 1;
 	
@@ -223,7 +224,9 @@ public class PaymentActivity extends BaseActivity{
 			ExtraCityName = bundle.getString("ExtraCityName");
 			
 			if (!bundle.getString("ExtraCityPrice").equals("0") && bundle.getString("ExtraCityPrice") != null) {
-				ExtraCityPrice  = bundle.getString("ExtraCityPrice");
+				if (!bundle.getString("ExtraCityPrice").equals("")) {
+					ExtraCityPrice  = bundle.getString("ExtraCityPrice");
+				}
 			}
 			
 			return_date = bundle.getString("ReturnDate");
@@ -232,13 +235,15 @@ public class PaymentActivity extends BaseActivity{
 			goTripInfo_str = bundle.getString("GoTripInfo");
 			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
 			
-			if (goTripInfo_obj != null) {
+			Log.i("", "Go Trip Info(payment act:): "+goTripInfo_obj.toString());
+			
+			/*if (goTripInfo_obj != null) {
 				if (goTripInfo_obj.getExtraCityPrice() != null) {
 					if (!goTripInfo_obj.getExtraCityPrice().equals("0")) {
 						ExtraCityPrice  = goTripInfo_obj.getExtraCityPrice();
 					}
 				}
-			}
+			}*/
 		}
 		
 		setContentView(R.layout.activity_payment);
@@ -366,6 +371,12 @@ public class PaymentActivity extends BaseActivity{
 			
 		}
 		
+		//Get Seat Count
+		if (goTripInfo_obj.getSelected_seats() != null && !goTripInfo_obj.getSelected_seats().equals("")) {
+			String[] seat_string = goTripInfo_obj.getSelected_seats().split(",");
+			go_seat_count = String.valueOf(seat_string.length);
+		}
+		
 		//Customer Information
 		txt_passenger_name.setText(BuyerName);
 		txt_passenger_phone.setText(BuyerPhone);
@@ -416,12 +427,13 @@ public class PaymentActivity extends BaseActivity{
 		txt_use_points.setOnClickListener(clickListener);
 		btn_payment.setOnClickListener(clickListener);
 		
-		//One Way and Return 
+		 
 		Integer priceInt = 0;
 		Integer seat_countInt = 0;
 		
 		Log.i("", "price: "+price+", seat count: "+seat_count);
 		
+		//One Way and Return
 		if (price != null && seat_count != null) {
 			
 			priceInt = Integer.valueOf(price);
@@ -429,14 +441,18 @@ public class PaymentActivity extends BaseActivity{
 			
 			//If Extra City Choose, .. 
 			if (!ExtraCityPrice.equals("0") && ExtraCityPrice != null) {
-				total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
+				if (!ExtraCityPrice.equals("")) {
+					total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
+				}
 			}else {
 				total_amount = priceInt * seat_countInt;
 			}
 			
 		}else {
 			if (!ExtraCityPrice.equals("0") && ExtraCityPrice != null) {
-				total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
+				if (!ExtraCityPrice.equals("")) {
+					total_amount = Integer.valueOf(ExtraCityPrice)  * seat_countInt;
+				}
 			}else {
 				total_amount = priceInt * seat_countInt;
 			}
@@ -449,30 +465,40 @@ public class PaymentActivity extends BaseActivity{
 		//If Round Trip, .. 
 		if (trip_type == 2) {
 			
-			Log.i("", "price: "+goTripInfo_obj.getPrice()+", seat count: "+goTripInfo_obj.getSeat_count());
+			Log.i("", "price: "+goTripInfo_obj.getPrice()+", seat count: "+go_seat_count);
 			
-			if (goTripInfo_obj.getPrice() != null && goTripInfo_obj.getSeat_count() != null) {
+			if (goTripInfo_obj.getPrice() != null && go_seat_count != null) {
 				go_priceInt = Integer.valueOf(goTripInfo_obj.getPrice());
-				go_seat_countInt = Integer.valueOf(goTripInfo_obj.getSeat_count());
+				go_seat_countInt = Integer.valueOf(go_seat_count);
 				
-				if (!goTripInfo_obj.getExtraCityPrice().equals("0") && goTripInfo_obj.getExtraCityPrice() != null) {
-					go_total_amount = Integer.valueOf(goTripInfo_obj.getExtraCityPrice())  * go_seat_countInt;
-				}else {
+				/*if (!goTripInfo_obj.getExtraCityPrice().equals("0") && goTripInfo_obj.getExtraCityPrice() != null) {
+					if (!goTripInfo_obj.getExtraCityPrice().equals("")) {
+						go_total_amount = Integer.valueOf(goTripInfo_obj.getExtraCityPrice())  * go_seat_countInt;
+					}
+				}else {*/
 					go_total_amount = go_priceInt * go_seat_countInt;
-				}
+					Log.i("", "go total amount(ok): "+go_total_amount);
+				//}
 				
 			}else {
-				if (!goTripInfo_obj.getExtraCityPrice().equals("0") && goTripInfo_obj.getExtraCityPrice() != null) {
-					go_total_amount = Integer.valueOf(goTripInfo_obj.getExtraCityPrice())  * go_seat_countInt;
-				}else {
+				/*if (!goTripInfo_obj.getExtraCityPrice().equals("0") && goTripInfo_obj.getExtraCityPrice() != null) {
+					if (!goTripInfo_obj.getExtraCityPrice().equals("")) {
+						go_total_amount = Integer.valueOf(goTripInfo_obj.getExtraCityPrice())  * go_seat_countInt;
+					}
+				}else {*/
 					go_total_amount = go_priceInt * go_seat_countInt;
-				}
+				//}
 				
 			}
+			
+			Log.i("", "go total amount: "+go_total_amount
+					+"return total: "+total_amount);
 			
 			//return total + go total (Round Trip Total)
 			total_amount = total_amount + go_total_amount;
 		}
+		
+		Log.i("", "total amount gyi: "+total_amount);
 		
 		//Get Usable Points & Gift Money
 		getCurrency();

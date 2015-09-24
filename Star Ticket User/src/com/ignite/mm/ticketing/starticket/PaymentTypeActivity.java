@@ -78,6 +78,7 @@ public class PaymentTypeActivity extends BaseActivity{
 	private String goTripInfo_str;
 	private GoTripInfo goTripInfo_obj;
 	private int trip_type;
+	private TextView txt_warning;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class PaymentTypeActivity extends BaseActivity{
 		
 		Log.i("", "Permit IP at Busconfirmact: "+BusConfirmActivity.permit_ip);
 		Log.i("", "Ticket nos(paymenttype) :"+BusConfirmActivity.TicketLists); 
+		Log.i("", "Go Trip Info(payment type): "+goTripInfo_obj.toString());
 		
 		 Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
 		 toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -105,6 +107,7 @@ public class PaymentTypeActivity extends BaseActivity{
 	     skDetector = new SKConnectionDetector(this);
          
 	     txt_booking_fee = (TextView)findViewById(R.id.txt_booking_fee);
+	     txt_warning = (TextView)findViewById(R.id.txt_warning);
 			
         radio_payWithMPU = (RadioButton)findViewById(R.id.radio_payWithMPU);
  		radio_payWithVisaMaster = (RadioButton)findViewById(R.id.radio_payWithVisaMaster);
@@ -203,6 +206,8 @@ public class PaymentTypeActivity extends BaseActivity{
 		if (cal.getTime().compareTo(deptDateTime) >= 0) {
 			radio_cashOnDelivery.setEnabled(false);
 			radio_cashOnShop.setEnabled(false);
+			
+			txt_warning.setVisibility(View.VISIBLE);
 		}else {
 			radio_cashOnDelivery.setEnabled(true);
 			radio_cashOnShop.setEnabled(true);
