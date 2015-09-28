@@ -1,6 +1,13 @@
 package com.ignite.mm.ticketing;
 
+import org.json.JSONObject;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,21 +17,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActionBarActivity;
 import com.ignite.mm.ticketing.sqlite.database.model.CreditOrder;
+import com.smk.skalertmessage.SKToastMessage;
 
-/**
- * {@link #BusBookingConfirmDeleteActivity} is the class to show Booking confirm (or) Booking Delete
- * <p>
- * Private methods:
- * (1) {@link #clickListener}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusBookingConfirmDeleteActivity extends BaseActionBarActivity {
 	private TextView actionBarTitle;
 	private ImageButton actionBarBack;
@@ -65,12 +59,6 @@ public class BusBookingConfirmDeleteActivity extends BaseActionBarActivity {
 			creditOrder = new Gson().fromJson(creditOrderString, CreditOrder.class);
 		}
 	}
-	
-	/**
-	 * {@code clickListener} clicked: 
-	 * (1) {@code btn_pay} clicked: go next activity {@link BusConfirmActivity}
-	 * (2) {@code btn_cancel_order} clicked: go next activity {@link BusBookingDetailActivity}
-	 */
 	private OnClickListener clickListener = new OnClickListener() {
 		
 		public void onClick(View v) {

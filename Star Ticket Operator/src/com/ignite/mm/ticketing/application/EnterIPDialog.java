@@ -45,7 +45,6 @@ public class EnterIPDialog{
 		lists.add("moekaungkin.starticketmyanmar.com");
 		lists.add("toeyadanar.starticketmyanmar.com");
 		lists.add("lumbini.starticketmyanmar.com");
-		lists.add("dmt.starticketmyanmar.com");
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, lists);
 		edt_ip.setAdapter(adapter);
@@ -58,6 +57,11 @@ public class EnterIPDialog{
 		
 	}
 	
+	
+	
+	
+	
+		
 	private View.OnClickListener clickListener = new View.OnClickListener() {
 		
 		public void onClick(View v) {

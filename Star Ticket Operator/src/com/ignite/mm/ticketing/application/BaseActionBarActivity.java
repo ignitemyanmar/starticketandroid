@@ -20,24 +20,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
-
-/**
- * {@link #UserLogin} is base class(parent activity) that can be called from other activities. 
- * <p>
- * Usable methods : 
- * (1) {@link #closeAllActivities()} 
- * (2) {@link #getToday()} 
- * (5) {@link #changeDate(String)}
- * (8) {@link #alertDialog(String, OnClickListener, OnClickListener)}     
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BaseActionBarActivity extends ActionBarActivity {
 	
 	public static LoginUser AppLoginUser;
@@ -69,9 +51,6 @@ public class BaseActionBarActivity extends ActionBarActivity {
 		}
 	} 
 	
-	/**
-	 * Close all activities that extend this base class
-	 */
 	protected void closeAllActivities(){
 		sendBroadcast(new Intent(FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION));
 	}
@@ -93,10 +72,6 @@ public class BaseActionBarActivity extends ActionBarActivity {
 		super.onResume();
 	}
 	
-	/**
-	 * Get Today Date eg. 2015-09-10
-	 * @return return today date (String)
-	 */
 	protected String getToday(){
 		Calendar c = Calendar.getInstance();
 		System.out.println("Current time => " + c.getTime());
@@ -107,12 +82,7 @@ public class BaseActionBarActivity extends ActionBarActivity {
 		return formattedDate;
 	}
 	
-	/**
-	 * Change Date Format from yyyy-MM-dd to dd-MM-yyyy
-	 * @param date Date 2015-09-10
-	 * @return Date 10-09-2015
-	 */
-	protected static String changeDate(String date){
+	public static String changeDate(String date){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date StartDate = null;
 		try {
@@ -124,12 +94,6 @@ public class BaseActionBarActivity extends ActionBarActivity {
 		return DateFormat.format("dd/MM/yyyy",StartDate).toString();
 	}
 	
-	/**
-	 * Show alert dialog with yes and no (buttons)
-	 * @param MSG message to show in dialog
-	 * @param YES Yes button's clickListener if you agree
-	 * @param NO No button's clickListener if you disagree
-	 */
 	protected void alertDialog(String MSG, OnClickListener YES, OnClickListener NO){
 		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
 		alertDialog.setMessage(MSG);

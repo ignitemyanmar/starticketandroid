@@ -81,22 +81,6 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-/**
- * {@link #EditBusSelectSeatActivity} is the class to do Own Seat Open and Close
- * <p>
- * Private methods:
- * (1) {@link #getSeatPlan()}
- * (2) {@link #postCloseSeat()}
- * (3) {@link #postOpenSeat()}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 	
 	public static List<BusSeat> Bus_Seat;
@@ -186,9 +170,9 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		txt_classes = (CustomTextView) findViewById(R.id.txt_classes);
 		txt_price = (CustomTextView) findViewById(R.id.txt_price);
 		txt_dept_date = (CustomTextView) findViewById(R.id.txt_departure_date);
-		txt_dept_date.setText("ထြက္ခြာမည့္ ေန႕ရက္ : "+ Date);
+		txt_dept_date.setText(getResources().getString(R.string.str_departure_date)+ Date);
 		txt_dept_time = (CustomTextView) findViewById(R.id.txt_departure_time);
-		txt_dept_time.setText("ထြက္ခြာမည့္ အခ်ိန္ : "+ Time);
+		txt_dept_time.setText(getResources().getString(R.string.str_departure_time)+ Time);
 		btn_closeseat = (Button) findViewById(R.id.btn_close_seat);
 		btn_closeseat.setOnClickListener(clickListener);
 		btn_openseat = (Button) findViewById(R.id.btn_open_seat);
@@ -235,9 +219,7 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		}
 	}
 	
-	/**
-	 *  Get Seat Plan for selected seats
-	 */
+	
 	private void getSeatPlan() {
 		String param = MCrypt.getInstance().encrypt(SecureParam.getSeatPlanParam(AppLoginUser.getAccessToken(), OperatorID, TripId, FromCity, ToCity, Classes, Date, Time));
 		NetworkEngine.getInstance().getItems(param, new Callback<Response>() {
@@ -257,10 +239,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		});
 	}
 	
-	/**
-	 *  Give Own Seats to agents
-	 */
 	private void postCloseSeat(){
+		
+		Log.i("", "Agent list: "+agentList.toString());
+		
 		if(SelectedSeat.length() > 0){
 			CloseSeatDialog closeSeatDialog = new CloseSeatDialog(this, agentList);
 			closeSeatDialog.setCallbackListener(new CloseSeatDialog.Callback() {
@@ -309,9 +291,6 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		
 	}
 	
-	/**
-	 * Close Own seats
-	 */
 	private void postOpenSeat(){
 		if(SelectedSeat.length() > 0){
 			dialog = new ZProgressHUD(this);
@@ -337,16 +316,17 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 					
 				}
 			});
-		}	
-		
+		}else {
+			SKToastMessage.showMessage(EditBusSelectSeatActivity.this, "Please choose the seat.", SKToastMessage.ERROR);
+		}
 	}
 	
 		
 	private void getData() {
 		if(BusSeats.size() > 0){
-			txt_operator.setText("ကားဂိတ္ : "+ BusSeats.get(0).getOperator());
-			txt_classes.setText("ယာဥ္အမ်ိဳးအစား : "+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
-			txt_price.setText("ေစ်းႏႈန္း :"+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
+			txt_operator.setText(getResources().getString(R.string.str_operator_name)+ BusSeats.get(0).getOperator());
+			txt_classes.setText(getResources().getString(R.string.str_bus_class)+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
+			txt_price.setText(getResources().getString(R.string.str_price)+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
 			BusClasses = BusSeats.get(0).getSeat_plan().get(0).getClasses();
 			
 			mSeat.setNumColumns(BusSeats.get(0).getSeat_plan().get(0).getColumn());
@@ -402,51 +382,64 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
 	        case R.id.action_delete:
-	        	alertDialog("Are you sure, you want to delete?", new DialogInterface.OnClickListener() {
-					
-					public void onClick(DialogInterface dialog,
-							int which) {
-						// TODO Auto-generated method stub
-						dialog.dismiss();
-						final ZProgressHUD zp_dialog = ZProgressHUD.getInstance(EditBusSelectSeatActivity.this);
-						zp_dialog.show();
-						List<SelectSeat> seats = new ArrayList<SelectSeat>();
-						String[] selectedSeat = SelectedSeat.split(",");
-						for (int i = 0; i < selectedSeat.length; i++) {
-							seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId(),BusSeats.get(0).getSeat_plan().get(0).getSeat_list().get(Integer.valueOf(selectedSeat[i])).getSeat_no().toString()));
-						}
-						String seatlist = MCrypt.getInstance().encrypt(seats.toString());
-				        String param = MCrypt.getInstance().encrypt(SecureParam.deleteTicketParam(AppLoginUser.getAccessToken(), BusSeats.get(0).getSeat_plan().get(0).getId().toString(), Date, seatlist, AppLoginUser.getLoginUserID()));
-						NetworkEngine.getInstance().deleteTicket(param,
-								new Callback<Response>() {
-
-									public void success(Response arg0,Response arg1) {
-										// TODO Auto-generated
-										// method stub
-										zp_dialog.dismiss();
-										onResume();
-										SKToastMessage
-												.showMessage(
-														EditBusSelectSeatActivity.this,
-														"Successfully Deleted.",
-														SKToastMessage.SUCCESS);
-										
-									}
-
-									public void failure(RetrofitError arg0) {
-										zp_dialog.dismiss();
-									}
-								});
-						}
-				}, new DialogInterface.OnClickListener() {
-					
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						dialog.dismiss();
-					}
-				});
-				return true;
 	        	
+	        	if(SelectedSeat.length() > 0){
+		        	alertDialog("Are you sure, you want to delete?", new DialogInterface.OnClickListener() {
+						
+						public void onClick(DialogInterface dialog,
+								int which) {
+							// TODO Auto-generated method stub
+							dialog.dismiss();
+							final ZProgressHUD zp_dialog = ZProgressHUD.getInstance(EditBusSelectSeatActivity.this);
+							zp_dialog.show();
+							List<SelectSeat> seats = new ArrayList<SelectSeat>();
+							String[] selectedSeat = SelectedSeat.split(",");
+							
+							Log.i("", "");
+							
+							if (selectedSeat.length > 0) {
+								for (int i = 0; i < selectedSeat.length; i++) {
+									if (!selectedSeat[i].equals("")) {
+										seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+												,BusSeats.get(0).getSeat_plan().get(0).getSeat_list().get(Integer.valueOf(selectedSeat[i])).getSeat_no().toString()));
+									}
+								}
+							}
+							
+							String seatlist = MCrypt.getInstance().encrypt(seats.toString());
+					        String param = MCrypt.getInstance().encrypt(SecureParam.deleteTicketParam(AppLoginUser.getAccessToken(), BusSeats.get(0).getSeat_plan().get(0).getId().toString(), Date, seatlist, AppLoginUser.getLoginUserID()));
+							NetworkEngine.getInstance().deleteTicket(param,
+									new Callback<Response>() {
+
+										public void success(Response arg0,Response arg1) {
+											// TODO Auto-generated
+											// method stub
+											zp_dialog.dismiss();
+											onResume();
+											SKToastMessage
+													.showMessage(
+															EditBusSelectSeatActivity.this,
+															"Successfully Deleted.",
+															SKToastMessage.SUCCESS);
+											
+										}
+
+										public void failure(RetrofitError arg0) {
+											zp_dialog.dismiss();
+										}
+									});
+							}
+					}, new DialogInterface.OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							dialog.dismiss();
+						}
+					});
+		        	return true;
+				}else {
+					SKToastMessage.showMessage(EditBusSelectSeatActivity.this, "Please choose the seat.", SKToastMessage.ERROR);
+				}
 		   	}
 		return super.onOptionsItemSelected(item);
 	}

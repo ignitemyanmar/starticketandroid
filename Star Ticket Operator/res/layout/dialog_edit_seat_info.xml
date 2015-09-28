@@ -93,7 +93,7 @@
             android:layout_weight="50"
             android:background="@drawable/btn_red"
             android:maxWidth="320dp"
-            android:text="ဖ်တ္မည္"
+            android:text="ဖ်က္မည္"
             android:textColor="@color/white" />
 
         <com.smk.custom.view.CustomButton

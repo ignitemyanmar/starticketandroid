@@ -67,26 +67,6 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-/**
- * {@link #BusConfirmActivity} is the class to input customer's info and Confirm the order
- * <p>
- * Private methods:
- * (1) {@link #remarkTypeSelectedListener}
- * (2) {@link #getExtraDestination()}
- * (3) {@link #itemSelectedListener}
- * (4) {@link #comfirmOrder()}
- * (5) {@link #checkFields()}
- * (4) {@link #clickListener()}
- * (4) {@link #getAgent()}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusConfirmActivity extends BaseActionBarActivity {
 
 	private Button btnsubmit;
@@ -480,14 +460,14 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		nrcFormat.add("13/Ta Ka Ma (N)");
 
 		List<String> remarkTypes = new ArrayList<String>();
-		remarkTypes.add("မွတ္ခ်က္ အမ်ိဳးအစား  ေရြးရန္");
-		remarkTypes.add("လမ္းၾကိဳ");
-		remarkTypes.add("ေတာင္းရန္");
-		remarkTypes.add("ခုံေရြ႕ရန္");
-		remarkTypes.add("Date Change ရန္");
-		remarkTypes.add("စီးျဖတ္");
-		remarkTypes.add("ေတာင္းေရာင္း");
-		remarkTypes.add("ဆက္သြား");
+		remarkTypes.add(getResources().getString(R.string.str_choose_remark));
+		remarkTypes.add(getResources().getString(R.string.str_lan_kyo));
+		remarkTypes.add(getResources().getString(R.string.str_taung_yan));
+		remarkTypes.add(getResources().getString(R.string.str_change_seat));
+		remarkTypes.add(getResources().getString(R.string.str_change_date));
+		remarkTypes.add(getResources().getString(R.string.str_see_pyat));
+		remarkTypes.add(getResources().getString(R.string.str_taung_yaung));
+		remarkTypes.add(getResources().getString(R.string.str_sat_go));
 
 		ArrayAdapter<String> remarkAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_dropdown_item_1line, remarkTypes);
@@ -529,7 +509,7 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		Random random = new Random();
 		for (int i = 0; i < selectedSeat.length; i++) {
 			CustomTextView label = new CustomTextView(this);
-			label.setText("လက္မွတ္ နံပါတ္ " + (i + 1) + " [ Seat No."
+			label.setText(getResources().getString(R.string.str_ticket_no) + (i + 1) + " [ Seat No."
 					+ selectedSeat[i] + " ]");
 			label.setTextSize(18f);
 			layout_ticket_no_container.addView(label, lps);
@@ -667,9 +647,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 
 	}
 
-	/**
-	 * {@code remarkTypeSelectedListener} clicked: Save selected remark type
-	 */
 	private OnItemSelectedListener remarkTypeSelectedListener = new OnItemSelectedListener() {
 
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
@@ -689,9 +666,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		}
 	};
 
-	/**
-	 * Get Extra Destination's City
-	 */
 	private void getExtraDestination() {
 		String param = MCrypt.getInstance().encrypt(SecureParam.getExtraDestinationParam(AppLoginUser.getAccessToken()));
 		NetworkEngine.getInstance().getExtraDestination(
@@ -720,9 +694,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 				});
 	}
 
-	/**
-	 * Extra City clicked: Save selected extra city's name
-	 */
 	private OnItemSelectedListener itemSelectedListener = new OnItemSelectedListener() {
 
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
@@ -741,9 +712,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		}
 	};
 
-	/**
-	 *  Confirm and save the selected trip in Database 
-	 */
 	private void comfirmOrder() {
 		dialog = new ZProgressHUD(this);
 		dialog.show();
@@ -830,12 +798,12 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 						SKToastMessage
 						.showMessage(
 								BusConfirmActivity.this,
-								"သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန့္ပိုင္ အတြင္း တစ္ ျခားသူ ယူ သြားေသာေၾကာင့္ သင္မွာေသာလက္မွတ္မ်ား မရႏိုင္ေတာ့ပါ။ ေက်းဇူးျပဳၿပီး တစ္ျခားလက္ မွတ္ မ်ား ျပန္ေရႊးေပးပါ။။",
+								getResources().getString(R.string.str_cannot_buy_msg),
 								SKToastMessage.ERROR);
 						dialog.dismissWithFailure();
 					} else {
 						SKToastMessage.showMessage(BusConfirmActivity.this,
-								"လက္မွတ္ ျဖတ္ျပီးျပီး ျဖစ္ပါသည္။",
+								getResources().getString(R.string.str_buy_success),
 								SKToastMessage.SUCCESS);
 						closeAllActivities();
 						startActivity(new Intent(getApplicationContext(),BusTripsCityActivity.class));
@@ -852,10 +820,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		lt.execute();
 	}
 
-	/**
-	 *  
-	 * @return If customer name, phone, agent, remark is null, return false
-	 */
 	public boolean checkFields() {
 		if (edt_buyer.getText().toString().length() == 0) {
 			edt_buyer.setError("Enter The Buyer Name.");
@@ -904,11 +868,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 
 	}
 
-	/**
-	 * {@code clickListener} 
-	 * (1) {@code btn_refresh_agent} clicked: call {@link #getAgent()}
-	 * (2) {@code btnsubmit} clicked: call {@link #comfirmOrder()}
-	 */
 	private OnClickListener clickListener = new OnClickListener() {
 
 		public void onClick(View v) {
@@ -928,10 +887,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		}
 	};
 
-
-	/**
-	 * Get Agent List
-	 */
 	private void getAgent() {
 		String param = MCrypt.getInstance().encrypt(SecureParam.getAllAgentParam(AppLoginUser.getAccessToken(), AppLoginUser.getUserID()));
 		NetworkEngine.getInstance().getAllAgent(param,
@@ -1017,9 +972,6 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		return super.getSupportParentActivityIntent();
 	}
 
-	/**
-	 * If back button pressed, Show dialog asking delete the selected seats? or cancel? 
-	 */
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub

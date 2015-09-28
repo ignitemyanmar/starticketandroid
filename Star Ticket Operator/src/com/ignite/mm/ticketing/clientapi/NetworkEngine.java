@@ -3,17 +3,6 @@ package com.ignite.mm.ticketing.clientapi;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
-/**
- * {@link #NetworkEngine} is the class to connect API's domain and call {@link INetworkEngine} interface for route
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class NetworkEngine {
 	static INetworkEngine instance;
 	public static RequestInterceptor requestInterceptor = new RequestInterceptor() {

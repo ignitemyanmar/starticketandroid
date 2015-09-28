@@ -41,23 +41,6 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-/**
- * {@link #UserLogin} is the class to show log in Page for operators
- * <p>
- * Private methods:
- * (1) {@link #getLogin()}
- * (2) {@link #clickListener}
- * (3) {@link #getSupportParentActivityIntent()}
- * (3) {@link #checkFields()}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class UserLogin extends ActionBarActivity {
 
 	private EditText txtEmail;
@@ -73,10 +56,8 @@ public class UserLogin extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		//Show Views for log in (Email, password and operator link)
 		setContentView(R.layout.activity_login);
 		
-		//Page Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -120,21 +101,18 @@ public class UserLogin extends ActionBarActivity {
 		return long_date;
 	}
 	
-	/**
-	 * If log in success, get AccessToken and user info to access other pages
-	 */
 	private void getLogin(){
 		if (connectionDetector.isConnectingToInternet()) {
 			if (checkFields()) {
 				dialog = new ZProgressHUD(UserLogin.this);
 				dialog.show();
-				String userEmail;
-				if (txtEmail.getText().toString().contains("@")) {
+				String userEmail = txtEmail.getText().toString();
+				/*if (txtEmail.getText().toString().contains("@")) {
 					userEmail = txtEmail.getText().toString();
 				} else {
 					userEmail = txtEmail.getText().toString()
 							+ "@gmail.com";
-				}
+				}*/
 				
 				String param = MCrypt.getInstance().encrypt(SecureParam.getAccessTokenParam(SecureKey.getGrant(), SecureKey.getId(), SecureKey.getKey(), MCrypt.getInstance().encrypt(userEmail), MCrypt.getInstance().encrypt(txtPassword.getText().toString()), SecureKey.getScope(), SecureKey.getState()));
 				Log.i("", "Hello Param: " + param);
@@ -179,11 +157,9 @@ public class UserLogin extends ActionBarActivity {
 						editor.commit();
 						editor.putString("working_date", "");
 						editor.commit();
-						
 						Intent intent = new Intent(getApplicationContext(),	BusMenuActivity.class);
 						startActivity(intent);
 					}
-					
 				});
 			}
 		} else {
@@ -191,10 +167,6 @@ public class UserLogin extends ActionBarActivity {
 		}
 	}
 	
-	/**
-	 * (1) {@code buttons[0]} {@link #getLogin()}
-	 * (2) {@code buttons[1]} show dialog to enter operator's domain link
-	 */
 	private OnClickListener clickListener = new OnClickListener() {
 
 		public void onClick(View v) {
@@ -202,7 +174,7 @@ public class UserLogin extends ActionBarActivity {
 			if (v == buttons[0]) {
 				getLogin();
 			}
-			//Operator's IP Address
+			// for skip button
 			if (v == buttons[1]) {
 				EnterIPDialog dialog = new EnterIPDialog(UserLogin.this);
 				dialog.setCallbackListener(new EnterIPDialog.Callback() {
@@ -222,9 +194,6 @@ public class UserLogin extends ActionBarActivity {
 		}
 	};
 	
-	/**
-	 * If back arrow button clicked, close this activity. 
-	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -232,11 +201,7 @@ public class UserLogin extends ActionBarActivity {
 		return super.getSupportParentActivityIntent();
 	}
 
-	/**
-	 * 
-	 * @return Email and Password is null, return false
-	 */
-	private boolean checkFields() {
+	public boolean checkFields() {
 		if (txtEmail.getText().toString().length() == 0) {
 			txtEmail.setError("Enter The User Email");
 			return false;

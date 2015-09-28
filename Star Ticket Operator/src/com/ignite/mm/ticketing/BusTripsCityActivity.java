@@ -43,25 +43,6 @@ import com.smk.calender.widget.SKCalender.Callbacks;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-/**
- * {@link #BusTripsCityActivity} is the class to show Trips (From City - To City)
- * <p>
- * Private methods:
- * (1) {@link #getTripsCity}
- * (2) {@link #getNotiBooking}
- * (3) {@link #getSupportParentActivityIntent()}
- * (4) {@link #onCreateOptionsMenu}
- * (5) {@link #onOptionsItemSelected(MenuItem)}
- * (6) {@link #itemClickListener}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusTripsCityActivity extends BaseActionBarActivity{
 	private GridView grd_trips_city;
 	private ZProgressHUD dialog;
@@ -73,10 +54,8 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 				
-		//Show view for Trip Info to choose
 		setContentView(R.layout.activity_trips_city);
 		
-		//Page Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -115,10 +94,6 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 
 	protected List<TripsCollection> tripsCollections;
 	private Menu menu;	
-	
-	/**
-	 *  Get Trip (From City - To City)
-	 */
 	private void getTripsCity(){
 		dialog = new ZProgressHUD(this);
         dialog.show();
@@ -139,9 +114,6 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 		});
 	}
 	
-	/**
-	 * Get Booking Notification (number of booking)
-	 */
 	private void getNotiBooking(){
 		String param = MCrypt.getInstance().encrypt(SecureParam.getNotiBookingParam(AppLoginUser.getAccessToken(), getToday()));
 		NetworkEngine.getInstance().getNotiBooking(param , new Callback<Response>() {
@@ -169,9 +141,6 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 		});
 	}
 	
-	/**
-	 * If back arrow button clicked, close this activity. 
-	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -179,9 +148,6 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 		return super.getSupportParentActivityIntent();
 	}
 	
-	/**
-	 * Show Menu for Booking Notification
-	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -191,9 +157,6 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 		return true;
 	}
 
-	/**
-	 * Booking Notification clickListener, show booking list
-	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -212,10 +175,6 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/**
-	 * (1) If one trip clicked, show Calendar.
-	 * (2) If date chosen, go next activity {@link BusTimeActivity}
-	 */
 	private OnItemClickListener itemClickListener = new OnItemClickListener() {
 
 		public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,

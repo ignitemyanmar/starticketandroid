@@ -11,20 +11,27 @@ import com.ignite.mm.ticketing.sqlite.database.model.AgentList;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorGroupUser;
 import com.ignite.mm.ticketing.sqlite.database.model.TripInfo;
 import com.ignite.mm.ticketing.sqlite.database.model.Time;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.astuetz.PagerSlidingTabStrip;
 import com.google.gson.Gson;
@@ -36,22 +43,10 @@ import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusSeatFragmentPagerAdapter;
+import com.ignite.mm.ticketing.custom.listview.adapter.GroupUserListAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.AllTimeBundleListObject;
+import com.thuongnh.zprogresshud.ZProgressHUD;
 
-/**
- * {@link #BusSeatViewPagerActivity} is the class to show Bus Seats(both can book + can sell)
- * <p>
- * Private methods:
- * (1) call Fragment {@link BusSeatFragmentPagerAdapter}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 
 	private PagerSlidingTabStrip tabs;
@@ -87,7 +82,6 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        //Show View of Bus Seats by Time
 		setContentView(R.layout.activity_seat_view_pager);
 		
 		Bundle bundle = getIntent().getExtras();
@@ -121,7 +115,6 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 			}
 		}
 		
-		//Page Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -130,29 +123,25 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
             this.setSupportActionBar(toolbar);
         }
         
-        //View Pager for Seats Plan
 		pager = (ViewPager)findViewById(R.id.pager);
-		
-		//Tabs of Each Time
 		tabs = (PagerSlidingTabStrip)findViewById(R.id.tabs);
+		
 		tabs.setTextColorResource(R.color.white);
 		tabs.setIndicatorColorResource(R.color.accent_dark);
-		tabs.setIndicatorHeight(5);
+		tabs.setIndicatorHeight(3);
 		
-		//No use
 		getAgent();
-		
-		//No use
 		getOperatorGroupUser();
 		
 		app_login_user = AppLoginUser;
 		
-		//Add Time List into Pager Adapter
 		if (AllTimeList != null && AllTimeList.size() > 0) {
 			adapter = new BusSeatFragmentPagerAdapter(getSupportFragmentManager(), AllTimeList);
 		}
         
         pager.setAdapter(adapter);
+        
+        
         pager.setCurrentItem(click_position);
         tabs.setViewPager(pager);
         
@@ -246,4 +235,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 		finish();
 		return super.getSupportParentActivityIntent();
 	}
+	
+	
+
 }

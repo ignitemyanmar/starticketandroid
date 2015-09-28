@@ -30,7 +30,7 @@ public class CloseSeatDialog{
 		
 		View view = View.inflate(context, R.layout.dialog_close_seat, null);
 		dialog = new MaterialDialog.Builder(context)
-        .title("ခံု ပိတ္မည္")
+        .title(ctx.getString(R.string.str_close_seat))
         .customView(view, true)
         .show();
 		dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -97,6 +97,7 @@ public class CloseSeatDialog{
 		ArrayAdapter<Agent> agentListAdapter = new ArrayAdapter<Agent>(ctx, android.R.layout.simple_dropdown_item_1line, agentList);
 		this.edt_agent = textView;
 		this.edt_agent.setAdapter(agentListAdapter);
+		this.edt_agent.setThreshold(1);
 		this.edt_agent.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1,

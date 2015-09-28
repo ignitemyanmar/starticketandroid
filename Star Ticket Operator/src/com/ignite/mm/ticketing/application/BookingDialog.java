@@ -63,14 +63,14 @@ public class BookingDialog{
 		btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
 		
 		List<String> remarkTypes = new ArrayList<String>();
-		remarkTypes.add("မွတ္ခ်က္ အမ်ိဳးအစား  ေရြးရန္");
-		remarkTypes.add("လမ္းၾကိဳ");
-		remarkTypes.add("ေတာင္းရန္");
-		remarkTypes.add("ခုံေရြ႕ရန္");
-		remarkTypes.add("Date Change ရန္");
-		remarkTypes.add("စီးျဖတ္");
-		remarkTypes.add("ေတာင္းေရာင္း");
-		remarkTypes.add("ဆက္သြား");
+		remarkTypes.add(ctx.getString(R.string.str_choose_remark));
+		remarkTypes.add(ctx.getString(R.string.str_lan_kyo));
+		remarkTypes.add(ctx.getString(R.string.str_taung_yan));
+		remarkTypes.add(ctx.getString(R.string.str_change_seat));
+		remarkTypes.add(ctx.getString(R.string.str_change_date));
+		remarkTypes.add(ctx.getString(R.string.str_see_pyat));
+		remarkTypes.add(ctx.getString(R.string.str_taung_yaung));
+		remarkTypes.add(ctx.getString(R.string.str_sat_go));
 		
 		ArrayAdapter<String> remarkAdapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_dropdown_item_1line, remarkTypes);
 		sp_remark_type.setAdapter(remarkAdapter);

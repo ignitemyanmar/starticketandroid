@@ -18,7 +18,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -45,21 +44,6 @@ import com.ignite.mm.ticketing.sqlite.database.model.Saleitem;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-/**
- * {@link #BusBookingDetailActivity} is the class to show Booking Detail to delete
- * <p>
- * Private methods:
- * (1) {@link #clickListener}
- * (2) {@link #deleteOrder}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusBookingDetailActivity extends BaseActionBarActivity {
 	private ListView lst_customer_ticket;
 	private List<Saleitem> ticket_list;
@@ -133,12 +117,6 @@ public class BusBookingDetailActivity extends BaseActionBarActivity {
 		}
 	};
 	
-	/**
-	 * {@code clickListener} clicked: 
-	 * 
-	 * (1) {@code chk_remove_all} clicked: clear selected
-	 * (2) {@code btn_delete} clicked: call {@link #deleteOrder()}
-	 */
 	private OnClickListener clickListener = new OnClickListener() {
 		
 		public void onClick(View v) {
@@ -171,9 +149,6 @@ public class BusBookingDetailActivity extends BaseActionBarActivity {
 	};
 	private ProgressDialog dialog;
 	
-	/**
-	 * Delete Selected (checked) seats
-	 */
 	private void deleteOrder(){
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
         dialog.setCancelable(true);

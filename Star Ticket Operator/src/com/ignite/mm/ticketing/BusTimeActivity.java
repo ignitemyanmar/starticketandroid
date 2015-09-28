@@ -53,23 +53,6 @@ import com.ignite.mm.ticketing.sqlite.database.model.TripsCollection;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-/**
- * {@link #BusTimeActivity} is the class to show Available Trip Time,Class,Seat(sold out)
- * <p>
- * Private methods:
- * (1) {@link #getTime()}
- * (2) {@link #morningTimeClickListener}
- * (3) {@link #eveningTimeClickListener}
- * (4) {@link #setListViewHeightBasedOnChildren(ListView)}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusTimeActivity extends BaseActionBarActivity {
 	
 	private SKConnectionDetector connectionDetector;
@@ -102,13 +85,14 @@ public class BusTimeActivity extends BaseActionBarActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		//Show View for Available Time, Bus class, seats
 		setContentView(R.layout.busdest_list);
 		
 		connectionDetector = new SKConnectionDetector(this);
 			
 		from = (Spinner)findViewById(R.id.spn_from);
+		
 		to = (Spinner)findViewById(R.id.spn_to);
+		
 		time = (Spinner)findViewById(R.id.spn_time);
 		
 		txt_operator = (TextView)findViewById(R.id.txt_operator);
@@ -128,7 +112,6 @@ public class BusTimeActivity extends BaseActionBarActivity {
 		selectedTo = bundle.getString("to");
 		selectedDate = bundle.getString("date");
 		
-		//Page Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -170,9 +153,6 @@ public class BusTimeActivity extends BaseActionBarActivity {
 	
 	private AllTimeBundleListObject bundleAllTimes;
 	
-	/**
-	 *  Get Trip Time, Bus Class and Seats sold out
-	 */
 	private void getTime() {
 		String param = MCrypt.getInstance().encrypt(SecureParam.getTimesParam(AppLoginUser.getAccessToken(), AppLoginUser.getUserID(), selectedFromId, selectedToId, selectedDate));
 		NetworkEngine.getInstance().getAllTime(param, new Callback<Response>() {
@@ -229,9 +209,7 @@ public class BusTimeActivity extends BaseActionBarActivity {
 		});
 	}
 	
-	/**
-	 * If morning time clicked, go next activity {@link BusSeatViewPagerActivity}
-	 */
+	
 	private OnItemClickListener morningTimeClickListener = new OnItemClickListener() {
 
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -258,9 +236,6 @@ public class BusTimeActivity extends BaseActionBarActivity {
 		}
 	};
 	
-	/**
-	 * If evening time clicked, go next activity {@link BusSeatViewPagerActivity}
-	 */
 	private OnItemClickListener eveningTimeClickListener = new OnItemClickListener() {
 
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -365,10 +340,7 @@ public class BusTimeActivity extends BaseActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/**
-	 * Balance for List View total height
-	 * @param listView ListView
-	 */
+	
 	private void setListViewHeightBasedOnChildren(ListView listView) {
 		ListAdapter listAdapter = listView.getAdapter();
 		if (listAdapter == null) {

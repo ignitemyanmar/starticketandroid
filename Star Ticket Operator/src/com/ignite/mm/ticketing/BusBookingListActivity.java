@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -37,24 +36,6 @@ import com.ignite.mm.ticketing.sqlite.database.model.TimesbyOperator;
 import com.ignite.mm.ticketing.sqlite.database.model.To;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-/**
- * {@link #BusBookingListActivity} is the class to show Booking List including (confirm booking + delete booking)
- * <p>
- * Private methods:
- * (1) {@link #getTimeData()}
- * (2) {@link #getCity()}
- * (3) {@link #clickListener}
- * (4) {@link #itemClickListener}
- * (5) {@link #getBookingList()}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusBookingListActivity extends BaseActionBarActivity {
 	private ListView lst_credit;
 	private List<CreditOrder> credit_list;
@@ -77,9 +58,9 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 		String orderDate = pref.getString("order_date", "");
 		BookCode = pref.getString("book_code", "");
 		if(!orderDate.equals("")){
-			txt_title.setText("( "+ changeDate(orderDate) +" ) ေန႕ အတြက္ Booking စာရင္းမ်ား");
+			txt_title.setText("( "+ changeDate(orderDate) +" ) "+getResources().getString(R.string.str_booking_list));
 		}else{
-			txt_title.setText("Booking စာရင္း အားလံုး");
+			txt_title.setText(getResources().getString(R.string.str_booking_list));
 		}
 		
 		lst_credit = (ListView) findViewById(R.id.lst_credit);
@@ -88,7 +69,6 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 	
 		lst_credit.setOnItemClickListener(itemClickListener);
 		
-		//Get City and Time for booking filter search
 		getTimeData();
 		getCity();
 		
@@ -106,11 +86,6 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 		}
 	}
 	
-	/**
-	 * {@code clickListener} clicked: 
-	 * (1) {@code actionBarBack} clicked: just close the activity
-	 * (2) {@code btn_search} clicked: Show Dialog to search by fromCity, toCity, Time
-	 */
 	private OnClickListener clickListener = new OnClickListener() {
 		
 		public void onClick(View v) {
@@ -149,9 +124,7 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 		}
 	};
 	
-	/**
-	 * {@code itemClickListener} clicked: go next activity {@link BusBookingConfirmDeleteActivity}
-	 */
+	
 	private OnItemClickListener itemClickListener = new OnItemClickListener() {
 
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -167,10 +140,6 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 	protected List<From> fromCities;
 	protected List<To> toCities;
 	protected List<TimesbyOperator> Times;
-	
-	/**
-	 *  Get Trip Cities by operator
-	 */
 	private void getCity() {
 		String param = MCrypt.getInstance().encrypt(SecureParam.getCitybyOperatorParam(AppLoginUser.getAccessToken(), AppLoginUser.getUserID()));
 		NetworkEngine.getInstance().getCitybyOperator(param, new Callback<Response>() {
@@ -189,9 +158,6 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 		});
 	}
 	
-	/**
-	 *  Get Trip Time by operator
-	 */
 	private void getTimeData() {
 		String param = MCrypt.getInstance().encrypt(SecureParam.getTimebyOperatorParam(AppLoginUser.getAccessToken(), AppLoginUser.getUserID()));
 		NetworkEngine.getInstance().getTimebyOperator(param , new Callback<Response>() {
@@ -207,9 +173,6 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 		});
 	}
 	
-	/**
-	 * Get Booking List by Operator
-	 */
 	private void getBookingList(){
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
         dialog.setCancelable(true);

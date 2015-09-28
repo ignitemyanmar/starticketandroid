@@ -353,18 +353,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/primary_dark"
             android:gravity="center_vertical"
-            android:layout_alignParentBottom="true" >
+            android:padding="5dp" >
 
             <com.gc.materialdesign.views.ButtonRectangle
                 android:id="@+id/btn_check_out"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5px"
                 android:layout_weight="1"
                 android:background="@color/accent_dark"
                 android:text="ဝယ္ယူမည္"
-               	android:layout_margin="5px"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:visibility="visible" />
@@ -372,13 +373,12 @@
             <com.smk.custom.view.CustomButton
                 android:id="@+id/btn_now_booking"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:layout_margin="5px"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:textColor="@color/white"
-                android:text="Booking မွာရန္" />
-
+                android:text="Booking မွာရန္"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </RelativeLayout>

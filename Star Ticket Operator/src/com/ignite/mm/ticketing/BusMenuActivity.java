@@ -26,8 +26,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActionBarActivity;
 import com.ignite.mm.ticketing.application.BookingCodeDialog;
@@ -40,23 +38,6 @@ import com.smk.calender.widget.SKCalender.Callbacks;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-/**
- * {@link #BusMenuActivity} is the class to show Menu of the app
- * <p>
- * Private methods:
- * (1) {@link #getNotiBooking}
- * (2) {@link #getSupportParentActivityIntent}
- * (3) {@link #onCreateOptionsMenu}
- * (4) {@link #onOptionsItemSelected(MenuItem)}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusMenuActivity extends BaseActionBarActivity {
 	private LinearLayout btn_sale_ticket;
 	private LinearLayout btn_order;
@@ -69,14 +50,8 @@ public class BusMenuActivity extends BaseActionBarActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		//Show Menu 
-		//1) Sale 
-		//2) Enter sale into online after sold by manually
-		//3) Booking List by Date
-		//4) Booking List by booking code
 		setContentView(R.layout.activity_busticketing_menu);
 		
-		//Page Title
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -98,21 +73,10 @@ public class BusMenuActivity extends BaseActionBarActivity {
 		SKConnectionDetector detector = SKConnectionDetector.getInstance(this);
 		if(detector.isConnectingToInternet()){
 			getNotiBooking();
-		}else {
-			Toast.makeText(BusMenuActivity.this, "Network unavailable!", Toast.LENGTH_SHORT).show();
 		}
 		
 	}
 	
-	/**
-	 * (1) {@code btn_sale_ticket} clicked: go next activity {@link BusTripsCityActivity} for sale tickets
-	 * <p>
-	 * (2) {@code btn_old_sale} clicked: show Calendar Dialog for manual sale
-	 * <p>
-	 * (3) {@code btn_order} clicked: show Calendar Dialog for booking list
-	 * <p>
-	 * (4) {@code btn_search_code} clicked: show Dialog to enter booking code for booking list
-	 */
 	private OnClickListener clickListener = new OnClickListener() {
 		
 		public void onClick(View v) {
@@ -153,6 +117,9 @@ public class BusMenuActivity extends BaseActionBarActivity {
 								editor.commit();
 					        	skCalender.dismiss();
 					        	startActivity(new Intent(getApplicationContext(),	BusBookingListActivity.class));	
+								
+							
+				        			        	
 				        	
 				        }
 				  });
@@ -238,12 +205,8 @@ public class BusMenuActivity extends BaseActionBarActivity {
 			
 		}
 	};
-	
 	private Menu menu;
 	
-	/**
-	 *  Get Booking Notification, show number of booking in Menu of activities
-	 */
 	private void getNotiBooking(){
 		String param = MCrypt.getInstance().encrypt(SecureParam.getNotiBookingParam(AppLoginUser.getAccessToken(), getToday()));
 		NetworkEngine.getInstance().getNotiBooking(param , new Callback<Response>() {
@@ -271,9 +234,6 @@ public class BusMenuActivity extends BaseActionBarActivity {
 		});
 	}
 	
-	/**
-	 * If back arrow button clicked, close this activity. 
-	 */
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
@@ -281,9 +241,6 @@ public class BusMenuActivity extends BaseActionBarActivity {
 		return super.getSupportParentActivityIntent();
 	}
 	
-	/**
-	 * Show Menu for Booking Notification
-	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -293,9 +250,6 @@ public class BusMenuActivity extends BaseActionBarActivity {
 		return true;
 	}
 
-	/**
-	 * Booking Notification clickListener, show booking list
-	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

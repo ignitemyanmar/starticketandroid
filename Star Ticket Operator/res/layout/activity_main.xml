@@ -12,6 +12,6 @@
         android:id="@+id/imageView1"
         android:layout_width="222dp"
         android:layout_height="139dp"
-        android:src="@drawable/star_ticket_splash_300width" />
+        android:src="@drawable/ic_launcher" />
 
 </LinearLayout>

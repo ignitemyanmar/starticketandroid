@@ -24,24 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-/**
- * {@link #MainActivity} is Main class(first activity).
- * (1) Splash Screen Show for 1000 milliseconds (1 second)
- * (2) Start another activity {@link #UserLogin}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- * @version 2.0 
- */
 public class MainActivity extends Activity {
 	private Context ctx = this;
 	private SKConnectionDetector connectionDetector;
 	private ZProgressHUD dialog;
 	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,9 +38,6 @@ public class MainActivity extends Activity {
 		// RunAnimations_for_FadeOut();
 		Thread splashTread = new Thread() {
 
-			/**
-			 * test
-			 */
 			@Override
 			public void run() {
 				try {
@@ -102,7 +87,7 @@ public class MainActivity extends Activity {
 							SKToastMessage
 									.showMessage(
 											MainActivity.this,
-											"á€žá€„á€¹á�� Login Email á‚�á€½á€„á€¹á€· Password á€Ÿá€¬ á€™á€½á€¬á€¸ á€±á€”á€•á€«á€žá€Šá€¹",
+											"သင္၏ Login Email ႏွင့္ Password ဟာ မွား ေနပါသည္",
 											SKToastMessage.ERROR);
 						}
 					}

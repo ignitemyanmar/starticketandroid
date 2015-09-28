@@ -79,21 +79,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-/**
- * {@link #BusSeatFragmentPagerAdapter} is the class adapter to show Seats Plan and Time Tabs
- * <p>
- * Private methods:
- * (1) {@link #getPageTitle}
- * (2) {@link #getItem}
- * <p>
- * ** Star Ticket Operator App is used to sell bus tickets via online. 
- * @version 2.0 
- * @author Su Wai Phyo (Ignite Software Solutions)
- * <p>
- * Last Modified : 14/Sept/2015
- * <p>
- * Last ModifiedBy : Saw Maine K
- */
 public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
 	private static List<Time> allTimeList = new ArrayList<Time>();
@@ -108,9 +93,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 	        }
 	}
 
-    /**
-     * Get Time Tab's Titles
-     */
     @Override
     public CharSequence getPageTitle(int position) {
         return allTimeList.get(position).getTime()+"("+allTimeList.get(position).getBus_class()+") "
@@ -122,32 +104,11 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
         return mCount;
     }
 
-    /**
-     *  Call {@link BusSelectSeatFragment}
-     */
     @Override
     public Fragment getItem(int position) {
         return BusSelectSeatFragment.newInstance(position);
     }
     
-    /**
-     * {@link #BusSelectSeatFragment} is the class to get Seats Plan
-     * <p>
-     * Private methods:
-     * (1) {@link #postSale()}
-     * (2) {@link #getData()}
-     * (3) {@link #callbacks}
-     * (4) {@link #getRemarkType(int)}
-     * (5) {@link #clickListener}
-     * <p>
-     * ** Star Ticket Operator App is used to sell bus tickets via online. 
-     * @version 2.0 
-     * @author Su Wai Phyo (Ignite Software Solutions)
-     * <p>
-     * Last Modified : 14/Sept/2015
-     * <p>
-     * Last ModifiedBy : Saw Maine K
-     */
     public static class BusSelectSeatFragment extends Fragment{
     	
     	public static List<BusSeat> Bus_Seat;
@@ -185,11 +146,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     	private View rootView;
 		private FrameLayout loading;
     	
-		/**
-		 * Get Bus Seat Plan for selected time
-		 * @param position selected time tab's position
-		 * @return Fragment of selected position
-		 */
     	public static BusSelectSeatFragment newInstance(int position) {
     		BusSelectSeatFragment frag = new BusSelectSeatFragment();
     		Bundle bundle = new Bundle();
@@ -218,9 +174,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		return rootView;
     	}
     	
-    	/**
-    	 * {@link #onCreateOptionsMenu(Menu)}
-    	 */
     	@Override
     	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     		// TODO Auto-generated method stub
@@ -272,28 +225,17 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			btn_now_booking.setVisibility(View.GONE);
     			btn_booking.setVisibility(View.GONE);
     		}
-    		
-    		//Hide Own Seat Open + Close (button)
     		btn_openseat.setVisibility(View.GONE);
 			btn_closeseat.setVisibility(View.GONE);
     	}
     	
-    	/**
-    	 *  Show Menu (Booking List, Refresh, Edit)
-    	 */
     	@Override
     	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     	    // TODO Add your menu entries here
     		inflater.inflate(R.menu.activity_bus_selectseat, menu);
     	    super.onCreateOptionsMenu(menu, inflater);
     	}
-    	   
-    	/**
-    	 *  Menu Item Clicked: 
-    	 *  (1) {@code action_booking} clicked: go next activity {@link BusBookingListActivity} 
-    	 *  (2) {@code action_refresh} clicked: go next activity {@link #onResume()}
-    	 *  (3) {@code action_edit} clicked: go next activity {@link EditBusSelectSeatActivity}  
-    	 */
+    	    	
     	@Override
     	public boolean onOptionsItemSelected(MenuItem item) {
     		switch(item.getItemId()) {
@@ -330,11 +272,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		return super.onOptionsItemSelected(item);
     	}
     	
-    	/**
-    	 * Change Date
-    	 * @param date String date (yyyy-MM-dd)
-    	 * @return String date dd/MM/yyyy
-    	 */
     	public static String changeDate(String date){
     		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
     		Date StartDate = null;
@@ -347,15 +284,10 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		return DateFormat.format("dd/MM/yyyy",StartDate).toString();
     	}
     	
-    	/**
-    	 *  Show loading and call {@link #getSeatPlan()}
-    	 */
     	@Override
 		public void onResume() {
     		// TODO Auto-generated method stub
     		super.onResume();
-    		
-    		//If selected seat is exist, clear them.
     		if(SelectedSeat.length() != 0){
     			SelectedSeat = "";
     		}
@@ -372,9 +304,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		}
     	}
     	
-    	/**
-    	 * Get Bus Seats 
-    	 */
     	private void getSeatPlan() {
     		
     		Log.i("", "mPosition from getSeatPlan: "+mPosition);
@@ -412,9 +341,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		});
     	}
     	
-    	/**
-    	 *  Save selected seats in Operator Database. It takes (only 2 minutes).
-    	 */
     	public void postSale() {
     		dialog = new ZProgressHUD(getActivity());
     		dialog.show();
@@ -472,6 +398,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     										DeviceUtil.getInstance(
     												getActivity())
     												.getID())) {
+    							//Buy
     							if (isBooking == 0) {
     								Intent nextScreen = new Intent(
     										getActivity(),
@@ -498,9 +425,10 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     								nextScreen.putExtras(bundle);
     								startActivity(nextScreen);
     							} else {
+    								//Booking
     								SKToastMessage.showMessage(
     										getActivity(),
-    										"Booking မွာျပီးျပီး ျဖစ္ပါသည္။",
+    										"Booking Success",
     										SKToastMessage.SUCCESS);
     								isBooking = 0;
     								getSeatPlan();
@@ -512,7 +440,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     							SKToastMessage
 								.showMessage(
 										getActivity(),
-										"သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန့္ပိုင္ အတြင္း တစ္ ျခားသူ ယူ သြားေသာေၾကာင့္ သင္မွာေသာလက္မွတ္မ်ား မရႏိုင္ေတာ့ပါ။ ေက်းဇူးျပဳၿပီး တစ္ျခားလက္ မွတ္ မ်ား ျပန္ေရႊးေပးပါ။။",
+										getResources().getString(R.string.str_cannot_buy_msg),
 										SKToastMessage.ERROR);
     							getSeatPlan();
     						}
@@ -535,17 +463,15 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
     	}
     	
-    	/**
-    	 *  Get Seat Plan's Informations: Departure Date, Time, Operator, Bus Class, Price
-    	 */
     	private void getData() {
+    		
     		
     		if(BusSeats.size() > 0){
     			txt_dept_date.setText("ထြက္ခြာမည့္ ရက္ : "+ changeDate(BusSeatViewPagerActivity.Date));
-    			txt_dept_time.setText("ထြက္ခြာမည့္ အခ်ိန္  : "+ allTimeList.get(mPosition).getTime());
+    			txt_dept_time.setText("ထြက္ခြာမည့္ အခ်ိန္ : "+ allTimeList.get(mPosition).getTime());
     			txt_operator.setText("ကားဂိတ္ : "+ BusSeats.get(0).getOperator());
-    			txt_classes.setText("ကားအမ်ိဳးအစား  : "+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
-    			txt_price.setText("ေစ်းႏႈန္း   :"+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
+    			txt_classes.setText("ကားအမ်ိဳးအစား : "+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
+    			txt_price.setText("ေစ်းႏႈန္း  : "+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
     			BusClasses = BusSeats.get(0).getSeat_plan().get(0).getClasses();
     			
     			Map<Integer, List<Seat_list>> map = new HashMap<Integer, List<Seat_list>>();
@@ -586,22 +512,26 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			layout_remark.removeAllViewsInLayout();
     			for (Map.Entry<Integer, List<Seat_list>> entry : map.entrySet())
     			{
-    			    ListView lst_remark = new ListView(getActivity());
-    			    View viewRemarkType = View.inflate(getActivity(), R.layout.remark_header, null);
-    			    TextView txtRemartType = (TextView) viewRemarkType.findViewById(R.id.txt_remark_type);
-    			    txtRemartType.setText(getRemarkType(entry.getKey()));
-    			    lst_remark.addHeaderView(viewRemarkType);
-    				lst_remark.setAdapter(new RemarkListAdapter(getActivity(), entry.getValue(), entry.getKey()));
-    				Log.i("","Hello = "+ entry.getValue());
-    				layout_remark.addView(lst_remark);
-    				setListViewHeightBasedOnChildren(lst_remark);
+    				if (getActivity() != null) {
+    					ListView lst_remark = new ListView(getActivity());
+        			    View viewRemarkType = View.inflate(getActivity(), R.layout.remark_header, null);
+        			    TextView txtRemartType = (TextView) viewRemarkType.findViewById(R.id.txt_remark_type);
+        			    txtRemartType.setText(getRemarkType(entry.getKey()));
+        			    lst_remark.addHeaderView(viewRemarkType);
+        				lst_remark.setAdapter(new RemarkListAdapter(getActivity(), entry.getValue(), entry.getKey()));
+        				Log.i("","Hello = "+ entry.getValue());
+        				layout_remark.addView(lst_remark);
+        				setListViewHeightBasedOnChildren(lst_remark);
+					}else {
+						Log.i("","get activity is null!!!!!!!!!!");
+					}
     			}
     			
     			mSeat.setNumColumns(BusSeats.get(0).getSeat_plan().get(0).getColumn());
     			seatAdapter = new BusSeatAdapter(getActivity(), BusSeats.get(0).getSeat_plan().get(0).getSeat_list());
     			seatAdapter.setCallbacks(callbacks);
     			mSeat.setAdapter(seatAdapter);	
-    			setGridViewHeightBasedOnChildren(mSeat , Integer.valueOf(BusSeats.get(0).getSeat_plan().get(0).getColumn()));
+    			setGridViewHeightBasedOnChildren(mSeat, Integer.valueOf(BusSeats.get(0).getSeat_plan().get(0).getColumn()));
     			
     		}else{
     			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
@@ -617,14 +547,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			alertDialog.show();
     		}
     	}
-    	
     	protected EditSeatDialog editSeatDialog;
-    	
-    	/**
-    	 * If seats long clicked:  Show Edit Seat Dialog and set Name, Phone, NRC, Ticket No
-    	 * (1) onEdit clicked: Edit the info
-    	 * (2) onCancel clicked: Delete the selected seat
-    	 */
     	private BusSeatAdapter.Callbacks callbacks = new BusSeatAdapter.Callbacks() {
     		
     		public void onClickEdit(final Seat_list list) {
@@ -716,32 +639,21 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		}
     	};
     	
-    	/**
-    	 *  Get Remark Type
-    	 * @param remarkType position
-    	 * @return selected Remark type
-    	 */
     	private String getRemarkType(int remarkType){
     		List<String> remarkTypes = new ArrayList<String>();
-    		remarkTypes.add("မွတ္ခ်က္ အမ်ိဳးအစား  ေရြးရန္");
-    		remarkTypes.add("လမ္းၾကိဳ");
-    		remarkTypes.add("ေတာင္းရန္");
-    		remarkTypes.add("ခုံေရြ႕ရန္");
-    		remarkTypes.add("Date Change ရန္");
-    		remarkTypes.add("စီးျဖတ္");
-    		remarkTypes.add("ေတာင္းေရာင္း");
-    		remarkTypes.add("ဆက္သြား");
+    		remarkTypes.add(getResources().getString(R.string.str_choose_remark));
+    		remarkTypes.add(getResources().getString(R.string.str_lan_kyo));
+    		remarkTypes.add(getResources().getString(R.string.str_taung_yan));
+    		remarkTypes.add(getResources().getString(R.string.str_change_seat));
+    		remarkTypes.add(getResources().getString(R.string.str_change_date));
+    		remarkTypes.add(getResources().getString(R.string.str_see_pyat));
+    		remarkTypes.add(getResources().getString(R.string.str_taung_yaung));
+    		remarkTypes.add(getResources().getString(R.string.str_sat_go));
     		remarkTypes.add("Discounted");
     		remarkTypes.add("Free Ticket");
     		return remarkTypes.get(remarkType).toString();
     	}
     	
-    	/**
-    	 * {@code clickListener} 
-    	 * (1) {@code btn_booking} clicked: {@link BusBookingListActivity}
-    	 * (2) {@code btn_now_booking} clicked: Show Booking Dialog {@code onSave} clicked: call {@link #postSale()}
-    	 * (3) {@code btn_check_out} clicked: call {@link #postSale()}
-    	 */
     	private OnClickListener clickListener = new OnClickListener() {
 
     		public void onClick(View v) {
@@ -819,6 +731,8 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
     		return true;
     	}
+
+    	
     	
     	public void setGridViewHeightBasedOnChildren(GridView gridView, int columns) {
     		ListAdapter listAdapter = gridView.getAdapter();
@@ -832,22 +746,27 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		int rows = 0;
 
     		View listItem = listAdapter.getView(0, null, gridView);
-    		listItem.measure(0, 0);
-    		totalHeight = listItem.getMeasuredHeight();
+    		
+    		if (listItem != null) {
+    			listItem.measure(0, 0);
+    			
+    			totalHeight = listItem.getMeasuredHeight();
 
-    		float x = 1;
-    		if (items > columns) {
-    			x = items / columns;
-    			rows = (int) (x + 1);
-    			totalHeight *= rows;
-    		}
+        		float x = 1;
+        		if (items > columns) {
+        			x = items / columns;
+        			rows = (int) (x + 1);
+        			totalHeight *= rows;
+        		}
 
-    		ViewGroup.LayoutParams params = gridView.getLayoutParams();
-    		params.height = totalHeight;
-    		gridView.setLayoutParams(params);
+        		ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        		params.height = totalHeight;
+        		gridView.setLayoutParams(params);
+			}else {
+				Log.i("", "return view is null!!!!!");
+			}
 
     	}
-    	
     	public static void setListViewHeightBasedOnChildren(ListView listView) {
             ListAdapter listAdapter = listView.getAdapter(); 
             if (listAdapter == null) {
@@ -868,12 +787,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
             listView.requestLayout();
         }
     	
-    	/**
-    	 *  Show Alert Dialog to delete the selected seats from operator server
-    	 * @param MSG Message to show in Dialog
-    	 * @param YES yes action click listener
-    	 * @param NO no action click listener
-    	 */
     	protected void alertDialog(String MSG, DialogInterface.OnClickListener YES, DialogInterface.OnClickListener NO){
     		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(getActivity());
     		alertDialog.setMessage(MSG);
@@ -909,10 +822,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		super.onStart();
     	}
     	
-    	/**
-    	 * Get Today Date (yyyy-MM-dd)
-    	 * @return
-    	 */
     	protected String getToday(){
     		Calendar c = Calendar.getInstance();
     		System.out.println("Current time => " + c.getTime());
