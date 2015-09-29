@@ -235,7 +235,7 @@ public class PaymentActivity extends BaseActivity{
 			goTripInfo_str = bundle.getString("GoTripInfo");
 			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
 			
-			Log.i("", "Go Trip Info(payment act:): "+goTripInfo_obj.toString());
+			//Log.i("", "Go Trip Info(payment act:): "+goTripInfo_obj.toString());
 			
 			/*if (goTripInfo_obj != null) {
 				if (goTripInfo_obj.getExtraCityPrice() != null) {
@@ -372,10 +372,13 @@ public class PaymentActivity extends BaseActivity{
 		}
 		
 		//Get Seat Count
-		if (goTripInfo_obj.getSelected_seats() != null && !goTripInfo_obj.getSelected_seats().equals("")) {
-			String[] seat_string = goTripInfo_obj.getSelected_seats().split(",");
-			go_seat_count = String.valueOf(seat_string.length);
+		if (goTripInfo_obj != null) {
+			if (goTripInfo_obj.getSelected_seats() != null && !goTripInfo_obj.getSelected_seats().equals("")) {
+				String[] seat_string = goTripInfo_obj.getSelected_seats().split(",");
+				go_seat_count = String.valueOf(seat_string.length);
+			}
 		}
+		
 		
 		//Customer Information
 		txt_passenger_name.setText(BuyerName);

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.ignite.mm.ticketing.starticket.AboutActivity;
 import com.ignite.mm.ticketing.starticket.BusBookingListActivity;
 import com.ignite.mm.ticketing.starticket.BusReveiwActivity;
@@ -558,5 +559,23 @@ public class BaseActivity extends ActionBarActivity{
 		alertDialog.setCancelable(false);
 		alertDialog.show();
 		
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+	}
+
+	@Override
+	public void onStop() {
+	    super.onStop();
+	    
+	    //For Google Analytics
+	    // The rest of your onStop() code.
+	    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
 	}
 }

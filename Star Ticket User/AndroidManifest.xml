@@ -270,6 +270,7 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/fb_app_id" />  
+            
         
     </application>
 

@@ -97,7 +97,7 @@ public class PaymentTypeActivity extends BaseActivity{
 		
 		Log.i("", "Permit IP at Busconfirmact: "+BusConfirmActivity.permit_ip);
 		Log.i("", "Ticket nos(paymenttype) :"+BusConfirmActivity.TicketLists); 
-		Log.i("", "Go Trip Info(payment type): "+goTripInfo_obj.toString());
+		//Log.i("", "Go Trip Info(payment type): "+goTripInfo_obj.toString());
 		
 		 Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
 		 toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);

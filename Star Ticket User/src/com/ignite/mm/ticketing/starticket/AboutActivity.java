@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.ignite.mm.ticketing.application.BaseActivity;
 
 public class AboutActivity extends BaseActivity{
@@ -58,4 +59,5 @@ private TextView txt_facebook_link;
 		finish();
 		return super.getSupportParentActivityIntent();
 	}
+
 }
