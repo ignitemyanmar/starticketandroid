@@ -413,7 +413,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     								Bundle bundle = new Bundle();
     								bundle.putString("from_intent", "checkout");
     								bundle.putString("from_to", BusSeatViewPagerActivity.From + "-" + BusSeatViewPagerActivity.To);
-    								bundle.putString("time", BusSeatViewPagerActivity.Time);
+    								bundle.putString("time", allTimeList.get(mPosition).getTime());
     								bundle.putString("classes", BusClasses);
     								bundle.putString("date", BusSeatViewPagerActivity.Date);
     								bundle.putString("selected_seat", SeatLists);

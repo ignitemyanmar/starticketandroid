@@ -29,6 +29,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -119,6 +120,7 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nrc_activity);
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 		Bundle bundle = getIntent().getExtras();
 		Intents = bundle.getString("from_intent");
 		if (Intents.equals("booking")) {
@@ -873,6 +875,7 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		public void onClick(View v) {
 			if( v == btn_refresh_agent){
 				dialog = new ZProgressHUD(BusConfirmActivity.this);
+				dialog.show();
 				getAgent();
 			}
 
@@ -906,6 +909,7 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 								android.R.layout.simple_dropdown_item_1line,
 								agentList);
 						auto_txt_agent.setAdapter(agentListAdapter);
+						//auto_txt_agent.showDropDown();
 						for (int i = 0; i < agentList.size(); i++) {
 							if (agentList.get(i).getId().equals(AgentID)) {
 								auto_txt_agent.setText(agentList.get(i)
@@ -1004,7 +1008,9 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 											public void failure(
 													RetrofitError arg0) {
 												// TODO Auto-generated method
-												// stub
+												if (arg0.getResponse() !=null) {
+													Log.i("", "Error delete: "+arg0.getResponse().getReason());
+												}
 											}
 										});
 							}
