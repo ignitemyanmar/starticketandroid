@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center_horizontal"
-                android:text="Version: 2.0"
+                android:text="Version: 2.1"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <LinearLayout

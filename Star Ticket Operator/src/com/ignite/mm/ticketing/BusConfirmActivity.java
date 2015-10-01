@@ -735,7 +735,10 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 			if (lst_discount_chk.get(i).isChecked()) {
 				EditText edt_discount = lst_discount_edt.get(i);
 				if (edt_discount.getText().toString().length() == 0) {
-					dialog.dismissWithFailure();
+					if (dialog != null) {
+						dialog.dismissWithFailure();
+					}
+					
 					edt_discount.setError("Please enter the discount amount.");
 					alertDialog("Please Enter The Discount Amount.", null, null);
 					return;
@@ -802,14 +805,22 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 								BusConfirmActivity.this,
 								getResources().getString(R.string.str_cannot_buy_msg),
 								SKToastMessage.ERROR);
-						dialog.dismissWithFailure();
+						
+						if (dialog != null) {
+							dialog.dismissWithFailure();
+						}
+						
 					} else {
 						SKToastMessage.showMessage(BusConfirmActivity.this,
 								getResources().getString(R.string.str_buy_success),
 								SKToastMessage.SUCCESS);
 						closeAllActivities();
 						startActivity(new Intent(getApplicationContext(),BusTripsCityActivity.class));
-						dialog.dismissWithSuccess();
+						
+						if (dialog != null) {
+							dialog.dismissWithSuccess();
+						}
+						
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -897,7 +908,10 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
-						dialog.dismissWithFailure();
+						if (dialog != null) {
+							dialog.dismissWithFailure();
+						}
+						
 					}
 
 					public void success(Response arg0, Response arg1) {

@@ -247,7 +247,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     				editor.putString("order_date", BusSeatViewPagerActivity.Date);
     				editor.putString("from", BusSeatViewPagerActivity.FromCity);
     				editor.putString("to", BusSeatViewPagerActivity.ToCity);
-    				editor.putString("time", BusSeatViewPagerActivity.Time);
+    				editor.putString("time", allTimeList.get(mPosition).getTime());
     				editor.commit();
     	        	startActivity(new Intent(getActivity(),	BusBookingListActivity.class));
     	        case R.id.action_refresh:
@@ -434,9 +434,16 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     								getSeatPlan();
     							}
 
-    							dialog.dismissWithSuccess();
+    							if (dialog != null) {
+    								dialog.dismissWithSuccess();
+								}
+    							
     						} else {
-    							dialog.dismissWithFailure();
+    							
+    							if (dialog != null) {
+    								dialog.dismissWithFailure();
+								}
+    							
     							SKToastMessage
 								.showMessage(
 										getActivity(),
@@ -446,7 +453,11 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     						}
     					} else {
     						isBooking = 0;
-    						dialog.dismissWithFailure();
+    						
+    						if (dialog != null) {
+    							dialog.dismissWithFailure();
+							}
+    						
     						SKToastMessage.showMessage(getActivity(),
     								jsonObject.getString("message"),
     								SKToastMessage.ERROR);
@@ -571,15 +582,25 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
     								public void failure(RetrofitError arg0) {
     									// TODO Auto-generated method stub
-    									dialog.dismissWithFailure();
+    									if (dialog != null) {
+    										dialog.dismissWithFailure();
+										}
+    									
     								}
 
     								public void success(Response arg0,
     										Response arg1) {
     									// TODO Auto-generated method stub
     									onResume();
-    									dialog.dismissWithSuccess();
-    									editSeatDialog.dismiss();
+    									
+    									if (dialog != null) {
+    										dialog.dismissWithSuccess();
+										}
+    									
+    									if (editSeatDialog != null) {
+    										editSeatDialog.dismiss();
+										}
+    									
     									SKToastMessage.showMessage(getActivity(), "Successfully Updated.", SKToastMessage.SUCCESS);
     								}
     							});
@@ -593,7 +614,11 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     								public void onClick(DialogInterface dialog,
     										int which) {
     									// TODO Auto-generated method stub
-    									dialog.dismiss();
+    									
+    									if (dialog != null) {
+    										dialog.dismiss();
+										}
+    									
     									dialog1 = ProgressDialog.show(getActivity(), "", " Please wait...", true);
     							        dialog1.setCancelable(true);
     							        String seat = MCrypt.getInstance().encrypt(list.getSeat_no());
@@ -608,20 +633,31 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     													// TODO Auto-generated
     													// method stub
     													onResume();
-    													dialog1.dismiss();
+    													
+    													if (dialog1 != null) {
+    														dialog1.dismiss();
+														}
+    													
     													SKToastMessage
     															.showMessage(
     																	getActivity(),
     																	"Successfully Deleted.",
     																	SKToastMessage.SUCCESS);
-    													editSeatDialog.dismiss();
+    													
+    													if (editSeatDialog != null) {
+    														editSeatDialog.dismiss();
+														}
+    													
     												}
 
     												public void failure(
     														RetrofitError arg0) {
     													// TODO Auto-generated
     													// method stub
-    													dialog1.dismiss();
+    													if (dialog1 != null) {
+    														dialog1.dismiss();
+														}
+    													
     												}
     											});
     								}
@@ -629,7 +665,10 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     						
     						public void onClick(DialogInterface dialog, int which) {
     							// TODO Auto-generated method stub
-    							dialog.dismiss();
+    							if (dialog != null) {
+    								dialog.dismiss();
+								}
+    							
     						}
     					});
     					
@@ -804,7 +843,11 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		}else{
     			alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
     	            public void onClick(DialogInterface dialog, int which) {
-    	                dialog.dismiss();
+    	            	
+    	            	if (dialog != null) {
+    	            		dialog.dismiss();
+						}
+    	                
     	            }
     	        });
     		}

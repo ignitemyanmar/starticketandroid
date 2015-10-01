@@ -68,14 +68,18 @@ public class EnterIPDialog{
 			// TODO Auto-generated method stub
 			if(v == btn_cancel){
 				if(mCallback != null){
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
 					mCallback.onCancel();
 				}
 			}
 			if(v == btn_save){
 				if(mCallback != null){
 					mCallback.onSetIP(edt_ip.getText().toString());	
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
 				}
 			}
 		}

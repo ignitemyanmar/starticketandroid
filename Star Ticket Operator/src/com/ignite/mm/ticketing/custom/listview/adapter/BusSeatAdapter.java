@@ -90,37 +90,37 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_1);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_1_1);
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_1_1);//Orange
 					break;
 				case 2:
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_2);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_2_1);
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_2_1);//cyan(sein pyar)
 					break;
 				case 3:
-					if(list.get(position).getBooking() == 0)
+					if(list.get(position).getBooking() == 0) //If buy
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_3);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_3_1);
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_3_1); //If booking ... //yellow
 					break;
 				case 4:
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_4);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_4_1);
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_4_1);//maginto(kha yan)
 					break;
 				case 5:
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_2);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);//blue
 					break;
 				default:
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);//blue
 					
 				}
 				

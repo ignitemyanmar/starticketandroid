@@ -120,7 +120,10 @@ public class UserLogin extends ActionBarActivity {
 
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
-						dialog.dismissWithFailure();
+						if (dialog != null) {
+							dialog.dismissWithFailure();
+						}
+						
 						if (arg0.getResponse() != null) {
 							if (arg0.getResponse().getStatus() == 400) {
 								SKToastMessage
@@ -135,7 +138,10 @@ public class UserLogin extends ActionBarActivity {
 					public void success(Response arg0, Response arg1) {
 						Log.i("","Hello Header: "+ arg1.getHeaders().toString());
 						// TODO Auto-generated method stub
-						dialog.dismissWithSuccess();
+						if (dialog != null) {
+							dialog.dismissWithSuccess();
+						}
+						
 						AccessToken _token = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<AccessToken>() {}.getType());
 						LoginUser user = new LoginUser(UserLogin.this);
 						user.setAccessToken(_token.getAccess_token());

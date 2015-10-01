@@ -111,7 +111,10 @@ public class BaseActionBarActivity extends ActionBarActivity {
 		}else{
 			alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
 	            public void onClick(DialogInterface dialog, int which) {
-	                dialog.dismiss();
+	            	if (dialog != null) {
+	            		 dialog.dismiss();
+					}
+	               
 	            }
 	        });
 		}

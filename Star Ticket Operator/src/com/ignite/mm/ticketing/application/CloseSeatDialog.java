@@ -51,14 +51,19 @@ public class CloseSeatDialog{
 			// TODO Auto-generated method stub
 			if(v == btn_cancel){
 				if(mCallback != null){
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
+					
 					mCallback.onCancel();
 				}
 			}
 			if(v == btn_save){
 				if(mCallback != null){
 					if(AgentID.length() != 0 && checkInAgent()){
-						dialog.dismiss();
+						if (dialog != null) {
+							dialog.dismiss();
+						}
 						mCallback.onSave(AgentID,edt_remark.getText().toString());
 					}else{
 						edt_agent.setError("Please Choose Agents.");

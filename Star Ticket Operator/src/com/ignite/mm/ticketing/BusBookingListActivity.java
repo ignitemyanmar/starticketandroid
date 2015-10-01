@@ -56,9 +56,12 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 		btn_search.setOnClickListener(clickListener);
 		SharedPreferences pref = getSharedPreferences("order", Activity.MODE_PRIVATE);
 		String orderDate = pref.getString("order_date", "");
+		String orderTime = pref.getString("time", "");
 		BookCode = pref.getString("book_code", "");
 		if(!orderDate.equals("")){
-			txt_title.setText("( "+ changeDate(orderDate) +" ) "+getResources().getString(R.string.str_booking_list));
+			txt_title.setText("("+ changeDate(orderDate) +") "
+									+orderTime+" "
+									+getResources().getString(R.string.str_booking_list));
 		}else{
 			txt_title.setText(getResources().getString(R.string.str_booking_list));
 		}
@@ -189,13 +192,17 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 				// TODO Auto-generated method stub
 				credit_list = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<CreditOrder>>() {}.getType() );;;
 				lst_credit.setAdapter(new OrderListViewAdapter(BusBookingListActivity.this, credit_list));
-				dialog.dismiss();
+				if (dialog != null) {
+					dialog.dismiss();
+				}
 			}
 			
 			public void failure(RetrofitError arg0) {
 				// TODO Auto-generated method stub
 				Log.i("","Failure : "+ arg0.getCause());
-				dialog.dismiss();
+				if (dialog != null) {
+					dialog.dismiss();
+				}
 			}
 		});
 		

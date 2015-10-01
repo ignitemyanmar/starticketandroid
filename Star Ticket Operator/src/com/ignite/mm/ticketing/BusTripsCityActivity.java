@@ -104,12 +104,19 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 				// TODO Auto-generated method stub
 				tripsCollections = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<TripsCollection>>() {}.getType());
 				grd_trips_city.setAdapter(new TripsCityAdapter(BusTripsCityActivity.this, tripsCollections));
-				dialog.dismissWithSuccess();
+				
+				if (dialog != null) {
+					dialog.dismissWithSuccess();
+				}
+				
 			}
 			
 			public void failure(RetrofitError arg0) {
 				// TODO Auto-generated method stub
-				dialog.dismissWithFailure();
+				if (dialog != null) {
+					dialog.dismissWithFailure();
+				}
+				
 			}
 		});
 	}

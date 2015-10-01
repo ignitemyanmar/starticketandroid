@@ -200,11 +200,18 @@ public class BusTimeActivity extends BaseActionBarActivity {
 					alertDialog.show();
 				}
 				
-				dialog.dismissWithSuccess();
+				if (dialog != null) {
+					dialog.dismissWithSuccess();
+				}
+				
 			}
 			
 			public void failure(RetrofitError arg0) {
-				dialog.dismissWithFailure();
+				
+				if (dialog != null) {
+					dialog.dismissWithFailure();
+				}
+				
 			}
 		});
 	}

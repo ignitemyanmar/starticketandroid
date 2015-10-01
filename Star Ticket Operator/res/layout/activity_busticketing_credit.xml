@@ -13,9 +13,10 @@
         <RelativeLayout
             android:id="@+id/RelativeLayout2"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="wrap_content"
             android:background="@color/golden_brown"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="5dp" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_title"
@@ -24,7 +25,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="120dp"
                 android:text="() ေန႕ အတြက္ Booking စာရင္းမ်ား"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white" />

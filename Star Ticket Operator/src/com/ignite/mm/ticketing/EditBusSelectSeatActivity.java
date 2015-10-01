@@ -266,13 +266,20 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 
 						public void failure(RetrofitError arg0) {
 							// TODO Auto-generated method stub
-							dialog.dismissWithFailure();
+							if (dialog != null) {
+								dialog.dismissWithFailure();
+							}
+							
 							
 						}
 
 						public void success(Response arg0, Response arg1) {
 							// TODO Auto-generated method stub
-							dialog.dismissWithSuccess();
+							
+							if (dialog != null) {
+								dialog.dismissWithSuccess();
+							}
+							
 							onResume();
 							
 						}
@@ -305,13 +312,20 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 
 				public void failure(RetrofitError arg0) {
 					// TODO Auto-generated method stub
-					dialog.dismissWithFailure();
+					if (dialog != null) {
+						dialog.dismissWithFailure();
+					}
+					
 					
 				}
 
 				public void success(Response arg0, Response arg1) {
 					// TODO Auto-generated method stub
-					dialog.dismissWithSuccess();
+					if (dialog != null) {
+						dialog.dismissWithSuccess();
+					}
+					
+					
 					onResume();
 					
 				}
@@ -389,7 +403,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 						public void onClick(DialogInterface dialog,
 								int which) {
 							// TODO Auto-generated method stub
-							dialog.dismiss();
+							if (dialog != null) {
+								dialog.dismiss();
+							}
+							
 							final ZProgressHUD zp_dialog = ZProgressHUD.getInstance(EditBusSelectSeatActivity.this);
 							zp_dialog.show();
 							List<SelectSeat> seats = new ArrayList<SelectSeat>();
@@ -414,7 +431,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 										public void success(Response arg0,Response arg1) {
 											// TODO Auto-generated
 											// method stub
-											zp_dialog.dismiss();
+											if (zp_dialog != null) {
+												zp_dialog.dismiss();
+											}
+											
 											onResume();
 											SKToastMessage
 													.showMessage(
@@ -425,7 +445,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 										}
 
 										public void failure(RetrofitError arg0) {
-											zp_dialog.dismiss();
+											if (zp_dialog != null) {
+												zp_dialog.dismiss();
+											}
+											
 										}
 									});
 							}
@@ -433,7 +456,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 						
 						public void onClick(DialogInterface dialog, int which) {
 							// TODO Auto-generated method stub
-							dialog.dismiss();
+							if (dialog != null) {
+								dialog.dismiss();
+							}
+							
 						}
 					});
 		        	return true;

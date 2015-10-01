@@ -57,6 +57,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 	public static String OperatorID;
 	public static String FromCity;
 	public static String ToCity;
+	
 	public static String From;
 	public static String To;
 	public static String Classes;
@@ -128,7 +129,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 		
 		tabs.setTextColorResource(R.color.white);
 		tabs.setIndicatorColorResource(R.color.accent_dark);
-		tabs.setIndicatorHeight(3);
+		tabs.setIndicatorHeight(10);
 		
 		getAgent();
 		getOperatorGroupUser();

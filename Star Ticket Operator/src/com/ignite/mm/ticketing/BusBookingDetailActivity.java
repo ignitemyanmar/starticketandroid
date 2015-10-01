@@ -158,13 +158,18 @@ public class BusBookingDetailActivity extends BaseActionBarActivity {
 
 				public void failure(RetrofitError arg0) {
 					// TODO Auto-generated method stub
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
+					
 					SKToastMessage.showMessage(BusBookingDetailActivity.this, "Can't Delete Record.", SKToastMessage.ERROR);
 				}
 
 				public void success(Response arg0, Response arg1) {
 					// TODO Auto-generated method stub
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
 					SKToastMessage.showMessage(BusBookingDetailActivity.this, "Successfully deleted.", SKToastMessage.SUCCESS);
 					finish();
 				}
@@ -186,13 +191,17 @@ public class BusBookingDetailActivity extends BaseActionBarActivity {
 				public void failure(RetrofitError arg0) {
 					// TODO Auto-generated method stub
 					Log.e("","Hello: "+ arg0.getResponse().getStatus()+" & "+arg0.getResponse().getReason());
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
 					SKToastMessage.showMessage(BusBookingDetailActivity.this, "Can't Delete Record.", SKToastMessage.ERROR);
 				}
 
 				public void success(Response arg0, Response arg1) {
 					// TODO Auto-generated method stub
-					dialog.dismiss();
+					if (dialog != null) {
+						dialog.dismiss();
+					}
 					SKToastMessage.showMessage(BusBookingDetailActivity.this, "Successfully deleted.", SKToastMessage.SUCCESS);
 					finish();
 				}
