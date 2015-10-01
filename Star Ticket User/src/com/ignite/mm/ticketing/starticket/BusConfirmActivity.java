@@ -58,6 +58,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
@@ -1235,6 +1239,7 @@ public class BusConfirmActivity extends BaseActivity {
 	{
 		dialog = new ZProgressHUD(BusConfirmActivity.this);
 		dialog.show();
+		
 
 		//Do Encrypt of Params
 		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(permit_access_token
@@ -1391,5 +1396,26 @@ public class BusConfirmActivity extends BaseActivity {
 		lt.execute();
 		
 		Log.i("", "Post Sale: "+"http://"+ permit_ip +"/sale"+" , Params: "+params.toString());
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "Passenger Info Screen, "+AppLoginUser.getUserName());
+		
+		v3Tracker.send(MapBuilder.createAppView().build());
+		
+		// And so will this event hit.
+		v3Tracker.send(MapBuilder
+				  .createEvent("UX", "touch", "menuButton", null)
+				  .build()
+				);
 	}
 }

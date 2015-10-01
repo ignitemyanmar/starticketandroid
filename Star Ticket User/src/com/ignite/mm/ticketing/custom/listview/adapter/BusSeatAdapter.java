@@ -191,6 +191,8 @@ public class BusSeatAdapter extends BaseAdapter{
 					});
 			}*/
 			
+			Log.i("", "Get Booking: "+list.get(position).getBooking());
+			
 			
 			//Check Online Seats
 			if (list.get(position).getOperatorgroup_color() == 1) {

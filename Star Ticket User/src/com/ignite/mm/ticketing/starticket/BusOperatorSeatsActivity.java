@@ -527,7 +527,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		v3Tracker.set(Fields.SCREEN_NAME, "Time and Operator Screen, "
 				+selectedFromCity+"- "+selectedToCity
 				+", "+selectedTripDate+", "
-				+selectedTripTime+", TripType: "
+				+"TripType: "
 				+selectedTripType+", "
 				+AppLoginUser.getUserName());
 		

@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.ignite.mm.ticketing.application.BaseActivity;
 
 /**
@@ -74,5 +78,26 @@ public class ThankYouActivity extends BaseActivity{
 		super.onBackPressed();
 		closeAllActivities();
 		startActivity(new Intent(ThankYouActivity.this, SaleTicketActivity.class));
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "Thank You Screen, "+AppLoginUser.getUserName()+", "+payment_type);
+		
+		v3Tracker.send(MapBuilder.createAppView().build());
+		
+		// And so will this event hit.
+		v3Tracker.send(MapBuilder
+				  .createEvent("UX", "touch", "menuButton", null)
+				  .build()
+				);
 	}
 }

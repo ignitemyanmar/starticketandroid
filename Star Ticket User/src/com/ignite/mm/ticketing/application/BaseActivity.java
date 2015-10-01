@@ -6,6 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.ignite.mm.ticketing.starticket.AboutActivity;
 import com.ignite.mm.ticketing.starticket.BusBookingListActivity;
 import com.ignite.mm.ticketing.starticket.BusReveiwActivity;
@@ -568,6 +572,7 @@ public class BaseActivity extends ActionBarActivity{
 		
 		//For Google Analytics
 		EasyTracker.getInstance(this).activityStart(this);
+		
 	}
 
 	@Override
