@@ -102,6 +102,7 @@ public class UserLogin extends ActionBarActivity {
 	}
 	
 	private void getLogin(){
+		
 		if (connectionDetector.isConnectingToInternet()) {
 			if (checkFields()) {
 				dialog = new ZProgressHUD(UserLogin.this);

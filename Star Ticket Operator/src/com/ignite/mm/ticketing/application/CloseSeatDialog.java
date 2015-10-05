@@ -13,6 +13,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 public class CloseSeatDialog{
 
@@ -22,22 +23,38 @@ public class CloseSeatDialog{
 	private Context ctx;
 	private EditText edt_remark;
 	private MaterialDialog dialog;
+	protected String AgentID = "";
+	private List<Agent> agentList;
+	private AutoCompleteTextView edt_agent;
+	private TextView txt_seller;
+	private String mtitle;
+	private String mseller;
+	private String mbuttonSave;
 
-	public CloseSeatDialog(Context context, List<Agent> list) {
+	public CloseSeatDialog(Context context, List<Agent> list, String title, String seller, String buttonSave) {
 		// TODO Auto-generated constructor stub
 		agentList = list;
+		mtitle = title;
+		mseller = seller;
+		mbuttonSave = buttonSave;
 		ctx = context;
 		
 		View view = View.inflate(context, R.layout.dialog_close_seat, null);
 		dialog = new MaterialDialog.Builder(context)
-        .title(ctx.getString(R.string.str_close_seat))
+        .title(mtitle)
         .customView(view, true)
         .show();
 		dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 		
+		txt_seller = (TextView)view.findViewById(R.id.txt_seller);
+		txt_seller.setText(mseller);
+		
 		edt_agent = (AutoCompleteTextView) view.findViewById(R.id.edt_agent);
 		edt_remark = (EditText) view.findViewById(R.id.edt_remark);
+		
 		btn_save = (Button) view.findViewById(R.id.btn_close_seat);
+		btn_save.setText(mbuttonSave);
+		
 		btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
 		
 		btn_cancel.setOnClickListener(clickListener);
@@ -73,9 +90,7 @@ public class CloseSeatDialog{
 			}
 		}
 	};
-	protected String AgentID = "";
-	private List<Agent> agentList;
-	private AutoCompleteTextView edt_agent;
+
 	
 	public void setCallbackListener(Callback mCallback){
 		this.mCallback = mCallback;

@@ -23,6 +23,9 @@
     <string name="str_ticket_no">လက္ မွတ္ နံပါတ္</string>
     <string name="str_buy_success">လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ</string>
     <string name="str_close_seat">ခံုပုိင္ေပးမည္</string>
+    <string name="str_seller_staff">ေရာင္းသူ ေရြးပါ</string>
+    <string name="str_agent">အေရာင္း ကိုယ္စားလွယ္</string>
+    <string name="str_check_sale">စစ္ၿပီး</string>
    
 
 

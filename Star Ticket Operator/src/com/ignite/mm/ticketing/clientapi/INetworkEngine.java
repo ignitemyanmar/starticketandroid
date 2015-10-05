@@ -79,5 +79,12 @@ public interface INetworkEngine {
 	@POST("/openseat")
 	void postOpenSeat(@Field("access_token")String access_token, @Field("date") String date, @Field("trip_id") String trip_id,@Field("seats") String seats, Callback<Response> callback);
 	
+	@FormUrlEncoded
+	@POST("/salecheck")
+	void postCheckSale(@Field("access_token")String access_token, 
+			@Field("date") String date, 
+			@Field("trip_id") String trip_id, 
+			@Field("seats") String seats,
+			@Field("status") String status, Callback<Response> callback);
 
 }

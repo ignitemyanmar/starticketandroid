@@ -95,6 +95,8 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 	private String CustPhone = "";
 	private int RemarkType = 0;
 	private String Remark = "";
+	
+	
 	private String OperatorID;
 	private String FromCity;
 	private String ToCity;
@@ -123,6 +125,8 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 	private Button btn_openseat;
 	private Bundle intentParams;
 	private FrameLayout loading;
+	private Button btn_checked_sale;
+	private Button btn_unchecked_sale;
 	public static List<BusSeat> BusSeats;
 	public static List<OperatorGroupUser> groupUser = new ArrayList<OperatorGroupUser>();
 	public static String CheckOut;
@@ -178,6 +182,13 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		btn_openseat = (Button) findViewById(R.id.btn_open_seat);
 		btn_openseat.setOnClickListener(clickListener);
 		
+		btn_checked_sale = (Button)findViewById(R.id.btn_checked_sale);
+		btn_unchecked_sale = (Button)findViewById(R.id.btn_unchecked_sale);
+		
+		btn_checked_sale.setOnClickListener(clickListener);
+		btn_unchecked_sale.setOnClickListener(clickListener);
+		
+
 		Date today = null;
     	Date formatedDate = null;
 		try {
@@ -202,11 +213,57 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		agentList = BusSeatViewPagerActivity.agentList;
 	}
 	
+	private OnClickListener clickListener = new OnClickListener() {
+
+		public void onClick(View v) {
+
+			if(v == btn_closeseat){
+				//Khone Pine Pay
+				//Give Seats to Agents
+				postCloseSeat();
+			}
+			
+			if(v == btn_openseat){
+				//Khone Pine Pyan Yuu
+				//Take Seats from Agents back
+				postOpenSeat();
+			}
+			
+			if (v == btn_checked_sale) {
+				//If user role is 7, show btn_checked_sale button
+				//finish for checking sales of staff
+				postCheckSale();
+			}
+			
+			if (v == btn_unchecked_sale) {
+				//If user role is 7, show btn_unchecked_sale button
+				//cancel for checking sales of staff
+				postUncheckSale();
+			}
+		}
+	};
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		
+		if (AppLoginUser.getUserRole().equals("7")) {
+			//If Sale Checker
+			btn_checked_sale.setVisibility(View.VISIBLE);
+			btn_unchecked_sale.setVisibility(View.VISIBLE);
+			btn_closeseat.setVisibility(View.GONE);
+			btn_openseat.setVisibility(View.GONE);
+		}else {
+			//If not Sale Checker
+			btn_checked_sale.setVisibility(View.GONE);
+			btn_unchecked_sale.setVisibility(View.GONE);
+			btn_closeseat.setVisibility(View.VISIBLE);
+			btn_openseat.setVisibility(View.VISIBLE);
+		}
+		
 		if(SelectedSeat.length() != 0){
+			//If selected seat is existed, clear the selected seats
 			SelectedSeat = "";
 		}
 			
@@ -229,6 +286,8 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 				// Try to get response body
 				SelectedSeat = "";
 				BusSeats = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<BusSeat>>() {}.getType());
+				
+				Log.i("", "BusSeat: "+BusSeats.toString());
 				getData();
 				loading.setVisibility(View.GONE);
 			}
@@ -241,10 +300,13 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 	
 	private void postCloseSeat(){
 		
-		Log.i("", "Agent list: "+agentList.toString());
+		//Log.i("", "Agent list: "+agentList.toString());
 		
 		if(SelectedSeat.length() > 0){
-			CloseSeatDialog closeSeatDialog = new CloseSeatDialog(this, agentList);
+			String title = getResources().getString(R.string.str_close_seat);
+			String agentName = getResources().getString(R.string.str_agent);
+			String btnName = getResources().getString(R.string.str_close_seat);
+			CloseSeatDialog closeSeatDialog = new CloseSeatDialog(this, agentList, title, agentName, btnName);
 			closeSeatDialog.setCallbackListener(new CloseSeatDialog.Callback() {
 				
 				public void onSave(String agentId, String remark) {
@@ -254,7 +316,12 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 					List<SelectSeat> seats = new ArrayList<SelectSeat>();
 					String[] selectedSeat = SelectedSeat.split(",");
 					for (int i = 0; i < selectedSeat.length; i++) {
-						seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId(),BusSeats.get(0).getSeat_plan().get(0).getSeat_list().get(Integer.valueOf(selectedSeat[i])).getSeat_no().toString()));
+						if (selectedSeat[i] != null) {
+							seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+									, BusSeats.get(0).getSeat_plan().get(0).getSeat_list()
+									.get(Integer.valueOf(selectedSeat[i]))
+									.getSeat_no().toString()));
+						}
 					}
 					NetworkEngine.getInstance().postCloseSeat(
 							AppLoginUser.getAccessToken(), Date, 
@@ -305,7 +372,13 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 			List<SelectSeat> seats = new ArrayList<SelectSeat>();
 			String[] selectedSeat = SelectedSeat.split(",");
 			for (int i = 0; i < selectedSeat.length; i++) {
-				seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId(),BusSeats.get(0).getSeat_plan().get(0).getSeat_list().get(Integer.valueOf(selectedSeat[i])).getSeat_no().toString()));
+				if (selectedSeat[i] != null) {
+					seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+							, BusSeats.get(0).getSeat_plan().get(0).getSeat_list()
+							.get(Integer.valueOf(selectedSeat[i]))
+							.getSeat_no().toString()));
+				}
+				
 			}
 			Log.i("","Hello Seat: "+ seats.toString());
 			NetworkEngine.getInstance().postOpenSeat(AppLoginUser.getAccessToken(), Date, BusSeats.get(0).getSeat_plan().get(0).getId(), seats.toString(), new Callback<Response>() {
@@ -325,7 +398,6 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 						dialog.dismissWithSuccess();
 					}
 					
-					
 					onResume();
 					
 				}
@@ -335,6 +407,160 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		}
 	}
 	
+	private void postCheckSale(){
+		
+		//Log.i("", "Staff List: "+agentList.toString());
+		
+		if(SelectedSeat.length() > 0){
+			
+/*			String title = getResources().getString(R.string.str_seller_staff);
+			CloseSeatDialog closeSeatDialog = new CloseSeatDialog(this, agentList, title, "",
+																	getResources().getString(R.string.str_check_sale));
+			closeSeatDialog.setCallbackListener(new CloseSeatDialog.Callback() {
+				
+				public void onSave(String agentId, String remark) {
+					// TODO Auto-generated method stub
+					dialog = new ZProgressHUD(EditBusSelectSeatActivity.this);
+					dialog.show();
+					
+					List<SelectSeat> seats = new ArrayList<SelectSeat>();
+					String[] selectedSeat = SelectedSeat.split(",");
+					
+					for (int i = 0; i < selectedSeat.length; i++) {
+						
+						if (selectedSeat[i] != null) {
+							//Trip Id + Seat No.
+							seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+									, BusSeats.get(0).getSeat_plan().get(0).getSeat_list()
+									.get(Integer.valueOf(selectedSeat[i]))
+									.getSeat_no().toString()));
+						}
+					}
+					
+					NetworkEngine.getInstance().postCheckSale(AppLoginUser.getAccessToken()
+							, Date, BusSeats.get(0).getSeat_plan().get(0).getId()
+							, seats.toString(), "1",
+							new Callback<Response>() {
+
+						public void failure(RetrofitError arg0) {
+							// TODO Auto-generated method stub
+							if (dialog != null) {
+								dialog.dismissWithFailure();
+							}
+						}
+
+						public void success(Response arg0, Response arg1) {
+							// TODO Auto-generated method stub
+							
+							if (dialog != null) {
+								dialog.dismissWithSuccess();
+							}
+							
+							Log.i("", "Success checked !!! ");
+							onResume();
+							
+						}
+					});
+				}
+				
+				public void onCancel() {
+					// TODO Auto-generated method stub
+					
+				}
+			});*/
+			
+			dialog = new ZProgressHUD(EditBusSelectSeatActivity.this);
+			dialog.show();
+			
+			List<SelectSeat> seats = new ArrayList<SelectSeat>();
+			String[] selectedSeat = SelectedSeat.split(",");
+			
+			for (int i = 0; i < selectedSeat.length; i++) {
+				
+				if (selectedSeat[i] != null) {
+					//Trip Id + Seat No.
+					seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+							, BusSeats.get(0).getSeat_plan().get(0).getSeat_list()
+							.get(Integer.valueOf(selectedSeat[i]))
+							.getSeat_no().toString()));
+				}
+			}
+			
+			//Give Status "1" for sale check finish
+			NetworkEngine.getInstance().postCheckSale(AppLoginUser.getAccessToken()
+					, Date, BusSeats.get(0).getSeat_plan().get(0).getId()
+					, seats.toString(), "1",
+					new Callback<Response>() {
+
+				public void failure(RetrofitError arg0) {
+					// TODO Auto-generated method stub
+					if (dialog != null) {
+						dialog.dismissWithFailure();
+					}
+				}
+
+				public void success(Response arg0, Response arg1) {
+					// TODO Auto-generated method stub
+					
+					if (dialog != null) {
+						dialog.dismissWithSuccess();
+					}
+					
+					Log.i("", "Success checked !!! ");
+					onResume();
+				}
+			});
+			
+		}else{
+			SKToastMessage.showMessage(EditBusSelectSeatActivity.this, "Please choose the seat.", SKToastMessage.ERROR);
+		}
+	}
+	
+	private void postUncheckSale(){
+		if(SelectedSeat.length() > 0){
+			dialog = new ZProgressHUD(this);
+			dialog.show();
+			
+			List<SelectSeat> seats = new ArrayList<SelectSeat>();
+			String[] selectedSeat = SelectedSeat.split(",");
+			for (int i = 0; i < selectedSeat.length; i++) {
+				if (selectedSeat[i] != null) {
+					seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+							, BusSeats.get(0).getSeat_plan().get(0).getSeat_list()
+							.get(Integer.valueOf(selectedSeat[i]))
+							.getSeat_no().toString()));
+				}
+			}
+			
+			Log.i("","Hello Seat: "+ seats.toString());
+			//Give Status "0" for cancel sale check
+			NetworkEngine.getInstance().postCheckSale(AppLoginUser.getAccessToken()
+					, Date
+					, BusSeats.get(0).getSeat_plan().get(0).getId()
+					, seats.toString(), "0", new Callback<Response>() {
+
+				public void failure(RetrofitError arg0) {
+					// TODO Auto-generated method stub
+					if (dialog != null) {
+						dialog.dismissWithFailure();
+					}
+				}
+
+				public void success(Response arg0, Response arg1) {
+					// TODO Auto-generated method stub
+					if (dialog != null) {
+						dialog.dismissWithSuccess();
+					}
+					
+					Log.i("", "Success unchecked !!! ");
+					
+					onResume();
+				}
+			});
+		}else {
+			SKToastMessage.showMessage(EditBusSelectSeatActivity.this, "Please choose the seat.", SKToastMessage.ERROR);
+		}
+	}
 		
 	private void getData() {
 		if(BusSeats.size() > 0){
@@ -344,7 +570,7 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 			BusClasses = BusSeats.get(0).getSeat_plan().get(0).getClasses();
 			
 			mSeat.setNumColumns(BusSeats.get(0).getSeat_plan().get(0).getColumn());
-			seatAdapter = new EditBusSeatAdapter(this, BusSeats.get(0).getSeat_plan().get(0).getSeat_list());
+			seatAdapter = new EditBusSeatAdapter(this, BusSeats.get(0).getSeat_plan().get(0).getSeat_list(), AppLoginUser.getUserRole());
 			mSeat.setAdapter(seatAdapter);	
 			setGridViewHeightBasedOnChildren(mSeat , Integer.valueOf(BusSeats.get(0).getSeat_plan().get(0).getColumn()));
 
@@ -363,28 +589,13 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		}
 	}
 	
-	
-	private OnClickListener clickListener = new OnClickListener() {
-
-		public void onClick(View v) {
-
-			if(v == btn_closeseat){
-				postCloseSeat();
-			}
-			
-			if(v == btn_openseat){
-				postOpenSeat();
-			}
-		}
-	};
-	
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
 		finish();
 		return super.getSupportParentActivityIntent();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

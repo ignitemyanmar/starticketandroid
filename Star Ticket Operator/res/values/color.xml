@@ -19,6 +19,7 @@
     <color name="primary">#BF4017</color>
     <color name="primary_dark">#BF4017</color>
     <color name="black_overlay">#66000000</color>
+    <color name="blue">#304f9f</color>
     
     <color name="custom_header_text">#85B100</color>
     <color name="custom_selected">#A8D324</color>

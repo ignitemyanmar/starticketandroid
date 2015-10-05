@@ -25,12 +25,14 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 	 private final Context _context;
 	    private final List<Seat_list> list;
 		private Callbacks mCallbacks;
+		private String userRole;
 	  	    
-	    public BusSeatAdapter(Activity atx, List<Seat_list> seat_list)
+	    public BusSeatAdapter(Activity atx, List<Seat_list> seat_list, String userRole)
 	    {
 	        super();
 	        this._context = atx;
 	        this.list = seat_list;
+	        this.userRole = userRole;
 	       
 	    }
 		public int getCount() {
@@ -71,6 +73,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 		            holder.txt_nrc = (TextView) convertView.findViewById(R.id.txt_nrc);
 		            holder.txt_ticket_no = (TextView) convertView.findViewById(R.id.txt_ticket_no);
 		            holder.txt_agent = (TextView) convertView.findViewById(R.id.txt_agent);
+		            holder.txt_check_sale = (TextView) convertView.findViewById(R.id.txt_check_sale);
 		            holder.txt_close_agent = (TextView) convertView.findViewById(R.id.txt_close_agent);
 		            holder.txt_seating_no = (TextView) convertView.findViewById(R.id.txt_seating_no);
 		            //holder.cover = (View) convertView.findViewById(R.id.v_cover);
@@ -84,7 +87,28 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 			
 			Log.i("", "View Holder check: "+holder);
 			
+
+			
 			if (_context != null) {
+				
+				//If Check Sale status 1, show test (sit pyi)
+				if (userRole != null) {
+					if (userRole.equals("7")) {
+						if (list.get(position).getSalecheck() != null) {
+							
+							Log.i("", "Sale Check Status: "+list.get(position).getSalecheck());
+							
+							if (list.get(position).getSalecheck().equals("1")) {
+				        		holder.txt_check_sale.setText(_context.getResources().getString(R.string.str_check_sale));
+							}else {
+								holder.txt_check_sale.setText("");
+							}
+						}else {
+							Log.i("", "Sale Check Status: "+list.get(position).getSalecheck());
+						}
+					}
+				}
+				
 				switch(list.get(position).getOperatorgroup_color()){
 				case 1:
 					if(list.get(position).getBooking() == 0)
@@ -114,13 +138,13 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_2);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);//blue
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);//blue (Free seat/Unchecked)
 					break;
 				default:
 					if(list.get(position).getBooking() == 0)
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0);
 					else
-						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);//blue
+						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);//blue (Free seat/Unchecked)
 					
 				}
 				
@@ -130,7 +154,10 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0);
 					else
 						holder.seat.setButtonDrawable(R.drawable.rdo_shape_0_1);
+					
+					//Not Allow to click
 					holder.seat.setEnabled(false);
+					
 	            	if(list.get(position).getCustomerInfo() != null){
 	            		holder.layout_customer_info.setVisibility(View.VISIBLE);
 	            		holder.txt_name.setText(list.get(position).getCustomerInfo().getName());
@@ -141,11 +168,12 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 	            		holder.txt_seating_no.setText(list.get(position).getSeat_no());
 	            		//Check Remark
 	        			if(list.get(position).getRemark_type() != 0 || list.get(position).getDiscount() > 0 || list.get(position).getFree_ticket() > 0 ){
-	        				holder.txt_seating_no.setBackgroundColor(Color.YELLOW);
+	        				holder.txt_seating_no.setBackgroundResource(R.color.blue);
 	        			}
 	            	}else{
 	            		holder.layout_customer_info.setVisibility(View.INVISIBLE);
 	            	}
+	            	
 	            	holder.layout_customer_info.setTag(list.get(position));
 	            	holder.layout_customer_info.setOnLongClickListener(new OnLongClickListener() {
 						
@@ -254,6 +282,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 				TextView txt_agent;
 				TextView txt_close_agent;
 				TextView txt_seating_no;
+				TextView txt_check_sale;
 				View cover;
 				TextView seatNo;
 		}

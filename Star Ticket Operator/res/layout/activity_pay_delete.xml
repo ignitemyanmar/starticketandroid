@@ -28,7 +28,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/btn_orange"
-            android:text="Booking ဖ်တ္မည္"
+            android:text="Booking ဖ်က္မည္"
             android:textColor="@color/white" />
     </LinearLayout>
 

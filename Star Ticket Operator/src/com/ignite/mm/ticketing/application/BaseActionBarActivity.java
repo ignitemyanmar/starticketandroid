@@ -28,6 +28,11 @@ public class BaseActionBarActivity extends ActionBarActivity {
 	private BaseActivityReceiver baseActivityReceiver = new BaseActivityReceiver();
 	public static final IntentFilter INTENT_FILTER = createIntentFilter();
 	
+	//Note: User Roles
+	//Staff = 2 
+	//Admin = 8
+	//Sale Checker = 7
+	
 	private static IntentFilter createIntentFilter(){
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION);

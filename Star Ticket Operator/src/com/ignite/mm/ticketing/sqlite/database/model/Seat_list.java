@@ -11,6 +11,8 @@ public class Seat_list {
 	@Expose
 	private Integer status;
 	@Expose
+	private String salecheck;
+	@Expose
 	private Integer free_ticket;
 	@Expose
 	private String free_ticket_remark;
@@ -141,19 +143,29 @@ public class Seat_list {
 	public void setCustomerInfo(CustomerInfo customerInfo) {
 		this.customer_info = customerInfo;
 	}
+	
+
+	public String getSalecheck() {
+		return salecheck;
+	}
+
+	public void setSalecheck(String salecheck) {
+		this.salecheck = salecheck;
+	}
 
 	@Override
 	public String toString() {
 		return "Seat_list [id=" + id + ", seat_no=" + seat_no + ", status="
-				+ status + ", free_ticket=" + free_ticket
-				+ ", free_ticket_remark=" + free_ticket_remark + ", discount="
-				+ discount + ", booking=" + booking + ", remark_type="
-				+ remark_type + ", remark=" + remark + ", operatorgroup_id="
-				+ operatorgroup_id + ", operatorgroup_color="
-				+ operatorgroup_color + ", operatorgroup_name="
-				+ operatorgroup_name + ", customer_info=" + customer_info + "]";
+				+ status + ", salecheck=" + salecheck + ", free_ticket="
+				+ free_ticket + ", free_ticket_remark=" + free_ticket_remark
+				+ ", discount=" + discount + ", booking=" + booking
+				+ ", remark_type=" + remark_type + ", remark=" + remark
+				+ ", operatorgroup_id=" + operatorgroup_id
+				+ ", operatorgroup_color=" + operatorgroup_color
+				+ ", operatorgroup_name=" + operatorgroup_name
+				+ ", customer_info=" + customer_info + "]";
 	}
-	
+
 	
 	
 }

@@ -11,27 +11,20 @@ import com.ignite.mm.ticketing.sqlite.database.model.AgentList;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorGroupUser;
 import com.ignite.mm.ticketing.sqlite.database.model.TripInfo;
 import com.ignite.mm.ticketing.sqlite.database.model.Time;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.astuetz.PagerSlidingTabStrip;
 import com.google.gson.Gson;
@@ -43,9 +36,7 @@ import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusSeatFragmentPagerAdapter;
-import com.ignite.mm.ticketing.custom.listview.adapter.GroupUserListAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.AllTimeBundleListObject;
-import com.thuongnh.zprogresshud.ZProgressHUD;
 
 public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 
@@ -137,7 +128,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 		app_login_user = AppLoginUser;
 		
 		if (AllTimeList != null && AllTimeList.size() > 0) {
-			adapter = new BusSeatFragmentPagerAdapter(getSupportFragmentManager(), AllTimeList);
+			adapter = new BusSeatFragmentPagerAdapter(getSupportFragmentManager(), AllTimeList, app_login_user.getUserRole());
 		}
         
         pager.setAdapter(adapter);
@@ -174,6 +165,8 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 				// TODO Auto-generated method stub
 				AgentList agents = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<AgentList>() {}.getType());
 				agentList = agents.getAgents();
+				
+				Log.i("", "Agent list: "+agentList.toString());
 			}
 		});
 	}

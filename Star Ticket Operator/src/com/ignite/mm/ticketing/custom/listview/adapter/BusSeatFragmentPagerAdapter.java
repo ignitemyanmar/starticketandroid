@@ -83,13 +83,15 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
 	private static List<Time> allTimeList = new ArrayList<Time>();
 	private int mCount = 0;
+	public static String userRole;
 	
-    public BusSeatFragmentPagerAdapter(FragmentManager fm, List<Time> timelist) {
+    public BusSeatFragmentPagerAdapter(FragmentManager fm, List<Time> timelist, String userRole) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 	        if(timelist != null && timelist.size() > 0){
 	        	mCount = timelist.size();
 	        	allTimeList = timelist;
+	        	this.userRole = userRole;
 	        }
 	}
 
@@ -539,7 +541,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			}
     			
     			mSeat.setNumColumns(BusSeats.get(0).getSeat_plan().get(0).getColumn());
-    			seatAdapter = new BusSeatAdapter(getActivity(), BusSeats.get(0).getSeat_plan().get(0).getSeat_list());
+    			seatAdapter = new BusSeatAdapter(getActivity(), BusSeats.get(0).getSeat_plan().get(0).getSeat_list(), userRole);
     			seatAdapter.setCallbacks(callbacks);
     			mSeat.setAdapter(seatAdapter);	
     			setGridViewHeightBasedOnChildren(mSeat, Integer.valueOf(BusSeats.get(0).getSeat_plan().get(0).getColumn()));
