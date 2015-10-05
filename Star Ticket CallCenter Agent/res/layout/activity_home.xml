@@ -22,8 +22,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_radius"
                     android:gravity="center_vertical"
                     android:minWidth="320dp"
@@ -33,7 +34,8 @@
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView1"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
                         android:text="လက္ မွတ္ ေရာင္းမည္"
                         android:textColor="@color/black"
                         android:textSize="18dp"
@@ -55,7 +57,8 @@
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView02"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
                         android:text="အေရာင္းစာရင္း"
                         android:textColor="@color/black"
                         android:textSize="18dp"
@@ -76,7 +79,8 @@
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_notrip"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
                         android:text="Booking အားလံုးကုိ Confirm လုပ္ မည္"
                         android:textColor="@color/black"
                         android:textSize="18dp"
@@ -98,7 +102,8 @@
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/txt_book_by_user"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
                         android:text="Login User ၏ Booking မ်ားကုိ Confirm လုပ္ မည္"
                         android:textColor="@color/black"
                         android:textSize="18dp"
@@ -120,7 +125,8 @@
                     <com.smk.custom.view.CustomTextView
                         android:id="@+id/CustomTextView01"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
                         android:text="အ ေရာင္း စာရင္း"
                         android:textColor="@color/black"
                         android:textSize="18dp"
@@ -138,6 +144,15 @@
                         android:textSize="20dp"
                         android:visibility="visible" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Version: 2.0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

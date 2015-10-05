@@ -309,7 +309,7 @@ public class BusSeatAdapter extends BaseAdapter{
 				if (Integer.valueOf(this.userRole) <= 3) {
 					holder.cover.setVisibility(View.VISIBLE);
 				}else{
-					//holder.cover.setVisibility(View.VISIBLE);
+					//do nothing
 				}
 				
 				holder.seat_no.setVisibility(View.VISIBLE);
@@ -375,6 +375,7 @@ public class BusSeatAdapter extends BaseAdapter{
             	holder.seat.setEnabled(true);
             	holder.seat.setTag(position);
             	
+            	//If call center
             	if (Integer.valueOf(this.userRole) > 3) {
                 	holder.seat.setOnCheckedChangeListener(new OnCheckedChangeListener() {
     					

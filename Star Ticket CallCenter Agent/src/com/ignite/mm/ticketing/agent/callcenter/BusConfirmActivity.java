@@ -1082,7 +1082,30 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 							Log.i("", "Ticket List to online: "+TicketLists);
 								
 							//Store Sale on City Mart DB
-							postOnlineSale(TicketLists);
+							//postOnlineSale(TicketLists);
+							
+							//If Success
+							SKToastMessage.showMessage(BusConfirmActivity.this, "လက္မွတ္ ျဖတ္ၿပီးပါၿပီ  !", SKToastMessage.SUCCESS);
+							closeAllActivities();
+							//Show Voucher		
+							
+							if(Intents.equals("booking")){
+								bundle.putString("from_intent", "booking");								
+							}
+							
+							bundle.putString("extra_city", ExtraCityName);
+							bundle.putString("ticket_price", ticket_price);
+							bundle.putString("total_amount", total_amount);
+							bundle.putString("TicketNo", TicketLists);
+							bundle.putString("operatorPhone", operatorPhone);
+							
+							startActivity(new Intent(BusConfirmActivity.this, PDFBusActivity.class).putExtras(bundle));
+							dialog.dismiss();
+							finish();
+							
+							//Log.i("", "Server Response1: "+arg0.getStatus()+", "+arg0.getReason()+", "+arg0.getBody());
+							//Log.i("", "Server Response: "+arg1.getStatus()+", "+arg1.getReason()+", "+arg1.getBody());
+							
 						}
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -1137,6 +1160,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 							SKToastMessage.showMessage(BusConfirmActivity.this, "လက္မွတ္ ျဖတ္ၿပီးပါၿပီ  !", SKToastMessage.SUCCESS);
 							closeAllActivities();
 							//Show Voucher		
+							
 							if(Intents.equals("booking")){
 								bundle.putString("from_intent", "booking");								
 							}

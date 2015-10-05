@@ -188,7 +188,10 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 					}
 				}
 				
-				dialog.dismiss();
+				if (dialog != null) {
+					dialog.dismiss();
+				}
+				
 			}
 			
 			public void failure(RetrofitError arg0) {
@@ -322,6 +325,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 			if (v == btn_trip_date) {
 				
 				final SKCalender skCalender = new SKCalender(SaleTicketActivity.this);
+				
 				skCalender.setCallbacks(new Callbacks() {
 
 					private Date today;
@@ -340,16 +344,20 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 						int compare = formatedDate.compareTo(today);
 						Log.i("","Hello Compare : "+ compare);
 						
+						//If CallCenter
 						if (AppLoginUser.getRole().equals("9")) {
 							selectedTripDate = DateFormat.format("yyyy-MM-dd",formatedDate).toString();
 							btn_trip_date.setText(selectedTripDate);
 				        	skCalender.dismiss();
 						}else{
+							//If Agents
+							//If choose date is today (or) grater than today
 							if(compare >= 0){
 								selectedTripDate = DateFormat.format("yyyy-MM-dd",formatedDate).toString();
 								btn_trip_date.setText(selectedTripDate);
 					        	skCalender.dismiss();
 							}else {
+								//If choose date is less than today
 								SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose today or grater than today!", SKToastMessage.WARNING);
 							}	
 						}
