@@ -20,7 +20,7 @@
     <color name="primary_dark">#BF4017</color>
     <color name="black_overlay">#66000000</color>
     <color name="blue">#304f9f</color>
-    
+    <color name="orange2">#FF9800</color>
     <color name="custom_header_text">#85B100</color>
     <color name="custom_selected">#A8D324</color>
     <color name="custom_background">#00000000</color>
@@ -29,5 +29,7 @@
     <color name="custom_text_selected">#FFFFFFFF</color>
     <color name="custom_text_inactive">#7f778088</color>
     <color name="transparent">#00000000</color>
+    <color name="m_violet">#AB47BC</color>
+    <color name="m_green">#4CAF50</color>
     
 </resources>

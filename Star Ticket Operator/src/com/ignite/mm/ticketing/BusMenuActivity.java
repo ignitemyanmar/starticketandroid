@@ -44,6 +44,8 @@ public class BusMenuActivity extends BaseActionBarActivity {
 	private LinearLayout btn_old_sale;
 	private LinearLayout btn_all_booking;
 	private LinearLayout btn_search_code;
+	private TextView txt_sale;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +60,32 @@ public class BusMenuActivity extends BaseActionBarActivity {
             this.setSupportActionBar(toolbar);
         }
 		
+        txt_sale = (TextView)findViewById(R.id.txt_sale);
 		btn_sale_ticket = (LinearLayout) findViewById(R.id.btn_sale_ticket);
 		btn_order = (LinearLayout) findViewById(R.id.btn_credit_list);
 		btn_old_sale = (LinearLayout) findViewById(R.id.btn_cancel_order);
 		btn_all_booking = (LinearLayout) findViewById(R.id.all_booking);
 		btn_search_code = (LinearLayout) findViewById(R.id.btn_search_code);
+		
+		//If Sale Checker, show only sale & sale check
+		if (AppLoginUser.getUserRole().equals("7")) {
+			txt_sale.setText(getResources().getString(R.string.str_sale_salecheck));
+			btn_old_sale.setVisibility(View.GONE);
+			btn_order.setVisibility(View.GONE);
+			btn_search_code.setVisibility(View.GONE);
+		}else if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+			
+			txt_sale.setText(getResources().getString(R.string.str_khonekyi_khonepaing));
+			btn_old_sale.setVisibility(View.GONE);
+			btn_order.setVisibility(View.GONE);
+			btn_search_code.setVisibility(View.GONE);
+			
+		}else {
+			btn_old_sale.setVisibility(View.VISIBLE);
+			btn_order.setVisibility(View.VISIBLE);
+			btn_search_code.setVisibility(View.VISIBLE);
+			
+		}
 		
 		btn_sale_ticket.setOnClickListener(clickListener);
 		btn_order.setOnClickListener(clickListener);
@@ -154,6 +177,7 @@ public class BusMenuActivity extends BaseActionBarActivity {
 								editor.clear();
 								editor.commit();
 								editor.putString("working_date", selectedDate);
+								editor.putString("fromButton", "old_sale");
 								editor.commit();
 					        	skCalender.dismiss();
 					        	startActivity(new Intent(getApplicationContext(), BusTripsCityActivity.class));
@@ -245,6 +269,11 @@ public class BusMenuActivity extends BaseActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_confirm, menu);
+		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+			MenuItem item = menu.findItem(R.id.action_booking_noti);
+			item.setVisible(false);
+			this.invalidateOptionsMenu();
+		}
 		this.menu = menu;
 
 		return true;

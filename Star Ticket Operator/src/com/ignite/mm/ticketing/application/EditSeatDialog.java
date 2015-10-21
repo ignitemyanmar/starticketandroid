@@ -1,6 +1,8 @@
 package com.ignite.mm.ticketing.application;
 
 import com.ignite.mm.ticketing.R;
+import com.ignite.mm.ticketing.clientapi.NetworkEngine;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
@@ -16,11 +18,15 @@ public class EditSeatDialog extends Dialog {
 	private EditText edt_phone;
 	private EditText edt_nrc;
 	private EditText edt_ticket_no;
+	private String userRole;
 
-	public EditSeatDialog(Context context) {
+	public EditSeatDialog(Context context, String userRole) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		setContentView(R.layout.dialog_edit_seat_info);
+		
+		this.userRole = userRole;
+		
 		edt_name 		= (EditText) findViewById(R.id.edt_name);
 		edt_phone 		= (EditText) findViewById(R.id.edt_phone);
 		edt_nrc 		= (EditText) findViewById(R.id.edt_nrc);
@@ -28,6 +34,13 @@ public class EditSeatDialog extends Dialog {
 		btn_edit = (Button) findViewById(R.id.btn_edit);
 		btn_cancel = (Button) findViewById(R.id.btn_cancel);
 			
+		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || userRole.equals("7")) {
+			btn_edit.setVisibility(View.GONE);
+			btn_cancel.setVisibility(View.GONE);
+		}else {
+			btn_edit.setVisibility(View.VISIBLE);
+			btn_cancel.setVisibility(View.VISIBLE);
+		}
 		btn_cancel.setOnClickListener(clickListener);
 		btn_edit.setOnClickListener(clickListener);
 		setTitle("Delete | Edit Seat");

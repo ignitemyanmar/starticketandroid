@@ -765,6 +765,8 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 			AgentID = user_id;
 		}
 		
+		Log.i("", "Selected Remark type: "+selectedRemarkType.toString());
+		
 		String param = MCrypt.getInstance()
 				.encrypt(
 						SecureParam.postSaleConfirmParam(AppLoginUser

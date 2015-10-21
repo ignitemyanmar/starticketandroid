@@ -281,7 +281,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="59.64"
                             android:visibility="visible" >
-
                         </LinearLayout>
 
                         <com.smk.custom.view.CustomButton
@@ -296,7 +295,7 @@
                             android:textSize="20dp"
                             android:textStyle="bold"
                             android:visibility="gone" />
-                        
+
                         <com.smk.custom.view.CustomButton
                             android:id="@+id/btn_close_seat"
                             style="?android:attr/buttonStyleSmall"
@@ -307,8 +306,9 @@
                             android:text="ခံုပိုင္ ေပးမည္"
                             android:textColor="@color/white"
                             android:textSize="20dp"
-                            android:textStyle="bold" />
-                        
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
                         <com.smk.custom.view.CustomButton
                             android:id="@+id/btn_open_seat"
                             style="?android:attr/buttonStyleSmall"
@@ -319,9 +319,10 @@
                             android:text="ခံုပိုင္ ျပန္ပိတ္မည္"
                             android:textColor="@color/white"
                             android:textSize="20dp"
-                            android:textStyle="bold" />
-
+                            android:textStyle="bold"
+                            android:visibility="gone" />
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -352,6 +353,7 @@
         </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/layout_sale_booking"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"

@@ -5,6 +5,9 @@ import retrofit.RestAdapter;
 
 public class NetworkEngine {
 	static INetworkEngine instance;
+	//public static String ip = "192.168.1.101";
+	public static String ip = "lumbini.starticketmyanmar.com";
+	
 	public static RequestInterceptor requestInterceptor = new RequestInterceptor() {
 	  public void intercept(RequestFacade request) {
 	    request.addHeader("Accept-Encoding", "gzip, deflate, sdch");
@@ -22,9 +25,13 @@ public class NetworkEngine {
 		}
 		return instance;
 	}
-	public static String ip = "192.168.1.101";
+	
 	public static void setIP(String address){
 		ip = address;
 		instance = null;
+	}
+
+	public static String getIp() {
+		return ip;
 	}
 }

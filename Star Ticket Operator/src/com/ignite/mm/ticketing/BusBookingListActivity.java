@@ -190,7 +190,12 @@ public class BusBookingListActivity extends BaseActionBarActivity {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
-				credit_list = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<CreditOrder>>() {}.getType() );;;
+				if (arg0 != null) {
+					credit_list = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<CreditOrder>>() {}.getType());
+				}
+				
+				Log.i("", "booking list: "+credit_list.toString());
+				
 				lst_credit.setAdapter(new OrderListViewAdapter(BusBookingListActivity.this, credit_list));
 				if (dialog != null) {
 					dialog.dismiss();

@@ -159,6 +159,11 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_confirm, menu);
+		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+			MenuItem item = menu.findItem(R.id.action_booking_noti);
+			item.setVisible(false);
+			this.invalidateOptionsMenu();
+		}
 		this.menu = menu;
 
 		return true;

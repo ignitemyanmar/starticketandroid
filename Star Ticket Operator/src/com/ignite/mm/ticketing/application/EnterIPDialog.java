@@ -35,7 +35,9 @@ public class EnterIPDialog{
 		edt_ip = (AutoCompleteTextView) view.findViewById(R.id.edt_ip);
 		edt_ip.setText(NetworkEngine.ip);
 		List<String> lists = new ArrayList<String>();
+		lists.add("lumbini.starticketmyanmar.com");
 		lists.add("192.168.1.101");
+		
 		lists.add("elite.starticketmyanmar.com");
 		lists.add("mdm.starticketmyanmar.com");
 		lists.add("shwemandalar.starticketmyanmar.com");
@@ -44,7 +46,7 @@ public class EnterIPDialog{
 		lists.add("asiaexpress.starticketmyanmar.com");
 		lists.add("moekaungkin.starticketmyanmar.com");
 		lists.add("toeyadanar.starticketmyanmar.com");
-		lists.add("lumbini.starticketmyanmar.com");
+		
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, lists);
 		edt_ip.setAdapter(adapter);

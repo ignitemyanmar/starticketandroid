@@ -5,7 +5,10 @@ import java.util.List;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ignite.mm.ticketing.R;
+import com.ignite.mm.ticketing.custom.listview.adapter.BusSeatFragmentPagerAdapter.BusSelectSeatFragment;
 import com.ignite.mm.ticketing.sqlite.database.model.Agent;
+import com.ignite.mm.ticketing.sqlite.database.model.SelectSeat;
+import com.ignite.mm.ticketing.sqlite.database.model.SelectSeatBooking;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -21,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -33,17 +37,22 @@ public class BookingDialog{
 	
 	private Context ctx;
 	private EditText edt_name;
+	
 	private EditText edt_phone;
 	private LinearLayout layout_remark;
 	private Spinner sp_remark_type;
 	private EditText edt_remark;
 	protected int selectedRemarkType;
 	private MaterialDialog dialog;
+	
+	private TextView txt_selected_seats;
+	private List<SelectSeatBooking> mSelect_seats;
 
-	public BookingDialog(Context context, List<Agent> list) {
+	public BookingDialog(Context context, List<Agent> list, List<SelectSeatBooking> select_seats) {
 		// TODO Auto-generated constructor stub
 		agentList = list;
 		ctx = context;
+		mSelect_seats = select_seats;
 		
 		View view = View.inflate(context, R.layout.dialog_booking, null);
 		dialog = new MaterialDialog.Builder(context)
@@ -53,14 +62,33 @@ public class BookingDialog{
 		
 		dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 		
+		txt_selected_seats = (TextView)view.findViewById(R.id.txt_selected_seats);
 		edt_name = (EditText) view.findViewById(R.id.edt_name);
 		edt_phone = (EditText) view.findViewById(R.id.edt_phone);
 		edt_change = (AutoCompleteTextView) view.findViewById(R.id.edt_agent);
 		layout_remark = (LinearLayout) view.findViewById(R.id.layout_remark);
 		sp_remark_type = (Spinner) view.findViewById(R.id.sp_remark_type);
+		
 		edt_remark = (EditText) view.findViewById(R.id.edt_remark);
 		btn_save = (Button) view.findViewById(R.id.btn_change_agent);
 		btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
+		
+		if (mSelect_seats != null && mSelect_seats.size() > 0) {
+			
+			Log.i("", "select seat (dialog): "+mSelect_seats.size());
+			
+			String seattime="";
+			for (int i = 0; i < mSelect_seats.size(); i++) {
+				if (mSelect_seats.size() == mSelect_seats.size() - 1) {
+					seattime += mSelect_seats.get(i).getSelect_time()
+							+"("+mSelect_seats.get(i).getSelect_seat()+")";
+				}else {
+					seattime += mSelect_seats.get(i).getSelect_time()
+							+"("+mSelect_seats.get(i).getSelect_seat()+"), ";
+				}
+			}
+			txt_selected_seats.setText(seattime+"");
+		}
 		
 		List<String> remarkTypes = new ArrayList<String>();
 		remarkTypes.add(ctx.getString(R.string.str_choose_remark));

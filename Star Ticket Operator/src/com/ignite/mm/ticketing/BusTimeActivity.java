@@ -320,11 +320,18 @@ public class BusTimeActivity extends BaseActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_confirm, menu);
-		SharedPreferences notify = getSharedPreferences("NotifyBooking",
-				Context.MODE_PRIVATE);
-		NotifyBooking = notify.getInt("count", 0);
-		if (NotifyBooking > 0) {
-			menu.getItem(0).setTitle(NotifyBooking.toString());
+		
+		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+			MenuItem item = menu.findItem(R.id.action_booking_noti);
+			item.setVisible(false);
+			this.invalidateOptionsMenu();
+		}else {
+			SharedPreferences notify = getSharedPreferences("NotifyBooking",
+					Context.MODE_PRIVATE);
+			NotifyBooking = notify.getInt("count", 0);
+			if (NotifyBooking > 0) {
+				menu.getItem(0).setTitle(NotifyBooking.toString());
+			}
 		}
 
 		return true;

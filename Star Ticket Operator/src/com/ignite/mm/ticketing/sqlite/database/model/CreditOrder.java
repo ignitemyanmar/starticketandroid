@@ -26,6 +26,8 @@ public class CreditOrder {
 	@Expose
 	private String agent;
 	@Expose
+	private String booking_user;
+	@Expose
 	private String trip;
 	@Expose
 	private String time;
@@ -170,5 +172,27 @@ public class CreditOrder {
 	public void setSaleitems(List<Saleitem> saleitems) {
 	this.saleitems = saleitems;
 	}
+
+	public String getBooking_user() {
+		return booking_user;
+	}
+
+	public void setBooking_user(String booking_user) {
+		this.booking_user = booking_user;
+	}
+
+	@Override
+	public String toString() {
+		return "CreditOrder [id=" + id + ", orderdate=" + orderdate
+				+ ", agentId=" + agentId + ", operatorId=" + operatorId
+				+ ", customer=" + customer + ", phone=" + phone + ", operator="
+				+ operator + ", agent=" + agent + ", booking_user="
+				+ booking_user + ", trip=" + trip + ", time=" + time
+				+ ", classes=" + classes + ", date=" + date + ", totalTicket="
+				+ totalTicket + ", price=" + price + ", amount=" + amount
+				+ ", saleitems=" + saleitems + "]";
+	}
+	
+	
 
 }

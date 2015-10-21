@@ -594,90 +594,102 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		// TODO Auto-generated method stub
 		finish();
 		return super.getSupportParentActivityIntent();
+		
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_edit_selectseat, menu);
+		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || AppLoginUser.getUserRole().equals("7"))
+		
+		{
+			MenuItem item = menu.findItem(R.id.action_delete);
+			item.setVisible(false);
+			this.invalidateOptionsMenu();
+			
+		}
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
 		switch(item.getItemId()) {
-	        case R.id.action_delete:
-	        	
-	        	if(SelectedSeat.length() > 0){
-		        	alertDialog("Are you sure, you want to delete?", new DialogInterface.OnClickListener() {
+        case R.id.action_delete:
+        	
+        	if(SelectedSeat.length() > 0){
+	        	alertDialog("Are you sure, you want to delete?", new DialogInterface.OnClickListener() {
+					
+					public void onClick(DialogInterface dialog,
+							int which) {
+						// TODO Auto-generated method stub
+						if (dialog != null) {
+							dialog.dismiss();
+						}
 						
-						public void onClick(DialogInterface dialog,
-								int which) {
-							// TODO Auto-generated method stub
-							if (dialog != null) {
-								dialog.dismiss();
-							}
-							
-							final ZProgressHUD zp_dialog = ZProgressHUD.getInstance(EditBusSelectSeatActivity.this);
-							zp_dialog.show();
-							List<SelectSeat> seats = new ArrayList<SelectSeat>();
-							String[] selectedSeat = SelectedSeat.split(",");
-							
-							Log.i("", "");
-							
-							if (selectedSeat.length > 0) {
-								for (int i = 0; i < selectedSeat.length; i++) {
-									if (!selectedSeat[i].equals("")) {
-										seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
-												,BusSeats.get(0).getSeat_plan().get(0).getSeat_list().get(Integer.valueOf(selectedSeat[i])).getSeat_no().toString()));
-									}
+						final ZProgressHUD zp_dialog = ZProgressHUD.getInstance(EditBusSelectSeatActivity.this);
+						zp_dialog.show();
+						List<SelectSeat> seats = new ArrayList<SelectSeat>();
+						String[] selectedSeat = SelectedSeat.split(",");
+						
+						Log.i("", "");
+						
+						if (selectedSeat.length > 0) {
+							for (int i = 0; i < selectedSeat.length; i++) {
+								if (!selectedSeat[i].equals("")) {
+									seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0).getId()
+											,BusSeats.get(0).getSeat_plan().get(0).getSeat_list().get(Integer.valueOf(selectedSeat[i])).getSeat_no().toString()));
 								}
 							}
-							
-							String seatlist = MCrypt.getInstance().encrypt(seats.toString());
-					        String param = MCrypt.getInstance().encrypt(SecureParam.deleteTicketParam(AppLoginUser.getAccessToken(), BusSeats.get(0).getSeat_plan().get(0).getId().toString(), Date, seatlist, AppLoginUser.getLoginUserID()));
-							NetworkEngine.getInstance().deleteTicket(param,
-									new Callback<Response>() {
-
-										public void success(Response arg0,Response arg1) {
-											// TODO Auto-generated
-											// method stub
-											if (zp_dialog != null) {
-												zp_dialog.dismiss();
-											}
-											
-											onResume();
-											SKToastMessage
-													.showMessage(
-															EditBusSelectSeatActivity.this,
-															"Successfully Deleted.",
-															SKToastMessage.SUCCESS);
-											
-										}
-
-										public void failure(RetrofitError arg0) {
-											if (zp_dialog != null) {
-												zp_dialog.dismiss();
-											}
-											
-										}
-									});
-							}
-					}, new DialogInterface.OnClickListener() {
-						
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							if (dialog != null) {
-								dialog.dismiss();
-							}
-							
 						}
-					});
-		        	return true;
-				}else {
-					SKToastMessage.showMessage(EditBusSelectSeatActivity.this, "Please choose the seat.", SKToastMessage.ERROR);
-				}
-		   	}
+						
+						String seatlist = MCrypt.getInstance().encrypt(seats.toString());
+				        String param = MCrypt.getInstance().encrypt(SecureParam.deleteTicketParam(AppLoginUser.getAccessToken(), BusSeats.get(0).getSeat_plan().get(0).getId().toString(), Date, seatlist, AppLoginUser.getLoginUserID()));
+						NetworkEngine.getInstance().deleteTicket(param,
+								new Callback<Response>() {
+
+									public void success(Response arg0,Response arg1) {
+										// TODO Auto-generated
+										// method stub
+										if (zp_dialog != null) {
+											zp_dialog.dismiss();
+										}
+										
+										onResume();
+										SKToastMessage
+												.showMessage(
+														EditBusSelectSeatActivity.this,
+														"Successfully Deleted.",
+														SKToastMessage.SUCCESS);
+										
+									}
+
+									public void failure(RetrofitError arg0) {
+										if (zp_dialog != null) {
+											zp_dialog.dismiss();
+										}
+										
+									}
+								});
+						}
+				}, new DialogInterface.OnClickListener() {
+					
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						if (dialog != null) {
+							dialog.dismiss();
+						}
+						
+					}
+				});
+	        	return true;
+			}else {
+				SKToastMessage.showMessage(EditBusSelectSeatActivity.this, "Please choose the seat.", SKToastMessage.ERROR);
+			}
+	   	}
+		
 		return super.onOptionsItemSelected(item);
 	}
 

@@ -48,7 +48,6 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 	public static String OperatorID;
 	public static String FromCity;
 	public static String ToCity;
-	
 	public static String From;
 	public static String To;
 	public static String Classes;
@@ -59,7 +58,6 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 	private List<Time> AllTimeList;
 	private String App_Login_User_String;
 	private LoginUser App_Login_User;
-	
 	private Drawable oldBackground = null;
 	private int currentColor;
 	private int click_position;
@@ -122,6 +120,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 		tabs.setIndicatorColorResource(R.color.accent_dark);
 		tabs.setIndicatorHeight(10);
 		
+		//Get Agent list for Booking dialog
 		getAgent();
 		getOperatorGroupUser();
 		
@@ -132,8 +131,6 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 		}
         
         pager.setAdapter(adapter);
-        
-        
         pager.setCurrentItem(click_position);
         tabs.setViewPager(pager);
         
@@ -150,6 +147,30 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
                 Toast.makeText(BusSeatViewPagerActivity.this, "Tab reselected: " + position, Toast.LENGTH_SHORT).show();
             }
         });
+        
+        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				Log.i("", "Enter hereeeeeeeeeeeeeeeeeeeee(onPageSelected!!!");
+				
+				//adapter.instantiateItem(pager, arg0);
+				adapter.notifyDataSetChanged();
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				Log.i("", "Enter hereeeeeeeeeeeeeeeeeeeee(onPageScrolled!!!");
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				Log.i("", "Enter hereeeeeeeeeeeeeeeeeeeee(onPageScrollStateChanged!!!");
+			}
+		});
     }
     
     private void getAgent(){

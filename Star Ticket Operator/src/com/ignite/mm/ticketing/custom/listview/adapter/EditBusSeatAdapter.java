@@ -129,11 +129,27 @@ public class EditBusSeatAdapter extends BaseAdapter{
             		holder.txt_phone.setText(list.get(position).getCustomerInfo().getPhone());
             		holder.txt_nrc.setText(list.get(position).getCustomerInfo().getNrcNo());
             		holder.txt_ticket_no.setText(list.get(position).getCustomerInfo().getTicketNo());
+            		
             		holder.txt_agent.setText(list.get(position).getCustomerInfo().getAgentName());
+            		
+            		
+            		if (list.get(position).getCustomerInfo().getOwner() != null) {
+            			if (list.get(position).getCustomerInfo().getOwner() == 1) {
+	            			holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.m_green));
+						}else {
+							holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.white));
+						}
+					}
+            		
             		holder.txt_seating_no.setText(list.get(position).getSeat_no());
             		//Check Remark
         			if(list.get(position).getRemark_type() != 0 || list.get(position).getDiscount() > 0 || list.get(position).getFree_ticket() > 0 ){
-        				holder.txt_seating_no.setBackgroundResource(R.color.blue);
+        				
+        				if (list.get(position).getRemark_type() == 1) {
+        					holder.txt_seating_no.setBackgroundResource(R.color.m_violet);
+						}else {
+							holder.txt_seating_no.setBackgroundResource(R.color.orange2);
+						}
         			}
             	}else{
             		holder.layout_customer_info.setVisibility(View.INVISIBLE);
@@ -155,22 +171,25 @@ public class EditBusSeatAdapter extends BaseAdapter{
 				});*/
             }
 			
-			//If Check Sale status 1, show test (sit pyi)
-			if (userRole != null) {
+			
+/*			if (userRole != null) {
 				if (userRole.equals("7")) {
-					if (list.get(position).getSalecheck() != null) {
-						
-						Log.i("", "Sale Check Status: "+list.get(position).getSalecheck());
-						
-						if (list.get(position).getSalecheck().equals("1")) {
-			        		holder.txt_check_sale.setText(_context.getResources().getString(R.string.str_check_sale));
-						}else {
-							holder.txt_check_sale.setText("");
-						}
-					}else {
-						Log.i("", "Sale Check Status: "+list.get(position).getSalecheck());
-					}
+
 				}
+			}*/
+			
+			//If Check Sale status 1, show test (sit pyi)
+			if (list.get(position).getSalecheck() != null) {
+				
+				Log.i("", "Sale Check Status: "+list.get(position).getSalecheck());
+				
+				if (list.get(position).getSalecheck().equals("1")) {
+	        		holder.txt_check_sale.setText(_context.getResources().getString(R.string.str_check_sale));
+				}else {
+					holder.txt_check_sale.setText("");
+				}
+			}else {
+				Log.i("", "Sale Check Status: "+list.get(position).getSalecheck());
 			}
 			
 			

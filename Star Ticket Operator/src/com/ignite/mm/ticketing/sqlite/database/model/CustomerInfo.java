@@ -24,6 +24,8 @@ public class CustomerInfo {
 	@SerializedName("agent_name")
 	@Expose
 	private String agentName;
+	@Expose
+	private Integer owner;
 	
 	/**
 	* 
@@ -150,5 +152,23 @@ public class CustomerInfo {
 	public void setAgentName(String agentName) {
 	this.agentName = agentName;
 	}
+
+	public Integer getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Integer owner) {
+		this.owner = owner;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerInfo [orderId=" + orderId + ", ticketNo=" + ticketNo
+				+ ", name=" + name + ", phone=" + phone + ", nrcNo=" + nrcNo
+				+ ", agentId=" + agentId + ", agentName=" + agentName
+				+ ", owner=" + owner + "]";
+	}
+
+	
 
 }

@@ -35,19 +35,17 @@
                     android:orientation="vertical"
                     android:padding="30dp" >
 
-
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/txt_login_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:ems="10"
-                        android:hint="Email"
+                        android:hint="Email / UserName / Phone"
                         android:inputType="textEmailAddress"
                         android:maxWidth="300dp"
-                        app:met_floatingLabel="highlight"
-                        android:paddingLeft="5dp" />
-
+                        android:paddingLeft="5dp"
+                        app:met_floatingLabel="highlight" />
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/txt_login_password"

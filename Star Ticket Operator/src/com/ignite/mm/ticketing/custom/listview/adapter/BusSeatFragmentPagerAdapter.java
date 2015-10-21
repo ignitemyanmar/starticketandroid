@@ -28,6 +28,7 @@ import com.ignite.mm.ticketing.BusConfirmActivity;
 import com.ignite.mm.ticketing.BusSeatViewPagerActivity;
 import com.ignite.mm.ticketing.EditBusSelectSeatActivity;
 import com.ignite.mm.ticketing.R;
+import com.ignite.mm.ticketing.R.menu;
 import com.ignite.mm.ticketing.application.BookingDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.application.DeviceUtil;
@@ -41,6 +42,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.ReturnComfrim;
 import com.ignite.mm.ticketing.sqlite.database.model.Seat;
 import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 import com.ignite.mm.ticketing.sqlite.database.model.SelectSeat;
+import com.ignite.mm.ticketing.sqlite.database.model.SelectSeatBooking;
 import com.ignite.mm.ticketing.sqlite.database.model.Time;
 import com.smk.custom.view.CustomTextView;
 import com.smk.skalertmessage.SKToastMessage;
@@ -83,6 +85,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
 	private static List<Time> allTimeList = new ArrayList<Time>();
 	private int mCount = 0;
+	public static LinearLayout layout_sale_booking;
 	public static String userRole;
 	
     public BusSeatFragmentPagerAdapter(FragmentManager fm, List<Time> timelist, String userRole) {
@@ -95,8 +98,8 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 	        }
 	}
 
-    @Override
     public CharSequence getPageTitle(int position) {
+    	
         return allTimeList.get(position).getTime()+"("+allTimeList.get(position).getBus_class()+") "
         		+allTimeList.get(position).getTotal_sold_seat()+"/"+allTimeList.get(position).getTotal_seat();
     }
@@ -104,6 +107,12 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     @Override
     public int getCount() {
         return mCount;
+    }
+    
+    @Override
+    public int getItemPosition(Object object) {
+    	// TODO Auto-generated method stub
+    	return POSITION_NONE;
     }
 
     @Override
@@ -147,6 +156,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     	private int mPosition;
     	private View rootView;
 		private FrameLayout loading;
+		private String from_old_sale;
     	
     	public static BusSelectSeatFragment newInstance(int position) {
     		BusSelectSeatFragment frag = new BusSelectSeatFragment();
@@ -200,20 +210,23 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		txt_price = (CustomTextView) rootView.findViewById(R.id.txt_price);
     		txt_dept_date = (CustomTextView) rootView.findViewById(R.id.txt_departure_date);
     		txt_dept_time = (CustomTextView) rootView.findViewById(R.id.txt_departure_time);
-    		btn_closeseat = (Button) rootView.findViewById(R.id.btn_close_seat);
-    		btn_closeseat.setOnClickListener(clickListener);
-    		btn_openseat = (Button) rootView.findViewById(R.id.btn_open_seat);
-    		btn_openseat.setOnClickListener(clickListener);
+    		layout_sale_booking = (LinearLayout)rootView.findViewById(R.id.layout_sale_booking);
+    		
+    		//btn_closeseat = (Button) rootView.findViewById(R.id.btn_close_seat);
+    		//btn_closeseat.setOnClickListener(clickListener);
+    		//btn_openseat = (Button) rootView.findViewById(R.id.btn_open_seat);
+    		//btn_openseat.setOnClickListener(clickListener);
     		
     		//Log.i("","Hello Usre Type: "+ BusSeatViewPagerActivity.app_login_user.getUserType());
     		
-    		if(!BusSeatViewPagerActivity.app_login_user.getUserRole().equals("8")){
+/*    		if(!BusSeatViewPagerActivity.app_login_user.getUserRole().equals("8")){
     			btn_openseat.setVisibility(View.GONE);
     			btn_closeseat.setVisibility(View.GONE);
-    		}
+    		}*/
     		
     		Date today = null;
         	Date formatedDate = null;
+        	
     		try {
     			formatedDate = new SimpleDateFormat("yyyy-MM-dd").parse(BusSeatViewPagerActivity.Date);
     			today = new SimpleDateFormat("yyyy-MM-dd").parse(getToday());
@@ -222,24 +235,53 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			e.printStackTrace();
     		}
     		int compare = today.compareTo(formatedDate);
-    		if(compare > 0){
-    			btn_check_out.setVisibility(View.GONE);
-    			btn_now_booking.setVisibility(View.GONE);
-    			btn_booking.setVisibility(View.GONE);
-    		}
-    		btn_openseat.setVisibility(View.GONE);
-			btn_closeseat.setVisibility(View.GONE);
+    		
+    		//If not from old_sale button 
+    		SharedPreferences old_sale_btn = getActivity().getSharedPreferences("old_sale",
+    				Context.MODE_PRIVATE);
+    		from_old_sale = old_sale_btn.getString("fromButton", "");
+    		
+    		//If Lumbini Server (or) if sale check, Not allow to click CheckOut button + Booking Button
+    		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || userRole.equals("7")) {
+    			btn_check_out.setEnabled(false);
+    			btn_now_booking.setEnabled(false);
+			}else {
+	    		if (!from_old_sale.equals("old_sale")) {
+	        		//If less than today
+	        		if(compare > 0){
+	        			//layout_sale_booking.setVisibility(View.GONE);
+	        			btn_check_out.setEnabled(false);
+	        			btn_now_booking.setEnabled(false);
+	        			
+	        		}else {
+	        			btn_check_out.setEnabled(true);
+	        			btn_now_booking.setEnabled(true);
+					}
+	        		btn_booking.setVisibility(View.GONE);
+	    		}
+			}
+
+    		//btn_openseat.setVisibility(View.GONE);
+			//btn_closeseat.setVisibility(View.GONE);
     	}
     	
     	@Override
     	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     	    // TODO Add your menu entries here
     		inflater.inflate(R.menu.activity_bus_selectseat, menu);
+    		
+    		//If Lumbini Server (or) Sale Check , Hide booking list button
+    		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || userRole.equals("7")) {
+    			MenuItem item = menu.findItem(R.id.action_booking);
+    			item.setVisible(false);
+    			this.hasOptionsMenu();
+			}
     	    super.onCreateOptionsMenu(menu, inflater);
     	}
     	    	
     	@Override
     	public boolean onOptionsItemSelected(MenuItem item) {
+    		
     		switch(item.getItemId()) {
     			case R.id.action_booking:
     				SharedPreferences sharedPreferences = getActivity().getSharedPreferences("order", Context.MODE_PRIVATE);
@@ -274,6 +316,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		return super.onOptionsItemSelected(item);
     	}
     	
+    	
     	public static String changeDate(String date){
     		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
     		Date StartDate = null;
@@ -299,7 +342,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			/*dialog = new ZProgressHUD(getActivity());
     			dialog.setCancelable(true);
     			dialog.show();*/
-    			loading.setVisibility(View.VISIBLE);
     			getSeatPlan();
     		}else{
     			connectionDetector.showErrorMessage();
@@ -308,7 +350,11 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     	
     	private void getSeatPlan() {
     		
+    		loading.setVisibility(View.VISIBLE);
+    		
     		Log.i("", "mPosition from getSeatPlan: "+mPosition);
+    		
+    		
     		
     		String param = MCrypt.getInstance().encrypt(SecureParam.getSeatPlanParam(BusSeatViewPagerActivity.app_login_user.getAccessToken()
     				, BusSeatViewPagerActivity.OperatorID, allTimeList.get(mPosition).getTripid(), BusSeatViewPagerActivity.FromCity
@@ -344,16 +390,31 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     	}
     	
     	public void postSale() {
-    		dialog = new ZProgressHUD(getActivity());
-    		dialog.show();
+    		
+    		if (getActivity() != null) {
+    			dialog = new ZProgressHUD(getActivity());
+        		dialog.show();
+			}
     		
     		List<SelectSeat> seats = new ArrayList<SelectSeat>();
+    		
     		String[] selectedSeat = SelectedSeat.split(",");
+    		
     		for (int i = 0; i < selectedSeat.length; i++) {
+    			
+    			Integer selectSeat = 0;
+    			
+    			if (selectedSeat[i] != null) {
+					if (!selectedSeat[i].equals("")) {
+						selectSeat = Integer.valueOf(selectedSeat[i]);
+					}
+				}
+    			
     			seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0)
     					.getId(), BusSeats.get(0).getSeat_plan().get(0)
-    					.getSeat_list().get(Integer.valueOf(selectedSeat[i]))
+    					.getSeat_list().get(selectSeat)
     					.getSeat_no().toString()));
+    			
     		}
 
     		String FromCity = BusSeats.get(0).getSeat_plan().get(0).getFrom()
@@ -480,11 +541,11 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		
     		
     		if(BusSeats.size() > 0){
-    			txt_dept_date.setText("ထြက္ခြာမည့္ ရက္ : "+ changeDate(BusSeatViewPagerActivity.Date));
-    			txt_dept_time.setText("ထြက္ခြာမည့္ အခ်ိန္ : "+ allTimeList.get(mPosition).getTime());
+    			txt_dept_date.setText("ထြက္ ခြာ မည့္ ေန႔ရက္ : "+ changeDate(BusSeatViewPagerActivity.Date));
+    			txt_dept_time.setText("ထြက္ ခြာ မည့္ အခ်ိန္ : "+ allTimeList.get(mPosition).getTime());
     			txt_operator.setText("ကားဂိတ္ : "+ BusSeats.get(0).getOperator());
-    			txt_classes.setText("ကားအမ်ိဳးအစား : "+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
-    			txt_price.setText("ေစ်းႏႈန္း  : "+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
+    			txt_classes.setText("ယာဥ္ အမ်ိဳးအစား : "+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
+    			txt_price.setText("ေစ်း ႏႈန္း : "+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
     			BusClasses = BusSeats.get(0).getSeat_plan().get(0).getClasses();
     			
     			Map<Integer, List<Seat_list>> map = new HashMap<Integer, List<Seat_list>>();
@@ -565,7 +626,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		
     		public void onClickEdit(final Seat_list list) {
     			// TODO Auto-generated method stub
-    			editSeatDialog = new EditSeatDialog(getActivity());
+    			editSeatDialog = new EditSeatDialog(getActivity(), userRole);
     			editSeatDialog.setName(list.getCustomerInfo().getName());
     			editSeatDialog.setPhone(list.getCustomerInfo().getPhone());
     			editSeatDialog.setNRC(list.getCustomerInfo().getNrcNo());
@@ -680,6 +741,8 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		}
     	};
     	
+		protected List<SelectSeatBooking> select_seats;
+    	
     	private String getRemarkType(int remarkType){
     		List<String> remarkTypes = new ArrayList<String>();
     		remarkTypes.add(getResources().getString(R.string.str_choose_remark));
@@ -715,7 +778,30 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			if(v == btn_now_booking){
     				if(SelectedSeat.length() != 0){
     					if(connectionDetector.isConnectingToInternet()){
-    						bookingDialog = new BookingDialog(getActivity(), BusSeatViewPagerActivity.agentList);
+    						
+    						select_seats = new ArrayList<SelectSeatBooking>();
+    			    		
+    			    		String[] selectedSeat = SelectedSeat.split(",");
+    			    		
+    			    		for (int i = 0; i < selectedSeat.length; i++) {
+    			    			
+    			    			Integer selectSeat = 0;
+    			    			
+    			    			if (selectedSeat[i] != null) {
+    								if (!selectedSeat[i].equals("")) {
+    									selectSeat = Integer.valueOf(selectedSeat[i]);
+    								}
+    							}
+    			    			
+    			    			select_seats.add(new SelectSeatBooking(allTimeList.get(mPosition).getTime(), BusSeats.get(0)
+    			    					.getSeat_plan()
+    			    					.get(0)
+    			    					.getSeat_list().get(selectSeat)
+    			    					.getSeat_no().toString()));
+    			    			
+    			    		}
+    			    		
+    						bookingDialog = new BookingDialog(getActivity(), BusSeatViewPagerActivity.agentList, select_seats);
     						bookingDialog.setCallbackListener(new BookingDialog.Callback() {
 
     							public void onCancel() {
