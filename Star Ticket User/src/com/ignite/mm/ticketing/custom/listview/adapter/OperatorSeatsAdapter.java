@@ -18,10 +18,13 @@ public class OperatorSeatsAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private List<OperatorSeat> listItem;
 	private Activity aty;
-	public OperatorSeatsAdapter(Activity aty, List<OperatorSeat> operatorSeats){
+	private int foreign_price;
+	
+	public OperatorSeatsAdapter(Activity aty, List<OperatorSeat> operatorSeats, int foreign_price){
 		this.aty = aty;
 		mInflater = LayoutInflater.from(aty);
 		listItem = operatorSeats;
+		this.foreign_price = foreign_price;
 	}
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -82,12 +85,48 @@ public class OperatorSeatsAdapter extends BaseAdapter {
 		
 		holder.total_seat.setText(""+available_seat);
 		
-		if (holder.txt_price != null) {
-			//Change (0,000,000) format
-			NumberFormat nf = NumberFormat.getInstance();
-			String price = nf.format(Integer.valueOf(getItem(position).getPrice()));
-			
-			holder.txt_price.setText(price);
+		//If Foreigner Price
+		if (foreign_price == 1) {
+			if (getItem(position).getForeignPrice() != null) {
+				if (!getItem(position).getForeignPrice().equals("") && !getItem(position).getForeignPrice().equals("0")) {
+					//Change (0,000,000) format
+					NumberFormat nf = NumberFormat.getInstance();
+					String price = nf.format(Integer.valueOf(getItem(position).getForeignPrice()));
+					
+					holder.txt_price.setText(price);
+				}else{
+					if (getItem(position).getPrice() != null) {
+						if (!getItem(position).getPrice().equals("")) {
+							//Change (0,000,000) format
+							NumberFormat nf = NumberFormat.getInstance();
+							String price = nf.format(Integer.valueOf(getItem(position).getPrice()));
+							
+							holder.txt_price.setText(price);
+						}
+					}
+				}
+			}else{
+				if (getItem(position).getPrice() != null) {
+					if (!getItem(position).getPrice().equals("")) {
+						//Change (0,000,000) format
+						NumberFormat nf = NumberFormat.getInstance();
+						String price = nf.format(Integer.valueOf(getItem(position).getPrice()));
+						
+						holder.txt_price.setText(price);
+					}
+				}
+			}
+		}else if (foreign_price == 0) {
+			//If Local Price
+			if (getItem(position).getPrice() != null) {
+				if (!getItem(position).getPrice().equals("")) {
+					//Change (0,000,000) format
+					NumberFormat nf = NumberFormat.getInstance();
+					String price = nf.format(Integer.valueOf(getItem(position).getPrice()));
+					
+					holder.txt_price.setText(price);
+				}
+			}
 		}
 		
 		return convertView;

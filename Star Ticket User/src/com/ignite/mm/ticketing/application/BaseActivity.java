@@ -211,6 +211,9 @@ public class BaseActivity extends ActionBarActivity{
 	        case R.id.menu_hotline3:
 	        	callHotLine(item.getTitle().toString());
 	        	return true;
+	        case R.id.menu_hotline4:
+	        	callHotLine(item.getTitle().toString());
+	        	return true;
    	   	}
 		return false;
 	 }

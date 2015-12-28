@@ -10,9 +10,11 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,6 +41,7 @@ import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Logger.LogLevel;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
@@ -46,6 +50,8 @@ import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.FromCitiesAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.ToCitiesAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.TripTimeAdapter;
+import com.ignite.mm.ticketing.sqlite.database.model.BundleListOperator;
+import com.ignite.mm.ticketing.sqlite.database.model.OperatorSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.Times;
 import com.ignite.mm.ticketing.starticket.R;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
@@ -127,6 +133,10 @@ public class SaleTicketActivity extends BaseActivity{
 	private Button btn_return_date;
 	private LinearLayout layout_return_date;
 	private View view_return_date;
+	private CheckBox cb_foreigner_price;
+	private LinearLayout layout_foreigner_price;
+	private int foreigner_price;
+	private boolean isClick = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +164,8 @@ public class SaleTicketActivity extends BaseActivity{
 		//Get Floating Menu from Base Activity
 		getFloatingMenu();
 		
+		layout_foreigner_price = (LinearLayout)findViewById(R.id.layout_foreigner_price);
+		cb_foreigner_price = (CheckBox)findViewById(R.id.cb_foreigner_price);
 		radio_one_way = (RadioButton)findViewById(R.id.radio_one_way);
 		radio_round_trip = (RadioButton)findViewById(R.id.radio_round_trip);
 		layout_return_date = (LinearLayout)findViewById(R.id.layout_return_date);
@@ -417,6 +429,7 @@ public class SaleTicketActivity extends BaseActivity{
 					if (radio_one_way.isChecked()) {
 						layout_trip_time.setVisibility(View.VISIBLE);
 						view_trip_time.setVisibility(View.VISIBLE);
+						layout_foreigner_price.setVisibility(View.VISIBLE);
 						
 						if(skDetector.isConnectingToInternet()){
 							getTripTime();
@@ -460,6 +473,7 @@ public class SaleTicketActivity extends BaseActivity{
 			
 		}
 	};
+	
 	
 	/**
 	 * (1) If {@code radio_one_way} checked, hide return date, show all of own seat cities
@@ -610,25 +624,43 @@ public class SaleTicketActivity extends BaseActivity{
 
 				    //One Way (or) Round Trip check
 					if (radio_one_way.isChecked()) {
-						trip_type = 1;
+						trip_type = 0;
 					}else {
-						trip_type = 2;
+						trip_type = 1;
+						
 					}
 					
-					Bundle bundle = new Bundle();
+					//Foreigner Price or Local Price
+					if (cb_foreigner_price.isChecked()) {
+						foreigner_price = 1;
+					}else {
+						foreigner_price = 0;
+					}
+					
+					/*Bundle bundle = new Bundle();
 					bundle.putString("from_city", selectedFromCity);
 					bundle.putString("to_city", selectedToCity);
 					bundle.putString("trip_date", btn_trip_date.getText().toString());
 					bundle.putString("trip_time", selectedTripTime);
 					bundle.putString("return_date", btn_return_date.getText().toString());
 					bundle.putString("from_intent", "SaleTicket");
-					bundle.putInt("trip_type", trip_type);
+					bundle.putInt("trip_type", trip_type);*/
 					
-					if (trip_type == 1) {
+					SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("foreign_price", Activity.MODE_PRIVATE);
+				    SharedPreferences.Editor editor = sharedPreferences.edit();
+				     
+				    editor.clear();
+				    editor.commit();
+				     
+				    editor.putInt("foreign_price", foreigner_price);
+				    editor.commit();
+				     
+					
+					if (trip_type == 0) {
 						//if one way
-						startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+						getOperatorSeats(selectedFromCity, selectedToCity, btn_trip_date.getText().toString(), selectedTripTime, "0");
 						
-					}else if (trip_type == 2) {
+					}else if (trip_type == 1) {
 						//if round trip 
 						//check if return trip is available or not 
 						getOperatorSeats(selectedFromCity, selectedToCity, btn_trip_date.getText().toString(), selectedTripTime, "1");
@@ -654,6 +686,7 @@ public class SaleTicketActivity extends BaseActivity{
 			}
 		}
 	};
+	protected List<OperatorSeat> OperatorSeats;
 	
 	/**
 	 *  Check if return trip is available or not 
@@ -674,7 +707,7 @@ public class SaleTicketActivity extends BaseActivity{
 						+tripTime+", access: "+AppLoginUser.getAccessToken());
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
-		NetworkEngine.getInstance().postSearch(fromCity, toCity, tripDate, tripTime, "", round_trip_status, new Callback<Response>() {
+		NetworkEngine.getInstance().postSearch(fromCity, toCity, tripDate, tripTime, "", round_trip_status, String.valueOf(foreigner_price), new Callback<Response>() {
 
 			public void failure(RetrofitError arg0) {
 				// TODO Auto-generated method stub
@@ -688,19 +721,45 @@ public class SaleTicketActivity extends BaseActivity{
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
 				if (arg0 != null) {
+					
+					OperatorSeats = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<OperatorSeat>>(){}.getType());
+					
 					if (arg0.getStatus() == 206) {
 						Toast.makeText(SaleTicketActivity.this, R.string.str_no_return_trip, Toast.LENGTH_SHORT).show();
 					}else {
-						Bundle bundle = new Bundle();
-						bundle.putString("from_city", fromCity);
-						bundle.putString("to_city", toCity);
-						bundle.putString("trip_date", tripDate);
-						bundle.putString("trip_time", tripTime);
-						bundle.putString("return_date", btn_return_date.getText().toString());
-						bundle.putString("from_intent", "SaleTicket");
-						bundle.putInt("trip_type", trip_type);
 						
-						startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+						if (OperatorSeats != null && OperatorSeats.size() > 0) {
+							BundleListOperator bundleListOperator = new BundleListOperator();
+							bundleListOperator.setOperatorSeat(OperatorSeats);	
+							
+							Bundle bundle = new Bundle();
+							bundle.putString("from_city", fromCity);
+							bundle.putString("to_city", toCity);
+							bundle.putString("trip_date", tripDate);
+							bundle.putString("trip_time", tripTime);
+							bundle.putString("return_date", btn_return_date.getText().toString());
+							bundle.putString("from_intent", "SaleTicket");
+							bundle.putInt("trip_type", trip_type);
+							bundle.putString("operator_list", new Gson().toJson(bundleListOperator));
+							
+							startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
+						}else {
+							//Toast.makeText(SaleTicketActivity.this, "Sold out of Online seats!", Toast.LENGTH_SHORT).show();
+							alertDialog("Sold out of Online seats! Please call STAR TICKET (or) change date/time"
+									, "Call", "Cancel", new DialogInterface.OnClickListener() {
+										
+										public void onClick(DialogInterface dialog, int which) {
+											// TODO Auto-generated method stub
+											callHotLine("0931166772");
+										}
+									}, new DialogInterface.OnClickListener() {
+										
+										public void onClick(DialogInterface dialog, int which) {
+											// TODO Auto-generated method stub
+											dialog.dismiss();
+										}
+									});
+						}
 					}
 				}
 				
@@ -721,21 +780,21 @@ public class SaleTicketActivity extends BaseActivity{
 		if (spn_from_trip.getSelectedItem() != null) {
 			if (spn_from_trip.getSelectedItem().toString().equals("Choose - From City")) {
 
-				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+				SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose Departure City", SKToastMessage.WARNING);
 				return false;
 			}
 		}else {
-			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+			SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose Arrival City", SKToastMessage.WARNING);
 			return false;
 		}
 		
 		if (spn_to_trip.getSelectedItem() != null) {
 			if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
-				SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+				SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose Arrival City", SKToastMessage.WARNING);
 				return false;
 			}	
 		}else {
-			SKToastMessage.showMessage(SaleTicketActivity.this, "ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ", SKToastMessage.WARNING);
+			SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose Arrival City", SKToastMessage.WARNING);
 			return false;
 		}
 		
@@ -791,11 +850,19 @@ public class SaleTicketActivity extends BaseActivity{
 	}
 	
 	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		cb_foreigner_price.setChecked(false);
+	}
+	
+	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
 		
-		Log.i("", "User Name: "+AppLoginUser.getUserName());
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
 		
 		//For Google Analytics
 		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
@@ -804,13 +871,7 @@ public class SaleTicketActivity extends BaseActivity{
 		// hits until it is set to a new value or to null.
 		v3Tracker.set(Fields.SCREEN_NAME, "Trip Search Screen, "+AppLoginUser.getUserName());
 		
-		// This screenview hit will include the screen name "Trip Search Screen".
+		// This screenview hit will include the screen name.
 		v3Tracker.send(MapBuilder.createAppView().build());
-		
-		// And so will this event hit.
-		v3Tracker.send(MapBuilder
-				  .createEvent("UX", "touch", "menuButton", null)
-				  .build()
-				);
 	}
 }

@@ -27,7 +27,12 @@
     </item>
     <item 
         android:id="@+id/menu_hotline3"
-        android:title="09262556363" 
+        android:title="0931568888" 
+        >
+    </item>
+    <item 
+        android:id="@+id/menu_hotline4"
+        android:title="09975506030" 
         >
     </item>
 </menu>

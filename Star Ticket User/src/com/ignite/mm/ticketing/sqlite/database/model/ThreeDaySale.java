@@ -97,6 +97,8 @@ private String roundTrip;
 private String sellerId;
 @Expose
 private Seller seller;
+@Expose
+private int delivery_charges;
 
 /**
 * 
@@ -710,6 +712,16 @@ public void setSeller(Seller seller) {
 this.seller = seller;
 }
 
+
+
+public int getDelivery_charges() {
+	return delivery_charges;
+}
+
+public void setDelivery_charges(int delivery_charges) {
+	this.delivery_charges = delivery_charges;
+}
+
 @Override
 public String toString() {
 	return "ThreeDaySale [orderId=" + orderId + ", date=" + date
@@ -728,9 +740,9 @@ public String toString() {
 			+ ", paymentType=" + paymentType + ", delivery=" + delivery
 			+ ", TotalUSD=" + TotalUSD + ", exchangeRate=" + exchangeRate
 			+ ", transactionId=" + transactionId + ", roundTrip=" + roundTrip
-			+ ", sellerId=" + sellerId + ", seller=" + seller + "]";
+			+ ", sellerId=" + sellerId + ", seller=" + seller
+			+ ", delivery_charges=" + delivery_charges + "]";
 }
-
 
 
 }

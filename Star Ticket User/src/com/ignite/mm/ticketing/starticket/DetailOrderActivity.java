@@ -2,14 +2,12 @@ package com.ignite.mm.ticketing.starticket;
 
 import java.text.NumberFormat;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
-import com.google.analytics.tracking.android.Log;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
 import com.google.gson.Gson;
@@ -38,7 +35,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
  * Last ModifiedBy : Su Wai Phyo
  * @version 1.0 
  */
-@SuppressLint("DefaultLocale") public class OrderDetailActivity extends BaseActivity{
+public class DetailOrderActivity extends BaseActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
@@ -80,8 +77,8 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 			orderString = extras.getString("order_detail");
 		}
 		
-		orderDetailList = new Gson().fromJson(orderString, ThreeDaySale.class);
-		
+		 orderDetailList = new Gson().fromJson(orderString, ThreeDaySale.class);
+		 
 		 txt_buy_date = (TextView)  findViewById(R.id.txt_buy_date);
 		 txt_trip = (TextView)  findViewById(R.id.txt_trip);
 		 txt_trip_date_time = (TextView)  findViewById(R.id.txt_trip_date_time);
@@ -145,7 +142,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 		
 		//Show payment type
 		if (orderDetailList.getPaymentType() != null) {
-			if (orderDetailList.getPaymentType().toLowerCase().equals("Pay with VISA/MASTER")) {
+			if (orderDetailList.getPaymentType().equals("Pay with VISA/MASTER")) {
 				txt_payment_type.setText("Pay with VISA/MASTER");
 			}else {
 				txt_payment_type.setText(orderDetailList.getPaymentType());
@@ -189,7 +186,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 			//Show Discount
 			if (orderDetailList.getDiscountAmount() > 0) {
 				if (orderDetailList.getPaymentType() != null) {
-					if (orderDetailList.getPaymentType().toLowerCase().equals("Pay with VISA/MASTER")) {
+					if (orderDetailList.getPaymentType().equals("Pay with VISA/MASTER")) {
 						if (exchange_rate > 0) {
 							discount_Int = Double.valueOf(orderDetailList.getDiscountAmount()) / exchange_rate;
 						}
@@ -206,7 +203,8 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 		 
 		//Show Total amount
 		if (orderDetailList.getPaymentType() != null) {
-			if (orderDetailList.getPaymentType().toLowerCase().equals("Pay with VISA/MASTER")) {
+			if (orderDetailList.getPaymentType().equals("Pay with VISA/MASTER")) {
+				Log.i("", "detail payment(visa/m): "+orderDetailList.getPaymentType());
 				if (orderDetailList.getRoundTrip().equals("0")) {
 					//one way
 					//add +4USD for booking fee
@@ -223,7 +221,8 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 				txt_discount.setText("US$ "+String.format("%.2f", discount_Int));
 				txt_amount_needToPay.setText("US$ "+String.format("%.2f", (totalUSD - discount_Int)));
 			}else {
-				//txt_amount.setText(amount+" Ks");
+				Log.i("", "detail payment: "+orderDetailList.getPaymentType());
+				
 				txt_price.setText(orderDetailList.getTicketQty()+"x "+orderDetailList.getPrice());
 				txt_discount.setText(nf.format(discount_Int)+" Ks");
 				double total = (amount_Int - discount_Int) + delivery_charges;
@@ -262,3 +261,4 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 		v3Tracker.send(MapBuilder.createAppView().build());
 	}
 }
+

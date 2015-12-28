@@ -1,6 +1,8 @@
 package com.ignite.mm.ticketing.starticket;
 
 import info.hoang8f.widget.FButton;
+
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -35,6 +38,12 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActivity;
@@ -153,6 +162,9 @@ public class BusSelectSeatActivity extends BaseActivity{
 	private String from_intent;
 	private String goTripInfo_str;
 	private GoTripInfo goTripInfo_obj;
+	private CustomTextView txt_foreigner_price;
+	private int foreign_price;
+	private Integer Price;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +173,10 @@ public class BusSelectSeatActivity extends BaseActivity{
 		setContentView(R.layout.bus_seat_list);
 		connectionDetector = new SKConnectionDetector(this);
 		
+		//Get Foreign Price
+		SharedPreferences pref = getSharedPreferences("foreign_price", Activity.MODE_PRIVATE);
+		foreign_price = pref.getInt("foreign_price", 0);
+				
 		//Get Data from BusOperatorSeatsActivity
 		Bundle bundle = getIntent().getExtras();
 		
@@ -212,7 +228,7 @@ public class BusSelectSeatActivity extends BaseActivity{
         txt_round_trip_info = (TextView)findViewById(R.id.txt_round_trip_info);
         
         if (from_intent.equals("SaleTicket")) {
-        	 if (trip_type == 1) {
+        	 if (trip_type == 0) {
              	//If One Way
              	txt_round_trip_info.setText("One Way");
      		}else {
@@ -236,6 +252,7 @@ public class BusSelectSeatActivity extends BaseActivity{
 		txt_operator = (CustomTextView) findViewById(R.id.txt_operator);
 		txt_classes = (CustomTextView) findViewById(R.id.txt_classes);
 		txt_price = (CustomTextView) findViewById(R.id.txt_price);
+		txt_foreigner_price = (CustomTextView) findViewById(R.id.txt_foreigner_price);
 		txt_dept_date = (CustomTextView) findViewById(R.id.txt_departure_date);
 		txt_dept_time = (CustomTextView) findViewById(R.id.txt_departure_time);
 		
@@ -245,6 +262,13 @@ public class BusSelectSeatActivity extends BaseActivity{
 		}else if (from_intent.equals("BusConfirm")) {
 			txt_dept_date.setText("ျပန္လာမည့္ ေန႔ရက္ : "+ return_date);
 			txt_dept_time.setText("ျပန္လာမည့္ အခ်ိန္  : "+ Time);
+		}
+		
+		//Show Foreigner Price 
+		if (foreign_price == 1) {
+			txt_foreigner_price.setText("(Foreigner Price)");
+		}else if (foreign_price == 0) {
+			txt_foreigner_price.setText("(Local Price)");
 		}
 		
 		btn_check_out.setOnClickListener(clickListener);
@@ -439,7 +463,63 @@ public class BusSelectSeatActivity extends BaseActivity{
 			txt_operator.setText("ကားဂိတ္ : " +
 					" "+ BusSeats.get(0).getOperator());
 			txt_classes.setText("ယာဥ္ အမ်ိဳးအစား :   "+ BusSeats.get(0).getSeat_plan().get(0).getClasses());
-			txt_price.setText("ေစ်း ႏႈန္း :  "+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
+			
+			//txt_price.setText("ေစ်း ႏႈန္း :  "+ BusSeats.get(0).getSeat_plan().get(0).getPrice()+" Ks");
+			
+			//If Foreigner Price
+			if (foreign_price == 1) {
+				if (BusSeats.get(0).getSeat_plan().get(0).getForeign_price() != null) {
+					if (!BusSeats.get(0).getSeat_plan().get(0).getForeign_price().equals("") && !BusSeats.get(0).getSeat_plan().get(0).getForeign_price().equals("0")) {
+						//Change (0,000,000) format
+						
+						Price = BusSeats.get(0).getSeat_plan().get(0).getForeign_price();
+						
+						NumberFormat nf = NumberFormat.getInstance();
+						String price = nf.format(BusSeats.get(0).getSeat_plan().get(0).getForeign_price());
+						
+						txt_price.setText("ေစ်း ႏႈန္း :  "+price+" Ks");
+					}else{
+						if (BusSeats.get(0).getSeat_plan().get(0).getPrice() != null) {
+							if (!BusSeats.get(0).getSeat_plan().get(0).getPrice().equals("")) {
+								//Change (0,000,000) format
+								
+								Price = BusSeats.get(0).getSeat_plan().get(0).getPrice();
+								
+								NumberFormat nf = NumberFormat.getInstance();
+								String price = nf.format(BusSeats.get(0).getSeat_plan().get(0).getPrice());
+								
+								txt_price.setText("ေစ်း ႏႈန္း :  "+price+" Ks");
+							}
+						}
+					}
+				}else{
+					if (BusSeats.get(0).getSeat_plan().get(0).getPrice() != null) {
+						if (!BusSeats.get(0).getSeat_plan().get(0).getPrice().equals("")) {
+							//Change (0,000,000) format
+							Price = BusSeats.get(0).getSeat_plan().get(0).getPrice();
+							
+							NumberFormat nf = NumberFormat.getInstance();
+							String price = nf.format(BusSeats.get(0).getSeat_plan().get(0).getPrice());
+							
+							txt_price.setText("ေစ်း ႏႈန္း :  "+price+" Ks");
+						}
+					}
+				}
+			}else if (foreign_price == 0) {
+				//If Local Price
+				if (BusSeats.get(0).getSeat_plan().get(0).getPrice() != null) {
+					if (!BusSeats.get(0).getSeat_plan().get(0).getPrice().equals("")) {
+
+						Price = BusSeats.get(0).getSeat_plan().get(0).getPrice();
+						
+						//Change (0,000,000) format
+						NumberFormat nf = NumberFormat.getInstance();
+						String price = nf.format(BusSeats.get(0).getSeat_plan().get(0).getPrice());
+						
+						txt_price.setText("ေစ်း ႏႈန္း :  "+price+" Ks");
+					}
+				}
+			}
 			
 			BusClasses = BusSeats.get(0).getSeat_plan().get(0).getClasses();
 			remarkSeats = new ArrayList<Seat_list>();
@@ -595,8 +675,9 @@ public class BusSelectSeatActivity extends BaseActivity{
 					        if (from_intent.equals("SaleTicket")) {
 					        	//One Way (or) After Go Seat Choose, ...
 					        	//If already log in , ..
+					        	
 								if (AppLoginUser.getId() != null && !AppLoginUser.getId().equals("0")) {
-									if (trip_type == 1) {
+									if (trip_type == 0) {
 										//if one way
 										Intent nextScreen = new Intent(BusSelectSeatActivity.this, BusConfirmActivity.class);
 				        				
@@ -612,7 +693,14 @@ public class BusSelectSeatActivity extends BaseActivity{
 					    				bundle.putString("classes", BusClasses);
 					    				bundle.putString("date", Date);
 					    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-					    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+					    				bundle.putString("Price", Price.toString());
+					    				
+					    				/*if (foreign_price == 1) {
+					    					bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getForeign_price()+"");
+										}else if (foreign_price == 0) {
+											bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+										}*/
+					    				
 				        				bundle.putString("ConfirmDate", todayDate);
 				        				bundle.putString("ConfirmTime", todayTime);
 				        				bundle.putString("CustomerName", AppLoginUser.getUserName());
@@ -638,7 +726,7 @@ public class BusSelectSeatActivity extends BaseActivity{
 					    				
 					    				nextScreen.putExtras(bundle);
 					    				startActivity(nextScreen);
-									}else if (trip_type == 2) {
+									}else if (trip_type == 1) {
 										//if round trip
 										postSale(Date);
 									}
@@ -658,7 +746,12 @@ public class BusSelectSeatActivity extends BaseActivity{
 				    				bundle.putString("classes", BusClasses);
 				    				bundle.putString("date", Date);
 				    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-				    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+				    				bundle.putString("Price", Price.toString());
+				    				/*if (foreign_price == 1) {
+				    					bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getForeign_price()+"");
+									}else if (foreign_price == 0) {
+										bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+									}*/
 			        				bundle.putString("ConfirmDate", todayDate);
 			        				bundle.putString("ConfirmTime", todayTime);
 			        				bundle.putString("CustomerName", AppLoginUser.getUserName());
@@ -701,7 +794,12 @@ public class BusSelectSeatActivity extends BaseActivity{
 			    				bundle.putString("classes", BusClasses);
 			    				bundle.putString("date", Date);
 			    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
-			    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+			    				bundle.putString("Price", Price.toString());
+			    				/*if (foreign_price == 1) {
+			    					bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getForeign_price()+"");
+								}else if (foreign_price == 0) {
+									bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+								}*/
 		        				bundle.putString("ConfirmDate", todayDate);
 		        				bundle.putString("ConfirmTime", todayTime);
 		        				bundle.putString("CustomerName", AppLoginUser.getUserName());
@@ -852,7 +950,7 @@ public class BusSelectSeatActivity extends BaseActivity{
 		        				Log.i("", "Ticket No(bus confirm): "+TicketLists);
 		        				
 								if(isBooking == 0){
-									if (trip_type == 2){	
+									if (trip_type == 1){	
 										//If Round Trip
 										//For Return Trip, Choose (Operator, Time, Class) again for return trip
 											Bundle bundle = new Bundle();
@@ -862,7 +960,7 @@ public class BusSelectSeatActivity extends BaseActivity{
 											bundle.putString("FromName", From);
 											bundle.putString("ToName", To);
 											bundle.putString("GoTripInfo", new Gson().toJson(new GoTripInfo(sale_order_no
-													, BusSeats.get(0).getSeat_plan().get(0).getPrice()+""
+													, Price+""
 													, String.valueOf(seat_count)
 													, AppLoginUser.getAgentGroupId(), permit_operator_id, selectedSeatNos, TicketLists
 													, BusSeats.get(0).getSeat_plan().get(0).getId().toString()
@@ -953,6 +1051,30 @@ public class BusSelectSeatActivity extends BaseActivity{
 		ViewGroup.LayoutParams params = gridView.getLayoutParams();
 		params.height = totalHeight;
 		gridView.setLayoutParams(params);
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "Seat Plan Screen, "
+				+From+" - "+To
+				+", "+Date+", "
+				+"TripType: "
+				+trip_type+", "
+				+AppLoginUser.getUserName());
+		
+		// This screenview hit will include the screen name.
+		v3Tracker.send(MapBuilder.createAppView().build());
 	}
 }
 

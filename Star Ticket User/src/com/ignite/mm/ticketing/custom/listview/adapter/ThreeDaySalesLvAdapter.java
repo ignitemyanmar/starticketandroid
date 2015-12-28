@@ -27,6 +27,7 @@ import android.widget.TextView;
 	private LayoutInflater mInflater;
 	private List<ThreeDaySale> listItem;
 	private Activity aty;
+	private int delivery_charges;
 	
 	public ThreeDaySalesLvAdapter(Activity aty, List<ThreeDaySale> _list){
 		this.aty = aty;
@@ -68,15 +69,23 @@ import android.widget.TextView;
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
-		holder.txt_order_no.setText(getItem(position).getOrderId());	
+		if (getItem(position).getDelivery_charges() > 0) {
+			delivery_charges = getItem(position).getDelivery_charges();
+		}else {
+			delivery_charges = 1000;
+		}
 		
-		if (getItem(position).getTransactionId().equals("0")) 
+		holder.txt_order_no.setText(getItem(position).getTrip());	
+		
+		/*if (getItem(position).getTransactionId().equals("0")) 
 		{
 			holder.txt_order_date.setText("#");
 		}else {
 			holder.txt_order_date.setText(getItem(position).getTransactionId());
-		}
+		}*/
 			
+		holder.txt_order_date.setText(getItem(position).getDepartureDate()+"/"
+										+getItem(position).getTime());
 		
 		//Change (0,000,000) format
 		NumberFormat nf = NumberFormat.getInstance();
@@ -84,31 +93,39 @@ import android.widget.TextView;
 		//If visa/master payment, ....
 		//Show Total Amount
 		if (getItem(position).getPaymentType() != null) {
-			if (getItem(position).getPaymentType().equals("pay with master/visa")) {
+			if (getItem(position).getPaymentType().equals("Pay with VISA/MASTER")) {
 				if (getItem(position).getRoundTrip().equals("0")) {
 					//one way
-					//add +4USD for booking fee
-					holder.txt_order_amount.setText("$ "+String.format("%.2f", (getItem(position).getTotalUSD() + 4)));
+					//add +1USD for booking fee
+					holder.txt_discount.setText("$ "+String.format("%.2f", (getItem(position).getTotalUSD() + 1)));
 				}else if (getItem(position).getRoundTrip().equals("1")) {
 					//round trip 
-					//add +2USD for booking fee
-					holder.txt_order_amount.setText("$ "+String.format("%.2f", (getItem(position).getTotalUSD() + 2)));
+					//add +0.5USD for booking fee
+					holder.txt_discount.setText("$ "+String.format("%.2f", (getItem(position).getTotalUSD() + 0.5)));
 				}
 		}else {
-				String amount = nf.format(Integer.valueOf(getItem(position).getTotalAmount()));
-				holder.txt_order_amount.setText(amount+"");
-		}
+			String amount;
+			if (getItem(position).getPaymentType().equals("Cash on Delivery")) {
+				amount = nf.format(Integer.valueOf(getItem(position).getTotalAmount()) + delivery_charges);
+			}else {
+				amount = nf.format(Integer.valueOf(getItem(position).getTotalAmount()));
+			}
+			
+			holder.txt_discount.setText(amount+"");
+		  }
+			
 		}
 
+		holder.txt_order_amount.setText(getItem(position).getSeatNo());
 		
-		double discountUSD = 0.0;
+		//double discountUSD = 0.0;
 		
 		//Show Discount amount
-		if (Double.valueOf(getItem(position).getExchangeRate()) > 0) {
+		/*if (Double.valueOf(getItem(position).getExchangeRate()) > 0) {
 			discountUSD = Double.valueOf(getItem(position).getDiscountAmount()) / Double.valueOf(getItem(position).getExchangeRate());
-		}
+		}*/
 		
-		//Show Discount amount
+/*		//Show Discount amount
 		if (getItem(position).getDiscountAmount() > 0) {
 			if (getItem(position).getPaymentType() != null) {
 				if (getItem(position).getPaymentType().equals("pay with master/visa")) {
@@ -120,11 +137,11 @@ import android.widget.TextView;
 			}
 		}else {
 			holder.txt_discount.setText("0");
-		}
+		}*/
 		
 		//Show payment type
 		if (getItem(position).getPaymentType() != null) {
-			if (getItem(position).getPaymentType().toLowerCase().equals("pay with master/visa")) {
+			if (getItem(position).getPaymentType().toLowerCase().equals("Pay with VISA/MASTER")) {
 				holder.txt_payment_type.setText("Pay with VISA/MASTER");
 			}else {
 				holder.txt_payment_type.setText(getItem(position).getPaymentType());
@@ -133,10 +150,10 @@ import android.widget.TextView;
 		
 		//Show Delivery Status (pending or complete)
 		if (getItem(position).getDelivery().equals("1")) {
-			holder.txt_status.setText("Pending");
+			holder.txt_status.setText("Progressing...");
 			holder.txt_status.setTextColor(aty.getResources().getColor(R.color.yellow));
 		}else {
-			holder.txt_status.setText("Complete");
+			holder.txt_status.setText("Paid");
 			holder.txt_status.setTextColor(aty.getResources().getColor(R.color.green));
 		}
 		

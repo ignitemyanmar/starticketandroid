@@ -36,6 +36,11 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.MaterialDialog.Builder;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.DeviceUtil;
@@ -289,7 +294,7 @@ public class UserLogin extends BaseActivity {
 									
 									Log.i("", "From Select Seat !!!!!!!!!!!!!");
 									
-									if (trip_type == 1) {
+									if (trip_type == 0) {
 										//if one way
 										Intent nextScreen = new Intent(UserLogin.this, BusConfirmActivity.class);
 				        				
@@ -303,6 +308,7 @@ public class UserLogin extends BaseActivity {
 					    				bundle.putString("classes", classes);
 					    				bundle.putString("date", date);
 					    				bundle.putString("bus_occurence", BusOccurence);
+					    				
 					    				bundle.putString("Price", Price);
 				        				bundle.putString("ConfirmDate", ConfirmDate);
 				        				bundle.putString("ConfirmTime", ConfirmTime);
@@ -332,7 +338,7 @@ public class UserLogin extends BaseActivity {
 					    				
 					    				finish();
 					    				
-									}else if (trip_type == 2) {
+									}else if (trip_type == 1) {
 										postSale(date);
 									}
 								}else {
@@ -519,7 +525,7 @@ public class UserLogin extends BaseActivity {
 		        				Log.i("", "Ticket No(bus confirm): "+TicketLists);
 		        				
 								if(isBooking == 0){
-									if (trip_type == 2){	
+									if (trip_type == 1){	
 										//If Round Trip
 										//For Return Trip, Choose (Operator, Time, Class) again for return trip
 											Bundle bundle = new Bundle();
@@ -615,5 +621,26 @@ public class UserLogin extends BaseActivity {
 		// TODO Auto-generated method stub
 		finish();
 		return super.getSupportParentActivityIntent();
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "Login Screen, "
+				+txtEmail.getText().toString()+", "
+				+AppLoginUser.getUserName());
+		
+		// This screenview hit will include the screen name.
+		v3Tracker.send(MapBuilder.createAppView().build());
 	}
 }

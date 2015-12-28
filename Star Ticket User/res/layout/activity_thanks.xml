@@ -98,12 +98,37 @@
                         android:textSize="14dp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sales : 09-31166772, 09-971118511"
-                        android:textSize="14dp" />
+                        android:gravity="center" >
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sales : "
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/txt_hotline1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_yellow"
+                            android:text="09-31166772, "
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/golden_brown"
+                             />
+
+                        <TextView
+                            android:id="@+id/txt_hotline2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_yellow"
+                            android:text="09-971118511"
+                            android:textColor="@color/golden_brown"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/TextView02"

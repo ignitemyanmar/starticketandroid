@@ -20,6 +20,11 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
@@ -72,7 +77,6 @@ public class ThreeDaySalesActivity extends BaseActivity{
 	private Integer total_ticket = 0;
 	private Integer total_amount = 0;
 	private Integer total_point = 0;
-
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -229,7 +233,8 @@ public class ThreeDaySalesActivity extends BaseActivity{
 				long id) {
 			// TODO Auto-generated method stub
 			if (position < lst_threeday_sale.size()) {
-				startActivity(new Intent(ThreeDaySalesActivity.this, OrderDetailActivity.class).putExtra("order_detail"
+				Log.i("", "payment detail: "+lst_threeday_sale.get(position).getPaymentType());
+				startActivity(new Intent(ThreeDaySalesActivity.this, DetailOrderActivity.class).putExtra("order_detail"
 						, new Gson().toJson(lst_threeday_sale.get(position))));
 			}
 		}
@@ -264,5 +269,25 @@ public class ThreeDaySalesActivity extends BaseActivity{
 		txt_total_tickets.setText(total_ticket+"");
 		txt_total_amount.setText(nf.format(total_amount)+"");
 		txt_total_points.setText(nf.format(total_point)+"");
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "My Order Screen, "
+				+AppLoginUser.getUserName());
+		
+		// This screenview hit will include the screen name.
+		v3Tracker.send(MapBuilder.createAppView().build());
 	}
 }

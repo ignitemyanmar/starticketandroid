@@ -24,6 +24,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.sqlite.database.model.Loyalty;
@@ -225,5 +230,25 @@ public class UserProfileActivity extends BaseActivity{
 				dialog.dismissWithFailure();
 			}
 		});
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "My Profile Screen, "
+				+AppLoginUser.getUserName());
+		
+		// This screenview hit will include the screen name.
+		v3Tracker.send(MapBuilder.createAppView().build());
 	}
 }

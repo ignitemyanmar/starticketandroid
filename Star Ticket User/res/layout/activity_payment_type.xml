@@ -71,29 +71,79 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:text="VISA (or) MASTER ကတ္ ျဖင့္ေပးမည္" />
+                        android:text="VISA (or) MASTER card ျဖင့္ေပးမည္" />
 
                     <TextView
                         android:id="@+id/txt_booking_fee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="+ 4  (US$) for booking fees"
+                        android:text="+ 1  (US$) for booking fees"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/golden_brown"
+                        android:textColor="@color/golden_brown_dark"
                         android:visibility="gone" />
 
                     <RadioButton
                         android:id="@+id/radio_cashOnShop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ဆုိင္တြင္ေပးမည္ (City Express)" />
+                        android:text="ဆုိင္တြင္ေပးမည္ (Pay at Shop)" />
+
+                    <TextView
+                        android:id="@+id/txt_shop_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="(The booking will expire in 2 hours)"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/golden_brown_dark"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_shop_name2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="You can pay at convenience stores in Myanmar (City Express, ABC, G&amp;G, Parami Sein Gay Har)"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
 
                     <RadioButton
                         android:id="@+id/radio_cashOnDelivery"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="အိမ္ အေရာက္ပုိ႔ေပးပါ" />
+                        android:text="အိမ္ အေရာက္ပုိ႔ေပးပါ (Cash on Delivery)" />
+
+                    <TextView
+                        android:id="@+id/txt_delivery_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="+1000 Ks for Delivery Fees (** Delivery Service is available only in Myanmar)"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/golden_brown_dark"
+                        android:visibility="gone" />
+                    
+                    <com.rengwuxian.materialedittext.MaterialEditText
+	                    android:id="@+id/edt_delivery_address"
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content"
+	                    android:ems="10"
+	                    android:hint="Enter address in Myanmar for delivery"
+	                    android:inputType="text|textCapWords"
+	                    android:maxWidth="300dp"
+	                    android:paddingLeft="5dp"
+	                    android:textColor="@color/black"
+	                    android:textSize="18dp"
+	                    android:typeface="normal"
+	                    app:met_errorColor="@color/golden_brown"
+	                    app:met_floatingLabel="highlight"
+	                    app:met_floatingLabelTextColor="@color/gray"
+	                    android:visibility="gone" >
+
+                    <requestFocus />
+                </com.rengwuxian.materialedittext.MaterialEditText>
                 </RadioGroup>
 
             </LinearLayout>
@@ -118,7 +168,7 @@
         android:background="@drawable/btn_gold_light"
         android:minHeight="@dimen/button_min_height"
         android:minWidth="@dimen/button_min_width"
-        android:text="လက္ မွတ္ ျဖတ္ မည္"
+        android:text="Submit"
         android:textColor="@color/white"
         android:textSize="20dp" />
 

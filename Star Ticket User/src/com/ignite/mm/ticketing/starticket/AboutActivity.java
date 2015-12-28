@@ -44,10 +44,10 @@ private TextView txt_facebook_link;
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			if (v == txt_web_link) {
-				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://starticket.com.mm/")));
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://starticket.com.mm/")));
 			}
 			if (v == txt_facebook_link) {
-				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/starticketmm/")));
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/starmyanmarbusticket/")));
 			}
 		}
 	};

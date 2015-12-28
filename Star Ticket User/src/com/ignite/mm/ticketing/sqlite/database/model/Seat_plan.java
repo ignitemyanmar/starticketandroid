@@ -34,12 +34,14 @@ public class Seat_plan {
 	private Integer column;
 	@Expose
 	private List<Seat_list> seat_list = new ArrayList<Seat_list>();
+	@Expose
+	private Integer foreign_price;
 	
 	public Seat_plan(String id, Integer from, Integer to, String bus_no,
 			Integer seat_plan_id, String classes, String departure_time,
 			String arrival_time, Integer price, Integer operator_id,
 			Integer seat_layout_id, Integer row, Integer column,
-			List<Seat_list> seat_list) {
+			List<Seat_list> seat_list, Integer foreign_price) {
 		super();
 		this.id = id;
 		this.from = from;
@@ -55,6 +57,7 @@ public class Seat_plan {
 		this.row = row;
 		this.column = column;
 		this.seat_list = seat_list;
+		this.foreign_price = foreign_price;
 	}
 
 	public String getId() {
@@ -168,6 +171,16 @@ public class Seat_plan {
 	public void setSeat_list(List<Seat_list> seat_list) {
 	this.seat_list = seat_list;
 	}
+	
+	
+
+	public Integer getForeign_price() {
+		return foreign_price;
+	}
+
+	public void setForeign_price(Integer foreign_price) {
+		this.foreign_price = foreign_price;
+	}
 
 	@Override
 	public String toString() {
@@ -177,7 +190,8 @@ public class Seat_plan {
 				+ ", arrival_time=" + arrival_time + ", price=" + price
 				+ ", operator_id=" + operator_id + ", seat_layout_id="
 				+ seat_layout_id + ", row=" + row + ", column=" + column
-				+ ", seat_list=" + seat_list + "]";
+				+ ", seat_list=" + seat_list + ", foreign_price="
+				+ foreign_price + "]";
 	}
 
 	

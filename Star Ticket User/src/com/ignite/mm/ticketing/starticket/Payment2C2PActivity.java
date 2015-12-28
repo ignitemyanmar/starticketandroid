@@ -13,6 +13,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -33,6 +34,7 @@ import com.thuongnh.zprogresshud.ZProgressHUD;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -108,6 +110,8 @@ public class Payment2C2PActivity extends BaseActivity{
 	private int trip_type;
 	private String goTripInfo_str;
 	private GoTripInfo goTripInfo_obj;
+	private int foreign_type;
+	private String foreign_type_str;
 	
 
 /*	 @Override  
@@ -134,6 +138,16 @@ public class Payment2C2PActivity extends BaseActivity{
 		 toolbar.setTitle("Online Payment");
          this.setSupportActionBar(toolbar);
 		 
+ 		//Get Foreign Price
+ 		SharedPreferences pref = getSharedPreferences("foreign_price", Activity.MODE_PRIVATE);
+ 		foreign_type = pref.getInt("foreign_price", 0);
+ 				
+ 		if (foreign_type == 1) {
+ 			foreign_type_str = "foreign";
+ 		}else if (foreign_type == 0) {
+ 			foreign_type_str = "local";
+ 		}
+ 		
 		 Bundle bundle = getIntent().getExtras();
 			
 		 if (bundle != null) {
@@ -176,7 +190,14 @@ public class Payment2C2PActivity extends BaseActivity{
 			trip_type = bundle.getInt("trip_type");
 			goTripInfo_str = bundle.getString("GoTripInfo");
 			goTripInfo_obj = new Gson().fromJson(goTripInfo_str, GoTripInfo.class);
+			foreign_type = bundle.getInt("foreign_type");
 		}
+		 
+		 	if (foreign_type == 1) {
+				foreign_type_str = "foreign";
+			}else if (foreign_type == 0) {
+				foreign_type_str = "local";
+			}
 		 
 		 	dialog = new ZProgressHUD(Payment2C2PActivity.this);
 			dialog.setMessage("Pls Wait...");
@@ -197,10 +218,10 @@ public class Payment2C2PActivity extends BaseActivity{
 			webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 			
 			String orderNo = "";
-			if (trip_type == 1) {
+			if (trip_type == 0) {
 				//if one way
 				orderNo = order_no;
-			}else if(trip_type == 2){
+			}else if(trip_type == 1){
 				// Round Trip
 				if (from_payment.equals("Pay with MPU")) {
 					orderNo = goTripInfo_obj.getSale_order_no()+""+order_no;
@@ -262,11 +283,11 @@ public class Payment2C2PActivity extends BaseActivity{
 				setResult(RESULT_OK, i);
 				
 				//If One Way
-				if (trip_type == 1) {
+				if (trip_type == 0) {
 					confirmOrder(from_payment, selectedSeats, ticketNos
 							, busOccurence, BuyerName, BuyerNRC, permit_access_token
 							, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
-				}else if (trip_type == 2) {
+				}else if (trip_type == 1) {
 					//If Round Trip
 					//Confirm for Go Trip
 					confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
@@ -325,8 +346,9 @@ public class Payment2C2PActivity extends BaseActivity{
 	 * @param confirmDate Confirm Date
 	 * @param from_go_trip_success status
 	 */
-	private void confirmOrder(final String paymentType, String selectedSeats, final String ticketNos
-			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
+	@SuppressWarnings("deprecation")
+	private void confirmOrder(final String paymentType, final String selectedSeats, final String ticketNos
+			, final String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
 			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
 			, String from_go_trip_success) {
 		
@@ -370,7 +392,8 @@ public class Payment2C2PActivity extends BaseActivity{
 					", Seats: "+seats.toString()+
 					", Order date: "+ConfirmDate+
 					", Device id: "+DeviceUtil.getInstance(this).getID()+
-					", isbooking: "+"0");
+					", isbooking: "+"0"+
+					", foreign: "+foreign_type_str);
 			
 			//Do Encrypt of Params				
 			String param = MCrypt.getInstance()
@@ -378,14 +401,16 @@ public class Payment2C2PActivity extends BaseActivity{
 					SecureParam.postSaleConfirmParam(permitAccessToken
 					, saleOrderNo, "0"
 					, permitAgentId, ""
-					, AppLoginUser.getUserName()
-					, AppLoginUser.getPhone(), buyerNRC
+					, BusConfirmActivity.CustName
+					, BusConfirmActivity.CustPhone, buyerNRC
 					, "0", ""
 					, ExtraCityId,  MCrypt.getInstance()
 					.encrypt(seats.toString())
 					, "1"
-					, "local"
-					, confirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())));
+					, foreign_type_str
+					, confirmDate, DeviceUtil.getInstance(this).getID()
+					, "0", String.valueOf(AppLoginUser.getId()), paymentType
+					, String.valueOf(trip_type), "", total_giftMoney));
 					
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			params.add(new BasicNameValuePair("param", param));
@@ -421,15 +446,24 @@ public class Payment2C2PActivity extends BaseActivity{
 									paymentTypeChange = paymentType;
 								}
 								
-								if (trip_type == 1) {
+								Bundle bundle = new Bundle();
+		        				bundle.putString("payment_type", paymentTypeChange);
+		        				
+								if (trip_type == 0) {
 									//If one way
-									postOnlineSaleConfirm(paymentTypeChange, from_goTrip_success, order_no
+									/*postOnlineSaleConfirm(paymentTypeChange, from_goTrip_success, order_no
 														, operator_id, ExtraCityName, agentgroup_id
-														, ticketNos, total_giftMoney);
+														, ticketNos, total_giftMoney);*/
+									//If one way
+									startActivity(new Intent(Payment2C2PActivity.this, ThankYouActivity.class).putExtras(bundle));
+									dialog.dismissWithSuccess();
 									
-								}else if (trip_type == 2) {
+								}else if (trip_type == 1) {
 									//If Round Trip
-			        				if (!from_goTrip_success.equals("from_go_trip_success")) {
+									confirmOrderReturn(paymentTypeChange, selectedSeats, ticketNos, busOccurence, BuyerName
+											, BuyerNRC, permit_access_token, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
+									
+/*			        				if (!from_goTrip_success.equals("from_go_trip_success")) {
 			        					
 			        					Log.i("", "Payment Type(go): "+paymentTypeChange);
 			        					//Online Confirm for Go Trip
@@ -444,7 +478,7 @@ public class Payment2C2PActivity extends BaseActivity{
 			        					postOnlineSaleConfirm(paymentTypeChange, from_goTrip_success, order_no
 												, operator_id, ExtraCityName, agentgroup_id
 												, ticketNos, "0");
-									}
+									}*/
 								}
 							}
 						} catch (JSONException e) {
@@ -458,7 +492,131 @@ public class Payment2C2PActivity extends BaseActivity{
 				}
 			};
 			
-			//bundle.getString("permit_ip")
+			if (trip_type == 0) {
+				//If one way
+				HttpConnection lt = new HttpConnection(handler, "POST",
+						"http://"+permit_ip+"/sale/comfirm", params);
+				lt.execute();
+				
+				Log.i("", "Permit IP: "+permit_ip);
+				
+			}else if (trip_type == 1) {
+				//If Round (Departure)
+				HttpConnection lt = new HttpConnection(handler, "POST",
+						"http://"+goTripInfo_obj.getPermit_ip()+"/sale/comfirm", params);
+				lt.execute();
+				Log.i("", "Permit IP: "+goTripInfo_obj.getPermit_ip());
+			}
+		}
+	
+	@SuppressWarnings("deprecation")
+	private void confirmOrderReturn(final String paymentType, final String selectedSeats, final String ticketNos
+			, final String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
+			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
+			, String from_go_trip_success) {
+		
+			dialog.setMessage("please wait ...");
+			dialog.show();
+			
+			Log.i("", "Ticket list: "+ticketNos);
+			Log.i("", "buyer nrc: "+buyerNRC);
+			
+			//final String from_goTrip_success = from_go_trip_success;
+			
+			List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
+			
+			if (selectedSeats != null) {
+				selectedSeat = selectedSeats.split(",");
+			}
+			
+			if (ticketNos != null && !ticketNos.equals("")) {
+				ticketNoArray = ticketNos.split(",");
+			}
+			
+			Log.i("", "Selected Seats(Payment) : "+selectedSeats);
+			
+			for (int j = 0; j < selectedSeat.length; j++) {
+				seats.add(new ConfirmSeat(busOccurence, selectedSeat[j].toString(),
+						buyerName, buyerNRC, ticketNoArray[j].toString(), false,
+						"blah", 0));
+			}
+			
+			Log.i("", "Ticket Arrays: "+seats.toString());
+			
+			Log.i("", "Param (Confirm) to encrypt: "
+					+"access: "+permit_access_token+
+					", SaleOrderNo: "+order_no+
+					", AgentID: "+Permit_agent_id+
+					", Agent Name: "+Operator_Name+
+					", Customer: "+AppLoginUser.getUserName()+
+					", Phone: "+AppLoginUser.getPhone()+
+					", Nrc: "+BuyerNRC+
+					", Extra city id: "+ExtraCityID+
+					", Seats: "+seats.toString()+
+					", Order date: "+ConfirmDate+
+					", Device id: "+DeviceUtil.getInstance(this).getID()+
+					", isbooking: "+"0"+
+					", foreign: "+foreign_type_str);
+			
+			//Do Encrypt of Params				
+			String param = MCrypt.getInstance()
+					.encrypt(
+					SecureParam.postSaleConfirmParam(permitAccessToken
+					, saleOrderNo, "0"
+					, permitAgentId, ""
+					, BusConfirmActivity.CustName
+					, BusConfirmActivity.CustPhone, buyerNRC
+					, "0", ""
+					, ExtraCityId,  MCrypt.getInstance()
+					.encrypt(seats.toString())
+					, "1"
+					, foreign_type_str
+					, confirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())
+					, paymentType, String.valueOf(trip_type), "", total_giftMoney));
+					
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair("param", param));
+			
+			Log.i("","Hello param (for confirm) : "+ param);
+			
+			final Handler handler = new Handler() {
+	
+				//private String total_amount;
+	
+				public void handleMessage(Message msg) {
+	
+					String jsonData = msg.getData().getString("data");
+					
+					if (jsonData != null) {
+						try {
+							Log.i("","Hello Response Confirm Data:"+ jsonData);
+							
+							JSONObject jsonObj = new JSONObject(jsonData);
+							//JSONObject orderObj = jsonObj.getJSONObject("order");*/
+							//total_amount = orderObj.getString("total_amount");
+							
+							Bundle bundle = new Bundle();
+	        				bundle.putString("payment_type", paymentType);
+	        				
+							if(!jsonObj.getBoolean("status") && jsonObj.getString("device_id").equals(DeviceUtil.getInstance(Payment2C2PActivity.this).getID())){
+								dialog.dismissWithFailure();
+								SKToastMessage.showMessage(Payment2C2PActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
+							}else{
+								//If return trip success, show thank you page
+								startActivity(new Intent(Payment2C2PActivity.this, ThankYouActivity.class).putExtras(bundle));
+								dialog.dismissWithSuccess();
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}else {
+						Log.i("", "Response confirm is null!");
+						dialog.dismissWithFailure();
+					}
+				}
+			};
+			
 			HttpConnection lt = new HttpConnection(handler, "POST",
 					"http://"+permit_ip+"/sale/comfirm", params);
 			lt.execute();
@@ -497,20 +655,20 @@ public class Payment2C2PActivity extends BaseActivity{
 	
 	Integer tripTypeOnline = 0;
 	
-	if (trip_type == 1) {
+	if (trip_type == 0) {
 		//If one way 
 		tripTypeOnline = 0;
-	}else if (trip_type == 2) {
+	}else if (trip_type == 1) {
 		//If round trip
 		tripTypeOnline = 1;
 	}
 	
 	NetworkEngine.setIP("starticketmyanmar.com");
 	NetworkEngine.getInstance().postOnlineSaleDB(sale_order_no2, operator_id2, AppLoginUser.getCodeNo()
-			, AppLoginUser.getAccessToken(), extraCityName2, AppLoginUser.getPhone()
-			, AppLoginUser.getUserName(), AppLoginUser.getAddress(), ""
+			, AppLoginUser.getAccessToken(), extraCityName2, BusConfirmActivity.CustPhone
+			, BusConfirmActivity.CustName, AppLoginUser.getAddress(), ""
 			, "0", totalGiftMoney, "", "", agentgroup_id2, ""
-			, paymentType, ticketNos2, String.valueOf(tripTypeOnline), new Callback<Response>() {
+			, paymentType, ticketNos2, String.valueOf(tripTypeOnline), foreign_type_str, new Callback<Response>() {
 		
 				public void failure(RetrofitError arg0) {
 					// TODO Auto-generated method stub
@@ -528,11 +686,11 @@ public class Payment2C2PActivity extends BaseActivity{
 						Bundle bundle = new Bundle();
         				bundle.putString("payment_type", paymentType);
 						
-						if (trip_type == 1) {
+						if (trip_type == 0) {
 							//If one way
 							startActivity(new Intent(Payment2C2PActivity.this, ThankYouActivity.class).putExtras(bundle));
 							dialog.dismissWithSuccess();
-						}else if (trip_type == 2) {
+						}else if (trip_type == 1) {
 							//If round trip
 	        				if (!from_goTrip_success.equals("from_go_trip_success")) {
 	        					//If return trip not success yet, .......
@@ -559,6 +717,22 @@ public class Payment2C2PActivity extends BaseActivity{
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
 		
+		//Testinggggggggggg
+/*		//If One Way
+		if (trip_type == 0) {
+			confirmOrder(from_payment, selectedSeats, ticketNos
+					, busOccurence, BuyerName, BuyerNRC, permit_access_token
+					, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
+		}else if (trip_type == 1) {
+			//If Round Trip
+			//Confirm for Go Trip
+			confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
+					, goTripInfo_obj.getBusOccurence(), goTripInfo_obj.getBuyerName()
+					, goTripInfo_obj.getBuyerNRC(), goTripInfo_obj.getPermit_access_token()
+					, goTripInfo_obj.getSale_order_no(), goTripInfo_obj.getPermit_agent_id()
+					, goTripInfo_obj.getExtraCityID(), goTripInfo_obj.getConfirmDate(), "");
+		}*/
+		
 		finish();
 		return super.getSupportParentActivityIntent();
 	}
@@ -569,18 +743,18 @@ public class Payment2C2PActivity extends BaseActivity{
 		super.onStart();
 		
 		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
 		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
 
 		// This screen name value will remain set on the tracker and sent with
 		// hits until it is set to a new value or to null.
-		v3Tracker.set(Fields.SCREEN_NAME, "Online Payment Screen, "+AppLoginUser.getUserName());
+		v3Tracker.set(Fields.SCREEN_NAME, "Online Payment Screen, "
+				+from_payment+", "
+				+AppLoginUser.getUserName());
 		
+		// This screenview hit will include the screen name.
 		v3Tracker.send(MapBuilder.createAppView().build());
-		
-		// And so will this event hit.
-		v3Tracker.send(MapBuilder
-				  .createEvent("UX", "touch", "menuButton", null)
-				  .build()
-				);
 	}
 }

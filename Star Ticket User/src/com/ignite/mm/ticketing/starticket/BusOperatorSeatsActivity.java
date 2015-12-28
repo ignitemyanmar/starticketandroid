@@ -8,8 +8,10 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,6 +30,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -39,6 +42,7 @@ import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.application.NewCalendarDialog;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.OperatorSeatsAdapter;
+import com.ignite.mm.ticketing.sqlite.database.model.BundleListOperator;
 import com.ignite.mm.ticketing.sqlite.database.model.GoTripInfo;
 import com.ignite.mm.ticketing.sqlite.database.model.OperatorSeat;
 import com.ignite.mm.ticketing.starticket.R;
@@ -90,6 +94,12 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 	private TextView txt_change_date;
 	private SKConnectionDetector skDetector;
 	private LinearLayout layout_round_info;
+	private int foreign_price;
+	private TextView txt_foreign_price;
+	private TextView txt_starticket_call;
+	private TextView txt_starticket_call2;
+	private String str_operator_list;
+	private BundleListOperator obj_operator_list;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +117,11 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			selectedToCity = bundle.getString("to_city");
 			selectedTripDate = bundle.getString("trip_date");
 			selectedTripType = bundle.getInt("trip_type");
+			str_operator_list = bundle.getString("operator_list");
+			obj_operator_list = new Gson().fromJson(str_operator_list, BundleListOperator.class);
 			
-			if (selectedTripType == 1) {
+			//If one way
+			if (selectedTripType == 0) {
 				if (bundle.getString("trip_time") != null) {
 					selectedTripTime = bundle.getString("trip_time");
 				}else {
@@ -128,14 +141,36 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			}
 		}
 		
+		//Get Foreign Price
+		SharedPreferences pref = getSharedPreferences("foreign_price", Activity.MODE_PRIVATE);
+		foreign_price = pref.getInt("foreign_price", 0);
+		
 		if (goTripInfo_obj != null) {
 			Log.i("", "goObj(busoperator): "+goTripInfo_obj.toString());
 		}
 		
-		
+		txt_foreign_price = (TextView)findViewById(R.id.txt_foreign_price);
 		layout_round_info = (LinearLayout)findViewById(R.id.layout_round_info);
 		txt_round_trip_info = (TextView)findViewById(R.id.txt_round_trip_info);
 		txt_change_date = (TextView)findViewById(R.id.txt_change_date);
+		txt_starticket_call = (TextView)findViewById(R.id.txt_starticket_call);
+		txt_starticket_call2 = (TextView)findViewById(R.id.txt_starticket_call2);
+		
+		txt_starticket_call.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				callHotLine(txt_starticket_call.getText().toString());
+			}
+		});
+		
+		txt_starticket_call2.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				callHotLine(txt_starticket_call2.getText().toString());
+			}
+		});
 		
 		//Title
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -176,11 +211,11 @@ public class BusOperatorSeatsActivity extends BaseActivity{
     					Log.i("", "(enter)Trip Time"+selectedTripTime+", Trip Type: "+selectedTripType);
     					
     					//If one way (all time)
-    					if (selectedTripType == 1) {
+    					if (selectedTripType == 0) {
     						toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
     						txt_round_trip_info.setText("One Way");
     						txt_change_date.setText("Change Trip Date");
-    					}else if (selectedTripType == 2){
+    					}else if (selectedTripType == 1){
     						//If Round Trip 
     						toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
     						txt_round_trip_info.setText(R.string.str_choose_go_trip);
@@ -206,12 +241,35 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 			
 			 if (from_intent.equals("SaleTicket")) {
 				//Departure Trip
-					 String fromCity = selectedFromCity;
+					/* String fromCity = selectedFromCity;
 					 String toCity = selectedToCity;
 					 String tripDate = selectedTripDate;
-					 String tripTime = selectedTripTime;
-					 
-					 getOperatorSeats(fromCity, toCity, tripDate, tripTime, "0");
+					 String tripTime = selectedTripTime;*/
+					 //getOperatorSeats(fromCity, toCity, tripDate, tripTime, "0");
+				 
+					if (obj_operator_list != null) {
+						Log.i("", "Operator Info: "+obj_operator_list.toString());
+						
+						if (obj_operator_list.getOperatorSeat() != null && obj_operator_list.getOperatorSeat().size() > 0) {
+							
+							OperatorSeats = obj_operator_list.getOperatorSeat();
+							
+							Rlayout_noInfo.setVisibility(View.GONE);
+							
+							txt_foreign_price.setVisibility(View.VISIBLE);
+							if (foreign_price == 1) {
+								txt_foreign_price.setText("Following prices are for Foreigners");
+							}else if (foreign_price == 0) {
+								txt_foreign_price.setText("Following prices are for Local");
+							}
+							
+							lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats, foreign_price));
+							setListViewHeightBasedOnChildren(lv_operator_seats);
+						}else {
+							txt_foreign_price.setVisibility(View.GONE);
+							Rlayout_noInfo.setVisibility(View.VISIBLE);
+						}
+					}
 					 
 				}else if (from_intent.equals("BusConfirm")) {
 				//Return Trip 
@@ -348,11 +406,13 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		
 		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().postSearch(fromCity, toCity, tripDate
-				, tripTime, "", round_trip_status, new Callback<Response>() {
+				, tripTime, "", round_trip_status, String.valueOf(foreign_price), new Callback<Response>() {
 			
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
+				//Show Foreigner Price (or) Local Price
 				if (arg0 != null) {
+					//Show Foreigner Choose Text
 					OperatorSeats = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<OperatorSeat>>(){}.getType());
 					
 					Log.i("", "Operator Info: "+OperatorSeats.toString());
@@ -360,9 +420,18 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					if (OperatorSeats != null && OperatorSeats.size() > 0) {
 						
 						Rlayout_noInfo.setVisibility(View.GONE);
-						lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats));
+						
+						txt_foreign_price.setVisibility(View.VISIBLE);
+						if (foreign_price == 1) {
+							txt_foreign_price.setText("Following prices are for Foreigners");
+						}else if (foreign_price == 0) {
+							txt_foreign_price.setText("Following prices are for Local");
+						}
+						
+						lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats, foreign_price));
 						setListViewHeightBasedOnChildren(lv_operator_seats);
 					}else {
+						txt_foreign_price.setVisibility(View.GONE);
 						Rlayout_noInfo.setVisibility(View.VISIBLE);
 					}
 				}
@@ -390,7 +459,6 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			// TODO Auto-generated method stub
-			
 			if (from_intent.equals("BusConfirm")) {
 				//if departure date is less than return date
 				if (checkGoDate()) {
@@ -520,23 +588,21 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		super.onStart();
 		
 		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
 		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
 
 		// This screen name value will remain set on the tracker and sent with
 		// hits until it is set to a new value or to null.
 		v3Tracker.set(Fields.SCREEN_NAME, "Time and Operator Screen, "
-				+selectedFromCity+"- "+selectedToCity
+				+selectedFromCity+" - "+selectedToCity
 				+", "+selectedTripDate+", "
 				+"TripType: "
 				+selectedTripType+", "
 				+AppLoginUser.getUserName());
 		
+		// This screenview hit will include the screen name.
 		v3Tracker.send(MapBuilder.createAppView().build());
-		
-		// And so will this event hit.
-		v3Tracker.send(MapBuilder
-				  .createEvent("UX", "touch", "menuButton", null)
-				  .build()
-				);
 	}
 }

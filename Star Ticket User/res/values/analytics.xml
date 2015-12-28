@@ -10,11 +10,4 @@
 
   <!--Enable automatic exception tracking-->
   <bool name="ga_reportUncaughtExceptions">true</bool>
-  
-  <!-- REMOVE: <bool name="ga_debug">true</bool> -->
-  <string name="ga_logLevel">verbose</string>
-
-  <!-- Prevent data from appearing in reports. Useful for testing. -->
-  <bool name="ga_dryRun">true</bool>
 </resources>
-

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="app_version_name">Version: 1.1.0</string>
     <string name="WebLink"><a href="www.google.com">Go to Google</a></string>
     <string name="str_webLink">https://www.google.co.uk</string>
     <string name="app_name_client">Star Ticket</string>
@@ -66,8 +67,8 @@
     <string name="str_choose_go_seat">အသြားခရီးအတြက္ ခံု ေရြးပါ ~</string>
     <string name="str_choose_return_trip">အျပန္ခရီးအတြက္ အခ်ိန္၊ ကားဂိတ္ ေရြးပါ ~</string>
     <string name="str_choose_return_seat">အျပန္ခရီးအတြက္ ခံု ေရြးပါ ~</string>
-    <string name="str_choose_departure_date">ထြက္ခြာမည့္ ေန႔ ျပန္ေရြးေပးပါ </string>
-    <string name="str_no_return_trip">အျပန္ ခရီးစဥ္ မရွိသျဖင့္ One Way ကိုေရြးပါ </string>
+    <string name="str_choose_departure_date">Please check your chosen date</string>
+    <string name="str_no_return_trip">No Return Trip, Please choose "One Way" </string>
     
     <string-array name="custom_weekdays">
         <item>Su</item>

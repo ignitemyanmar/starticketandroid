@@ -44,6 +44,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -180,6 +181,10 @@ public class PaymentActivity extends BaseActivity{
 	private TextView txt_return_bus_class;
 	private TextView txt_return_price;
 	private String go_seat_count;
+	private int foreign;
+	private int foreign_type;
+	private String foreign_type_str;
+	private String delivery_address;
 	
 	final static int REQ_CODE = 1;
 	
@@ -194,11 +199,22 @@ public class PaymentActivity extends BaseActivity{
 		skDetector = new SKConnectionDetector(PaymentActivity.this);
 		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		
+		//Get Foreign Price
+		SharedPreferences pref = getSharedPreferences("foreign_price", Activity.MODE_PRIVATE);
+		foreign_type = pref.getInt("foreign_price", 0);
+		
+		if (foreign_type == 1) {
+			foreign_type_str = "foreign";
+		}else if (foreign_type == 0) {
+			foreign_type_str = "local";
+		}
+		
 		bundle = getIntent().getExtras();	
 		
 		if (bundle != null) {
 			
 			from_payment = bundle.getString("from_payment");
+			delivery_address = bundle.getString("delivery_address");
 			price = bundle.getString("price");
 			seat_count = bundle.getString("seat_count");
 			agentgroup_id = bundle.getString("agentgroup_id");
@@ -232,6 +248,8 @@ public class PaymentActivity extends BaseActivity{
 					ExtraCityPrice  = bundle.getString("ExtraCityPrice");
 				}
 			}
+			
+			Log.i("", "Deliver addr(payment): "+delivery_address);
 			
 			return_date = bundle.getString("ReturnDate");
 			from_intent = bundle.getString("from_intent");
@@ -326,11 +344,11 @@ public class PaymentActivity extends BaseActivity{
 		spn_expire_year = (Spinner)findViewById(R.id.spn_expire_year);
 		
         //Trip Info Title
-        if (trip_type == 1) 
+        if (trip_type == 0) 
         	txt_trip_info.setText("Trip Info (one way)");
         
         //Trip Info (One Way)
-		if (trip_type == 1) {
+		if (trip_type == 0) {
 			layout_return_title.setVisibility(View.GONE);
 			layout_return_trip_info.setVisibility(View.GONE);
 			
@@ -346,7 +364,7 @@ public class PaymentActivity extends BaseActivity{
 				txt_price.setText(price+" Ks");
 			}
 			
-		}else if (trip_type == 2) {
+		}else if (trip_type == 1) {
 			//Trip Info (Round Trip)
 			layout_return_title.setVisibility(View.VISIBLE);
 			layout_return_trip_info.setVisibility(View.VISIBLE);
@@ -470,7 +488,7 @@ public class PaymentActivity extends BaseActivity{
 		Integer go_seat_countInt = 0;
 		
 		//If Round Trip, .. 
-		if (trip_type == 2) {
+		if (trip_type == 1) {
 			
 			Log.i("", "price: "+goTripInfo_obj.getPrice()+", seat count: "+go_seat_count);
 			
@@ -574,6 +592,13 @@ public class PaymentActivity extends BaseActivity{
 		});
 	}
 	
+	String str_totalWithUSD = "";
+	String str_totalGiftMoneyUSD = "";
+	String str_finalTotalUSD = "";
+	double totalWithUSD = 0;
+	double totalGiftMoneyUSD = 0;
+	double finalTotalUSD = 0;
+	
 	/**
 	 * Get Loyalty Program's Gift Money
 	 */
@@ -608,15 +633,9 @@ public class PaymentActivity extends BaseActivity{
 						totalGiftMoney = arg0.getGiftMoney();
 					}
 					
-					String str_totalWithUSD = "";
-					String str_totalGiftMoneyUSD = "";
-					String str_finalTotalUSD = "";
-					double totalWithUSD = 0;
-					double totalGiftMoneyUSD = 0;
-					double finalTotalUSD = 0;
 					
 					//Calculate USD ($)
-					totalWithUSD = (total_amount / currencyRate) + 4;
+					totalWithUSD = (total_amount / currencyRate) + 1;
 					totalGiftMoneyUSD = totalGiftMoney / currencyRate;
 					finalTotalUSD = totalWithUSD - totalGiftMoneyUSD;
 					
@@ -760,23 +779,24 @@ public class PaymentActivity extends BaseActivity{
 								bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
 								bundle.putInt("trip_type", trip_type);
 								bundle.putString("from_intent", from_intent);
+								bundle.putInt("foreign_type", foreign_type);
 								
 								Intent intent = new Intent(PaymentActivity.this, Payment2C2PActivity.class).putExtras(bundle);
 								startActivityForResult(intent, REQ_CODE);
 								
 						}else if (from_payment.equals("Cash on Delivery")){
-							
+							//If Cash on delivery
 							dialog = new ZProgressHUD(PaymentActivity.this);
 							dialog.setMessage("Pls wait...");
 							dialog.show();
 							dialog.setCancelable(false);
 							
 							//If One Way
-							if (trip_type == 1) {
+							if (trip_type == 0) {
 								confirmOrder(from_payment, selectedSeats, ticketNos
 										, busOccurence, BuyerName, BuyerNRC, permit_access_token
 										, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
-							}else if (trip_type == 2) {
+							}else if (trip_type == 1) {
 								//If Round Trip
 								//Confirm for Go Trip
 								confirmOrder(from_payment, goTripInfo_obj.getSelected_seats(), goTripInfo_obj.getTicket_nos()
@@ -816,8 +836,9 @@ public class PaymentActivity extends BaseActivity{
 	 * @param confirmDate Confirm Date
 	 * @param from_go_trip_success status
 	 */
-	private void confirmOrder(final String paymentType, String selectedSeats, final String ticketNos
-			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
+	@SuppressWarnings("deprecation")
+	private void confirmOrder(final String paymentType, final String selectedSeats, final String ticketNos
+			, final String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
 			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
 			, String from_go_trip_success) {
 		
@@ -858,7 +879,8 @@ public class PaymentActivity extends BaseActivity{
 				", Seats: "+seats.toString()+
 				", Order date: "+ConfirmDate+
 				", Device id: "+DeviceUtil.getInstance(this).getID()+
-				", isbooking: "+"0");
+				", isbooking: "+"0"+
+				", delivery addres: "+delivery_address);
 		
 		//Do Encrypt of Params				
 		String param = MCrypt.getInstance()
@@ -866,14 +888,16 @@ public class PaymentActivity extends BaseActivity{
 				SecureParam.postSaleConfirmParam(permitAccessToken
 				, saleOrderNo, "0"
 				, permitAgentId, ""
-				, AppLoginUser.getUserName()
-				, AppLoginUser.getPhone(), buyerNRC
+				, BusConfirmActivity.CustName
+				, BusConfirmActivity.CustPhone, buyerNRC
 				, "0", ""
 				, ExtraCityId,  MCrypt.getInstance()
 				.encrypt(seats.toString())
 				, "1"
-				, "local"
-				, confirmDate, DeviceUtil.getInstance(this).getID(), "0", String.valueOf(AppLoginUser.getId())));
+				, foreign_type_str
+				, confirmDate, DeviceUtil.getInstance(this).getID(), "0"
+				, String.valueOf(AppLoginUser.getId()), paymentType
+				, String.valueOf(trip_type), delivery_address, String.valueOf(totalGiftMoney)));
 				
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("param", param));
@@ -896,35 +920,148 @@ public class PaymentActivity extends BaseActivity{
 						//JSONObject orderObj = jsonObj.getJSONObject("order");*/
 						//total_amount = orderObj.getString("total_amount");
 						
+						Bundle bundle = new Bundle();
+        				bundle.putString("payment_type", "Cash on Delivery");
+        				
 						if(!jsonObj.getBoolean("status") && jsonObj.getString("device_id").equals(DeviceUtil.getInstance(PaymentActivity.this).getID())){
 							dialog.dismissWithFailure();
 							SKToastMessage.showMessage(PaymentActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 						}else{
-							//Save into Online Database
-							if (trip_type == 1) {
-								//If One Way
-								postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
+							if (trip_type == 0) {
+								/*postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
 													, operator_id, ExtraCityName, agentgroup_id
-													, ticketNos, String.valueOf(totalGiftMoney));
+													, ticketNos, String.valueOf(totalGiftMoney));*/
 								
-							}else if (trip_type == 2) {
-								//If Round Trip
-		        				if (!from_goTrip_success.equals("from_go_trip_success")) {
-		        					
-		        					//Online Confirm for Go Trip
-									postOnlineSaleConfirm(paymentType, from_goTrip_success, goTripInfo_obj.getSale_order_no()
-											, goTripInfo_obj.getOperator_id(), goTripInfo_obj.getExtraCityName()
-											, goTripInfo_obj.getAgentgroup_id()
-											, goTripInfo_obj.getTicket_nos()
-											, String.valueOf(totalGiftMoney));
-									
-								}else {
-									//Online Confirm for Return Trip
-		        					postOnlineSaleConfirm(paymentType, from_goTrip_success, sale_order_no
-											, operator_id, ExtraCityName, agentgroup_id
-											, ticketNos, "0");
-								}
+								//If One Way
+		        				startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
+		        				dialog.dismissWithSuccess();
+		        				
+							}else if (trip_type == 1) {
+								Log.i("", "Round (departure delivery) into operator db success");
+								//confirm to return trip
+								//If round trip
+								confirmOrderReturn(paymentType, selectedSeats, ticketNos, busOccurence, BuyerName
+										, BuyerNRC, permit_access_token, sale_order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");
 							}
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					Log.i("", "Response confirm is null!");
+					dialog.dismissWithFailure();
+				}
+			}
+		};
+		
+		if (trip_type == 0) {
+			//If one way
+			//bundle.getString("permit_ip")
+			HttpConnection lt = new HttpConnection(handler, "POST",
+					"http://"+bundle.getString("permit_ip")+"/sale/comfirm", params);
+			lt.execute();
+			Log.i("", "Permit IP: "+bundle.getString("permit_ip"));
+			
+		}else if (trip_type == 1) {
+			//If Round (Departure)
+			HttpConnection lt = new HttpConnection(handler, "POST",
+					"http://"+goTripInfo_obj.getPermit_ip()+"/sale/comfirm", params);
+			lt.execute();
+			Log.i("", "Permit IP: "+goTripInfo_obj.getPermit_ip());
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	private void confirmOrderReturn(final String paymentType, String selectedSeats, final String ticketNos
+			, String busOccurence, String buyerName, String buyerNRC, String permitAccessToken
+			, String saleOrderNo, String permitAgentId, String ExtraCityId, String confirmDate
+			, String from_go_trip_success) {
+		
+		Log.i("", "Ticket list: "+ticketNos);
+		Log.i("", "buyer nrc: "+buyerNRC);
+		
+		//final String from_goTrip_success = from_go_trip_success;
+		
+		List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
+		
+		if (selectedSeats != null) {
+			selectedSeat = selectedSeats.split(",");
+		}
+		
+		if (ticketNos != null && !ticketNos.equals("")) {
+			ticketNoArray = ticketNos.split(",");
+		}
+		
+		Log.i("", "Selected Seats(Payment) : "+selectedSeats);
+		
+		for (int j = 0; j < selectedSeat.length; j++) {
+			seats.add(new ConfirmSeat(busOccurence, selectedSeat[j].toString(),
+					buyerName, buyerNRC, ticketNoArray[j].toString(), false,
+					"blah", 0));
+		}
+		
+		Log.i("", "Ticket Arrays: "+seats.toString());
+		
+		Log.i("", "Param (Confirm) to encrypt: "
+				+"access: "+permit_access_token+
+				", SaleOrderNo: "+sale_order_no+
+				", AgentID: "+Permit_agent_id+
+				", Agent Name: "+Operator_Name+
+				", Customer: "+AppLoginUser.getUserName()+
+				", Phone: "+AppLoginUser.getPhone()+
+				", Nrc: "+BuyerNRC+
+				", Extra city id: "+ExtraCityID+
+				", Seats: "+seats.toString()+
+				", Order date: "+ConfirmDate+
+				", Device id: "+DeviceUtil.getInstance(this).getID()+
+				", isbooking: "+"0"+
+				", delivery addres: "+delivery_address);
+		
+		//Do Encrypt of Params				
+		String param = MCrypt.getInstance()
+				.encrypt(
+				SecureParam.postSaleConfirmParam(permitAccessToken
+				, saleOrderNo, "0"
+				, permitAgentId, ""
+				, BusConfirmActivity.CustName
+				, BusConfirmActivity.CustPhone, buyerNRC
+				, "0", delivery_address
+				, ExtraCityId,  MCrypt.getInstance()
+				.encrypt(seats.toString())
+				, "1"
+				, foreign_type_str
+				, confirmDate, DeviceUtil.getInstance(this).getID(), "0"
+				, String.valueOf(AppLoginUser.getId()), paymentType
+				, String.valueOf(trip_type), delivery_address, String.valueOf(totalGiftMoney)));
+				
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("param", param));
+		
+		Log.i("","Hello param (for confirm) Return : "+ param);
+		
+		final Handler handler = new Handler() {
+
+			//private String total_amount;
+
+			public void handleMessage(Message msg) {
+
+				String jsonData = msg.getData().getString("data");
+				
+				if (jsonData != null) {
+					try {
+						Log.i("","Hello Response Confirm Data Return:"+ jsonData);
+						
+						JSONObject jsonObj = new JSONObject(jsonData);
+						//JSONObject orderObj = jsonObj.getJSONObject("order");*/
+						//total_amount = orderObj.getString("total_amount");
+						
+						if(!jsonObj.getBoolean("status") && jsonObj.getString("device_id").equals(DeviceUtil.getInstance(PaymentActivity.this).getID())){
+							dialog.dismissWithFailure();
+							SKToastMessage.showMessage(PaymentActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
+						}else{
+							startActivity(new Intent(PaymentActivity.this, ThankYouActivity.class).putExtras(bundle));
+							dialog.dismissWithSuccess();
 						}
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -970,10 +1107,10 @@ public class PaymentActivity extends BaseActivity{
 		
 		Integer tripTypeOnline = 0;
 		
-		if (trip_type == 1) {
+		if (trip_type == 0) {
 			//If one way 
 			tripTypeOnline = 0;
-		}else if (trip_type == 2) {
+		}else if (trip_type == 1) {
 			//If round trip
 			tripTypeOnline = 1;
 		}
@@ -990,7 +1127,7 @@ public class PaymentActivity extends BaseActivity{
 				AppLoginUser.getAddress(), 
 				"", "0", 
 				totalGiftMoney, "", "", 
-				agentgroup_id2, "", paymentType, ticketNos2, tripTypeOnline.toString(), new Callback<Response>() {
+				agentgroup_id2, "", paymentType, ticketNos2, tripTypeOnline.toString(), foreign_type_str, new Callback<Response>() {
 			
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
@@ -1005,7 +1142,7 @@ public class PaymentActivity extends BaseActivity{
 						// TODO Auto-generated method stub
 						if (arg1 != null) {
 							
-							if (paymentType.equals("Pay with Online") && paymentType.equals("Pay with MPU") && paymentType.equals("Pay with VISA/MASTER")) {
+/*							if (paymentType.equals("Pay with Online") && paymentType.equals("Pay with MPU") && paymentType.equals("Pay with VISA/MASTER")) {
 								
 								Bundle bundle = new Bundle();
 		        				bundle.putString("payment_type", "Pay with Online");
@@ -1045,7 +1182,7 @@ public class PaymentActivity extends BaseActivity{
 										dialog.dismissWithSuccess();
 									}
 								}
-							}
+							}*/
 						}
 					}
 				});
@@ -1090,18 +1227,24 @@ public class PaymentActivity extends BaseActivity{
 		super.onStart();
 		
 		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
 		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
 
 		// This screen name value will remain set on the tracker and sent with
 		// hits until it is set to a new value or to null.
-		v3Tracker.set(Fields.SCREEN_NAME, "Loyalty Program Screen, "+AppLoginUser.getUserName());
+		v3Tracker.set(Fields.SCREEN_NAME, "Loyalty Program Screen, "
+				+total_amount+", "
+				+totalGiftMoney+", "
+				+totalPoints+", "
+				+str_finalTotalUSD+", "
+				+str_totalGiftMoneyUSD+", "
+				+"TripType: "
+				+trip_type+", "
+				+AppLoginUser.getUserName());
 		
+		// This screenview hit will include the screen name.
 		v3Tracker.send(MapBuilder.createAppView().build());
-		
-		// And so will this event hit.
-		v3Tracker.send(MapBuilder
-				  .createEvent("UX", "touch", "menuButton", null)
-				  .build()
-				);
 	}
 }

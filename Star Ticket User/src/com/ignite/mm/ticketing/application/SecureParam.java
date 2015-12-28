@@ -18,10 +18,13 @@ public class SecureParam {
 	public static native String getTimesParam(String token, String op_id, String f_c, String t_c, String d);
 	
     // Declare native method
-	public static native String postSaleParam(String token, String op_id, String ag_id, String name, String ph, String rmk_type, String rmk, String gp_op_id, String lst_seat, String trip_id, String date, String f_c, String t_c, String usr_id, String dev, String bking, String bking_usr_id, String is_online, String extra_city_id);
+	public native static String postSaleParam(String token, String op_id, String ag_id, String name, String ph, String rmk_type, String rmk, String gp_op_id, String lst_seat, String trip_id, String date, String f_c, String t_c, String usr_id, String dev, String bking, String bking_usr_id, String is_online, String extra_city_id);
 	
 	// Declare native method
-	public static native String postSaleConfirmParam(String token,String order_id, String ref_id, String ag_id, String ag_name, String name, String ph, String nrc, String rmk_type,String rmk, String ext_dest_id, String lst_seat, String cash, String nation, String or_date, String dev, String bking, String usr_id);
+	public static native String postSaleConfirmParam(String token,String order_id, String ref_id, String ag_id, String ag_name
+			, String name, String ph, String nrc, String rmk_type,String rmk, String ext_dest_id, String lst_seat, String cash, String nation
+			, String or_date, String dev, String bking, String usr_id, String payment_type, String round_trip
+			, String delivery_address, String total_gift_money);
 
 	// Declare native method
 	public static native String deleteSaleOrderParam(String token);

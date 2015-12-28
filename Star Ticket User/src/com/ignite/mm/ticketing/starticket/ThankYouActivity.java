@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -31,6 +32,8 @@ public class ThankYouActivity extends BaseActivity{
 	private TextView txt_email_send;
 	private TextView btn_continue_buy;
 	private String payment_type;
+	private TextView txt_hotline1;
+	private TextView txt_hotline2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +52,31 @@ public class ThankYouActivity extends BaseActivity{
 		txt_thankYou = (TextView)findViewById(R.id.txt_thankyou);
 		txt_email_send = (TextView)findViewById(R.id.txt_email_send);
 		btn_continue_buy = (TextView)findViewById(R.id.btn_continue_buy);
+		txt_hotline1 = (TextView)findViewById(R.id.txt_hotline1);
+		txt_hotline2 = (TextView)findViewById(R.id.txt_hotline2);
+		
+		txt_hotline1.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				callHotLine(txt_hotline1.getText().toString());
+			}
+		});
+		
+		txt_hotline2.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				callHotLine(txt_hotline2.getText().toString());
+			}
+		});
 		
 		if (payment_type.equals("Cash on Shop")) {
-			txt_thankYou.setText("Booking မွာၿပီးပါၿပီ  ။ (၂) နာရီ အတြင္း  နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။  သုိ႔မဟုတ္ပါက သင္၏ booking ပ်က္သြားပါလိမ့္မည္။");
+			txt_thankYou.setText("Thank you! Your booking is complete! Please pay at nearest convenience stores (CityExpress, G&G, ABC) within 2 Hours, if not your booking will be canceled!!");
 		}else if (payment_type.equals("Pay with MPU") && payment_type.equals("Pay with VISA/MASTER")) {
-			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ ");
+			txt_thankYou.setText("Thank you! Your order is complete!");
 		}else if (payment_type.equals("Cash on Delivery")) {
-			txt_thankYou.setText("လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ! "+AppLoginUser.getPhone()+" သုိ႔  ဖုန္းဆက္ၿပီး လာပုိ႔ ေပးပါမည္ ။");
+			txt_thankYou.setText("Thank you! Your order is complete! We'll deliver after calling you "+AppLoginUser.getPhone());
 		}
 		
 		btn_continue_buy.setOnClickListener(new OnClickListener() {
@@ -86,18 +107,18 @@ public class ThankYouActivity extends BaseActivity{
 		super.onStart();
 		
 		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
 		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
 
 		// This screen name value will remain set on the tracker and sent with
 		// hits until it is set to a new value or to null.
-		v3Tracker.set(Fields.SCREEN_NAME, "Thank You Screen, "+AppLoginUser.getUserName()+", "+payment_type);
+		v3Tracker.set(Fields.SCREEN_NAME, "Thank You Screen, "
+				+payment_type+", "
+				+AppLoginUser.getUserName());
 		
+		// This screenview hit will include the screen name.
 		v3Tracker.send(MapBuilder.createAppView().build());
-		
-		// And so will this event hit.
-		v3Tracker.send(MapBuilder
-				  .createEvent("UX", "touch", "menuButton", null)
-				  .build()
-				);
 	}
 }

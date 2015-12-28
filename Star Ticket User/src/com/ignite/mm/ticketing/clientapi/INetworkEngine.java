@@ -169,6 +169,7 @@ public interface INetworkEngine {
 			@Field("payment_type") String payment_type, /*Cash on Shop | Pay with Online | Cash on Delivery */
 			@Field("starticket_no") String starticket_no,
 			@Field("round_trip") String round_trip,
+			@Field("nationality") String nationality,
 			Callback<Response> callback);
 	
 	@FormUrlEncoded
@@ -207,7 +208,8 @@ public interface INetworkEngine {
 			@Field("date") String date,
 			@Field("time") String time,
 			@Field("access_token") String access_token, 
-			@Field("round_trip") String round_trip, Callback<Response> callback);
+			@Field("round_trip") String round_trip, 
+			@Field("nationality") String nationality, Callback<Response> callback);
 	
 	@GET("/api/bookingsearch")
 	void getBookingByCodeNoPhone(@Query("access_token") String access_token,

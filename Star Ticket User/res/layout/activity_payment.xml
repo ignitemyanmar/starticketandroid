@@ -1183,7 +1183,7 @@
                 android:background="@drawable/btn_gold_light"
                 android:minHeight="@dimen/button_min_height"
                 android:minWidth="@dimen/button_min_width"
-                android:text="လက္မွတ္ျဖတ္မည္"
+                android:text="Confirm"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:visibility="visible" />

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical" xmlns:app1="http://schemas.android.com/apk/res/com.ignite.mm.ticketing.starticket">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -19,6 +20,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
         android:visibility="visible" >
 
         <com.smk.custom.view.CustomTextView
@@ -31,29 +34,43 @@
             android:text="Choose Time &amp; Operator"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <com.smk.custom.view.CustomTextView
-            android:id="@+id/txt_change_date"
+        <com.dd.ShadowLayout
+            android:id="@+id/ShadowLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/gray"
-            android:drawablePadding="10dp"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="Change Date"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/golden_brown" />
+            android:orientation="vertical"
+            app:sl_dx="1dp"
+            app:sl_dy="3dp"
+            app:sl_shadowColor="#66000000"
+            app:sl_shadowRadius="1dp" >
 
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/txt_change_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Change Date"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/golden_brown" />
+
+        </com.dd.ShadowLayout>
     </LinearLayout>
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray_light" />
+    
+    <com.smk.custom.view.CustomTextView
+                android:id="@+id/txt_foreign_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/golden_brown_dark"
+                android:gravity="left"
+                android:padding="2dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/Rlayout_noInfo"
@@ -74,16 +91,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="No Trip! "
+                android:text="Sold out of online seats! "
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txt_blah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please choose another date/time."
+                android:text="If you want to buy other seats ,"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/txt_blah_blah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="you can call STAR TICKET "
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                
+                <TextView
+                    android:id="@+id/txt_starticket_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_yellow"
+                    android:text="09-31166772, "
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/golden_brown" />
+                
+                <TextView
+                    android:id="@+id/txt_starticket_call2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_yellow"
+                    android:text="09-971118511"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/golden_brown" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView3"
@@ -96,11 +146,9 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You can call STAR TICKET , thanks :)"
+                android:text="You can change another date/time, thanks :)"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-
         </LinearLayout>
-
     </RelativeLayout>
 
     <LinearLayout
@@ -134,6 +182,9 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="7dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
         android:visibility="visible" >
 
         <LinearLayout
@@ -146,10 +197,12 @@
                 android:id="@+id/lv_operator_seats"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:choiceMode="singleChoice" >
+                android:choiceMode="singleChoice"
+                android:listSelector="@color/transprant_white"
+                android:scrollbars="none" >
+
             </ListView>
         </LinearLayout>
-
     </ScrollView>
 
 </LinearLayout>

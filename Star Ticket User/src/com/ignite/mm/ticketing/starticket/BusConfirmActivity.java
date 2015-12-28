@@ -25,6 +25,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -58,6 +59,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -214,12 +217,18 @@ public class BusConfirmActivity extends BaseActivity {
 	private LinearLayout layout_return_title;
 	private LinearLayout layout_return_trip_info;
 	private Integer go_seat_count;
+	private int foreign_price;
+	private TextView txt_foreigner;
+	private TextView txt_foreigner_price_return;
+	private String foreign_type_str;
 	public static Date deptDateTime;
 	public static Calendar cal;
 	public static String selectedSeatNos = "";
 	
 	//real seat count
 	public static Integer seat_count = 0;
+	
+	private String fromPayment;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -238,6 +247,8 @@ public class BusConfirmActivity extends BaseActivity {
 		txt_seats = (TextView)findViewById(R.id.txt_seats);
 		txt_bus_class = (TextView)findViewById(R.id.txt_bus_class);
 		txt_price = (TextView)findViewById(R.id.txt_price);
+		txt_foreigner = (TextView)findViewById(R.id.txt_foreigner);
+		txt_foreigner_price_return = (TextView)findViewById(R.id.txt_foreigner_price_return);
 		
 		//Return Trip
 		layout_return_title = (LinearLayout)findViewById(R.id.layout_return_title);
@@ -289,6 +300,10 @@ public class BusConfirmActivity extends BaseActivity {
 			actionBarNoti.setText(NotifyBooking.toString());
 		}*/
 		
+		//Get Foreign Price
+		SharedPreferences pref = getSharedPreferences("foreign_price", Activity.MODE_PRIVATE);
+		foreign_price = pref.getInt("foreign_price", 0);
+				
 		bundle = getIntent().getExtras();		
 		
 		if (bundle != null) {
@@ -323,6 +338,7 @@ public class BusConfirmActivity extends BaseActivity {
 			date = bundle.getString("date");
 			
 			if (bundle.getString("Price") != null && !bundle.getString("Price").equals("")) {
+				Price = "";
 				Price  = bundle.getString("Price");
 			}
 			
@@ -391,9 +407,23 @@ public class BusConfirmActivity extends BaseActivity {
 		}
 		
         //Trip Info Title
-        if (trip_type == 1) 
+        if (trip_type == 0) 
         	txt_trip_info.setText("Trip Info (one way)");
         
+		if (foreign_price == 1) {
+			txt_foreigner.setText("(foreigner price)");
+			txt_foreigner_price_return.setText("(foreigner price)");
+		}else if (foreign_price == 0) {
+			txt_foreigner.setText("(local price)");
+			txt_foreigner_price_return.setText("(local price)");
+		}
+		
+		if (foreign_price == 1) {
+			foreign_type_str = "foreign";
+		}else if (foreign_price == 0) {
+			foreign_type_str = "local";
+		}
+		
         //Trip Info
 		if (Intents.equals("SaleTicket")) {
 			//If One Way (or) After Departure Trip...
@@ -990,7 +1020,8 @@ public class BusConfirmActivity extends BaseActivity {
 	@Override
 	public Intent getSupportParentActivityIntent() {
 		// TODO Auto-generated method stub
-		finish();
+		
+		deleteSeats();	
 		return super.getSupportParentActivityIntent();
 	}
 	
@@ -1173,8 +1204,7 @@ public class BusConfirmActivity extends BaseActivity {
     	
     	return true;
    }*/
-	
-	private String fromPayment;
+
 	
 	/**
 	 *  {@code btn_confirm} clicked: {@link #postSale(String)}
@@ -1208,7 +1238,7 @@ public class BusConfirmActivity extends BaseActivity {
 						//Take selected seats into Database
 						//If one way
 						if (Intents.equals("SaleTicket")) {
-							if (trip_type == 1) {
+							if (trip_type == 0) {
 								//if one way
 								postSale(date);
 							}
@@ -1223,6 +1253,7 @@ public class BusConfirmActivity extends BaseActivity {
 			}
 		}
 	};
+	private ZProgressHUD progress;
 	
 	public static String sale_order_no;
 	public static String SeatLists = "";
@@ -1235,20 +1266,19 @@ public class BusConfirmActivity extends BaseActivity {
 	 * if return trip choose finish, go next activity {@link PaymentTypeActivity}.
 	 * @param date Date (departure date) or (return date)
 	 */
+	@SuppressWarnings("deprecation")
 	private void postSale(final String date)
 	{
 		dialog = new ZProgressHUD(BusConfirmActivity.this);
 		dialog.show();
-		
 
 		//Do Encrypt of Params
 		String param = MCrypt.getInstance().encrypt(SecureParam.postSaleParam(permit_access_token
-					, permit_operator_id, Permit_agent_id, CustName, CustPhone, "0"
+					, permit_operator_id, Permit_agent_id, CustName, CustPhone, foreign_type_str
 					, "", permit_operator_group_id, MCrypt.getInstance()
 					.encrypt(seat_List.getSeatsList().toString()), BusOccurence, date, FromCity, ToCity, String.valueOf(AppLoginUser
 					.getId()), DeviceUtil.getInstance(this).getID(), "1",
 					String.valueOf(AppLoginUser.getId()),"true",ExtraCityID));
-		
 		
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("param", param));       
@@ -1316,13 +1346,13 @@ public class BusConfirmActivity extends BaseActivity {
 		        				
 		        				Log.i("", "Ticket No(bus confirm): "+TicketLists);
 								if(isBooking == 0){
-									if (trip_type == 1) {
+									if (trip_type == 0) {
 										//If one way 
 										Bundle bundle = new Bundle();
 										bundle.putInt("trip_type", trip_type);
 										bundle.putString("from_intent", Intents);
 										startActivity(new Intent(BusConfirmActivity.this, PaymentTypeActivity.class).putExtras(bundle));
-									}else if (trip_type == 2){	
+									}else if (trip_type == 1){	
 										//If Round Trip
 										//For Return Trip, Choose (Operator, Time, Class) again 
 										//if (Intents.equals("SaleTicket")) {
@@ -1365,7 +1395,7 @@ public class BusConfirmActivity extends BaseActivity {
 			        			dialog.dismissWithFailure();
 			        			SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 			        			//If Round Trip, Departure Choose Time Again 
-			        			if (trip_type == 1) {
+			        			if (trip_type == 0) {
 									//If one way
 			        				closeAllActivities();
 			        				startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
@@ -1377,7 +1407,7 @@ public class BusConfirmActivity extends BaseActivity {
 							dialog.dismissWithFailure();
 							SKToastMessage.showMessage(BusConfirmActivity.this, "သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသည္။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။", SKToastMessage.ERROR);
 							
-							if (trip_type == 1) {
+							if (trip_type == 0) {
 								//If one way
 		        				closeAllActivities();
 		        				startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
@@ -1404,18 +1434,125 @@ public class BusConfirmActivity extends BaseActivity {
 		super.onStart();
 		
 		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
 		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
 
 		// This screen name value will remain set on the tracker and sent with
 		// hits until it is set to a new value or to null.
-		v3Tracker.set(Fields.SCREEN_NAME, "Passenger Info Screen, "+AppLoginUser.getUserName());
+		v3Tracker.set(Fields.SCREEN_NAME, "Passenger Info Screen, "
+				+from_to+" - "+selectedSeatNos
+				+", "+date+", "
+				+"TripType: "
+				+trip_type+", "
+				+AppLoginUser.getUserName());
 		
+		// This screenview hit will include the screen name.
 		v3Tracker.send(MapBuilder.createAppView().build());
+	}
+	
+	/**
+	 * If back arrow button clicked, call {@link #deleteSeats()}
+	 */
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		deleteSeats();		
+	}
+	
+	/**
+	 * Show Dialog to delete selected seats. 
+	 * If Yes click, work {@link #deleteSelectedSeats(String, String, String, String)}
+	 */
+	private void deleteSeats() {
+		// TODO Auto-generated method stub
+		AlertDialogWrapper.Builder alertDialog = new AlertDialogWrapper.Builder(this);
 		
-		// And so will this event hit.
-		v3Tracker.send(MapBuilder
-				  .createEvent("UX", "touch", "menuButton", null)
-				  .build()
-				);
+		alertDialog.setMessage("Are you sure You want to cancel Selected Seats?");
+
+		alertDialog.setPositiveButton("YES",
+				new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						if (SKConnectionDetector.getInstance(
+								BusConfirmActivity.this)
+								.isConnectingToInternet()) {
+							
+							if (trip_type == 0) {
+								//If one way 
+								deleteSelectedSeats("", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token, BusConfirmActivity.sale_order_no);
+							}else if (trip_type == 1) {
+								//If Round Trip
+								//delete Go selected seats first.... 
+								deleteSelectedSeats("", goTripInfo_obj.getPermit_ip(), goTripInfo_obj.getPermit_access_token(), goTripInfo_obj.getSale_order_no());
+							}
+						}else {
+							SKConnectionDetector.getInstance(BusConfirmActivity.this).showErrorMessage();
+						}
+					}
+				});
+
+		alertDialog.setNegativeButton("NO",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						if (dialog != null) {
+							dialog.cancel();
+						}
+						//progress.dismiss();
+						return;
+					}
+				});
+
+		alertDialog.show();
+	}
+	
+	/**
+	 * Delete Selected Seats from Operator Database
+	 * @param from_go_delete_success from_go_delete_success(status string)
+	 * @param permit_ip Permit IP
+	 * @param permit_access_token Permit Access Token
+	 * @param sale_order_no Order No
+	 */
+	private void deleteSelectedSeats(final String from_go_delete_success, final String permit_ip, final String permit_access_token, final String sale_order_no) {
+		// TODO Auto-generated method stub
+		
+		String param = MCrypt.getInstance().encrypt(SecureParam.deleteSaleOrderParam(permit_access_token));
+		
+		Log.i("", "Permit IP: "+permit_ip+", Param to delete: "+param+", SaleOrderNo to delete: "+MCrypt.getInstance().encrypt(sale_order_no));
+		
+		progress = new ZProgressHUD(BusConfirmActivity.this);
+		progress.show();
+		
+		NetworkEngine.setIP(permit_ip);
+		NetworkEngine.getInstance().deleteSaleOrder(
+				param, MCrypt.getInstance().encrypt(sale_order_no),
+				new Callback<Response>() {
+
+					public void success(
+							Response arg0,
+							Response arg1) {
+						
+						if (!from_go_delete_success.equals("from_go_delete_success")) {
+							//Delete Return Selected Seats
+							deleteSelectedSeats("from_go_delete_success", BusConfirmActivity.permit_ip, BusConfirmActivity.permit_access_token
+									, BusConfirmActivity.sale_order_no);
+						}else {
+							closeAllActivities();
+	    					startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+	    					progress.dismiss();
+						}
+					}
+
+					public void failure(
+							RetrofitError arg0) {
+						// TODO Auto-generated method
+						closeAllActivities();
+    					startActivity(new Intent(BusConfirmActivity.this, SaleTicketActivity.class));
+						progress.dismiss();
+						Log.i("", "Can't delete!");
+					}
+				});
 	}
 }

@@ -13,77 +13,91 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="10dp" >
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_margin="25dp"
-            android:src="@drawable/star_ticket_splash_300width" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="10dp"
-            android:text="Star Ticket သည္ အေဝးေျပးကားလက္မွတ္မ်ားကုိ Online မွေရာင္းခ်ေပးေသာ ဝန္ေဆာင္မွဳလုပ္ငန္းတစ္ခုျဖစ္ပါသည္။ City Express, ABC, G&amp;G စသည့္ Convenience Store မ်ားႏွင့္ စိန္ေဂဟာ(ပါရမီ) တြင္လည္းရႏုိင္ပါသည္။"
-            android:textColor="@color/black" />
+        android:scrollbars="none"
+        android:background="@color/white" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:padding="10dp" >
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView2"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
                 android:gravity="center_horizontal"
-                android:text="Version: 1.0"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/black" />
+                android:orientation="vertical"
+                android:padding="10dp" >
 
-            <View
-                android:id="@+id/view1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="25dp"
-                android:background="@color/gray_light" />
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="25dp"
+                    android:src="@drawable/star_ticket_splash_300width" />
 
-            <TextView
-                android:id="@+id/txt_web_link"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_yellow"
-                android:gravity="center_horizontal"
-                android:text="https://starticket.com.mm/"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/pussian_blue" />
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="10dp"
+                    android:text="Star Ticket သည္ အေဝးေျပးကားလက္မွတ္မ်ားကုိ Online မွေရာင္းခ်ေပးေသာ ဝန္ေဆာင္မွဳလုပ္ငန္းတစ္ခုျဖစ္ပါသည္။ City Express, ABC, G&amp;G စသည့္ Convenience Store မ်ားႏွင့္ စိန္ေဂဟာ(ပါရမီ) တြင္လည္းရႏုိင္ပါသည္။"
+                    android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/txt_facebook_link"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_yellow"
-                android:gravity="center_horizontal"
-                android:text=" https://www.facebook.com/starticketmm/"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/pussian_blue" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/app_version_name"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/black" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="25dp"
+                        android:background="@color/gray_light" />
+
+                    <TextView
+                        android:id="@+id/txt_web_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_yellow"
+                        android:gravity="center_horizontal"
+                        android:text="http://starticket.com.mm/"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/pussian_blue" />
+
+                    <TextView
+                        android:id="@+id/txt_facebook_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_yellow"
+                        android:gravity="center_horizontal"
+                        android:text="http://www.facebook.com/starmyanmarbusticket/"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/pussian_blue" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

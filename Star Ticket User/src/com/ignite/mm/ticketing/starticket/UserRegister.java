@@ -33,6 +33,11 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 import com.ignite.mm.ticketing.application.BaseActivity;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
@@ -796,6 +801,29 @@ public class UserRegister extends BaseActivity implements OnClickListener {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         Log.i("", "result: "+resultCode+", request: "+requestCode+", data: "+data.toString());
     }
+    
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		//For Google Analytics
+		EasyTracker.getInstance(this).activityStart(this);
+		
+		//For Google Analytics
+		Tracker v3Tracker = GoogleAnalytics.getInstance(this).getTracker("UA-67985681-1");
+
+		// This screen name value will remain set on the tracker and sent with
+		// hits until it is set to a new value or to null.
+		v3Tracker.set(Fields.SCREEN_NAME, "Register Screen, "
+				+txt_userName.getText().toString()+", "
+				+txtEmail.getText().toString()+", "
+				+txtPhone.getText().toString());
+		
+		// This screenview hit will include the screen name.
+		v3Tracker.send(MapBuilder.createAppView().build());
+	}
+    
 }
 
 
