@@ -1,55 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+<resources>
 
-     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
-
         -->
-       
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-		<item name="windowActionBar">false</item>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <!-- colorPrimary is used for the default action bar background -->
 	    <item name="colorPrimary">@color/primary</item>
-	    <item name="colorPrimaryDark">@color/primary_dark</item>
-	    <item name="colorAccent">@color/accent</item>
-	    <item name="actionMenuTextColor">@color/white</item>
-    	<item name="android:actionMenuTextColor">@color/white</item>
-	   		    
-	</style>
-	<style name="Widget.MyApp.ActionBar" parent="Widget.AppCompat.ActionBar">
-	    <item name="android:background">@color/white</item>
-	    <item name="theme">@style/ThemeOverlay.MyApp.ActionBar</item>
-	    <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-	    <item name="homeAsUpIndicator">@drawable/abc_ic_ab_back_mtrl_am_alpha</item>
-	    <item name="android:textColor">@color/white</item>
-	</style>
-	
-	<style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
-	    <item name="android:textColorPrimary">@color/white</item>
-	</style>
-	
-    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
-		<item name="android:progressDrawable">@drawable/custom_ratingbar</item>
-        <item name="android:minHeight">24dp</item>
-        <item name="android:maxHeight">24dp</item>
-	</style>
-	
-    <style name="CustomRatingBarSmall" parent="@android:style/Widget.RatingBar">
-		<item name="android:progressDrawable">@drawable/custom_ratingbar_small</item>
-		<item name="android:isIndicator">true</item>
-        <item name="android:minHeight">12dp</item>
-        <item name="android:maxHeight">12dp</item>
-	</style>
-	
+	    
+	    <!-- colorPrimaryDark is used for the status bar -->
+	    <item name="colorPrimaryDark">@color/golden_brown</item>
+	    
+	    <!-- colorAccent is used as the default value for colorControlActivated, which is used to tint widgets -->
+	    <item name="colorAccent">@color/golden_brown</item>
+	    
+	    <!-- to change status bar color under 5.0+ version -->
+	    <item name="android:windowTranslucentStatus">true</item>
+	    
+	    <item name="windowActionBar">false</item>
+	    <!-- You can also set colorControlNormal, colorControlActivated
+	         colorControlHighlight, and colorSwitchThumbNormal. -->
+    </style>
+    
     <!-- Calendar Style -->
     <style name="CustomDayTextAppearance" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/mcv_text_date_light</item>
@@ -60,7 +43,7 @@
         <item name="android:textColor">@color/gray</item>
         <item name="android:textStyle">bold</item>
     </style>
-    
+     
     <style name="CustomToolbarTextAppearance" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/white</item>
     	<item name="android:textSize">16dp</item>
@@ -69,8 +52,5 @@
     <style name="CustomToolbarSubTextAppearance" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/white</item>
     	<item name="android:textSize">12dp</item>
-	</style>
-
+	</style> 
 </resources>
-
-

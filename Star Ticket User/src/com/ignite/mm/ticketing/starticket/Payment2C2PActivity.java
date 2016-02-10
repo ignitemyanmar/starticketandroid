@@ -718,8 +718,8 @@ public class Payment2C2PActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		
 		//Testinggggggggggg
-/*		//If One Way
-		if (trip_type == 0) {
+		//If One Way
+/*		if (trip_type == 0) {
 			confirmOrder(from_payment, selectedSeats, ticketNos
 					, busOccurence, BuyerName, BuyerNRC, permit_access_token
 					, order_no, Permit_agent_id, ExtraCityID, ConfirmDate, "");

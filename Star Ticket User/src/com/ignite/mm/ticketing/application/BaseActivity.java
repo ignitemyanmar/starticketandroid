@@ -362,6 +362,7 @@ public class BaseActivity extends ActionBarActivity{
         });*/
 
         // Set up the large red button on the center right side
+		
         // With custom button and content sizes and margins
         int redActionButtonSize = getResources().getDimensionPixelSize(R.dimen.red_action_button_size);
         int redActionButtonMargin = getResources().getDimensionPixelOffset(R.dimen.action_button_margin);
@@ -372,7 +373,7 @@ public class BaseActivity extends ActionBarActivity{
         int blueSubActionButtonContentMargin = getResources().getDimensionPixelSize(R.dimen.blue_sub_action_button_content_margin);
             
         ImageView fabIconStar = new ImageView(this);
-        fabIconStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+        fabIconStar.setImageDrawable(getResources().getDrawable(R.drawable.mered));
         
        /* TextView fabIconStar = new TextView(this);
         

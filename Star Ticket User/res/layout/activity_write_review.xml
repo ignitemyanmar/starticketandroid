@@ -44,7 +44,6 @@
 
             <RatingBar
                 android:id="@+id/rateBar_operator"
-                style="@style/CustomRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:rating="2.5"

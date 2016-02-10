@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Promotion မ်ား မရွိေသးပါ"
+                android:text="No Promotion yet!"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/golden_brown" />
 
@@ -42,7 +42,7 @@
                 android:id="@+id/TextView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="မၾကာမီွ လာမည္ :-)"
+                android:text="Coming soon :)"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/yellow" />
         </LinearLayout>

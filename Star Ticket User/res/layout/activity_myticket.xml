@@ -27,9 +27,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:drawableLeft="@drawable/ic_launcher"
                     android:text="e-Voucher (Star Ticket)"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical" />
 
                 <View
                     android:id="@+id/view1"
@@ -43,7 +45,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="right"
-                    android:text="-" />
+                    android:text="-"
+                    android:textColor="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -148,7 +151,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="50"
                                     android:gravity="center"
-                                    android:text="ထြက္မည့္ရက္" />
+                                    android:text="ထြက္မည့္ရက္"
+                                    android:textColor="@color/gray" />
 
                                 <TextView
                                     android:id="@+id/textView10"
@@ -156,7 +160,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="50"
                                     android:gravity="center"
-                                    android:text="ထြက္မည့္အခ်ိန္" />
+                                    android:text="ထြက္မည့္အခ်ိန္"
+                                    android:textColor="@color/gray" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -191,6 +196,7 @@
                                         android:layout_weight="50"
                                         android:text="-"
                                         android:textAppearance="?android:attr/textAppearanceSmall"
+                                        android:textColor="@color/gray"
                                         android:visibility="gone" />
                                 </LinearLayout>
 
@@ -226,7 +232,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="ကားဂိတ္" />
+                                android:text="ကားဂိတ္"
+                                android:textColor="@color/gray" />
 
                             <TextView
                                 android:id="@+id/TextView02"
@@ -234,7 +241,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="အမ်ိဳးအစား" />
+                                android:text="အမ်ိဳးအစား"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -258,7 +266,8 @@
                                     android:layout_weight="50"
                                     android:gravity="center"
                                     android:text="-"
-                                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@color/black" />
                             </LinearLayout>
 
                             <TextView
@@ -333,7 +342,8 @@
                                 android:layout_weight="50"
                                 android:gravity="center"
                                 android:text="-"
-                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -368,7 +378,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="1x Passenger" />
+                                android:text="1x Passenger"
+                                android:textColor="@color/gray" />
 
                             <TextView
                                 android:id="@+id/txt_price"
@@ -376,7 +387,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="1x 0" />
+                                android:text="1x 0"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -394,7 +406,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="Delivery Charges" />
+                                android:text="Delivery Charges"
+                                android:textColor="@color/gray" />
 
                             <TextView
                                 android:id="@+id/txt_delivery_charges"
@@ -402,7 +415,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="Ks 1000" />
+                                android:text="Ks 1000"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -418,7 +432,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="Discount" />
+                                android:text="Discount"
+                                android:textColor="@color/gray" />
 
                             <TextView
                                 android:id="@+id/txt_discount"
@@ -426,7 +441,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="Ks 0" />
+                                android:text="Ks 0"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -442,7 +458,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="Payment Type" />
+                                android:text="Payment Type"
+                                android:textColor="@color/gray" />
 
                             <TextView
                                 android:id="@+id/txt_payment_type"
@@ -450,7 +467,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="-" />
+                                android:text="-"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -466,7 +484,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="Status" />
+                                android:text="Status"
+                                android:textColor="@color/gray" />
 
                             <TextView
                                 android:id="@+id/txt_status"
@@ -474,7 +493,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="50"
                                 android:gravity="center"
-                                android:text="-" />
+                                android:text="-"
+                                android:textColor="@color/gray" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -518,39 +538,125 @@
                                 android:gravity="center"
                                 android:text="Ks 0"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/black"
                                 android:textSize="30dp" />
                         </LinearLayout>
+
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/TextView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Terms and Conditions"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="1) All the tickets bought are not refundable or exchangeable."
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView09"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="2) Customers are needed to go to the bus station 30 mins before departure."
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="3) Customers are not allowed to carry illegal products, explosive products and drugs."
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="4) Extra Fees are chargeable to bags or luggage that weight more than 10kg."
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="50"
+                        android:text="5) Valuable personal belongings are to be kept with the customer all the time and the bus operator will not be responsible for the lost items."
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="ခရီးသည္မ်ားလိုက္နာရန္"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="1) ကားမထြက္မီ ၃၀ မိနစ္အလို ကားဂိတ္ကို ေရာက္ရွိေပးပါရန္"
+                        android:text="၁) ၀ယ္ျပီးကားလက္မွတ္မ်ားအား ေငြျပန္မအမ္းပါ။"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/textView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="2) လက္မွတ္အား ျပန္လဲခြင့္မျပဳပါ"
+                        android:text="၂) ယာဥ္မထြက္မီ မိနစ္ ၃၀ အလိုတြင္ ကားဂိတ္သို ့ အေရာက္လာေပးပါရန္။"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="3) ကားမထြက္ပါက ကားဂိတ္ႏွင့္ သာသက္ဆိုင္ျပီး Star Ticket ႏွင့္မသက္ဆိုင္ပါ"
+                        android:text="၃) ဥပေဒႏွင့္ လြတ္ကင္းမွဳမရွိေသာ ပစၥည္းမ်ား၊ ေပါက္ကြဲေစတတ္ေသာပစၥည္းမ်ား ႏွင့္ မူးယစ္ေဆး၀ါးမ်ားအား သယ္ေဆာင္၍ မရပါ။"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/TextView13"
+                        android:id="@+id/TextView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="၄) ၁၀ ကီလိုထက္ပိုေလးေသာ ပစၥည္းမ်ားအား ကားဂိတ္အလိုက္ တန္ဆာခေတာင္းႏိုင္ပါသည္။"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="၅) တန္ဖိုးၾကီး ပစၥည္းမ်ား စာရြက္စာတမ္းမ်ားကို ခရီးသည္မွ ထိန္းသိမ္းပါရန္ႏွင့္ ေပ်ာက္ဆံုးပါက ကားဂိတ္မွ တာ၀န္ယူမည္မဟုတ္ပါ။"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/TextView16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"

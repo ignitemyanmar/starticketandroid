@@ -84,7 +84,7 @@ public class UserEditProfileActivity extends BaseActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle("အခ်က္ အလက္ ျပင္ရန္");
+            toolbar.setTitle("Update Profile");
             this.setSupportActionBar(toolbar);
         }
 		

@@ -37,16 +37,47 @@
                     android:id="@+id/imageView1"
                     android:layout_width="200dp"
                     android:layout_height="100dp"
-                    android:layout_margin="25dp"
+                    android:layout_margin="20dp"
                     android:src="@drawable/star_ticket_splash_300width" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Star Ticket is the Online Bus Ticketing Platform for Highway Trips in Myanmar. "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Winner of Tech Startup of The Year at Rice Bowl Startup Awards 2015 around ASEAN"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_web_award"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_yellow"
+                    android:gravity="center_horizontal"
+                    android:text="http://www.asianentrepreneur.org/rice-bowl-startup-awards-2015/"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/pussian_blue" />
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="20dp"
                     android:gravity="center_horizontal"
-                    android:lineSpacingExtra="10dp"
+                    android:lineSpacingExtra="7dp"
                     android:text="Star Ticket သည္ အေဝးေျပးကားလက္မွတ္မ်ားကုိ Online မွေရာင္းခ်ေပးေသာ ဝန္ေဆာင္မွဳလုပ္ငန္းတစ္ခုျဖစ္ပါသည္။ City Express, ABC, G&amp;G စသည့္ Convenience Store မ်ားႏွင့္ စိန္ေဂဟာ(ပါရမီ) တြင္လည္းရႏုိင္ပါသည္။"
                     android:textColor="@color/black" />
 
@@ -70,7 +101,7 @@
                         android:id="@+id/view1"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="25dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@color/gray_light" />
 
                     <TextView

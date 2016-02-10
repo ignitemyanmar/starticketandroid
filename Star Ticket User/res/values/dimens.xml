@@ -8,10 +8,11 @@
     <dimen name="red_action_button_size">90dp</dimen>
     <dimen name="red_action_button_margin">100dp</dimen>
 
-    <dimen name="red_action_button_content_size">50dp</dimen>
+    <dimen name="red_action_button_content_size">40dp</dimen>
+    
     <dimen name="red_action_button_content_margin">18dp</dimen>
 
-    <!-- Space between menu and sub menus -->
+    <!-- Space between sub menus -->
     <dimen name="red_action_menu_radius">30dp</dimen>
     
     <dimen name="blue_sub_action_button_size">75dp</dimen>

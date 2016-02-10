@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,9 +13,11 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimaryDark"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true"
+         >
     </android.support.v7.widget.Toolbar>
-
+    
     <ScrollView
         android:id="@+id/scroll_trip"
         android:layout_width="match_parent"
@@ -54,14 +56,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:checked="true"
-                        android:text="One Way" />
+                        android:text="One Way"
+                        android:textColor="@color/black" />
 
                     <RadioButton
                         android:id="@+id/radio_round_trip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Round Trip" />
+                        android:text="Round Trip"
+                        android:textColor="@color/black" />
                 </RadioGroup>
 
                 <View
@@ -87,7 +91,8 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ခရီးစဥ္( မွ )"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/gray" />
 
                     <Spinner
                         android:id="@+id/spn_from_trip"
@@ -118,6 +123,7 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ခရီးစဥ္( သုိ႔ )"
+                        android:textColor="@color/gray"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Spinner
@@ -149,6 +155,7 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ထြက္ခြာမည့္ ေန႔"
+                        android:textColor="@color/gray"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Button
@@ -156,14 +163,32 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_weight="30"
-                        android:background="@color/white"
+                        android:background="@color/transparent"
+                        android:textColor="@color/black"
                         android:text="Choose Date" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="** You can choose only 2 weeks in advance"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/gray" />
+
                 </LinearLayout>
 
                 <View
                     android:id="@+id/View02"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                     android:layout_height="1dp"
                     android:layout_weight="50"
                     android:background="@color/gray_light" />
 
@@ -184,6 +209,7 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ျပန္လာမည့္ ေန႔"
+                        android:textColor="@color/gray"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Button
@@ -192,6 +218,7 @@
                         android:layout_height="60dp"
                         android:layout_weight="30"
                         android:background="@color/white"
+                        android:textColor="@color/black"
                         android:text="Choose Date" />
                 </LinearLayout>
 
@@ -220,6 +247,7 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ထြက္ခြာမည့္ အခ်ိန္"
+                        android:textColor="@color/gray"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Spinner
@@ -241,7 +269,6 @@
                     android:id="@+id/layout_foreigner_price"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_weight="50"
                     android:gravity="center_vertical"
                     android:padding="5dp"
                     android:visibility="visible" >
@@ -250,8 +277,8 @@
                         android:id="@+id/cb_foreigner_price"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="50"
                         android:text="Foreigner (If you are foreigner, please check this)"
+                        android:textColor="@color/golden_brown"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:background="@drawable/btn_gray_light"
                         android:visibility="visible"
@@ -268,7 +295,7 @@
                     android:gravity="center"
                     android:minHeight="@dimen/button_min_height"
                     android:minWidth="@dimen/button_min_width"
-                    android:text="ရွာမည္"
+                    android:text="Search"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white" />
             </LinearLayout>

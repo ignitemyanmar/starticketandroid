@@ -14,7 +14,7 @@
         android:padding="20dp"
         app:sl_dx="2dp"
         app:sl_dy="2dp"
-        app:sl_shadowColor="#66000000"
+        app:sl_shadowColor="@color/shadow_color"
         app:sl_shadowRadius="1dp" >
 
         <LinearLayout
@@ -162,7 +162,7 @@
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/gray" />
+                android:background="@color/gray_light" />
 
         </LinearLayout>
 

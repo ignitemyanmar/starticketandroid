@@ -229,6 +229,8 @@ public class BusConfirmActivity extends BaseActivity {
 	public static Integer seat_count = 0;
 	
 	private String fromPayment;
+	private CheckBox chb_terms_conditions;
+	private TextView txt_terms;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -240,6 +242,9 @@ public class BusConfirmActivity extends BaseActivity {
 		//Trip Information + to set customer info
 		setContentView(R.layout.nrc_activity);
 		
+		txt_terms = (TextView)findViewById(R.id.txt_terms);
+		
+		chb_terms_conditions = (CheckBox)findViewById(R.id.chb_terms_conditions);
 		txt_trip_info = (TextView)findViewById(R.id.txt_trip_info);
 		txt_from_to = (TextView)findViewById(R.id.txt_from_to);
 		txt_dept_date = (TextView)findViewById(R.id.txt_dept_date);
@@ -270,7 +275,16 @@ public class BusConfirmActivity extends BaseActivity {
 		btn_confirm.setShadowHeight(3);
 		btn_confirm.setCornerRadius(7);
 		
-		radioGroup = (RadioGroup) findViewById(R.id.radioGroup_payment);        
+		radioGroup = (RadioGroup) findViewById(R.id.radioGroup_payment);      
+		
+		txt_terms.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(BusConfirmActivity.this, TermsAndConditionActivity.class));
+			}
+		});
+		
 /*		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
 	    {
 	        public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -1012,6 +1026,7 @@ public class BusConfirmActivity extends BaseActivity {
 		
 		extraCity = new ArrayList<ExtraCity>();
 		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select City", "", ""));
+		
 	}
 	
 	/**
@@ -1160,6 +1175,13 @@ public class BusConfirmActivity extends BaseActivity {
     	if (!edt_phone.getText().toString().startsWith("09") && !edt_phone.getText().toString().startsWith("01")) {
     		edt_phone.setError("Enter 09####### (or) 01######");
     		return false;
+		}
+    	
+    	if (!chb_terms_conditions.isChecked()) {
+    		//chb_terms_conditions.setError("Please check this to accept our terms and conditions");
+    		SKToastMessage.showMessage(BusConfirmActivity.this, "Please accept our terms and conditions", SKToastMessage.LENGTH_SHORT);
+			//Toast.makeText(BusConfirmActivity.this, "Please agree with our terms and conditions", Toast.LENGTH_SHORT).show();
+			return false;
 		}
     	
     	return true;

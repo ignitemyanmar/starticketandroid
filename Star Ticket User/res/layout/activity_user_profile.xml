@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutAnimation="@anim/slide_left"
-    android:background="@drawable/app_background"
+    android:background="@color/gray_light"
     android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.Toolbar
@@ -19,7 +19,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/app_background" >
+        android:background="@color/gray_light" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,6 +58,7 @@
                 android:layout_marginTop="10dp"
                 android:text="My Contact"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -113,6 +114,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="User Name"
+                            android:textColor="@color/gray"
                             android:textSize="18dp" />
 
                         <TextView
@@ -120,13 +122,15 @@
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text=":"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/gray" />
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/txt_userName_login"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="-"
+                            android:textColor="@color/black"
                             android:textSize="18dp" />
                     </LinearLayout>
 
@@ -141,6 +145,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="Email"
+                            android:textColor="@color/gray"
                             android:textSize="18dp" />
 
                         <TextView
@@ -148,13 +153,15 @@
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text=":"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/gray" />
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/txt_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="-"
+                            android:textColor="@color/black"
                             android:textSize="18dp" />
                     </LinearLayout>
 
@@ -169,6 +176,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="Phone No"
+                            android:textColor="@color/gray"
                             android:textSize="18dp" />
 
                         <TextView
@@ -176,13 +184,15 @@
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text=":"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/gray" />
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/txt_phone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="-"
+                            android:textColor="@color/black"
                             android:textSize="18dp" />
                     </LinearLayout>
 
@@ -197,6 +207,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="Address"
+                            android:textColor="@color/gray"
                             android:textSize="18dp" />
 
                         <TextView
@@ -204,16 +215,19 @@
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text=":"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/gray" />
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/txt_address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="-"
+                            android:textColor="@color/black"
                             android:textSize="18dp" />
                     </LinearLayout>
                 </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -222,8 +236,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="My Points/Gift Money"
+                android:text="My Points/Gift Moneys"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -308,6 +323,7 @@
                             android:layout_width="170dp"
                             android:layout_height="wrap_content"
                             android:text="Total Points"
+                            android:textColor="@color/gray"
                             android:textSize="18dp" />
 
                         <TextView
@@ -315,13 +331,15 @@
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text=":"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/gray" />
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/txt_usable_points"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="0"
+                            android:textColor="@color/black"
                             android:textSize="18dp" />
                     </LinearLayout>
 
@@ -337,6 +355,7 @@
                             android:layout_width="170dp"
                             android:layout_height="wrap_content"
                             android:text="Total Gift Money"
+                            android:textColor="@color/gray"
                             android:textSize="18dp" />
 
                         <TextView
@@ -344,13 +363,15 @@
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
                             android:text=":"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/gray" />
 
                         <com.smk.custom.view.CustomTextView
                             android:id="@+id/txt_usable_gift_money"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="0"
+                            android:textColor="@color/black"
                             android:textSize="18dp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -373,7 +394,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_gold"
-                    android:text="အခ်က္အလက္ ျပင္ရန္"
+                    android:text="Update Profile"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
@@ -417,7 +438,6 @@
                         android:textSize="18dp" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>

@@ -16,6 +16,7 @@ import com.ignite.mm.ticketing.application.BaseActivity;
 public class AboutActivity extends BaseActivity{
 private TextView txt_web_link;
 private TextView txt_facebook_link;
+private TextView txt_web_award;
 
 @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,20 @@ private TextView txt_facebook_link;
         
         txt_web_link = (TextView)findViewById(R.id.txt_web_link);
         txt_facebook_link = (TextView)findViewById(R.id.txt_facebook_link);
+        txt_web_award = (TextView)findViewById(R.id.txt_web_award);
         
         txt_web_link.setOnClickListener(clickListener);
         txt_facebook_link.setOnClickListener(clickListener);
+        txt_web_award.setOnClickListener(clickListener);
 	}
 
 	private OnClickListener clickListener = new OnClickListener() {
 		
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			if (v == txt_web_award) {
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.asianentrepreneur.org/rice-bowl-startup-awards-2015/")));
+			}
 			if (v == txt_web_link) {
 				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://starticket.com.mm/")));
 			}

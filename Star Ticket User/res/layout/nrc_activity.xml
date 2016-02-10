@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <android.support.v7.widget.Toolbar
@@ -39,7 +39,7 @@
                     android:id="@+id/txt_trip_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/gray"
+                    android:background="@color/gray_light"
                     android:gravity="center_vertical"
                     android:padding="5dp"
                     android:text="Trip Info (အသြား)"
@@ -182,7 +182,6 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/golden_brown_dark" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -336,7 +335,7 @@
                         android:text="0 Ks"
                         android:textColor="@color/black" />
                 </LinearLayout>
-            
+
                 <TextView
                     android:id="@+id/txt_foreigner_price_return"
                     android:layout_width="120dp"
@@ -358,6 +357,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Total Amount : 0 Ks"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <View
@@ -379,7 +379,7 @@
                     android:id="@+id/CustomTextView06"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/gray"
+                    android:background="@color/gray_light"
                     android:gravity="center_vertical"
                     android:padding="5dp"
                     android:text="Passenger Info"
@@ -398,7 +398,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ခရီးသည္ အမည္"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/gray" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/edt_buyer"
@@ -454,7 +455,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="ခရီးသည္ ဖုန္းနံပါတ္"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/gray"  />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/edt_phone"
@@ -733,6 +735,35 @@
                         </RadioGroup>
                     </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical" >
+
+                <CheckBox
+                    android:id="@+id/chb_terms_conditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_terms2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_yellow"
+                    android:text="I accept "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_yellow"
+                    android:text="Star Ticket&apos;s Terms and Conditions"
+                    android:textColor="@color/golden_brown" />
+
             </LinearLayout>
 
             <info.hoang8f.widget.FButton

@@ -73,7 +73,7 @@
                 android:id="@+id/CustomTextView04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/gray"
+                android:background="@color/gray_light"
                 android:gravity="center_vertical"
                 android:padding="5dp"
                 android:text="Booking မ်ားကုိ ( ၂ ) နာရီ အတြင္း နီးစပ္ရာ Convenience Store တြင္ ေငြေပးေခ်ပါ။ သုိ႔မဟုတ္ပါက သင္၏ Booking အလုိအေလ်ာက္ Cancel ျဖစ္သြားပါလိမ့္မည္။"
@@ -116,7 +116,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="No Booking"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                />
+                android:textColor="@color/gray" />
 
         </LinearLayout>
     </RelativeLayout>

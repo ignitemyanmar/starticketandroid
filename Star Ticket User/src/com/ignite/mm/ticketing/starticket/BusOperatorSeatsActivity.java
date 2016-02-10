@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -100,6 +101,7 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 	private TextView txt_starticket_call2;
 	private String str_operator_list;
 	private BundleListOperator obj_operator_list;
+	private Configuration config;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +111,9 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		//Show View for available Operator Names, Times, Bus classes, Prices, seats(available)
 		setContentView(R.layout.activity_show_operator_seats);
 		
+		//Check Screen Size
+        config = getResources().getConfiguration();
+        
 		//Data from SaleTicketActivity
 		Bundle bundle = getIntent().getExtras();
 		
@@ -307,7 +312,14 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 		        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
 		        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
 		        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
-		        calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+
+		        if (config.smallestScreenWidthDp >= 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp < 600){
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        }
 		        
 		        Calendar calendar = Calendar.getInstance();
 		        calendarDialog.calendar.setMinimumDate(calendar.getTime());
@@ -475,7 +487,25 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 					bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
 					bundle.putString("from_intent", from_intent);
 					
-					startActivity(new Intent(BusOperatorSeatsActivity.this, BusSelectSeatActivity.class).putExtras(bundle));
+					Integer available_seat = OperatorSeats.get(position).getPermitseatTotal() - OperatorSeats.get(position).getPermitseatSoldtotal();
+					if (available_seat > 0) {
+						startActivity(new Intent(BusOperatorSeatsActivity.this, BusSelectSeatActivity.class).putExtras(bundle));
+					}else {
+						alertDialog("Sold out of Online seats! Please call STAR TICKET (or) Change Date"
+								, "Call", "Cancel", new DialogInterface.OnClickListener() {
+									
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										callHotLine("0931166772");
+									}
+								}, new DialogInterface.OnClickListener() {
+									
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										dialog.dismiss();
+									}
+								});
+					}
 				}
 			}else if (from_intent.equals("SaleTicket")) {
 				Bundle bundle = new Bundle();
@@ -491,7 +521,25 @@ public class BusOperatorSeatsActivity extends BaseActivity{
 				bundle.putString("GoTripInfo", new Gson().toJson(goTripInfo_obj));
 				bundle.putString("from_intent", from_intent);
 				
-				startActivity(new Intent(BusOperatorSeatsActivity.this, BusSelectSeatActivity.class).putExtras(bundle));
+				Integer available_seat = OperatorSeats.get(position).getPermitseatTotal() - OperatorSeats.get(position).getPermitseatSoldtotal();
+				if (available_seat > 0) {
+					startActivity(new Intent(BusOperatorSeatsActivity.this, BusSelectSeatActivity.class).putExtras(bundle));
+				}else {
+					alertDialog("Sold out of Online seats! Please call STAR TICKET (or) Change Date"
+							, "Call", "Cancel", new DialogInterface.OnClickListener() {
+								
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									callHotLine("0931166772");
+								}
+							}, new DialogInterface.OnClickListener() {
+								
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									dialog.dismiss();
+								}
+							});
+				}
 			}
 		}
 	};

@@ -15,6 +15,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -137,6 +138,7 @@ public class SaleTicketActivity extends BaseActivity{
 	private LinearLayout layout_foreigner_price;
 	private int foreigner_price;
 	private boolean isClick = false;
+	private Configuration config;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +219,9 @@ public class SaleTicketActivity extends BaseActivity{
 	    btn_return_date.setOnClickListener(clickListener);	 
 	    radio_one_way.setOnClickListener(clickListener);
 	    radio_round_trip.setOnClickListener(clickListener);
+	    
+	  //Check Screen Size
+        config = getResources().getConfiguration();
 	}
 	
 	/**
@@ -295,7 +300,7 @@ public class SaleTicketActivity extends BaseActivity{
 		dialog.show();
 		
 		toCities = new ArrayList<String>();
-		toCities.add("Choose - To City");
+		toCities.add("Choose - Arrival City");
 		NetworkEngine.setIP("starticketmyanmar.com");
 		NetworkEngine.getInstance().getToCities("", fromCity, round_trip, new Callback<Response>() {
 			
@@ -356,7 +361,7 @@ public class SaleTicketActivity extends BaseActivity{
 						Times = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<Times>>(){}.getType());
 						
 						if (Times != null && Times.size() > 0) {
-							tripTimes.add(new Times("Choose Time (All)", "", ""));
+							tripTimes.add(new Times("All Time", "", ""));
 							tripTimes.addAll(Times);
 						}
 						
@@ -527,7 +532,15 @@ public class SaleTicketActivity extends BaseActivity{
 		        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
 		        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
 		        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
-		        calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        
+		        if (config.smallestScreenWidthDp >= 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp < 600){
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        }
+		        
 		        //calendarDialog.calendar.setFirstDayOfWeek(Calendar.THURSDAY);
 		        
 		        Calendar calendar = Calendar.getInstance();
@@ -558,7 +571,6 @@ public class SaleTicketActivity extends BaseActivity{
 					public void choose(String chooseDate) {
 						// TODO Auto-generated method stub
 						
-						
 						btn_trip_date.setText(chooseDate);
 						calendarDialog.dismiss();
 						
@@ -582,7 +594,14 @@ public class SaleTicketActivity extends BaseActivity{
 		        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
 		        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
 		        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
-		        calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+
+		        if (config.smallestScreenWidthDp >= 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp < 600){
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        }
 		        //calendarDialog.calendar.setFirstDayOfWeek(Calendar.THURSDAY);
 		        
 		        Calendar calendar = Calendar.getInstance();
@@ -682,6 +701,8 @@ public class SaleTicketActivity extends BaseActivity{
 				startActivity(new Intent(getApplicationContext(), BusBookingListActivity.class).putExtras(bundle));
 			}*/
 			if (v == img_promotion_ads) {
+				//displayPromoNoti();
+				//displayNotificationTwo();
 				startActivity(new Intent(SaleTicketActivity.this, PromotionActivity.class));
 			}
 		}
@@ -745,7 +766,7 @@ public class SaleTicketActivity extends BaseActivity{
 							startActivity(new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(bundle));
 						}else {
 							//Toast.makeText(SaleTicketActivity.this, "Sold out of Online seats!", Toast.LENGTH_SHORT).show();
-							alertDialog("Sold out of Online seats! Please call STAR TICKET (or) change date/time"
+							alertDialog("Sold out of Online seats! Please call STAR TICKET (or) Change date/time"
 									, "Call", "Cancel", new DialogInterface.OnClickListener() {
 										
 										public void onClick(DialogInterface dialog, int which) {
@@ -789,7 +810,7 @@ public class SaleTicketActivity extends BaseActivity{
 		}
 		
 		if (spn_to_trip.getSelectedItem() != null) {
-			if (spn_to_trip.getSelectedItem().toString().equals("Choose - To City")) {
+			if (spn_to_trip.getSelectedItem().toString().equals("Choose - Arrival City")) {
 				SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose Arrival City", SKToastMessage.WARNING);
 				return false;
 			}	

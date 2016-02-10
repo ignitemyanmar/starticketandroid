@@ -42,6 +42,7 @@ public class MainActivity extends BaseActivity {
 					
 					//Start another activity #SaleTicketActivity that show Trip Search
 					startActivity(new Intent(ctx, SaleTicketActivity.class));
+					//startActivity(new Intent(ctx, testactivitiy.class));
 				}
 			}
 		};

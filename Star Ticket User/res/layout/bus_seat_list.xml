@@ -81,20 +81,54 @@
                         android:visibility="visible" />
                 </LinearLayout>
 
-                <com.smk.custom.view.CustomTextView
-                    android:id="@+id/txt_notrip"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/screen_bg"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:singleLine="true"
-                    android:text="Driver"
-                    android:textColor="#FFF" />
+                    android:orientation="horizontal" >
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/CustomTextView03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="30"
+                        android:background="@drawable/screen_bg"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:singleLine="true"
+                        android:text="Driver"
+                        android:textColor="#FFF"
+                        android:visibility="invisible" />
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/CustomTextView02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="30"
+                        android:background="@drawable/screen_bg"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:singleLine="true"
+                        android:text="Driver"
+                        android:textColor="#FFF"
+                        android:visibility="invisible" />
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/txt_notrip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="30"
+                        android:background="@drawable/screen_bg"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:singleLine="true"
+                        android:text="Driver"
+                        android:textColor="#FFF" />
+
+                </LinearLayout>
 
                 <GridView
                     android:id="@+id/grid_seat"
