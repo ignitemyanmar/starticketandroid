@@ -114,6 +114,8 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 	private List<RadioGroup> lst_rdo_gp_free = new ArrayList<RadioGroup>();
 	private List<EditText> lst_ticket_no = new ArrayList<EditText>();
 	private Button btn_refresh_agent;
+	private CheckBox chk_discount;
+	private CheckBox chk_free;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -509,7 +511,9 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 		lps.setMargins(0, 10, 0, 0);
 		selectedSeat = SelectedSeatIndex.split(",");
 		Random random = new Random();
+		
 		for (int i = 0; i < selectedSeat.length; i++) {
+			
 			CustomTextView label = new CustomTextView(this);
 			label.setText(getResources().getString(R.string.str_ticket_no) + (i + 1) + " [ Seat No."
 					+ selectedSeat[i] + " ]");
@@ -518,7 +522,8 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 
 			LinearLayout layout_checkbox = new LinearLayout(this);
 
-			CheckBox chk_free = new CheckBox(this);
+			chk_free = new CheckBox(this);
+			chk_discount = new CheckBox(this);
 			chk_free.setText("Free Ticket     ");
 			lst_free_chk.add(chk_free);
 			// chk_free.setId(i+1 * 100); // For free check box of free
@@ -530,18 +535,22 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
 					// TODO Auto-generated method stub
+					
 					Integer position = (Integer) buttonView.getTag();
-					if (isChecked)
+					if (isChecked){
 						lst_layout_free_ticket.get(position).setVisibility(
 								View.VISIBLE);
-					else
+						lst_discount_chk.get(position).setEnabled(false);
+					}else{
 						lst_layout_free_ticket.get(position).setVisibility(
 								View.GONE);
+						lst_discount_chk.get(position).setEnabled(true);
+					}
+
 				}
 			});
 			layout_checkbox.addView(chk_free);
-
-			CheckBox chk_discount = new CheckBox(this);
+			
 			chk_discount.setText("Discount   ");
 			// chk_discount.setId(i+1 * 300); // For discount check box of
 			// discount.
@@ -554,13 +563,18 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 						public void onCheckedChanged(CompoundButton buttonView,
 								boolean isChecked) {
 							// TODO Auto-generated method stub
+							
 							Integer position = (Integer) buttonView.getTag();
-							if (isChecked)
+							if (isChecked){
 								lst_discount_edt.get(position).setVisibility(
 										View.VISIBLE);
-							else
+								lst_free_chk.get(position).setEnabled(false);
+							}else{
 								lst_discount_edt.get(position).setVisibility(
 										View.GONE);
+								lst_free_chk.get(position).setEnabled(true);
+							}
+
 						}
 					});
 			layout_checkbox.addView(chk_discount);
@@ -816,8 +830,9 @@ public class BusConfirmActivity extends BaseActionBarActivity {
 						SKToastMessage.showMessage(BusConfirmActivity.this,
 								getResources().getString(R.string.str_buy_success),
 								SKToastMessage.SUCCESS);
-						closeAllActivities();
-						startActivity(new Intent(getApplicationContext(),BusTripsCityActivity.class));
+						//closeAllActivities();
+						finish();
+						//startActivity(new Intent(getApplicationContext(),BusTripsCityActivity.class));
 						
 						if (dialog != null) {
 							dialog.dismissWithSuccess();

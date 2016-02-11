@@ -58,12 +58,12 @@ public class BusTimeActivity extends BaseActionBarActivity {
 	private SKConnectionDetector connectionDetector;
 	private Spinner from , to , time , operator;
 	private Button date;
-	private String selectedFromId = ""; 
-	private String selectedToId = ""; 
+	public static String selectedFromId = ""; 
+	public static String selectedToId = ""; 
 	private String selectedTime = "";
 	private String selectedOperatorId = "";
 	private String selectedAgentId = "";
-	private String selectedDate = "";	
+	public static String selectedDate = "";	
 	private  List<Time> time_list;
 	private Operators operatorList;
 	protected List<City> cities;
@@ -321,9 +321,9 @@ public class BusTimeActivity extends BaseActionBarActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_confirm, menu);
 		
-		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+		if (NetworkEngine.getIp().equals(getResources().getString(R.string.str_operator_khonepine))) {
 			MenuItem item = menu.findItem(R.id.action_booking_noti);
-			item.setVisible(false);
+			//item.setVisible(false);
 			this.invalidateOptionsMenu();
 		}else {
 			SharedPreferences notify = getSharedPreferences("NotifyBooking",

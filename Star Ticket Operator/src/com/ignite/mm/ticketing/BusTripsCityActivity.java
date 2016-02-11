@@ -1,53 +1,46 @@
 package com.ignite.mm.ticketing;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
-import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.application.BaseActionBarActivity;
-import com.ignite.mm.ticketing.application.CalendarDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
-import com.ignite.mm.ticketing.application.DeviceUtil;
 import com.ignite.mm.ticketing.application.MCrypt;
+import com.ignite.mm.ticketing.application.NewCalendarDialog;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.TripsCityAdapter;
-import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
 import com.ignite.mm.ticketing.sqlite.database.model.TripsCollection;
-import com.smk.calender.widget.SKCalender;
-import com.smk.calender.widget.SKCalender.Callbacks;
+import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
+import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
-public class BusTripsCityActivity extends BaseActionBarActivity{
+@SuppressLint("NewApi") public class BusTripsCityActivity extends BaseActionBarActivity{
 	private GridView grd_trips_city;
 	private ZProgressHUD dialog;
 	private int NofColumn;
 	private String selectedDate;
+	private Configuration config;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +68,11 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 			getNotiBooking();
 		}else{
 			skDetector.showErrorMessage();
-			fadeData();
+			//fadeData();
 		}
 		
+		//Check Screen Size
+        config = getResources().getConfiguration();
 	}
 	
 	private void fadeData(){
@@ -159,9 +154,9 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_confirm, menu);
-		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+		if (NetworkEngine.getIp().equals(getResources().getString(R.string.str_operator_khonepine))) {
 			MenuItem item = menu.findItem(R.id.action_booking_noti);
-			item.setVisible(false);
+			//item.setVisible(false);
 			this.invalidateOptionsMenu();
 		}
 		this.menu = menu;
@@ -191,7 +186,52 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 
 		public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,
 				long arg3) {
-			final SKCalender skCalender = new SKCalender(BusTripsCityActivity.this);
+			
+	        final NewCalendarDialog calendarDialog = new NewCalendarDialog(BusTripsCityActivity.this);
+	        
+	        calendarDialog.txt_calendar_title.setText(R.string.str_calendar_title);
+	        calendarDialog.calendar.setShowOtherDates(true);
+	      //  calendarDialog.calendar.setArrowColor(getResources().getColor(R.color.sample_primary));
+	        calendarDialog.calendar.setLeftArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_back));
+	        calendarDialog.calendar.setRightArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_forward));
+	        calendarDialog.calendar.setSelectionColor(getResources().getColor(R.color.golden_brown));
+	        calendarDialog.calendar.setHeaderTextAppearance(R.style.TextAppearance_AppCompat_Large);
+	        calendarDialog.calendar.setWeekDayTextAppearance(R.style.CustomWeekDayTextAppearance);
+	        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
+	        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
+	        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
+	        
+	        if (config.smallestScreenWidthDp >= 700) {
+	        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+	        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+	        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+	        }else if (config.smallestScreenWidthDp < 600){
+	        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+	        }
+	        
+	        //calendarDialog.calendar.setCurrentDate(todayDate);
+			calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
+				
+				private Date today;
+				public void choose(String chooseDate) {
+					// TODO Auto-generated method stub
+		        	
+					Bundle bundle = new Bundle();
+					bundle.putString("from_id", tripsCollections.get(arg2).getFrom_id());
+					bundle.putString("to_id", tripsCollections.get(arg2).getTo_id());
+					bundle.putString("from", tripsCollections.get(arg2).getFrom());
+					bundle.putString("to", tripsCollections.get(arg2).getTo());
+					bundle.putString("date", chooseDate);
+					startActivity(new Intent(getApplicationContext(), BusTimeActivity.class).putExtras(bundle));
+					
+					calendarDialog.dismiss();
+					
+				}
+			});
+			
+			calendarDialog.show();
+			
+/*			final SKCalender skCalender = new SKCalender(BusTripsCityActivity.this);
 			
 			  skCalender.setCallbacks(new Callbacks() {
 
@@ -218,23 +258,7 @@ public class BusTripsCityActivity extends BaseActionBarActivity{
 			        }
 			  });
 
-			skCalender.show();
-			
-			/*CalendarDialog calendarDialog = new CalendarDialog(BusTripsCityActivity.this);
-			calendarDialog.setOnCallbacksListener(new CalendarDialog.Callbacks() {
-				
-				public void choose(String selectedDate) {
-					// TODO Auto-generated method stub
-		        	Bundle bundle = new Bundle();
-					bundle.putString("from_id", tripsCollections.get(arg2).getFrom_id());
-					bundle.putString("to_id", tripsCollections.get(arg2).getTo_id());
-					bundle.putString("from", tripsCollections.get(arg2).getFrom());
-					bundle.putString("to", tripsCollections.get(arg2).getTo());
-					bundle.putString("date", selectedDate);
-					startActivity(new Intent(getApplicationContext(), BusTimeActivity.class).putExtras(bundle));	
-				}
-			});*/
-			
+			skCalender.show();*/
 		}
 	};
 }

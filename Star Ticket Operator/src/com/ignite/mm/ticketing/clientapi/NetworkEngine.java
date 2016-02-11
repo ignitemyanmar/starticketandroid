@@ -5,8 +5,11 @@ import retrofit.RestAdapter;
 
 public class NetworkEngine {
 	static INetworkEngine instance;
+	//public static String ip = "elite.starticketmyanmar.com";
+	//public static String ip = "lumbini.starticketmyanmar.com";
+	public static String ip = "mdm.starticketmyanmar.com";
 	//public static String ip = "192.168.1.101";
-	public static String ip = "lumbini.starticketmyanmar.com";
+	//public static String ip = "192.168.1.175";
 	
 	public static RequestInterceptor requestInterceptor = new RequestInterceptor() {
 	  public void intercept(RequestFacade request) {

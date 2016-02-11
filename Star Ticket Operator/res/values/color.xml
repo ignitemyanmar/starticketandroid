@@ -9,17 +9,21 @@
     <color name="gray">#CCCCCC</color>
     <color name="black">#000000</color>
     <color name="dark_blue">#22409A</color>
+    
+    <color name="transparent_blue">#8C22409A</color>
     <color name="red">#FF0000</color>
     <color name="orange">#FF9408</color>
+    
     <color name="transparent_dark_green">#CC01AEBF</color>
     <color name="transparent_dark_blue">#CC22409A</color>
-    <color name="yellow">#FFFE80</color>
+    <color name="yellow">#FFC400</color>
     <color name="accent">#00783B</color>   
     <color name="accent_dark">#F4B33D</color> 
     <color name="primary">#BF4017</color>
     <color name="primary_dark">#BF4017</color>
     <color name="black_overlay">#66000000</color>
     <color name="blue">#304f9f</color>
+    <color name="blue_light">#4460a8</color>
     <color name="orange2">#FF9800</color>
     <color name="custom_header_text">#85B100</color>
     <color name="custom_selected">#A8D324</color>

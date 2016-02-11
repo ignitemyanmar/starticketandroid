@@ -31,6 +31,8 @@ public class Seat_list {
 	@Expose
 	private String operatorgroup_name;
 	@Expose
+	private String nationality;
+	@Expose
 	private CustomerInfo customer_info;
 	
 	public Seat_list(Integer id, String seat_no, Integer status) {
@@ -153,6 +155,15 @@ public class Seat_list {
 		this.salecheck = salecheck;
 	}
 
+	
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
 	@Override
 	public String toString() {
 		return "Seat_list [id=" + id + ", seat_no=" + seat_no + ", status="
@@ -163,7 +174,8 @@ public class Seat_list {
 				+ ", operatorgroup_id=" + operatorgroup_id
 				+ ", operatorgroup_color=" + operatorgroup_color
 				+ ", operatorgroup_name=" + operatorgroup_name
-				+ ", customer_info=" + customer_info + "]";
+				+ ", nationality=" + nationality + ", customer_info="
+				+ customer_info + "]";
 	}
 
 	

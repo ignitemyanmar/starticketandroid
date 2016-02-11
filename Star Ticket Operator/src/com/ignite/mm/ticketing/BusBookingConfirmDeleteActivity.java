@@ -1,13 +1,6 @@
 package com.ignite.mm.ticketing;
 
-import org.json.JSONObject;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +10,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.ignite.mm.ticketing.application.BaseActionBarActivity;
 import com.ignite.mm.ticketing.sqlite.database.model.CreditOrder;
-import com.smk.skalertmessage.SKToastMessage;
 
 public class BusBookingConfirmDeleteActivity extends BaseActionBarActivity {
 	private TextView actionBarTitle;

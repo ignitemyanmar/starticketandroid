@@ -100,7 +100,7 @@ JNIEXPORT jstring JNICALL Java_com_ignite_mm_ticketing_application_SecureParam_g
  * Signature: ()Ljava/lang/String;
  */
  JNIEXPORT jstring JNICALL Java_com_ignite_mm_ticketing_application_SecureParam_editSeatInfoParam
-  (JNIEnv *, jobject, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring);
+  (JNIEnv *, jobject, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring, jstring);
 
 /*
  * Class:     SecureParam

@@ -21,10 +21,12 @@ public class EnterIPDialog{
 	private Callback mCallback;
 	private AutoCompleteTextView edt_ip;
 	private MaterialDialog dialog;
+	private Context context;
 
 	public EnterIPDialog(Context context) {
 		// TODO Auto-generated constructor stub
 		
+		this.context = context;
 		View view = View.inflate(context, R.layout.dialog_ip, null);
 		dialog = new MaterialDialog.Builder(context)
         .title("Enter IP Address")
@@ -35,18 +37,31 @@ public class EnterIPDialog{
 		edt_ip = (AutoCompleteTextView) view.findViewById(R.id.edt_ip);
 		edt_ip.setText(NetworkEngine.ip);
 		List<String> lists = new ArrayList<String>();
-		lists.add("lumbini.starticketmyanmar.com");
-		lists.add("192.168.1.101");
 		
-		lists.add("elite.starticketmyanmar.com");
 		lists.add("mdm.starticketmyanmar.com");
-		lists.add("shwemandalar.starticketmyanmar.com");
-		lists.add("myatmandalartun.starticketmyanmar.com");
+		lists.add("192.168.1.101");
+/*		lists.add("elite.starticketmyanmar.com");
 		lists.add("arkartha.starticketmyanmar.com");
+		lists.add("asiadragon.starticketmyanmar.com");
 		lists.add("asiaexpress.starticketmyanmar.com");
+		lists.add("aungyadanar.starticketmyanmar.com");
+		lists.add("baganprince.starticketmyanmar.com");
+		lists.add("boss.starticketmyanmar.com");
+		lists.add("dmt.starticketmyanmar.com");
+		lists.add("goldenstar.starticketmyanmar.com");
+		lists.add("highclass.starticketmyanmar.com");
+		lists.add("jj.starticketmyanmar.com");
+		lists.add("lumbini.starticketmyanmar.com");
 		lists.add("moekaungkin.starticketmyanmar.com");
+		lists.add("myatmandalartun.starticketmyanmar.com");
+		lists.add("okexpress.starticketmyanmar.com");
+		lists.add("shwemanthu.starticketmyanmar.com");
+		lists.add("shwemandalar.starticketmyanmar.com");
+		lists.add("shwemyanmar.starticketmyanmar.com");
+		lists.add("shwepharsi.starticketmyanmar.com");
+		lists.add("shwesinsk.starticketmyanmar.com");
 		lists.add("toeyadanar.starticketmyanmar.com");
-		
+		lists.add("yoeyoelay.starticketmyanmar.com");*/
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, lists);
 		edt_ip.setAdapter(adapter);
@@ -59,11 +74,6 @@ public class EnterIPDialog{
 		
 	}
 	
-	
-	
-	
-	
-		
 	private View.OnClickListener clickListener = new View.OnClickListener() {
 		
 		public void onClick(View v) {

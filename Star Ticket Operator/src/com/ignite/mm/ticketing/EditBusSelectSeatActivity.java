@@ -298,6 +298,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		});
 	}
 	
+	/**
+	 * Khone Pine pay the (Give Own Seat to other agents) 
+	 * 
+	 */
 	private void postCloseSeat(){
 		
 		//Log.i("", "Agent list: "+agentList.toString());
@@ -365,6 +369,10 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 		
 	}
 	
+	/**
+	 * Take 
+	 * 
+	 */
 	private void postOpenSeat(){
 		if(SelectedSeat.length() > 0){
 			dialog = new ZProgressHUD(this);
@@ -602,7 +610,7 @@ public class EditBusSelectSeatActivity extends BaseActionBarActivity{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_edit_selectseat, menu);
-		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || AppLoginUser.getUserRole().equals("7"))
+		if (AppLoginUser.getUserRole().equals("7"))
 		
 		{
 			MenuItem item = menu.findItem(R.id.action_delete);

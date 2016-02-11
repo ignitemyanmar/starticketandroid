@@ -42,7 +42,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 
 	private PagerSlidingTabStrip tabs;
     private ViewPager pager;
-    private BusSeatFragmentPagerAdapter adapter;
+    public static BusSeatFragmentPagerAdapter adapter;
 	private int NotifyBooking;
 	private String AgentID;
 	public static String OperatorID;
@@ -82,6 +82,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 			FromCity = bundle.getString("from_city_id");
 			ToCity = bundle.getString("to_city_id");
 			From = bundle.getString("from_city");
+			
 			To = bundle.getString("to_city");
 			Classes = bundle.getString("class_id");
 			Time = bundle.getString("time");
@@ -127,7 +128,7 @@ public class BusSeatViewPagerActivity extends BaseActionBarActivity{
 		app_login_user = AppLoginUser;
 		
 		if (AllTimeList != null && AllTimeList.size() > 0) {
-			adapter = new BusSeatFragmentPagerAdapter(getSupportFragmentManager(), AllTimeList, app_login_user.getUserRole());
+			adapter = new BusSeatFragmentPagerAdapter(getSupportFragmentManager(), AllTimeList, app_login_user.getUserRole(), app_login_user.getUserID(), app_login_user.getAccessToken());
 		}
         
         pager.setAdapter(adapter);

@@ -26,6 +26,8 @@ import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.BusBookingListActivity;
 import com.ignite.mm.ticketing.BusConfirmActivity;
 import com.ignite.mm.ticketing.BusSeatViewPagerActivity;
+import com.ignite.mm.ticketing.BusTimeActivity;
+import com.ignite.mm.ticketing.BusTripsCityActivity;
 import com.ignite.mm.ticketing.EditBusSelectSeatActivity;
 import com.ignite.mm.ticketing.R;
 import com.ignite.mm.ticketing.R.menu;
@@ -37,7 +39,11 @@ import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.http.connection.HttpConnection;
+import com.ignite.mm.ticketing.sqlite.database.model.Agent;
+import com.ignite.mm.ticketing.sqlite.database.model.AgentList;
+import com.ignite.mm.ticketing.sqlite.database.model.AllTimeBundleListObject;
 import com.ignite.mm.ticketing.sqlite.database.model.BusSeat;
+import com.ignite.mm.ticketing.sqlite.database.model.ConfirmSeat;
 import com.ignite.mm.ticketing.sqlite.database.model.ReturnComfrim;
 import com.ignite.mm.ticketing.sqlite.database.model.Seat;
 import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
@@ -49,6 +55,8 @@ import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 import com.thuongnh.zprogresshud.ZProgressHUD;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -72,29 +80,40 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
+@SuppressLint("HandlerLeak") public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 
 	private static List<Time> allTimeList = new ArrayList<Time>();
 	private int mCount = 0;
+	private static String userId;
+	private static String accessToken;
 	public static LinearLayout layout_sale_booking;
 	public static String userRole;
 	
-    public BusSeatFragmentPagerAdapter(FragmentManager fm, List<Time> timelist, String userRole) {
+    public BusSeatFragmentPagerAdapter(FragmentManager fm, List<Time> timelist, String userRole, String userId, String accessToken) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 	        if(timelist != null && timelist.size() > 0){
 	        	mCount = timelist.size();
 	        	allTimeList = timelist;
 	        	this.userRole = userRole;
+	        	this.userId = userId;
+	        	this.accessToken = accessToken;
 	        }
 	}
 
@@ -103,6 +122,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
         return allTimeList.get(position).getTime()+"("+allTimeList.get(position).getBus_class()+") "
         		+allTimeList.get(position).getTotal_sold_seat()+"/"+allTimeList.get(position).getTotal_seat();
     }
+    
 
     @Override
     public int getCount() {
@@ -157,6 +177,8 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     	private View rootView;
 		private FrameLayout loading;
 		private String from_old_sale;
+		private String sale_order_no;
+		private List<SelectSeat> seats;
     	
     	public static BusSelectSeatFragment newInstance(int position) {
     		BusSelectSeatFragment frag = new BusSelectSeatFragment();
@@ -242,7 +264,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		from_old_sale = old_sale_btn.getString("fromButton", "");
     		
     		//If Lumbini Server (or) if sale check, Not allow to click CheckOut button + Booking Button
-    		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || userRole.equals("7")) {
+    		if (userRole.equals("7")) {
     			btn_check_out.setEnabled(false);
     			btn_now_booking.setEnabled(false);
 			}else {
@@ -271,7 +293,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		inflater.inflate(R.menu.activity_bus_selectseat, menu);
     		
     		//If Lumbini Server (or) Sale Check , Hide booking list button
-    		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com") || userRole.equals("7")) {
+    		if (userRole.equals("7")) {
     			MenuItem item = menu.findItem(R.id.action_booking);
     			item.setVisible(false);
     			this.hasOptionsMenu();
@@ -339,9 +361,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			
     		if(connectionDetector.isConnectingToInternet())
     		{ 	
-    			/*dialog = new ZProgressHUD(getActivity());
-    			dialog.setCancelable(true);
-    			dialog.show();*/
+    			getTime();
     			getSeatPlan();
     		}else{
     			connectionDetector.showErrorMessage();
@@ -353,8 +373,6 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		loading.setVisibility(View.VISIBLE);
     		
     		Log.i("", "mPosition from getSeatPlan: "+mPosition);
-    		
-    		
     		
     		String param = MCrypt.getInstance().encrypt(SecureParam.getSeatPlanParam(BusSeatViewPagerActivity.app_login_user.getAccessToken()
     				, BusSeatViewPagerActivity.OperatorID, allTimeList.get(mPosition).getTripid(), BusSeatViewPagerActivity.FromCity
@@ -389,14 +407,60 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		});
     	}
     	
+    	private AllTimeBundleListObject bundleAllTimes;
+		protected ArrayList<Time> time_morning_list;
+		protected ArrayList<Time> time_evening_list;
+    	
+    	private void getTime() {
+    		String param = MCrypt.getInstance().encrypt(SecureParam.getTimesParam(accessToken, userId, BusTimeActivity.selectedFromId
+    				, BusTimeActivity.selectedToId, BusTimeActivity.selectedDate));
+    		NetworkEngine.getInstance().getAllTime(param, new Callback<Response>() {
+
+    			public void success(Response arg0, Response arg1) {
+    				// TODO Auto-generated method stub
+    				time_morning_list = new ArrayList<Time>();
+    				time_evening_list = new ArrayList<Time>();
+    				
+    				List<Time> times = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<Time>>() {}.getType());
+    				
+    				for(Time time: times){
+    					if(time.getTime().toLowerCase().contains("am")){
+    						time_morning_list.add(time);
+    					}else{
+    						time_evening_list.add(time);
+    					}
+    				}
+    				
+    				//Put All Times into bundle object to send to BusSelectSeatActivity
+    				bundleAllTimes = new AllTimeBundleListObject();
+    				for (int i = 0; i < time_morning_list.size(); i++) {
+    					bundleAllTimes.getAllTimes().add(time_morning_list.get(i));
+    				}
+    				for (int i = 0; i < time_evening_list.size(); i++) {
+    					bundleAllTimes.getAllTimes().add(time_evening_list.get(i));
+    				}
+    				
+    				allTimeList.addAll(bundleAllTimes.getAllTimes());
+    				//getPageTit
+    			}
+    			
+    			public void failure(RetrofitError arg0) {
+    				
+    				//do something
+    				
+    			}
+    		});
+    	}
+    	
     	public void postSale() {
     		
     		if (getActivity() != null) {
     			dialog = new ZProgressHUD(getActivity());
+    			dialog.setMessage("pls wait...");
         		dialog.show();
 			}
     		
-    		List<SelectSeat> seats = new ArrayList<SelectSeat>();
+    		seats = new ArrayList<SelectSeat>();
     		
     		String[] selectedSeat = SelectedSeat.split(",");
     		
@@ -410,6 +474,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
 					}
 				}
     			
+    			//Add All trip id, seat no.
     			seats.add(new SelectSeat(BusSeats.get(0).getSeat_plan().get(0)
     					.getId(), BusSeats.get(0).getSeat_plan().get(0)
     					.getSeat_list().get(selectSeat)
@@ -426,7 +491,9 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		} else if (AgentID.length() == 0) {
     			AgentID = "0";
     		}
-    		Log.i("","Hello "+"op:"+ BusSeatViewPagerActivity.OperatorID+",ag"+ AgentID+",cname:"+ CustName+",cphone:"+ CustPhone+",rmkt:"+ RemarkType+",rmk:"+ Remark);
+    		
+    		Log.i("","Hello "+"op:"+ BusSeatViewPagerActivity.OperatorID+",ag"+ BusSeatViewPagerActivity.app_login_user.getUserID()+",cname:"+ CustName+",cphone:"+ CustPhone+",rmkt:"+ RemarkType+",rmk:"+ Remark);
+    		
     		String param = MCrypt.getInstance().encrypt(
     				SecureParam.postSaleParam(
     						BusSeatViewPagerActivity.app_login_user.getAccessToken(),
@@ -444,7 +511,9 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     						DeviceUtil.getInstance(getActivity()).getID(), 
     						isBooking.toString(),
     						"false", isBooking.toString().equals("1") ? BusSeatViewPagerActivity.app_login_user.getLoginUserID().toString() : "0"));
+    		
     		Log.i("","Hello param : "+ param);
+    		
     		List<NameValuePair> params = new ArrayList<NameValuePair>();
     		params.add(new BasicNameValuePair("param", param));
     		final Handler handler = new Handler() {
@@ -455,6 +524,9 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     				Log.i("ans:", "Server Response: " + jsonData);
     				try {
     					JSONObject jsonObject = new JSONObject(jsonData);
+    					
+    					//status 1 is seat exist, 0 is hidden (no seat)
+    					//can buy status is available seat
     					if (jsonObject.getString("status").equals("1")) {
     						if (jsonObject.getBoolean("can_buy")
     								&& jsonObject.getString("device_id").equals(
@@ -464,8 +536,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     							//Buy
     							if (isBooking == 0) {
     								Intent nextScreen = new Intent(
-    										getActivity(),
-    										BusConfirmActivity.class);
+    										getActivity(), BusConfirmActivity.class);
     								JSONArray jsonArray = jsonObject
     										.getJSONArray("tickets");
     								String SeatLists = "";
@@ -488,20 +559,54 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     								nextScreen.putExtras(bundle);
     								startActivity(nextScreen);
     							} else {
-    								//Booking
-    								SKToastMessage.showMessage(
+    								//If booking == 1, Make Booking
+    								/*SKToastMessage.showMessage(
     										getActivity(),
     										"Booking Success",
     										SKToastMessage.SUCCESS);
     								isBooking = 0;
-    								getSeatPlan();
+    								getSeatPlan();*/
+    								
+    								sale_order_no = jsonObject.getString("sale_order_no");
+    								
+    								if (dialog != null) {
+        								dialog.dismiss();
+    								}
+    								
+    	    						bookingDialog = new BookingDialog(getActivity(), BusSeatViewPagerActivity.agentList, select_seats);
+    	    						bookingDialog.setCallbackListener(new BookingDialog.Callback() {
+
+    	    							public void onCancel() {
+    	    								// TODO Auto-generated method stub
+    	    								
+    	    							}
+
+    	    							public void onSave(String agentId, String custName,
+    	    									String custPhone, int remarkType, String remark) {
+    	    								// TODO Auto-generated method stub
+    	    								isBooking = 1;
+    	    								AgentID = agentId;
+    	    								CustName = custName;
+    	    								CustPhone = custPhone;
+    	    								RemarkType = remarkType;
+    	    								Remark = remark;
+    	    								if(!AgentID.equals("0")){
+    	    									//Give tripId, orderId to update booking
+    	    									confirmBooking();
+    	    								}else {
+												Toast.makeText(getActivity(), "Choose Agent Name", Toast.LENGTH_SHORT).show();
+											}
+    	    							}
+    	    						});
     							}
 
     							if (dialog != null) {
-    								dialog.dismissWithSuccess();
+    								dialog.dismiss();
 								}
     							
     						} else {
+    							//Can't buy cuz of another person gets your seats.
+    							isBooking = 0;
     							
     							if (dialog != null) {
     								dialog.dismissWithFailure();
@@ -515,6 +620,7 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     							getSeatPlan();
     						}
     					} else {
+    						//Can't buy cuz of status is not 1
     						isBooking = 0;
     						
     						if (dialog != null) {
@@ -534,7 +640,116 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		HttpConnection lt = new HttpConnection(handler, "POST",
     				"http://"+NetworkEngine.ip+"/sale", params);
     		lt.execute();
+    	}
+    	
+    	/**
+    	 * Give Customer Info + Agent Names into Booking
+    	 */
+    	private void confirmBooking() {
+    		dialog = new ZProgressHUD(getActivity());
+    		dialog.setMessage("pls wait...");
+    		dialog.show();
+    		
+    		List<ConfirmSeat> seats = new ArrayList<ConfirmSeat>();
+    		String[] selectedSeat = SelectedSeat.split(",");
+    		
+    		for (int i = 0; i < selectedSeat.length; i++) {
+    			
+    			Integer selectSeat = 0;
+    			
+    			if (selectedSeat[i] != null) {
+					if (!selectedSeat[i].equals("")) {
+						selectSeat = Integer.valueOf(selectedSeat[i]);
+					}
+				}
+    			
+    			seats.add(new ConfirmSeat(BusSeats.get(0).getSeat_plan().get(0)
+    					.getId(), BusSeats.get(0).getSeat_plan().get(0)
+    					.getSeat_list().get(selectSeat)
+    					.getSeat_no().toString(),
+    					CustName, "", "", false,
+    					"", ""));
+    		}
+    		
+    		SharedPreferences pref_old_sale = getActivity()
+    				.getSharedPreferences("old_sale", Activity.MODE_PRIVATE);
+    		String working_date = pref_old_sale.getString("working_date", null);
 
+    		SharedPreferences pref = getActivity()
+    				.getSharedPreferences("User", Activity.MODE_PRIVATE);
+    		
+    		String accessToken = pref.getString("access_token", null);
+    		String user_id = pref.getString("user_id", null);
+    		String user_type = pref.getString("user_type", null);
+    		
+    		/*if (user_type.equals("agent")) {
+    			AgentID = user_id;
+    		}*/
+			
+    		String param = MCrypt.getInstance()
+    				.encrypt(
+    						SecureParam.postSaleConfirmParam(BusSeatViewPagerActivity.app_login_user.getAccessToken()
+    								, sale_order_no,
+    								"",
+    								AgentID, "",
+    								CustName, CustPhone, "",
+    								String.valueOf(RemarkType), Remark, "", MCrypt.getInstance().encrypt(seats.toString()),
+    								"1",
+    								"local",
+    								working_date,
+    								DeviceUtil.getInstance(getActivity()).getID(),
+    								isBooking.toString(), BusSeatViewPagerActivity.app_login_user.getLoginUserID()));
+
+    		List<NameValuePair> params = new ArrayList<NameValuePair>();
+    		params.add(new BasicNameValuePair("param", param));
+
+    		Log.i("", "Hello Params (confirm booking):" + param);
+    		
+    		final Handler handler = new Handler() {
+
+    			public void handleMessage(Message msg) {
+
+    				String jsonData = msg.getData().getString("data");
+    				
+    				try {
+    					Log.i("", "Hello Response :" + jsonData);
+    					JSONObject jsonObj = new JSONObject(jsonData);
+    					
+    					//If can not book, not same device id
+    					if (!jsonObj.getBoolean("status")
+    							&& jsonObj.getString("device_id").equals(
+    									DeviceUtil.getInstance(getActivity()).getID())) {
+    						SKToastMessage
+    						.showMessage(getActivity(),
+    								getResources().getString(R.string.str_cannot_buy_msg),
+    								SKToastMessage.ERROR);
+    						
+    						if (dialog != null) {
+    							dialog.dismissWithFailure();
+    						}
+    						
+    					} else {
+    						//If can book
+							SKToastMessage.showMessage(getActivity(),
+							"Booking Success",
+							SKToastMessage.SUCCESS);
+							
+							isBooking = 0;
+							getSeatPlan();
+    						
+							if (dialog != null) {
+    							dialog.dismissWithSuccess();
+    						}
+    					}
+    				} catch (JSONException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+    			}
+    		};
+    		HttpConnection lt = new HttpConnection(handler, "POST",
+    				"http://"+NetworkEngine.ip+"/sale/comfirm", params);
+    		lt.execute();
     	}
     	
     	private void getData() {
@@ -622,15 +837,24 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     		}
     	}
     	protected EditSeatDialog editSeatDialog;
+    	
     	private BusSeatAdapter.Callbacks callbacks = new BusSeatAdapter.Callbacks() {
     		
     		public void onClickEdit(final Seat_list list) {
     			// TODO Auto-generated method stub
-    			editSeatDialog = new EditSeatDialog(getActivity(), userRole);
+    			editSeatDialog = new EditSeatDialog(getActivity(), userRole, BusSeatViewPagerActivity.agentList);
     			editSeatDialog.setName(list.getCustomerInfo().getName());
     			editSeatDialog.setPhone(list.getCustomerInfo().getPhone());
     			editSeatDialog.setNRC(list.getCustomerInfo().getNrcNo());
     			editSeatDialog.setTicketNo(list.getCustomerInfo().getTicketNo());
+    			editSeatDialog.setDiscount(String.valueOf(list.getDiscount()));
+    			editSeatDialog.setAgent(String.valueOf(list.getCustomerInfo().getAgentName()));
+    			editSeatDialog.setAgentId(String.valueOf(list.getCustomerInfo().getAgentId()));
+    			editSeatDialog.setRemarkType(list.getRemark_type());
+    			editSeatDialog.setRemark(list.getRemark());
+    			editSeatDialog.setFreeTicket(list.getFree_ticket());
+    			editSeatDialog.setFreeTicketRemark(list.getFree_ticket_remark());
+    			editSeatDialog.setNationality(list.getNationality());
     			editSeatDialog.setCallbackListener(new EditSeatDialog.Callback() {
     				
     				private ProgressDialog dialog1;
@@ -638,8 +862,32 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     				public void onEdit() {
     					dialog = new ZProgressHUD(getActivity());
     					// TODO Auto-generated method stub
+    					String remark;
+    					String freeTicket;
+    					
+    					if (editSeatDialog.getRemarkType() == 0) {
+							remark = "";
+						}else {
+							remark = editSeatDialog.getRemark(); 
+						}
+    					
+    					if (editSeatDialog.getFreeTicket() == 0) {
+							freeTicket = "";
+						}else{
+							freeTicket = editSeatDialog.getFreeTicket().toString();
+						}
+						
+
     			        String param = MCrypt.getInstance().encrypt(SecureParam.editSeatInfoParam(BusSeatViewPagerActivity.app_login_user.getAccessToken(), BusSeats.get(0).getSeat_plan().get(0).getId().toString()
-    			        		, BusSeatViewPagerActivity.Date, list.getSeat_no(), editSeatDialog.getName(), editSeatDialog.getPhone(), editSeatDialog.getNRC(), editSeatDialog.getTicketNo()));
+    			        		, BusSeatViewPagerActivity.Date, list.getSeat_no(), editSeatDialog.getName()
+    			        		, editSeatDialog.getPhone(), editSeatDialog.getNRC(), editSeatDialog.getTicketNo()
+    			        		, editSeatDialog.getAgentId(), editSeatDialog.getDiscount()
+    			        		, editSeatDialog.getRemarkType().toString()
+    			        		, remark, freeTicket
+    			        		, editSeatDialog.getFreeTicketRemark(), editSeatDialog.getNationality()));
+    			        
+    			        Log.i("", "Param update seat: "+param);
+    			        
     					NetworkEngine.getInstance().editSeatInfo(param,
     							new Callback<Response>() {
 
@@ -801,28 +1049,14 @@ public class BusSeatFragmentPagerAdapter extends FragmentPagerAdapter{
     			    			
     			    		}
     			    		
-    						bookingDialog = new BookingDialog(getActivity(), BusSeatViewPagerActivity.agentList, select_seats);
-    						bookingDialog.setCallbackListener(new BookingDialog.Callback() {
-
-    							public void onCancel() {
-    								// TODO Auto-generated method stub
-    								
-    							}
-
-    							public void onSave(String agentId, String custName,
-    									String custPhone, int remarkType, String remark) {
-    								// TODO Auto-generated method stub
-    								isBooking = 1;
-    								AgentID = agentId;
-    								CustName = custName;
-    								CustPhone = custPhone;
-    								RemarkType = remarkType;
-    								Remark = remark;
-    								if(!AgentID.equals("0")){
-    									postSale();
-    								}	
-    							}
-    						});
+    			    		//Seat Reserve to Operator Server after clicking Booking button
+    			    		isBooking = 1;
+							AgentID = "";
+							CustName = "";
+							CustPhone = "";
+							RemarkType = 0;
+							Remark = "";
+							postSale();
     					}else{
     						connectionDetector.showErrorMessage();
     					}

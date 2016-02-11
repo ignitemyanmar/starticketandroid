@@ -39,7 +39,7 @@ public class SecureParam {
 	public static native String getBookingOrderParam(String token, String op_id, String d_date, String from, String to, String times, String b_code);
 	
 	// Declare native method
-	public static native String editSeatInfoParam(String token, String id, String date, String seat, String name, String ph, String nrc, String ticket);
+	public static native String editSeatInfoParam(String token, String id, String date, String seat, String name, String ph, String nrc, String ticket, String agentId, String discount, String remarkType, String remark, String freeTicket, String freeTicketRemark, String national);
 	
 	// Declare native method
 	public static native String deleteTicketParam(String token, String id,String date, String seat,String user);

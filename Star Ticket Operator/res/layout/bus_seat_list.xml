@@ -367,8 +367,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5px"
                 android:layout_weight="1"
-                android:background="@color/accent_dark"
                 android:text="ဝယ္ယူမည္"
+                android:background="@color/yellow"
                 android:textStyle="bold"
                 android:visibility="visible" />
 

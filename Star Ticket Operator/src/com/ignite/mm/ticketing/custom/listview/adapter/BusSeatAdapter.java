@@ -180,7 +180,7 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 	            		
 	            		if (list.get(position).getCustomerInfo().getOwner() != null) {
 	            			if (list.get(position).getCustomerInfo().getOwner() == 1) {
-		            			holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.m_green));
+		            			holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.white));
 							}else {
 								holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.white));
 							}
@@ -194,9 +194,11 @@ import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 	        				Log.i("", "Remark name: "+list.get(position).getRemark());
 	        				
 	        				if (list.get(position).getRemark_type() == 1) {
-	        					holder.txt_seating_no.setBackgroundResource(R.color.m_violet);
+	        					//If any remark is present, change m_violet color to blue_transparent updated at 11Jan2016
+	        					holder.txt_seating_no.setBackgroundResource(R.color.transparent_blue);
 							}else {
-								holder.txt_seating_no.setBackgroundResource(R.color.orange2);
+								//If any remark is not present, change orange2 color to blue_transparent updated at 11Jan2016
+								holder.txt_seating_no.setBackgroundResource(R.color.transparent_blue);
 							}
 	        			}
 	        			

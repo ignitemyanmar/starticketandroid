@@ -9,14 +9,17 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,21 +34,25 @@ import com.ignite.mm.ticketing.application.BaseActionBarActivity;
 import com.ignite.mm.ticketing.application.BookingCodeDialog;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.application.MCrypt;
+import com.ignite.mm.ticketing.application.NewCalendarDialog;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
+import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
+import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.smk.calender.widget.SKCalender;
 import com.smk.calender.widget.SKCalender.Callbacks;
 import com.smk.skalertmessage.SKToastMessage;
 import com.smk.skconnectiondetector.SKConnectionDetector;
 
-public class BusMenuActivity extends BaseActionBarActivity {
+@SuppressLint("NewApi") public class BusMenuActivity extends BaseActionBarActivity {
 	private LinearLayout btn_sale_ticket;
 	private LinearLayout btn_order;
 	private LinearLayout btn_old_sale;
 	private LinearLayout btn_all_booking;
 	private LinearLayout btn_search_code;
 	private TextView txt_sale;
-	
+	private Date todayDate;
+	private Configuration config;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +80,12 @@ public class BusMenuActivity extends BaseActionBarActivity {
 			btn_old_sale.setVisibility(View.GONE);
 			btn_order.setVisibility(View.GONE);
 			btn_search_code.setVisibility(View.GONE);
-		}else if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+		}else if (NetworkEngine.getIp().equals(getResources().getString(R.string.str_operator_khonepine))) {
 			
-			txt_sale.setText(getResources().getString(R.string.str_khonekyi_khonepaing));
-			btn_old_sale.setVisibility(View.GONE);
-			btn_order.setVisibility(View.GONE);
-			btn_search_code.setVisibility(View.GONE);
+			//txt_sale.setText(getResources().getString(R.string.str_khonekyi_khonepaing));
+			//btn_old_sale.setVisibility(View.GONE);
+			//btn_order.setVisibility(View.GONE);
+			//btn_search_code.setVisibility(View.GONE);
 			
 		}else {
 			btn_old_sale.setVisibility(View.VISIBLE);
@@ -98,6 +105,12 @@ public class BusMenuActivity extends BaseActionBarActivity {
 			getNotiBooking();
 		}
 		
+		Calendar cal = Calendar.getInstance();
+		todayDate = cal.getTime();
+		
+        //Check Screen Size
+        config = getResources().getConfiguration();
+		
 	}
 	
 	private OnClickListener clickListener = new OnClickListener() {
@@ -116,7 +129,51 @@ public class BusMenuActivity extends BaseActionBarActivity {
 			}
 			
 			if(v == btn_order){
-				final SKCalender skCalender = new SKCalender(BusMenuActivity.this);
+				
+		        final NewCalendarDialog calendarDialog = new NewCalendarDialog(BusMenuActivity.this);
+		        
+		        calendarDialog.txt_calendar_title.setText(R.string.str_calendar_title);
+		        calendarDialog.calendar.setShowOtherDates(true);
+		        calendarDialog.calendar.setCurrentDate(todayDate);
+		        calendarDialog.calendar.setDuplicateParentStateEnabled(true);
+		        calendarDialog.calendar.setLeftArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_back));
+		        calendarDialog.calendar.setRightArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_forward));
+		        calendarDialog.calendar.setSelectionColor(getResources().getColor(R.color.golden_brown));
+		        calendarDialog.calendar.setHeaderTextAppearance(R.style.TextAppearance_AppCompat_Large);
+		        calendarDialog.calendar.setWeekDayTextAppearance(R.style.CustomWeekDayTextAppearance);
+		        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
+		        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
+		        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
+		        
+		        if (config.smallestScreenWidthDp >= 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp < 600){
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        }
+		        
+				calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
+					
+					private Date today;
+					public void choose(String chooseDate) {
+						// TODO Auto-generated method stub
+			        	
+			        	SharedPreferences sharedPreferences = getSharedPreferences("order",MODE_PRIVATE);
+						SharedPreferences.Editor editor = sharedPreferences.edit();
+						editor.clear();
+						editor.commit();
+						editor.putString("order_date", chooseDate);
+						editor.commit();
+			        	startActivity(new Intent(getApplicationContext(),	BusBookingListActivity.class));	
+						
+						calendarDialog.dismiss();
+					}
+				});
+				
+				calendarDialog.show();
+				
+/*				final SKCalender skCalender = new SKCalender(BusMenuActivity.this);
 				
 				  skCalender.setCallbacks(new Callbacks() {
 
@@ -147,11 +204,78 @@ public class BusMenuActivity extends BaseActionBarActivity {
 				        }
 				  });
 
-				skCalender.show();
+				skCalender.show();*/
 			}
 			
 			if(v == btn_old_sale){
-				final SKCalender skCalender = new SKCalender(BusMenuActivity.this);
+				
+				
+		        final NewCalendarDialog calendarDialog = new NewCalendarDialog(BusMenuActivity.this);
+		        
+		        calendarDialog.txt_calendar_title.setText(R.string.str_calendar_title2);
+		        
+		        calendarDialog.calendar.setShowOtherDates(true);
+		      //  calendarDialog.calendar.setArrowColor(getResources().getColor(R.color.sample_primary));
+		        calendarDialog.calendar.setLeftArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_back));
+		        calendarDialog.calendar.setRightArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_forward));
+		        calendarDialog.calendar.setSelectionColor(getResources().getColor(R.color.golden_brown));
+		        calendarDialog.calendar.setHeaderTextAppearance(R.style.TextAppearance_AppCompat_Large);
+		        calendarDialog.calendar.setWeekDayTextAppearance(R.style.CustomWeekDayTextAppearance);
+		        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
+		        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
+		        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
+		        
+		        if (config.smallestScreenWidthDp >= 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp < 600){
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        }
+		        
+		        //calendarDialog.calendar.setCurrentDate(todayDate);
+		        
+				calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
+					
+					private Date today;
+					public void choose(String chooseDate) {
+						// TODO Auto-generated method stub
+						Date today = null;
+			        	Date formatedDate = null;
+						try {
+							Log.i("","Hello Choose Date : "+ chooseDate);
+							formatedDate = new SimpleDateFormat("yyyy-MM-dd").parse(chooseDate);
+							today = new SimpleDateFormat("yyyy-MM-dd").parse(getToday());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						int compare = today.compareTo(formatedDate);
+						Log.i("","Hello Compare : "+ compare);
+						if(compare > 0){
+						
+				        	String selectedDate = DateFormat.format("yyyy-MM-dd",formatedDate).toString();
+				        	
+				        	SharedPreferences sharedPreferences = getSharedPreferences("old_sale",MODE_PRIVATE);
+							SharedPreferences.Editor editor = sharedPreferences.edit();
+							editor.clear();
+							editor.commit();
+							editor.putString("working_date", selectedDate);
+							editor.putString("fromButton", "old_sale");
+							editor.commit();
+				        	startActivity(new Intent(getApplicationContext(), BusTripsCityActivity.class));
+						}else{
+							SKToastMessage.showMessage(BusMenuActivity.this, "Must be less than today!.", SKToastMessage.ERROR);
+						}
+						
+						calendarDialog.dismiss();
+					}
+				});
+				
+				calendarDialog.show();
+				
+/*				final SKCalender skCalender = new SKCalender(BusMenuActivity.this);
 				
 				  skCalender.setCallbacks(new Callbacks() {
 						public void onChooseDate(String chooseDate) {
@@ -187,7 +311,7 @@ public class BusMenuActivity extends BaseActionBarActivity {
 				        }
 				  });
 
-				skCalender.show();
+				skCalender.show();*/
 			}
 			
 			if(v == btn_all_booking){
@@ -269,9 +393,9 @@ public class BusMenuActivity extends BaseActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_bus_confirm, menu);
-		if (NetworkEngine.getIp().equals("lumbini.starticketmyanmar.com")) {
+		if (NetworkEngine.getIp().equals(getResources().getString(R.string.str_operator_khonepine))) {
 			MenuItem item = menu.findItem(R.id.action_booking_noti);
-			item.setVisible(false);
+			//item.setVisible(false);
 			this.invalidateOptionsMenu();
 		}
 		this.menu = menu;

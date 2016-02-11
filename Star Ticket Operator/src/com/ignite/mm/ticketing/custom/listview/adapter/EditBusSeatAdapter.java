@@ -135,8 +135,10 @@ public class EditBusSeatAdapter extends BaseAdapter{
             		
             		if (list.get(position).getCustomerInfo().getOwner() != null) {
             			if (list.get(position).getCustomerInfo().getOwner() == 1) {
-	            			holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.m_green));
+            				
+	            			holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.white));
 						}else {
+							
 							holder.txt_agent.setTextColor(_context.getResources().getColor(R.color.white));
 						}
 					}
@@ -146,9 +148,11 @@ public class EditBusSeatAdapter extends BaseAdapter{
         			if(list.get(position).getRemark_type() != 0 || list.get(position).getDiscount() > 0 || list.get(position).getFree_ticket() > 0 ){
         				
         				if (list.get(position).getRemark_type() == 1) {
-        					holder.txt_seating_no.setBackgroundResource(R.color.m_violet);
+        					//If any remark is present, change m_violet color to blue_transparent updated at 28Jan2016
+        					holder.txt_seating_no.setBackgroundResource(R.color.transparent_blue);
 						}else {
-							holder.txt_seating_no.setBackgroundResource(R.color.orange2);
+							//If any remark is not present, change orange2 color to blue_transparent updated at 28Jan2016
+							holder.txt_seating_no.setBackgroundResource(R.color.transparent_blue);
 						}
         			}
             	}else{

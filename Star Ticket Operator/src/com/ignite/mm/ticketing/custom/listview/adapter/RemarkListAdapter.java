@@ -7,6 +7,7 @@ import com.ignite.mm.ticketing.R;
 import com.ignite.mm.ticketing.sqlite.database.model.Seat_list;
 
 import android.app.Activity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,12 +55,23 @@ public class RemarkListAdapter extends BaseAdapter{
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
-		if(hasKey == 8)
-			holder.txt_remark.setText("Discounted: "+ getItem(position).getDiscount()+" Kyats ["+getItem(position).getCustomerInfo().getAgentName()+"]");
-		else if(hasKey == 9)
+		
+		if(hasKey == 8){
+			if (getItem(position).getCustomerInfo().getOwner() != null) {
+				
+				if (getItem(position).getCustomerInfo().getOwner() == 1) {
+					
+					
+					holder.txt_remark.setText(Html.fromHtml("Discounted: "+ getItem(position).getDiscount()+" Kyats [ "+"<big><font color = blue>"+getItem(position).getCustomerInfo().getAgentName()+"</font></big>"+" ]"));
+				}else {
+					holder.txt_remark.setText(Html.fromHtml("Discounted: "+ getItem(position).getDiscount()+" Kyats [ "+"<big><font color = black>"+getItem(position).getCustomerInfo().getAgentName()+"</font></big>"+" ]"));
+				}
+			}
+		}else if(hasKey == 9){
 			holder.txt_remark.setText("For "+ getItem(position).getFree_ticket_remark());
-		else
+		}else{
 			holder.txt_remark.setText(getItem(position).getRemark());
+		}
 		
 		holder.txt_seat_no.setText("Seat No. = "+ getItem(position).getSeat_no().toString());
 		

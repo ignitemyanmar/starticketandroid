@@ -279,7 +279,7 @@ using namespace std;
  * Signature: ()Ljava/lang/String;
  */
  JNIEXPORT jstring JNICALL Java_com_ignite_mm_ticketing_application_SecureParam_editSeatInfoParam
-  (JNIEnv * env, jobject pObj, jstring token, jstring id, jstring date, jstring seat, jstring name, jstring ph, jstring nrc, jstring ticket){
+  (JNIEnv * env, jobject pObj, jstring token, jstring id, jstring date, jstring seat, jstring name, jstring ph, jstring nrc, jstring ticket, jstring agentid, jstring dis, jstring remarkt, jstring rmark, jstring free, jstring freeremark, jstring nation){
   		
 	stringstream stream;
 
@@ -291,8 +291,15 @@ using namespace std;
 	const char *phone = env->GetStringUTFChars(ph, JNI_FALSE);
 	const char *nrc_no = env->GetStringUTFChars(nrc, JNI_FALSE);
 	const char *ticket_no = env->GetStringUTFChars(ticket, JNI_FALSE);
+	const char *agent_id = env->GetStringUTFChars(agentid, JNI_FALSE);
+	const char *discount = env->GetStringUTFChars(dis, JNI_FALSE);
+	const char *remark_type = env->GetStringUTFChars(remarkt, JNI_FALSE);
+	const char *remark = env->GetStringUTFChars(rmark, JNI_FALSE);
+	const char *free_ticket = env->GetStringUTFChars(free, JNI_FALSE);
+	const char *free_ticket_remark = env->GetStringUTFChars(freeremark, JNI_FALSE);
+	const char *nationality = env->GetStringUTFChars(nation, JNI_FALSE);
 
-	stream << "{\"access_token\":\""<<access_token<<"\",\"trip_id\":\""<<trip_id<<"\",\"date\":\""<<departure_date<<"\",\"seat_no\":\""<<seat_no<<"\",\"customer_name\":\""<<customer_name<<"\",\"phone\":\""<<phone<<"\",\"nrc_no\":\""<<nrc_no<<"\",\"ticket_no\":\""<<ticket_no<<"\"}";
+	stream << "{\"access_token\":\""<<access_token<<"\",\"trip_id\":\""<<trip_id<<"\",\"date\":\""<<departure_date<<"\",\"seat_no\":\""<<seat_no<<"\",\"customer_name\":\""<<customer_name<<"\",\"phone\":\""<<phone<<"\",\"nrc_no\":\""<<nrc_no<<"\",\"ticket_no\":\""<<ticket_no<<"\",\"agent_id\":\""<<agent_id<<"\",\"discount\":\""<<discount<<"\",\"remark_type\":\""<<remark_type<<"\",\"remark\":\""<<remark<<"\",\"free_ticket\":\""<<free_ticket<<"\",\"free_ticket_remark\":\""<<free_ticket_remark<<"\",\"nationality\":\""<<nationality<<"\"}";
 
 	string result = stream.str();
 

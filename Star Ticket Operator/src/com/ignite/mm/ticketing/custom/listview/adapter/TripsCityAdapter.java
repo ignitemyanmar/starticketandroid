@@ -6,6 +6,7 @@ import com.ignite.mm.ticketing.R;
 import com.ignite.mm.ticketing.sqlite.database.model.TripsCollection;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class TripsCityAdapter extends BaseAdapter {
 		return arg0;
 	}
 
+	@SuppressWarnings("deprecation")
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder = null;
 		if (convertView == null) {
@@ -51,6 +53,15 @@ public class TripsCityAdapter extends BaseAdapter {
 		}else{
 			//holder.TripCity.setBackgroundColor(aty.getResources().getColor(R.color.transparent_dark_blue));
 		}
+		
+		//If Naypyidaw and Tatkone is started, change color 
+		if (getItem(position).getFrom().startsWith("Naypyidaw") || getItem(position).getFrom().startsWith("Tatkone")) {
+			//holder.TripCity.setTextColor(aty.getResources().getColor(R.color.black));
+			holder.TripCity.setBackgroundDrawable(aty.getResources().getDrawable(R.drawable.bg_trip_item_blue));
+		}else {
+			holder.TripCity.setBackgroundDrawable(aty.getResources().getDrawable(R.drawable.bg_trip_item));
+		}
+		
 		holder.TripCity.setText(getItem(position).getFrom()+" - "+getItem(position).getTo());
 		return convertView;
 	}

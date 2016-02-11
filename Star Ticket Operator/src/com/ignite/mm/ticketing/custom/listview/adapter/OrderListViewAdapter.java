@@ -52,6 +52,7 @@ public class OrderListViewAdapter extends BaseAdapter {
         	holder.txt_booking_no= (TextView)convertView.findViewById(R.id.txt_booking_no);
         	holder.txt_booking_user= (TextView)convertView.findViewById(R.id.txt_booking_user);
         	holder.txt_date_time= (TextView)convertView.findViewById(R.id.txt_date_time);
+        	holder.txt_seat_no= (TextView)convertView.findViewById(R.id.txt_seat_no);
         	
         	convertView.setTag(holder);
 		}else{
@@ -70,6 +71,19 @@ public class OrderListViewAdapter extends BaseAdapter {
 		holder.txt_booking_no.setText(getItem(position).getId());
 		holder.txt_booking_user.setText(getItem(position).getBooking_user());
 		
+		String SeatLists = "";
+		for(int i=0; i<getItem(position).getSaleitems().size(); i++){
+			if (i == getItem(position).getSaleitems().size() - 1) {
+				SeatLists += getItem(position).getSaleitems().get(i).getSeatNo();
+			}else {
+				SeatLists += getItem(position).getSaleitems().get(i).getSeatNo()+",";
+			}
+			
+		}
+		
+		holder.txt_seat_no.setText(SeatLists);
+		
+		
 		return convertView;
 	}
 	static class ViewHolder {
@@ -79,6 +93,6 @@ public class OrderListViewAdapter extends BaseAdapter {
 		TextView trip;
 		TextView date;
 		TextView total_ticket;
-		TextView amount, txt_booking_no, txt_booking_user, txt_date_time;
+		TextView amount, txt_booking_no, txt_booking_user, txt_date_time, txt_seat_no;
 	}
 }

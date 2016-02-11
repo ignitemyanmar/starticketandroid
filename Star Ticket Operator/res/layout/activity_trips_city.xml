@@ -16,10 +16,12 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
         </android.support.v7.widget.Toolbar>
+
     <GridView
         android:id="@+id/grd_trips_city"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:listSelector="@color/transparent"
         android:numColumns="2" >
 
     </GridView>

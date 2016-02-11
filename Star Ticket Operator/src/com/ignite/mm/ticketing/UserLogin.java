@@ -50,6 +50,7 @@ public class UserLogin extends ActionBarActivity {
 	private ZProgressHUD dialog;
 	// private String UserEmail, UserPassword;
 	private SKConnectionDetector connectionDetector;
+	private String title;
 
 	public static boolean isSkip = false;
 
@@ -58,10 +59,28 @@ public class UserLogin extends ActionBarActivity {
 
 		setContentView(R.layout.activity_login);
 		
+		String ip;
+		ip = getResources().getString(R.string.str_operator_khonepine);
+		
+		switch (ip) {
+		case "mdm.starticketmyanmar.com":
+			title = "Mandalar Min";
+			break;
+		case "lumbini.starticketmyanmar.com":
+			title = "Lumbini";
+			break;
+		case "shwemanthu.starticketmyanmar.com":
+			title = "Shwe Man Thu";
+			break;
+		default:
+			title = "User's Login";
+			break;
+		}
+		
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            toolbar.setTitle("User's Login");
+            toolbar.setTitle(title);
             this.setSupportActionBar(toolbar);
         }
 
@@ -121,10 +140,7 @@ public class UserLogin extends ActionBarActivity {
 
 					public void failure(RetrofitError arg0) {
 						// TODO Auto-generated method stub
-						if (dialog != null) {
-							dialog.dismissWithFailure();
-						}
-						
+						Log.i("", "fail ....."+arg0.getCause());
 						if (arg0.getResponse() != null) {
 							if (arg0.getResponse().getStatus() == 400) {
 								SKToastMessage
@@ -134,6 +150,16 @@ public class UserLogin extends ActionBarActivity {
 												SKToastMessage.ERROR);
 							}
 						}
+						
+						SKToastMessage
+						.showMessage(
+								UserLogin.this,
+								"Check Email or Password",
+								SKToastMessage.ERROR);
+						
+						if (dialog != null) {
+							dialog.dismissWithFailure();
+						}
 					}
 
 					public void success(Response arg0, Response arg1) {
@@ -142,6 +168,8 @@ public class UserLogin extends ActionBarActivity {
 						if (dialog != null) {
 							dialog.dismissWithSuccess();
 						}
+						
+						//Log.i("", " ....."+arg0.toString());
 						
 						AccessToken _token = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<AccessToken>() {}.getType());
 						LoginUser user = new LoginUser(UserLogin.this);

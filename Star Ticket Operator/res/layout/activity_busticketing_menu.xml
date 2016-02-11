@@ -138,7 +138,7 @@
                         android:src="@drawable/credit_list" />
 
                     <com.smk.custom.view.CustomTextView
-                        android:id="@+id/CustomTextView01"
+                        android:id="@+id/CustomTextView01999"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center_horizontal"
-                android:text="Version: 2.3.2"
+                android:text="@string/str_app_version"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <LinearLayout
