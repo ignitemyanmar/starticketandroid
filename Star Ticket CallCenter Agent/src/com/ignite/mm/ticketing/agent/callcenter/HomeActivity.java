@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -32,6 +33,10 @@ public class HomeActivity extends ActionBarActivity{
 	private String userRole;
 	private TextView txt_book_by_user;
 	private Button btn_sale_by_tripDate;
+	private Button btn_delivery_list;
+	private TextView txt_delivery;
+	private TextView txt_khoneat;
+	private Button btn_agent_seats_booking;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,7 @@ public class HomeActivity extends ActionBarActivity{
 			userRole = bundle.getString("userRole");
 		}
 		
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -62,13 +67,23 @@ public class HomeActivity extends ActionBarActivity{
 			}
 		});
 		actionBarTitle.setText("Menu");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
+		
+		setContentView(R.layout.activity_home);
+		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Menu");
+            this.setSupportActionBar(toolbar);
+        }
 
 		
 		//Check Screen Size
-		Configuration config = getResources().getConfiguration();
+		//Configuration config = getResources().getConfiguration();
        
-		setContentView(R.layout.activity_home);
+		
 		
 		/*//For Tablet
 		if (config.smallestScreenWidthDp >= 600) {
@@ -77,20 +92,32 @@ public class HomeActivity extends ActionBarActivity{
 			//setContentView(R.layout.activity_home_phone);
 		}*/
 		
+        btn_agent_seats_booking = (Button)findViewById(R.id.btn_agent_seats_booking);
 		btn_sale_tickets = (Button)findViewById(R.id.btn_sale_tickets);
 		btn_book_confirm = (Button)findViewById(R.id.btn_book_confirm);
 		btn_book_confirm_user = (Button)findViewById(R.id.btn_book_confirm_user);
 		txt_book_by_user = (TextView)findViewById(R.id.txt_book_by_user);
-		
-		btn_sale_by_tripDate = (Button)findViewById(R.id.btn_sale_by_tripDate);
+		btn_delivery_list = (Button)findViewById(R.id.btn_delivery_list);
+		btn_sale_by_tripDate = (Button)findViewById(R.id.btn_khoneat);
+		txt_delivery = (TextView)findViewById(R.id.txt_delivery);
+		txt_khoneat = (TextView)findViewById(R.id.txt_khoneat);
 		
 		Log.i("", "role : "+userRole+", user name: "+login_name);
 		
 		if (userRole != null) {
+			//If Agents
 			if (Integer.valueOf(userRole) <= 3) {
 				//For Agent
 				txt_book_by_user.setVisibility(View.GONE);
 				btn_book_confirm_user.setVisibility(View.GONE);
+				
+				txt_delivery.setVisibility(View.GONE);
+				btn_delivery_list.setVisibility(View.GONE);
+				
+				txt_khoneat.setVisibility(View.GONE);
+				btn_sale_by_tripDate.setVisibility(View.GONE);
+				
+				btn_agent_seats_booking.setVisibility(View.GONE);
 			}
 		}
 		//btn_book_confirm_user.setText("Reservation Confirm ("+login_name+")");
@@ -141,5 +168,31 @@ public class HomeActivity extends ActionBarActivity{
 				startActivity(new Intent(getApplicationContext(), SaleByTripDateActivity.class));
 			}
 		});
+		
+		btn_delivery_list.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(getApplicationContext(), DeliveryActivity.class));
+			}
+		});
+		
+		btn_agent_seats_booking.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(getApplicationContext(), AgentSeatsBookingActivity.class));
+			}
+		});
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

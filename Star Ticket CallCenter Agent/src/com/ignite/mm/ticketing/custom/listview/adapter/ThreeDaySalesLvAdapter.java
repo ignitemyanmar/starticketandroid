@@ -51,7 +51,8 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 			holder = new ViewHolder();
 			
         	convertView = mInflater.inflate(R.layout.list_item_threeday_sales, null);
-        	        	
+        	
+        	holder.txt_booking_user = (TextView)convertView.findViewById(R.id.txt_booking_user);
         	holder.txt_seller_name = (TextView)convertView.findViewById(R.id.txt_seller_name);
         	holder.txt_sale_date = (TextView) convertView.findViewById(R.id.txt_sale_date);
         	holder.txt_customer_name = (TextView) convertView.findViewById(R.id.txt_customer_name);
@@ -67,12 +68,20 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
+		if (getItem(position).getBookinguser() != null) {
+			if (getItem(position).getBookinguser().equals(getItem(position).getSeller())) {
+				holder.txt_booking_user.setText("-");
+			}else {
+				holder.txt_booking_user.setText(getItem(position).getBookinguser().getName());
+			}
+		}
+		
 		holder.txt_seller_name.setText(getItem(position).getSeller().getName());
 		holder.txt_sale_date.setText("Sale Date :  "+getItem(position).getDate());
 		holder.txt_customer_name.setText(getItem(position).getCustomerName()+" ["+getItem(position).getCustomerPhone()+"]");
 		holder.txt_trip_operator.setText(getItem(position).getTrip()+" ["+getItem(position).getOperator()+"]");
 		holder.txt_trip_date_time_class.setText(getItem(position).getDepartureDate()+" - "
-				+getItem(position).getTime()+"] "+getItem(position).getClass_()+" ["+getItem(position).getPrice()+" Ks]");
+				+getItem(position).getTime()+" "+getItem(position).getClass_()+" ["+getItem(position).getPrice()+" Ks]");
 		holder.txt_seats.setText(getItem(position).getSeatNo());
 		//holder.txt_price.setText("Price :  "+getItem(position).getPrice()+" Ks");
 		holder.txt_amount.setText(getItem(position).getTotalAmount()+" Ks");
@@ -103,7 +112,7 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 				bundle.putString("total_amount", getItem(position).getTotalAmount());
 				bundle.putString("Passengers", getItem(position).getPassengers());
 				bundle.putString("operatorPhone", getItem(position).getOperator_phone());
-				
+				bundle.putString("random_tickets", getItem(position).getTicketNo());
 				showVoucher.putExtras(bundle);
 				aty.startActivity(showVoucher);
 			}
@@ -114,7 +123,7 @@ public class ThreeDaySalesLvAdapter extends BaseAdapter{
 	
 	static class ViewHolder {
 		TextView txt_sale_date, txt_customer_name, txt_trip_operator, txt_trip_date_time_class, txt_seats, txt_price, txt_amount;
-		TextView txt_seller_name;
+		TextView txt_seller_name, txt_booking_user;
 		Button btn_print;
 	}
 }

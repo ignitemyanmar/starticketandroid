@@ -3,35 +3,47 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/golden_brown_light"
-            android:gravity="center" >
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="3dp" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/txt_operator_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:gravity="left|center_vertical"
-                android:padding="3dp"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_khoneat_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="-"
+                android:textColor="@color/primary_dark" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView07"
@@ -68,7 +80,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/cccccccccccccccc"
@@ -105,7 +118,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView01"
@@ -142,7 +156,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView02"
@@ -179,7 +194,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView03"
@@ -214,7 +230,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView04"
@@ -244,13 +261,16 @@
                 android:layout_weight="0"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0" >
+            android:layout_weight="0"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/xxxxxxxxxxxx"
@@ -280,7 +300,7 @@
                 android:layout_weight="0"
                 android:text="-"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black" />
+                android:textColor="@color/primary_dark" />
         </LinearLayout>
 
         <com.smk.custom.view.CustomTextView
@@ -288,13 +308,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:background="@color/white"
             android:text="Price: - Ks"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
 
             <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView05"
@@ -331,6 +353,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="50"
+            android:background="@color/white"
             android:gravity="right"
             android:padding="10dp"
             android:visibility="gone" >
@@ -339,8 +362,9 @@
         <View
             android:id="@+id/view1"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/golden_brown" />
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -107,7 +108,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	private LinearLayout extra_city_container;
 	private Spinner sp_extra_city;
 	private List<ExtraCity> extraCity;
-	protected String ExtraCityID = "0";
+	private String ExtraCityID = "0";
 	private Integer NotifyBooking;
 	private TextView actionBarNoti;
 	private EditText edt_remark;
@@ -146,6 +147,11 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	protected String SelectedAgentCodeNo;
 	private String[] ticketArray;
 	private TextView txt_agentTitle;
+	private RadioButton radio_local_price;
+	private RadioButton radio_foreign_price;
+	private String local_price;
+	private String foreign_price;
+	private LinearLayout layout_price;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -153,7 +159,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nrc_activity);
 
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
@@ -167,9 +173,11 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		actionBarBack.setOnClickListener(clickListener);
 		actionBarNoti = (TextView) actionBar.getCustomView().findViewById(R.id.txt_notify_booking);
 		actionBarNoti.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);		
-		
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/		
+        
 		connectionDetector = new ConnectionDetector(this);
+		
+		starTicketAgents = new ArrayList<StarTicketAgents>();
 		
 		SharedPreferences notify = getSharedPreferences("NotifyBooking", Context.MODE_PRIVATE);
 		NotifyBooking = notify.getInt("count", 0);
@@ -195,9 +203,20 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 			}
 		}
 		
-		actionBarTitle.setText(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        	toolbar.setTitleTextAppearance(BusConfirmActivity.this, android.R.attr.textAppearanceSmall);
+        	toolbar.setSubtitleTextAppearance(BusConfirmActivity.this, android.R.attr.textAppearanceSmall);
+        	toolbar.setTitle(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
+    		toolbar.setSubtitle(bundle.getString("date")+" ["+bundle.getString("time")+"] "+bundle.getString("classes"));
+            this.setSupportActionBar(toolbar);
+        }
+        
+		//actionBarTitle.setText(bundle.getString("from_to")+" ["+bundle.getString("Operator_Name")+"]");
 		Log.i("", "Date: "+bundle.getString("date"));
-		actionBarTitle2.setText(bundle.getString("date")+" ["+bundle.getString("time")+"] "+bundle.getString("classes"));
+		//actionBarTitle2.setText(bundle.getString("date")+" ["+bundle.getString("time")+"] "+bundle.getString("classes"));
 		SelectedSeatIndex = bundle.getString("selected_seat");
 		
 		SaleOrderNo = bundle.getString("sale_order_no");
@@ -209,6 +228,8 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		permit_access_token = bundle.getString("permit_access_token");
 		permit_ip = bundle.getString("permit_ip");
 		
+		local_price = bundle.getString("Price");
+		foreign_price = bundle.getString("ForeignPrice");
 		
 		Log.i("", "Permit_agent_id : "+Permit_agent_id);
 		
@@ -240,6 +261,22 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		edt_remark = (EditText) findViewById(R.id.edt_remark);
 		
 		txt_agentTitle = (TextView) findViewById(R.id.txt_agentTitle);
+		
+		layout_price = (LinearLayout)findViewById(R.id.layout_price);
+		radio_local_price = (RadioButton)findViewById(R.id.radio_local_price);
+		radio_foreign_price = (RadioButton)findViewById(R.id.radio_foreign_price);
+		
+		if (local_price != null && foreign_price != null) {
+			if (!local_price.equals("") && !foreign_price.equals("")) {
+				 if (Integer.valueOf(local_price) > 0 && Integer.valueOf(foreign_price) > 0) {
+					 if (!local_price.equals(foreign_price)) {
+							layout_price.setVisibility(View.VISIBLE);
+							radio_local_price.setText(getResources().getString(R.string.str_local)+" "+local_price+" Ks");
+							radio_foreign_price.setText(getResources().getString(R.string.str_foreign)+" "+foreign_price+" Ks");
+						}
+				}
+			}
+		}
 		
 		//edt_buyer.setText(Name);
 		//edt_phone.setText(Phone);
@@ -574,18 +611,29 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 			
 			user_type = pref2.getString("user_type", null);
 			
-			//Get Star Ticket's Agents and Extra City 
+			//Get Star Ticket's Agents and Extra City
+			//If Agent Log in
 			if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
 				//For Agents
 				dialog = ProgressDialog.show(this, "", "Please wait...", true);
 				dialog.setCancelable(true);
 				
-				txt_agentTitle.setVisibility(View.GONE);
-				spn_starticket_agents.setVisibility(View.GONE);
+				txt_agentTitle.setVisibility(View.VISIBLE);
+				spn_starticket_agents.setVisibility(View.VISIBLE);
+				
+				StarTicketAgents agent = new StarTicketAgents();
+				agent.setName(AppLoginUser.getUserName());
+				agent.setCodeNo(AppLoginUser.getCodeNo());
+				
+				Log.i("", "log in user: "+AppLoginUser.getUserName()+", code: "+AppLoginUser.getCodeNo());
+				
+				starTicketAgents.add(agent);
+				spn_starticket_agents.setAdapter(new StarTicketAgentAdapter(
+						BusConfirmActivity.this, starTicketAgents));
 				
 				getExtraDestination();
 			}else {
-				
+				//If Call Center log in
 				txt_agentTitle.setVisibility(View.VISIBLE);
 				spn_starticket_agents.setVisibility(View.VISIBLE);
 				
@@ -608,10 +656,18 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		selectedSeat = SelectedSeatIndex.split(",");
 		ticketArray = ticket_nos.split(",");
 		
+		Log.i("", "random ticket no: "+ticket_nos);
+
 		Random random = new Random();
 		for (int i = 0; i < selectedSeat.length; i++) {
 			CustomTextView label = new CustomTextView(this);
-			label.setText("လက္ မွတ္ နံပါတ္   "+(i+1)+" [ Seat No."+ selectedSeat[i] +" ]");
+			
+			if (ticketArray.length > 0) {
+				label.setText("လက္ မွတ္ နံပါတ္  "+(i+1)+" [Seat No."+ selectedSeat[i] +"],["+ticketArray[i].toString()+"]");
+			}else {
+				label.setText("လက္ မွတ္ နံပါတ္  "+(i+1)+" [Seat No."+ selectedSeat[i] +"],[-]");
+			}
+			
 			label.setTextSize(18f);
 		   // forgot_pswrd.setOnTouchListener(this);
 			//LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -722,7 +778,6 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 			// ticket_no.setId(i+1);
 			lst_ticket_no.add(ticket_no);
 			ticket_no.setSingleLine(true);
-			ticket_no.setBackgroundResource(R.drawable.apptheme_edit_text_holo_light);
 			layout_ticket_no_container.addView(ticket_no, lps);
 		}
 		
@@ -752,8 +807,6 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		
 		extraCity = new ArrayList<ExtraCity>();
 		extraCity.add(new ExtraCity("0", "0", "0", "0", "0", "Select Extra City", "", ""));
-		
-		starTicketAgents = new ArrayList<StarTicketAgents>();
 		
 	}
 	
@@ -803,6 +856,8 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 					}
 					
 					getExtraDestination();
+				}else {
+					Log.i("", "Agent list: "+arg0.toString());
 				}
 			}
 		});
@@ -903,8 +958,6 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			// TODO Auto-generated method stub
-			if (arg2 > 0) {
-				
 				if (arg2 > 0) {
 					ExtraCityID = extraCity.get(arg2).getId();
 					ExtraCityName = extraCity.get(arg2).getCity_name();
@@ -913,9 +966,8 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 				}else {
 					ExtraCityID = "0";
 					ExtraCityName = "";
+					edt_remark.setText("");
 				}
-				
-			}
 		}
 
 		public void onNothingSelected(AdapterView<?> arg0) {
@@ -930,6 +982,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 
 	protected String TicketLists = "";
 	private String[] typeTicketArray;
+	protected String foreign_price_server;
 	
 	private void comfirmOrder() {
 		dialog = ProgressDialog.show(this, "", " Please wait...", true);
@@ -937,6 +990,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 		
 		Log.i("", "Ticket no: "+ticket_nos);
 		
+		//Enter Star Ticket Nos.
 		for(int i=0; i<selectedSeat.length; i++){
 			if (i == selectedSeat.length - 1) {
 				TicketLists += lst_ticket_no.get(i).getText().toString();
@@ -1009,9 +1063,12 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 				", Local or Foreign: "+rdo_local.isChecked()+
 				", Order date: "+
 				", Device id: "+DeviceUtil.getInstance(this).getID()+
-				", isbooking: "+"0");
+				", isbooking: "+"0"+
+				", agent code no: "+SelectedAgentCodeNo+
+				", user id: "+AppLoginUser.getId());
 		
-		//Do Encrypt of Params				
+		//Do Encrypt of Params		
+		//In remark type para, put selected agent name
 		String param = MCrypt.getInstance()
 				.encrypt(
 				SecureParam.postSaleConfirmParam(permit_access_token
@@ -1019,12 +1076,12 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 				, Permit_agent_id, auto_txt_agent.getText().toString()
 				, edt_buyer.getText().toString()
 				, edt_phone.getText().toString(), edt_nrc_no.getText().toString()
-				, "0", edt_remark.getText().toString()
+				, SelectedAgentCodeNo, edt_remark.getText().toString()
 				, ExtraCityID.toString(),  MCrypt.getInstance()
 				.encrypt(seats.toString())
 				, rdo_cash_down.isChecked() == true ? "1" : "2"
-				, rdo_local.isChecked() == true ? "local" : "foreign"
-				, "0", DeviceUtil.getInstance(this).getID(), "0",String.valueOf(AppLoginUser.getId())));
+				, radio_local_price.isChecked() == true ? "local" : "foreign"
+				, "", DeviceUtil.getInstance(this).getID(), "0",String.valueOf(AppLoginUser.getId())));
 				
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("param", param));
@@ -1077,7 +1134,8 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 							//Store Sale Data into Online Sale Database
 							JSONArray arr = orderObj.getJSONArray("saleitems");
 							JSONObject obj = arr.getJSONObject(0);
-							ticket_price = obj.getString("price");								
+							ticket_price = obj.getString("price");
+							foreign_price_server = obj.getString("foreign_price");
 							
 							Log.i("", "Ticket List to online: "+TicketLists);
 								
@@ -1093,11 +1151,16 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 								bundle.putString("from_intent", "booking");								
 							}
 							
+							if (radio_foreign_price.isChecked()) {
+								ticket_price = foreign_price_server;
+							}
+							
 							bundle.putString("extra_city", ExtraCityName);
 							bundle.putString("ticket_price", ticket_price);
 							bundle.putString("total_amount", total_amount);
 							bundle.putString("TicketNo", TicketLists);
 							bundle.putString("operatorPhone", operatorPhone);
+							bundle.putString("random_tickets", ticket_nos);
 							
 							startActivity(new Intent(BusConfirmActivity.this, PDFBusActivity.class).putExtras(bundle));
 							dialog.dismiss();
@@ -1128,6 +1191,7 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 	
 	/**
 	 *  Store saled-data into Online Sale Database (starticketmyanmar.com)
+	 *  
 	 */
 	protected void postOnlineSale(final String ticketNoString) {
 		// TODO Auto-generated method stub
@@ -1416,6 +1480,16 @@ public class BusConfirmActivity extends BaseSherlockActivity {
 			alertDialog.show();
 		}
 		// super.onBackPressed();
-
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		onBackPressed();
+		//finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

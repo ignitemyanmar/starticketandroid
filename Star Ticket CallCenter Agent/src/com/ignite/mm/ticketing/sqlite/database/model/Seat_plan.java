@@ -25,6 +25,8 @@ public class Seat_plan {
 	@Expose
 	private Integer price;
 	@Expose
+	private Integer foreign_price;
+	@Expose
 	private Integer operator_id;
 	@Expose
 	private Integer seat_layout_id;
@@ -168,6 +170,16 @@ public class Seat_plan {
 	public void setSeat_list(List<Seat_list> seat_list) {
 	this.seat_list = seat_list;
 	}
+	
+	
+
+	public Integer getForeign_price() {
+		return foreign_price;
+	}
+
+	public void setForeign_price(Integer foreign_price) {
+		this.foreign_price = foreign_price;
+	}
 
 	@Override
 	public String toString() {
@@ -175,10 +187,11 @@ public class Seat_plan {
 				+ ", bus_no=" + bus_no + ", seat_plan_id=" + seat_plan_id
 				+ ", classes=" + classes + ", departure_time=" + departure_time
 				+ ", arrival_time=" + arrival_time + ", price=" + price
-				+ ", operator_id=" + operator_id + ", seat_layout_id="
-				+ seat_layout_id + ", row=" + row + ", column=" + column
-				+ ", seat_list=" + seat_list + "]";
+				+ ", foreign_price=" + foreign_price + ", operator_id="
+				+ operator_id + ", seat_layout_id=" + seat_layout_id + ", row="
+				+ row + ", column=" + column + ", seat_list=" + seat_list + "]";
 	}
 
+	
 	
 }

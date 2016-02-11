@@ -6,8 +6,10 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,7 +46,7 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity{
 		
 		setContentView(R.layout.activity_threeday_sales);
 		
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -63,11 +65,19 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity{
 			}
 		});
 		actionBarTitle.setText("3 Days Sales");
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
+		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("3 Days Sales");
+            this.setSupportActionBar(toolbar);
+        }
+        
 		lv_threeday_sales = (ListView)findViewById(R.id.lst_threeday_sales);	
 		
 		skDetector = SKConnectionDetector.getInstance(this);
-		skDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
 		if(skDetector.isConnectingToInternet()){
 			getThreeDaySales();
 		}else{
@@ -136,5 +146,15 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity{
 				dialog.dismiss();
 			}
 		});		
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

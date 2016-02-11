@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ignite.mm.ticketing.agent.callcenter.PDFBusActivity;
 import com.ignite.mm.ticketing.agent.callcenter.R;
+import com.ignite.mm.ticketing.sqlite.database.model.KhoneAtList;
 import com.ignite.mm.ticketing.sqlite.database.model.Salebytripdate;
 
 import android.app.Activity;
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.sax.StartElementListener;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,10 +24,10 @@ import android.widget.TextView;
 public class SalebytripdatesLvAdapter extends BaseAdapter{
 
 	private LayoutInflater mInflater;
-	private List<Salebytripdate> listItem;
+	private List<KhoneAtList> listItem;
 	private Activity aty;
 	
-	public SalebytripdatesLvAdapter(Activity aty, List<Salebytripdate> _list){
+	public SalebytripdatesLvAdapter(Activity aty, List<KhoneAtList> _list){
 		this.aty = aty;
 		mInflater = LayoutInflater.from(aty);
 		listItem = _list;
@@ -36,7 +38,7 @@ public class SalebytripdatesLvAdapter extends BaseAdapter{
 		return listItem.size();
 	}
 
-	public Salebytripdate getItem(int position) {
+	public KhoneAtList getItem(int position) {
 		return listItem.get(position);
 	}
 
@@ -64,22 +66,24 @@ public class SalebytripdatesLvAdapter extends BaseAdapter{
         	
         	holder.txt_operator_name = (TextView)convertView.findViewById(R.id.txt_operator_name);
     		holder.txt_ticket_no  = (TextView)convertView.findViewById(R.id.txt_ticket_no);
+    		holder.txt_khoneat_time = (TextView)convertView.findViewById(R.id.txt_khoneat_time);
         	
         	convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
-		holder.txt_operator_name.setText(getItem(position).getOperator());
-		holder.txt_ticket_no.setText(getItem(position).getTicketNo());
-		
+		holder.txt_operator_name.setText(getItem(position).getTrip().getOperator_name());
+		holder.txt_khoneat_time.setText(aty.getResources().getString(R.string.str_khoneat_time)+" :  "+Html.fromHtml("<font color = red>"+getItem(position).getKnoneupTime()+"</font>"));
+		holder.txt_ticket_no.setText(getItem(position).getTicket_nos());		
 		holder.txt_seller_name.setText(getItem(position).getSeller().getName());
 		holder.txt_sale_date.setText(getItem(position).getDate());
 		holder.txt_customer_name.setText(getItem(position).getCustomerName()+" ["+getItem(position).getCustomerPhone()+"]");
-		holder.txt_trip_operator.setText(getItem(position).getTrip());
-		holder.txt_trip_date_time_class.setText(getItem(position).getDepartureDate()+" - "
-				+getItem(position).getTime()+"  "+getItem(position).getClass_()+" ["+getItem(position).getPrice()+" Ks]");
-		holder.txt_seats.setText(getItem(position).getSeatNo());
+		holder.txt_trip_operator.setText(getItem(position).getTrip_name());
+		holder.txt_trip_date_time_class.setText(getItem(position).getDepartureDate()+"  "
+				+getItem(position).getTime()+"  "+getItem(position).get_class()+" ["
+				+Html.fromHtml("<font color = red>"+getItem(position).getSaleitems().get(0).getPrice()+"</font> Ks]"));
+		holder.txt_seats.setText(getItem(position).getSeat_nos());
 		//holder.txt_price.setText("Price :  "+getItem(position).getPrice()+" Ks");
 		holder.txt_amount.setText(getItem(position).getTotalAmount()+" Ks");
 		
@@ -120,7 +124,7 @@ public class SalebytripdatesLvAdapter extends BaseAdapter{
 	static class ViewHolder {
 		TextView txt_sale_date, txt_customer_name, txt_trip_operator, txt_trip_date_time_class, txt_seats, txt_price, txt_amount;
 		TextView txt_seller_name;
-		TextView txt_operator_name, txt_ticket_no;
+		TextView txt_operator_name, txt_ticket_no, txt_khoneat_time;
 		//Button btn_print;
 	}
 }

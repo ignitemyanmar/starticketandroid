@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class ExtraCityAdapter extends BaseAdapter {
 
 	private TextView txtTitle;
+	private TextView txt_extacity_price;
 	private List<ExtraCity> timeby_agent;
 	private Activity aty;
 	
@@ -48,8 +49,16 @@ public class ExtraCityAdapter extends BaseAdapter {
 	            convertView = mInflater.inflate(R.layout.spiner_item_list, null);
 	        }
 	        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);
+	        txt_extacity_price = (TextView)convertView.findViewById(R.id.txt_extacity_price);
+	        
 	        txtTitle.setText(timeby_agent.get(position).getCity_name());
-	        txtTitle.setSingleLine(true);
+	        
+	        if (timeby_agent.get(position).getLocal_price() != null) {
+	        	if (!timeby_agent.get(position).getLocal_price().equals("0")) {
+	        		txt_extacity_price.setText("KS "+timeby_agent.get(position).getLocal_price());
+				}
+			}
+	        
 		return convertView;
 	}
 
@@ -61,8 +70,12 @@ public class ExtraCityAdapter extends BaseAdapter {
                     aty.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.spiner_sub_item_list, null);
         }
-        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);        
+        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);       
+        txt_extacity_price = (TextView)convertView.findViewById(R.id.txt_extacity_price);
+        
         txtTitle.setText(timeby_agent.get(position).getCity_name());
+        txt_extacity_price.setText("KS "+timeby_agent.get(position).getLocal_price());
+        
 		return convertView;
 	}
 

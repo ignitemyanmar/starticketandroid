@@ -13,10 +13,13 @@ import retrofit.client.Response;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -31,11 +34,14 @@ import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.agent.callcenter.R;
 import com.ignite.mm.ticketing.application.BaseSherlockActivity;
 import com.ignite.mm.ticketing.application.DecompressGZIP;
+import com.ignite.mm.ticketing.application.NewCalendarDialog;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.FromCitiesAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.ToCitiesAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.TripTimeAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.Times;
+import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
+import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.smk.calender.widget.SKCalender;
 import com.smk.calender.widget.SKCalender.Callbacks;
 import com.smk.skalertmessage.SKToastMessage;
@@ -45,6 +51,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
+	
 	private TextView actionBarTitle2;
 	private ImageButton actionBarBack;
 	private Spinner spn_from_trip;
@@ -66,13 +73,15 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 	private List<Times> tripTimes;
 	private TripTimeAdapter tripTimeAdapter;
 	private SKConnectionDetector skDetector;
+	private Configuration config;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		actionBar = getSupportActionBar();
+        
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -80,6 +89,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 		actionBarTitle.setText("Sale Tickets");
 		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
+		
 		actionBarTitle2.setVisibility(View.GONE);
 		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
 				R.id.action_bar_back);
@@ -90,9 +100,18 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 				finish();
 			}
 		});
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 		
 		setContentView(R.layout.activity_sale_ticket);
+		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            toolbar.setTitle("Sale Tickets");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		Log.i("", "Agent Group Name: "+AppLoginUser.getAgentGroupName());
 		
@@ -130,6 +149,19 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 		
 		btn_trip_date.setOnClickListener(clickListener);
 		btn_search.setOnClickListener(clickListener);
+		
+		  //Check Screen Size
+        config = getResources().getConfiguration();
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 
 	private void getFromCities() {
@@ -324,7 +356,96 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 			// TODO Auto-generated method stub
 			if (v == btn_trip_date) {
 				
-				final SKCalender skCalender = new SKCalender(SaleTicketActivity.this);
+		        final NewCalendarDialog calendarDialog = new NewCalendarDialog(SaleTicketActivity.this);
+		        
+		        calendarDialog.txt_calendar_title.setText(R.string.str_calendar_title);
+		        calendarDialog.calendar.setShowOtherDates(true);
+		      //  calendarDialog.calendar.setArrowColor(getResources().getColor(R.color.sample_primary));
+		        calendarDialog.calendar.setLeftArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_back));
+		        calendarDialog.calendar.setRightArrowMask(getResources().getDrawable(R.drawable.ic_navigation_arrow_forward));
+		        calendarDialog.calendar.setSelectionColor(getResources().getColor(R.color.golden_brown));
+		        calendarDialog.calendar.setHeaderTextAppearance(R.style.TextAppearance_AppCompat_Large);
+		        calendarDialog.calendar.setWeekDayTextAppearance(R.style.CustomWeekDayTextAppearance);
+		        calendarDialog.calendar.setDateTextAppearance(R.style.CustomDayTextAppearance);
+		        calendarDialog.calendar.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
+		        calendarDialog.calendar.setWeekDayFormatter(new ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
+		        
+		        if (config.smallestScreenWidthDp >= 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp >= 600 && config.smallestScreenWidthDp < 700) {
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, getResources().getDisplayMetrics()));
+		        }else if (config.smallestScreenWidthDp < 600){
+		        	calendarDialog.calendar.setTileSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
+		        }
+		        
+		        //calendarDialog.calendar.setFirstDayOfWeek(Calendar.THURSDAY);
+		        
+		        Calendar calendar = Calendar.getInstance();
+		        //calendarDialog.calendar.setSelectedDate(calendar.getTime());
+		        
+		        //Allow only 15 days to buy in advance for users 
+		        //If not log in yet,
+		        Log.i("", "Log in id: "+AppLoginUser.getId());
+		        if (AppLoginUser.getId() == null || AppLoginUser.getId().equals("")) {
+		        	//Add 14 days to current date time
+			        calendar.add(Calendar.DATE, 14);
+			        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+				}else {
+					if (AppLoginUser.getRole() != null && !AppLoginUser.getRole().equals("")) {
+			        	 if (Integer.valueOf(AppLoginUser.getRole()) <= 3) {
+			        		    //If Agents
+					        	//Add 14 days to current date time
+			        		    calendarDialog.calendar.setMinimumDate(calendar.getTime());
+						        calendar.add(Calendar.DATE, 14);
+						        calendarDialog.calendar.setMaximumDate(calendar.getTime());
+							}
+					}
+				}
+		        
+				calendarDialog.setOnCallbacksListener(new NewCalendarDialog.Callbacks() {
+					
+					private Date today;
+					public void choose(String chooseDate) {
+						// TODO Auto-generated method stub
+						
+						btn_trip_date.setText(chooseDate);
+						calendarDialog.dismiss();
+						
+			        	//Date formatedDate = null;
+/*						try {
+							//Log.i("","Hello Choose Date : "+ chooseDate);
+							//formatedDate = new SimpleDateFormat("yyyy-MM-dd").parse(chooseDate);
+							//today = new SimpleDateFormat("yyyy-MM-dd").parse(getToday());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							//e.printStackTrace();
+						}*/
+						//int compare = formatedDate.compareTo(today);
+						//Log.i("","Hello Compare : "+ compare);
+						
+/*						//If CallCenter
+						if (AppLoginUser.getRole().equals("9")) {
+							//selectedTripDate = DateFormat.format("yyyy-MM-dd",formatedDate).toString();
+							btn_trip_date.setText(chooseDate);
+							calendarDialog.dismiss();
+						}else{
+							//If Agents
+							//If choose date is today (or) grater than today
+							if(compare >= 0){
+								selectedTripDate = DateFormat.format("yyyy-MM-dd",formatedDate).toString();
+								btn_trip_date.setText(selectedTripDate);
+								calendarDialog.dismiss();
+							}else {
+								//If choose date is less than today
+								SKToastMessage.showMessage(SaleTicketActivity.this, "Please choose today or grater than today!", SKToastMessage.WARNING);
+							}	
+						}*/
+					}
+				});
+				
+				calendarDialog.show();
+				
+/*				final SKCalender skCalender = new SKCalender(SaleTicketActivity.this);
 				
 				skCalender.setCallbacks(new Callbacks() {
 
@@ -364,7 +485,7 @@ public class SaleTicketActivity extends BaseSherlockActivity{
 					}
 				});
 				
-				skCalender.show();
+				skCalender.show();*/
 			}
 			if (v == btn_search) {
 				

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,7 +35,7 @@ public class UserLogin extends BaseSherlockActivity {
 	private Context ctx = this;
 	private Button[] buttons = new Button[3];
 	private ProgressDialog dialog;
-private ImageButton actionBarBack;
+	private ImageButton actionBarBack;
 	private SKConnectionDetector connectionDetector;
 	public static boolean isSkip = false;
 	
@@ -64,6 +65,15 @@ private ImageButton actionBarBack;
 		actionBarTitle.setText("Agent's Login");
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setLogo(R.drawable.ic_launcher);
+            toolbar.setLogoDescription("Star Ticket - Myanmar Online Bus Ticket");
+            toolbar.setTitle("Log In - Star Ticket Agent");
+            this.setSupportActionBar(toolbar);
+        }
+		
 		txtEmail = (EditText) this.findViewById(R.id.txt_login_email);
 		txtPassword = (EditText) this.findViewById(R.id.txt_login_password);
 
@@ -80,6 +90,16 @@ private ImageButton actionBarBack;
 		if(!connectionDetector.isConnectingToInternet())
 			connectionDetector.showErrorMessage();
 		
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 
 	private OnClickListener clickListener = new OnClickListener() {
@@ -162,19 +182,19 @@ private ImageButton actionBarBack;
 								// TODO Auto-generated method stub
 								Log.i("", "Enter here... log in fail: "+arg0.getCause());
 								
-
 								//SKToastMessage.showMessage(UserLogin.this, "သင္�?? Login Email �?ွင့္ Password မွားေနပါသည္", SKToastMessage.ERROR);
 								
 								dialog.dismiss();
+								SKToastMessage.showMessage(UserLogin.this, "Check Email and Password", SKToastMessage.ERROR);
 								
 								if(arg0.getResponse() != null){
 									Log.i("", "Log in Fail resp: "+arg0.getResponse().getStatus());
 									if(arg0.getResponse().getStatus() == 400){
-										SKToastMessage.showMessage(UserLogin.this, "သင္၏ Login Email ႏွင့္ Password မွား ေနပါသည္", SKToastMessage.ERROR);
+										SKToastMessage.showMessage(UserLogin.this, "Check Email and Password", SKToastMessage.ERROR);
 									}
 									
 									if(arg0.getResponse().getStatus() == 403){
-										SKToastMessage.showMessage(UserLogin.this, "သင္၏ Login Email ႏွင့္ Password မွား ေနပါသည္", SKToastMessage.ERROR);
+										SKToastMessage.showMessage(UserLogin.this, "Check Email and Password", SKToastMessage.ERROR);
 									}
 									
 									/*if(arg0.getResponse().getStatus() == 200){
@@ -232,7 +252,7 @@ private ImageButton actionBarBack;
 	
 	public boolean checkFields() {
 		if (txtEmail.getText().toString().length() == 0) {
-			txtEmail.setError("Enter Your Email");
+			txtEmail.setError("Enter Your UserName/Email/Phone");
 			return false;
 		}
 		if (txtPassword.getText().toString().length() == 0) {

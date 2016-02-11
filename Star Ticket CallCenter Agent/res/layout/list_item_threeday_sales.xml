@@ -71,6 +71,43 @@
             android:layout_height="wrap_content" >
 
             <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView06"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:text="Booking User"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/TextView06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="0"
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black" />
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/txt_booking_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.smk.custom.view.CustomTextView
                 android:id="@+id/CustomTextView01"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"

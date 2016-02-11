@@ -81,6 +81,8 @@ private String ticketNo;
 private String seatNo;
 @Expose
 private String price;
+@Expose
+private String foreign_price;
 @SerializedName("ticket_qty")
 @Expose
 private int ticketQty;
@@ -607,6 +609,16 @@ public void setTicketQty(int ticketQty) {
 this.ticketQty = ticketQty;
 }
 
+
+
+public String getForeign_price() {
+	return foreign_price;
+}
+
+public void setForeign_price(String foreign_price) {
+	this.foreign_price = foreign_price;
+}
+
 @Override
 public String toString() {
 	return "Booking [id=" + id + ", date=" + date + ", departureDate="
@@ -622,7 +634,8 @@ public String toString() {
 			+ ", bookingStatus=" + bookingStatus + ", bookingExpired="
 			+ bookingExpired + ", orderId=" + orderId + ", trip=" + trip
 			+ ", ticketNo=" + ticketNo + ", seatNo=" + seatNo + ", price="
-			+ price + ", ticketQty=" + ticketQty + "]";
+			+ price + ", foreign_price=" + foreign_price + ", ticketQty="
+			+ ticketQty + "]";
 }
 
 

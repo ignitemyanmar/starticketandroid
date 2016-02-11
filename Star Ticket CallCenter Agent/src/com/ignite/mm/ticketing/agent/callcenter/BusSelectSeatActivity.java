@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -45,10 +46,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.ignite.mm.ticketing.agent.callcenter.R;
 import com.ignite.mm.ticketing.application.BaseSherlockActivity;
@@ -58,6 +62,7 @@ import com.ignite.mm.ticketing.application.DeviceUtil;
 import com.ignite.mm.ticketing.application.EditSeatDialog;
 import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureParam;
+import com.ignite.mm.ticketing.application.TourBookingDialog;
 import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.connection.detector.ConnectionDetector;
 import com.ignite.mm.ticketing.custom.listview.adapter.BusClassAdapter;
@@ -143,6 +148,7 @@ import com.smk.skalertmessage.SKToastMessage;
 	private String permit_operator_id = "0";
 	private BusSeatAdapter seatAdapter;
 	protected String permit_operator_phone;
+	private Button btn_tour_booking;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -151,32 +157,7 @@ import com.smk.skalertmessage.SKToastMessage;
 		
 		//Check Screen Size
 		Configuration config = getResources().getConfiguration();
-       
 		setContentView(R.layout.bus_seat_list);
-		
-		/*//For Tablet
-		if (config.smallestScreenWidthDp >= 600) {
-			setContentView(R.layout.bus_seat_list);
-		}else {
-			setContentView(R.layout.bus_seat_list_phone);
-		}
-		*/
-		
-		actionBar = getSupportActionBar();
-		actionBar.setCustomView(R.layout.action_bar);
-		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title);
-		actionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarTitle2 = (TextView) actionBar.getCustomView().findViewById(
-				R.id.action_bar_title2);
-		actionBarTitle2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
-				R.id.action_bar_back);
-		
-		actionBarBack.setOnClickListener(clickListener);
-		actionBarNoti = (TextView) actionBar.getCustomView().findViewById(R.id.txt_notify_booking);
-		actionBarNoti.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		
 		//Get Data from past clicks
 		Bundle bundle = getIntent().getExtras();
@@ -199,6 +180,17 @@ import com.smk.skalertmessage.SKToastMessage;
 			//client_operator_id = bundle.getString("client_operator_id");
 			tripId = bundle.getString("tripId");
 		}
+		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        	toolbar.setTitleTextAppearance(BusSelectSeatActivity.this, android.R.attr.textAppearanceSmall);
+        	toolbar.setSubtitleTextAppearance(BusSelectSeatActivity.this, android.R.attr.textAppearanceSmall);
+        	toolbar.setTitle(From+" - "+To+" ["+operator_name+"]");
+    		toolbar.setSubtitle(changeDate(Date)+" ["+Time+"]");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		//Log.i("", "(Bus Select Seat) Permit_operator_group_id : "+permit_operator_group_id+", Permit_agent_id : "+permit_agent_id);
 		
@@ -260,12 +252,10 @@ import com.smk.skalertmessage.SKToastMessage;
 			actionBarNoti.setText(NotifyBooking.toString());
 		}
 		
-		actionBarTitle.setText(From+" - "+To+" ["+operator_name+"]");
-		actionBarTitle2.setText(changeDate(Date)+" ["+Time+"]");
-		
 		SelectedSeat 	= "";
 		btn_booking		= (Button) findViewById(R.id.btn_booking);
 		btn_now_booking = (Button) findViewById(R.id.btn_now_booking);
+		btn_tour_booking = (Button) findViewById(R.id.btn_tour_booking);
 		
 		Log.i("", "");
 		
@@ -289,6 +279,7 @@ import com.smk.skalertmessage.SKToastMessage;
 		btn_booking.setOnClickListener(clickListener);
 		btn_now_booking.setOnClickListener(clickListener);
 		btn_check_out.setOnClickListener(clickListener);
+		btn_tour_booking.setOnClickListener(clickListener);
 	}
 	
 	@Override
@@ -372,7 +363,7 @@ import com.smk.skalertmessage.SKToastMessage;
 
 			public void onCancel() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			public void onSave(String agentId, String custName,
@@ -404,10 +395,13 @@ import com.smk.skalertmessage.SKToastMessage;
 					Log.i("", "Fail permission: "+arg0.getResponse().getStatus());
 					Log.i("", "Trip Operator ID: "+OperatorID);
 				}
+				Log.i("", "Fail permission: "+arg0.getCause().toString());
+				Toast.makeText(BusSelectSeatActivity.this, "No Permission "+arg0.getCause(), Toast.LENGTH_SHORT).show();
 			}
 
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
+				Log.i("", "Trip Operator ID: "+OperatorID);
 				if (arg0 != null) {
 					permission = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<Permission>(){}.getType());
 					
@@ -575,6 +569,7 @@ import com.smk.skalertmessage.SKToastMessage;
 				    				bundle.putString("sale_order_no", jsonObject.getString("sale_order_no"));
 				    				bundle.putString("bus_occurence", BusSeats.get(0).getSeat_plan().get(0).getId().toString());
 				    				bundle.putString("Price", BusSeats.get(0).getSeat_plan().get(0).getPrice()+"");
+				    				bundle.putString("ForeignPrice", BusSeats.get(0).getSeat_plan().get(0).getForeign_price()+"");
 			        				bundle.putString("ConfirmDate", todayDate);
 			        				bundle.putString("ConfirmTime", todayTime);
 			        				bundle.putString("CustomerName", AppLoginUser.getUserName());
@@ -892,6 +887,7 @@ import com.smk.skalertmessage.SKToastMessage;
 							        		Date, 
 							        		list.getSeat_no(), 
 							        		AppLoginUser.getId()));
+							        
 							        NetworkEngine.setIP(permit_ip);
 									NetworkEngine.getInstance().deleteTicket(param,
 											new Callback<Response>() {
@@ -919,6 +915,8 @@ import com.smk.skalertmessage.SKToastMessage;
 																		Response arg0,
 																		Response arg1) {
 																	// TODO Auto-generated method stub
+																	Log.i("", "response delete: "+arg1.getReason());
+																	
 																	onResume();
 																	dialog1.dismiss();
 																	SKToastMessage
@@ -958,6 +956,52 @@ import com.smk.skalertmessage.SKToastMessage;
 	private OnClickListener clickListener = new OnClickListener() {
 
 		public void onClick(View v) {
+			if (v == btn_tour_booking) {
+				TourBookingDialog tourBookingDialog = new TourBookingDialog(BusSelectSeatActivity.this);
+				tourBookingDialog.setmCallback(new TourBookingDialog.Callback() {
+					
+					public void onTourBook(String seatQty, String agentPhone) {
+						// TODO Auto-generated method stub
+						if(connectionDetector.isConnectingToInternet()){
+							dialog = ProgressDialog.show(BusSelectSeatActivity.this, "", " Please wait...", true);
+							
+							NetworkEngine.setIP("starticketmyanmar.com");
+							NetworkEngine.getInstance().postTourBooking(AppLoginUser.getId(), 
+									tripId, Date, seatQty, agentPhone, new Callback<JsonObject>() {
+
+									public void failure(RetrofitError arg0) {
+										// TODO Auto-generated method stub
+										if (arg0.getResponse() != null) {
+											Log.i("", "Error: "+arg0.getCause());
+										}
+										SKToastMessage.showMessage(BusSelectSeatActivity.this, "Connection Time Out", SKToastMessage.ERROR);
+										dialog.dismiss();
+									}
+
+									public void success(JsonObject arg0, Response arg1) {
+										// TODO Auto-generated method stub
+										Log.i("", "success: "+arg0.toString());
+										
+										SKToastMessage.showMessage(BusSelectSeatActivity.this, "Success Booking", SKToastMessage.SUCCESS);
+										closeAllActivities();
+										startActivity(new Intent(BusSelectSeatActivity.this, SaleTicketActivity.class));
+										
+										dialog.dismiss();
+									}
+								});
+						}else{
+							connectionDetector.showErrorDialog();
+						}
+					}
+					
+					public void onCancel() {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				
+				tourBookingDialog.show();
+			}
 			if (v == actionBarBack) {
 				finish();
 			}
@@ -1105,6 +1149,16 @@ import com.smk.skalertmessage.SKToastMessage;
 		RelativeLayout focuslayout = (RelativeLayout) findViewById(R.id.layout_seat_plan);
 		focuslayout.requestFocus();
 		super.onStart();
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }
 

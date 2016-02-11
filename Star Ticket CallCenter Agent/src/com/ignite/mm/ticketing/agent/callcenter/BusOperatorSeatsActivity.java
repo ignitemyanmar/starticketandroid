@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -63,7 +64,7 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 			selectedTripTime = bundle.getString("trip_time");
 		}
 		
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -81,9 +82,9 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 				finish();
 			}
 		});
-		actionBarTitle.setText(selectedFromCity+" - "+selectedToCity);
+		actionBarTitle.setText(selectedFromCity+" - "+selectedToCity);*/
 		
-		if (selectedTripTime != null) {
+/*		if (selectedTripTime != null) {
 			if (!selectedTripDate.equals("") && selectedTripDate != null) {
 				if (!selectedTripTime.equals("") && selectedTripTime != null) {
 					actionBarTitle2.setText(changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
@@ -94,9 +95,31 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 			}else {
 				actionBarTitle2.setText("00/00/0000 [ 00:00:00 ]");
 			}
-		}
+		}*/
 		
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		//actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        	toolbar.setTitleTextAppearance(BusOperatorSeatsActivity.this, android.R.attr.textAppearanceSmall);
+            toolbar.setTitle(selectedFromCity+" - "+selectedToCity);
+            this.setSupportActionBar(toolbar);
+        }
+        
+		if (selectedTripTime != null) {
+			if (!selectedTripDate.equals("") && selectedTripDate != null) {
+				if (!selectedTripTime.equals("") && selectedTripTime != null) {
+					toolbar.setSubtitle(changeDate(selectedTripDate)+" ["+selectedTripTime+"]");
+				}else if (selectedTripTime.equals("") || selectedTripTime == null)
+				{
+					toolbar.setSubtitle(changeDate(selectedTripDate)+" [All Time]");
+				}
+			}else {
+				toolbar.setSubtitle("00/00/0000 [ 00:00:00 ]");
+			}
+		}
 		
 		lv_operator_seats = (ListView)findViewById(R.id.lv_operator_seats);
 		lv_operator_seats.setDividerHeight(0);
@@ -126,6 +149,8 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 					OperatorSeats = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<OperatorSeat>>(){}.getType());
 					
 					if (OperatorSeats != null && OperatorSeats.size() > 0) {
+						
+						Log.i("", "Operation seat: "+OperatorSeats.toString());
 						
 						lv_operator_seats.setAdapter(new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, OperatorSeats));
 						setListViewHeightBasedOnChildren(lv_operator_seats);
@@ -189,5 +214,15 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity{
 				+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
 		listView.setLayoutParams(params);
 		listView.requestLayout();
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

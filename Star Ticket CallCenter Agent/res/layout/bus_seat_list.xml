@@ -3,8 +3,16 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/layout_seat_plan"
@@ -54,15 +62,15 @@
                     android:id="@+id/txt_notrip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="right"
                     android:layout_marginBottom="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/screen_bg"
                     android:gravity="center_vertical|center_horizontal"
                     android:singleLine="true"
                     android:text="Driver"
-                    android:textColor="#FFF"
-                     />
+                    android:textColor="#FFF" />
 
                 <GridView
                     android:id="@+id/grid_seat"
@@ -109,6 +117,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="3dp"
                                 android:text="ေရြးျပီး ခံုမ်ား"
+                                android:textColor="@color/grey"
                                 android:textSize="18dp" />
                         </LinearLayout>
 
@@ -131,6 +140,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="3dp"
                                 android:text="ေရာင္းခြင့္မရွိခံုမ်ား"
+                                android:textColor="@color/grey"
                                 android:textSize="18dp" />
                         </LinearLayout>
 
@@ -153,6 +163,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="3dp"
                                 android:text="၀ယ္ျပီး ခံုမ်ား"
+                                android:textColor="@color/grey"
                                 android:textSize="18dp" />
                         </LinearLayout>
 
@@ -175,6 +186,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="3dp"
                                 android:text="Booking ခံုမ်ား"
+                                android:textColor="@color/grey"
                                 android:textSize="18dp" />
                         </LinearLayout>
 
@@ -200,6 +212,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
                             android:text="ထြက္ခြာမည့္ ရက္ : 0000-00-00"
+                            android:textColor="@color/grey"
                             android:textSize="18dp" />
 
                         <com.smk.custom.view.CustomTextView
@@ -208,6 +221,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="ထြက္ခြာမည့္ အခ်ိန္ : 00:00 AM"
+                            android:textColor="@color/grey"
                             android:textSize="18dp" />
 
                         <com.smk.custom.view.CustomTextView
@@ -216,6 +230,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Operator: -"
+                            android:textColor="@color/grey"
                             android:textSize="18dp" />
 
                         <com.smk.custom.view.CustomTextView
@@ -224,6 +239,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Classes: -"
+                            android:textColor="@color/grey"
                             android:textSize="18dp" />
 
                         <com.smk.custom.view.CustomTextView
@@ -232,6 +248,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Price: 0 Kyats"
+                            android:textColor="@color/grey"
                             android:textSize="18dp" />
 
                         <ListView
@@ -262,7 +279,6 @@
                             style="?android:attr/buttonStyleSmall"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:layout_marginBottom="20dp"
                             android:layout_marginTop="20dp"
                             android:background="@drawable/btn_dark_blue"
                             android:padding="5dp"
@@ -277,10 +293,25 @@
                             style="?android:attr/buttonStyleSmall"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
-                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
                             android:background="@drawable/btn_gold"
                             android:padding="5dp"
                             android:text="Booking စာရင္းၾကည့္မည္"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <com.smk.custom.view.CustomButton
+                            android:id="@+id/btn_tour_booking"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/btn_gold"
+                            android:padding="5dp"
+                            android:text="ခံုပုိင္မရွိ၊ ခံုမေလာက္လွ်င္ Booking မွာရန္"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/white"
                             android:textStyle="bold"
@@ -321,7 +352,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Please wait loading ..."
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#AAA"
+                android:textColor="@color/grey"
                 android:textSize="12dp"
                 android:typeface="sans" />
         </LinearLayout>

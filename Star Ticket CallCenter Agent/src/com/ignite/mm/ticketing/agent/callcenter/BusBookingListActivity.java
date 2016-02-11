@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,6 +47,7 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 	private ActionBar actionBar;
 	private TextView actionBarTitle;
 	private ImageButton actionBarBack;
+	
 	private Button btn_search;
 	private String BookCode = "";
 	private EditText auto_txt_codeno;
@@ -70,7 +72,7 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 			intents  =  bundle.getString("from_intent");
 		}
 		
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -80,20 +82,27 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
 				R.id.action_bar_back);
 		actionBarBack.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 		
 		//setContentView(R.layout.activity_busticketing_credit);
+		
 		setContentView(R.layout.activity_bus_booking_list);
 		
-		if (intents != null) {
-			if (intents.equals("reservation")) {
-				actionBarTitle.setText("Booking စာရင္း  (All)");
-			}else if (intents.equals("reservationUser")) {
-				actionBarTitle.setText("Booking စာရင္း  ("+AppLoginUser.getUserName()+")");
-			}else if (intents.equals("BusSelectSeat")) {
-				actionBarTitle.setText("Booking စာရင္း  ("+AppLoginUser.getUserName()+")");
-			}
-		}
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+    		if (intents != null) {
+    			if (intents.equals("reservation")) {
+    				toolbar.setTitle("Booking စာရင္း  (All)");
+    			}else if (intents.equals("reservationUser")) {
+    				toolbar.setTitle("Booking စာရင္း  ("+AppLoginUser.getUserName()+")");
+    			}else if (intents.equals("BusSelectSeat")) {
+    				toolbar.setTitle("Booking စာရင္း  ("+AppLoginUser.getUserName()+")");
+    			}
+    		}
+            this.setSupportActionBar(toolbar);
+        }
 		
 		auto_txt_codeno = (EditText)findViewById(R.id.auto_txt_codeno);
 		btn_search_codeno = (Button)findViewById(R.id.btn_search_codeno);
@@ -165,7 +174,12 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
 				if (arg0 != null) {
+					
+					Log.i("", "booking server : "+arg0.toString());
+					
 					bookingListByUser = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<Booking>>(){}.getType());
+					
+					Log.i("", "booking list : "+bookingListByUser.toString());
 					
 					if (bookingListByUser != null && bookingListByUser.size() > 0) {
 						
@@ -208,7 +222,10 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 			public void success(Response arg0, Response arg1) {
 				// TODO Auto-generated method stub
 				if (arg0 != null) {
+					
 					bookingListByUser = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<List<Booking>>(){}.getType());
+					
+					Log.i("", "Booking List All: "+bookingListByUser.toString());
 					
 					if (bookingListByUser != null && bookingListByUser.size() > 0) {
 						
@@ -486,6 +503,15 @@ public class BusBookingListActivity extends BaseSherlockActivity {
 		//alert.setIcon(R.drawable.attention_icon);
 		alert.setMessage(msg);
 		alert.show();
+	}
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 	
 }

@@ -74,6 +74,8 @@ public class ThreeDaySale {
     private String passengers;
     @Expose
     private String operator_phone;
+    @Expose
+    public BookingUser bookinguser;
 
     /**
      * 
@@ -525,6 +527,16 @@ public class ThreeDaySale {
 	public void setOperator_phone(String operator_phone) {
 		this.operator_phone = operator_phone;
 	}
+	
+	
+
+	public BookingUser getBookinguser() {
+		return bookinguser;
+	}
+
+	public void setBookinguser(BookingUser bookinguser) {
+		this.bookinguser = bookinguser;
+	}
 
 	@Override
 	public String toString() {
@@ -540,8 +552,10 @@ public class ThreeDaySale {
 				+ seatNo + ", price=" + price + ", ticketQty=" + ticketQty
 				+ ", totalAmount=" + totalAmount + ", sellerId=" + sellerId
 				+ ", seller=" + seller + ", passengers=" + passengers
-				+ ", operator_phone=" + operator_phone + "]";
+				+ ", operator_phone=" + operator_phone + ", bookinguser="
+				+ bookinguser + "]";
 	}
 
+	
 	
 }

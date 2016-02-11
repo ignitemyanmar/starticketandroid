@@ -30,6 +30,7 @@ public class AllBusObject {
 	private String passengers;
 	private String agentGroupName;
 	private String operatorPhone;
+	private String randomTickets;
 
 	
 	public AllBusObject(String trip, String date, String operatorID,
@@ -38,7 +39,7 @@ public class AllBusObject {
 			String todayDate, String currentTime, String barcode,
 			Bitmap barcode_img, String customerName, String phone,
 			String ticketNo, String seatCount, Integer discount, Integer amount, String nrc, String extraCity,
-			String passengers, String agentGroupName, String operatorPhone) {
+			String passengers, String agentGroupName, String operatorPhone, String randomTickets) {
 		super();
 		Trip = trip;
 		Date = date;
@@ -66,6 +67,7 @@ public class AllBusObject {
 		this.passengers = passengers;
 		this.agentGroupName = agentGroupName;
 		this.operatorPhone = operatorPhone;
+		this.randomTickets = randomTickets;
 	}
 
 	public AllBusObject(String trip, String date, String operatorID,
@@ -317,6 +319,16 @@ public class AllBusObject {
 	public void setOperatorPhone(String operatorPhone) {
 		this.operatorPhone = operatorPhone;
 	}
+	
+	
+
+	public String getRandomTickets() {
+		return randomTickets;
+	}
+
+	public void setRandomTickets(String randomTickets) {
+		this.randomTickets = randomTickets;
+	}
 
 	@Override
 	public String toString() {
@@ -332,7 +344,8 @@ public class AllBusObject {
 				+ ", discount=" + discount + ", amount=" + amount + ", NRC="
 				+ NRC + ", extraCity=" + extraCity + ", passengers="
 				+ passengers + ", agentGroupName=" + agentGroupName
-				+ ", operatorPhone=" + operatorPhone + "]";
+				+ ", operatorPhone=" + operatorPhone + ", randomTickets="
+				+ randomTickets + "]";
 	}
 
 	

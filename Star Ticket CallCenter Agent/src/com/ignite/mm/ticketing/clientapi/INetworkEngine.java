@@ -11,8 +11,12 @@ import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.Query;
 
+import com.google.gson.JsonObject;
 import com.ignite.mm.ticketing.application.LoginUser;
 import com.ignite.mm.ticketing.sqlite.database.model.AccessToken;
+import com.ignite.mm.ticketing.sqlite.database.model.AgentSeatsBooking;
+import com.ignite.mm.ticketing.sqlite.database.model.Delivery;
+import com.ignite.mm.ticketing.sqlite.database.model.KhoneAtList;
 import com.ignite.mm.ticketing.sqlite.database.model.Operator;
 import com.ignite.mm.ticketing.sqlite.database.model.Operators;
 import com.ignite.mm.ticketing.sqlite.database.model.Salebytripdate;
@@ -22,6 +26,14 @@ import com.ignite.mm.ticketing.sqlite.database.model.ThreeDaySale;
 public interface INetworkEngine {
 	
 	//----------------------------------- Get Method --------------------------------------------------------------
+	
+	@GET("/api/toursbooking/{id}/change-status")
+	void changeStatus(
+			@Query("status") String status, 
+			@Path("id") String id, Callback<JsonObject> callback);
+	
+	@GET("/api/toursbooking")
+	void getAgentSeatsBooking(Callback<List<AgentSeatsBooking>> callback);
 	
 	@GET("/seatplan")
 	void getItems(@Query("param") String param, Callback<Response> callback);
@@ -112,15 +124,32 @@ public interface INetworkEngine {
 	void getBookingDeleteByOrderID(@Query("access_token") String access_token,
 			@Path("id") String id, Callback<Response> callback);
 	
-	@GET("/api/salebytripdate")
+	/*@GET("/api/salebytripdate")
 	void getSaleByTripDate(@Query("access_token") String access_token,
-			@Query("code_no") String code_no, Callback<List<Salebytripdate>> callback);
+			@Query("code_no") String code_no, 
+			@Query("operator_id") String operator_id, Callback<List<KhoneAtList>> callback);*/
+	
+	@GET("/api/khone-up")
+	void getKhoneAtList(@Query("operator_id") String operator_id, Callback<List<KhoneAtList>> callback);
 	
 	@GET("/api/starticketagents")
 	void getStarTicketAgents(@Query("user_id") String user_id, Callback<List<StarTicketAgents>> callback);
 	
+	@GET("/api/delivery-list")
+	void getDeliveryList(@Query("access_token") String access_token, Callback<List<Delivery>> callback);
+	
 	
 //------------------------------------------------------ Post Method ---------------------------------------	
+	
+	@FormUrlEncoded
+	@POST("/api/toursbooking")
+	void postTourBooking(
+			@Field("user_id") String user_id,
+			@Field("trip_id") String trip_id,
+			@Field("departure_date") String departure_date,
+			@Field("total_seat") String total_seat, 
+			@Field("phone_no") String phone_no, Callback<JsonObject> callback);
+	
 	@FormUrlEncoded
 	@POST("/sale/{id}/delete")
 	void deleteSaleOrder( @Field("param")String param, @Path("id") String id,Callback<Response> callback);
@@ -230,4 +259,11 @@ public interface INetworkEngine {
 			@Field("seat_no") String seat_no,
 			Callback<Response> callback);
 	
+	@FormUrlEncoded
+	@POST("/api/delivery-complete/{orderid}")
+	void postCompleteDelivery(
+			@Field("access_token") String access_token,
+			@Field("password") String password,
+			@Path("orderid") String orderid,
+			Callback<Response> callback);
 }

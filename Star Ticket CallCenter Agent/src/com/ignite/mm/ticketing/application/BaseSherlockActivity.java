@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -21,16 +20,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ignite.mm.ticketing.agent.callcenter.BusBookingListActivity;
 import com.ignite.mm.ticketing.agent.callcenter.R;
-import com.ignite.mm.ticketing.sqlite.database.model.Permission;
 import com.ignite.mm.ticketing.sqlite.database.model.PermissionGlobal;
 
 public class BaseSherlockActivity extends ActionBarActivity {
 	
 	public LoginUser AppLoginUser;
 	public PermissionGlobal AppPermission;
-	
 	public static final String FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION = "com.ignite.FINISH_ALL_ACTIVITIES_ACTIVITY_ACTION";
 	private BaseActivityReceiver baseActivityReceiver = new BaseActivityReceiver();
 	public static final IntentFilter INTENT_FILTER = createIntentFilter();
@@ -122,13 +118,13 @@ public class BaseSherlockActivity extends ActionBarActivity {
 			return false;  
 		}
 		
-	    /*switch(item.getItemId()) {
+/*	    switch(item.getItemId()) {
 	        case R.id.menu_logout:
 	        	AppLoginUser.logout();
 	        	closeAllActivities();
 	        	return true;
    	   	}
-		return false; */ 
+		return false;*/
 	 }
 	
 	public static String changeDate(String date){
@@ -186,5 +182,4 @@ public class BaseSherlockActivity extends ActionBarActivity {
 		}
 		alertDialog.show();
 	}
-	
 }

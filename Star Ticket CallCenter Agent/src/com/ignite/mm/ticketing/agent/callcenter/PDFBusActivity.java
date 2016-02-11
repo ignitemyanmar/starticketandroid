@@ -24,6 +24,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +44,7 @@ import com.ignite.barcode.GenerateBarcode;
 import com.ignite.mm.ticketing.agent.callcenter.R;
 import com.ignite.mm.ticketing.application.BaseSherlockActivity;
 import com.ignite.mm.ticketing.application.BluetoothDeviceDialog;
+import com.ignite.mm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mm.ticketing.custom.listview.adapter.DeviceAdapter;
 import com.ignite.mm.ticketing.custom.listview.adapter.PDFBusAdapter;
 import com.ignite.mm.ticketing.sqlite.database.model.AllBusObject;
@@ -121,6 +123,8 @@ public class PDFBusActivity extends BaseSherlockActivity {
 	private String total_amount = "0";
 	private String Passengers = "";
 	private String operatorPhone;
+	private String random_tickets;
+	private String[] random_array;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +133,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 		
 		setContentView(R.layout.bus_ticket_item);
 
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -138,15 +142,23 @@ public class PDFBusActivity extends BaseSherlockActivity {
 		actionBarTitle2.setVisibility(View.GONE);
 		actionBarBack = (ImageButton) actionBar.getCustomView().findViewById(
 				R.id.action_bar_back);
-		actionBarTitle.setText("Ticket Sheet");
+		actionBarTitle.setText("e-Ticket");
 		img_print = (LinearLayout)actionBar.getCustomView().findViewById(R.id.img_print_layout);
 		img_print.setVisibility(View.VISIBLE);
 		img_print.setOnClickListener(clickListener);
 		actionBarBack.setOnClickListener(clickListener);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
 
 		//deviceList = new ArrayList<Device>();
 		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        	toolbar.setTitle("e-Ticket");
+            this.setSupportActionBar(toolbar);
+        }
+        
 		//Check Bluetooth Connection
 		checkBluetoothConnect();
 		
@@ -179,8 +191,9 @@ public class PDFBusActivity extends BaseSherlockActivity {
 			Passengers  = bundle.getString("Passengers");
 			operatorPhone  = bundle.getString("operatorPhone");
 			from_intent = bundle.getString("from_intent");
+			random_tickets = bundle.getString("random_tickets");
 		}
-
+		
 		lv_bus_booking_sheet = (ListView)findViewById(R.id.lv_bus_booking_sheet);
 		getData();
 		
@@ -195,6 +208,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 			startActivity(sendIntent);
 		}*/
 	}
+	
 	
 	/**
 	 *  Set Bus Ticket Data into adapter
@@ -212,7 +226,8 @@ public class PDFBusActivity extends BaseSherlockActivity {
 		allBusObject.add(new AllBusObject(BusTrip, TripDate, "", OperatorName, TripTime, ""
 				, SelectedSeat, ticket_price, "", AppLoginUser.getUserName(), BusClass, ConfirmDate, ConfirmTime
 				, Bar_Code_No, getBarcode(), BuyerName, Phone, TicketNo, SeatCount, 0
-				, Integer.valueOf(total_amount), BuyerNRC, extra_city, Passengers, AppLoginUser.getAgentGroupName(), operatorPhone));
+				, Integer.valueOf(total_amount), BuyerNRC, extra_city, Passengers
+				, AppLoginUser.getAgentGroupName(), operatorPhone, random_tickets));
 		
 		Log.i("", "All Bus Object: "+allBusObject.toString());
 
@@ -235,7 +250,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 				}
 			}
 			if (v == img_print) {
-				if (printerClass != null) {
+/*				if (printerClass != null) {
 					Log.i("", "Check State (2nd) On Print Click: "+printerClass.getState());
 					
 					//Save Ticket
@@ -243,14 +258,14 @@ public class PDFBusActivity extends BaseSherlockActivity {
 						
 						Log.i("", "Saved!");
 						
-						/*Toast.makeText(
+						Toast.makeText(
 								this,
 								"Your ticket is saved to " + PDF_FILE_PATH
-										+ "BookingSheet", Toast.LENGTH_SHORT).show();*/
+										+ "BookingSheet", Toast.LENGTH_SHORT).show();
 					} else {
 						Log.i("", "Fail Saved!");
-						/*Toast.makeText(this, "Can't save your ticket!",
-								Toast.LENGTH_LONG).show();*/
+						Toast.makeText(this, "Can't save your ticket!",
+								Toast.LENGTH_LONG).show();
 					}
 					
 					//If Bluetooth Support not have ... 
@@ -275,7 +290,7 @@ public class PDFBusActivity extends BaseSherlockActivity {
 						}
 			        	
 					}
-				}
+				}*/
 			}
 		}
 	};
@@ -350,13 +365,54 @@ public class PDFBusActivity extends BaseSherlockActivity {
 
 		/*menu.add(0, 1, 0, null).setIcon(R.drawable.print_icon)
 				.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);*/
+		getMenuInflater().inflate(R.menu.activity_e_ticket, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case 1:
-			
+		case R.id.action_print:
+			if (printerClass != null) {
+				Log.i("", "Check State (2nd) On Print Click: "+printerClass.getState());
+				
+				//Save Ticket
+				if (saveTicket()) {
+					
+					Log.i("", "Saved!");
+					
+					/*Toast.makeText(
+							this,
+							"Your ticket is saved to " + PDF_FILE_PATH
+									+ "BookingSheet", Toast.LENGTH_SHORT).show();*/
+				} else {
+					Log.i("", "Fail Saved!");
+					/*Toast.makeText(this, "Can't save your ticket!",
+							Toast.LENGTH_LONG).show();*/
+				}
+				
+				//If Bluetooth Support not have ... 
+		        if (!BlueToothService.HasDevice()) {
+		        	
+		            SKToastMessage.showMessage(PDFBusActivity.this, "The device does not have Bluetooth support!", SKToastMessage.LENGTH_LONG);
+		            
+		        }else {
+		        	//Check Bluetooth Open or not 
+		        	if (!printerClass.IsOpen()) {
+		        		Log.i("", "Bluetooth Not Open yet!");
+						printerClass.open(PDFBusActivity.this);
+						checkState = false;
+						connectBluetoothService();
+					} else if (printerClass.getState() == PrinterClass.LOSE_CONNECT
+							|| printerClass.getState() == PrinterClass.FAILED_CONNECT) {
+						checkState = false;
+						connectBluetoothService();
+					} else {
+						Log.i("", "Bluetooh Opened!!!!!");
+						printSlip();
+					}
+		        	
+				}
+			}
 			return true;
 		}
 		
@@ -903,5 +959,15 @@ public class PDFBusActivity extends BaseSherlockActivity {
 			closeAllActivities();
 			startActivity(new Intent(getApplicationContext(), SaleTicketActivity.class));
 		}
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

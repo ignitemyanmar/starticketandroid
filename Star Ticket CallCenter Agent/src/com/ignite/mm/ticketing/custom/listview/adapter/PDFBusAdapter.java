@@ -21,6 +21,7 @@ public class PDFBusAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private ArrayList<AllBusObject> allBusObject;
 	private final Context _context;
+	private String[] randomArray;
 	
 	public PDFBusAdapter(Activity aty,
 			 ArrayList<AllBusObject> allBusObject) {
@@ -134,9 +135,13 @@ public class PDFBusAdapter extends BaseAdapter {
 		holder.txt_operator_phone.setText(": "+getItem(position).getOperatorPhone());
 		
 		if (getItem(position).getExtraCity() != null) {
-			holder.txt_trip_class.setText(getItem(position).getTrip()+" ("
-					+getItem(position).getExtraCity()
-					+") ["+getItem(position).getBusClass()+"]");
+			if (!getItem(position).getExtraCity().equals("")) {
+				holder.txt_trip_class.setText(getItem(position).getTrip()+" ("
+						+getItem(position).getExtraCity()
+						+") ["+getItem(position).getBusClass()+"]");
+			}else {
+				holder.txt_trip_class.setText(getItem(position).getTrip()+" ["+getItem(position).getBusClass()+"]");
+			}
 		}else {
 			holder.txt_trip_class.setText(getItem(position).getTrip()+" ["+getItem(position).getBusClass()+"]");
 		}
@@ -144,7 +149,22 @@ public class PDFBusAdapter extends BaseAdapter {
 		holder.txt_trip_date_time.setText(getItem(position).getDate()+" ("+getItem(position).getTime()+")");
 		holder.txt_seat_no.setText(": "+getItem(position).getSeatNo());		
 		
-		if (getItem(position).getTicketNo() != null) {
+		randomArray = getItem(position).getRandomTickets().split(",");
+		
+		if (getItem(position).getRandomTickets() != null) {
+			if (getItem(position).getRandomTickets().equals("-")) {
+				//If Random Operators Tickets is not available, show Star Ticket NO. 
+				holder.txt_ticket_no.setText(": "+getItem(position).getTicketNo());
+			}else {
+				//If not, show Random Tickets
+				if (randomArray.length > 0) {
+					holder.txt_ticket_no.setText(": "+getItem(position).getRandomTickets());
+				}else {
+					holder.txt_ticket_no.setText(": "+getItem(position).getTicketNo());
+				}
+			}
+		}else {
+			//If not null, show Random Tickets
 			holder.txt_ticket_no.setText(": "+getItem(position).getTicketNo());
 		}
 		

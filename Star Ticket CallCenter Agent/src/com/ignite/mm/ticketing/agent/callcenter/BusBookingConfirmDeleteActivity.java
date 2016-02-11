@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -54,13 +55,14 @@ public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
 	private SKConnectionDetector connectionDetector;
 	private ProgressDialog dialog;
 	protected String permit_operator_phone;
+	protected String[] ticketArray;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		actionBar = getSupportActionBar();
+/*		actionBar = getSupportActionBar();
 		actionBar.setCustomView(R.layout.action_bar);
 		actionBarTitle = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title);
@@ -71,9 +73,17 @@ public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
 		action_bar_title2 = (TextView) actionBar.getCustomView().findViewById(
 				R.id.action_bar_title2);
 		action_bar_title2.setVisibility(View.GONE);
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);*/
+
 		setContentView(R.layout.activity_pay_delete);
+		
+		//Title
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+        	toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        	toolbar.setTitle("Booking Confirm/Cancel");
+            this.setSupportActionBar(toolbar);
+        }
 		
 		btn_pay = (Button) findViewById(R.id.btn_pay);
 		btn_cancel_order = (Button) findViewById(R.id.btn_cancel);
@@ -193,6 +203,10 @@ public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
 				bundle.putString("phone", creditOrder.getCustomerPhone());
 				bundle.putString("nrc", creditOrder.getCustomerNrc());
 				bundle.putString("Price", creditOrder.getPrice());
+				
+				Log.i("", "f price: "+creditOrder.getForeign_price());
+				
+				bundle.putString("ForeignPrice", creditOrder.getForeign_price());
 				bundle.putString("selected_seat",  creditOrder.getSeatNo());
 				bundle.putString("sale_order_no", creditOrder.getId());
 				bundle.putString("order_date", creditOrder.getDate());
@@ -276,5 +290,15 @@ public class BusBookingConfirmDeleteActivity extends BaseSherlockActivity {
 				finish();
 			}
 		});*/
+	}
+	
+	/**
+	 * If back arrow button clicked, close this activity. 
+	 */
+	@Override
+	public Intent getSupportParentActivityIntent() {
+		// TODO Auto-generated method stub
+		finish();
+		return super.getSupportParentActivityIntent();
 	}
 }

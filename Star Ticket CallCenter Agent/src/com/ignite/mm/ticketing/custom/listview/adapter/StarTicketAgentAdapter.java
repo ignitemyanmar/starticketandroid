@@ -18,6 +18,7 @@ public class StarTicketAgentAdapter extends BaseAdapter {
 	private TextView txtTitle;
 	private List<StarTicketAgents> agents;
 	private Activity aty;
+	private TextView txt_extacity_price;
 	
 	public StarTicketAgentAdapter(Activity aty,
 			List<StarTicketAgents> arg0) {
@@ -48,8 +49,9 @@ public class StarTicketAgentAdapter extends BaseAdapter {
 	            convertView = mInflater.inflate(R.layout.spiner_item_list, null);
 	        }
 	        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);
+	        txt_extacity_price = (TextView)convertView.findViewById(R.id.txt_extacity_price);
 	        txtTitle.setText(agents.get(position).getName());
-	        txtTitle.setSingleLine(true);
+	        txt_extacity_price.setText("");
 		return convertView;
 	}
 
@@ -61,8 +63,10 @@ public class StarTicketAgentAdapter extends BaseAdapter {
                     aty.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.spiner_sub_item_list, null);
         }
-        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);        
+        txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);  
+        txt_extacity_price = (TextView)convertView.findViewById(R.id.txt_extacity_price);
         txtTitle.setText(agents.get(position).getName());
+        txt_extacity_price.setText("");
 		return convertView;
 	}
 

@@ -3,7 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@drawable/app_background">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/ly_title"
@@ -37,7 +46,7 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white" >
 
         <LinearLayout
@@ -52,7 +61,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="50"
                     android:gravity="center_vertical"
                     android:padding="20dp" >
@@ -65,18 +74,19 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ခရီးစဥ္ ( မွ )"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/grey" />
 
                     <Spinner
                         android:id="@+id/spn_from_trip"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="30" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="50"
                     android:gravity="center_vertical"
                     android:padding="20dp" >
@@ -89,18 +99,19 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ခရီးစဥ္ ( သုိ႔ )"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/grey" />
 
                     <Spinner
                         android:id="@+id/spn_to_trip"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="30" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="50"
                     android:gravity="center_vertical"
                     android:padding="20dp" >
@@ -113,12 +124,13 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ထြက္ခြာမည့္ ေန႔"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/grey" />
 
                     <Button
                         android:id="@+id/btn_trip_date"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="30"
                         android:background="@drawable/btn_border_radius_"
                         android:text="Choose Date" />
@@ -126,7 +138,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="50"
                     android:gravity="center_vertical"
                     android:padding="20dp" >
@@ -139,12 +151,13 @@
                         android:layout_weight="70"
                         android:gravity="center_vertical"
                         android:text="ထြက္ခြာမည့္ အခ်ိန္"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/grey" />
 
                     <Spinner
                         android:id="@+id/spn_trip_time"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="30" />
                 </LinearLayout>
 
@@ -154,7 +167,7 @@
                     android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:layout_weight="50"
-                    android:background="@drawable/btn_gold_light"
+                    android:background="@drawable/btn_gold"
                     android:gravity="center"
                     android:text="ရွာမည္"
                     android:textAppearance="?android:attr/textAppearanceMedium"

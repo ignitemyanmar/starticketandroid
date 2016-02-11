@@ -3,37 +3,46 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:id="@+id/RelativeLayout2"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="65dp"
             android:background="@color/golden_brown_light"
             android:orientation="vertical"
             android:padding="5dp" >
 
-            <com.smk.custom.view.CustomEditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/auto_txt_codeno"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="155dp"
-                android:background="@drawable/apptheme_edit_text_holo_light"
-                android:ems="10"
-                android:hint="Code No / Phone No."
+                android:hint="Code No / Phone"
                 android:inputType="number"
                 android:maxWidth="300dp"
-                android:textColor="@color/gray_light"
                 android:textColorHint="@color/gray"
-                android:textAppearance="?android:attr/textAppearanceLarge" >
+                app:met_errorColor="@color/golden_brown"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/golden_brown" >
 				
                 <requestFocus />
-            </com.smk.custom.view.CustomEditText>
+            </com.rengwuxian.materialedittext.MaterialEditText>
 
             <com.smk.custom.view.CustomButton
                 android:id="@+id/btn_search_codeno"
@@ -41,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:background="@drawable/btn_green"
+                android:background="@drawable/btn_blue"
                 android:gravity="center"
                 android:text="ရွာ မည္"
                 android:textColor="@color/white"

@@ -55,7 +55,34 @@ public class Trip {
     @SerializedName("time_unit")
     @Expose
     private int timeUnit;
-
+    @SerializedName("pre_order_time")
+    @Expose
+    private String preOrderTime;
+    @Expose
+    private String operator_name;
+    @Expose
+    public String operatorName;
+    @Expose
+    public String class_name;
+    @Expose
+    public String commission;
+    @Expose
+    public String everClose;
+    @Expose
+    public String fromCloseDate;
+    @Expose
+    public String toCloseDate;
+    @Expose
+    public String remark;
+    @Expose
+    public String seatPlanId;
+    @Expose
+    public String status;
+    @Expose
+    public String createdAt;
+    @Expose
+    public String updatedAt;
+    
     /**
      * 
      * @return
@@ -379,6 +406,117 @@ public class Trip {
     public void setTimeUnit(int timeUnit) {
         this.timeUnit = timeUnit;
     }
+    
+    
+
+	public String getPreOrderTime() {
+		return preOrderTime;
+	}
+
+	public void setPreOrderTime(String preOrderTime) {
+		this.preOrderTime = preOrderTime;
+	}
+	
+	
+
+	public String getOperator_name() {
+		return operator_name;
+	}
+
+	public void setOperator_name(String operator_name) {
+		this.operator_name = operator_name;
+	}
+
+	
+	public String getOperatorName() {
+		return operatorName;
+	}
+
+	public void setOperatorName(String operatorName) {
+		this.operatorName = operatorName;
+	}
+
+	
+
+	public String getClass_name() {
+		return class_name;
+	}
+
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
+	}
+
+	public String getCommission() {
+		return commission;
+	}
+
+	public void setCommission(String commission) {
+		this.commission = commission;
+	}
+
+	public String getEverClose() {
+		return everClose;
+	}
+
+	public void setEverClose(String everClose) {
+		this.everClose = everClose;
+	}
+
+	public String getFromCloseDate() {
+		return fromCloseDate;
+	}
+
+	public void setFromCloseDate(String fromCloseDate) {
+		this.fromCloseDate = fromCloseDate;
+	}
+
+	public String getToCloseDate() {
+		return toCloseDate;
+	}
+
+	public void setToCloseDate(String toCloseDate) {
+		this.toCloseDate = toCloseDate;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getSeatPlanId() {
+		return seatPlanId;
+	}
+
+	public void setSeatPlanId(String seatPlanId) {
+		this.seatPlanId = seatPlanId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
 	@Override
 	public String toString() {
@@ -392,9 +530,14 @@ public class Trip {
 				+ timeChecking + ", totalSeat=" + totalSeat
 				+ ", permitseatTotal=" + permitseatTotal
 				+ ", permitseatSoldtotal=" + permitseatSoldtotal
-				+ ", timeUnit=" + timeUnit + "]";
+				+ ", timeUnit=" + timeUnit + ", preOrderTime=" + preOrderTime
+				+ ", operator_name=" + operator_name + ", operatorName="
+				+ operatorName + ", class_name=" + class_name + ", commission="
+				+ commission + ", everClose=" + everClose + ", fromCloseDate="
+				+ fromCloseDate + ", toCloseDate=" + toCloseDate + ", remark="
+				+ remark + ", seatPlanId=" + seatPlanId + ", status=" + status
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-    
-    
 
+	
 }
