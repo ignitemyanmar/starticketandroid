@@ -23,6 +23,7 @@ public class NetworkEngine {
 		return instance;
 	}
 	public static String ip = "192.168.1.101";
+	//public static String ip = "elite.starticketmyanmar.com";
 	public static void setIP(String address){
 		ip = address;
 		instance = null;

@@ -196,13 +196,12 @@ public class BusSelectSeatActivity extends BaseSherlockActivity{
 			e.printStackTrace();
 		}
 		int compare = today.compareTo(formatedDate);
-		if(compare > 0){
-			btn_check_out.setVisibility(View.GONE);
-			btn_now_booking.setVisibility(View.GONE);
-			btn_booking.setVisibility(View.GONE);
+		if(compare > 0 ){
+			//If today is grater than choose day
+			//btn_check_out.setVisibility(View.GONE);
+			//btn_now_booking.setVisibility(View.GONE);
+			//btn_booking.setVisibility(View.GONE);
 		}
-		
-		
 	}
 	
 	@Override
