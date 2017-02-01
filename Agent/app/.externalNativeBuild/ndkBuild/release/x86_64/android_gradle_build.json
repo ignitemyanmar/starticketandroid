@@ -1,0 +1,62 @@
+{
+  "buildFiles": [
+    "/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Android.mk",
+    "/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Application.mk"
+  ],
+  "cleanCommands": [
+    "/Users/user/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Application.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/lib clean"
+  ],
+  "libraries": {
+    "activation-release-x86_64": {
+      "buildCommand": "/Users/user/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Application.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/lib /Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libactivation.so",
+      "toolchain": "toolchain-x86_64",
+      "abi": "x86_64",
+      "artifactName": "activation",
+      "files": [
+        {
+          "src": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Activation.c",
+          "flags": "\"-gcc-toolchain\" \"/Users/user/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64\" \"-target\" \"x86_64-none-linux-android\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-fPIC\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-g\" \"-O2\" \"-DNDEBUG\" \"-I/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"/Users/user/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include\""
+        }
+      ],
+      "output": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libactivation.so"
+    },
+    "securekey-release-x86_64": {
+      "buildCommand": "/Users/user/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Application.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/lib /Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libsecurekey.so",
+      "toolchain": "toolchain-x86_64",
+      "abi": "x86_64",
+      "artifactName": "securekey",
+      "files": [
+        {
+          "src": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/SecureKey.c",
+          "flags": "\"-gcc-toolchain\" \"/Users/user/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64\" \"-target\" \"x86_64-none-linux-android\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-fPIC\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-g\" \"-O2\" \"-DNDEBUG\" \"-I/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"/Users/user/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include\""
+        }
+      ],
+      "output": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libsecurekey.so"
+    },
+    "secureparam-release-x86_64": {
+      "buildCommand": "/Users/user/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/Application.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/lib /Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libsecureparam.so",
+      "toolchain": "toolchain-x86_64",
+      "abi": "x86_64",
+      "artifactName": "secureparam",
+      "files": [
+        {
+          "src": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni/SecureParam.cpp",
+          "flags": "\"-gcc-toolchain\" \"/Users/user/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64\" \"-target\" \"x86_64-none-linux-android\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-fPIC\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-g\" \"-fno-exceptions\" \"-fno-rtti\" \"-O2\" \"-DNDEBUG\" \"-I/Users/user/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include\" \"-I/Users/user/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include\" \"-I/Users/user/Library/Android/sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward\" \"-I/Users/user/Desktop/WorkProjects/Agent/app/src/main/jni\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"/Users/user/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include\""
+        }
+      ],
+      "output": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/ndkBuild/release/obj/local/x86_64/libsecureparam.so"
+    }
+  },
+  "toolchains": {
+    "toolchain-x86_64": {
+      "cCompilerExecutable": "/Users/user/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+      "cppCompilerExecutable": "/Users/user/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

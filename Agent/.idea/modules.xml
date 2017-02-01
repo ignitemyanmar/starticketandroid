@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Agent.iml" filepath="$PROJECT_DIR$/Agent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sKAlertMessage/sKAlertMessage.iml" filepath="$PROJECT_DIR$/sKAlertMessage/sKAlertMessage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sKCalendar/sKCalendar.iml" filepath="$PROJECT_DIR$/sKCalendar/sKCalendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sKConnectionDetector/sKConnectionDetector.iml" filepath="$PROJECT_DIR$/sKConnectionDetector/sKConnectionDetector.iml" />
+    </modules>
+  </component>
+</project>

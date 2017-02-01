@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.ignite.mm.ticketing"
+        minSdkVersion 14
+        targetSdkVersion 25
+
+        ndk {
+            moduleName "securekey"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.squareup:android-times-square:1.6.5@aar'
+    compile 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
+    compile 'com.afollestad.material-dialogs:core:0.9.2.1'
+    compile 'com.orhanobut:dialogplus:1.11@aar'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.android.support:design:25.1.0'
+    compile files('libs/BlueToothTool.jar')
+    compile files('libs/core.jar')
+    compile files('libs/itextpdf-5.4.5.jar')
+    compile files('libs/okhttp-1.5.4.jar')
+    compile files('libs/retrofit-1.5.0.jar')
+    compile files('libs/skpopupview.jar')
+    compile project(':sKAlertMessage')
+    compile project(':sKCalendar')
+    compile project(':sKConnectionDetector')
+    compile project(':lib_Material_Calendar')
+}

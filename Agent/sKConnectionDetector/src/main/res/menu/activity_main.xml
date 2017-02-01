@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.toolbar.MainActivity" >
+
+    <item android:id="@+id/menu_hotLine"
+          android:title="Call Setra"
+          app:showAsAction="ifRoom"
+          android:orderInCategory="1" 
+          android:menuCategory="secondary"/>
+    
+    <!-- <item 
+	    android:title="Hot Lines(Star Tikcet):"
+	    android:enabled="false"
+	    >
+    </item>
+    <item 
+        android:id="@+id/menu_hotline2"
+        android:title="09971118511"
+        >
+    </item>
+    <item 
+        android:id="@+id/menu_hotline3"
+        android:title="09262556363" 
+        >
+    </item> -->
+</menu>

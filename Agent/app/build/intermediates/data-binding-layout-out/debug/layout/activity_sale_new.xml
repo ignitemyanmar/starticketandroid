@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+	
+	
+	<android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+		
+		<android.support.v7.widget.Toolbar android:layout_width="match_parent"
+				android:layout_height="250dp"
+				android:id="@+id/toolbar"
+				android:background="@color/colorPrimary">
+			<LinearLayout
+					android:orientation="vertical"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					android:layout_marginRight="@dimen/activity_vertical_margin"
+					android:layout_marginBottom="@dimen/activity_vertical_margin"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+				<Button android:layout_width="match_parent" android:layout_height="70dp"
+						android:text="@string/strmm_choose_fromcity"
+						android:id="@+id/from"
+						style="@style/Base.Widget.AppCompat.Button.Colored"/>
+				<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:padding="@dimen/activity_vertical_margin"
+						android:text="To"
+						android:gravity="center"
+						android:textSize="20sp"
+						android:textStyle="bold"
+						android:textColor="@color/white"/>
+				<Button
+
+						android:id="@+id/to"
+						android:text="@string/strmm_choose_tocity"
+						style="@style/Base.Widget.AppCompat.Button.Colored"
+						android:layout_width="match_parent" android:layout_height="70dp"
+				/>
+			</LinearLayout>
+		
+		
+		</android.support.v7.widget.Toolbar>
+	</android.support.design.widget.AppBarLayout>
+	
+	<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior"
+			android:id="@+id/scroll_view"
+			android:layout_height="wrap_content">
+		<RelativeLayout android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+			<android.support.v7.widget.SwitchCompat android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/national_switch"
+					android:padding="@dimen/activity_vertical_margin"
+					android:layout_centerHorizontal="true"/>
+			<TextView android:layout_width="match_parent" android:layout_height="50dp"
+					android:layout_toLeftOf="@id/national_switch"
+					android:text="@string/str_local"
+					android:gravity="center"
+					android:textStyle="bold"
+					android:id="@+id/local"
+					android:textSize="15sp"
+					android:layout_centerHorizontal="true"/>
+
+			<TextView android:layout_width="match_parent" android:layout_height="50dp"
+					android:layout_toRightOf="@id/national_switch"
+					android:text="@string/strmm_foreign"
+					android:gravity="center"
+					android:textStyle="bold"
+					android:textSize="15sp"
+					android:id="@+id/foreign"
+					android:layout_centerHorizontal="true"/>
+			
+			<TextView android:layout_width="wrap_content" android:layout_height="50dp"
+					android:layout_below="@id/local"
+					android:text="Date"
+					android:textStyle="bold"
+					android:id="@+id/date"
+					android:gravity="center"
+					android:textSize="18sp"
+					android:layout_marginLeft="@dimen/date_margin"
+			/>
+			<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_below="@id/foreign"
+					android:gravity="center"
+					android:text="choose date"
+					android:id="@+id/date_btn"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="@dimen/activity_vertical_margin"
+					android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+		</RelativeLayout>
+	</android.support.v4.widget.NestedScrollView>
+	<android.support.design.widget.FloatingActionButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:fabSize="normal"
+			android:layout_margin="@dimen/activity_vertical_margin"
+			app:srcCompat="@drawable/ic_magnifying_glass"
+			android:tint="@color/white"
+			android:id="@+id/fab"
+			android:layout_gravity="bottom|center"
+	
+	/>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_prev_month_bg.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_prev_month_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_next_black.png",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_next_black.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_header_bg.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_header_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_prev_black.png",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_prev_black.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_today_cell.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_today_cell.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calendar_selector_pre.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calendar_selector_pre.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_nottoday_cell.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_nottoday_cell.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_next_month_bg.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_next_month_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_pre_icon.png",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_pre_icon.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_bg.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_leadday_cell.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_leadday_cell.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calendar_selector_next.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calendar_selector_next.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_grid_cell_default_bg.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_grid_cell_default_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_month_bg.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_month_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/drawable/calender_next_icon.png",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/drawable/calender_next_icon.png"
+    }
+]

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Google Material Colors -->
+    <color name="accent">#FBC02D</color>
+    <color name="accent_dark">#FF1744</color>
+    <!-- <color name="primary">#F44336</color> star agent color-->
+    <color name="primary">#D32F2F</color>
+    <color name="colorPrimary">#D32F2F</color>
+    <!-- <color name="primary_dark">#D32F2F</color>  star agent color-->
+    <color name="primary_dark">#B71C1C</color>
+    <color name="yellow_logo">#F9A825</color>
+    <color name="yellow_light_logo">#FBC02D</color>
+    <color name="yellow_dark_logo">#F57F17</color>
+    <color name="pussian_blue">#0D47A1</color>
+    <color name="grey">#757575</color>
+    <color name="green">#4caf50</color>
+    <color name="blue">#1976D2</color>
+    <color name="golden_brown">#F44336</color>
+    <color name="golden_brown_dark">#D32F2F</color>
+    <color name="golden_brown_light">#FF5252</color>
+    <color name="golden_brown_light2">#FF5252</color>
+    <color name="dark_blue">#01579B</color>
+    
+    <color name="sale_color">#640F6D</color>
+    <!-- Seats Colors -->
+    <color name="sold_color_red">#F44336</color>
+    <color name="book_color_brown">#470203</color>
+    <color name="chosen_color_green">#52C789</color>
+    
+    <!-- Other Colors -->
+    <color name="forest_green">#0DFFB5</color>
+    <color name="dark_green">#01AEBF</color>
+    <color name="yellow">#F9A825</color>
+    <color name="light_yellow">#FFF59D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF9408</color>
+    <color name="transparent_dark_green">#CC01AEBF</color>
+    <color name="transparent_dark_blue">#CC22409A</color>
+    <color name="orange_light">#F74C3C</color>
+    <color name="orange_dark">#dd1b09</color>
+    <color name="transprant_black">#99000000</color>
+    <color name="transprant_white">#80FFFFFF</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="DarkActionBarColor">#333333</color>
+    <color name="material_teal">#009688</color>
+
+    <color name="black_overlay">#66000000</color>
+    
+</resources>

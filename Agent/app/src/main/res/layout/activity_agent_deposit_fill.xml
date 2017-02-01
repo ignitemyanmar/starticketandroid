@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ignite.gi.ticketing.agent.AgentDepositFillActivity" >
+
+   	<include layout="@layout/toolbar"/>"
+    
+    <LinearLayout 
+        android:id="@+id/linear_layout_pay_with_cb_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/bg_cb_pay"
+        android:clickable="true"
+        >
+        
+        <ImageView 
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:padding="10dp"
+            android:src="@drawable/cb_pay"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strmm_pay_with_cb_pay"
+            android:layout_gravity="center"
+            />
+        
+        <ImageView 
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
+            />
+        
+    </LinearLayout>
+    
+    
+    
+</LinearLayout>

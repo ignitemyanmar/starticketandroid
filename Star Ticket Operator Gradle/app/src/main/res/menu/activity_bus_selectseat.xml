@@ -1,0 +1,27 @@
+<menu 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <item
+        android:id="@+id/action_booking"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_booking_white"
+        android:title="Booking"
+        app:showAsAction="ifRoom"/>
+    
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_refresh_white"
+        android:title="Refresh"
+        app:showAsAction="ifRoom"/>
+    
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+         android:icon="@drawable/ic_edit_white"
+        android:title="Edit"
+        app:showAsAction="ifRoom"/>
+    
+</menu>

@@ -1,0 +1,244 @@
+package com.ignite.mdm.ticketing.agent.callcenter;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.ignite.mdm.ticketing.agent.util.PrefManager;
+import com.ignite.mdm.ticketing.clientapi.NetworkEngine;
+import com.ignite.mdm.ticketing.sqlite.database.model.AccessToken;
+import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.LoginUser;
+import com.ignite.mm.ticketing.application.SecureKey;
+import com.ignite.mm.ticketing.application.SecureParam;
+import com.smk.skalertmessage.SKToastMessage;
+import com.smk.skconnectiondetector.SKConnectionDetector;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+public class UserLoginActivity extends BaseSherlockActivity {
+
+  private EditText txtEmail;
+  private EditText txtPassword;
+
+  private Context ctx = this;
+  private Button btn_login;
+  private ProgressDialog dialog;
+  private ImageButton actionBarBack;
+  private SKConnectionDetector connectionDetector;
+  private TextView txt_register;
+  public static boolean isSkip = false;
+
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
+
+  /**
+   * If back arrow button clicked, close this activity.
+   */
+  @Override public Intent getSupportParentActivityIntent() {
+    finish();
+    return super.getSupportParentActivityIntent();
+  }
+
+  private OnClickListener clickListenerLogin = new OnClickListener() {
+
+    public void onClick(View v) {
+      if (v == actionBarBack) {
+        finish();
+      }
+      //for Login button
+      if (v == btn_login) {
+        login();
+      }
+
+      // for User Register
+      //if (v == txt_register) {
+      //	startActivity(new Intent(getBaseContext(), RegisterActivity.class));
+      //}
+    }
+  };
+  private String userEmail;
+
+  public void login() {
+
+    if (connectionDetector.isConnectingToInternet()) {
+
+      if (checkFields()) {
+
+        dialog = ProgressDialog.show(ctx, "", getString(R.string.please_wait), true);
+        ProgressBar progress = (ProgressBar) dialog.findViewById(android.R.id.progress);
+        progress.getIndeterminateDrawable()
+            .setColorFilter(getResources().getColor(R.color.gray),
+                android.graphics.PorterDuff.Mode.SRC_ATOP);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+
+        userEmail = txtEmail.getText().toString();
+
+        Log.i("", "Enter here..... log in" + userEmail);
+        //Check Email & Password on Server
+        NetworkEngine.setIP("starticketmyanmar.com");
+        NetworkEngine.getInstance()
+            .getAccessToken("password", "clientID22222", "scrt123321098765432", userEmail,
+                txtPassword.getText().toString(), "", "", new Callback<AccessToken>() {
+
+                  public void success(AccessToken access_token, Response response) {
+                    dialog.dismiss();
+                    if (response.getStatus() == 200) {
+                      if (access_token != null) {
+                        LoginUser user = new LoginUser(UserLoginActivity.this);
+                        PrefManager.putUserName(UserLoginActivity.this,
+                            txtEmail.getText().toString());
+                        PrefManager.putPassword(UserLoginActivity.this,
+                            txtPassword.getText().toString());
+
+                        user.setId(access_token.getId());
+                        user.setName(access_token.getName());
+                        user.setEmail(access_token.getEmail());
+                        user.setCodeNo(access_token.getCodeNo());
+                        user.setPhone(access_token.getPhone());
+                        user.setAddress(access_token.getAddress());
+                        user.setAgentGroupName(access_token.getAgentgroup_name());
+                        user.setRole(String.valueOf(access_token.getRole()));
+                        user.setAgentGroupId(String.valueOf(access_token.getAgentgroupId()));
+                        user.setGroupBranch(String.valueOf(access_token.getGroupBranch()));
+                        user.setAccessToken(access_token.getAccessToken());
+                        user.setCreateAt(access_token.getCreatedAt());
+                        user.setUpdateAt(access_token.getUpdatedAt());
+                        user.setTotal_paid(access_token.getTotal_paid());
+                        user.setTotal_sold_amount(access_token.getTotal_sold_amount());
+                        user.setPercentage(access_token.getPercentage());
+                        user.login();
+                      }
+
+                      if (isSkip) {
+                        isSkip = false;
+                        finish();
+                      } else {
+                        LoginUser user = new LoginUser(UserLoginActivity.this);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("login_name", user.getUserName());
+                        bundle.putString("userRole", user.getRole());
+                        Intent intent =
+                            new Intent(getApplicationContext(), HomeNewActivity.class).putExtras(
+                                bundle);
+                        startActivity(intent);
+                        finish();
+                      }
+                    } else {
+
+                    }
+                  }
+
+                  public void failure(RetrofitError arg0) {
+                    // TODO Auto-generated method stub
+                    Log.i("", "Enter here... log in fail: " + arg0.getCause());
+
+                    dialog.dismiss();
+
+                    if (arg0.getResponse() != null) {
+                      Log.i("", "Log in Fail resp: " + arg0.getResponse().getStatus());
+                      if (arg0.getResponse().getStatus() == 401) {
+                        SKToastMessage.showMessage(UserLoginActivity.this,
+                            "Check Email and Password", SKToastMessage.ERROR);
+                      }
+
+                      if (arg0.getResponse().getStatus() == 403) {
+                        SKToastMessage.showMessage(UserLoginActivity.this,
+                            "Check Email and Password", SKToastMessage.ERROR);
+                      }
+                    } else {
+                      SKToastMessage.showMessage(UserLoginActivity.this,
+                          "Can't connect to server right now!", SKToastMessage.ERROR);
+                    }
+                  }
+                });
+      }
+    } else {
+
+      connectionDetector.showErrorMessage();
+      SharedPreferences sharedPreferences = ctx.getSharedPreferences("User", MODE_PRIVATE);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+
+      editor.clear();
+      editor.commit();
+      editor.putString("access_token", null);
+      editor.putString("token_type", null);
+      editor.putLong("expires", 0);
+      editor.putLong("expires_in", 0);
+      editor.putString("refresh_token", null);
+      editor.putString("user_id", "1");
+      editor.putString("user_name", "Elite");
+      editor.putString("user_type", "operator");
+      editor.commit();
+      //Intent intent = new Intent(getApplicationContext(),	BusTripsCityActivity.class);
+      //finish();
+      //startActivity(intent);
+    }
+  }
+
+  public boolean checkFields() {
+    if (txtEmail.getText().toString().length() == 0) {
+      txtEmail.setError("Enter Your UserName/Email/Phone");
+      return false;
+    }
+    if (txtPassword.getText().toString().length() == 0) {
+      txtPassword.setError("Enter Your Password");
+      return false;
+    }
+
+    return true;
+  }
+
+  @Override protected void onResume() {
+    // TODO Auto-generated method stub
+    super.onResume();
+    //Check Screen Size
+    Configuration config = getResources().getConfiguration();
+    setContentView(R.layout.activity_login_phone);
+
+    String AES = SecureKey.getAESKey();
+    String Key = SecureKey.getKey();
+    Log.e("AES KEY ",
+        "@AES Key : " + AES + " , Key : " + Key + ",param > " + SecureParam.deleteAllOrderParam(
+            AES));
+
+    //Title
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    if (toolbar != null) {
+      toolbar.setTitle(getString(R.string.toolbar_login_title));
+      this.setSupportActionBar(toolbar);
+    }
+    connectionDetector = SKConnectionDetector.getInstance(this);
+    btn_login = (Button) findViewById(R.id.btn_login);
+    btn_login.setOnClickListener(clickListenerLogin);
+    //txt_register = (TextView)findViewById(R.id.txt_register);
+    //txt_register.setOnClickListener(clickListenerLogin);
+    txtEmail = (EditText) this.findViewById(R.id.txt_login_email);
+    txtPassword = (EditText) this.findViewById(R.id.txt_login_password);
+    if (PrefManager.getUserName(this) != null) {
+      txtEmail.setText(PrefManager.getUserName(this));
+      txtPassword.setText(PrefManager.getPassword(this));
+      login();
+    }
+
+    //connectionDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
+    if (!connectionDetector.isConnectingToInternet()) {
+      SKToastMessage.showMessage(getBaseContext(), getString(R.string.no_conneciton),
+          SKToastMessage.ERROR);
+    }
+  }
+}
