@@ -4774,6 +4774,7 @@ containing a value of this type.
         public static final int checkbox=0x7f0d0079;
         public static final int chk_remove=0x7f0d0228;
         public static final int chk_seat=0x7f0d023c;
+        public static final int choose=0x7f0d016c;
         public static final int chronometer=0x7f0d027b;
         public static final int circular=0x7f0d0057;
         public static final int city=0x7f0d0211;
@@ -4856,9 +4857,9 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f0d0042;
         public static final int fill_vertical=0x7f0d0039;
         public static final int fixed=0x7f0d005d;
-        public static final int foreign=0x7f0d016e;
+        public static final int foreign=0x7f0d016d;
         public static final int friday=0x7f0d004b;
-        public static final int from=0x7f0d0169;
+        public static final int from=0x7f0d016a;
         public static final int grd_trips_city=0x7f0d00d6;
         public static final int grid_month_year=0x7f0d01d1;
         public static final int grid_seat=0x7f0d01b9;
@@ -4913,7 +4914,6 @@ containing a value of this type.
         public static final int listMode=0x7f0d0020;
         public static final int listTime=0x7f0d02a9;
         public static final int list_item=0x7f0d0066;
-        public static final int local=0x7f0d016d;
         public static final int logout=0x7f0d02b8;
         public static final int lst_agent=0x7f0d0099;
         public static final int lst_credit=0x7f0d00d8;
@@ -4970,7 +4970,7 @@ containing a value of this type.
         public static final int multiply=0x7f0d002f;
         public static final int name=0x7f0d0203;
         public static final int name_seats=0x7f0d0212;
-        public static final int national_switch=0x7f0d016c;
+        public static final int national_switch=0x7f0d016e;
         public static final int navigation_header_container=0x7f0d01df;
         public static final int never=0x7f0d005b;
         public static final int nextMonth=0x7f0d01ce;
@@ -5031,7 +5031,7 @@ containing a value of this type.
         public static final int scrollIndicatorUp=0x7f0d006d;
         public static final int scrollView=0x7f0d006e;
         public static final int scrollView1=0x7f0d00da;
-        public static final int scroll_view=0x7f0d016b;
+        public static final int scroll_view=0x7f0d0169;
         public static final int scrollable=0x7f0d005e;
         public static final int search_badge=0x7f0d0086;
         public static final int search_bar=0x7f0d0085;
@@ -5131,7 +5131,7 @@ containing a value of this type.
         public static final int titleMenu=0x7f0d025f;
         public static final int title_tab=0x7f0d02a7;
         public static final int title_template=0x7f0d0075;
-        public static final int to=0x7f0d016a;
+        public static final int to=0x7f0d016b;
         public static final int toolbar=0x7f0d00e7;
         public static final int top=0x7f0d003c;
         public static final int topPanel=0x7f0d0074;

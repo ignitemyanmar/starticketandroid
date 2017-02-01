@@ -12,13 +12,7 @@
 			app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 		<LinearLayout android:layout_width="wrap_content"
 				android:layout_height="match_parent">
-			<Spinner android:layout_width="match_parent" android:layout_height="match_parent"
-					android:gravity="left"
-					android:id="@+id/txt_spinner_items"
 
-					android:entries="@array/sales_spinner"
-					android:layout_gravity="left"
-			/>
 		</LinearLayout>
 	</android.support.v7.widget.Toolbar>
 
@@ -51,16 +45,24 @@
 				android:gravity="center"
 				android:text="-"
 				android:textColor="@color/blue"/>
+		<Spinner android:layout_width="wrap_content" android:layout_height="match_parent"
+				android:gravity="left"
+				android:id="@+id/txt_spinner_items"
 
-		<Button
-				android:id="@+id/btn_search"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_weight="30"
-				android:background="@drawable/btn_blue"
-				android:text="@string/strmm_search"
-				android:textColor="@color/white"/>
+				android:entries="@array/sales_spinner"
+				android:layout_gravity="left"
+		/>
+
 	</LinearLayout>
+	<Button
+			android:id="@+id/btn_search"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+
+			android:background="@drawable/btn_blue"
+			android:text="@string/strmm_search"
+			android:textColor="@color/white"/>
 
 	<ListView
 			android:id="@+id/lst_threeday_sales"

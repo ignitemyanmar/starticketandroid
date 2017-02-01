@@ -4,12 +4,16 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_spinner.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_separator.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/deperature_list.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/deperature_list.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/month.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/layout/month.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/calender_week_day.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/calender_week_day.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_success.xml",
@@ -24,36 +28,56 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_ticket_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/movie_ticket_item.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_icon_group.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_invoice.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/item_invoice.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_error.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_error.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_info.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_info.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_credit_tablet.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_credit_tablet.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/week.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/layout/week.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_warning.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_warning.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_group_user.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_group_user.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_ticket_item.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_ticket_item.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_warning.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_warning.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_register.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_seat_list_phone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_seat_list_phone.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_booking_code.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_booking_code.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/custom_msg_dialog.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/custom_msg_dialog.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_image.xml",
@@ -64,40 +88,36 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_icon.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/week.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/layout/week.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_credit_tablet.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_credit_tablet.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/calendar_day_gridcell.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/calendar_day_gridcell.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_main.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_bus_operator.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_bus_operator.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_input.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_input.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_items.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_items.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_info.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/time_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/time_item.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_main_items.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_main_items.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/listitem_tour_company.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/listitem_tour_company.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/travelagents_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/travelagents_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_out_standingbooking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_out_standingbooking.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
@@ -108,16 +128,8 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/calender_month.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_radio.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_popup_menu_header_item_layout.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_operator_seats.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_show_operator_seats.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_bus_operator.xml",
@@ -128,12 +140,16 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_basic.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_menu_item_action_area.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_cmd.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_cmd.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_credit_phone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_credit_phone.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_custom.xml",
@@ -144,12 +160,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/calender_view.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_error.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_error.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_menu.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_print_layout.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_print_layout.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_error.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_error.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_choose_device.xml",
@@ -160,8 +176,20 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/spiner_sub_item_list.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_actionbuttons.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_stub_actionbuttons.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_delivery_complete.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_delivery_complete.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_print_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_print_layout.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe.xml",
@@ -176,12 +204,8 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_salebytripdate.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_busticketing_credit.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_busticketing_credit.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_checkbox.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_action_tombstone.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/lititem_trip_detail_itinerary.xml",
@@ -192,36 +216,40 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_tour_detail.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_layout.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_trips_city.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_trips_city.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/calender_week_day.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/calender_week_day.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_deposit_fill.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_agent_deposit_fill.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_pay_delete.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pay_delete.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_customerinfo.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_customerinfo.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_register.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_register.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_dialog_title_material.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/item_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/item_invoice.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_outstanding_bookings.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/item_outstanding_bookings.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/listitem_agent_deposit.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/listitem_agent_deposit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_action.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/spiner_item_list.xml",
@@ -230,6 +258,10 @@
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_cb_odd_payment.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_cb_odd_payment.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_show_invoice.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_booking.xml",
@@ -244,32 +276,44 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_booking_filter.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/vertical_toast.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKConnectionDetector/unspecified/res/layout/vertical_toast.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_pdf_bus_voucher.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/base_container.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/base_container.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/custom_msg_dialog.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/custom_msg_dialog.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/fragment_pager.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/fragment_pager.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_input_check.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_input_check.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_basic_check.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_basic_check.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/vertical_toast.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKConnectionDetector/unspecified/res/layout/vertical_toast.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_calendar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_calendar.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_tab_icon.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_item.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_input_check.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_input_check.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar_include.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/ticket_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/ticket_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher_10inch.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_10inch.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_package.xml",
@@ -280,52 +324,48 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_list.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_home.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_home.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_threeday_sales.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_threeday_sales.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_success.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_success.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/remark_header.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/remark_header.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_error.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_error.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/moviedate_listgroup.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/moviedate_listgroup.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_seat_list.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_seat_list.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_info.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_info.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_booking_history.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_booking_history.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_chooser_place.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_chooser_place.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_print_listitem.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_print_listitem.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/time_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/time_item.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/nrc_list_item.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/nrc_list_item.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/travelagents_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/travelagents_item.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_edit_seat_info.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_edit_seat_info.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_sale_by_trip_date.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_sale_by_trip_date.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_price_list_item.xml",
@@ -336,72 +376,52 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/travelagents_list.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/travelagents_list.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_item.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_item.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_view.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/nrc_activity.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/nrc_activity.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/fragment_pager.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/fragment_pager.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_credit_phone.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_credit_phone.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_navigation_item.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_list.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_list.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_close_item_material.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_item_material.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_bluetooth_device.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_bluetooth_device.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_movie_invoice.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_movie_invoice.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_warning.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_warning.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_item_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_success.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_success.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/item_loading.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.rockerhieu/rv-adapter-endless/1.1/res/layout/item_loading.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_text.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_text.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_remark.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_remark.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_salebytripdate.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_salebytripdate.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_subheader.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_part_time.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_deposit_fill.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent_deposit_fill.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_icon.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_choose_spinner.xml",
@@ -416,20 +436,20 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_user_profile.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_login_phone.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_login_phone.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/show_ticket_print_listitem.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_tour_booking.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_tour_booking.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_delivery.xml",
@@ -440,36 +460,44 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_part_chronometer.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_invoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/moviedate_listitem.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/moviedate_listitem.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_invoice.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_invoice.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_seats_booking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_agent_seats_booking.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/movie_print_listview.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/movie_print_listview.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_device.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_device.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/action_bar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/action_bar.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_main_items.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_main_items.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media_custom.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_bus_booking_list.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_bus_booking_list.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_home_new.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_home_new.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_home.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_home.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_sale_ticket.xml",
@@ -480,28 +508,36 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_sale_by_trip_date.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/remark_header.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/remark_header.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_stub_titleframe.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_invoice.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_invoice.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media_custom.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_seat_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_seat_list.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_invoice.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_action_tombstone.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/horizontal_toast.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKConnectionDetector/unspecified/res/layout/horizontal_toast.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_lines_media.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_menu_item.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
@@ -512,32 +548,8 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/action_bar_with_2title.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_cmd.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_cmd.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_subheader.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_bar.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_view.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_view.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_seat.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_seat.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
@@ -560,56 +572,60 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_booking_history.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress_indeterminate.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_detail.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_tour_detail.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_grid.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_grid.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_tourbooking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_tourbooking.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/setting_activity.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/setting_activity.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/setting_activity.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/setting_activity.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_loading.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.rockerhieu/rv-adapter-endless/1.1/res/layout/item_loading.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_dialog_title_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_action.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/travelagents_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/travelagents_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_package.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_tour_package.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher_10inc_72dp.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_10inc_72dp.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/tab_indicator.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/tab_indicator.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_listitem.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/moviedate_expandlist.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/moviedate_expandlist.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_layout.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_print_layout.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_qrcode.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_qrcode.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_info.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_info.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_layout.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_layout.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_seat_list_phone.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_seat_list_phone.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_customerinfo.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_customerinfo.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_listitem.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_print_listitem.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
@@ -620,32 +636,20 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_select_dialog_material.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_material.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/deperature_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/deperature_item.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_delivery.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_delivery.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_sale_new.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_sale_new.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_agent_seats_booking.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_agent_seats_booking.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_invoice.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_show_invoice.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_print_listview.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/movie_print_listview.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_view.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_home_new_layout.xml",
@@ -656,60 +660,48 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_booking_code.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_list_check.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_list_check.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_seats_booking.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent_seats_booking.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_input_check.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_input_check.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/deperature_item.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/deperature_item.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/time_list.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/time_list.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_header.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pdf_bus_header.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_listitem.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_listitem.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_customer_ticket.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_customer_ticket.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/deperature_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/deperature_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_info.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_ticket.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_ticket.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_tour_sale.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_tour_sale.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_content_include.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_calendar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_calendar.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_text_input_password_icon.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_close_seat.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_close_seat.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/toolbar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/toolbar.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_trips_city.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_trips_city.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_barcode.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_barcode.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_customer_ticket.xml",
@@ -724,36 +716,32 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_up_container.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/movie_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/movie_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/show_ticket_item.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_class_list_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_class_list_item.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe_lesspadding.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_stub_titleframe_lesspadding.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_company.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_tour_company.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher_10inch.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_10inch.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/btn_red.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/btn_red.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_success.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_success.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/menu_item.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/menu_item.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_threeday_sales.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_threeday_sales.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_cb_odd_payment.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_cb_odd_payment.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_item_material.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_invoice_detail_activty.xml",
@@ -764,6 +752,10 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_10inc_72dp.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/nrc_activity.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/nrc_activity.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_group_user.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_group_user.xml"
     },
@@ -772,24 +764,28 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/movie_item.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_expanded_menu_layout.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_tour_booking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_tour_booking.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_confirm.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_tour_confirm.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_delivery.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_delivery.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem_singlechoice.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem_singlechoice.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/movie_ticket_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/movie_ticket_item.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher_7inc_72dp.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_7inc_72dp.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_agent.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
@@ -800,16 +796,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_tab_text.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_deposit.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent_deposit.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_pay_delete.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_pay_delete.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_title_item.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/toolbar_dropdown.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/toolbar_dropdown.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/movie_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/movie_info.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_actionbuttons.xml",
@@ -824,24 +816,16 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_sheet_dialog.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_user_profile.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_user_profile.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_show.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_show.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_tourbooking.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_tourbooking.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_qrcode.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_qrcode.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_menu_item.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_sale_ticket.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_sale_ticket.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_list.xml",
@@ -852,32 +836,52 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_credit.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_layout.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_invoice_detail.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/item_invoice_detail.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_home_new_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_home_new_layout.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_info.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/movie_info.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_basic_check.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_basic_check.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_remark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_remark.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_ticket_list.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_show_ticket_list.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_bus_operator.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_bus_operator.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/action_bar_with_2title.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/action_bar_with_2title.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_time.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_time.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/movie_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/movie_list.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_time.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_time.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/month.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/layout/month.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_navigation_item.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate_horizontal.xml",
@@ -888,8 +892,8 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_agent.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_user_profile_edit.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_user_profile_edit.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_device.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_device.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
@@ -902,6 +906,914 @@
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_listview.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_print_listview.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/btn_red.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/btn_red.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/month.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/layout/month.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_ticket_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_show_ticket_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_printsetting.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_printsetting.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_ticket_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/movie_ticket_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/nrc_list_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/nrc_list_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/item_invoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_error.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_error.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_info.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_threeday_sales.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_threeday_sales.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/listitem_tour_company.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/listitem_tour_company.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/calendar_day_gridcell.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/calendar_day_gridcell.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_operator_seats.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_show_operator_seats.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_bus_operator.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_bus_operator.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/busdest_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/busdest_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_trips_city.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_trips_city.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_items.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_items.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/time_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/time_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/listitem_tour_company.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/listitem_tour_company.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_bus_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_bus_invoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/calender_month.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/calender_month.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_operator_seats.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_show_operator_seats.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_delivery.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_delivery.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_warning.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_warning.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_custom.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_custom.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_error.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_error.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_print_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_print_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_movie_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_movie_invoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_view.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_view.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_busticketing_credit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_busticketing_credit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/moviedate_listgroup.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/moviedate_listgroup.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem_multichoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem_multichoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_company.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_tour_company.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_bus_operator.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_bus_operator.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/lititem_trip_detail_itinerary.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/lititem_trip_detail_itinerary.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/calender_week_day.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/calender_week_day.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/calendar_day_gridcell.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/calendar_day_gridcell.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_pay_delete.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pay_delete.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_register.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe_lesspadding.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_stub_titleframe_lesspadding.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/moviedate_expandlist.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/moviedate_expandlist.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/spiner_item_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/spiner_item_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/base_container.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/base_container.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/vertical_toast.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKConnectionDetector/unspecified/res/layout/vertical_toast.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/custom_msg_dialog.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/custom_msg_dialog.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_booking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_booking.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_listview.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/show_ticket_print_listview.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/item_invoice_detail.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/item_invoice_detail.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_home.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_home.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_threeday_sales.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_threeday_sales.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_info.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/remark_header.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/remark_header.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_threeday_sales.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_threeday_sales.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_seat_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_seat_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_info.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_spinner.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_spinner.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_login_phone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_login_phone.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_print_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_print_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/travelagents_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/travelagents_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_user_profile_edit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_user_profile_edit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/travelagents_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/travelagents_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/show_ticket_print_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/nrc_activity.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/nrc_activity.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/toolbar_dropdown.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/toolbar_dropdown.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/fragment_pager.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/fragment_pager.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_credit_phone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_credit_phone.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_warning.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_warning.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/action_bar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/action_bar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_toast_message_warning.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_toast_message_warning.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_agent.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_agent.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/sk_message_success.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/res/layout/sk_message_success.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_busticketing_credit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_busticketing_credit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_remark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_remark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_list_check.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_list_check.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_credit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_credit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_deposit_fill.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent_deposit_fill.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/tab_indicator.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/tab_indicator.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_login_phone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_login_phone.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_seat.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_seat.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/listitem_agent_deposit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/listitem_agent_deposit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_tour_booking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_tour_booking.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_invoice_detail_activty.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_invoice_detail_activty.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_invoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_confirm.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_tour_confirm.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/action_bar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/action_bar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_main_items.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_main_items.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_media_custom.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_trips_city.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_trips_city.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_template_lines_media.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/spiner_sub_item_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/spiner_sub_item_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_cmd.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_cmd.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress_indeterminate.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_ticket_print_listview.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_ticket_print_listview.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_seat.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_seat.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_edit_seat_info.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_edit_seat_info.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/time_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/time_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_basic.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_basic.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_choose_device.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_choose_device.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress_indeterminate.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_grid.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_grid.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_sale_new.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_sale_new.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/setting_activity.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/setting_activity.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_loading.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.rockerhieu/rv-adapter-endless/1.1/res/layout/item_loading.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/moviedate_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/moviedate_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem_singlechoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_print_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher_7inc_72dp.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_7inc_72dp.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_seat_list_phone.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_seat_list_phone.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_bus_booking_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_bus_booking_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/show_ticket_print_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/show_ticket_print_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_choose_spinner.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_choose_spinner.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_sale_new.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_sale_new.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_invoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_show_invoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/movie_print_listview.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/movie_print_listview.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_class_list_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_class_list_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_image.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_image.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_list_check.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_list_check.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_ticket_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_ticket_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_close_seat.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_close_seat.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_seats_booking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent_seats_booking.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate_horizontal.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_progress_indeterminate_horizontal.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/toolbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/toolbar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/time_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/time_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/calender_view.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/calender_view.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/movie_price_list_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/movie_price_list_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/bus_print_listitem.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/bus_print_listitem.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_barcode.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_barcode.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_ticket.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_ticket.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_tour_sale.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_tour_sale.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/dialog_calendar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/dialog_calendar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_chooser_place.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_chooser_place.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/toolbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/toolbar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_barcode.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_barcode.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_class_list_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/bus_class_list_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe_lesspadding.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_stub_titleframe_lesspadding.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_home_new.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_home_new.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_company.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_tour_company.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_voucher_10inch.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_pdf_bus_voucher_10inch.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/btn_red.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/btn_red.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_grid.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_grid.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_threeday_sales.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_threeday_sales.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_text.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_text.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_input.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_input.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_agent_seats_booking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_agent_seats_booking.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_delivery_complete.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_delivery_complete.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_tour_confirm.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_tour_confirm.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/item_outstanding_bookings.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/item_outstanding_bookings.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_listitem_singlechoice.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/menu_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/menu_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_tour_sale.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_tour_sale.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_deposit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_agent_deposit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/list_item_show.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/list_item_show.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/toolbar_dropdown.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/toolbar_dropdown.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_show.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_show.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/list_item_tourbooking.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/list_item_tourbooking.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_pdf_bus_header.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_pdf_bus_header.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_qrcode.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_print_qrcode.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/item_invoice_detail.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/item_invoice_detail.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_agent_deposit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_agent_deposit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/activity_print_items.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_print_items.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/md_dialog_basic_check.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/layout/md_dialog_basic_check.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_show_ticket_list.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_show_ticket_list.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/activity_user_profile_edit.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/layout/activity_user_profile_edit.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/dialog_booking_filter.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/dialog_booking_filter.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/show_item.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/show_item.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/layout/design_menu_item_action_area.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/layout/bus_ticket_print_listview.xml",

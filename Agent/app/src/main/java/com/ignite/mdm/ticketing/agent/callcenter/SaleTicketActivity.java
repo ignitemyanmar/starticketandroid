@@ -6,9 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
@@ -17,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -57,7 +56,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
   private Spinner spn_to_trip;
   private Spinner spn_trip_date;
   private Spinner spn_trip_time;
-  private FloatingActionButton btn_search;
+  private Button btn_search;
   private ArrayList<String> fromCities;
   private FromCitiesAdapter fromCitiesAdapter;
   private String selectedFromCity;
@@ -83,6 +82,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
     final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
     upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
     getSupportActionBar().setHomeAsUpIndicator(upArrow);
+    getSupportActionBar().setTitle("Sale Tickets");
     btn_trip_date = (Button) findViewById(R.id.date_btn);
     Button from = (Button) findViewById(R.id.from);
     Button to = (Button) findViewById(R.id.to);
@@ -119,7 +119,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Calendar cal = Calendar.getInstance();
     currentDate = sdf.format(cal.getTime());
-    btn_search = (FloatingActionButton) findViewById(R.id.fab);
+    btn_search = (Button) findViewById(R.id.fab);
     btn_search.setOnClickListener(clickListener);
     btn_search.setEnabled(false);
     //
@@ -368,7 +368,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
           bundle.putString("trip_date", btn_trip_date.getText().toString());
           bundle.putString("trip_time", selectedTripTime);
           bundle.putBoolean("not_local",
-              ((SwitchCompat) findViewById(R.id.national_switch)).isActivated());
+              ((CheckBox) findViewById(R.id.national_switch)).isChecked());
 
           startActivity(
               new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(
@@ -406,7 +406,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
         .toString()
         .equalsIgnoreCase(getString(R.string.strmm_choose_fromcity)) && !((TextView) findViewById(
         R.id.to)).getText().toString().equalsIgnoreCase(getString(R.string.strmm_choose_tocity))) {
-      ((FloatingActionButton) findViewById(R.id.fab)).setEnabled(true);
+      ((Button) findViewById(R.id.fab)).setEnabled(true);
     }
   }
 }

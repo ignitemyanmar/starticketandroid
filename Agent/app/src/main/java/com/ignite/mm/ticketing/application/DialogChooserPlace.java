@@ -53,7 +53,7 @@ public class DialogChooserPlace extends DialogFragment {
         dismiss();
       }
     });
-
+    binding.searchView.setIconified(false);
     binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
       public boolean onQueryTextSubmit(String query) {
         return true;
@@ -68,8 +68,7 @@ public class DialogChooserPlace extends DialogFragment {
                 android.R.id.text1, values.toArray(new String[0]));
         //ArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
         binding.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          public void onItemClick(AdapterView<?> adapterView, View view, int i,
-              long l) {
+          public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             dialogListClick.onClick(type, values.get(i));
             dismiss();
           }

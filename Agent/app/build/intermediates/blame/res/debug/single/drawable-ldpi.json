@@ -6,5 +6,13 @@
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable-ldpi/ic_deposit.png",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable-ldpi/ic_deposit.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable-ldpi/ic_launcher.png",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable-ldpi/ic_deposit.png",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable-ldpi/ic_deposit.png"
     }
 ]

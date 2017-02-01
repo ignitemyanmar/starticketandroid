@@ -4,32 +4,36 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/calendar_text_selector.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/color/calendar_text_selector.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/calendar_text_selector.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/color/calendar_text_selector.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_default.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/switch_thumb_material_dark.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_switch_thumb.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_switch_track.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/mcv_text_date_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.2/res/color/mcv_text_date_dark.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_switch_thumb.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_dark.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
@@ -44,40 +48,24 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_search_url_text.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_btn_colored_text_material.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/color/design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/mcv_text_date_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.2/res/color/mcv_text_date_light.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/mcv_text_date_dark.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.2/res/color/mcv_text_date_dark.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/color/design_tint_password_toggle.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_dark.xml"
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_default.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_disable_only_material_dark.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_dark.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/mcv_text_date_light.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.2/res/color/mcv_text_date_light.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_light.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_edittext.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
@@ -88,15 +76,127 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_material_dark.xml"
     },
     {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/design_error.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/color/design_error.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/calendar_text_selector.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/color/calendar_text_selector.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/color/design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/mcv_text_date_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.2/res/color/mcv_text_date_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_material_light.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_spinner.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_btn_checkable.xml"
     }
 ]

@@ -1522,6 +1522,7 @@ int id checkBoxAuto 0x7f0d015c
 int id checkbox 0x7f0d0079
 int id chk_remove 0x7f0d0228
 int id chk_seat 0x7f0d023c
+int id choose 0x7f0d016c
 int id chronometer 0x7f0d027b
 int id circular 0x7f0d0057
 int id city 0x7f0d0211
@@ -1604,9 +1605,9 @@ int id fill 0x7f0d0041
 int id fill_horizontal 0x7f0d0042
 int id fill_vertical 0x7f0d0039
 int id fixed 0x7f0d005d
-int id foreign 0x7f0d016e
+int id foreign 0x7f0d016d
 int id friday 0x7f0d004b
-int id from 0x7f0d0169
+int id from 0x7f0d016a
 int id grd_trips_city 0x7f0d00d6
 int id grid_month_year 0x7f0d01d1
 int id grid_seat 0x7f0d01b9
@@ -1661,7 +1662,6 @@ int id list 0x7f0d01f9
 int id listMode 0x7f0d0020
 int id listTime 0x7f0d02a9
 int id list_item 0x7f0d0066
-int id local 0x7f0d016d
 int id logout 0x7f0d02b8
 int id lst_agent 0x7f0d0099
 int id lst_credit 0x7f0d00d8
@@ -1718,7 +1718,7 @@ int id movieList 0x7f0d0265
 int id multiply 0x7f0d002f
 int id name 0x7f0d0203
 int id name_seats 0x7f0d0212
-int id national_switch 0x7f0d016c
+int id national_switch 0x7f0d016e
 int id navigation_header_container 0x7f0d01df
 int id never 0x7f0d005b
 int id nextMonth 0x7f0d01ce
@@ -1779,7 +1779,7 @@ int id scrollIndicatorDown 0x7f0d0071
 int id scrollIndicatorUp 0x7f0d006d
 int id scrollView 0x7f0d006e
 int id scrollView1 0x7f0d00da
-int id scroll_view 0x7f0d016b
+int id scroll_view 0x7f0d0169
 int id scrollable 0x7f0d005e
 int id search_badge 0x7f0d0086
 int id search_bar 0x7f0d0085
@@ -1879,7 +1879,7 @@ int id titleDividerNoCustom 0x7f0d0077
 int id titleMenu 0x7f0d025f
 int id title_tab 0x7f0d02a7
 int id title_template 0x7f0d0075
-int id to 0x7f0d016a
+int id to 0x7f0d016b
 int id toolbar 0x7f0d00e7
 int id top 0x7f0d003c
 int id topPanel 0x7f0d0074

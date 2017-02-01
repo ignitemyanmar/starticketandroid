@@ -97,7 +97,7 @@ public class OutstandingActivity extends BaseSherlockActivity {
         getSharedPreferences("User", MODE_PRIVATE).getInt("balance", 0) + "Ks");
 
     if (getSharedPreferences("User", MODE_PRIVATE).getInt("balance", 0) <= 0) {
-      binding.pay.setEnabled(false);
+      //binding.pay.setEnabled(false);
     }
     binding.pay.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
