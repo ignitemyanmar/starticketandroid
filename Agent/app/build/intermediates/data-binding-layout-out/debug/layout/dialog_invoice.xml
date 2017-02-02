@@ -4,7 +4,7 @@
 			android:orientation="vertical"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-	android:minHeight="250dp" android:tag="layout/dialog_invoice_0">
+			android:minHeight="250dp" android:tag="layout/dialog_invoice_0">
 
 		<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
 				android:gravity="center"
@@ -26,19 +26,20 @@
 		<LinearLayout android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal">
-			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			<TextView android:layout_width="100dp" android:layout_height="wrap_content"
 					android:id="@+id/car_class"
 
 					android:paddingLeft="@dimen/activity_vertical_margin"
 					android:paddingRight="@dimen/activity_vertical_margin"
 					android:layout_gravity="right"
 					android:textColor="@color/material_teal"
-					android:gravity="right"
+					android:gravity="left"
 					android:textStyle="bold"
 			/>
 			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:id="@+id/seats"
 					android:paddingLeft="@dimen/activity_vertical_margin"
+					android:paddingRight="@dimen/activity_vertical_margin"
 					android:gravity="left"
 			/>
 
@@ -47,14 +48,15 @@
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
 				android:layout_marginTop="@dimen/activity_small_margin">
-			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			<TextView android:layout_width="100dp" android:layout_height="wrap_content"
 
 					android:paddingLeft="@dimen/activity_vertical_margin"
 					android:paddingRight="@dimen/activity_vertical_margin"
 					android:layout_gravity="right"
 					android:text="Total"
 					android:textColor="@color/material_teal"
-					android:gravity="right"
+
+					android:gravity="left"
 					android:textStyle="bold"
 			/>
 			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -62,6 +64,7 @@
 					android:paddingLeft="@dimen/activity_vertical_margin"
 					android:id="@+id/amount"
 					android:gravity="left"
+					android:paddingRight="@dimen/activity_vertical_margin"
 			/>
 
 		</LinearLayout>
@@ -69,20 +72,21 @@
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
 				android:layout_marginTop="@dimen/activity_small_margin">
-			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			<TextView android:layout_width="100dp" android:layout_height="wrap_content"
 
 					android:paddingLeft="@dimen/activity_vertical_margin"
 					android:paddingRight="@dimen/activity_vertical_margin"
 					android:layout_gravity="right"
 					android:text="Remark"
 					android:textColor="@color/material_teal"
-					android:gravity="right"
+					android:gravity="left"
 					android:textStyle="bold"
 			/>
 			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:paddingLeft="@dimen/activity_vertical_margin"
 					android:id="@+id/remark"
 					android:gravity="left"
+					android:paddingRight="@dimen/activity_vertical_margin"
 			/>
 
 		</LinearLayout>

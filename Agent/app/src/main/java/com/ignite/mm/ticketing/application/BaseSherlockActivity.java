@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BaseSherlockActivity extends AppCompatActivity {
 	
@@ -76,18 +78,23 @@ public class BaseSherlockActivity extends AppCompatActivity {
     	
     	//editor.clear();
     	//editor.commit();
-    	
+
 		editor.putString(langPref, lang);
 		editor.commit();
     }*/
-	
+	public Typeface typeface;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		registerBaseActivityReceiver();
 		AppLoginUser = new LoginUser(this);
+		typeface = Typeface.createFromAsset(getAssets(),"fonts/zawgyi.ttf");
 		//AppPermission = new PermissionGlobal(this);
+	}
+	@Override
+	protected void attachBaseContext(Context newBase) {
+		super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
 	}
 
 	@Override

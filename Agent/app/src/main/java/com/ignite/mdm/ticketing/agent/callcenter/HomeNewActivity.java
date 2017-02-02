@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import java.text.DecimalFormat;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 @SuppressLint("CutPasteId") public class HomeNewActivity extends AppCompatActivity {
 
@@ -97,7 +99,7 @@ import retrofit.client.Response;
   @Override protected void onCreate(Bundle savedInstanceState) {
     // TODO Auto-generated method stub
     super.onCreate(savedInstanceState);
-
+    setContentView(R.layout.activity_home_new_layout);
     sharedPreferences = getSharedPreferences("User", Activity.MODE_PRIVATE);
   }
 
@@ -110,7 +112,7 @@ import retrofit.client.Response;
 
     skDetector = SKConnectionDetector.getInstance(this);
 
-    setContentView(R.layout.activity_home_new_layout);
+
 
     Bundle bundle = getIntent().getExtras();
     if (bundle != null) {
@@ -137,6 +139,7 @@ import retrofit.client.Response;
 
     txtAgentDeposit.setOnClickListener(clickListener);
     textViewFillDeposit.setOnClickListener(clickListener);
+
     //textViewFillDeposit = (CardView) findViewById(R.id.text_view_fill_deposit);
     ////txt_net_deposit = (TextView) findViewById(R.id.txt_net_deposit);
     //txt_user_name = (TextView) findViewById(R.id.txt_user_name);
@@ -318,6 +321,10 @@ import retrofit.client.Response;
                 }
               }
             });
+  }
+
+  @Override protected void attachBaseContext(Context newBase) {
+    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
   }
 
   private void getAgentAmountBalance(String base_url, String param) {

@@ -59,6 +59,7 @@ dependencies {
     compile project(':sKCalendar')
     compile 'com.rockerhieu:rv-adapter-endless:1.1'
     compile 'com.github.florent37:viewanimator:1.0.5'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     compile 'org.apache.commons:commons-lang3:3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'

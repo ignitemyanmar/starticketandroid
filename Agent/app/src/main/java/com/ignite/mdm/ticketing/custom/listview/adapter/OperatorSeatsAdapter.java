@@ -1,7 +1,6 @@
 package com.ignite.mdm.ticketing.custom.listview.adapter;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,11 +57,10 @@ public class OperatorSeatsAdapter extends BaseAdapter {
 		
 		//holder.txt_operator_name.setText(getItem(position).getOperator());
 		holder.classes.setText(getItem(position).getClass_());
-		Log.d("DATA",getItem(position).getTime());
 
 		if(getItem(position).getTime().toLowerCase().contains("am")){
 			String s =getItem(position).getTime().replaceAll("AM",
-					"မနက်");
+					"\n မနက္");
 			holder.trip_time.setText(s);
 			//holder.trip_time.setBackgroundColor(aty.getResources().getColor(R.color.golden_brown_light));
 			holder.trip_time.setTextColor(aty.getResources().getColor(R.color.primary_dark));
@@ -70,7 +68,7 @@ public class OperatorSeatsAdapter extends BaseAdapter {
 		}else{
 
 			String s = getItem(position).getTime().replaceAll("PM",
-					"ညနေ ");
+					"\n ညေန");
 			holder.trip_time.setText(s);
 			//ညနေ
 			//holder.trip_time.setBackgroundColor(aty.getResources().getColor(R.color.dark_blue));

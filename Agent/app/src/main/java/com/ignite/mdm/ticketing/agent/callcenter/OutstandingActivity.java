@@ -101,7 +101,7 @@ public class OutstandingActivity extends BaseSherlockActivity {
     }
     binding.pay.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        startActivity(new Intent(OutstandingActivity.this, CbOddPaymentActivity.class));
+        startActivity(new Intent(getApplicationContext(), AgentDepositFillActivity.class));
       }
     });
     Spinner spinner = (Spinner) findViewById(R.id.txt_spinner_items);

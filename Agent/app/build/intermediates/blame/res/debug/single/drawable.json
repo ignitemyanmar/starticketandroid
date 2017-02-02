@@ -36,12 +36,12 @@
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/rdo_red_brown.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/btn_dark_blue.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/btn_dark_blue.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/bg_border_gray.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/bg_border_gray.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/btn_dark_blue.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/btn_dark_blue.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/upseat.png",
@@ -64,12 +64,12 @@
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/cancel_order.png"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/btn_cab_done_my_actionbar.xml",
-        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/btn_cab_done_my_actionbar.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/drawable/abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/btn_cab_done_my_actionbar.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/btn_cab_done_my_actionbar.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/tab_show.xml",
@@ -196,12 +196,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/screen_bg.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/noti_circle.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/noti_circle.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/noti_circle.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/noti_circle.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/ic_magnifying_glass.xml",
@@ -228,12 +228,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/btn_green.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/rdo_maginto.xml",
-        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/rdo_maginto.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/calender_next_icon.png",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKCalendar/unspecified/res/drawable/calender_next_icon.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/rdo_maginto.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/rdo_maginto.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
@@ -268,12 +268,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/drawable/abc_edit_text_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/checkout.png",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/checkout.png"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/md_btn_selected.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/drawable/md_btn_selected.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/checkout.png",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/checkout.png"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/show.png",
@@ -336,12 +336,12 @@
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/ovel_time_orange.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/drawable/abc_textfield_search_material.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/checkout.png",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/checkout.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/drawable/abc_textfield_search_material.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/bagan_200.jpg",
@@ -356,12 +356,12 @@
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/show.png"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/ic_magnifying_glass.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/ic_magnifying_glass.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/bg_blue_selector.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/bg_blue_selector.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/ic_magnifying_glass.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/ic_magnifying_glass.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
@@ -400,12 +400,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/rdo_shape_2_1.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/calender_nottoday_cell.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKCalendar/unspecified/res/drawable/calender_nottoday_cell.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/cash.png",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/cash.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/calender_nottoday_cell.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/Agent/sKCalendar/unspecified/res/drawable/calender_nottoday_cell.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/ic_contact_picture_holo_light.png",
@@ -468,12 +468,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/rdo_shape_2.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/ic_user.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/ic_user.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/line_dotted.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/line_dotted.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/ic_user.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/drawable/ic_user.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/drawable/calender_next_icon.png",

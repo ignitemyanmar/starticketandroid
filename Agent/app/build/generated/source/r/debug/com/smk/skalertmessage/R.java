@@ -34,9 +34,9 @@ public final class R {
 		public static final int sk_toast_message_selector_warning = 0x7f02019f;
 	}
 	public static final class id {
-		public static final int LinearLayout1 = 0x7f0d0098;
-		public static final int sk_btn_delete = 0x7f0d02a3;
-		public static final int sk_txt_message = 0x7f0d02a2;
+		public static final int LinearLayout1 = 0x7f0d0099;
+		public static final int sk_btn_delete = 0x7f0d02a6;
+		public static final int sk_txt_message = 0x7f0d02a5;
 	}
 	public static final class layout {
 		public static final int sk_message_error = 0x7f0300d9;

@@ -43,6 +43,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_login_phone);
   }
 
   /**
@@ -160,7 +161,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
                         SKToastMessage.showMessage(UserLoginActivity.this,
                             "Check Email and Password", SKToastMessage.ERROR);
                       }
-                    } else {
+                      } else {
                       SKToastMessage.showMessage(UserLoginActivity.this,
                           "Can't connect to server right now!", SKToastMessage.ERROR);
                     }
@@ -183,6 +184,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
       editor.putString("user_id", "1");
       editor.putString("user_name", "Elite");
       editor.putString("user_type", "operator");
+
       editor.commit();
       //Intent intent = new Intent(getApplicationContext(),	BusTripsCityActivity.class);
       //finish();
@@ -208,7 +210,10 @@ public class UserLoginActivity extends BaseSherlockActivity {
     super.onResume();
     //Check Screen Size
     Configuration config = getResources().getConfiguration();
-    setContentView(R.layout.activity_login_phone);
+
+    //txtEmail.setTypeface(typeface);
+    //txtPassword.setTypeface(typeface);
+    //btn_login.setTypeface(typeface);
 
     String AES = SecureKey.getAESKey();
     String Key = SecureKey.getKey();
@@ -222,6 +227,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
       toolbar.setTitle(getString(R.string.toolbar_login_title));
       this.setSupportActionBar(toolbar);
     }
+
     connectionDetector = SKConnectionDetector.getInstance(this);
     btn_login = (Button) findViewById(R.id.btn_login);
     btn_login.setOnClickListener(clickListenerLogin);
@@ -234,6 +240,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
       txtPassword.setText(PrefManager.getPassword(this));
       login();
     }
+    btn_login.setTypeface(typeface);
 
     //connectionDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
     if (!connectionDetector.isConnectingToInternet()) {

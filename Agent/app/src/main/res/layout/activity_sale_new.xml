@@ -31,24 +31,55 @@
 				android:layout_marginBottom="@dimen/activity_vertical_margin"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
-			<Button android:layout_width="match_parent" android:layout_height="70dp"
-					android:text="@string/strmm_choose_fromcity"
-					android:id="@+id/from"
-					style="@style/Base.Widget.AppCompat.Button.Colored"/>
-			<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-					android:padding="@dimen/activity_vertical_margin"
-					android:text="To"
-					android:gravity="center"
-					android:textSize="20sp"
-					android:textStyle="bold"
-			/>
-			<Button
+			<LinearLayout android:layout_width="match_parent"
+					android:layout_height="70dp"
+					android:background="@drawable/bg_card"
+			>
+				<TextView android:layout_width="80dp" android:layout_height="match_parent"
+						android:text="From"
+						android:padding="@dimen/activity_vertical_margin"
+						android:gravity="center"
+						android:textStyle="bold"
+						android:textColor="@color/white"
+						android:background="@color/accent"
+						android:textSize="18sp"
+						android:layout_gravity="center"/>
+				<TextView android:layout_width="match_parent" android:layout_height="70dp"
+						android:text="@string/strmm_choose_fromcity"
+						android:id="@+id/from"
+						android:textSize="16sp"
+						android:gravity="center"
+						android:textColor="#444"/>
 
-					android:id="@+id/to"
-					android:text="@string/strmm_choose_tocity"
-					style="@style/Base.Widget.AppCompat.Button.Colored"
-					android:layout_width="match_parent" android:layout_height="70dp"
-			/>
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="match_parent"
+					android:layout_height="70dp"
+					android:background="@drawable/bg_card"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+			>
+				<TextView android:layout_width="80dp" android:layout_height="match_parent"
+						android:text="TO"
+
+						android:textSize="18sp"
+						android:padding="@dimen/activity_vertical_margin"
+						android:gravity="center"
+						android:textStyle="bold"
+						android:textColor="@color/white"
+						android:background="@color/accent"
+						android:layout_gravity="center"/>
+				<TextView
+
+						android:id="@+id/to"
+						android:textSize="16sp"
+						android:text="@string/strmm_choose_tocity"
+					android:gravity="center"
+						android:textColor="#444"
+
+
+						android:layout_width="match_parent" android:layout_height="70dp"
+				/>
+			</LinearLayout>
 
 			<RelativeLayout android:layout_width="match_parent"
 					android:layout_height="match_parent"
@@ -56,7 +87,7 @@
 
 				<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
 						android:id="@+id/choose"
-				android:gravity="center">
+						android:gravity="center">
 
 
 					<TextView android:layout_width="wrap_content" android:layout_height="50dp"
@@ -72,20 +103,33 @@
 							android:layout_marginLeft="@dimen/activity_vertical_margin"
 							android:padding="@dimen/activity_vertical_margin"
 							android:layout_centerHorizontal="true"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="50dp"
+							android:text="@string/str_local"
+							android:gravity="center"
+							android:textStyle="bold"
+							android:textSize="15sp"
+							android:id="@+id/local"
+							android:layout_centerHorizontal="true"/>
+					<CheckBox android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="@dimen/activity_vertical_margin"
+							android:padding="@dimen/activity_vertical_margin"
+							android:id="@+id/local_switch"
+							android:layout_centerHorizontal="true"/>
 
 				</LinearLayout>
 				<LinearLayout android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_below="@id/choose"
-				android:gravity="center">
+						android:gravity="left">
 					<TextView android:layout_width="wrap_content" android:layout_height="50dp"
 
 							android:text="Date"
 							android:textStyle="bold"
 							android:id="@+id/date"
-							android:gravity="center"
 							android:textSize="18sp"
-							android:layout_marginLeft="@dimen/date_margin"
+							android:layout_marginLeft="@dimen/activity_vertical_margin"
+
 					/>
 					<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
 							android:layout_below="@id/foreign"
@@ -103,7 +147,7 @@
 			android:layout_height="60dp"
 			app:fabSize="normal"
 			android:layout_margin="@dimen/activity_vertical_margin"
-		android:background="@drawable/btn_yellow"
+			android:background="@drawable/btn_yellow"
 			style="@style/Base.Widget.AppCompat.Button.Colored"
 			android:tint="@color/white"
 			android:textSize="18sp"

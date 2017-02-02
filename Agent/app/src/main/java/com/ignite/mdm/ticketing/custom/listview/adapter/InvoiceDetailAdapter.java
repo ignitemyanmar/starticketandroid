@@ -54,10 +54,10 @@ public class InvoiceDetailAdapter extends RecyclerView.Adapter<InvoiceDetailAdap
     holder.binding.money.setText(lists.get(position).getNetAmount() + "MMK");
     holder.binding.commission.setText("Commission : " + lists.get(position).getCommission());
     holder.binding.time.setText(lists.get(position).getTime());
-    holder.binding.nameSeats.setText(lists.get(position).getCustomerName()
-        + " | "
-        + lists.get(position).getSeatQty()
-        + " seats");
+    //holder.binding.nameSeats.setText(lists.get(position).getCustomerName()
+    //    + " | "
+    //    + lists.get(position).getSeatQty()
+    //    + " seats");
     String from = lists.get(position).getFrom().trim();
     from = from.substring(from.indexOf("(") + 1);
     from = from.substring(0, from.indexOf(")"));

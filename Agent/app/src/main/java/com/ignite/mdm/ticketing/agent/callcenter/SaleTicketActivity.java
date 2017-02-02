@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -84,8 +85,8 @@ public class SaleTicketActivity extends BaseSherlockActivity
     getSupportActionBar().setHomeAsUpIndicator(upArrow);
     getSupportActionBar().setTitle("Sale Tickets");
     btn_trip_date = (Button) findViewById(R.id.date_btn);
-    Button from = (Button) findViewById(R.id.from);
-    Button to = (Button) findViewById(R.id.to);
+    TextView from = (TextView) findViewById(R.id.from);
+    TextView to = (TextView) findViewById(R.id.to);
     from.setOnClickListener(new OnClickListener() {
       public void onClick(View view) {
         DialogChooserPlace dialogChooserPlace = new DialogChooserPlace();
@@ -116,6 +117,25 @@ public class SaleTicketActivity extends BaseSherlockActivity
     //spn_trip_time = (Spinner)findViewById(R.id.spn_trip_time);
     //btn_search = (Button)findViewById(R.id.btn_search);
     //
+    ((CheckBox) findViewById(R.id.national_switch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if(b) {
+          ((CheckBox) findViewById(R.id.local_switch)).setChecked(false);
+        }else {
+          ((CheckBox) findViewById(R.id.local_switch)).setChecked(true);
+        }
+      }
+    });
+
+    ((CheckBox) findViewById(R.id.local_switch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if(b) {
+          ((CheckBox) findViewById(R.id.national_switch)).setChecked(false);
+        }else {
+          ((CheckBox) findViewById(R.id.national_switch)).setChecked(true);
+        }
+      }
+    });
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Calendar cal = Calendar.getInstance();
     currentDate = sdf.format(cal.getTime());

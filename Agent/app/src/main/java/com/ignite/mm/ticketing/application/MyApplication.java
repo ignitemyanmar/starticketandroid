@@ -4,6 +4,7 @@ import android.app.Activity;
 public class MyApplication extends Activity {
 	private static MyApplication objInstance = null;
 	private boolean isLoadedLogin = false;
+
 	
 	public static MyApplication getInstance(){
 		if(objInstance == null){
