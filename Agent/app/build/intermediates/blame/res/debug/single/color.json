@@ -4,12 +4,12 @@
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_light.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/calendar_text_selector.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/res/color/calendar_text_selector.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_secondary_text_material_light.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
@@ -36,12 +36,12 @@
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_seek_thumb.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/design_error.xml",
         "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/res/color/design_error.xml"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/color/abc_tint_seek_thumb.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",

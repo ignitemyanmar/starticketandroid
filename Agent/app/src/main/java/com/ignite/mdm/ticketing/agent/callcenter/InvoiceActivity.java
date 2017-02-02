@@ -4,9 +4,11 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import com.ignite.mdm.ticketing.agent.callcenter.databinding.ActivityInvoiceBinding;
@@ -47,6 +49,7 @@ public class InvoiceActivity extends BaseSherlockActivity {
     binding = DataBindingUtil.setContentView(this, R.layout.activity_invoice);
     setSupportActionBar(binding.toolbar);
     getSupportActionBar().setTitle("Invoices");
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Calendar cal = Calendar.getInstance();
     skDetector = SKConnectionDetector.getInstance(this);
@@ -133,6 +136,17 @@ public class InvoiceActivity extends BaseSherlockActivity {
       }
     }
   };
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      // Respond to the action bar's Up/Home button
+      case android.R.id.home:
+        NavUtils.navigateUpFromSameTask(this);
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
 
   public void getData() {
     Log.d("DATA",SecureParam.getInvoices(token, AppLoginUser.getCodeNo(),

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:2:1-233:12
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:2:1-244:12
 	package
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:4:3-54
 		INJECTED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml
@@ -114,7 +114,7 @@ ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main
 	android:name
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:24:19-68
 application
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:27:2-231:16
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:27:2-242:16
 REJECTED from [com.github.dmytrodanylyk.shadow-layout:library:1.0.3] /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.github.dmytrodanylyk.shadow-layout/library/1.0.3/AndroidManifest.xml:12:5-20
 REJECTED from [com.afollestad.material-dialogs:core:0.9.2.1] /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/AndroidManifest.xml:13:5-20
 REJECTED from [com.android.support:support-v13:25.1.0] /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/support-v13/25.1.0/AndroidManifest.xml:25:5-20
@@ -496,36 +496,42 @@ ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main
 	android:name
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:210:5-41
 activity#com.ignite.mdm.ticketing.agent.callcenter.InvoiceActivity
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:212:3-215:45
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:212:3-220:16
 	android:screenOrientation
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:214:5-41
 	android:theme
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:215:5-43
 	android:name
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:213:5-36
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:216:4-218:41
+	android:value
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:218:6-38
+	android:name
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:217:6-52
 activity#com.ignite.mdm.ticketing.agent.callcenter.InvoiceDetailActivty
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:216:3-219:45
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:221:3-229:14
 	android:screenOrientation
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:218:5-41
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:223:5-41
 	android:theme
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:219:5-43
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:224:5-43
 	android:name
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:217:5-41
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:222:5-41
 service#com.ignite.mdm.ticketing.agent.callcenter.NotiServiceActivity
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:221:3-49
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:232:3-49
 	android:name
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:221:12-47
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:232:12-47
 receiver#com.ignite.mdm.ticketing.agent.callcenter.MyPhoneReceiver
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:223:3-230:14
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:234:3-241:14
 	android:enabled
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:225:5-27
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:236:5-27
 	android:exported
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:226:5-28
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:237:5-28
 	android:name
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:224:5-36
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:235:5-36
 intent-filter#android.intent.action.BOOT_COMPLETED
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:227:4-229:20
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:238:4-240:20
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:228:5-66
+ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:239:5-66
 	android:name
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:228:13-64
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:239:13-64

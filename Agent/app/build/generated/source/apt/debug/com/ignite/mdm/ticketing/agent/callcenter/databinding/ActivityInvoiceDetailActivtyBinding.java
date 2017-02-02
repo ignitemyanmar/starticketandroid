@@ -13,13 +13,17 @@ public class ActivityInvoiceDetailActivtyBinding extends android.databinding.Vie
         sViewsWithIds.put(R.id.invoice_id, 2);
         sViewsWithIds.put(R.id.total_amount, 3);
         sViewsWithIds.put(R.id.date, 4);
-        sViewsWithIds.put(R.id.progress, 5);
-        sViewsWithIds.put(R.id.recycler_view, 6);
+        sViewsWithIds.put(R.id.net_amount, 5);
+        sViewsWithIds.put(R.id.commission, 6);
+        sViewsWithIds.put(R.id.progress, 7);
+        sViewsWithIds.put(R.id.recycler_view, 8);
     }
     // views
     public final android.widget.LinearLayout activityInvoiceDetailActivty;
+    public final android.widget.TextView commission;
     public final android.widget.TextView date;
     public final android.widget.TextView invoiceId;
+    public final android.widget.TextView netAmount;
     public final android.widget.ProgressBar progress;
     public final android.support.v7.widget.RecyclerView recyclerView;
     public final android.support.v7.widget.Toolbar toolbar;
@@ -31,13 +35,15 @@ public class ActivityInvoiceDetailActivtyBinding extends android.databinding.Vie
 
     public ActivityInvoiceDetailActivtyBinding(android.databinding.DataBindingComponent bindingComponent, View root) {
         super(bindingComponent, root, 0);
-        final Object[] bindings = mapBindings(bindingComponent, root, 7, sIncludes, sViewsWithIds);
+        final Object[] bindings = mapBindings(bindingComponent, root, 9, sIncludes, sViewsWithIds);
         this.activityInvoiceDetailActivty = (android.widget.LinearLayout) bindings[0];
         this.activityInvoiceDetailActivty.setTag(null);
+        this.commission = (android.widget.TextView) bindings[6];
         this.date = (android.widget.TextView) bindings[4];
         this.invoiceId = (android.widget.TextView) bindings[2];
-        this.progress = (android.widget.ProgressBar) bindings[5];
-        this.recyclerView = (android.support.v7.widget.RecyclerView) bindings[6];
+        this.netAmount = (android.widget.TextView) bindings[5];
+        this.progress = (android.widget.ProgressBar) bindings[7];
+        this.recyclerView = (android.support.v7.widget.RecyclerView) bindings[8];
         this.toolbar = (android.support.v7.widget.Toolbar) bindings[1];
         this.totalAmount = (android.widget.TextView) bindings[3];
         setRootTag(root);

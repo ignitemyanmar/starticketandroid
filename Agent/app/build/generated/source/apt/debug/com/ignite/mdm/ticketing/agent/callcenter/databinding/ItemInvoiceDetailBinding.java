@@ -9,23 +9,19 @@ public class ItemInvoiceDetailBinding extends android.databinding.ViewDataBindin
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.invoice_id, 1);
-        sViewsWithIds.put(R.id.money, 2);
-        sViewsWithIds.put(R.id.time, 3);
-        sViewsWithIds.put(R.id.commission, 4);
-        sViewsWithIds.put(R.id.city, 5);
-        sViewsWithIds.put(R.id.name_seats, 6);
-        sViewsWithIds.put(R.id.leave_date, 7);
+        sViewsWithIds.put(R.id.money, 1);
+        sViewsWithIds.put(R.id.commission, 2);
+        sViewsWithIds.put(R.id.seats, 3);
+        sViewsWithIds.put(R.id.city, 4);
+        sViewsWithIds.put(R.id.leave_date, 5);
     }
     // views
     public final android.widget.TextView city;
     public final android.widget.TextView commission;
-    public final android.widget.TextView invoiceId;
     public final android.widget.TextView leaveDate;
     private final android.widget.LinearLayout mboundView0;
     public final android.widget.TextView money;
-    public final android.widget.TextView nameSeats;
-    public final android.widget.TextView time;
+    public final android.widget.TextView seats;
     // variables
     // values
     // listeners
@@ -33,16 +29,14 @@ public class ItemInvoiceDetailBinding extends android.databinding.ViewDataBindin
 
     public ItemInvoiceDetailBinding(android.databinding.DataBindingComponent bindingComponent, View root) {
         super(bindingComponent, root, 0);
-        final Object[] bindings = mapBindings(bindingComponent, root, 8, sIncludes, sViewsWithIds);
-        this.city = (android.widget.TextView) bindings[5];
-        this.commission = (android.widget.TextView) bindings[4];
-        this.invoiceId = (android.widget.TextView) bindings[1];
-        this.leaveDate = (android.widget.TextView) bindings[7];
+        final Object[] bindings = mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds);
+        this.city = (android.widget.TextView) bindings[4];
+        this.commission = (android.widget.TextView) bindings[2];
+        this.leaveDate = (android.widget.TextView) bindings[5];
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
-        this.money = (android.widget.TextView) bindings[2];
-        this.nameSeats = (android.widget.TextView) bindings[6];
-        this.time = (android.widget.TextView) bindings[3];
+        this.money = (android.widget.TextView) bindings[1];
+        this.seats = (android.widget.TextView) bindings[3];
         setRootTag(root);
         // listeners
         invalidateAll();

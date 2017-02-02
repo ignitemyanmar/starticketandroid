@@ -472,7 +472,7 @@ public final class R {
 		public static final int buttonPanel = 0x7f0d006a;
 		public static final int cancel_action = 0x7f0d0277;
 		public static final int checkbox = 0x7f0d007a;
-		public static final int chronometer = 0x7f0d027e;
+		public static final int chronometer = 0x7f0d027f;
 		public static final int collapseActionView = 0x7f0d005a;
 		public static final int contentPanel = 0x7f0d006d;
 		public static final int custom = 0x7f0d0074;
@@ -482,7 +482,7 @@ public final class R {
 		public static final int disableHome = 0x7f0d0024;
 		public static final int edit_query = 0x7f0d0085;
 		public static final int end = 0x7f0d001f;
-		public static final int end_padder = 0x7f0d0288;
+		public static final int end_padder = 0x7f0d0289;
 		public static final int expand_activities_button = 0x7f0d0064;
 		public static final int expanded_menu = 0x7f0d0079;
 		public static final int home = 0x7f0d0007;
@@ -490,9 +490,9 @@ public final class R {
 		public static final int icon = 0x7f0d0068;
 		public static final int ifRoom = 0x7f0d005b;
 		public static final int image = 0x7f0d0065;
-		public static final int info = 0x7f0d027f;
-		public static final int line1 = 0x7f0d0284;
-		public static final int line3 = 0x7f0d0286;
+		public static final int info = 0x7f0d0280;
+		public static final int line1 = 0x7f0d0285;
+		public static final int line3 = 0x7f0d0287;
 		public static final int listMode = 0x7f0d0021;
 		public static final int list_item = 0x7f0d0067;
 		public static final int media_actions = 0x7f0d0279;
@@ -532,10 +532,10 @@ public final class R {
 		public static final int status_bar_latest_event_content = 0x7f0d0278;
 		public static final int submit_area = 0x7f0d008e;
 		public static final int tabMode = 0x7f0d0023;
-		public static final int text = 0x7f0d0287;
-		public static final int text2 = 0x7f0d0285;
+		public static final int text = 0x7f0d0288;
+		public static final int text2 = 0x7f0d0286;
 		public static final int textSpacerNoButtons = 0x7f0d0071;
-		public static final int time = 0x7f0d0212;
+		public static final int time = 0x7f0d027e;
 		public static final int title = 0x7f0d0069;
 		public static final int title_template = 0x7f0d0076;
 		public static final int topPanel = 0x7f0d0075;

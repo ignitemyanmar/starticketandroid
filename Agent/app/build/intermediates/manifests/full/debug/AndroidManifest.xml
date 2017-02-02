@@ -210,11 +210,19 @@
         <activity
             android:name="com.ignite.mdm.ticketing.agent.callcenter.InvoiceActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Custom" />
+            android:theme="@style/AppTheme.Custom" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeNewActivity" />
+        </activity>
         <activity
             android:name="com.ignite.mdm.ticketing.agent.callcenter.InvoiceDetailActivty"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Custom" />
+            android:theme="@style/AppTheme.Custom" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InvoiceActivity" />
+        </activity>
 
         <service android:name="com.ignite.mdm.ticketing.agent.callcenter.NotiServiceActivity" />
 

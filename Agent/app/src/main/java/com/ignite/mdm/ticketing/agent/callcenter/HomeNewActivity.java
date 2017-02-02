@@ -206,7 +206,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
         // Show Agent's Net Deposit Amount
         if (skDetector.isConnectingToInternet()) {
           // getAgentDeposit();
-          getPermission();
+          //getPermission();
         } else {
           Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT)
               .show();

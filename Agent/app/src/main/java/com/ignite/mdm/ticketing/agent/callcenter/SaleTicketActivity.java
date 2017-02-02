@@ -68,7 +68,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
   private String selectedTripDate;
   private String currentDate;
   private String tomorrowDate;
-  private Button btn_trip_date;
+  private TextView btn_trip_date;
   private List<Times> tripTimes;
   private TripTimeAdapter tripTimeAdapter;
   private SKConnectionDetector skDetector;
@@ -84,7 +84,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
     upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
     getSupportActionBar().setHomeAsUpIndicator(upArrow);
     getSupportActionBar().setTitle("Sale Tickets");
-    btn_trip_date = (Button) findViewById(R.id.date_btn);
+    btn_trip_date = (TextView) findViewById(R.id.date_btn);
     TextView from = (TextView) findViewById(R.id.from);
     TextView to = (TextView) findViewById(R.id.to);
     from.setOnClickListener(new OnClickListener() {
@@ -141,7 +141,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
     currentDate = sdf.format(cal.getTime());
     btn_search = (Button) findViewById(R.id.fab);
     btn_search.setOnClickListener(clickListener);
-    btn_search.setEnabled(false);
+
     //
     ////Add one day to current date time
     //cal.add(Calendar.DATE, 1);

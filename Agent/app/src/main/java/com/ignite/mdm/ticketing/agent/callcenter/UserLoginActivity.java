@@ -1,5 +1,6 @@
 package com.ignite.mdm.ticketing.agent.callcenter;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +16,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.google.gson.reflect.TypeToken;
 import com.ignite.mdm.ticketing.agent.util.PrefManager;
 import com.ignite.mdm.ticketing.clientapi.NetworkEngine;
 import com.ignite.mdm.ticketing.sqlite.database.model.AccessToken;
+import com.ignite.mdm.ticketing.sqlite.database.model.GetAgentBalanceRequest;
+import com.ignite.mdm.ticketing.sqlite.database.model.Permission;
 import com.ignite.mm.ticketing.application.BaseSherlockActivity;
+import com.ignite.mm.ticketing.application.DecompressGZIP;
 import com.ignite.mm.ticketing.application.LoginUser;
+import com.ignite.mm.ticketing.application.MCrypt;
 import com.ignite.mm.ticketing.application.SecureKey;
 import com.ignite.mm.ticketing.application.SecureParam;
 import com.smk.skalertmessage.SKToastMessage;
@@ -32,7 +39,14 @@ public class UserLoginActivity extends BaseSherlockActivity {
 
   private EditText txtEmail;
   private EditText txtPassword;
+  private Permission permission;
 
+  private String permit_ip;
+  private String permit_access_token;
+  private String permit_operator_id;
+  private String permit_operator_group_id;
+  private String permit_agent_id;
+  private String permit_operator_phone;
   private Context ctx = this;
   private Button btn_login;
   private ProgressDialog dialog;
@@ -40,10 +54,12 @@ public class UserLoginActivity extends BaseSherlockActivity {
   private SKConnectionDetector connectionDetector;
   private TextView txt_register;
   public static boolean isSkip = false;
+  SharedPreferences sharedPreferences;
 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login_phone);
+    sharedPreferences = getSharedPreferences("User", Activity.MODE_PRIVATE);
   }
 
   /**
@@ -123,22 +139,11 @@ public class UserLoginActivity extends BaseSherlockActivity {
                         user.setTotal_sold_amount(access_token.getTotal_sold_amount());
                         user.setPercentage(access_token.getPercentage());
                         user.login();
+                        LoginUser appLoginUser = new LoginUser(getBaseContext());
+                        getPermission();
                       }
 
-                      if (isSkip) {
-                        isSkip = false;
-                        finish();
-                      } else {
-                        LoginUser user = new LoginUser(UserLoginActivity.this);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("login_name", user.getUserName());
-                        bundle.putString("userRole", user.getRole());
-                        Intent intent =
-                            new Intent(getApplicationContext(), HomeNewActivity.class).putExtras(
-                                bundle);
-                        startActivity(intent);
-                        finish();
-                      }
+
                     } else {
 
                     }
@@ -161,7 +166,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
                         SKToastMessage.showMessage(UserLoginActivity.this,
                             "Check Email and Password", SKToastMessage.ERROR);
                       }
-                      } else {
+                    } else {
                       SKToastMessage.showMessage(UserLoginActivity.this,
                           "Can't connect to server right now!", SKToastMessage.ERROR);
                     }
@@ -247,5 +252,89 @@ public class UserLoginActivity extends BaseSherlockActivity {
       SKToastMessage.showMessage(getBaseContext(), getString(R.string.no_conneciton),
           SKToastMessage.ERROR);
     }
+  }
+
+  private void getPermission() {
+    // TODO Auto-generated method stub
+    // 1. Get Permission
+    dialog = ProgressDialog.show(UserLoginActivity.this, "", "Please wait ...", true);
+    dialog.setCancelable(false);
+    dialog.setCanceledOnTouchOutside(false);
+
+    Log.e("TAG", "~~ call permission ~~");
+    NetworkEngine.setIP("starticketmyanmar.com");
+    NetworkEngine.getInstance()
+        .getPermission(sharedPreferences.getString("access_token", null), "3",
+            new Callback<Response>() {
+
+              public void failure(RetrofitError arg0) {
+                // TODO Auto-generated method stub
+                if (arg0.getResponse() != null) {
+                  Log.i("", "Fail permission: " + arg0.getResponse().getStatus());
+                }
+
+                if (dialog != null) {
+                  dialog.dismiss();
+                }
+
+                Toast.makeText(UserLoginActivity.this, "Can't connect to server!",
+                    Toast.LENGTH_SHORT).show();
+              }
+
+              public void success(Response arg0, Response arg1) {
+                // TODO Auto-generated method stub
+
+                if (arg0 != null) {
+                  permission = DecompressGZIP.fromBody(arg0.getBody(), new TypeToken<Permission>() {
+                  }.getType());
+
+                  if (permission != null) {
+                    permit_ip = permission.getIp();
+                    permit_access_token = permission.getAccess_token();
+                    permit_operator_id = permission.getOperator_id();
+                    permit_operator_group_id = permission.getOperatorgroup_id();
+                    permit_agent_id = permission.getOnlinesaleagent_id();
+                    permit_operator_phone = permission.getOperator_phone();
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("operator_token", permit_access_token);
+                    editor.putString("permit_ip", permit_ip);
+                    editor.apply();
+
+
+                    Log.e("TAG", "~ data ~ > ip: " + permit_ip + ", : " + permit_access_token);
+                    String json = new GetAgentBalanceRequest(permit_access_token,
+                        sharedPreferences.getString("code_no", null)).toJson();
+
+                    String param = MCrypt.getInstance().encrypt(json);
+
+
+
+                    if (isSkip) {
+                      isSkip = false;
+                      finish();
+                    } else {
+                      LoginUser user = new LoginUser(UserLoginActivity.this);
+                      Bundle bundle = new Bundle();
+                      bundle.putString("login_name", user.getUserName());
+                      bundle.putString("userRole", user.getRole());
+                      Intent intent =
+                          new Intent(getApplicationContext(), HomeNewActivity.class).putExtras(
+                              bundle);
+                      startActivity(intent);
+                      finish();
+                    }
+
+                    //if (skDetector.isConnectingToInternet()) {
+                    //  // getAgentAmountBalance(permit_ip, param);
+                    //  //getAgentAmountBalance(permit_ip, param);
+                    //} else {
+                    //  Toast.makeText(HomeNewActivity.this, "No Internet Connection",
+                    //      Toast.LENGTH_SHORT).show();
+                    //}
+                  }
+                }
+              }
+            });
   }
 }

@@ -212,11 +212,22 @@
 		<activity
 				android:name=".InvoiceActivity"
 				android:screenOrientation="portrait"
-				android:theme="@style/AppTheme.Custom"/>
+				android:theme="@style/AppTheme.Custom">
+			<meta-data
+					android:name="android.support.PARENT_ACTIVITY"
+					android:value=".HomeNewActivity" />
+
+				</activity>
 		<activity
 				android:name=".InvoiceDetailActivty"
 				android:screenOrientation="portrait"
-				android:theme="@style/AppTheme.Custom"/>
+				android:theme="@style/AppTheme.Custom">
+			<meta-data
+					android:name="android.support.PARENT_ACTIVITY"
+					android:value=".InvoiceActivity" />
+
+		</activity>
+
 
 		<service android:name=".NotiServiceActivity"/>
 

@@ -98,7 +98,7 @@
 					tools:layout_editor_absoluteY="17dp" tools:layout_editor_absoluteX="24dp"
 			/>
 			<TextView
-					android:text="ေငြေပးရန္က်န္ေသာစရင္"
+					android:text="​ေငြ​ေပးရန္​က်န္​​ေသာစာရင္​း"
 					android:gravity="center"
 					android:textSize="20sp"
 					android:layout_width="match_parent"

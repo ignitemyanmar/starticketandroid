@@ -26,15 +26,15 @@ public final class R {
 	}
 	public static final class id {
 		public static final int LinearLayout1 = 0x7f0d0099;
-		public static final int calendar = 0x7f0d01d3;
-		public static final int calendar_day_gridcell = 0x7f0d01cd;
-		public static final int currentMonth = 0x7f0d01d0;
-		public static final int grid_month_year = 0x7f0d01d4;
-		public static final int grid_week_day = 0x7f0d01d2;
-		public static final int nextMonth = 0x7f0d01d1;
-		public static final int prevMonth = 0x7f0d01cf;
-		public static final int txt_week_day = 0x7f0d01d5;
-		public static final int txt_year_month = 0x7f0d01ce;
+		public static final int calendar = 0x7f0d01d6;
+		public static final int calendar_day_gridcell = 0x7f0d01d0;
+		public static final int currentMonth = 0x7f0d01d3;
+		public static final int grid_month_year = 0x7f0d01d7;
+		public static final int grid_week_day = 0x7f0d01d5;
+		public static final int nextMonth = 0x7f0d01d4;
+		public static final int prevMonth = 0x7f0d01d2;
+		public static final int txt_week_day = 0x7f0d01d8;
+		public static final int txt_year_month = 0x7f0d01d1;
 	}
 	public static final class layout {
 		public static final int calendar_day_gridcell = 0x7f03005d;

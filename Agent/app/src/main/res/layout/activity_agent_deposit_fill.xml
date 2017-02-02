@@ -6,7 +6,10 @@
     tools:context="com.ignite.gi.ticketing.agent.AgentDepositFillActivity" >
 
    	<include layout="@layout/toolbar"/>"
-    
+	<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:padding="@dimen/activity_vertical_margin"
+      android:id="@+id/balance"
+  android:text="Your Amount Balance is  "/>
     <LinearLayout 
         android:id="@+id/linear_layout_pay_with_cb_pay"
         android:layout_width="match_parent"

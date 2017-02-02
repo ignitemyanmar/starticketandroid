@@ -32,7 +32,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 			<LinearLayout android:layout_width="match_parent"
-					android:layout_height="70dp"
+					android:layout_height="80dp"
 					android:background="@drawable/bg_card"
 			>
 				<TextView android:layout_width="80dp" android:layout_height="match_parent"
@@ -44,7 +44,7 @@
 						android:background="@color/accent"
 						android:textSize="18sp"
 						android:layout_gravity="center"/>
-				<TextView android:layout_width="match_parent" android:layout_height="70dp"
+				<TextView android:layout_width="match_parent" android:layout_height="match_parent"
 						android:text="@string/strmm_choose_fromcity"
 						android:id="@+id/from"
 						android:textSize="16sp"
@@ -54,7 +54,7 @@
 			</LinearLayout>
 
 			<LinearLayout android:layout_width="match_parent"
-					android:layout_height="70dp"
+					android:layout_height="80dp"
 					android:background="@drawable/bg_card"
 					android:layout_marginTop="@dimen/activity_vertical_margin"
 			>
@@ -73,13 +73,42 @@
 						android:id="@+id/to"
 						android:textSize="16sp"
 						android:text="@string/strmm_choose_tocity"
-					android:gravity="center"
+						android:gravity="center"
 						android:textColor="#444"
 
 
-						android:layout_width="match_parent" android:layout_height="70dp"
+						android:layout_width="match_parent" android:layout_height="match_parent"
 				/>
 			</LinearLayout>
+			<LinearLayout android:layout_width="match_parent"
+					android:layout_height="80dp"
+					android:background="@drawable/bg_card"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+			>
+				<TextView android:layout_width="80dp" android:layout_height="match_parent"
+						android:text="Date"
+
+						android:textSize="18sp"
+						android:padding="@dimen/activity_vertical_margin"
+						android:gravity="center"
+						android:textStyle="bold"
+						android:textColor="@color/white"
+						android:background="@color/accent"
+						android:layout_gravity="center"/>
+				<TextView
+
+
+						android:textSize="16sp"
+						android:text="Choose Date"
+						android:gravity="center"
+						android:textColor="#444"
+						android:id="@+id/date_btn"
+
+
+						android:layout_width="match_parent" android:layout_height="match_parent"
+				/>
+			</LinearLayout>
+
 
 			<RelativeLayout android:layout_width="match_parent"
 					android:layout_height="match_parent"
@@ -117,28 +146,6 @@
 							android:id="@+id/local_switch"
 							android:layout_centerHorizontal="true"/>
 
-				</LinearLayout>
-				<LinearLayout android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_below="@id/choose"
-						android:gravity="left">
-					<TextView android:layout_width="wrap_content" android:layout_height="50dp"
-
-							android:text="Date"
-							android:textStyle="bold"
-							android:id="@+id/date"
-							android:textSize="18sp"
-							android:layout_marginLeft="@dimen/activity_vertical_margin"
-
-					/>
-					<Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-							android:layout_below="@id/foreign"
-							android:gravity="center"
-							android:text="choose date"
-							android:id="@+id/date_btn"
-							android:layout_alignParentRight="true"
-							android:layout_marginRight="@dimen/activity_vertical_margin"
-							android:layout_marginLeft="@dimen/activity_vertical_margin"/>
 				</LinearLayout>
 			</RelativeLayout>
 		</LinearLayout>

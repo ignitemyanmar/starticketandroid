@@ -50,10 +50,11 @@ public class InvoiceDetailAdapter extends RecyclerView.Adapter<InvoiceDetailAdap
   }
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.binding.invoiceId.setText("#" + lists.get(position).getId());
-    holder.binding.money.setText(lists.get(position).getNetAmount() + "MMK");
-    holder.binding.commission.setText("Commission : " + lists.get(position).getCommission());
-    holder.binding.time.setText(lists.get(position).getTime());
+    //holder.binding.invoiceId.setText("#" + lists.get(position).getId());
+    holder.binding.money.setText(lists.get(position).getNetAmount() + "");
+    holder.binding.commission.setText(lists.get(position).getCommission()+"");
+
+    holder.binding.seats.setText(lists.get(position).getSeatQty()+"");
     //holder.binding.nameSeats.setText(lists.get(position).getCustomerName()
     //    + " | "
     //    + lists.get(position).getSeatQty()
@@ -67,7 +68,7 @@ public class InvoiceDetailAdapter extends RecyclerView.Adapter<InvoiceDetailAdap
     to = to.substring(0, to.indexOf(")"));
 
     holder.binding.city.setText(from + " - " + to);
-    holder.binding.leaveDate.setText(lists.get(position).getDepartureDate());
+    holder.binding.leaveDate.setText(lists.get(position).getDepartureDate()+"\n"+lists.get(position).getTime());
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {

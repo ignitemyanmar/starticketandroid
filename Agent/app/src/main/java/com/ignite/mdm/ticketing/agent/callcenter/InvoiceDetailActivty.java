@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.MenuItem;
 import android.view.View;
 import com.ignite.mdm.ticketing.agent.callcenter.databinding.ActivityInvoiceDetailActivtyBinding;
 import com.ignite.mdm.ticketing.clientapi.NetworkEngine;
@@ -35,6 +37,16 @@ public class InvoiceDetailActivty extends BaseSherlockActivity {
     return intent;
   }
 
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      // Respond to the action bar's Up/Home button
+      case android.R.id.home:
+        NavUtils.navigateUpFromSameTask(this);
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
   InvoiceDetailAdapter adapter = new InvoiceDetailAdapter();
   ActivityInvoiceDetailActivtyBinding binding;
 
@@ -59,7 +71,7 @@ public class InvoiceDetailActivty extends BaseSherlockActivity {
       public void success(final InvoiceDetail invoiceDetail, Response response) {
 
         if (invoiceDetail != null) {
-          binding.totalAmount.setText("Total :"+invoiceDetail.getTotalAmount() + " \n MMK");
+          binding.totalAmount.setText("Total :" + invoiceDetail.getTotalAmount() + " \n MMK");
           binding.date.setText(invoiceDetail.getInvDate());
           binding.invoiceId.setText(invoiceDetail.getInvoiceNo());
           List<InvoiceDetailAdapterModel> list = new ArrayList<InvoiceDetailAdapterModel>();
@@ -76,11 +88,12 @@ public class InvoiceDetailActivty extends BaseSherlockActivity {
           adapter.setLists(list);
           adapter.setClick(new InvoiceDetailAdapter.Click() {
             @Override public void onClick(int position, View view) {
-                InvoiceDetailDialog invoiceDetailDialog = new InvoiceDetailDialog();
+              InvoiceDetailDialog invoiceDetailDialog = new InvoiceDetailDialog();
               Bundle bundle = new Bundle();
-              bundle.putSerializable(InvoiceDetailDialog.BUNDLE,adapter.getItemAtPosition(position));
+              bundle.putSerializable(InvoiceDetailDialog.BUNDLE,
+                  adapter.getItemAtPosition(position));
               invoiceDetailDialog.setArguments(bundle);
-              invoiceDetailDialog.show(getSupportFragmentManager(),"INVOICE");
+              invoiceDetailDialog.show(getSupportFragmentManager(), "INVOICE");
             }
           });
           binding.recyclerView.setVisibility(View.VISIBLE);
