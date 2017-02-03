@@ -144,6 +144,7 @@
 							android:layout_marginLeft="@dimen/activity_vertical_margin"
 							android:padding="@dimen/activity_vertical_margin"
 							android:id="@+id/local_switch"
+							android:checked="true"
 							android:layout_centerHorizontal="true"/>
 
 				</LinearLayout>

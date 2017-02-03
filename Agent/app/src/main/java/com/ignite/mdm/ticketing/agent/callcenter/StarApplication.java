@@ -10,6 +10,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class StarApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
+    FontOverride.setDefaultFont(getApplicationContext(), "DEFAULT", "fonts/zawgyi.ttf");
+    FontOverride.setDefaultFont(getApplicationContext(), "MONOSPACE", "fonts/zawgyi.ttf");
+    FontOverride.setDefaultFont(getApplicationContext(), "SANS_SERIF", "fonts/zawgyi.ttf");
     TypeFaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/zawgyi.ttf");
     CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
         .setDefaultFontPath("fonts/zawgyi.ttf")

@@ -120,7 +120,7 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity {
                       }
                     }
                     lv_operator_seats.setAdapter(
-                        new OperatorSeatsAdapter(BusOperatorSeatsActivity.this, l));
+                        new OperatorSeatsAdapter(notLocal,BusOperatorSeatsActivity.this, l));
                     //setListViewHeightBasedOnChildren(lv_operator_seats);
                   } else {
                     showAlert("No Trip!");

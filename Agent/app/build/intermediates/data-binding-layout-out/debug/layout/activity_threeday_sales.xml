@@ -45,24 +45,31 @@
 				android:gravity="center"
 				android:text="-"
 				android:textColor="@color/blue"/>
-		<Spinner android:layout_width="wrap_content" android:layout_height="match_parent"
-				android:gravity="left"
-				android:id="@+id/txt_spinner_items"
 
-				android:entries="@array/sales_spinner"
-				android:layout_gravity="left"
 		/>
 
 	</LinearLayout>
-	<Button
-			android:id="@+id/btn_search"
-			android:layout_width="150dp"
-			android:layout_height="wrap_content"
-			android:layout_gravity="right"
+	<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content" android:orientation="horizontal">
+		<Spinner android:layout_width="wrap_content" android:layout_height="match_parent"
+				android:gravity="center"
+				android:id="@+id/txt_spinner_items"
 
-			android:background="@drawable/btn_blue"
-			android:text="@string/strmm_search"
-			android:textColor="@color/white"/>
+				android:entries="@array/sales_spinner"
+				android:layout_gravity="center"
+
+		android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+		<Button
+				android:id="@+id/btn_search"
+				android:layout_width="150dp"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+
+				android:background="@drawable/btn_blue"
+				android:text="@string/strmm_search"
+				android:textColor="@color/white"/>
+
+	</LinearLayout>
 
 	<ListView
 			android:id="@+id/lst_threeday_sales"

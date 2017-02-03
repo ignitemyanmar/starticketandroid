@@ -246,9 +246,10 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         if (pos == 0) {
-          onOptionsItemSelected(R.id.buy_date);
-        } else {
           onOptionsItemSelected(R.id.departure_date);
+        } else {
+          onOptionsItemSelected(R.id.buy_date);
+
         }
       }
     });
@@ -454,7 +455,7 @@ public class ThreeDaySalesActivity extends BaseSherlockActivity {
     lv_threeday_sales.setDividerHeight(0);
   }
 
-  public int getSales = 0;
+  public int getSales = 1;
 
   /**
    * Get Sales Reports for 3 days
