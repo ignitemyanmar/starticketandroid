@@ -57,8 +57,8 @@ public final class R {
 	}
 	public static final class string {
 		public static final int calendar = 0x7f060029;
-		public static final int next = 0x7f060031;
-		public static final int previous = 0x7f060039;
+		public static final int next = 0x7f060032;
+		public static final int previous = 0x7f06003a;
 	}
 	public static final class style {
 		public static final int TextAppearance_MaterialCalendarWidget_Date = 0x7f08012e;

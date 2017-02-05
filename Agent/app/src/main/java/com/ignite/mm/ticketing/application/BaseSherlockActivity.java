@@ -89,7 +89,7 @@ public class BaseSherlockActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		registerBaseActivityReceiver();
 		AppLoginUser = new LoginUser(this);
-		typeface = Typeface.createFromAsset(getAssets(),"fonts/zawgyi.ttf");
+
 		//AppPermission = new PermissionGlobal(this);
 	}
 	@Override

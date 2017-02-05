@@ -3,8 +3,6 @@ package com.ignite.mdm.ticketing.agent.callcenter;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -80,13 +78,13 @@ public class SaleTicketActivity extends BaseSherlockActivity
     //Title
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-    final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
-    upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-    getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setTitle("Sale Tickets");
     btn_trip_date = (TextView) findViewById(R.id.date_btn);
     TextView from = (TextView) findViewById(R.id.from);
     TextView to = (TextView) findViewById(R.id.to);
+
     from.setOnClickListener(new OnClickListener() {
       public void onClick(View view) {
         DialogChooserPlace dialogChooserPlace = new DialogChooserPlace();

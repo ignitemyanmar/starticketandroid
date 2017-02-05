@@ -20,7 +20,7 @@ public final class R {
 		public static final int item_touch_helper_previous_elevation = 0x7f0d0008;
 	}
 	public static final class layout {
-		public static final int item_loading = 0x7f030085;
+		public static final int item_loading = 0x7f030086;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060023;

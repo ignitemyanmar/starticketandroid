@@ -60,6 +60,9 @@ public class UserLoginActivity extends BaseSherlockActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login_phone);
     sharedPreferences = getSharedPreferences("User", Activity.MODE_PRIVATE);
+    btn_login = (Button) findViewById(R.id.btn_login);
+    //btn_login.setTypeface(typeface);
+    btn_login.setText("၀င္မည္");
   }
 
   /**
@@ -234,7 +237,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
     }
 
     connectionDetector = SKConnectionDetector.getInstance(this);
-    btn_login = (Button) findViewById(R.id.btn_login);
+
     btn_login.setOnClickListener(clickListenerLogin);
     //txt_register = (TextView)findViewById(R.id.txt_register);
     //txt_register.setOnClickListener(clickListenerLogin);
@@ -245,7 +248,7 @@ public class UserLoginActivity extends BaseSherlockActivity {
       txtPassword.setText(PrefManager.getPassword(this));
       login();
     }
-    btn_login.setTypeface(typeface);
+
 
     //connectionDetector.setMessageStyle(SKConnectionDetector.VERTICAL_TOASH);
     if (!connectionDetector.isConnectingToInternet()) {

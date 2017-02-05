@@ -1,27 +1,11 @@
 [
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calender_week_day.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/layout/calender_week_day.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calendar_day_gridcell.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/layout/calendar_day_gridcell.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calender_view.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKCalendar/build/intermediates/bundles/debug/res/layout/calender_view.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calender_week_day.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKCalendar/build/intermediates/bundles/debug/res/layout/calender_week_day.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calender_view.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/layout/calender_view.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calender_month.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/sKCalendar/build/intermediates/bundles/debug/res/layout/calender_month.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKCalendar/build/intermediates/res/merged/androidTest/debug/layout/calender_month.xml",

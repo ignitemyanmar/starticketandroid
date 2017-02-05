@@ -61,7 +61,152 @@
 	<string name="no_conneciton">No Internet Connection</string>
 	<string name="please_wait">Please wait...</string>
 	
-	
+
+	<!-- Myanmar Language -->
+	<string name="strmm_booking">ဘုိကင္ မ်ား</string>
+	<string name="strmm_sale">အေရာင္း မ်ား</string>
+	<string name="strmm_invoice">Invoices</string>
+	<string name="strmm_khoneat">ခံုအပ္ရန္</string>
+	<string name="strmm_bookseat">ခံုအမွာမ်ား</string>
+	<string name="strmm_agent">ေအးဂ်င့္</string>
+	<string name="strmm_busticket_sale">ကားလက္မွတ္ ေရာင္းမည္</string>
+	<string name="strmm_tour_package_sale">TourPackage ေရာင္းမည္</string>
+	<string name="strmm_car_rental">ကားစင္းလံုး ငွားမည္</string>
+	<string name="strmm_deposit_net">လက္က်န္ေငြ :</string>
+	<string name="strmm_credit_title">အေၾကြး :</string>
+	<string name="strmm_price_1person">(လူတစ္ဦး ေစ်းႏႈန္း)</string>
+	<string name="strmm_tourco_trip">ခရီးသြား ကုမၸဏီႏွင့္ ခရီးစဥ္ေရြးပါ ~</string>
+	<string name="strmm_trip_search">ခရီးစဥ္ ရွာပါ ~</string>
+	<string name="strmm_passenger_qty">ခရီးသည္ အေရအတြက္ ထည့္ပါ ~</string>
+	<string name="strmm_cost">ကုန္က်စရိတ္</string>
+	<string name="strmm_detail_itinerary">ခရီးစဥ္ အေသးစိတ္</string>
+	<string name="strmm_photos">ဓာတ္ပံုမ်ား</string>
+	<string name="strmm_price">ေစ်းႏႈန္း</string>
+	<string name="strmm_kyat">က်ပ္</string>
+	<string name="strmm_total">စုစုေပါင္း</string>
+	<string name="strmm_book">ဘုိကင္ မွာမည္</string>
+	<string name="strmm_continue">ဆက္သြားမည္</string>
+	<string name="strmm_customer_info">ခရီးသည္ အခ်က္အလက္</string>
+	<string name="strmm_book_succeed">လက္မွတ္ မွာၿပီးပါၿပီ။ ဖုန္းဆက္အေၾကာင္းၾကားေပးပါမည္။</string>
+	<string name="strmm_customer_name">၀ယ္သူ အမည္</string>
+	<string name="strmm_email">အီးေမး(လ္)</string>
+	<string name="strmm_remark">မွတ္ခ်က္</string>
+	<string name="strmm_register">ေအးဂ်င့္အသစ္ ၀င္မည္</string>
+	<string name="login">၀င္မည္</string>
+	<string name="strmm_not_register">ေအးဂ်င့္အသစ္ ၀င္မည္</string>
+	<string name="strmm_fromcity">ခရီးစဥ္ ( မွ )</string>
+	<string name="strmm_tocity">ခရီးစဥ္ ( သုိ႔ )</string>
+	<string name="strmm_dept_date">ထြက္ခြာမည့္ ေန႔</string>
+	<string name="strmm_days">ေနမည့္ရက္မ်ား</string>
+	<string name="strmm_search">ရွာမည္</string>
+	<string name="strmm_bus_ticket">ကားလက္မွတ္</string>
+	<string name="strmm_tourpackage">ခရီးရွည္(TourPackage)</string>
+	<string name="strmm_agent_deposit">ၾကိဳတင္ေပးေငြ စာရင္း</string>
+	<string name="strmm_pre_deposit">ၾကိဳတင္ေငြျဖည့္ရန္</string>
+	<string name="strmm_pay_with_cb_pay">CB Pay ျဖင့္ေပးေခ်မည္။</string>
+	<string name="strmm_total_deposit">စုစုေပါင္း ေပးေငြ</string>
+	<string name="strmm_total_sale">စုစုေပါင္း အေရာင္း</string>
+	<string name="strmm_total_credit">စုစုေပါင္း အေၾကြး</string>
+	<string name="strmm_total_extra_deposit">လက္က်န္ေငြ</string><!-- edit by thitoo -->
+	<string name="strmm_total_percentage">စုစုေပါင္း (%) ရေငြ</string>
+	<string name="strmm_date">ေန႔ရက္</string>
+	<string name="strmm_deposit_amount">ေပးေငြ</string>
+	<string name="strmm_deposit">ေပးေငြ</string>
+	<string name="strmm_credit">အေၾကြး</string>
+	<string name="strmm_extra">ပုိေငြ</string>
+	<string name="strmm_fromdate">ေန႔မွ</string>
+	<string name="strmm_todate">ေန႔ထိ</string>
+	<string name="strmm_fromdate_title">ရွာမည့္ အစေန႔ ေရြးပါ</string>
+	<string name="strmm_todate_title">ရွာမည့္ အဆံုးေန႔ ေရြးပါ</string>
+	<string name="strmm_no_internet">အင္တာနက္ မခ်ိတ္ရေသးပါ</string>
+	<string name="strmm_default_deposit">ပံုေသ ၾကိဳတင္ေငြ</string>
+	<string name="strmm_confirm">လက္မွတ္ ျဖတ္မည္</string>
+	<string name="strmm_book_confirm_success">လက္မွတ္ျဖတ္ၿပီးပါၿပီ ... အေရာင္းစာရင္းတြင္ ၾကည့္ပါ
+	</string>
+	<string name="strmm_booking_success">ဘုိကင္ မွာၿပီးပါၿပီ ... ဘုိကင္စာရင္းတြင္ ၾကည့္ပါ</string>
+	<string name="strmm_sale_person">ေရာင္းသူ</string>
+	<string name="strmm_book_person">ဘုိကင္မွာသူ</string>
+	<string name="strmm_trip">ခရီးစဥ္</string>
+	<string name="strmm_seat_nos">ခံုနံပါတ္</string>
+	<string name="strmm_print_eticket">လက္မွတ္ထုတ္မည္</string>
+	<string name="strmm_sale_date">ေရာင္းသည့္ေန႔</string>
+	<string name="strmm_voucher_no">ေဘာင္ခ်ာနံပါတ္</string>
+	<string name="strmm_seat_qty">ခံု အေရအတြက္</string>
+	<string name="strmm_booking_no">ဘုိကင္နံပါတ္</string>
+	<string name="strmm_booking_date">မွာယူသည့္ ေန႔</string>
+	<string name="strmm_booking_person">မွာယူသူ</string>
+	<string name="strmm_delete">ဖ်က္မည္</string>
+	<string name="strmm_confirm_info">အတည္ျပဳမည္</string>
+	<string name="strmm_busgate_time_choose">ကားဂိတ္ ႏွင့္ အခ်ိန္ ေရြးပါ ~</string>
+	<string name="strmm_choose_bus_seat">ထုိင္ခံုေရြးပါ ~</string>
+	<string name="strmm_pls_wait">ေခတၱေစာင့္ပါ ...</string>
+	<string name="strmm_driver">ကားေမာင္းသူ</string>
+	<string name="strmm_chosen_seats">ေရြးျပီး ခံုမ်ား</string>
+	<string name="strmm_nopermit_seats">ေရြးခြင့္မရွိ ခံုမ်ား</string>
+	<string name="strmm_buyed_seats">၀ယ္ျပီး ခံုမ်ား</string>
+	<string name="strmm_booking_seats">ဘုိကင္ ခံုမ်ား</string>
+	<string name="strmm_sale_seat">ေ၇ာင္း၇န္ခံုမ်ား</string>
+	<string name="strmm_dept_time">ထြက္ခြာမည့္ အခ်ိန္</string>
+	<string name="strmm_operator_name">ကားဂိတ္</string>
+	<string name="strmm_bus_class">ယာဥ္အမ်ိဳးအစား</string>
+	<string name="strmm_booking_done">ဘုိကင္ မွာမည္</string>
+	<string name="strmm_buy">၀ယ္မည္</string>
+	<string name="strmm_booking_list">ဘုိကင္ စာရင္းၾကည့္မည္</string>
+	<string name="strmm_tour_booking">ခံုမွာရန္</string>
+	<string name="strmm_give_ownseats">ခံုပုိင္ ေပးမည္</string>
+	<string name="strmm_take_ownseats">ခံုပုိင္ ျပန္ယူမည္</string>
+	<string name="strmm_choose_seat">ခံု ေရြးပါ</string>
+	<string name="strmm_seller">အေရာင္းဆုိင္ခြဲ</string>
+	<string name="strmm_nrc_no">မွတ္ပံုတင္ အမွတ္</string>
+	<string name="strmm_gender">က်ား/မ</string>
+	<string name="strmm_success_ticket">လက္မွတ္ ျဖတ္ၿပီးပါၿပီ !</string>
+	<string name="strmm_change_language">ဘာသာစကား ေရြးပါ</string>
+	<string name="strmm_myanmar_unicode">ျမန္မာ (ယူနီကုတ္)</string>
+	<string name="strmm_myanmar_zawgyi">ျမန္မာ (ေဇာ္ဂ်ီ)</string>
+	<string name="strmm_agent_name">အေရာင္း ဆုိင္ခြဲ</string>
+	<string name="strmm_forgot_password">လ်ွိဳ႕၀ွက္ကုတ္ ေမ့ေနလား ?</string>
+	<string name="strmm_full_name">အမည္ အျပည့္အစံု *</string>
+	<string name="strmm_username">Login ၀င္မည့္ အမည္ *</string>
+	<string name="strmm_password">လွ်ိဳ႕၀ွက္ နံပါတ္ *</string>
+	<string name="strmm_password_again">လွ်ိဳ႕၀ွက္နံပါတ္ ေနာက္တစ္ႀကိမ္ *</string>
+	<string name="strmm_phone">ဖုန္းနံပါတ္ *</string>
+	<string name="strmm_address">လိပ္စာ</string>
+	<string name="strmm_note_register">(*) ျပထားေသာ အခ်က္အလက္ အားလံုး ျဖည့္ရပါမည္။</string>
+	<string name="strmm_ok">အုိေက</string>
+	<string name="strmm_booking_time">မွာယူသည့္ အခ်ိန္ :</string>
+	<string name="strmm_booking_cancel">မမွာေတာ့ပါ</string>
+	<string name="strmm_book_submit">မွာမည္</string>
+	<string name="strmm_ticket_no">Ticket နံပါတ္</string>
+	<string name="strmm_update">ျပင္မည္</string>
+	<string name="strmm_choose_fromcity">ခရီးစဥ္ ( မွ ) ကုိ ေရြးပါ</string>
+	<string name="strmm_choose_tocity">ခရီးစဥ္ ( သုိ႔ ) ကုိ ေရြးပါ</string>
+	<string name="strmm_choose_cities">ၿမိဳ႕မ်ား ေရြးပါ</string>
+	<string name="strmm_book_confirm">ဘုိကင္ confirm လုပ္မည္</string>
+	<string name="strmm_book_delete">ဘုိကင္ ဖ်က္မည္</string>
+	<string name="strmm_back">ေနာက္သုိ႔</string>
+	<string name="strmm_ticket_no2">လက္ မွတ္ နံပါတ္</string>
+	<string name="strmm_ticket_soldout">စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားပါသျဖင့္ ခံုေျပာင္း
+		ေရြးေပးပါ။
+	</string>
+	<string name="strmm_choose_nationality">ႏုိင္ငံသားေစ်းႏႈန္းႏွင့္ ႏုိင္ငံျခားသားေစ်းႏႈန္း မတူပါ။
+		ႏုိင္ငံသား ေရြးပါ။
+	</string>
+	<string name="strmm_local">ႏုိင္ငံသား</string>
+	<string name="strmm_male">က်ား</string>
+	<string name="strmm_female">မ</string>
+	<string name="strmm_group">အဖြဲ႕</string>
+	<string name="strmm_foreign">ႏုိင္ငံျခားသား</string>
+	<string name="strmm_same_ticketno">တူေနပါသည္ တျခား နံပါတ္ ေျပာင္းထည့္ပါ</string>
+	<string name="strmm_select_gender">က်ား ၊ မ ၊ အဖြဲ႕ ေရြး ပါ ။</string>
+	<string name="strmm_extra_city">လမ္းေထာက္ (သုိ႔) ဆက္သြား မည့္ ၿမိဳ႕</string>
+	<string name="strmm_delivery">အိမ္ပုိ႔ရန္</string>
+	<string name="strmm_dept_date_time">ထြက္ခြာမည့္ေန႔:</string>
+	<string name="strmm_dept_date_time_dash">ထြက္ခြာမည့္ေန႔ -</string>
+	<string name="strmm_order_no">Order နံပါတ္</string>
+	<string name="strmm_deliver_finish">ပုိ႔ၿပီးၿပီ</string>
+	<string name="strmm_boarding_place">တက္မည့္ (သုိ႔) ဆင္းမည့္ ေနရာ =></string>
+
+
 	<string-array name="nrc_format">
 		<item>7/Ba Ka Na (N)</item>
 		<item>7/Da U Na (N)</item>
@@ -362,7 +507,7 @@
 		<item>14/La Pa Ta (N)</item>
 	</string-array>
 	<string-array name="sales_spinner">
-		<item> ထြက္​ခြာမည္​့ရက္​</item>
+		<item>ထြက္​ခြာမည္​့ရက္​</item>
 		<item>ေရာင္းသည့္ရက္</item>
 
 	</string-array>

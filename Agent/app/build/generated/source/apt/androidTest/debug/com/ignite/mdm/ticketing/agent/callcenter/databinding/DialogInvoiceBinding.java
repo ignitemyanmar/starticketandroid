@@ -8,10 +8,22 @@ public class DialogInvoiceBinding extends android.databinding.ViewDataBinding  {
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
         sIncludes = null;
-        sViewsWithIds = null;
+        sViewsWithIds = new android.util.SparseIntArray();
+        sViewsWithIds.put(R.id.name, 1);
+        sViewsWithIds.put(R.id.phone, 2);
+        sViewsWithIds.put(R.id.car_class, 3);
+        sViewsWithIds.put(R.id.seats, 4);
+        sViewsWithIds.put(R.id.amount, 5);
+        sViewsWithIds.put(R.id.remark, 6);
     }
     // views
+    public final android.widget.TextView amount;
+    public final android.widget.TextView carClass;
     private final android.widget.LinearLayout mboundView0;
+    public final android.widget.TextView name;
+    public final android.widget.TextView phone;
+    public final android.widget.TextView remark;
+    public final android.widget.TextView seats;
     // variables
     // values
     // listeners
@@ -19,9 +31,15 @@ public class DialogInvoiceBinding extends android.databinding.ViewDataBinding  {
 
     public DialogInvoiceBinding(android.databinding.DataBindingComponent bindingComponent, View root) {
         super(bindingComponent, root, 0);
-        final Object[] bindings = mapBindings(bindingComponent, root, 1, sIncludes, sViewsWithIds);
+        final Object[] bindings = mapBindings(bindingComponent, root, 7, sIncludes, sViewsWithIds);
+        this.amount = (android.widget.TextView) bindings[5];
+        this.carClass = (android.widget.TextView) bindings[3];
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
+        this.name = (android.widget.TextView) bindings[1];
+        this.phone = (android.widget.TextView) bindings[2];
+        this.remark = (android.widget.TextView) bindings[6];
+        this.seats = (android.widget.TextView) bindings[4];
         setRootTag(root);
         // listeners
         invalidateAll();

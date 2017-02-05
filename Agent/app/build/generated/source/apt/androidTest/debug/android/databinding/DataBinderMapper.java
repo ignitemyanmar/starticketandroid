@@ -19,6 +19,8 @@ class DataBinderMapper {
                     return com.ignite.mdm.ticketing.agent.callcenter.databinding.DialogChooserPlaceBinding.bind(view, bindingComponent);
                 case com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_invoice:
                     return com.ignite.mdm.ticketing.agent.callcenter.databinding.ActivityInvoiceBinding.bind(view, bindingComponent);
+                case com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_change_password:
+                    return com.ignite.mdm.ticketing.agent.callcenter.databinding.ActivityChangePasswordBinding.bind(view, bindingComponent);
                 case com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_invoice_detail_activty:
                     return com.ignite.mdm.ticketing.agent.callcenter.databinding.ActivityInvoiceDetailActivtyBinding.bind(view, bindingComponent);
                 case com.ignite.mdm.ticketing.agent.callcenter.R.layout.item_invoice_detail:
@@ -70,6 +72,12 @@ class DataBinderMapper {
             case -367255181: {
                 if(tag.equals("layout/activity_invoice_0")) {
                     return com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_invoice;
+                }
+                break;
+            }
+            case -1697258416: {
+                if(tag.equals("layout/activity_change_password_0")) {
+                    return com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_change_password;
                 }
                 break;
             }

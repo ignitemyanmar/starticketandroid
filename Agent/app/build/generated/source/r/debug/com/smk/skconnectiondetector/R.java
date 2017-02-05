@@ -424,10 +424,10 @@ public final class R {
 		public static final int abc_screen_toolbar = 0x7f030017;
 		public static final int abc_search_dropdown_item_icons_2line = 0x7f030018;
 		public static final int abc_search_view = 0x7f030019;
-		public static final int activity_main = 0x7f030030;
-		public static final int horizontal_toast = 0x7f030082;
-		public static final int support_simple_spinner_dropdown_item = 0x7f0300e3;
-		public static final int vertical_toast = 0x7f0300ec;
+		public static final int activity_main = 0x7f030031;
+		public static final int horizontal_toast = 0x7f030083;
+		public static final int support_simple_spinner_dropdown_item = 0x7f0300e4;
+		public static final int vertical_toast = 0x7f0300ed;
 	}
 	public static final class menu {
 		public static final int activity_main = 0x7f0e0001;
@@ -451,7 +451,7 @@ public final class R {
 		public static final int abc_toolbar_collapse_description = 0x7f060012;
 		public static final int app_name = 0x7f060023;
 		public static final int hello_world = 0x7f06002d;
-		public static final int menu_settings = 0x7f06002e;
+		public static final int menu_settings = 0x7f06002f;
 		public static final int title_activity_main = 0x7f0600f1;
 	}
 	public static final class style {

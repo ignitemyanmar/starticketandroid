@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.ignite.mdm.ticketing.sqlite.database.model.AccessToken;
 import com.ignite.mdm.ticketing.sqlite.database.model.AgentDeposit;
 import com.ignite.mdm.ticketing.sqlite.database.model.AgentSeatsBooking;
+import com.ignite.mdm.ticketing.sqlite.database.model.ChangePasswordStatus;
 import com.ignite.mdm.ticketing.sqlite.database.model.Delivery;
 import com.ignite.mdm.ticketing.sqlite.database.model.InvoiceDetail;
 import com.ignite.mdm.ticketing.sqlite.database.model.Invoices;
@@ -146,7 +147,6 @@ public interface INetworkEngine {
   @GET("/paymentinvoices/detail") void getInvoiceDetail(@Query("param") String access_token,
       Callback<InvoiceDetail> callback);
 
-
   @GET("/api/khone-up") void getKhoneAtList(@Query("operator_id") String operator_id,
       Callback<List<KhoneAtList>> callback);
 
@@ -215,6 +215,11 @@ public interface INetworkEngine {
       @Field("to") String to, @Field("date") String date, @Field("time") String time,
       @Field("access_token") String access_token, @Field("operator_id") String operator_id,
       Callback<Response> callback);
+
+  @FormUrlEncoded @POST("/api/changepassword")
+  public void changePassword(@Field("access_token") String token, @Field("user_id") String userId,
+      @Field("current_password") String currentPassword, @Field("new_password") String newPassword,
+      Callback<ChangePasswordStatus> call);
 
   @FormUrlEncoded @POST("/api/customerupdate") void editSeatInfo(
       @Field("access_token") String access_token, @Field("trip_id") String trip_id,

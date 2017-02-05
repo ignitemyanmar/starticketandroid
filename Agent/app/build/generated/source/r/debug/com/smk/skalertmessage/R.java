@@ -35,18 +35,18 @@ public final class R {
 	}
 	public static final class id {
 		public static final int LinearLayout1 = 0x7f0d0099;
-		public static final int sk_btn_delete = 0x7f0d02a7;
-		public static final int sk_txt_message = 0x7f0d02a6;
+		public static final int sk_btn_delete = 0x7f0d02ac;
+		public static final int sk_txt_message = 0x7f0d02ab;
 	}
 	public static final class layout {
-		public static final int sk_message_error = 0x7f0300d9;
-		public static final int sk_message_info = 0x7f0300da;
-		public static final int sk_message_success = 0x7f0300db;
-		public static final int sk_message_warning = 0x7f0300dc;
-		public static final int sk_toast_message_error = 0x7f0300dd;
-		public static final int sk_toast_message_info = 0x7f0300de;
-		public static final int sk_toast_message_success = 0x7f0300df;
-		public static final int sk_toast_message_warning = 0x7f0300e0;
+		public static final int sk_message_error = 0x7f0300da;
+		public static final int sk_message_info = 0x7f0300db;
+		public static final int sk_message_success = 0x7f0300dc;
+		public static final int sk_message_warning = 0x7f0300dd;
+		public static final int sk_toast_message_error = 0x7f0300de;
+		public static final int sk_toast_message_info = 0x7f0300df;
+		public static final int sk_toast_message_success = 0x7f0300e0;
+		public static final int sk_toast_message_warning = 0x7f0300e1;
 	}
 	public static final class menu {
 		public static final int activity_main = 0x7f0e0001;
@@ -54,7 +54,7 @@ public final class R {
 	public static final class string {
 		public static final int app_name = 0x7f060023;
 		public static final int hello_world = 0x7f06002d;
-		public static final int menu_settings = 0x7f06002e;
+		public static final int menu_settings = 0x7f06002f;
 		public static final int title_activity_main = 0x7f0600f1;
 	}
 	public static final class style {

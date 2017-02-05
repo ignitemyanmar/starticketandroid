@@ -223,6 +223,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".InvoiceActivity" />
         </activity>
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ToolbarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeNewActivity" />
+        </activity>
 
         <service android:name="com.ignite.mdm.ticketing.agent.callcenter.NotiServiceActivity" />
 

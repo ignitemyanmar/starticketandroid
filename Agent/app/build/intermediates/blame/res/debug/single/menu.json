@@ -1,17 +1,5 @@
 [
     {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/menu/menu_choice.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/menu/menu_choice.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/menu/activity_e_ticket.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/menu/activity_e_ticket.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/menu/activity_main.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/menu/activity_main.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/menu/activity_e_ticket.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/menu/activity_e_ticket.xml"
     },
@@ -22,14 +10,6 @@
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/menu/activity_main.xml",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/menu/activity_main.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/menu/menu_refresh.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/menu/menu_refresh.xml"
-    },
-    {
-        "merged": "/Users/user/Desktop/WorkProjects/Agent/app/build/intermediates/res/merged/debug/menu/menu_logout.xml",
-        "source": "/Users/user/Desktop/WorkProjects/Agent/app/src/main/res/menu/menu_logout.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/menu/menu_refresh.xml",

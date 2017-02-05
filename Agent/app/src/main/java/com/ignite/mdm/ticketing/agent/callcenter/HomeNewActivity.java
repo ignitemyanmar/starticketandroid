@@ -251,12 +251,29 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
       case R.id.logout:
         // Get Notification Coun
         PrefManager.clearPreferences(HomeNewActivity.this);
-
         startActivity(new Intent(HomeNewActivity.this, UserLoginActivity.class));
         finish();
         return true;
+      case R.id.password:
+        // Get Notification Coun
+
+
+        startActivityForResult(new Intent(HomeNewActivity.this, ChangePasswordActivity.class),1000);
+
+
+        return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if(requestCode == 1000){
+      if(resultCode == ChangePasswordActivity.DONE ){
+        startActivity(new Intent(this,UserLoginActivity.class));
+        finish();
+      }
+    }
   }
 
   private void getPermission() {
@@ -269,7 +286,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
     Log.e("TAG", "~~ call permission ~~");
     NetworkEngine.setIP("starticketmyanmar.com");
     NetworkEngine.getInstance()
-        .getPermission(sharedPreferences.getString("access_token", null), "3",
+        .getPermission(sharedPreferences.getString(null, "access_token"), "3",
             new Callback<Response>() {
 
               public void failure(RetrofitError arg0) {
