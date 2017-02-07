@@ -427,7 +427,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
       }
       //TODO This Should be changed
       if (v == btnThreeDaySales) {
-        startActivity(new Intent(getApplicationContext(), ThreeDaySalesActivity.class));
+        startActivity(new Intent(getApplicationContext(), NewSalesActivity.class));
       }
     }
   };

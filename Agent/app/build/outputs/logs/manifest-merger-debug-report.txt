@@ -363,12 +363,12 @@ ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:144:5-41
 	android:name
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:143:5-33
-activity#com.ignite.mdm.ticketing.agent.callcenter.ThreeDaySalesActivity
+activity#com.ignite.mdm.ticketing.agent.callcenter.NewSalesActivity
 ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:145:3-147:43
 	android:screenOrientation
 		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:147:5-41
 	android:name
-		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:146:5-42
+		ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:146:5-37
 activity#com.ignite.mdm.ticketing.agent.callcenter.OutstandingActivity
 ADDED from /Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml:148:3-150:43
 	android:screenOrientation

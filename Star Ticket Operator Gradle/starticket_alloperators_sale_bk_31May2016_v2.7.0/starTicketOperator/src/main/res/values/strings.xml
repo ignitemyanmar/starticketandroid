@@ -1,0 +1,79 @@
+<resources>
+
+    <string name="str_app_version">Version 2.7.0</string>
+    	
+    <string name="app_name">Star Ticket[Sale]</string>
+    <string name="hello_world">Ticketing</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Star Ticket[Sale]</string>
+    
+    <string name="str_old_seatid">ေရႊ႕ထားသည့္ ခံုအေဟာင္း၏ အမွတ္စဥ္ကို ထည့္ပါ။</string>
+    <string name="str_click_delete">ဖ်က္မည္   ကုိ ႏွိပ္ပါ။</string>
+    <string name="str_seat_id">ခံုအမွတ္စဥ္  </string>
+    <string name="str_type_seat_id"> ကုိ မွတ္ထားၿပီး ေျပာင္းမည့္ခံုတြင္ ျပန္ထည့္ေပးပါ။</string>
+    <string name="str_departure_date">ထြက္ခြာမည့္ ရက္ : </string>
+    <string name="str_departure_time">ထြက္ခြာမည့္ အခ်ိန္ : </string>
+    <string name="str_operator_name">ကားဂိတ္ : </string>
+    <string name="str_bus_class">ကားအမ်ိဳးအစား : </string>
+    <string name="str_price"> ေစ်းႏႈန္း  : </string>
+    <string name="str_cannot_buy_msg">သင္ မွာယူေသာ လက္ မွတ္ မ်ားမွာ စကၠန္႔ပုိင္း အတြင္း တစ္ျခားသူ ယူသြားေသာေၾကာင့္ သင္ မွာ ေသာ လက္ မွတ္ မ်ား မရ ႏုိင္ေတာ့ပါ။ ေက်းဇူးျပဳ၍ တျခား လက္ မွတ္ မ်ား ျပန္ေရြးေပးပါ။</string>
+    <string name="str_booking_list">Booking စာရင္းမ်ား</string>
+    <string name="str_choose_remark">မွတ္ ခ်က္ အမ်ိဳးအစား  ေရြးရန္</string>
+    <string name="str_lan_kyo">လမ္းၾကိဳ</string>
+    <string name="str_taung_yan">ေတာင္းရန္</string>
+    <string name="str_change_seat">ခံု ေရႊ႕ ရန္ </string>
+    <string name="str_change_date">Date Change ရန္</string>
+    <string name="str_see_pyat">စီးျဖတ္</string>
+    <string name="str_taung_yaung">ေတာင္းေရာင္း</string>
+    <string name="str_sat_go">ဆက္သြား</string>
+    <string name="str_ticket_no">လက္ မွတ္ နံပါတ္</string>
+    <string name="str_buy_success">လက္ မွတ္ ျဖတ္ ျပီးပါၿပီ</string>
+    <string name="str_close_seat">ခံုပုိင္ေပးမည္</string>
+    <string name="str_seller_staff">ေရာင္းသူ ေရြးပါ</string>
+    <string name="str_agent">အေရာင္း ကိုယ္စားလွယ္</string>
+    <string name="str_check_sale">စစ္ၿပီး</string>
+    <string name="str_sale_salecheck">လက္မွတ္စစ္ရန္</string>
+    <string name="str_khonekyi_khonepaing">ခံုၾကည့္ / ခံုပုိင္ ပိတ္ဖြင့္ လုပ္ရန္</string>
+   
+	<string name="str_buyer">၀ယ္သူ</string>
+	<string name="str_booking_no">booking နံပါတ္</string>
+	<string name="str_booking_user">booking လုပ္သူ</string>
+	<string name="str_phone">ဖုန္း</string>
+	<string name="str_agent_name">အေရာင္း ကိုယ္စားလွယ္</string>
+	<string name="str_trip">ခရီးစဥ္</string>
+	<string name="str_trip_date">ထြက္ခြာမည့္ ရက္</string>
+	<string name="str_booking_date">booking မွာသည့္ရက္</string>
+	<string name="str_calendar_title">ထြက္ခြာမည့္ ေန႔ေရြးပါ</string>
+	<string name="str_calendar_title2">ေရာင္းသည့္ ေန႔ေရြးပါ</string>
+	<string name="str_cancel_selected_seat">သင္ ေရြးၿပီးေသာ ခံုကုိ ျပန္ဖ်က္မွာလား</string>
+	<string name="str_dept_time_over">ထြက္ခြာမည့္ အခ်ိန္ ေက်ာ္သြားပါၿပီ.. တျခား အခ်ိန္ေျပာင္း၀ယ္ပါ</string>
+	
+	<string name="str_operator_khonepine">192.168.1.101</string>
+	<!-- <string name="str_lumbini">lumbini.starticketmyanmar.com</string> -->
+	
+	<string name="str_mandalarmin_naypyitaw">မႏၱလာမင္း (Mandalarmin)</string>
+	<string-array name="custom_weekdays">
+        <item>Su</item>
+        <item>M</item>
+        <item>Tu</item>
+        <item>W</item>
+        <item>Th</item>
+        <item>F</item>
+        <item>Sa</item>
+    </string-array>
+
+    <string-array name="custom_months">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>March</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>July</item>
+        <item>Aug</item>
+        <item>Sept</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+</resources>

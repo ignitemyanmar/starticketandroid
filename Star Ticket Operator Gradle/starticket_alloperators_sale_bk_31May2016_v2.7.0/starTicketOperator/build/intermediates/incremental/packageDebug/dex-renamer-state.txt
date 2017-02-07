@@ -1,0 +1,4 @@
+#Tue Feb 07 09:33:05 MMT 2017
+base.0=/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

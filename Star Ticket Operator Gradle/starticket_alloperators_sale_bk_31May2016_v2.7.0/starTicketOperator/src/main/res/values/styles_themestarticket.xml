@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2011 The Android Open Source Project
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <style name="Theme.Themestarticket" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="windowActionBar">true</item>-->
+        
+         <!-- action bar color -->
+        <item name="colorPrimary">@color/primary</item>
+         
+<!--         status bar color -->
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        
+        <!-- widget color -->
+        <item name="colorAccent">@color/accent</item>
+        
+        <item name="actionBarItemBackground">@drawable/selectable_background_themestarticket</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Themestarticket</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Themestarticket</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Themestarticket</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Themestarticket</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Themestarticket</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_themestarticket</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_themestarticket</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Themestarticket</item>
+    </style>
+
+    <style name="ActionBar.Solid.Themestarticket" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@drawable/ab_solid_themestarticket</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_themestarticket</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_themestarticket</item>
+        <item name="progressBarStyle">@style/ProgressBar.Themestarticket</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Themestarticket" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@drawable/ab_transparent_themestarticket</item>
+        <item name="progressBarStyle">@style/ProgressBar.Themestarticket</item>
+    </style>
+	
+    <style name="PopupMenu.Themestarticket" parent="@style/Widget.AppCompat.Light.PopupMenu">	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_themestarticket</item>	
+    </style>
+	
+    
+    <style name="DropDownListView.Themestarticket" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_themestarticket</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Themestarticket" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_themestarticket</item>
+    </style>
+	
+    <style name="DropDownNav.Themestarticket" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/spinner_background_ab_themestarticket</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_themestarticket</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_themestarticket</item>
+    </style>
+    
+    <style name="ProgressBar.Themestarticket" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_themestarticket</item>
+    </style>
+    
+    <style name="ActionButton.CloseMode.Themestarticket" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_themestarticket</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Themestarticket.Widget" parent="@style/Theme.AppCompat">
+        <item name="popupMenuStyle">@style/PopupMenu.Themestarticket</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Themestarticket</item>
+    </style>
+    
+        <!-- Calendar Style -->
+    <style name="CustomDayTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/mcv_text_date_light</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    
+    <style name="CustomDayTextAppearancePhone" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/mcv_text_date_light</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+    
+    <style name="CustomWeekDayTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    
+    <style name="CustomWeekDayTextAppearancePhone" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+     
+    <style name="CustomToolbarTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/white</item>
+    	<item name="android:textSize">16dp</item>
+	</style>
+	
+    <style name="CustomToolbarSubTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/white</item>
+    	<item name="android:textSize">12dp</item>
+	</style>
+
+</resources>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/res/merged/androidTest/debug/anim/round_spinner_fade.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/bundles/debug/res/anim/round_spinner_fade.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/res/merged/androidTest/debug/anim/gear_spinner.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/bundles/debug/res/anim/gear_spinner.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/res/merged/androidTest/debug/anim/round_spinner.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/bundles/debug/res/anim/round_spinner.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/res/merged/androidTest/debug/anim/round_spinner_apple.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/build/intermediates/bundles/debug/res/anim/round_spinner_apple.xml"
+    }
+]

@@ -178,7 +178,7 @@ public class HomeActivity extends ActionBarActivity{
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getApplicationContext(), ThreeDaySalesActivity.class));
+				startActivity(new Intent(getApplicationContext(), NewSalesActivity.class));
 			}
 		});
 		

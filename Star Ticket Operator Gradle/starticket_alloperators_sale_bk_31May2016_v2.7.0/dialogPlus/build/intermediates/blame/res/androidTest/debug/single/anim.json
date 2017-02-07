@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_fade_out.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/slide_out_top.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/bundles/debug/res/anim/slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/slide_out_bottom.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/bundles/debug/res/anim/slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/slide_in_bottom.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/bundles/debug/res/anim/slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/fade_out_center.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/bundles/debug/res/anim/fade_out_center.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/slide_in_top.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/bundles/debug/res/anim/slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/fade_in_center.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/bundles/debug/res/anim/fade_in_center.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_fade_in.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/res/merged/androidTest/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/anim/abc_popup_enter.xml"
+    }
+]

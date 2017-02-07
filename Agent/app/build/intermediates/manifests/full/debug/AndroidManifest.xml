@@ -141,7 +141,7 @@
             android:name="com.ignite.mdm.ticketing.agent.callcenter.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ignite.mdm.ticketing.agent.callcenter.ThreeDaySalesActivity"
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.NewSalesActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.ignite.mdm.ticketing.agent.callcenter.OutstandingActivity"

@@ -143,7 +143,7 @@
 				android:name=".HomeActivity"
 				android:screenOrientation="portrait"/>
 		<activity
-				android:name=".ThreeDaySalesActivity"
+				android:name=".NewSalesActivity"
 				android:screenOrientation="portrait"/>
 		<activity
 				android:name=".OutstandingActivity"

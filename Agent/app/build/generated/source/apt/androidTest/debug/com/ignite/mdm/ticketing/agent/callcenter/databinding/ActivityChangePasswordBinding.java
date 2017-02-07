@@ -9,13 +9,19 @@ public class ActivityChangePasswordBinding extends android.databinding.ViewDataB
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.txt_login_email, 1);
-        sViewsWithIds.put(R.id.txt_login_password, 2);
+        sViewsWithIds.put(R.id.activity_change_password, 1);
+        sViewsWithIds.put(R.id.old_password, 2);
+        sViewsWithIds.put(R.id.confirm, 3);
+        sViewsWithIds.put(R.id.new_password, 4);
+        sViewsWithIds.put(R.id.change, 5);
     }
     // views
     public final android.widget.LinearLayout activityChangePassword;
-    public final com.rengwuxian.materialedittext.MaterialEditText txtLoginEmail;
-    public final com.rengwuxian.materialedittext.MaterialEditText txtLoginPassword;
+    public final android.widget.Button change;
+    public final com.rengwuxian.materialedittext.MaterialEditText confirm;
+    private final android.widget.ScrollView mboundView0;
+    public final com.rengwuxian.materialedittext.MaterialEditText newPassword;
+    public final com.rengwuxian.materialedittext.MaterialEditText oldPassword;
     // variables
     // values
     // listeners
@@ -23,11 +29,14 @@ public class ActivityChangePasswordBinding extends android.databinding.ViewDataB
 
     public ActivityChangePasswordBinding(android.databinding.DataBindingComponent bindingComponent, View root) {
         super(bindingComponent, root, 0);
-        final Object[] bindings = mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds);
-        this.activityChangePassword = (android.widget.LinearLayout) bindings[0];
-        this.activityChangePassword.setTag(null);
-        this.txtLoginEmail = (com.rengwuxian.materialedittext.MaterialEditText) bindings[1];
-        this.txtLoginPassword = (com.rengwuxian.materialedittext.MaterialEditText) bindings[2];
+        final Object[] bindings = mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds);
+        this.activityChangePassword = (android.widget.LinearLayout) bindings[1];
+        this.change = (android.widget.Button) bindings[5];
+        this.confirm = (com.rengwuxian.materialedittext.MaterialEditText) bindings[3];
+        this.mboundView0 = (android.widget.ScrollView) bindings[0];
+        this.mboundView0.setTag(null);
+        this.newPassword = (com.rengwuxian.materialedittext.MaterialEditText) bindings[4];
+        this.oldPassword = (com.rengwuxian.materialedittext.MaterialEditText) bindings[2];
         setRootTag(root);
         // listeners
         invalidateAll();

@@ -4,7 +4,8 @@ public class SecureParam {
 	static {
 		System.loadLibrary("secureparam"); // hello.dll (Windows) or libhello.so (Unixes)
 	}
-	
+
+	public static native String getSales(String accesstoken,String agent_code_no,String start_date,String end_date,String date_type,String offset,String limit);;
 	// Declare native method
 	public static native String getAccessTokenParam(String grand_type, String app_id, String securet_key, String username, String password, String scope, String state);
 	

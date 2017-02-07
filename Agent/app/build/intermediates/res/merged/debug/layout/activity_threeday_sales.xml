@@ -1,82 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" android:orientation="vertical">
-	<android.support.v7.widget.Toolbar
-			android:id="@+id/toolbar"
+<layout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="?attr/colorPrimary"
-			app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-			app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-		<LinearLayout android:layout_width="wrap_content"
-				android:layout_height="match_parent">
+			android:layout_height="match_parent" android:orientation="vertical">
+		<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?attr/colorPrimary"
+				app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+				app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+		</android.support.v7.widget.Toolbar>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="@color/gray_light"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:padding="5dp">
+
+			<TextView
+					android:id="@+id/txt_fromdate"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginRight="5dp"
+					android:layout_weight="30"
+					android:background="@drawable/btn_dotted_gray"
+					android:gravity="center"
+					android:text="-"
+					android:textColor="@color/blue"/>
+
+			<TextView
+					android:id="@+id/txt_todate"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginRight="5dp"
+					android:layout_weight="30"
+					android:background="@drawable/btn_dotted_gray"
+					android:gravity="center"
+					android:text="-"
+					android:textColor="@color/blue"/>
+
+			/>
 
 		</LinearLayout>
-	</android.support.v7.widget.Toolbar>
+		<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:orientation="horizontal">
+			<Spinner android:layout_width="wrap_content" android:layout_height="match_parent"
+					android:gravity="center"
+					android:id="@+id/txt_spinner_items"
 
-	<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="50dp"
-			android:background="@color/gray_light"
-			android:gravity="center_vertical"
-			android:orientation="horizontal"
-			android:padding="5dp">
+					android:entries="@array/sales_spinner"
+					android:layout_gravity="center"
 
-		<TextView
-				android:id="@+id/txt_fromdate"
+					android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+			<Button
+					android:id="@+id/btn_search"
+					android:layout_width="150dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="right"
+
+					android:background="@drawable/btn_blue"
+					android:text="@string/strmm_search"
+					android:textColor="@color/white"/>
+
+		</LinearLayout>
+
+		<android.support.v7.widget.RecyclerView
+				android:id="@+id/recycler_view"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_marginRight="5dp"
-				android:layout_weight="30"
-				android:background="@drawable/btn_dotted_gray"
-				android:gravity="center"
-				android:text="-"
-				android:textColor="@color/blue"/>
-
-		<TextView
-				android:id="@+id/txt_todate"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_marginRight="5dp"
-				android:layout_weight="30"
-				android:background="@drawable/btn_dotted_gray"
-				android:gravity="center"
-				android:text="-"
-				android:textColor="@color/blue"/>
-
-		/>
-
-	</LinearLayout>
-	<LinearLayout android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:orientation="horizontal">
-		<Spinner android:layout_width="wrap_content" android:layout_height="match_parent"
-				android:gravity="center"
-				android:id="@+id/txt_spinner_items"
-
-				android:entries="@array/sales_spinner"
-				android:layout_gravity="center"
-
-		android:layout_marginLeft="@dimen/activity_vertical_margin"/>
-		<Button
-				android:id="@+id/btn_search"
-				android:layout_width="150dp"
-				android:layout_height="wrap_content"
-				android:layout_gravity="right"
-
-				android:background="@drawable/btn_blue"
-				android:text="@string/strmm_search"
-				android:textColor="@color/white"/>
+				android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 	</LinearLayout>
 
-	<ListView
-			android:id="@+id/lst_threeday_sales"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:listSelector="@android:color/transparent"
-	>
-	</ListView>
-
-</LinearLayout>
+</layout>

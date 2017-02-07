@@ -184,6 +184,15 @@ JNIEXPORT jstring JNICALL Java_com_ignite_mm_ticketing_application_SecureParam_g
  */
 
 JNIEXPORT jstring JNICALL
+        Java_com_ignite_mm_ticketing_application_SecureParam_getSales(JNIEnv *env, jclass type,
+                                                                      jstring accesstoken_,
+                                                                      jstring agent_code_no_,
+                                                                      jstring start_date_,
+                                                                      jstring end_date_, jstring date_type_,
+                                                                      jstring offset_, jstring limit_);
+
+
+        JNIEXPORT jstring JNICALL
 Java_com_ignite_mm_ticketing_application_SecureParam_getInvoiceDetail(JNIEnv *env, jclass type,
                                                                       jstring access_token_,
                                                                       jstring invoice_id_);

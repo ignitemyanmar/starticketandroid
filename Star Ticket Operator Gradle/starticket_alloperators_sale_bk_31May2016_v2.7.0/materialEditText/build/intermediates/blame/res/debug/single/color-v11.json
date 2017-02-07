@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialEditText/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialEditText/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialEditText/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialEditText/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]

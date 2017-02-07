@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ဝယ္သူ အမည္" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:inputType="textPersonName" >
+
+                <requestFocus />
+
+                <requestFocus />
+            </com.rengwuxian.materialedittext.MaterialEditText>
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ဖုန္းနံပါတ္" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:inputType="phone" />
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ႏိုင္ငံသား မွတ္ပံုတင္ နံပါတ္" />
+
+            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+                android:id="@+id/autoTxt_nrc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:inputType="text"
+                android:singleLine="true" />
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/txt_seller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ေရာင္းသူ" />
+
+            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+                android:id="@+id/autoTxt_agent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:dropDownWidth="wrap_content"
+                android:ems="10"
+                android:inputType="textAutoComplete|textAutoCorrect"
+                android:singleLine="true" >
+            </com.rengwuxian.materialedittext.MaterialAutoCompleteTextView>
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="အခမဲ့လက္မွတ္ (Free Ticket)" />
+
+            <CheckBox
+                android:id="@+id/cbox_freeticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Free Ticket" />
+
+            <RadioGroup
+                android:id="@+id/rdogroup_freeticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <RadioButton
+                    android:id="@+id/rdo_promotion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Promotion" />
+
+                <RadioButton
+                    android:id="@+id/rdo_manage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Management" />
+
+                <RadioButton
+                    android:id="@+id/rdo_10plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10+" />
+
+                <RadioButton
+                    android:id="@+id/rdo_pilgrim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilgrim" />
+
+                <RadioButton
+                    android:id="@+id/rdo_sponsor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sponsor" />
+
+            </RadioGroup>
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ေလွ်ာ့ေစ်း (Discount)" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edt_discount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/CustomTextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Ticket နံပါတ္" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edt_ticket_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:ems="10"
+                android:inputType="phone" />
+
+            <com.smk.custom.view.CustomTextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="50"
+                android:text="မွတ္ခ်က္ အ မ်ိဳး အ စား (Remark Type)"
+                android:visibility="visible" />
+
+            <Spinner
+                android:id="@+id/sp_remark_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="50" />
+
+            <TextView
+                android:id="@+id/txt_seat_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/blue_light"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layout_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="50"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/customTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="မွတ္ခ်က္ (Remark)" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:visibility="visible" />
+            </LinearLayout>
+            
+                            <RadioGroup
+                    android:id="@+id/rdo_group_local_foreign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/rdo_local"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="ျမန္မာ ႏိုင္ ငံ သား" />
+
+                    <RadioButton
+                        android:id="@+id/rdo_foreign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ႏိုင္ ငံ ျခား သား" />
+                </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <com.smk.custom.view.CustomButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/btn_red"
+                    android:maxWidth="320dp"
+                    android:text="ဖ်က္မည္"
+                    android:textColor="@color/white" />
+
+                <com.smk.custom.view.CustomButton
+                    android:id="@+id/btn_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/btn_green"
+                    android:maxWidth="320dp"
+                    android:text="ျပင္မည္"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

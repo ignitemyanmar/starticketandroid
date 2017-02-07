@@ -1,0 +1,83 @@
+[
+    {
+        "outputFile": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/shadowLayout/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/shadowLayout/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 52,
+                        "endOffset": 103
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 56,
+                    "endOffset": 160
+                },
+                "from": {
+                    "file": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/shadowLayout/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 108,
+                        "endColumn": 56,
+                        "endOffset": 160
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 449,
+                    "endColumn": 51,
+                    "endOffset": 496
+                },
+                "from": {
+                    "file": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/shadowLayout/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 449,
+                        "endColumn": 51,
+                        "endOffset": 496
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 501,
+                    "endColumn": 51,
+                    "endOffset": 548
+                },
+                "from": {
+                    "file": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/shadowLayout/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 501,
+                        "endColumn": 51,
+                        "endOffset": 548
+                    }
+                }
+            }
+        ]
+    }
+]

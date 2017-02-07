@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/MaterialDesign" />
+            <option value="$PROJECT_DIR$/androidMaterialDesignToolbar" />
+            <option value="$PROJECT_DIR$/dialogPlus" />
+            <option value="$PROJECT_DIR$/lib_Material_Calendar" />
+            <option value="$PROJECT_DIR$/lib_Material_Dialog" />
+            <option value="$PROJECT_DIR$/lib_ViewPagerTabStrip" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/materialDialog" />
+            <option value="$PROJECT_DIR$/materialEditText" />
+            <option value="$PROJECT_DIR$/sKAlertMessage" />
+            <option value="$PROJECT_DIR$/sKCalendar" />
+            <option value="$PROJECT_DIR$/sKConnectionDetector" />
+            <option value="$PROJECT_DIR$/shadowLayout" />
+            <option value="$PROJECT_DIR$/squareCalendar" />
+            <option value="$PROJECT_DIR$/starTicketOperator" />
+            <option value="$PROJECT_DIR$/zProgressHUD" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

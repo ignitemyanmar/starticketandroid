@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.ignite.mm.ticketing.starticketsale"
+        minSdkVersion 11
+        targetSdkVersion 25
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+        useLibrary 'org.apache.http.legacy'
+        ndk {
+            moduleName "securekey"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
+
+}
+
+dependencies {
+    compile project(':androidMaterialDesignToolbar')
+    compile project(':dialogPlus')
+    compile project(':lib_Material_Calendar')
+    compile project(':lib_Material_Dialog')
+    compile project(':lib_ViewPagerTabStrip')
+    compile project(':materialDialog')
+    compile project(':materialEditText')
+    compile project(':shadowLayout')
+    compile project(':sKAlertMessage')
+    compile project(':sKCalendar')
+    compile project(':sKConnectionDetector')
+    compile project(':squareCalendar')
+    compile project(':zProgressHUD')
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile files('libs/BlueToothTool.jar')
+    compile files('libs/core.jar')
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    compile files('libs/itextpdf-5.4.5.jar')
+    compile files('libs/okhttp-1.5.4.jar')
+    compile files('libs/retrofit-1.5.0.jar')
+    compile files('libs/skpopupview.jar')
+    compile project(':MaterialDesign')
+
+}

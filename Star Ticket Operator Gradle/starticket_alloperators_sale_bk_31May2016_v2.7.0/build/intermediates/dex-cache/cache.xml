@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/androidMaterialDesignToolbar/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cdddb52582bdc24a1db07303b277adc2ed55ac86">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-androidMaterialDesignToolbar-unspecified_2731f49c9eba3c710079b08df6e8c12c0c5aa3ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_02117dac0cfddd7609a47c177980e75f7a1eb8e4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/lib_Material_Calendar/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3bfd4d4841acaff1f658cbb2833c09efbef38c2e">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-lib_Material_Calendar-unspecified_f845bb4c6a5e76a55a5ee36d8efe8c0f80ceaa62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_0a224993498088393566815f9fcbadcab9bba7af.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio beta.app/Contents/gradle/wrapper/dists/gradle-2.4-all/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/library-2.4.0_ae6f2b89d7fb9dca71b505b642312adb5211ac66.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/sKCalendar/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c382f32a448abfdaf0f8667dcbfd81aae78b79a6">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-sKCalendar-unspecified_349bf08e79385a2bb8dc59d8585eb0e930ab12a7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_af6d14f83458d4999f2d30122d2bb9d2a551266e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/zProgressHUD/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="85be4833c96f09e8ff264e7e67e981759596f799">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-zProgressHUD-unspecified_61aabf67a801f7ccb30df63596f35d5fa54fdc81.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/sKAlertMessage/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e6e5f65faeb43d52beb361663d6282ffc7d31cce">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-sKAlertMessage-unspecified_0360ff7786aa294cc0c6e47c202de8a5d49ec22c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/support-annotations-25.1.0_e7a99a67b9d5d7396c742576867e620d6f5eb6ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/sKConnectionDetector/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="13e372b06523d9f3eb656f6f22638865df655ced">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-sKConnectionDetector-unspecified_1b8b5aa5f4257b960bf553c97d2c1b030e259153.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/libs/retrofit-1.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="54271c5c7a4dfa1c7cd53d0b10956ea35d32abb0">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/retrofit-1.5.0_281772478d028d5c3587b320a3937a5f70fc0b56.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/squareCalendar/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="473ac3b890ee7f9dcb78c459a388ea7a38cdeb6a">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-squareCalendar-unspecified_2c37b9deb87dea66486f1ebe02e94e9f80288cf6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialDialog/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="72172eb7097c10c36ef84ecc587dbcd573c78bec">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-materialDialog-unspecified_46f10eb4a4b6a377ab013b8e66b16c7f002b29ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_07fa74c6569dde305836a28355d1133531d55105.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio beta.app/Contents/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/gson-2.2.4_a1adbc20189fde9bc5da9ce0489f32abb558308c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/dialogPlus/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="39504b536ff8c2e5f9f8675e8137665c086f142a">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-dialogPlus-unspecified_fad9e106598c03101b179acf30ee275a65776508.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/design/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-design-25.1.0_e0c42ff2f5e8b853198cec745b0ef848b0149656.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_4166bcaa237691e2aeb298ee3be755e6b1be3d4c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_14fe63422de7b1c8e5b6ab7a66ffb21217f6d196.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/libs/okhttp-1.5.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7b7c9e5a6a0d69a1571968805dc1d1f19b57da26">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/okhttp-1.5.4_c1cd015e6e056ce73a51057dea25cb2f2f52f5a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_667965add98ebecde6be0e08ac77ce4dc2d7e706.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.1.0_2084c7266089d92822cacc5cf6f71ea223d943d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/transition/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-transition-25.1.0_297547c81227d5c05cbba4e65e6d98f094d7da58.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/lib_ViewPagerTabStrip/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dcf32a87c1c0397ed0180dc9141a0bffb2775a6e">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-lib_ViewPagerTabStrip-unspecified_8083b396c010cc998a40469b49ded908f728187b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/lib_Material_Dialog/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="df4440b601126fc4e424a4b0be613e69160653c0">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-lib_Material_Dialog-unspecified_ecee3d7a7fa939f47d6962be015a30e4c5f641f9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialEditText/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="be3d86a16ce9865455e26ac6068d8e15c54f1346">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-materialEditText-unspecified_c2ffadbbdfc43af6ddbe2577f340e28263c33500.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/libs/BlueToothTool.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="83328601548cd7a2bd5164b6cc068df832df9212">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/BlueToothTool_353729639034704f1d9f105945572e91161552fb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/libs/itextpdf-5.4.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe28bb8246ecf9c1740d813bd9e3de79e6e68d9">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/itextpdf-5.4.5_306b82456cf2ed2753deb7ad3e77c8e8d31fc299.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/libs/core.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd6b097588487313f7a94914fb89d44238964977">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/core_b505a19210fc5c4aef2b6b406d4d2ed49a2c9574.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/MaterialDesign/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8799090c4b83192fb7ae9e8b65861f87af4e727f">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-MaterialDesign-unspecified_eff1117dae6ebf0ce6d06446f57b4e3cbb309304.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/shadowLayout/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ab4790baf83b608d7a61e1d8e4b676ec9c7392f8">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/starticket_alloperators_sale_bk_31May2016_v2.7.0-shadowLayout-unspecified_777f2b5aa56a2f1e268ba5409d8b1ea59c8d7340.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/libs/skpopupview.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6f354ed0d728f5b5d5cc6dedc7c2fb1ce0a9eab0">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/skpopupview_8e687887b8a8d155fe2edc0cbb243f5e280d8fdf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_081834f5a9af181dfddc6b0dc1f641a6c429f22c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_ecf875b2d168dd5764ca2d4b88889a5a5c5b814c.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MaterialDesign/MaterialDesign.iml" filepath="$PROJECT_DIR$/MaterialDesign/MaterialDesign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidMaterialDesignToolbar/androidMaterialDesignToolbar.iml" filepath="$PROJECT_DIR$/androidMaterialDesignToolbar/androidMaterialDesignToolbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dialogPlus/dialogPlus.iml" filepath="$PROJECT_DIR$/dialogPlus/dialogPlus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_Material_Calendar/lib_Material_Calendar.iml" filepath="$PROJECT_DIR$/lib_Material_Calendar/lib_Material_Calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_Material_Dialog/lib_Material_Dialog.iml" filepath="$PROJECT_DIR$/lib_Material_Dialog/lib_Material_Dialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_ViewPagerTabStrip/lib_ViewPagerTabStrip.iml" filepath="$PROJECT_DIR$/lib_ViewPagerTabStrip/lib_ViewPagerTabStrip.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materialDialog/materialDialog.iml" filepath="$PROJECT_DIR$/materialDialog/materialDialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materialEditText/materialEditText.iml" filepath="$PROJECT_DIR$/materialEditText/materialEditText.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sKAlertMessage/sKAlertMessage.iml" filepath="$PROJECT_DIR$/sKAlertMessage/sKAlertMessage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sKCalendar/sKCalendar.iml" filepath="$PROJECT_DIR$/sKCalendar/sKCalendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sKConnectionDetector/sKConnectionDetector.iml" filepath="$PROJECT_DIR$/sKConnectionDetector/sKConnectionDetector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shadowLayout/shadowLayout.iml" filepath="$PROJECT_DIR$/shadowLayout/shadowLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/squareCalendar/squareCalendar.iml" filepath="$PROJECT_DIR$/squareCalendar/squareCalendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/starTicketOperator/starTicketOperator.iml" filepath="$PROJECT_DIR$/starTicketOperator/starTicketOperator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/starticket_alloperators_sale_bk_31May2016_v2.7.0.iml" filepath="$PROJECT_DIR$/starticket_alloperators_sale_bk_31May2016_v2.7.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zProgressHUD/zProgressHUD.iml" filepath="$PROJECT_DIR$/zProgressHUD/zProgressHUD.iml" />
+    </modules>
+  </component>
+</project>

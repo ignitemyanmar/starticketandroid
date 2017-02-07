@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/res/merged/debug/layout-ldrtl-v17/md_listitem_singlechoice.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialDialog/unspecified/res/layout-ldrtl-v17/md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/res/merged/debug/layout-ldrtl-v17/md_listitem_multichoice.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialDialog/unspecified/res/layout-ldrtl-v17/md_listitem_multichoice.xml"
+    },
+    {
+        "merged": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/res/merged/debug/layout-ldrtl-v17/md_simplelist_item.xml",
+        "source": "/Users/user/Downloads/Start_ticket_operator_app/StarTicketOperatorApp/starticket_alloperators_sale_bk_31May2016_v2.7.0/starTicketOperator/build/intermediates/exploded-aar/starticket_alloperators_sale_bk_31May2016_v2.7.0/materialDialog/unspecified/res/layout-ldrtl-v17/md_simplelist_item.xml"
+    }
+]

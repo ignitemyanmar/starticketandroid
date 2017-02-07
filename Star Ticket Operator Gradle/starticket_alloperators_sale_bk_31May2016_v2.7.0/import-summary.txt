@@ -1,0 +1,262 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Risky Project Location:
+-----------------------
+The tools *should* handle project locations in any directory. However,
+due to bugs, placing projects in directories containing spaces in the
+path, or characters like ", ' and &, have had issues. We're working to
+eliminate these bugs, but to save yourself headaches you may want to
+move your project to a location where this is not a problem.
+/Users/user/Downloads/Start_ticket_operator_app/Star Ticket Operator App/starticket_alloperators_sale_bk_31May2016_v2.7.0
+                                                    -      -        -                                                    
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From AndroidMaterialDesignToolbar:
+* .DS_Store
+* AndroidMaterialDesignToolbar.iml
+From DialogPlus:
+* .DS_Store
+* DialogPlus.iml
+From Lib_Material_Calendar:
+* .DS_Store
+* Lib_Material_Calendar.iml
+From Lib_Material_Dialog:
+* .DS_Store
+* Lib_Material_Dialog.iml
+From Lib_ViewPagerTabStrip:
+* .DS_Store
+* Lib_ViewPagerTabStrip.iml
+* build.gradle
+* gradle.properties
+From MaterialDesign:
+* .DS_Store
+* MaterialDesign.iml
+* build.gradle
+* gradle.properties
+* proguard-project.txt
+From MaterialDialog:
+* .DS_Store
+* MaterialDialog.iml
+From MaterialEditText:
+* .DS_Store
+* MaterialEditText.iml
+From SKAlertMessage:
+* .DS_Store
+* SKAlertMessage.iml
+* ic_launcher-web.png
+* proguard-project.txt
+From SKCalendar:
+* .DS_Store
+* README.md
+* SKCalendar.iml
+* ic_launcher-web.png
+* proguard-project.txt
+From SKConnectionDetector:
+* .DS_Store
+* SKConnectionDetector.iml
+* ic_launcher-web.png
+* proguard-project.txt
+From Shadow Layout:
+* .DS_Store
+* Shadow Layout.iml
+From Square Calendar:
+* .DS_Store
+* Square Calendar.iml
+* pom.xml
+* test/
+* test/com/
+* test/com/squareup/
+* test/com/squareup/timessquare/
+* test/com/squareup/timessquare/CalendarPickerViewTest.java
+From Star Ticket Operator:
+* .DS_Store
+* .externalToolBuilders/
+* .externalToolBuilders/org.eclipse.cdt.managedbuilder.core.genmakebuilder (1).launch
+* Thumbs.db
+* ic_launcher-web.png
+* starticket_alloperators_sale_bk_31May2016_v2.7.0.iml
+From ZProgressHUD:
+* .DS_Store
+* ZProgressHUD.iml
+* ic_launcher-web.png
+* proguard-project.txt
+From library:
+* .DS_Store
+* library.iml
+* pom.xml
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:21.0.3
+gson-2.2.4.jar => com.google.code.gson:gson:2.2.4
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.2.4.jar => version 2.2.4 in com.google.code.gson:gson:2.2.4
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+appcompat => [com.android.support:appcompat-v7:21.0.3]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In AndroidMaterialDesignToolbar:
+* AndroidManifest.xml => androidMaterialDesignToolbar/src/main/AndroidManifest.xml
+* assets/ => androidMaterialDesignToolbar/src/main/assets
+* lint.xml => androidMaterialDesignToolbar/lint.xml
+* res/ => androidMaterialDesignToolbar/src/main/res/
+* src/ => androidMaterialDesignToolbar/src/main/java/
+In DialogPlus:
+* AndroidManifest.xml => dialogPlus/src/main/AndroidManifest.xml
+* assets/ => dialogPlus/src/main/assets
+* res/ => dialogPlus/src/main/res/
+* src/ => dialogPlus/src/main/java/
+In Lib_Material_Calendar:
+* AndroidManifest.xml => lib_Material_Calendar/src/main/AndroidManifest.xml
+* assets/ => lib_Material_Calendar/src/main/assets
+* res/ => lib_Material_Calendar/src/main/res/
+* src/ => lib_Material_Calendar/src/main/java/
+In Lib_Material_Dialog:
+* AndroidManifest.xml => lib_Material_Dialog/src/main/AndroidManifest.xml
+* assets/ => lib_Material_Dialog/src/main/assets
+* res/ => lib_Material_Dialog/src/main/res/
+* src/ => lib_Material_Dialog/src/main/java/
+In Lib_ViewPagerTabStrip:
+* AndroidManifest.xml => lib_ViewPagerTabStrip/src/main/AndroidManifest.xml
+* assets/ => lib_ViewPagerTabStrip/src/main/assets
+* res/ => lib_ViewPagerTabStrip/src/main/res/
+* src/ => lib_ViewPagerTabStrip/src/main/java/
+In MaterialDialog:
+* AndroidManifest.xml => materialDialog/src/main/AndroidManifest.xml
+* assets/ => materialDialog/src/main/assets
+* lint.xml => materialDialog/lint.xml
+* res/ => materialDialog/src/main/res/
+* src/ => materialDialog/src/main/java/
+In library:
+* AndroidManifest.xml => library/src/main/AndroidManifest.xml
+* assets/ => library/src/main/assets
+* res/ => library/src/main/res
+* src/ => library/src/main/java/
+* src/.DS_Store => library/src/main/resources/.DS_Store
+* src/com/.DS_Store => library/src/main/resources/com/.DS_Store
+* src/com/nineoldandroids/.DS_Store => library/src/main/resources/com/nineoldandroids/.DS_Store
+In MaterialDesign:
+* AndroidManifest.xml => materialDesign/src/main/AndroidManifest.xml
+* assets/ => materialDesign/src/main/assets/
+* lint.xml => materialDesign/lint.xml
+* res/ => materialDesign/src/main/res/
+* src/ => materialDesign/src/main/java/
+In MaterialEditText:
+* AndroidManifest.xml => materialEditText/src/main/AndroidManifest.xml
+* assets/ => materialEditText/src/main/assets
+* lint.xml => materialEditText/lint.xml
+* res/ => materialEditText/src/main/res/
+* src/ => materialEditText/src/main/java/
+In SKAlertMessage:
+* AndroidManifest.xml => sKAlertMessage/src/main/AndroidManifest.xml
+* assets/ => sKAlertMessage/src/main/assets
+* res/ => sKAlertMessage/src/main/res/
+* src/ => sKAlertMessage/src/main/java/
+In SKCalendar:
+* AndroidManifest.xml => sKCalendar/src/main/AndroidManifest.xml
+* assets/ => sKCalendar/src/main/assets
+* lint.xml => sKCalendar/lint.xml
+* res/ => sKCalendar/src/main/res/
+* src/ => sKCalendar/src/main/java/
+In SKConnectionDetector:
+* AndroidManifest.xml => sKConnectionDetector/src/main/AndroidManifest.xml
+* assets/ => sKConnectionDetector/src/main/assets
+* res/ => sKConnectionDetector/src/main/res/
+* src/ => sKConnectionDetector/src/main/java/
+In Shadow Layout:
+* AndroidManifest.xml => shadowLayout/src/main/AndroidManifest.xml
+* assets/ => shadowLayout/src/main/assets
+* res/ => shadowLayout/src/main/res/
+* src/ => shadowLayout/src/main/java/
+In Square Calendar:
+* AndroidManifest.xml => squareCalendar/src/main/AndroidManifest.xml
+* assets/ => squareCalendar/src/main/assets
+* res/ => squareCalendar/src/main/res/
+* src/ => squareCalendar/src/main/java/
+In ZProgressHUD:
+* AndroidManifest.xml => zProgressHUD/src/main/AndroidManifest.xml
+* assets/ => zProgressHUD/src/main/assets
+* lint.xml => zProgressHUD/lint.xml
+* res/ => zProgressHUD/src/main/res/
+* src/ => zProgressHUD/src/main/java/
+In Star Ticket Operator:
+* AndroidManifest.xml => starTicketOperator/src/main/AndroidManifest.xml
+* assets/ => starTicketOperator/src/main/assets/
+* jni/ => starTicketOperator/src/main/jni/
+* libs/BlueToothTool.jar => starTicketOperator/libs/BlueToothTool.jar
+* libs/armeabi/libactivation.so => starTicketOperator/src/main/jniLibs/armeabi/libactivation.so
+* libs/armeabi/libsecureparam.so => starTicketOperator/src/main/jniLibs/armeabi/libsecureparam.so
+* libs/core.jar => starTicketOperator/libs/core.jar
+* libs/itextpdf-5.4.5.jar => starTicketOperator/libs/itextpdf-5.4.5.jar
+* libs/okhttp-1.5.4.jar => starTicketOperator/libs/okhttp-1.5.4.jar
+* libs/retrofit-1.5.0.jar => starTicketOperator/libs/retrofit-1.5.0.jar
+* libs/skpopupview.jar => starTicketOperator/libs/skpopupview.jar
+* lint.xml => starTicketOperator/lint.xml
+* res/ => starTicketOperator/src/main/res/
+* src/ => starTicketOperator/src/main/java/
+* src/.DS_Store => starTicketOperator/src/main/resources/.DS_Store
+* src/com/.DS_Store => starTicketOperator/src/main/resources/com/.DS_Store
+* src/com/smk/.DS_Store => starTicketOperator/src/main/resources/com/smk/.DS_Store
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

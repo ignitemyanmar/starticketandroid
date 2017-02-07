@@ -564,3 +564,38 @@ Java_com_ignite_mm_ticketing_application_SecureParam_getOutstandingBooking(JNIEn
 //
 //    return env->NewStringUTF(result.c_str());
 //}
+JNIEXPORT jstring JNICALL
+Java_com_ignite_mm_ticketing_application_SecureParam_getSales(JNIEnv *env, jclass type,
+                                                              jstring accesstoken_,
+                                                              jstring agent_code_no_,
+                                                              jstring start_date_,
+                                                              jstring end_date_, jstring date_type_,
+                                                              jstring offset_, jstring limit_) {
+    stringstream stream;
+    const char *accesstoken = env->GetStringUTFChars(accesstoken_, 0);
+    const char *agent_code_no = env->GetStringUTFChars(agent_code_no_, 0);
+    const char *start_date = env->GetStringUTFChars(start_date_, 0);
+    const char *end_date = env->GetStringUTFChars(end_date_, 0);
+    const char *date_type = env->GetStringUTFChars(date_type_, 0);
+    const char *offset = env->GetStringUTFChars(offset_, 0);
+    const char *limit = env->GetStringUTFChars(limit_, 0);
+
+    // TODO
+//
+//    access_token = String | Required | Get Server Info By Operator's access_token value
+//    agent_code_no = String | Required | Login API's code_no
+//    start_date = Date | Required | YYYY-MM-DD
+//    end_date = Date | Required | YYYY-MM-DD
+//    date_type = Integer | Required | 0 or 1 // 0 is BySoldDate, 1 is By DepartureDate
+//    offset = Integer | Optional eg.1
+//    limit = Inte
+//    access_token=&agent_code_no=MAWAS-000001&date_type=1&start_date=2017-02-06&end_date=2017-02-06&offset=1&limit=10
+    stream << "{\"access_token\":\"" << accesstoken << "\",\"agent_code_no\":\"" << agent_code_no <<
+    "\",\"date_type\":\"" << date_type << "\",\"start_date\":\"" << start_date <<
+    "\",\"end_date\":\"" << end_date << "\"," "\"offset\":\"" << offset << "\",\"limit\":\"" <<
+    limit << "\"}";
+    string result = stream.str();
+
+    return env->NewStringUTF(result.c_str());
+
+}

@@ -13,6 +13,7 @@ import com.ignite.mdm.ticketing.sqlite.database.model.NotiCounts;
 import com.ignite.mdm.ticketing.sqlite.database.model.Operator;
 import com.ignite.mdm.ticketing.sqlite.database.model.OutstandingBooking;
 import com.ignite.mdm.ticketing.sqlite.database.model.PaymentResponse;
+import com.ignite.mdm.ticketing.sqlite.database.model.SoldTicketModel;
 import com.ignite.mdm.ticketing.sqlite.database.model.StarTicketAgents;
 import com.ignite.mdm.ticketing.sqlite.database.model.ThreeDaySale;
 import com.ignite.mm.ticketing.application.LoginUser;
@@ -90,6 +91,11 @@ public interface INetworkEngine {
   @GET("/api/olsalepermittrips") void getOnlineSalePermitTrip(
       @Query("access_token") String access_token, @Query("operator_id") String operator_id,
       Callback<Response> callback);
+
+
+  //
+ // http://mdm.starticketmyanmar.com/agentsoldtickets?param=
+  @GET("/agentsoldtickets")void getSales(@Query("param")String token,Callback<SoldTicketModel>callback);
 
   @GET("/api/threedayssale") void getThreeDaySales(@Query("access_token") String token,
       @Query("date_type") int date_type, @Query("code_no") String code_no,

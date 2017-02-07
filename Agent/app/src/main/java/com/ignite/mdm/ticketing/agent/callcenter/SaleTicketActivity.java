@@ -391,6 +391,8 @@ public class SaleTicketActivity extends BaseSherlockActivity
           startActivity(
               new Intent(SaleTicketActivity.this, BusOperatorSeatsActivity.class).putExtras(
                   bundle));
+        }else {
+
         }
       }
     }
@@ -399,13 +401,12 @@ public class SaleTicketActivity extends BaseSherlockActivity
   public boolean checkFields() {
 
     // TODO Auto-generated method stub
-    if ((((TextView) findViewById(R.id.from)).getText()).toString().equals("Choose - From City")) {
-
+    if ((((TextView) findViewById(R.id.from)).getText()).toString().equals(getString(R.string.strmm_choose_fromcity))) {
       SKToastMessage.showMessage(SaleTicketActivity.this,
           getResources().getString(R.string.strmm_choose_fromcity), SKToastMessage.WARNING);
       return false;
     }
-    if ((((TextView) findViewById(R.id.to)).getText()).toString().equals("Choose - To City")) {
+    if ((((TextView) findViewById(R.id.to)).getText()).toString().equals(getString(R.string.strmm_choose_tocity))) {
       SKToastMessage.showMessage(SaleTicketActivity.this,
           getResources().getString(R.string.strmm_choose_tocity), SKToastMessage.WARNING);
       return false;

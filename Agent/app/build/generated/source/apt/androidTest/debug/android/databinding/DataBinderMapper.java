@@ -11,6 +11,8 @@ class DataBinderMapper {
                     return com.ignite.mdm.ticketing.agent.callcenter.databinding.ItemInvoiceBinding.bind(view, bindingComponent);
                 case com.ignite.mdm.ticketing.agent.callcenter.R.layout.dialog_invoice:
                     return com.ignite.mdm.ticketing.agent.callcenter.databinding.DialogInvoiceBinding.bind(view, bindingComponent);
+                case com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_threeday_sales:
+                    return com.ignite.mdm.ticketing.agent.callcenter.databinding.ActivityThreedaySalesBinding.bind(view, bindingComponent);
                 case com.ignite.mdm.ticketing.agent.callcenter.R.layout.item_outstanding_bookings:
                     return com.ignite.mdm.ticketing.agent.callcenter.databinding.ItemOutstandingBookingsBinding.bind(view, bindingComponent);
                 case com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_out_standingbooking:
@@ -48,6 +50,12 @@ class DataBinderMapper {
             case 857765292: {
                 if(tag.equals("layout/dialog_invoice_0")) {
                     return com.ignite.mdm.ticketing.agent.callcenter.R.layout.dialog_invoice;
+                }
+                break;
+            }
+            case 1647683655: {
+                if(tag.equals("layout/activity_threeday_sales_0")) {
+                    return com.ignite.mdm.ticketing.agent.callcenter.R.layout.activity_threeday_sales;
                 }
                 break;
             }

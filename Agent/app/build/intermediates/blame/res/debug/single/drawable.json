@@ -64,12 +64,12 @@
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
-        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/md_btn_selected.xml",
-        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/drawable/md_btn_selected.xml"
-    },
-    {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/star_ticket_splash.png",
         "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/drawable/star_ticket_splash.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/md_btn_selected.xml",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/res/drawable/md_btn_selected.xml"
     },
     {
         "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/res/merged/debug/drawable/cancel_order.png",

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_translucent">#80000000</color>
+    <color name="blue">#304f9f</color>
+    <color name="colorPrimary">@color/material_deep_teal_500</color>
+    <color name="colorPrimaryDark">@color/material_deep_teal_500</color>
+    <color name="grey">@color/material_blue_grey_800</color>
+    <color name="light">@color/primary_material_light</color>
+    <color name="material_teal">@color/material_deep_teal_500</color>
+    <color name="red">#bf360c</color>
+    <color name="ripple_material_teal">#ff149691</color>
+    <color name="ripple_red">#ffbf5232</color>
+    <color name="windowBackgroundColor">#333333</color>
+    <declare-styleable name="FloatingActionButton"><attr format="color" name="fab_colorPressed"/><attr format="color" name="fab_colorNormal"/><attr format="color" name="fab_colorRipple"/><attr format="boolean" name="fab_shadow"/></declare-styleable>
+    <dimen name="fab_elevation_lollipop">4dp</dimen>
+    <dimen name="fab_shadow_size">8dp</dimen>
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="navdrawer_width">260dp</dimen>
+    <string name="app_name">Material Toolbar</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="drawer_open">drawer_open</string>
+    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+    </style>
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+</resources>
