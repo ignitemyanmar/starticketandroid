@@ -71,9 +71,9 @@ public class NewSalesActivity extends BaseSherlockActivity {
 
   private String token;
 
-  NewSalesAdapter outstandingAdapter = new NewSalesAdapter();
+  NewSalesAdapter outstandingAdapter = new NewSalesAdapter(this);
   EndlessRecyclerViewAdapter endlessRecyclerViewAdapter;
-  int sold_amount = 0;
+
   SharedPreferences sharedPreferences;
   String access_token;
   String agent_code_no;
@@ -110,6 +110,7 @@ public class NewSalesActivity extends BaseSherlockActivity {
       }
     });
 
+    binding.txtFromdate.setOnClickListener(clickListener);
     binding.btnSearch.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         lists.clear();
@@ -134,7 +135,7 @@ public class NewSalesActivity extends BaseSherlockActivity {
             if(lists.size()>0) {
               getNetworks();
             }
-            Log.d("DSADS", "DAS");
+
           }
         });
     binding.recyclerView.setAdapter(endlessRecyclerViewAdapter);

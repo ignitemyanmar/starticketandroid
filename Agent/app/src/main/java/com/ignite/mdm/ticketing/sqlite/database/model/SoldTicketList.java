@@ -9,70 +9,29 @@ import com.google.gson.annotations.SerializedName;
 
 public class SoldTicketList {
 
-  @SerializedName("id")
-  @Expose
-  private String id;
-  @SerializedName("orderdate")
-  @Expose
-  private String orderdate;
-  @SerializedName("departure_date")
-  @Expose
-  private String departureDate;
-  @SerializedName("name")
-  @Expose
-  private String name;
-  @SerializedName("nrc_no")
-  @Expose
-  private String nrcNo;
-  @SerializedName("phone")
-  @Expose
-  private String phone;
-  @SerializedName("total_amount")
-  @Expose
-  private String totalAmount;
-  @SerializedName("agent_commission")
-  @Expose
-  private String agentCommission;
-  @SerializedName("booking")
-  @Expose
-  private String booking;
-  @SerializedName("nationality")
-  @Expose
-  private String nationality;
-  @SerializedName("remark")
-  @Expose
-  private String remark;
-  @SerializedName("agent_name")
-  @Expose
-  private String agentName;
-  @SerializedName("agent_group_name")
-  @Expose
-  private String agentGroupName;
-  @SerializedName("from")
-  @Expose
-  private String from;
-  @SerializedName("to")
-  @Expose
-  private String to;
-  @SerializedName("boarding_alighting_city")
-  @Expose
-  private Object boardingAlightingCity;
-  @SerializedName("busclass")
-  @Expose
-  private String busclass;
-  @SerializedName("seat_no")
-  @Expose
-  private String seatNo;
-  @SerializedName("ticket_no")
-  @Expose
-  private String ticketNo;
-  @SerializedName("seat_qty")
-  @Expose
-  private Integer seatQty;
-  @SerializedName("source")
-  @Expose
-  private Integer source;
+  @SerializedName("id") @Expose private String id;
 
+  @SerializedName("price") @Expose private String price;
+  @SerializedName("orderdate") @Expose private String orderdate;
+  @SerializedName("departure_date") @Expose private String departureDate;
+  @SerializedName("name") @Expose private String name;
+  @SerializedName("nrc_no") @Expose private String nrcNo;
+  @SerializedName("phone") @Expose private String phone;
+  @SerializedName("total_amount") @Expose private String totalAmount;
+  @SerializedName("agent_commission") @Expose private String agentCommission;
+  @SerializedName("booking") @Expose private String booking;
+  @SerializedName("nationality") @Expose private String nationality;
+  @SerializedName("remark") @Expose private String remark;
+  @SerializedName("agent_name") @Expose private String agentName;
+  @SerializedName("agent_group_name") @Expose private String agentGroupName;
+  @SerializedName("from") @Expose private String from;
+  @SerializedName("to") @Expose private String to;
+  @SerializedName("boarding_alighting_city") @Expose private Object boardingAlightingCity;
+  @SerializedName("busclass") @Expose private String busclass;
+  @SerializedName("seat_no") @Expose private String seatNo;
+  @SerializedName("ticket_no") @Expose private String ticketNo;
+  @SerializedName("seat_qty") @Expose private Integer seatQty;
+  @SerializedName("source") @Expose private Integer source;
 
   @SerializedName("operator") @Expose private String operator;
   @SerializedName("operator_phone") @Expose private String operatorPhone;
@@ -218,6 +177,14 @@ public class SoldTicketList {
     return to;
   }
 
+  public String getPrice() {
+    return price;
+  }
+
+  public void setPrice(String price) {
+    this.price = price;
+  }
+
   public void setTo(String to) {
     this.to = to;
   }
@@ -269,5 +236,4 @@ public class SoldTicketList {
   public void setSource(Integer source) {
     this.source = source;
   }
-
 }
