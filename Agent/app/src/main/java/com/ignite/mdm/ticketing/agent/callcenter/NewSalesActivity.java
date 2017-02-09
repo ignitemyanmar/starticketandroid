@@ -30,6 +30,7 @@ import com.smk.skconnectiondetector.SKConnectionDetector;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import retrofit.Callback;
@@ -132,10 +133,9 @@ public class NewSalesActivity extends BaseSherlockActivity {
     endlessRecyclerViewAdapter = new EndlessRecyclerViewAdapter(this, outstandingAdapter,
         new EndlessRecyclerViewAdapter.RequestToLoadMoreListener() {
           public void onLoadMoreRequested() {
-            if(lists.size()>0) {
+            if (lists.size() > 0) {
               getNetworks();
             }
-
           }
         });
     binding.recyclerView.setAdapter(endlessRecyclerViewAdapter);
@@ -152,16 +152,35 @@ public class NewSalesActivity extends BaseSherlockActivity {
 
   private boolean isLoading = false;
 
+  public boolean equalLists(List<SoldTicketList> one, List<SoldTicketList> two) {
+    if (one == null && two == null) {
+      return true;
+    }
+
+    //to avoid messing the order of the lists we will use a copy
+    //as noted in comments by A. R. S.
+    one = new ArrayList<SoldTicketList>(one);
+    two = new ArrayList<SoldTicketList>(two);
+
+    Collections.sort(one);
+    Collections.sort(two);
+    return one.equals(two);
+  }
+
+  boolean first = true;
+
   public void getNetworks() {
     //if (!isLoading) {
     //  isLoading = true;
 
-
     NetworkEngine.setIP("mdm.starticketmyanmar.com");
-    Log.d("--------->",SecureParam.getSales(access_token, agent_code_no, binding.txtFromdate.getText().toString(),
-        binding.txtTodate.getText().toString(), getSales + "", lists.size() - 1 + "", "25"));
-    String params = MCrypt.getInstance().encrypt(SecureParam.getSales(access_token, agent_code_no, binding.txtFromdate.getText().toString(),
+    Log.d("--------->",
+        SecureParam.getSales(access_token, agent_code_no, binding.txtFromdate.getText().toString(),
             binding.txtTodate.getText().toString(), getSales + "", lists.size() - 1 + "", "25"));
+    String params = MCrypt.getInstance()
+        .encrypt(SecureParam.getSales(access_token, agent_code_no,
+            binding.txtFromdate.getText().toString(), binding.txtTodate.getText().toString(),
+            getSales + "", lists.size() - 1 + "", "25"));
 
     NetworkEngine.getInstance().getSales(params, new Callback<SoldTicketModel>() {
       public void failure(RetrofitError retrofitError) {
@@ -180,14 +199,20 @@ public class NewSalesActivity extends BaseSherlockActivity {
           } else {
             endlessRecyclerViewAdapter.onDataReady(true);
           }
+
           for (SoldTicketList soldTicketList : outstandingBooking.getSoldTicketList()) {
+
             if (!lists.contains(soldTicketList)) {
               lists.add(soldTicketList);
             }
           }
-
+          if (!first && equalLists(outstandingBooking.getSoldTicketList(), lists)) {
+            endlessRecyclerViewAdapter.onDataReady(false);
+          }
+          first = false;
           outstandingAdapter.replaceList(lists);
-
+        } else {
+          endlessRecyclerViewAdapter.onDataReady(false);
         }
       }
     });

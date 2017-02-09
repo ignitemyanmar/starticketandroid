@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by user on 1/22/17.
  */
 
-public class SoldTicketList {
+public class SoldTicketList implements Comparable<SoldTicketList>{
 
   @SerializedName("id") @Expose private String id;
 
@@ -244,6 +244,10 @@ public class SoldTicketList {
     SoldTicketList that = (SoldTicketList) o;
 
     return id != null ? id.equals(that.id) : that.id == null;
+  }
+
+  @Override public int compareTo(SoldTicketList soldTicketList) {
+    return id.compareTo(soldTicketList.id);
   }
 
   @Override public int hashCode() {
