@@ -44,4 +44,17 @@ public class Invoices {
   public void setTotalAmount(Integer totalAmount) {
     this.totalAmount = totalAmount;
   }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Invoices)) return false;
+
+    Invoices invoices = (Invoices) o;
+
+    return invoiceNo != null ? invoiceNo.equals(invoices.invoiceNo) : invoices.invoiceNo == null;
+  }
+
+  @Override public int hashCode() {
+    return invoiceNo != null ? invoiceNo.hashCode() : 0;
+  }
 }
