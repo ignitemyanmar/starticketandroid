@@ -164,7 +164,7 @@ public class InvoiceActivity extends BaseSherlockActivity {
               }
             }
             invoiceAdapter.replaceList(list);
-            endlessRecyclerViewAdapter.onDataReady(true);
+            endlessRecyclerViewAdapter.onDataReady(false);
           } else {
             endlessRecyclerViewAdapter.onDataReady(false);
           }
