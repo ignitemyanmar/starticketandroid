@@ -62,7 +62,6 @@ public class InvoiceActivity extends BaseSherlockActivity {
     binding.txtTodate.setOnClickListener(clickListener);
     token = sharedPreferences.getString("operator_token", null);
 
-
     binding.btnSearch.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         list.clear();
@@ -137,8 +136,7 @@ public class InvoiceActivity extends BaseSherlockActivity {
     }
   };
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       // Respond to the action bar's Up/Home button
       case android.R.id.home:
@@ -149,7 +147,7 @@ public class InvoiceActivity extends BaseSherlockActivity {
   }
 
   public void getData() {
-    Log.d("DATA",SecureParam.getInvoices(token, AppLoginUser.getCodeNo(),
+    Log.d("DATA", SecureParam.getInvoices(token, AppLoginUser.getCodeNo(),
         binding.txtTodate.getText().toString(), list.size() - 1 + ""));
     String param = MCrypt.getInstance()
         .encrypt(SecureParam.getInvoices(token, AppLoginUser.getCodeNo(),
@@ -168,11 +166,13 @@ public class InvoiceActivity extends BaseSherlockActivity {
           } else {
             endlessRecyclerViewAdapter.onDataReady(false);
           }
+        }else {
+          endlessRecyclerViewAdapter.onDataReady(false);
         }
       }
 
       public void failure(RetrofitError retrofitError) {
-
+        endlessRecyclerViewAdapter.onDataReady(false);
       }
     });
   }
