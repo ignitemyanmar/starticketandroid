@@ -14,7 +14,7 @@ public class NetworkEngine {
 	public static INetworkEngine getInstance() {
 		if (instance==null) {
 			RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://"+ ip +"/")
-					//.setLogLevel(RestAdapter.LogLevel.FULL)
+					.setLogLevel(RestAdapter.LogLevel.FULL)
 					.setErrorHandler(new MyErrorHandler()).build();
 			instance = adapter.create(INetworkEngine.class);
 		}
@@ -24,7 +24,7 @@ public class NetworkEngine {
 	public static INetworkEngine getInstance2() {
 		if (instance2==null) {
 			RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://"+ ip2 +"/")
-					//.setLogLevel(RestAdapter.LogLevel.FULL)
+					.setLogLevel(RestAdapter.LogLevel.FULL)
 					.setErrorHandler(new MyErrorHandler()).build();
 			instance2 = adapter.create(INetworkEngine.class);
 		}

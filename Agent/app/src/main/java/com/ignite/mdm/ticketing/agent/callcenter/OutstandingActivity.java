@@ -195,11 +195,8 @@ public class OutstandingActivity extends BaseSherlockActivity {
 
       public void success(OutstandingBooking outstandingBooking, Response response) {
         if (outstandingBooking != null) {
-          if (outstandingBooking.getSoldTicketList().size() <= 0) {
+
             endlessRecyclerViewAdapter.onDataReady(false);
-          } else {
-            endlessRecyclerViewAdapter.onDataReady(true);
-          }
           for (SoldTicketList soldTicketList : outstandingBooking.getSoldTicketList()) {
             if (!lists.contains(soldTicketList)) {
               lists.add(soldTicketList);
@@ -215,8 +212,7 @@ public class OutstandingActivity extends BaseSherlockActivity {
   }
 
   public void setSold_amount(int sold_amount) {
-
-    binding.leftMoneyAmount.setText(this.sold_amount + "Ks");
+    binding.leftMoneyAmount.setText(sold_amount + "Ks");
   }
 
   private View.OnClickListener clickListener = new View.OnClickListener() {
