@@ -46,7 +46,7 @@ public class OutstandingActivity extends BaseSherlockActivity {
 
   private List<String> menu_list;
   private Integer selectedBookType;
-  private final String LIMIT = "10";
+  private final String LIMIT = "9999";
 
   private Configuration config;
 
@@ -215,7 +215,7 @@ public class OutstandingActivity extends BaseSherlockActivity {
   }
 
   public void setSold_amount(int sold_amount) {
-    this.sold_amount = this.sold_amount + sold_amount;
+
     binding.leftMoneyAmount.setText(this.sold_amount + "Ks");
   }
 

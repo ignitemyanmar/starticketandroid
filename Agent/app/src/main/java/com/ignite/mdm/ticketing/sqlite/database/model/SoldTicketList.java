@@ -236,4 +236,17 @@ public class SoldTicketList {
   public void setSource(Integer source) {
     this.source = source;
   }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof SoldTicketList)) return false;
+
+    SoldTicketList that = (SoldTicketList) o;
+
+    return id != null ? id.equals(that.id) : that.id == null;
+  }
+
+  @Override public int hashCode() {
+    return id != null ? id.hashCode() : 0;
+  }
 }
