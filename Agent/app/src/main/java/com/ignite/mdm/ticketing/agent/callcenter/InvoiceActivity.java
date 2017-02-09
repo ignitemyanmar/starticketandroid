@@ -172,7 +172,10 @@ public class InvoiceActivity extends BaseSherlockActivity {
       }
 
       public void failure(RetrofitError retrofitError) {
-        endlessRecyclerViewAdapter.onDataReady(false);
+        if (list.isEmpty()) {
+          showAlert("Something's Wrong in Server!");
+          endlessRecyclerViewAdapter.onDataReady(false);
+        }
       }
     });
   }

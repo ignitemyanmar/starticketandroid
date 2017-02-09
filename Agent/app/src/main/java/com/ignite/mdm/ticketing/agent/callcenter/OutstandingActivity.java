@@ -190,6 +190,7 @@ public class OutstandingActivity extends BaseSherlockActivity {
         //isLoading = false;
         if (lists.isEmpty()) {
           showAlert("Something's Wrong in Server!");
+          endlessRecyclerViewAdapter.onDataReady(false);
         }
       }
 
