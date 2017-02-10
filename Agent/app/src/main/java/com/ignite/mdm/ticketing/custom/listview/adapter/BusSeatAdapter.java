@@ -17,7 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.ignite.mdm.ticketing.agent.callcenter.BusSelectSeatActivity;
 import com.ignite.mdm.ticketing.agent.callcenter.R;
-import com.ignite.mdm.ticketing.agent.util.Constant;
 import com.ignite.mdm.ticketing.sqlite.database.model.OperatorGroupUser;
 import com.ignite.mdm.ticketing.sqlite.database.model.Seat_list;
 import java.util.List;
@@ -77,10 +76,9 @@ public class BusSeatAdapter extends BaseAdapter {
 
     holder.imageViewGender.setVisibility(View.GONE);
 
-    //Log.i("", "Seat No: " + list.get(position).getSeat_no() + ", Operator Group Color: " + list.get(
-    //    position).getOperatorgroup_color());
 
-    //Check Online Seats
+
+
 
     if (list.get(position).getOperatorgroup_color() == 1) {
       //
@@ -308,8 +306,7 @@ public class BusSeatAdapter extends BaseAdapter {
 
       //holder.imageViewGender.setVisibility(View.VISIBLE);
       //holder.imageViewGender.setImageResource(R.drawable.group);
-
-      if (list.get(position).getCustomerInfo() != null) {
+        if (list.get(position).getCustomerInfo() != null) {
 
         //Log.e("TAG", "~ customerinfo : " + list.get(position).getCustomerInfo().getGender());
         holder.imageViewGender.setVisibility(View.VISIBLE);

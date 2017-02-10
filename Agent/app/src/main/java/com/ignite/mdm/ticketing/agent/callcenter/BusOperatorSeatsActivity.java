@@ -115,7 +115,7 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity {
 
                     final List l = new ArrayList();
                     for(OperatorSeat op  : OperatorSeats){
-                      if(op.getPermitseatTotal() - op.getPermitseatSoldtotal()>0){
+                      if(op.getPermitseatTotal() - op.getPermitseatSoldtotal() >= 0){
                         l.add(op);
                       }
                     }
@@ -135,7 +135,6 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity {
                   dialog.dismiss();
                 }
               }
-
               public void failure(RetrofitError arg0) {
                 // TODO Auto-generated method stub
                 if (arg0.getResponse() != null) {
