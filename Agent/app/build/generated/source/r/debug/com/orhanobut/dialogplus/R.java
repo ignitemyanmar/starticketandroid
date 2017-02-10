@@ -24,11 +24,11 @@ public final class R {
 	}
 	public static final class id {
 		public static final int dialogplus_content_container = 0x7f0d01b2;
-		public static final int dialogplus_footer_container = 0x7f0d020c;
-		public static final int dialogplus_header_container = 0x7f0d020a;
-		public static final int dialogplus_list = 0x7f0d020b;
+		public static final int dialogplus_footer_container = 0x7f0d020e;
+		public static final int dialogplus_header_container = 0x7f0d020c;
+		public static final int dialogplus_list = 0x7f0d020d;
 		public static final int dialogplus_outmost_container = 0x7f0d01b1;
-		public static final int dialogplus_view_container = 0x7f0d0216;
+		public static final int dialogplus_view_container = 0x7f0d0218;
 	}
 	public static final class integer {
 		public static final int dialogplus_animation_default_duration = 0x7f0a0006;

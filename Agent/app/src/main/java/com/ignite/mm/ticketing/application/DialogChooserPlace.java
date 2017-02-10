@@ -46,6 +46,7 @@ public class DialogChooserPlace extends DialogFragment {
         new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,
             android.R.id.text1, fromCities.toArray(new String[0]));
     //ArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
+
     binding.list.setAdapter(adapter);
     binding.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -128,13 +129,22 @@ public class DialogChooserPlace extends DialogFragment {
                   binding.progress.setVisibility(View.GONE);
                   binding.container.setVisibility(View.VISIBLE);
                   if (fromCities != null && fromCities.size() > 0) {
+                    List<String> s = new ArrayList<String>();
+                    for(String s0:fromCities){
+                          if(s0.contains("Mandalay") || s0.contains("Yangon")){
+                            s.add(0,s0);
+                          }else {
+                            s.add(s0);
+                          }
+                    }
+                    fromCities = s;
                     ArrayAdapter<String> adapter =
                         new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,
                             android.R.id.text1, fromCities.toArray(new String[0]));
                     binding.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                       public void onItemClick(AdapterView<?> adapterView, View view, int i,
                           long l) {
-                        dialogListClick.onClick(type, values.get(i));
+                        dialogListClick.onClick(type, fromCities.get(i));
                         dismiss();
                       }
                     });
@@ -176,6 +186,17 @@ public class DialogChooserPlace extends DialogFragment {
                   binding.progress.setVisibility(View.GONE);
                   binding.container.setVisibility(View.VISIBLE);
                   if (fromCities != null && fromCities.size() > 0) {
+
+                    List<String> s = new ArrayList<String>();
+                    for(String s0:fromCities){
+                      if(s0.contains("Mandalay") || s0.contains("Yangon")){
+                        s.add(0,s0);
+                      }else {
+                        s.add(s0);
+                      }
+                    }
+                    fromCities = s;
+
                     ArrayAdapter<String> adapter =
                         new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,
                             android.R.id.text1, fromCities.toArray(new String[0]));
@@ -184,7 +205,7 @@ public class DialogChooserPlace extends DialogFragment {
                     binding.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                       public void onItemClick(AdapterView<?> adapterView, View view, int i,
                           long l) {
-                        dialogListClick.onClick(type, values.get(i));
+                        dialogListClick.onClick(type, fromCities.get(i));
                         dismiss();
                       }
                     });

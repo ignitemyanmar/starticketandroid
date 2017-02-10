@@ -11,6 +11,23 @@
 			android:layout_height="wrap_content"
 			layout="@layout/toolbar"/>
 
+	<TextView
+			android:id="@+id/toolbar_subtitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/colorPrimary"
+			android:gravity="center_horizontal"
+			android:textColor="@color/white" />
+
+	<TextView
+			android:id="@+id/toolbar_subtitle2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/colorPrimary"
+			android:gravity="center_horizontal"
+			android:textColor="@color/white" />
+
+
 	<RelativeLayout
 			android:id="@+id/layout_seat_plan"
 			android:layout_width="match_parent"

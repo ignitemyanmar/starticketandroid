@@ -202,7 +202,10 @@ import retrofit.client.Response;
       toolbar.setSubtitle(changeDate(Date) + " [" + Time + "]");
       this.setSupportActionBar(toolbar);
     }
-
+    TextView toolbarSubtitle = (TextView) findViewById(R.id.toolbar_subtitle);
+    TextView toolbarSubtitle2 = (TextView) findViewById(R.id.toolbar_subtitle2);
+    toolbarSubtitle.setText(changeDate(Date) + " [" + Time + "]");
+    toolbarSubtitle2.setText(Classes);
     //Log.i("", "(Bus Select Seat) Permit_operator_group_id : "+permit_operator_group_id+", Permit_agent_id : "+permit_agent_id);
 
     btn_closeseat = (Button) findViewById(R.id.btn_close_seat);

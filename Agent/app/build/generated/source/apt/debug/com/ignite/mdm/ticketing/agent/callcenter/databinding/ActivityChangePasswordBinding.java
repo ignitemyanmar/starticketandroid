@@ -11,8 +11,8 @@ public class ActivityChangePasswordBinding extends android.databinding.ViewDataB
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.activity_change_password, 1);
         sViewsWithIds.put(R.id.old_password, 2);
-        sViewsWithIds.put(R.id.confirm, 3);
-        sViewsWithIds.put(R.id.new_password, 4);
+        sViewsWithIds.put(R.id.new_password, 3);
+        sViewsWithIds.put(R.id.confirm, 4);
         sViewsWithIds.put(R.id.change, 5);
     }
     // views
@@ -32,10 +32,10 @@ public class ActivityChangePasswordBinding extends android.databinding.ViewDataB
         final Object[] bindings = mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds);
         this.activityChangePassword = (android.widget.LinearLayout) bindings[1];
         this.change = (android.widget.Button) bindings[5];
-        this.confirm = (com.rengwuxian.materialedittext.MaterialEditText) bindings[3];
+        this.confirm = (com.rengwuxian.materialedittext.MaterialEditText) bindings[4];
         this.mboundView0 = (android.widget.ScrollView) bindings[0];
         this.mboundView0.setTag(null);
-        this.newPassword = (com.rengwuxian.materialedittext.MaterialEditText) bindings[4];
+        this.newPassword = (com.rengwuxian.materialedittext.MaterialEditText) bindings[3];
         this.oldPassword = (com.rengwuxian.materialedittext.MaterialEditText) bindings[2];
         setRootTag(root);
         // listeners

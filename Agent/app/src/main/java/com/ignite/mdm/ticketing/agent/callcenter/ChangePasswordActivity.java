@@ -19,6 +19,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+
 public class ChangePasswordActivity extends AppCompatActivity {
   ActivityChangePasswordBinding binding;
   SKConnectionDetector skConnectionDetector;
@@ -47,7 +48,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     binding.change.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
         if (skConnectionDetector.isConnectingToInternet()) {
-          if (binding.oldPassword.getText()
+          if (binding.newPassword.getText()
               .toString()
               .equals(binding.confirm.getText().toString())) {
             final ProgressDialog progressDialog = new ProgressDialog(ChangePasswordActivity.this);
@@ -82,15 +83,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
                       }
                     });
           } else {
-            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT)
+            Toast.makeText(getApplicationContext(), "Your Passwords Do not Match", Toast.LENGTH_SHORT)
                 .show();
           }
         } else {
-          Toast.makeText(getApplicationContext(), "Your Passwords Do not Match", Toast.LENGTH_SHORT)
+          Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT)
               .show();
         }
       }
     });
   }
 }
-

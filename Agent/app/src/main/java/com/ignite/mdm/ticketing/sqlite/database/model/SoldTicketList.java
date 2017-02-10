@@ -250,6 +250,7 @@ public class SoldTicketList implements Comparable<SoldTicketList>{
     return id.compareTo(soldTicketList.id);
   }
 
+
   @Override public int hashCode() {
     return id != null ? id.hashCode() : 0;
   }

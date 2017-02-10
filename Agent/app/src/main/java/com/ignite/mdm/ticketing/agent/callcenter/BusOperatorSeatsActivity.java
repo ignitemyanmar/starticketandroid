@@ -119,11 +119,12 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity {
                         l.add(op);
                       }
                     }
+                    Log.d("User",OperatorSeats.size()+"");
                     lv_operator_seats.setAdapter(
                         new OperatorSeatsAdapter(notLocal,BusOperatorSeatsActivity.this, l));
                     //setListViewHeightBasedOnChildren(lv_operator_seats);
                   } else {
-                    showAlert("No Trip!");
+                    showAlert("ေရြးထားေသာရက္တြင္ကားမရွိေတာ့ပါသျဖင့္ တျခားရက္အားေရြးခ်ယ္ေပးပါ");
                   }
                 }
 

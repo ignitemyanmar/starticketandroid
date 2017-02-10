@@ -343,6 +343,7 @@ public class SaleTicketActivity extends BaseSherlockActivity
 
         Calendar calendar = Calendar.getInstance();
         //calendarDialog.calendar.setSelectedDate(calendar.getTime());
+        calendarDialog.calendar.state().edit().setMinimumDate(calendar.getTime()).commit();
 
         //Allow only 15 days to buy in advance for users
         //If not log in yet,

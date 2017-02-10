@@ -31,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import retrofit.Callback;
@@ -210,6 +211,23 @@ public class NewSalesActivity extends BaseSherlockActivity {
             endlessRecyclerViewAdapter.onDataReady(false);
           }
           first = false;
+          Collections.sort(lists, new Comparator<SoldTicketList>() {
+            public int compare(SoldTicketList o1, SoldTicketList o2) {
+              SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+              try {
+                if (dateFormat.parse(o1.getDepartureDate()) == null
+                    || dateFormat.parse(o2.getDepartureDate()) == null) {
+                  return 0;
+                }
+                return dateFormat.parse(o2.getDepartureDate())
+                    .compareTo(dateFormat.parse(o1.getDepartureDate()));
+              } catch (Exception e) {
+                return 0;
+              }
+            }
+          });
+
           outstandingAdapter.replaceList(lists);
         } else {
           endlessRecyclerViewAdapter.onDataReady(false);
