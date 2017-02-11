@@ -5,15 +5,8 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java" description="public class ThreeDaySalesActivity extends BaseShe..." line="42" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a88b2180-d0b4-4a0d-8c74-cb861e0e71cb" name="Default" comment="" />
+    <list default="true" id="8b6e125b-a0e7-44df-a867-1c3ee25a9166" name="Default" comment="" />
     <ignored path="Agent.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,11 +32,73 @@
         <task path="$PROJECT_DIR$/app">
           <activation />
         </task>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
         <projects_view>
-          <tree_state />
+          <tree_state>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Agent" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Agent" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value=":app" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
+              </PATH_ELEMENT>
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Agent" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value=":app" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Tasks" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
+              </PATH_ELEMENT>
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Agent" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value=":app" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Tasks" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="build" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
+              </PATH_ELEMENT>
+            </PATH>
+          </tree_state>
         </projects_view>
       </state>
     </system>
@@ -52,64 +107,12 @@
     <favorites_list name="Agent" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SaleTicketActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java">
+    <leaf>
+      <file leaf-file-name="action_bar_with_2title.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/action_bar_with_2title.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="342" column="0" selection-start-line="342" selection-start-column="0" selection-end-line="342" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewCalendarDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/NewCalendarDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-352">
-              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="local.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusOperatorSeatsActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusOperatorSeatsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2855">
-              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivityThreedaySalesBinding.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/androidTest/debug/com/ignite/mdm/ticketing/agent/callcenter/databinding/ActivityThreedaySalesBinding.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_threeday_sales.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_threeday_sales.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2400">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,44 +121,72 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="BusSelectSeatActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusSelectSeatActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bus_seat_list.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bus_seat_list.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="BusSelectSeatActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusSelectSeatActivity.java">
+      <file leaf-file-name="BusOperatorSeatsActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusOperatorSeatsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5312">
-              <caret line="81" column="60" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
+            <state relative-caret-position="375">
+              <caret line="123" column="46" selection-start-line="123" selection-start-column="46" selection-end-line="123" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChangePasswordActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ChangePasswordActivity.java">
+      <file leaf-file-name="activity_show_operator_seats.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_show_operator_seats.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+            <state relative-caret-position="192">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperatorSeatsAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/OperatorSeatsAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_item_time.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_time.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1760">
+              <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="e#1570#1603#0" expanded="true" />
+                <element signature="e#2147#2180#0" expanded="true" />
+                <element signature="e#2469#2502#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_change_password.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -164,13 +195,6 @@
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="ASClass" />
-      </list>
-    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -4389,63 +4413,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_invoice_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_invoice_detail_activty.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/InvoiceDetailActivty.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_agent_deposit_fill.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/AgentDepositFillActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sale_new.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/NotiServiceActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/FontOverride.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/BaseSherlockActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings_mm.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login_phone.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-v14/styles_themestarticket.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_logout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/ChangePasswordStatus.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home_new_layout.xml" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/StarApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/SecureParam.java" />
-        <option value="$PROJECT_DIR$/app/src/main/jni/SecureParam.h" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/UserLoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/SoldTicketList.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_threeday_sales.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/HomeNewActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/clientapi/INetworkEngine.java" />
-        <option value="$PROJECT_DIR$/app/src/main/jni/SecureParam.cpp" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_outstanding_bookings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/NewSalesAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/Invoices.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/clientapi/NetworkEngine.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/InvoiceActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/OperatorSeatsAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/BusSeatAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/SoldTicketList.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/NewSalesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/DialogChooserPlace.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_time.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusSelectSeatActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/bus_seat_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ChangePasswordActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusOperatorSeatsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="796" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -4458,7 +4432,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ColorIdeProjectViewPane" proportions="" version="1">
+    <navigator currentView="AndroidView" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -4472,28 +4446,92 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="ColorIdeProjectViewPane">
+      <pane id="ColorIdeProjectViewPane" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Agent" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Agent" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidJniFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Agent" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -4510,30 +4548,17 @@
     <property name="options.searchVisible" value="true" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/MandalarMin Agent/STARTICKET_MANDALAR" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java&#10;three&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/res/layout/activity_threeday_sales.xml&#10;Sale&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java&#10;Sales&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/NewSalesActivity.java&#10;Chan&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.ChangePasswordActivity&#10;ChangePass&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.ChangePasswordActivity&#10;Operat&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusOperatorSeatsActivity.java&#10;Dialog&#9;PSI&#9;JAVA://com.ignite.mm.ticketing.application.DialogChooserPlace&#10;DialogC&#9;PSI&#9;JAVA://com.ignite.mm.ticketing.application.DialogChooserAdapter&#10;NewSales&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/NewSalesActivity.java&#10;SaleTick&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java&#10;ThreeDay&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java&#10;Out&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingAdapter.java&#10;OutS&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingAdapter.java&#10;SoldTi&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/SoldTicketList.java&#10;Seats&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.custom.listview.adapter.OperatorSeatsAdapter&#10;Home&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/HomeNewActivity.java&#10;SaleTicket&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java&#10;build&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build.gradle&#10;build.gr&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/build.gradle&#10;buil&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build.gradle&#10;Invoice&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/InvoiceActivity.java&#10;NewSal&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/NewSalesActivity.java&#10;OutSt&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingActivity.java&#10;Network&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/clientapi/NetworkEngine.java&#10;Ou&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingActivity.java&#10;Outst&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingActivity.java&#10;Netwo&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.clientapi.NetworkEngine&#10;NetworkEng&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.clientapi.INetworkEngine&#10;PD&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/PDFBusActivity.java&#10;PDF&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.custom.listview.adapter.PDFBusAdapter&#10;Pdf&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.PDFBusActivity&#10;Adapte&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/NewSalesAdapter.java&#10;Login&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/UserLoginActivity.java&#10;Net&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/clientapi/INetworkEngine.java&#10;AndroidMan&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/AndroidManifest.xml&#10;OutStandingAdapter&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.OutstandingAdapter&#10;OutStanding&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.OutstandingActivity&#10;ThreDa&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java&#10;INetwor&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/clientapi/INetworkEngine.java&#10;UserLo&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/UserLoginActivity.java&#10;threeda&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java&#10;secure&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/jni/SecureParam.cpp&#10;SecureParam&#9;PSI&#9;JAVA://com.ignite.mm.ticketing.application.SecureParam&#10;SecurePara&#9;PSI&#9;JAVA://com.ignite.mm.ticketing.application.SecureParam&#10;T&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java&#10;Networkd&#9;null&#9;null&#10;StarApplication&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/StarApplication.java&#10;SaleTickets&#9;null&#9;null&#10;ThreeDa&#9;FILE&#9;file:///Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java" />
-    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="device.picker.selection" value="9e48f263" />
     <property name="FullScreen" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="bussa&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.BusOperatorSeatsActivity&#10;busse&#9;PSI&#9;JAVA://com.ignite.mdm.ticketing.agent.callcenter.BusSelectSeatActivity" />
+    <property name="device.picker.selection" value="9e48f263" />
   </component>
-  <component name="RecentsManager">
-    <key name="android.template.packageName">
-      <recent name="com.ignite.mdm.ticketing.agent.callcenter" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model" />
-      <recent name="$PROJECT_DIR$/app/src/main/assets/fonts" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager" selected="Gradle.Agent:app [assembleDebug]">
     <configuration default="false" name="Agent:app [assembleDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -4546,60 +4571,6 @@
         <option name="taskNames">
           <list>
             <option value="assembleDebug" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="Agent [assembleDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assembleDebug" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="Agent:app [assembleRelease]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assembleRelease" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="Agent:app [compileDebugUnitTestSources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="compileDebugUnitTestSources" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -4647,6 +4618,48 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4857,19 +4870,13 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Android App.app" />
       <item index="1" class="java.lang.String" itemvalue="Gradle.Agent:app [assembleDebug]" />
-      <item index="2" class="java.lang.String" itemvalue="Gradle.Agent [assembleDebug]" />
-      <item index="3" class="java.lang.String" itemvalue="Gradle.Agent:app [assembleRelease]" />
-      <item index="4" class="java.lang.String" itemvalue="Gradle.Agent:app [compileDebugUnitTestSources]" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Gradle.Agent:app [compileDebugUnitTestSources]" />
-        <item index="1" class="java.lang.String" itemvalue="Gradle.Agent:app [assembleRelease]" />
-        <item index="2" class="java.lang.String" itemvalue="Gradle.Agent [assembleDebug]" />
-        <item index="3" class="java.lang.String" itemvalue="Gradle.Agent:app [assembleDebug]" />
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Gradle.Agent:app [assembleDebug]" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -4893,449 +4900,66 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a88b2180-d0b4-4a0d-8c74-cb861e0e71cb" name="Default" comment="" />
-      <created>1485953543838</created>
+      <changelist id="8b6e125b-a0e7-44df-a867-1c3ee25a9166" name="Default" comment="" />
+      <created>1486791129375</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1485953543838</updated>
+      <updated>1486791129375</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="796" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7450425" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32577905" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279483" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36833602" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7450425" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328541" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36995155" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="2" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/jni/Android.mk">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_out_standingbooking.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1312">
-          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_threeday_sales.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6091">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/ThreeDaySalesLvAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="180" column="74" selection-start-line="180" selection-start-column="74" selection-end-line="180" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="145" column="39" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/SecureParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/jni/SecureParam.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="595" column="16" selection-start-line="595" selection-start-column="16" selection-end-line="595" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/UserLoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8384">
-          <caret line="295" column="63" selection-start-line="295" selection-start-column="63" selection-end-line="295" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bus_ticket_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/action_bar_with_2title.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/PDFBusActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/PDFBusAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4416">
-          <caret line="152" column="48" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/clientapi/INetworkEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
-          <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/Invoices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/clientapi/NetworkEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/InvoiceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="174" column="16" selection-start-line="174" selection-start-column="16" selection-end-line="174" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1429">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_spinner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/HomeNewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="421" column="57" selection-start-line="421" selection-start-column="57" selection-end-line="421" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rdo_shape_1_1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rdo_shape_1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rdo_shape_0.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/TripTimeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-826">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/BusSeatAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6106">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/sqlite/database/model/SoldTicketList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="56" column="69" selection-start-line="56" selection-start-column="2" selection-end-line="56" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/OutstandingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-416">
-          <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_outstanding_bookings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="78" column="56" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/NewSalesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ThreeDaySalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-25/android.jar!/java/lang/String.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/DialogChooserAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/DialogChooserPlace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="144" column="55" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/OperatorSeatsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_time.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/import-summary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_show_operator_seats.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bus_seat_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/NewSalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4928">
-          <caret line="190" column="45" selection-start-line="190" selection-start-column="45" selection-end-line="190" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/androidTest/debug/com/ignite/mdm/ticketing/agent/callcenter/databinding/ActivityThreedaySalesBinding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_threeday_sales.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2400">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/ChangePasswordActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -5345,133 +4969,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusSelectSeatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5312">
-          <caret line="81" column="60" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
+        <state relative-caret-position="128">
+          <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mm/ticketing/application/NewCalendarDialog.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bus_seat_list.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_show_operator_seats.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/BusOperatorSeatsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2855">
-          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        <state relative-caret-position="375">
+          <caret line="123" column="46" selection-start-line="123" selection-start-column="46" selection-end-line="123" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/agent/callcenter/SaleTicketActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ignite/mdm/ticketing/custom/listview/adapter/OperatorSeatsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="342" column="0" selection-start-line="342" selection-start-column="0" selection-end-line="342" selection-end-column="0" />
+        <state relative-caret-position="128">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Invalid</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Agent</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>adapters-1.2.1</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_time.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1760">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="e#1570#1603#0" expanded="true" />
+            <element signature="e#2147#2180#0" expanded="true" />
+            <element signature="e#2469#2502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
   </component>
 </project>

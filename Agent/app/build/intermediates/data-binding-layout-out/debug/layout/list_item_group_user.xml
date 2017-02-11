@@ -1,25 +1,0 @@
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal|center_vertical"
-    android:orientation="horizontal"
-    android:layout_marginBottom="20dp" >
-
-    <View
-        android:id="@+id/view_color"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="#5586c8" />
-
-    <com.smk.custom.view.CustomTextView
-        android:id="@+id/txt_group_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:padding="3dp"
-        android:text="Medium Text"
-        android:textSize="18dp" />
-
-</LinearLayout>
