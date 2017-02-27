@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/star_ticket_splash_300width" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_radius"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray_light"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="visible" >
+
+                    <ImageButton
+                        android:id="@+id/user_photo"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/ic_account_circle_white_24dp"
+                        android:cropToPadding="true"
+                        android:scaleType="fitXY"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/strmm_note_register"
+                    android:textColor="@color/blue" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txt_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/strmm_full_name"
+                    android:inputType="textCapWords|textPersonName"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" >
+
+                    <requestFocus />
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <View
+                    android:id="@+id/View07"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txt_userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                    android:ems="10"
+                    android:hint="@string/strmm_username"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" />
+
+                <View
+                    android:id="@+id/View01"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txtUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/strmm_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" />
+
+                <View
+                    android:id="@+id/View06"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txtUserPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/strmm_password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" />
+
+                <View
+                    android:id="@+id/View05"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txtUserConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/strmm_password_again"
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" />
+
+                <View
+                    android:id="@+id/View03"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/strmm_phone"
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" />
+
+                <View
+                    android:id="@+id/View02"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/strmm_address"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18dp"
+                    android:typeface="normal"
+                    app:met_errorColor="@color/accent"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/accent" />
+
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/btn_yellow"
+                    android:gravity="center"
+                    android:text="@string/strmm_ok"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,18 +1,30 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'mandalarmin'
+            keyPassword 'mandalarmin'
+            storeFile file(
+                '/Users/user/Desktop/WorkProjects/starticketandroid/Agent/mandalarmin.jks')
+            storePassword 'mandalarmin'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    lintOptions {
+        disable "ResourceType"
+    }
     defaultConfig {
-        applicationId "com.ignite.mdm.ticketing.agent.callcenter"
+        applicationId "com.ignite.mandalar.ticketing.agent.callcenter"
         minSdkVersion 16
         targetSdkVersion 23
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_5
             targetCompatibility JavaVersion.VERSION_1_5
         }
-        versionCode 11100
-        versionName "11100"
+        versionCode 2000
+        versionName "2.0.0"
         dataBinding {
             enabled = true
         }
@@ -22,11 +34,12 @@ android {
             moduleName "securekey"
         }
     }
-
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     externalNativeBuild {

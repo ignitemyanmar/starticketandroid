@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/LinearLayout1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+>
+
+	<include
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			layout="@layout/toolbar"/>
+
+	<TextView
+			android:id="@+id/toolbar_subtitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/colorPrimary"
+			android:gravity="center_horizontal"
+			android:textColor="@color/white" />
+
+	<TextView
+			android:id="@+id/toolbar_subtitle2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/colorPrimary"
+			android:gravity="center_horizontal"
+			android:textColor="@color/white" />
+
+
+	<RelativeLayout
+			android:id="@+id/layout_seat_plan"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:descendantFocusability="beforeDescendants"
+			android:focusableInTouchMode="true"
+			android:orientation="vertical"
+			android:background="@color/white">
+
+		<ScrollView
+				android:id="@+id/scrollView1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/ly_title">
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+
+			<LinearLayout
+					android:id="@+id/no_internet"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="#99000000"
+					android:gravity="center_horizontal"
+					android:orientation="vertical"
+					android:padding="5dp"
+					android:visibility="gone">
+
+				<TextView
+						android:id="@+id/txt_no_internet"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:drawableLeft="@drawable/attention_icon"
+						android:drawablePadding="10dp"
+						android:gravity="bottom"
+						android:text="No Internet Connection"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="#FFF"
+						android:textStyle="bold"
+						android:typeface="sans"
+						android:visibility="visible"/>
+			</LinearLayout>
+
+			<com.smk.custom.view.CustomTextView
+					android:id="@+id/txt_notrip"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="left"
+					android:layout_marginLeft="20dp"
+					android:layout_marginBottom="20dp"
+					android:layout_marginRight="20dp"
+					android:layout_marginTop="20dp"
+					android:background="@drawable/screen_bg"
+					android:gravity="center_vertical|center_horizontal"
+					android:singleLine="true"
+					android:text="@string/strmm_driver"
+					android:textColor="#FFF"/>
+
+			<GridView
+					android:id="@+id/grid_seat"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginBottom="20dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:isScrollContainer="false"
+					android:listSelector="@android:color/transparent"
+					android:numColumns="3">
+			</GridView>
+
+			<!--<LinearLayout-->
+					<!--android:layout_width="match_parent"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:layout_marginTop="10dp"-->
+					<!--android:padding="10dp">-->
+
+				<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:layout_weight="25" >-->
+
+				<!--<View-->
+				<!--android:id="@+id/view3"-->
+				<!--android:layout_width="20dp"-->
+				<!--android:layout_height="20dp"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:background="@color/chosen_color_green" />-->
+
+				<!--<com.smk.custom.view.CustomTextView-->
+				<!--android:id="@+id/textView3"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:text="@string/strmm_chosen_seats"-->
+				<!--android:textColor="@color/grey" />-->
+				<!--</LinearLayout>-->
+
+				<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:layout_weight="25" >-->
+
+				<!--<View-->
+				<!--android:id="@+id/view_cover"-->
+				<!--android:layout_width="20dp"-->
+				<!--android:layout_height="20dp"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:background="@color/gray" />-->
+
+				<!--<com.smk.custom.view.CustomTextView-->
+				<!--android:id="@+id/textView4"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:text="@string/strmm_nopermit_seats"-->
+				<!--android:textColor="@color/grey" />-->
+				<!--</LinearLayout>-->
+
+				<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:layout_weight="25"-->
+				<!--android:orientation="horizontal" >-->
+
+				<!--<View-->
+				<!--android:id="@+id/view2"-->
+				<!--android:layout_width="20dp"-->
+				<!--android:layout_height="20dp"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:background="@color/sold_color_red" />-->
+
+				<!--<com.smk.custom.view.CustomTextView-->
+				<!--android:id="@+id/txt_wifi"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:text="@string/strmm_buyed_seats"-->
+				<!--android:textColor="@color/grey" />-->
+				<!--</LinearLayout>-->
+
+				<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_weight="25"-->
+				<!--android:orientation="horizontal" >-->
+
+				<!--<View-->
+				<!--android:id="@+id/View02"-->
+				<!--android:layout_width="20dp"-->
+				<!--android:layout_height="20dp"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:background="#470203" />-->
+
+				<!--<com.smk.custom.view.CustomTextView-->
+				<!--android:id="@+id/CustomTextView01"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:text="@string/strmm_booking_seats"-->
+				<!--android:textColor="@color/grey" />-->
+				<!--</LinearLayout>-->
+
+				<!--<LinearLayout-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_weight="25"-->
+				<!--android:orientation="horizontal" >-->
+
+				<!--<View-->
+				<!--android:id="@+id/View02"-->
+				<!--android:layout_width="20dp"-->
+				<!--android:layout_height="20dp"-->
+				<!--android:layout_marginRight="2dp"-->
+				<!--android:background="@color/sale_color" />-->
+
+				<!--<com.smk.custom.view.CustomTextView-->
+				<!--android:id="@+id/CustomTextView01"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:text="@string/strmm_sale_seat"-->
+				<!--android:textColor="@color/grey" />-->
+				<!--</LinearLayout>-->
+				<!---->
+				<!--<ListView-->
+				<!--android:id="@+id/lst_group_user"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_weight="50"-->
+				<!--android:divider="#FFF"-->
+				<!--android:visibility="gone" >-->
+				<!--</ListView>-->
+				<!--</LinearLayout>-->
+
+				<!---->
+				<!--<LinearLayout-->
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="10dp"
+						android:layout_weight="50"
+						android:orientation="vertical"
+						android:padding="10dp">
+
+					<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+						<com.smk.custom.view.CustomTextView
+								android:id="@+id/txt_departure_date"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginRight="5dp"
+								android:layout_weight="1"
+								android:text="@string/strmm_dept_date"
+								android:textColor="@color/grey"
+						/>
+
+						<com.smk.custom.view.CustomTextView
+								android:id="@+id/txt_departure_time"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:text="@string/strmm_dept_time"
+								android:textColor="@color/grey"
+						/>
+					</LinearLayout>
+
+					<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+						<com.smk.custom.view.CustomTextView
+								android:id="@+id/txt_operator"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginRight="5dp"
+								android:layout_marginTop="10dp"
+								android:layout_weight="1"
+								android:text="@string/strmm_operator_name"
+								android:textColor="@color/grey"
+						/>
+
+						<com.smk.custom.view.CustomTextView
+								android:id="@+id/txt_classes"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:layout_weight="1"
+								android:text="@string/strmm_bus_class"
+								android:textColor="@color/grey"
+						/>
+					</LinearLayout>
+
+					<TextView
+							android:id="@+id/txt_extra_city"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="10dp"
+							android:text="@string/strmm_boarding_place"
+							android:textColor="@color/primary_dark"
+							android:visibility="gone"/>
+
+					<com.smk.custom.view.CustomTextView
+							android:id="@+id/txt_price"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="20dp"
+							android:gravity="center"
+							android:text="@string/strmm_price"
+							android:textColor="@color/black"
+							android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<ListView
+							android:id="@+id/lvBusClass"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="10dp"
+							android:background="@drawable/bus_border"
+							android:divider="#FFF"
+							android:visibility="gone">
+					</ListView>
+				</LinearLayout>
+
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:padding="10dp">
+
+					<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="65dp"
+							android:layout_marginBottom="5dp">
+
+						<com.smk.custom.view.CustomButton
+								android:id="@+id/btn_now_booking"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_marginRight="5dp"
+								android:layout_weight="50"
+								android:background="@drawable/btn_green"
+								android:padding="5dp"
+								android:text="@string/strmm_booking_done"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/white"
+								android:textStyle="bold"
+								android:visibility="visible"/>
+
+						<com.smk.custom.view.CustomButton
+								android:id="@+id/btn_check_out"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="50"
+								android:background="@drawable/btn_yellow"
+								android:padding="5dp"
+								android:text="@string/strmm_buy"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/black"
+								android:textStyle="bold"
+								android:visibility="visible"/>
+					</LinearLayout>
+
+					<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="65dp"
+							android:layout_marginBottom="5dp"
+							android:visibility="gone">
+
+						<com.smk.custom.view.CustomButton
+								android:id="@+id/btn_booking"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_marginRight="5dp"
+								android:layout_weight="50"
+								android:background="@drawable/btn_dark_blue"
+								android:padding="5dp"
+								android:text="@string/strmm_booking_list"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/white"
+								android:textStyle="bold"
+								android:visibility="gone"/>
+
+						<com.smk.custom.view.CustomButton
+								android:id="@+id/btn_tour_booking"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="50"
+								android:background="@drawable/btn_dark_blue"
+								android:padding="5dp"
+								android:text="@string/strmm_tour_booking"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/white"
+								android:textStyle="bold"
+								android:visibility="gone"/>
+					</LinearLayout>
+
+					<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="65dp"
+							android:layout_marginBottom="5dp">
+
+						<com.smk.custom.view.CustomButton
+								android:id="@+id/btn_close_seat"
+								style="?android:attr/buttonStyleSmall"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_marginRight="5dp"
+								android:layout_weight="50"
+								android:background="@drawable/bg_circle"
+								android:padding="5dp"
+								android:text="@string/strmm_give_ownseats"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/white"
+								android:textStyle="bold"
+								android:visibility="visible"/>
+
+						<com.smk.custom.view.CustomButton
+								android:id="@+id/btn_open_seat"
+								style="?android:attr/buttonStyleSmall"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="50"
+								android:background="@drawable/bg_circle"
+								android:padding="5dp"
+								android:text="@string/strmm_take_ownseats"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/white"
+								android:textStyle="bold"
+								android:visibility="visible"/>
+					</LinearLayout>
+				</LinearLayout>
+
+				<LinearLayout
+						android:id="@+id/layout_remark"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical"
+						android:visibility="gone">
+				</LinearLayout>
+			</LinearLayout>
+		</ScrollView>
+
+		<LinearLayout
+				android:id="@+id/ly_loading"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/ly_title"
+				android:background="@android:color/transparent"
+				android:gravity="center_horizontal|center_vertical"
+				android:padding="2dp"
+				android:visibility="visible">
+
+			<ProgressBar
+					android:id="@+id/progressBar1"
+					style="?android:attr/progressBarStyleSmall"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+			<TextView
+					android:id="@+id/action_bar_title2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="10dp"
+					android:text="@string/strmm_pls_wait"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/grey"
+					android:textSize="12dp"
+					android:typeface="sans"/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/ly_title"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="@color/yellow_logo"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:visibility="visible">
+
+			<com.smk.custom.view.CustomTextView
+					android:id="@+id/txt_operator_name"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableLeft="@drawable/ic_directions_bus_black_24dp"
+					android:drawablePadding="5dp"
+					android:padding="5dp"
+					android:text="@string/strmm_choose_bus_seat"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/black"
+					android:textSize="18dp"/>
+
+		</LinearLayout>
+	</RelativeLayout>
+
+</LinearLayout>

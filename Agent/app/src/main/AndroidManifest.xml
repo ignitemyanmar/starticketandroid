@@ -212,7 +212,8 @@
 		<activity
 				android:name=".InvoiceActivity"
 				android:screenOrientation="portrait"
-				android:theme="@style/AppTheme.Custom">
+				android:theme="@style/AppTheme.Custom"
+				android:parentActivityName=".HomeNewActivity">
 			<meta-data
 					android:name="android.support.PARENT_ACTIVITY"
 					android:value=".HomeNewActivity"/>
@@ -220,7 +221,8 @@
 		<activity
 				android:name=".InvoiceDetailActivty"
 				android:screenOrientation="portrait"
-				android:theme="@style/AppTheme.Custom">
+				android:theme="@style/AppTheme.Custom"
+				android:parentActivityName=".InvoiceActivity">
 			<meta-data
 					android:name="android.support.PARENT_ACTIVITY"
 					android:value=".InvoiceActivity"/>

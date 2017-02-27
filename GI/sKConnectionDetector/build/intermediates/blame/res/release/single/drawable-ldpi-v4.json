@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/GI/sKConnectionDetector/build/intermediates/res/merged/release/drawable-ldpi-v4/ic_launcher.png",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/GI/sKConnectionDetector/src/main/res/drawable-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKConnectionDetector/build/intermediates/res/merged/release/drawable-ldpi-v4/ic_launcher.png",
+        "source": "/Users/user/Desktop/WorkProjects/starticketandroid/Agent/sKConnectionDetector/src/main/res/drawable-ldpi/ic_launcher.png"
+    }
+]

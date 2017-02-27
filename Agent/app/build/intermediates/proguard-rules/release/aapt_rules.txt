@@ -1,0 +1,834 @@
+# view res/layout/item_invoice.xml #generated:10
+-keep class android.support.constraint.ConstraintLayout { <init>(...); }
+
+# view res/layout/design_bottom_navigation_item.xml #generated:26
+-keep class android.support.design.internal.BaselineLayout { <init>(...); }
+
+# view res/layout/design_navigation_item.xml #generated:17
+-keep class android.support.design.internal.NavigationMenuItemView { <init>(...); }
+
+# view res/layout/design_navigation_menu.xml #generated:17
+-keep class android.support.design.internal.NavigationMenuView { <init>(...); }
+
+# view res/layout/design_layout_snackbar_include.xml #generated:18
+-keep class android.support.design.internal.SnackbarContentLayout { <init>(...); }
+
+# view res/layout/activity_sale_new.xml #generated:10
+-keep class android.support.design.widget.AppBarLayout { <init>(...); }
+
+# view res/layout/design_text_input_password_icon.xml #generated:18
+-keep class android.support.design.widget.CheckableImageButton { <init>(...); }
+
+# view res/layout/activity_sale_new.xml #generated:2
+# view res/layout/design_bottom_sheet_dialog.xml #generated:17
+-keep class android.support.design.widget.CoordinatorLayout { <init>(...); }
+
+# view res/layout/design_layout_snackbar.xml #generated:18
+# view sw600dp-v13/res/layout-sw600dp-v13/design_layout_snackbar.xml #generated:18
+-keep class android.support.design.widget.Snackbar$SnackbarLayout { <init>(...); }
+
+# view res/layout/fragment_pager.xml #generated:6
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
+# view res/layout/abc_alert_dialog_material.xml #generated:41
+# view res/layout/activity_sale_new.xml #generated:22
+-keep class android.support.v4.widget.NestedScrollView { <init>(...); }
+
+# view res/layout/abc_alert_dialog_button_bar_material.xml #generated:43
+# view res/layout/abc_alert_dialog_material.xml #generated:52
+# view res/layout/abc_alert_dialog_material.xml #generated:66
+# view res/layout/abc_alert_dialog_title_material.xml #generated:56
+-keep class android.support.v4.widget.Space { <init>(...); }
+
+# view res/layout/abc_select_dialog_material.xml #generated:23
+-keep class android.support.v7.app.AlertController$RecycleListView { <init>(...); }
+
+# view res/layout/abc_action_menu_item_layout.xml #generated:17
+-keep class android.support.v7.view.menu.ActionMenuItemView { <init>(...); }
+
+# view res/layout/abc_expanded_menu_layout.xml #generated:17
+-keep class android.support.v7.view.menu.ExpandedMenuView { <init>(...); }
+
+# view res/layout/abc_list_menu_item_layout.xml #generated:17
+# view res/layout/abc_popup_menu_item_layout.xml #generated:17
+-keep class android.support.v7.view.menu.ListMenuItemView { <init>(...); }
+
+# view res/layout/abc_screen_toolbar.xml #generated:27
+-keep class android.support.v7.widget.ActionBarContainer { <init>(...); }
+
+# view res/layout/abc_action_mode_bar.xml #generated:19
+# view res/layout/abc_screen_toolbar.xml #generated:43
+-keep class android.support.v7.widget.ActionBarContextView { <init>(...); }
+
+# view res/layout/abc_screen_toolbar.xml #generated:17
+-keep class android.support.v7.widget.ActionBarOverlayLayout { <init>(...); }
+
+# view res/layout/abc_action_menu_layout.xml #generated:17
+-keep class android.support.v7.widget.ActionMenuView { <init>(...); }
+
+# view res/layout/abc_activity_chooser_view.xml #generated:19
+-keep class android.support.v7.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# view res/layout/abc_alert_dialog_material.xml #generated:18
+-keep class android.support.v7.widget.AlertDialogLayout { <init>(...); }
+
+# view ldrtl-v17/res/layout-ldrtl-v17/md_listitem_multichoice.xml #generated:28
+# view res/layout/md_listitem_multichoice.xml #generated:15
+-keep class android.support.v7.widget.AppCompatCheckBox { <init>(...); }
+
+# view ldrtl-v17/res/layout-ldrtl-v17/md_listitem_singlechoice.xml #generated:28
+# view res/layout/md_listitem_singlechoice.xml #generated:15
+-keep class android.support.v7.widget.AppCompatRadioButton { <init>(...); }
+
+# view res/layout/abc_alert_dialog_button_bar_material.xml #generated:26
+-keep class android.support.v7.widget.ButtonBarLayout { <init>(...); }
+
+# view res/layout/activity_home_new_layout.xml #generated:112
+# view res/layout/activity_home_new_layout.xml #generated:14
+# view res/layout/activity_home_new_layout.xml #generated:146
+# view res/layout/activity_home_new_layout.xml #generated:45
+# view res/layout/activity_home_new_layout.xml #generated:78
+# view res/layout/activity_login_phone.xml #generated:32
+# view res/layout/activity_out_standingbooking.xml #generated:72
+-keep class android.support.v7.widget.CardView { <init>(...); }
+
+# view res/layout/abc_screen_content_include.xml #generated:19
+-keep class android.support.v7.widget.ContentFrameLayout { <init>(...); }
+
+# view res/layout/abc_alert_dialog_title_material.xml #generated:45
+-keep class android.support.v7.widget.DialogTitle { <init>(...); }
+
+# view res/layout/abc_screen_simple_overlay_action_mode.xml #generated:23
+-keep class android.support.v7.widget.FitWindowsFrameLayout { <init>(...); }
+
+# view res/layout/abc_dialog_title_material.xml #generated:22
+# view res/layout/abc_screen_simple.xml #generated:17
+-keep class android.support.v7.widget.FitWindowsLinearLayout { <init>(...); }
+
+# view res/layout/activity_invoice.xml #generated:54
+# view res/layout/activity_invoice_detail_activty.xml #generated:106
+# view res/layout/activity_out_standingbooking.xml #generated:64
+# view res/layout/activity_threeday_sales.xml #generated:72
+# view res/layout/md_dialog_list.xml #generated:39
+# view res/layout/md_dialog_list_check.xml #generated:39
+-keep class android.support.v7.widget.RecyclerView { <init>(...); }
+
+# view res/layout/dialog_chooser_place.xml #generated:20
+-keep class android.support.v7.widget.SearchView { <init>(...); }
+
+# view res/layout/abc_search_view.xml #generated:75
+-keep class android.support.v7.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# view res/layout/abc_screen_toolbar.xml #generated:36
+# view res/layout/activity_home.xml #generated:9
+# view res/layout/activity_invoice.xml #generated:13
+# view res/layout/activity_invoice_detail_activty.xml #generated:14
+# view res/layout/activity_login.xml #generated:9
+# view res/layout/activity_out_standingbooking.xml #generated:7
+# view res/layout/activity_pay_delete.xml #generated:10
+# view res/layout/activity_sale_by_trip_date.xml #generated:7
+# view res/layout/activity_sale_new.xml #generated:13
+# view res/layout/activity_threeday_sales.xml #generated:7
+# view res/layout/bus_ticket_item.xml #generated:8
+# view res/layout/toolbar.xml #generated:9
+# view res/layout/toolbar_dropdown.xml #generated:7
+-keep class android.support.v7.widget.Toolbar { <init>(...); }
+
+# view res/layout/abc_screen_simple.xml #generated:25
+# view res/layout/abc_screen_simple_overlay_action_mode.xml #generated:32
+-keep class android.support.v7.widget.ViewStubCompat { <init>(...); }
+
+# view res/layout/md_stub_actionbuttons.xml #generated:16
+# view res/layout/md_stub_actionbuttons.xml #generated:4
+# view res/layout/md_stub_actionbuttons.xml #generated:9
+-keep class com.afollestad.materialdialogs.internal.MDButton { <init>(...); }
+
+# view res/layout/md_dialog_basic.xml #generated:1
+# view res/layout/md_dialog_basic_check.xml #generated:1
+# view res/layout/md_dialog_custom.xml #generated:1
+# view res/layout/md_dialog_input.xml #generated:1
+# view res/layout/md_dialog_input_check.xml #generated:1
+# view res/layout/md_dialog_list.xml #generated:1
+# view res/layout/md_dialog_list_check.xml #generated:1
+# view res/layout/md_dialog_progress.xml #generated:1
+# view res/layout/md_dialog_progress_indeterminate.xml #generated:1
+# view res/layout/md_dialog_progress_indeterminate_horizontal.xml #generated:1
+-keep class com.afollestad.materialdialogs.internal.MDRootLayout { <init>(...); }
+
+# view AndroidManifest.xml #generated:192
+-keep class com.ignite.mdm.ticketing.agent.callcenter.AgentDepositActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:204
+-keep class com.ignite.mdm.ticketing.agent.callcenter.AgentDepositFillActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:165
+-keep class com.ignite.mdm.ticketing.agent.callcenter.AgentSeatsBookingActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:128
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusBookingConfirmDeleteActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:131
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusBookingDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:125
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusBookingListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:62
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusConfirmActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:122
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusMenuActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:134
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusOperatorActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:153
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusOperatorSeatsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:82
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusSelectSeatActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:116
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusTimeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:119
+-keep class com.ignite.mdm.ticketing.agent.callcenter.BusTripsCityActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:85
+-keep class com.ignite.mdm.ticketing.agent.callcenter.Bus_Info_Activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:207
+-keep class com.ignite.mdm.ticketing.agent.callcenter.CbOddPaymentActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:228
+-keep class com.ignite.mdm.ticketing.agent.callcenter.ChangePasswordActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:137
+-keep class com.ignite.mdm.ticketing.agent.callcenter.CheckBluetoothConnect { <init>(...); }
+
+# view AndroidManifest.xml #generated:184
+-keep class com.ignite.mdm.ticketing.agent.callcenter.CustomerInfoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:160
+-keep class com.ignite.mdm.ticketing.agent.callcenter.DeliveryActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:79
+-keep class com.ignite.mdm.ticketing.agent.callcenter.DeperatureTimeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:140
+-keep class com.ignite.mdm.ticketing.agent.callcenter.HomeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:168
+-keep class com.ignite.mdm.ticketing.agent.callcenter.HomeNewActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:210
+-keep class com.ignite.mdm.ticketing.agent.callcenter.InvoiceActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:219
+-keep class com.ignite.mdm.ticketing.agent.callcenter.InvoiceDetailActivty { <init>(...); }
+
+# view AndroidManifest.xml #generated:31
+-keep class com.ignite.mdm.ticketing.agent.callcenter.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:44
+-keep class com.ignite.mdm.ticketing.agent.callcenter.MainFragment { <init>(...); }
+
+# view AndroidManifest.xml #generated:41
+-keep class com.ignite.mdm.ticketing.agent.callcenter.MenuActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:47
+-keep class com.ignite.mdm.ticketing.agent.callcenter.MovieDateAndCinemaActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:50
+-keep class com.ignite.mdm.ticketing.agent.callcenter.MovieTimeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:56
+-keep class com.ignite.mdm.ticketing.agent.callcenter.Movie_Info_Activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:239
+-keep class com.ignite.mdm.ticketing.agent.callcenter.MyPhoneReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:143
+-keep class com.ignite.mdm.ticketing.agent.callcenter.NewSalesActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:237
+-keep class com.ignite.mdm.ticketing.agent.callcenter.NotiServiceActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:113
+-keep class com.ignite.mdm.ticketing.agent.callcenter.OtherListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:146
+-keep class com.ignite.mdm.ticketing.agent.callcenter.OutstandingActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:88
+-keep class com.ignite.mdm.ticketing.agent.callcenter.PDFBusActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:59
+-keep class com.ignite.mdm.ticketing.agent.callcenter.PDFMovieActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:110
+-keep class com.ignite.mdm.ticketing.agent.callcenter.PDFTicketActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:188
+-keep class com.ignite.mdm.ticketing.agent.callcenter.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:156
+-keep class com.ignite.mdm.ticketing.agent.callcenter.SaleByTripDateActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:149
+-keep class com.ignite.mdm.ticketing.agent.callcenter.SaleTicketActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:73
+-keep class com.ignite.mdm.ticketing.agent.callcenter.SelectDateActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:53
+-keep class com.ignite.mdm.ticketing.agent.callcenter.SelectingSeatActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:200
+-keep class com.ignite.mdm.ticketing.agent.callcenter.SettingActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:104
+-keep class com.ignite.mdm.ticketing.agent.callcenter.ShowInfoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:107
+-keep class com.ignite.mdm.ticketing.agent.callcenter.ShowInvoice { <init>(...); }
+
+# view AndroidManifest.xml #generated:26
+-keep class com.ignite.mdm.ticketing.agent.callcenter.StarApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:101
+-keep class com.ignite.mdm.ticketing.agent.callcenter.TicketPriceActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:176
+-keep class com.ignite.mdm.ticketing.agent.callcenter.TourCompanyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:196
+-keep class com.ignite.mdm.ticketing.agent.callcenter.TourConfirmActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:180
+-keep class com.ignite.mdm.ticketing.agent.callcenter.TourDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:172
+-keep class com.ignite.mdm.ticketing.agent.callcenter.TourPackageActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:76
+-keep class com.ignite.mdm.ticketing.agent.callcenter.TravelAgentsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:66
+-keep class com.ignite.mdm.ticketing.agent.callcenter.UserLoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:70
+-keep class com.ignite.mdm.ticketing.agent.callcenter.UserRegister { <init>(...); }
+
+# view res/layout/dialog_calendar.xml #generated:21
+-keep class com.prolificinteractive.materialcalendarview.MaterialCalendarView { <init>(...); }
+
+# view res/layout/activity_tour_confirm.xml #generated:216
+# view res/layout/dialog_close_seat.xml #generated:38
+# view res/layout/nrc_activity.xml #generated:175
+-keep class com.rengwuxian.materialedittext.MaterialAutoCompleteTextView { <init>(...); }
+
+# view res/layout/activity_bus_booking_list.xml #generated:30
+# view res/layout/activity_change_password.xml #generated:22
+# view res/layout/activity_change_password.xml #generated:44
+# view res/layout/activity_change_password.xml #generated:65
+# view res/layout/activity_customerinfo.xml #generated:105
+# view res/layout/activity_customerinfo.xml #generated:133
+# view res/layout/activity_customerinfo.xml #generated:58
+# view res/layout/activity_customerinfo.xml #generated:82
+# view res/layout/activity_login_phone.xml #generated:63
+# view res/layout/activity_login_phone.xml #generated:84
+# view res/layout/activity_register.xml #generated:125
+# view res/layout/activity_register.xml #generated:152
+# view res/layout/activity_register.xml #generated:179
+# view res/layout/activity_register.xml #generated:206
+# view res/layout/activity_register.xml #generated:234
+# view res/layout/activity_register.xml #generated:68
+# view res/layout/activity_register.xml #generated:98
+# view res/layout/activity_tour_confirm.xml #generated:191
+# view res/layout/activity_tour_confirm.xml #generated:238
+# view res/layout/activity_tour_confirm.xml #generated:266
+# view res/layout/dialog_booking.xml #generated:15
+# view res/layout/dialog_booking.xml #generated:34
+# view res/layout/dialog_close_seat.xml #generated:24
+# view res/layout/dialog_delivery_complete.xml #generated:19
+# view res/layout/dialog_tour_booking.xml #generated:28
+# view res/layout/nrc_activity.xml #generated:152
+# view res/layout/nrc_activity.xml #generated:233
+# view res/layout/nrc_activity.xml #generated:275
+# view res/layout/nrc_activity.xml #generated:333
+-keep class com.rengwuxian.materialedittext.MaterialEditText { <init>(...); }
+
+# view res/layout/dialog_booking.xml #generated:53
+# view res/layout/nrc_activity.xml #generated:256
+-keep class com.smk.custom.view.CustomAutocompleteTextView { <init>(...); }
+
+# view res/layout/activity_bus_booking_list.xml #generated:44
+# view res/layout/activity_busticketing_credit.xml #generated:49
+# view res/layout/activity_pay_delete.xml #generated:19
+# view res/layout/activity_pay_delete.xml #generated:42
+# view res/layout/activity_pay_delete.xml #generated:51
+# view res/layout/activity_user_profile.xml #generated:229
+# view res/layout/activity_user_profile.xml #generated:239
+# view res/layout/activity_user_profile_edit.xml #generated:363
+# view res/layout/activity_user_profile_edit.xml #generated:374
+# view res/layout/bus_seat_list.xml #generated:327
+# view res/layout/bus_seat_list.xml #generated:341
+# view res/layout/bus_seat_list.xml #generated:361
+# view res/layout/bus_seat_list.xml #generated:375
+# view res/layout/bus_seat_list.xml #generated:394
+# view res/layout/bus_seat_list.xml #generated:409
+# view res/layout/bus_seat_list_phone.xml #generated:249
+# view res/layout/bus_seat_list_phone.xml #generated:266
+# view res/layout/bus_seat_list_phone.xml #generated:283
+# view res/layout/dialog_booking.xml #generated:115
+# view res/layout/dialog_booking.xml #generated:129
+# view res/layout/dialog_booking_code.xml #generated:34
+# view res/layout/dialog_booking_code.xml #generated:50
+# view res/layout/dialog_booking_filter.xml #generated:106
+# view res/layout/dialog_booking_filter.xml #generated:21
+# view res/layout/dialog_booking_filter.xml #generated:92
+# view res/layout/dialog_choose_device.xml #generated:40
+# view res/layout/dialog_choose_device.xml #generated:78
+# view res/layout/dialog_close_seat.xml #generated:54
+# view res/layout/dialog_close_seat.xml #generated:67
+# view res/layout/dialog_delivery_complete.xml #generated:43
+# view res/layout/dialog_delivery_complete.xml #generated:57
+# view res/layout/dialog_edit_seat_info.xml #generated:103
+# view res/layout/dialog_edit_seat_info.xml #generated:89
+# view res/layout/dialog_tour_booking.xml #generated:42
+# view res/layout/dialog_tour_booking.xml #generated:53
+# view res/layout/nrc_activity.xml #generated:403
+-keep class com.smk.custom.view.CustomButton { <init>(...); }
+
+# view res/layout/dialog_booking.xml #generated:97
+# view res/layout/dialog_booking_code.xml #generated:17
+# view res/layout/dialog_edit_seat_info.xml #generated:15
+# view res/layout/dialog_edit_seat_info.xml #generated:36
+# view res/layout/dialog_edit_seat_info.xml #generated:54
+# view res/layout/dialog_edit_seat_info.xml #generated:72
+-keep class com.smk.custom.view.CustomEditText { <init>(...); }
+
+# view res/layout/action_bar.xml #generated:45
+# view res/layout/action_bar.xml #generated:57
+# view res/layout/action_bar.xml #generated:85
+# view res/layout/action_bar_with_2title.xml #generated:55
+# view res/layout/action_bar_with_2title.xml #generated:73
+# view res/layout/activity_booking_history.xml #generated:12
+# view res/layout/activity_booking_history.xml #generated:22
+# view res/layout/activity_booking_history.xml #generated:32
+# view res/layout/activity_booking_history.xml #generated:41
+# view res/layout/activity_booking_history.xml #generated:50
+# view res/layout/activity_booking_history.xml #generated:59
+# view res/layout/activity_booking_history.xml #generated:69
+# view res/layout/activity_booking_history.xml #generated:87
+# view res/layout/activity_booking_history.xml #generated:99
+# view res/layout/activity_bus_invoice.xml #generated:102
+# view res/layout/activity_bus_invoice.xml #generated:115
+# view res/layout/activity_bus_invoice.xml #generated:122
+# view res/layout/activity_bus_invoice.xml #generated:139
+# view res/layout/activity_bus_invoice.xml #generated:150
+# view res/layout/activity_bus_invoice.xml #generated:160
+# view res/layout/activity_bus_invoice.xml #generated:24
+# view res/layout/activity_bus_invoice.xml #generated:51
+# view res/layout/activity_bus_invoice.xml #generated:64
+# view res/layout/activity_bus_invoice.xml #generated:70
+# view res/layout/activity_bus_invoice.xml #generated:83
+# view res/layout/activity_bus_invoice.xml #generated:89
+# view res/layout/activity_bus_operator.xml #generated:14
+# view res/layout/activity_busticketing_credit.xml #generated:27
+# view res/layout/activity_customerinfo.xml #generated:124
+# view res/layout/activity_customerinfo.xml #generated:50
+# view res/layout/activity_customerinfo.xml #generated:73
+# view res/layout/activity_customerinfo.xml #generated:96
+# view res/layout/activity_home.xml #generated:109
+# view res/layout/activity_home.xml #generated:130
+# view res/layout/activity_home.xml #generated:152
+# view res/layout/activity_home.xml #generated:173
+# view res/layout/activity_home.xml #generated:44
+# view res/layout/activity_home.xml #generated:66
+# view res/layout/activity_home.xml #generated:87
+# view res/layout/activity_pdf_bus_header.xml #generated:100
+# view res/layout/activity_pdf_bus_header.xml #generated:115
+# view res/layout/activity_pdf_bus_header.xml #generated:124
+# view res/layout/activity_pdf_bus_header.xml #generated:141
+# view res/layout/activity_pdf_bus_header.xml #generated:150
+# view res/layout/activity_pdf_bus_header.xml #generated:159
+# view res/layout/activity_pdf_bus_header.xml #generated:168
+# view res/layout/activity_pdf_bus_header.xml #generated:177
+# view res/layout/activity_pdf_bus_header.xml #generated:186
+# view res/layout/activity_pdf_bus_header.xml #generated:206
+# view res/layout/activity_pdf_bus_header.xml #generated:215
+# view res/layout/activity_pdf_bus_header.xml #generated:242
+# view res/layout/activity_pdf_bus_header.xml #generated:251
+# view res/layout/activity_pdf_bus_header.xml #generated:260
+# view res/layout/activity_pdf_bus_header.xml #generated:283
+# view res/layout/activity_pdf_bus_header.xml #generated:305
+# view res/layout/activity_pdf_bus_header.xml #generated:53
+# view res/layout/activity_pdf_bus_header.xml #generated:71
+# view res/layout/activity_pdf_bus_header.xml #generated:81
+# view res/layout/activity_pdf_bus_voucher.xml #generated:115
+# view res/layout/activity_pdf_bus_voucher.xml #generated:125
+# view res/layout/activity_pdf_bus_voucher.xml #generated:143
+# view res/layout/activity_pdf_bus_voucher.xml #generated:153
+# view res/layout/activity_pdf_bus_voucher.xml #generated:173
+# view res/layout/activity_pdf_bus_voucher.xml #generated:183
+# view res/layout/activity_pdf_bus_voucher.xml #generated:211
+# view res/layout/activity_pdf_bus_voucher.xml #generated:220
+# view res/layout/activity_pdf_bus_voucher.xml #generated:241
+# view res/layout/activity_pdf_bus_voucher.xml #generated:251
+# view res/layout/activity_pdf_bus_voucher.xml #generated:269
+# view res/layout/activity_pdf_bus_voucher.xml #generated:279
+# view res/layout/activity_pdf_bus_voucher.xml #generated:29
+# view res/layout/activity_pdf_bus_voucher.xml #generated:297
+# view res/layout/activity_pdf_bus_voucher.xml #generated:307
+# view res/layout/activity_pdf_bus_voucher.xml #generated:341
+# view res/layout/activity_pdf_bus_voucher.xml #generated:351
+# view res/layout/activity_pdf_bus_voucher.xml #generated:369
+# view res/layout/activity_pdf_bus_voucher.xml #generated:379
+# view res/layout/activity_pdf_bus_voucher.xml #generated:397
+# view res/layout/activity_pdf_bus_voucher.xml #generated:407
+# view res/layout/activity_pdf_bus_voucher.xml #generated:431
+# view res/layout/activity_pdf_bus_voucher.xml #generated:442
+# view res/layout/activity_pdf_bus_voucher.xml #generated:45
+# view res/layout/activity_pdf_bus_voucher.xml #generated:467
+# view res/layout/activity_pdf_bus_voucher.xml #generated:477
+# view res/layout/activity_pdf_bus_voucher.xml #generated:486
+# view res/layout/activity_pdf_bus_voucher.xml #generated:66
+# view res/layout/activity_pdf_bus_voucher.xml #generated:76
+# view res/layout/activity_pdf_bus_voucher.xml #generated:95
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:104
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:122
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:132
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:150
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:160
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:178
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:188
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:206
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:216
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:241
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:250
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:271
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:281
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:29
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:299
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:309
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:327
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:337
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:355
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:365
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:397
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:408
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:433
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:443
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:45
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:452
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:66
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:76
+# view res/layout/activity_pdf_bus_voucher_10inc_72dp.xml #generated:94
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:115
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:125
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:143
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:153
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:174
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:184
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:212
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:221
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:242
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:252
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:270
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:280
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:29
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:298
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:308
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:342
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:352
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:370
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:380
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:398
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:408
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:433
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:444
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:45
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:469
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:479
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:488
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:66
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:76
+# view res/layout/activity_pdf_bus_voucher_10inch.xml #generated:95
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:104
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:123
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:133
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:152
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:162
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:180
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:190
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:208
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:218
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:243
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:252
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:273
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:283
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:29
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:301
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:311
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:329
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:339
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:357
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:367
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:399
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:410
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:435
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:445
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:45
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:454
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:66
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:76
+# view res/layout/activity_pdf_bus_voucher_7inc_72dp.xml #generated:94
+# view res/layout/activity_sale_ticket.xml #generated:22
+# view res/layout/activity_show_operator_seats.xml #generated:24
+# view res/layout/activity_tour_company.xml #generated:21
+# view res/layout/activity_tour_confirm.xml #generated:182
+# view res/layout/activity_tour_confirm.xml #generated:207
+# view res/layout/activity_tour_confirm.xml #generated:229
+# view res/layout/activity_tour_confirm.xml #generated:257
+# view res/layout/activity_tour_detail.xml #generated:21
+# view res/layout/activity_tour_package.xml #generated:21
+# view res/layout/activity_trips_city.xml #generated:18
+# view res/layout/activity_user_profile.xml #generated:109
+# view res/layout/activity_user_profile.xml #generated:117
+# view res/layout/activity_user_profile.xml #generated:125
+# view res/layout/activity_user_profile.xml #generated:133
+# view res/layout/activity_user_profile.xml #generated:141
+# view res/layout/activity_user_profile.xml #generated:166
+# view res/layout/activity_user_profile.xml #generated:174
+# view res/layout/activity_user_profile.xml #generated:182
+# view res/layout/activity_user_profile.xml #generated:190
+# view res/layout/activity_user_profile.xml #generated:198
+# view res/layout/activity_user_profile.xml #generated:27
+# view res/layout/activity_user_profile_edit.xml #generated:138
+# view res/layout/activity_user_profile_edit.xml #generated:173
+# view res/layout/activity_user_profile_edit.xml #generated:208
+# view res/layout/activity_user_profile_edit.xml #generated:254
+# view res/layout/activity_user_profile_edit.xml #generated:272
+# view res/layout/activity_user_profile_edit.xml #generated:280
+# view res/layout/activity_user_profile_edit.xml #generated:330
+# view res/layout/activity_user_profile_edit.xml #generated:59
+# view res/layout/activity_user_profile_edit.xml #generated:99
+# view res/layout/bus_seat_list.xml #generated:240
+# view res/layout/bus_seat_list.xml #generated:250
+# view res/layout/bus_seat_list.xml #generated:264
+# view res/layout/bus_seat_list.xml #generated:275
+# view res/layout/bus_seat_list.xml #generated:295
+# view res/layout/bus_seat_list.xml #generated:472
+# view res/layout/bus_seat_list.xml #generated:76
+# view res/layout/bus_seat_list_phone.xml #generated:106
+# view res/layout/bus_seat_list_phone.xml #generated:128
+# view res/layout/bus_seat_list_phone.xml #generated:150
+# view res/layout/bus_seat_list_phone.xml #generated:172
+# view res/layout/bus_seat_list_phone.xml #generated:197
+# view res/layout/bus_seat_list_phone.xml #generated:205
+# view res/layout/bus_seat_list_phone.xml #generated:213
+# view res/layout/bus_seat_list_phone.xml #generated:221
+# view res/layout/bus_seat_list_phone.xml #generated:229
+# view res/layout/bus_seat_list_phone.xml #generated:347
+# view res/layout/bus_seat_list_phone.xml #generated:54
+# view res/layout/dialog_booking.xml #generated:27
+# view res/layout/dialog_booking.xml #generated:45
+# view res/layout/dialog_booking.xml #generated:63
+# view res/layout/dialog_booking.xml #generated:7
+# view res/layout/dialog_booking.xml #generated:89
+# view res/layout/dialog_booking_code.xml #generated:8
+# view res/layout/dialog_booking_filter.xml #generated:36
+# view res/layout/dialog_booking_filter.xml #generated:53
+# view res/layout/dialog_booking_filter.xml #generated:69
+# view res/layout/dialog_booking_filter.xml #generated:9
+# view res/layout/dialog_choose_device.xml #generated:50
+# view res/layout/dialog_choose_device.xml #generated:60
+# view res/layout/dialog_close_seat.xml #generated:17
+# view res/layout/dialog_close_seat.xml #generated:32
+# view res/layout/dialog_delivery_complete.xml #generated:11
+# view res/layout/dialog_edit_seat_info.xml #generated:29
+# view res/layout/dialog_edit_seat_info.xml #generated:47
+# view res/layout/dialog_edit_seat_info.xml #generated:65
+# view res/layout/dialog_edit_seat_info.xml #generated:7
+# view res/layout/dialog_tour_booking.xml #generated:21
+# view res/layout/dialog_tour_booking.xml #generated:8
+# view res/layout/list_item_agent_seats_booking.xml #generated:110
+# view res/layout/list_item_agent_seats_booking.xml #generated:131
+# view res/layout/list_item_agent_seats_booking.xml #generated:146
+# view res/layout/list_item_agent_seats_booking.xml #generated:166
+# view res/layout/list_item_agent_seats_booking.xml #generated:177
+# view res/layout/list_item_agent_seats_booking.xml #generated:191
+# view res/layout/list_item_agent_seats_booking.xml #generated:21
+# view res/layout/list_item_agent_seats_booking.xml #generated:211
+# view res/layout/list_item_agent_seats_booking.xml #generated:36
+# view res/layout/list_item_agent_seats_booking.xml #generated:57
+# view res/layout/list_item_agent_seats_booking.xml #generated:73
+# view res/layout/list_item_agent_seats_booking.xml #generated:94
+# view res/layout/list_item_bus_operator.xml #generated:20
+# view res/layout/list_item_choose_spinner.xml #generated:9
+# view res/layout/list_item_credit.xml #generated:17
+# view res/layout/list_item_credit.xml #generated:25
+# view res/layout/list_item_credit.xml #generated:34
+# view res/layout/list_item_credit.xml #generated:43
+# view res/layout/list_item_credit.xml #generated:51
+# view res/layout/list_item_credit.xml #generated:59
+# view res/layout/list_item_credit.xml #generated:67
+# view res/layout/list_item_credit.xml #generated:8
+# view res/layout/list_item_credit.xml #generated:82
+# view res/layout/list_item_credit.xml #generated:99
+# view res/layout/list_item_credit_phone.xml #generated:110
+# view res/layout/list_item_credit_phone.xml #generated:130
+# view res/layout/list_item_credit_phone.xml #generated:145
+# view res/layout/list_item_credit_phone.xml #generated:166
+# view res/layout/list_item_credit_phone.xml #generated:182
+# view res/layout/list_item_credit_phone.xml #generated:203
+# view res/layout/list_item_credit_phone.xml #generated:21
+# view res/layout/list_item_credit_phone.xml #generated:219
+# view res/layout/list_item_credit_phone.xml #generated:240
+# view res/layout/list_item_credit_phone.xml #generated:40
+# view res/layout/list_item_credit_phone.xml #generated:60
+# view res/layout/list_item_credit_phone.xml #generated:75
+# view res/layout/list_item_credit_phone.xml #generated:95
+# view res/layout/list_item_credit_tablet.xml #generated:106
+# view res/layout/list_item_credit_tablet.xml #generated:124
+# view res/layout/list_item_credit_tablet.xml #generated:138
+# view res/layout/list_item_credit_tablet.xml #generated:159
+# view res/layout/list_item_credit_tablet.xml #generated:175
+# view res/layout/list_item_credit_tablet.xml #generated:196
+# view res/layout/list_item_credit_tablet.xml #generated:21
+# view res/layout/list_item_credit_tablet.xml #generated:212
+# view res/layout/list_item_credit_tablet.xml #generated:233
+# view res/layout/list_item_credit_tablet.xml #generated:36
+# view res/layout/list_item_credit_tablet.xml #generated:56
+# view res/layout/list_item_credit_tablet.xml #generated:71
+# view res/layout/list_item_credit_tablet.xml #generated:91
+# view res/layout/list_item_customer_ticket.xml #generated:23
+# view res/layout/list_item_customer_ticket.xml #generated:31
+# view res/layout/list_item_customer_ticket.xml #generated:39
+# view res/layout/list_item_delivery.xml #generated:115
+# view res/layout/list_item_delivery.xml #generated:136
+# view res/layout/list_item_delivery.xml #generated:153
+# view res/layout/list_item_delivery.xml #generated:174
+# view res/layout/list_item_delivery.xml #generated:191
+# view res/layout/list_item_delivery.xml #generated:20
+# view res/layout/list_item_delivery.xml #generated:212
+# view res/layout/list_item_delivery.xml #generated:228
+# view res/layout/list_item_delivery.xml #generated:249
+# view res/layout/list_item_delivery.xml #generated:265
+# view res/layout/list_item_delivery.xml #generated:286
+# view res/layout/list_item_delivery.xml #generated:302
+# view res/layout/list_item_delivery.xml #generated:322
+# view res/layout/list_item_delivery.xml #generated:337
+# view res/layout/list_item_delivery.xml #generated:357
+# view res/layout/list_item_delivery.xml #generated:373
+# view res/layout/list_item_delivery.xml #generated:38
+# view res/layout/list_item_delivery.xml #generated:393
+# view res/layout/list_item_delivery.xml #generated:404
+# view res/layout/list_item_delivery.xml #generated:417
+# view res/layout/list_item_delivery.xml #generated:437
+# view res/layout/list_item_delivery.xml #generated:59
+# view res/layout/list_item_delivery.xml #generated:76
+# view res/layout/list_item_delivery.xml #generated:97
+# view res/layout/list_item_group_user.xml #generated:30
+# view res/layout/list_item_remark.xml #generated:11
+# view res/layout/list_item_remark.xml #generated:20
+# view res/layout/list_item_salebytripdate.xml #generated:107
+# view res/layout/list_item_salebytripdate.xml #generated:124
+# view res/layout/list_item_salebytripdate.xml #generated:145
+# view res/layout/list_item_salebytripdate.xml #generated:162
+# view res/layout/list_item_salebytripdate.xml #generated:183
+# view res/layout/list_item_salebytripdate.xml #generated:200
+# view res/layout/list_item_salebytripdate.xml #generated:220
+# view res/layout/list_item_salebytripdate.xml #generated:23
+# view res/layout/list_item_salebytripdate.xml #generated:236
+# view res/layout/list_item_salebytripdate.xml #generated:256
+# view res/layout/list_item_salebytripdate.xml #generated:275
+# view res/layout/list_item_salebytripdate.xml #generated:295
+# view res/layout/list_item_salebytripdate.xml #generated:306
+# view res/layout/list_item_salebytripdate.xml #generated:321
+# view res/layout/list_item_salebytripdate.xml #generated:341
+# view res/layout/list_item_salebytripdate.xml #generated:48
+# view res/layout/list_item_salebytripdate.xml #generated:69
+# view res/layout/list_item_salebytripdate.xml #generated:86
+# view res/layout/list_item_spinner.xml #generated:9
+# view res/layout/list_item_threeday_sales.xml #generated:113
+# view res/layout/list_item_threeday_sales.xml #generated:134
+# view res/layout/list_item_threeday_sales.xml #generated:150
+# view res/layout/list_item_threeday_sales.xml #generated:171
+# view res/layout/list_item_threeday_sales.xml #generated:187
+# view res/layout/list_item_threeday_sales.xml #generated:20
+# view res/layout/list_item_threeday_sales.xml #generated:207
+# view res/layout/list_item_threeday_sales.xml #generated:222
+# view res/layout/list_item_threeday_sales.xml #generated:242
+# view res/layout/list_item_threeday_sales.xml #generated:253
+# view res/layout/list_item_threeday_sales.xml #generated:266
+# view res/layout/list_item_threeday_sales.xml #generated:286
+# view res/layout/list_item_threeday_sales.xml #generated:39
+# view res/layout/list_item_threeday_sales.xml #generated:60
+# view res/layout/list_item_threeday_sales.xml #generated:76
+# view res/layout/list_item_threeday_sales.xml #generated:97
+# view res/layout/list_item_tour_sale.xml #generated:113
+# view res/layout/list_item_tour_sale.xml #generated:134
+# view res/layout/list_item_tour_sale.xml #generated:150
+# view res/layout/list_item_tour_sale.xml #generated:171
+# view res/layout/list_item_tour_sale.xml #generated:187
+# view res/layout/list_item_tour_sale.xml #generated:20
+# view res/layout/list_item_tour_sale.xml #generated:207
+# view res/layout/list_item_tour_sale.xml #generated:222
+# view res/layout/list_item_tour_sale.xml #generated:242
+# view res/layout/list_item_tour_sale.xml #generated:253
+# view res/layout/list_item_tour_sale.xml #generated:266
+# view res/layout/list_item_tour_sale.xml #generated:286
+# view res/layout/list_item_tour_sale.xml #generated:39
+# view res/layout/list_item_tour_sale.xml #generated:60
+# view res/layout/list_item_tour_sale.xml #generated:76
+# view res/layout/list_item_tour_sale.xml #generated:97
+# view res/layout/list_item_tourbooking.xml #generated:109
+# view res/layout/list_item_tourbooking.xml #generated:129
+# view res/layout/list_item_tourbooking.xml #generated:144
+# view res/layout/list_item_tourbooking.xml #generated:165
+# view res/layout/list_item_tourbooking.xml #generated:181
+# view res/layout/list_item_tourbooking.xml #generated:20
+# view res/layout/list_item_tourbooking.xml #generated:202
+# view res/layout/list_item_tourbooking.xml #generated:218
+# view res/layout/list_item_tourbooking.xml #generated:239
+# view res/layout/list_item_tourbooking.xml #generated:39
+# view res/layout/list_item_tourbooking.xml #generated:59
+# view res/layout/list_item_tourbooking.xml #generated:74
+# view res/layout/list_item_tourbooking.xml #generated:94
+# view res/layout/nrc_activity.xml #generated:143
+# view res/layout/nrc_activity.xml #generated:165
+# view res/layout/nrc_activity.xml #generated:223
+# view res/layout/nrc_activity.xml #generated:246
+# view res/layout/nrc_activity.xml #generated:264
+# view res/layout/nrc_activity.xml #generated:297
+# view res/layout/nrc_activity.xml #generated:324
+# view res/layout/nrc_activity.xml #generated:43
+# view res/layout/remark_header.xml #generated:7
+# view res/layout/setting_activity.xml #generated:22
+-keep class com.smk.custom.view.CustomTextView { <init>(...); }
+
+# view res/layout/list_item_time.xml #generated:24
+-keep class com.smk.custom.view.DosisMediumTextView { <init>(...); }
+
+# view res/layout/week.xml #generated:12
+# view res/layout/week.xml #generated:16
+# view res/layout/week.xml #generated:20
+# view res/layout/week.xml #generated:24
+# view res/layout/week.xml #generated:28
+# view res/layout/week.xml #generated:32
+# view res/layout/week.xml #generated:8
+-keep class com.squareup.timessquare.CalendarCellView { <init>(...); }
+
+# view res/layout/month.xml #generated:18
+-keep class com.squareup.timessquare.CalendarGridView { <init>(...); }
+
+# view res/layout/month.xml #generated:23
+# view res/layout/week.xml #generated:3
+-keep class com.squareup.timessquare.CalendarRowView { <init>(...); }
+
+# view res/layout/month.xml #generated:3
+-keep class com.squareup.timessquare.MonthView { <init>(...); }
+

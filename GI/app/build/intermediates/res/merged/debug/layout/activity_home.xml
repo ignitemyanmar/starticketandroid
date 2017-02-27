@@ -1,0 +1,206 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/toolbar" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+             >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_radius"
+                android:minWidth="320dp"
+                android:orientation="vertical" >
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/CustomTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="10dp"
+                    android:text="လက္ မွတ္ ေရာင္းမည္"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_sale_tickets"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:text="လက္ မွတ္ ေရာင္းမည္"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/txt_notrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Booking အားလံုးကုိ Confirm လုပ္ မည္"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_book_confirm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:text="Booking အားလံုးကုိ Confirm လုပ္ မည္"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/txt_book_by_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Login User ၏ Booking မ်ားကုိ Confirm လုပ္ မည္"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_book_confirm_user"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:padding="10dp"
+                    android:text="Login ၀င္သူ ၏ Booking မ်ားကုိ Confirm လုပ္ မည္"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/CustomTextView01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="အ ေရာင္း စာရင္း"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_three_day_sales"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:text="အ ေရာင္း စာရင္း"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/txt_delivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="20dp"
+                    android:text="သြားပုိ႔ရမည့္ စာရင္း"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_delivery_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:text="Delivery"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/txt_khoneat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="ခံုအပ္ရမည့္ စာရင္း"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_khoneat"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:text="ခံုအပ္ရမည့္ စာရင္း"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/CustomTextView02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="အေရာင္းကုိယ္စားလွယ္ ခံုမွာယူ စာရင္း"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_agent_seats_booking"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/btn_gold"
+                    android:maxWidth="300dp"
+                    android:text="အေရာင္းကုိယ္စားလွယ္ ခံုမွာယူ စာရင္း"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/app_version"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

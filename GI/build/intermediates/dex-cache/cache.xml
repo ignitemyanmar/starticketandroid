@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="184f86117c6463267c1f0deba84d4853cb165c40">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.orhanobut-dialogplus-1.11_90271d249f5d1b26dffd6e6b00c7a794a0b3acf2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.databinding/adapters/1.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c56d29136c2257f63f08c29c4e739efb03b06c7d">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.databinding-adapters-1.2.1_746970ed265bea5bae352c761e196e63483a6333.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-transition-25.1.0_e27110c71002ce9a0f1e5425eab90c4d32740cca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_4be853c16d7047f8f009a4fda861900bcf7323b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio beta.app/Contents/gradle/wrapper/dists/gradle-2.4-all/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.2.3/b4b51d1925cdfda98fd861230c1ecb5855500129/baseLibrary-2.2.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b4b51d1925cdfda98fd861230c1ecb5855500129">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/baseLibrary-2.2.3_8fb5a0b401e91a24be4ef8a55077c4a97d65e181.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio beta.app/Contents/gradle/wrapper/dists/gradle-2.4-all/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/gson-2.2.4_3d7ea13ae9c189781cc7a5858ad4577f7b2b24f8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-beta4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="662d7533b25a666c649c10a16b42edfb95f25a4f">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support.constraint-constraint-layout-1.0.0-beta4_e6009816a742de8c13ff6a7c1683a5bf784b6ff1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.github.dmytrodanylyk.shadow-layout/library/1.0.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6625ecb586cdd40f3e160486368e5251630899c9">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.github.dmytrodanylyk.shadow-layout-library-1.0.3_7dfc1236b3ebcc52826d7e5e846882b4316a0955.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_bd9f411fad7dafbea26b937d82cc9a96e882ff05.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.github.florent37/viewanimator/1.0.5/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="63a8fde397bbe55178688290a36a9451dade6d14">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.github.florent37-viewanimator-1.0.5_cbba0e0114454784c8e19c0c35b5953f8d74be9c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a3a74cc346ed4763f81563700ebc56ee3d4d7db">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.afollestad.material-dialogs-core-0.9.2.1_501d172ff3e6d11fdcd66eaa05c11b37a6883d2e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/libs/skpopupview.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6f354ed0d728f5b5d5cc6dedc7c2fb1ce0a9eab0">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/skpopupview_beab0f6c3421c21ef2a28b8bbf641d86ea7bf75f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/uk.co.chrisjenx/calligraphy/2.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ebcb0bcf52fab7c586f39717f7cb8de91748b1b1">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/uk.co.chrisjenx-calligraphy-2.2.0_ca1006b5f122975f1e1f782fd51677502aa1d488.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_3565c0f4fe74341e33736666fa9d044082f948df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/GI/sKCalendar/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c382f32a448abfdaf0f8667dcbfd81aae78b79a6">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/GI-sKCalendar-unspecified_995d51555ff149cf439e94539fb96b8a79e9fd0d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/GI/sKConnectionDetector/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9acd8ba1e13990cd47cbbbf58cfb80fb7bf83f1e">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/GI-sKConnectionDetector-unspecified_2e01c1a3e6a84328b24f8f2c2b1fe002fe941587.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/libs/core.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd6b097588487313f7a94914fb89d44238964977">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/core_2cf7f10e4f6d0aaa5384640d60153511eebf8c23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/libs/BlueToothTool.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="83328601548cd7a2bd5164b6cc068df832df9212">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/pre-dexed/debug/BlueToothTool_5995b8f5f2352c658dcfdf765ec04e37dd610de6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/Agent/sKAlertMessage/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e6e5f65faeb43d52beb361663d6282ffc7d31cce">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/pre-dexed/debug/Agent-sKAlertMessage-unspecified_dd828d9661fc69531948923284afeff6aa7320cf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-v13/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e006c9b6f0aaed9d8c7934b74039738390fe3468">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-v13-25.1.0_cb2630c2a48cf2ecfc3ab2e0379b4af11495c8c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.rockerhieu/rv-adapter/1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810841f1f8b7e3510b1097bf0f8a35d94e58f79a">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.rockerhieu-rv-adapter-1.0_7ccc92103d300552aadb27cf89979ca65f62f9c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_e466bfc3b060125c662de43fbd093bc3d3ef7f25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.support/support-v13/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e006c9b6f0aaed9d8c7934b74039738390fe3468">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/pre-dexed/debug/com.android.support-support-v13-25.1.0_2cea153f707e8cd259c236179ac9b4aec1d80998.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/libs/retrofit-1.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="54271c5c7a4dfa1c7cd53d0b10956ea35d32abb0">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/retrofit-1.5.0_1b9e0147d131ae8293caa925922a955f151c9a22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_d4312d74a17f24a1c626322c05e7fbd8d57455a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_7b6c8b7192bf08c9fdd5223e1c33c434fd8bfc4f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-design-25.1.0_b865ada8f73977f9a9a5610170ca129c3e94f2d7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/GI/sKAlertMessage/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e6e5f65faeb43d52beb361663d6282ffc7d31cce">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/GI-sKAlertMessage-unspecified_9a7c218b34f62a5eb26f9e809896815344c9367a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.rengwuxian.materialedittext/library/2.1.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="288913b440a3c61c30aa171095453a605432277a">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.rengwuxian.materialedittext-library-2.1.4_6f3fc7cf316b82d1666a92bd794c16e3ab00d254.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.6.5/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="248fed0fd4ef1442847a45fc57b1b9b2be0d0550">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.squareup-android-times-square-1.6.5_cff25614faa4f16cc3b29deb4cae590436d41a04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/libs/okhttp-1.5.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7b7c9e5a6a0d69a1571968805dc1d1f19b57da26">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/okhttp-1.5.4_eb0a9932a089c2e5e14cec0ef89910c0e79528d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/libs/itextpdf-5.4.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe28bb8246ecf9c1740d813bd9e3de79e6e68d9">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/itextpdf-5.4.5_a5ae78603d44c67ce0349a44f98cdac06b695322.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_11dd3471da6e6c1199f625dd570730f35c8538b5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.databinding/library/1.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="957dc30b1495f8689271e00d56ab09cc9192df02">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.databinding-library-1.2.1_d08ca06a896fcf4c9e52b5b9b8af0ff8a5242cf2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/libs/BlueToothTool.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="83328601548cd7a2bd5164b6cc068df832df9212">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/BlueToothTool_ea477dc5e07ad9b88a4a94b6b8efdabfd59e2267.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.1.0_f02c3bff1e456c337548d3f18737e1d3c57db4b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.rockerhieu/rv-adapter-endless/1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cbd00ecf88c4d84c45508c531825d73b472c85ac">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.rockerhieu-rv-adapter-endless-1.1_b8329c9be43b9f3cf6c99dfa734baa2b33710a39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.prolificinteractive/material-calendarview/1.4.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d86ad5b79ed5d4394b3f4011ec90a7d9b876fcb">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.prolificinteractive-material-calendarview-1.4.2_de93f58a3babda39d6ca01e3512feeb6674538bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.1.0_9aee61029a2588ee743804b358c91a595aea4508.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_25cd216c8d08e8dfb46e1e71f3779276da108d61.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/me.zhanghai.android.materialprogressbar/library/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a846ddbf5bf88dee5f89d4dffe22c864f576d9b0">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/me.zhanghai.android.materialprogressbar-library-1.3.0_cc2ec41645ac7c30164c1c5944eda125109e3822.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_3b81e4a98221c9a547f6457c3fbe88d88df1d4bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/libs/skpopupview.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6f354ed0d728f5b5d5cc6dedc7c2fb1ce0a9eab0">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/pre-dexed/debug/skpopupview_78f4e2cce0606a248ea5520ef83f608c763d4fbf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/exploded-aar/com.android.databinding/adapters/1.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c56d29136c2257f63f08c29c4e739efb03b06c7d">
+        <dex dex="/Users/user/Desktop/WorkProjects/starticketandroid/Agent/app/build/intermediates/pre-dexed/debug/com.android.databinding-adapters-1.2.1_dc910684bb5b662f43fa3d3c7aeaed0cb1a5da49.jar" />
+    </item>
+
+</items>

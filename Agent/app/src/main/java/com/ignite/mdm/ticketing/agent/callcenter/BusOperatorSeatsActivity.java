@@ -94,7 +94,8 @@ public class BusOperatorSeatsActivity extends BaseSherlockActivity {
   private void getOperatorSeats() {
     // TODO Auto-generated method stub
     dialog = ProgressDialog.show(BusOperatorSeatsActivity.this, "", "Please wait ...", true);
-    dialog.setCancelable(true);
+    dialog.setCancelable(false);
+
 
     NetworkEngine.setIP("starticketmyanmar.com");
     NetworkEngine.getInstance()

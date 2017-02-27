@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                     
+                                                 
+	<LinearLayout
+
+
+			android:id="@+id/activity_invoice_detail_activty"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+
+			tools:context="com.ignite.mdm.ticketing.agent.callcenter.InvoiceDetailActivty" android:tag="layout/activity_invoice_detail_activty_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+		<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentTop="true"
+				android:background="?attr/colorPrimaryDark"
+				app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+				app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+		</android.support.v7.widget.Toolbar>
+		<RelativeLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/gray"
+				android:padding="@dimen/activity_vertical_margin">
+
+			<TextView
+					android:textStyle="bold"
+					android:layout_marginLeft="@dimen/activity_vertical_margin"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/invoice_id"
+
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					tools:layout_editor_absoluteY="24dp" tools:layout_editor_absoluteX="16dp"/>
+			<TextView
+
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:id="@+id/total_amount"
+					android:gravity="center"
+					android:textStyle="bold"
+					android:layout_alignParentRight="true"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					app:layout_constraintTop_toTopOf="parent"
+					android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
+					android:layout_marginRight="16dp"
+			/>
+			<TextView
+
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/invoice_id"
+
+					android:id="@+id/date" android:layout_marginStart="16dp"
+					app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="16dp"
+					app:layout_constraintTop_toBottomOf="@+id/textView"
+					android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
+					android:layout_marginRight="16dp" app:layout_constraintHorizontal_bias="0.0"
+					android:layout_marginTop="8dp"
+			android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+			<RelativeLayout android:layout_width="match_parent"
+					android:layout_height="wrap_content" android:layout_below="@id/date">
+				<TextView android:layout_width="150dp" android:layout_height="wrap_content"
+						android:text="Description"
+
+						android:textColor="#000"/>
+
+				<TextView android:layout_width="80dp" android:layout_height="wrap_content"
+						android:text="Net Ammt"
+						android:layout_alignParentRight="true"
+						android:gravity="right"
+						android:id="@+id/net_amount"
+						android:layout_gravity="right"
+						android:textColor="#000"/>
+
+				<TextView android:layout_width="50dp" android:layout_height="wrap_content"
+						android:text="Comm"
+						android:layout_gravity="right"
+						android:gravity="right"
+						android:id="@+id/commission"
+						android:layout_marginRight="@dimen/activity_vertical_margin"
+						android:layout_toLeftOf="@id/net_amount"
+						android:textColor="#000"/>
+
+				<TextView android:layout_width="35dp" android:layout_height="wrap_content"
+						android:text="Qty"
+						android:layout_toLeftOf="@id/commission"
+						android:layout_marginRight="@dimen/activity_vertical_margin"
+						android:textColor="#000"/>
+			</RelativeLayout>
+
+		</RelativeLayout>
+		<FrameLayout android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_below="@id/date"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintLeft_toRightOf="parent"
+		>
+			<ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:id="@+id/progress"/>
+			<android.support.v7.widget.RecyclerView
+					android:layout_width="match_parent"
+					android:id="@+id/recycler_view"
+
+
+					android:layout_height="match_parent"
+					android:layout_gravity="center"
+			/>
+		</FrameLayout>
+
+	</LinearLayout>
+
+         

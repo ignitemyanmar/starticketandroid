@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/toolbar_dropdown" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray_light"
+                android:orientation="vertical" >
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/auto_txt_codeno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="160dp"
+                    android:hint="Code No / Phone"
+                    android:inputType="number"
+                    android:textColorHint="@color/gray_light"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    android:textColor="@color/grey"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
+
+                <com.smk.custom.view.CustomButton
+                    android:id="@+id/btn_search_codeno"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/btn_blue"
+                    android:gravity="center"
+                    android:text="@string/strmm_search"
+                    android:textAppearance="?android:attr/textAppearanceButton"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/lv_booking_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:listSelector="@android:color/transparent">
+
+            </ListView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

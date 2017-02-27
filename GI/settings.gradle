@@ -1,0 +1,4 @@
+include ':app'
+include ':sKAlertMessage'
+include ':sKCalendar'
+include ':sKConnectionDetector'

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ignite.gi.ticketing.agent.callcenter"
+    android:versionCode="11100"
+    android:versionName="11100" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name="com.ignite.mdm.ticketing.agent.callcenter.StarApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name_agent"
+        android:theme="@style/Theme.Themestarticket" >
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.MainFragment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.MovieDateAndCinemaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.MovieTimeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.SelectingSeatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.Movie_Info_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.PDFMovieActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusConfirmActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Themestarticket.BusComfirm" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.UserLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Themestarticket.userlogin" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.UserRegister"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.SelectDateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.TravelAgentsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.DeperatureTimeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusSelectSeatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.Bus_Info_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.PDFBusActivity"
+            android:screenOrientation="portrait" >
+
+            <!-- This activity handles "SEND" actions with text data -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.TicketPriceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.ShowInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.ShowInvoice"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.PDFTicketActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.OtherListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusTimeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusTripsCityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusBookingListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusBookingConfirmDeleteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusBookingDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusOperatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.CheckBluetoothConnect"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.NewSalesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.OutstandingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.SaleTicketActivity"
+            android:label="@string/strmm_busticket_sale"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.BusOperatorSeatsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.SaleByTripDateActivity"
+            android:label="@string/strmm_khoneat"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.DeliveryActivity"
+            android:label="@string/strmm_delivery"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.AgentSeatsBookingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.HomeNewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ToolbarTheme" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.TourPackageActivity"
+            android:label="@string/strmm_tour_package_sale"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.TourCompanyActivity"
+            android:label="@string/strmm_tourco_trip"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.TourDetailActivity"
+            android:label="@string/strmm_detail_itinerary"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.CustomerInfoActivity"
+            android:label="@string/strmm_customer_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.RegisterActivity"
+            android:label="@string/strmm_register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.AgentDepositActivity"
+            android:label="@string/strmm_agent_deposit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.TourConfirmActivity"
+            android:label="@string/strmm_customer_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.SettingActivity"
+            android:label="@string/strmm_change_language"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.AgentDepositFillActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.CbOddPaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.InvoiceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Custom" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeNewActivity" />
+        </activity>
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.InvoiceDetailActivty"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Custom" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InvoiceActivity" />
+        </activity>
+        <activity
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ToolbarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeNewActivity" />
+        </activity>
+
+        <service android:name="com.ignite.mdm.ticketing.agent.callcenter.NotiServiceActivity" />
+
+        <receiver
+            android:name="com.ignite.mdm.ticketing.agent.callcenter.MyPhoneReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

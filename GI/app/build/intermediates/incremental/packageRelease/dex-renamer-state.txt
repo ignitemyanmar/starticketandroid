@@ -1,0 +1,4 @@
+#Sun Feb 12 18:45:11 MMT 2017
+base.0=/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/transforms/dex/release/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/user/Desktop/WorkProjects/starticketandroid/GI/app/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex

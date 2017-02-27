@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" 
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border_radius"
+                android:padding="10dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/gray_light"
+                    android:orientation="vertical"
+                    android:padding="5dp" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/TextView05"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/strmm_price"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/grey" />
+
+                        <TextView
+                            android:id="@+id/TextView03"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|right"
+                            android:text="@string/strmm_total"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/grey" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:gravity="left|center_vertical" >
+
+                            <TextView
+                                android:id="@+id/TextView02"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-condensed"
+                                android:gravity="bottom"
+                                android:text="Ks "
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/blue" />
+
+                            <TextView
+                                android:id="@+id/txt_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:gravity="bottom"
+                                android:text="0"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:gravity="center" >
+
+                            <TextView
+                                android:id="@+id/txt_minus"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_weight="30"
+                                android:background="@drawable/btn_yellow"
+                                android:clickable="true"
+                                android:fontFamily="sans-serif-condensed"
+                                android:gravity="center"
+                                android:text="-"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/txt_qty"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="30"
+                                android:fontFamily="sans-serif-condensed"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="1"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/txt_plus"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_weight="30"
+                                android:background="@drawable/btn_yellow"
+                                android:clickable="true"
+                                android:fontFamily="sans-serif-condensed"
+                                android:gravity="center"
+                                android:text="+"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txt_total"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center_vertical|right"
+                            android:text="= 0 Ks"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_agentTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/strmm_agent_name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/grey" />
+
+                <Spinner
+                    android:id="@+id/spn_starticket_agents"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/txt_wifi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/strmm_customer_name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/grey" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_buyer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/apptheme_edit_text_holo_light"
+                    android:ems="10"
+                    android:singleLine="true"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" >
+
+                    <requestFocus />
+
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/strmm_nrc_no"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/grey" />
+
+                <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+                    android:id="@+id/edt_nrc_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/apptheme_edit_text_holo_light"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
+
+                <com.smk.custom.view.CustomTextView
+                    android:id="@+id/CustomTextView03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/strmm_phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/grey" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/apptheme_edit_text_holo_light"
+                    android:ems="10"
+                    android:inputType="number"
+                    app:met_errorColor="@color/golden_brown"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/golden_brown" />
+
+                <LinearLayout
+                    android:id="@+id/layout_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <com.smk.custom.view.CustomTextView
+                        android:id="@+id/customTextView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/strmm_remark"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/grey" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edt_remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/apptheme_edit_text_holo_light"
+                        android:ems="10"
+                        android:inputType="textMultiLine"
+                        android:minLines="2"
+                        android:visibility="visible"
+                        app:met_errorColor="@color/golden_brown"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/golden_brown" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_yellow"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:text="@string/strmm_confirm"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
